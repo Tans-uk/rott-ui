@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component -> BottomMenuItem bottom menu item componenti snapshot ile eşleşmeli 1`] = `
+<View
+  flex={1}
+  onMoveShouldSetResponder={[Function]}
+  onMoveShouldSetResponderCapture={[Function]}
+  onResponderEnd={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderReject={[Function]}
+  onResponderRelease={[Function]}
+  onResponderStart={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  onStartShouldSetResponderCapture={[Function]}
+  style={
+    {
+      "flex": 1,
+      "flexDirection": "column",
+    }
+  }
+>
+  <KeyboardProvider
+    enabled={true}
+  >
+    <View
+      flex={1}
+      pointerEvents="box-none"
+      style={
+        {
+          "flex": 1,
+          "flexDirection": "column",
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          alignItemsCenter={true}
+          animated={false}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "column",
+            }
+          }
+          testID="bottom-menu-item-1-test-id"
+        >
+          <View
+            marginBottom={8}
+            style={
+              {
+                "flex": undefined,
+                "flexDirection": "column",
+                "marginBottom": 16,
+              }
+            }
+          >
+            <SvgMock
+              fill="transparent"
+              height={46}
+              stroke="rgba(34, 63, 70, 1)"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              width={46}
+            />
+          </View>
+          <Text
+            numberOfLines={1}
+            style={
+              {
+                "color": "rgba(34, 63, 70, 1)",
+                "fontFamily": "Markpro-Bold",
+                "fontSize": 10,
+                "fontWeight": "bold",
+                "textAlign": "center",
+              }
+            }
+          >
+            Menu 1
+          </Text>
+        </View>
+        <View
+          style={
+            {
+              "flexShrink": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          [
+            {
+              "alignSelf": "center",
+              "elevation": 999999,
+              "flex": 0,
+              "maxWidth": "100%",
+              "position": "absolute",
+              "zIndex": 999999,
+            },
+            {
+              "flexDirection": "column-reverse",
+              "justifyContent": "flex-start",
+              "top": 30,
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            {
+              "bottom": 0,
+            }
+          }
+        >
+          <RCTSafeAreaView />
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          [
+            {
+              "alignSelf": "center",
+              "elevation": 999999,
+              "flex": 0,
+              "maxWidth": "100%",
+              "position": "absolute",
+              "zIndex": 999999,
+            },
+            {
+              "bottom": 40,
+              "flexDirection": "column",
+              "justifyContent": "flex-end",
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            {
+              "bottom": 0,
+            }
+          }
+        >
+          <RCTSafeAreaView />
+        </View>
+      </View>
+    </View>
+  </KeyboardProvider>
+</View>
+`;

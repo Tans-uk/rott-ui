@@ -1,0 +1,6 @@
+export const modalIds = {
+  CAPTHCA_MODAL: 97,
+  SESSION_CLOSED: 98,
+  ALERT_DIALOG: 98,
+  TEST_WARNING: 999,
+}

@@ -1,0 +1,433 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton -> Custom Component item icerisinde cagirilan skeleton icin snapshot eslesmeli 1`] = `
+<View
+  flex={1}
+  onMoveShouldSetResponder={[Function]}
+  onMoveShouldSetResponderCapture={[Function]}
+  onResponderEnd={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderReject={[Function]}
+  onResponderRelease={[Function]}
+  onResponderStart={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  onStartShouldSetResponderCapture={[Function]}
+  style={
+    {
+      "flex": 1,
+      "flexDirection": "column",
+    }
+  }
+>
+  <KeyboardProvider
+    enabled={true}
+  >
+    <View
+      flex={1}
+      pointerEvents="box-none"
+      style={
+        {
+          "flex": 1,
+          "flexDirection": "column",
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "flex": undefined,
+              "flexDirection": "column",
+            }
+          }
+          testID="item-test-id"
+        >
+          <View
+            backgroundColor="rgba(234, 239, 240, 1)"
+            borderRadius={4}
+            height={16}
+            overflowHidden={true}
+            style={
+              {
+                "backgroundColor": "rgba(234, 239, 240, 1)",
+                "flex": undefined,
+                "flexDirection": "column",
+                "height": 31,
+                "maxHeight": 31,
+                "overflow": "hidden",
+                "width": 154,
+              }
+            }
+            testID="skeleton-test-id"
+            width={80}
+          >
+            <View
+              collapsable={false}
+              jestAnimatedProps={
+                {
+                  "value": {},
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {
+                    "bottom": 0,
+                    "flexDirection": "row",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -154,
+                      },
+                    ],
+                  },
+                }
+              }
+              jestInlineStyle={{}}
+              style={
+                [
+                  {
+                    "bottom": 0,
+                    "flexDirection": "row",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -154,
+                      },
+                    ],
+                  },
+                ]
+              }
+            >
+              <BVLinearGradient
+                colors={
+                  [
+                    4293586928,
+                    4294967295,
+                    4293586928,
+                  ]
+                }
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+                style={
+                  {
+                    "height": 31,
+                    "width": 154,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "flexShrink": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          [
+            {
+              "alignSelf": "center",
+              "elevation": 999999,
+              "flex": 0,
+              "maxWidth": "100%",
+              "position": "absolute",
+              "zIndex": 999999,
+            },
+            {
+              "flexDirection": "column-reverse",
+              "justifyContent": "flex-start",
+              "top": 30,
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            {
+              "bottom": 0,
+            }
+          }
+        >
+          <RCTSafeAreaView />
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          [
+            {
+              "alignSelf": "center",
+              "elevation": 999999,
+              "flex": 0,
+              "maxWidth": "100%",
+              "position": "absolute",
+              "zIndex": 999999,
+            },
+            {
+              "bottom": 40,
+              "flexDirection": "column",
+              "justifyContent": "flex-end",
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            {
+              "bottom": 0,
+            }
+          }
+        >
+          <RCTSafeAreaView />
+        </View>
+      </View>
+    </View>
+  </KeyboardProvider>
+</View>
+`;
+
+exports[`Skeleton -> Custom Component skeleton snapshotı ile eşleşmeli 1`] = `
+<View
+  flex={1}
+  onMoveShouldSetResponder={[Function]}
+  onMoveShouldSetResponderCapture={[Function]}
+  onResponderEnd={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderReject={[Function]}
+  onResponderRelease={[Function]}
+  onResponderStart={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  onStartShouldSetResponderCapture={[Function]}
+  style={
+    {
+      "flex": 1,
+      "flexDirection": "column",
+    }
+  }
+>
+  <KeyboardProvider
+    enabled={true}
+  >
+    <View
+      flex={1}
+      pointerEvents="box-none"
+      style={
+        {
+          "flex": 1,
+          "flexDirection": "column",
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          backgroundColor="rgba(234, 239, 240, 1)"
+          borderRadius={4}
+          height={16}
+          overflowHidden={true}
+          style={
+            {
+              "backgroundColor": "rgba(234, 239, 240, 1)",
+              "flex": undefined,
+              "flexDirection": "column",
+              "height": 31,
+              "maxHeight": 31,
+              "overflow": "hidden",
+              "width": 154,
+            }
+          }
+          testID="skeleton-test-id"
+          width={80}
+        >
+          <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "bottom": 0,
+                  "flexDirection": "row",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "transform": [
+                    {
+                      "translateX": -154,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={{}}
+            style={
+              [
+                {
+                  "bottom": 0,
+                  "flexDirection": "row",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "transform": [
+                    {
+                      "translateX": -154,
+                    },
+                  ],
+                },
+              ]
+            }
+          >
+            <BVLinearGradient
+              colors={
+                [
+                  4293586928,
+                  4294967295,
+                  4293586928,
+                ]
+              }
+              endPoint={
+                {
+                  "x": 1,
+                  "y": 0,
+                }
+              }
+              locations={null}
+              startPoint={
+                {
+                  "x": 0,
+                  "y": 0,
+                }
+              }
+              style={
+                {
+                  "height": 31,
+                  "width": 154,
+                }
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "flexShrink": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          [
+            {
+              "alignSelf": "center",
+              "elevation": 999999,
+              "flex": 0,
+              "maxWidth": "100%",
+              "position": "absolute",
+              "zIndex": 999999,
+            },
+            {
+              "flexDirection": "column-reverse",
+              "justifyContent": "flex-start",
+              "top": 30,
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            {
+              "bottom": 0,
+            }
+          }
+        >
+          <RCTSafeAreaView />
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          [
+            {
+              "alignSelf": "center",
+              "elevation": 999999,
+              "flex": 0,
+              "maxWidth": "100%",
+              "position": "absolute",
+              "zIndex": 999999,
+            },
+            {
+              "bottom": 40,
+              "flexDirection": "column",
+              "justifyContent": "flex-end",
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            {
+              "bottom": 0,
+            }
+          }
+        >
+          <RCTSafeAreaView />
+        </View>
+      </View>
+    </View>
+  </KeyboardProvider>
+</View>
+`;
