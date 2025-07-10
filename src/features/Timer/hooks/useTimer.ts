@@ -7,7 +7,7 @@ export const useTimer = (initialTime: number, type: 'countdown' | 'circle' = 'co
   const [counting, setCounting] = useState(false)
   const [finished, setFinished] = useState(false)
 
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const intervalRef = useRef<NodeJS.Timeout | number | null>(null)
   const appState = useRef(AppState.currentState)
   const outDate = useRef<Nullable<Date>>(null)
 

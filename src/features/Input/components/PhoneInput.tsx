@@ -78,7 +78,7 @@ export const PhoneInput: FC<PhoneInputProps> = ({
         maxLength={maxLength >= 16 ? 16 : maxLength}
         placeholder='0(XXX) XXX XX XX'
         keyboardType='number-pad'
-        onChangeText={(masked, unmasked) => handleTextChange(unmasked)}
+        onChangeText={(_masked, unmasked) => handleTextChange(unmasked)}
         style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
         {...props}
       />

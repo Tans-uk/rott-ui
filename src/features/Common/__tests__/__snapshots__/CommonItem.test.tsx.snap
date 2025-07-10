@@ -3,18 +3,7 @@
 exports[`Common -> Common Item common item ilk renderlandığında snapshot ile eşleşmeli 1`] = `
 <View
   flex={1}
-  onMoveShouldSetResponder={[Function]}
-  onMoveShouldSetResponderCapture={[Function]}
-  onResponderEnd={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderReject={[Function]}
-  onResponderRelease={[Function]}
-  onResponderStart={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  onStartShouldSetResponderCapture={[Function]}
+  pointerEvents="box-none"
   style={
     {
       "flex": 1,
@@ -22,298 +11,268 @@ exports[`Common -> Common Item common item ilk renderlandığında snapshot ile 
     }
   }
 >
-  <KeyboardProvider
-    enabled={true}
+  <View
+    style={
+      {
+        "flex": undefined,
+        "flexDirection": "column",
+      }
+    }
   >
     <View
-      flex={1}
-      pointerEvents="box-none"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      animated={false}
+      backgroundColor="grey-200"
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      overflowHidden={true}
+      paddingHorizontal={16}
+      paddingVertical={16}
       style={
         {
+          "backgroundColor": "grey-200",
           "flex": 1,
           "flexDirection": "column",
+          "overflow": "hidden",
+          "paddingHorizontal": 31,
+          "paddingVertical": 31,
         }
       }
     >
       <View
+        alignItemsCenter={true}
+        flex={1}
+        justifyContentCenter={true}
         style={
           {
+            "alignItems": "center",
             "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
           }
         }
       >
         <View
+          flex={1}
           style={
             {
-              "flex": undefined,
+              "flex": 1,
               "flexDirection": "column",
             }
           }
         >
-          <View
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            animated={false}
-            backgroundColor="rgba(161, 173, 175, 1)"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            overflowHidden={true}
-            paddingHorizontal={16}
-            paddingVertical={16}
+          <Text
+            size="full"
             style={
               {
-                "backgroundColor": "rgba(161, 173, 175, 1)",
-                "flex": 1,
+                "color": "grey-900",
+                "fontFamily": "Markpro-Medium",
+                "fontSize": 16,
+                "fontWeight": 600,
+                "textAlign": "auto",
+                "width": "100%",
+              }
+            }
+            testID="title-test-id"
+          >
+            TEST.WITH.PARAM
+          </Text>
+          <View
+            height={16}
+            style={
+              {
+                "flex": undefined,
                 "flexDirection": "column",
-                "overflow": "hidden",
-                "paddingHorizontal": 31,
-                "paddingVertical": 31,
+                "height": 31,
+                "maxHeight": 31,
               }
             }
           >
             <View
-              alignItemsCenter={true}
-              flex={1}
-              justifyContentCenter={true}
+              backgroundColor="rgba(234, 239, 240, 1)"
+              borderRadius={4}
+              height={16}
+              overflowHidden={true}
               style={
                 {
-                  "alignItems": "center",
-                  "flex": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
+                  "backgroundColor": "rgba(234, 239, 240, 1)",
+                  "flex": undefined,
+                  "flexDirection": "column",
+                  "height": 31,
+                  "maxHeight": 31,
+                  "overflow": "hidden",
+                  "width": 429,
                 }
               }
+              width={223}
             >
               <View
-                flex={1}
-                style={
+                collapsable={false}
+                jestAnimatedProps={
                   {
-                    "flex": 1,
-                    "flexDirection": "column",
+                    "value": {},
                   }
                 }
+                jestAnimatedStyle={
+                  {
+                    "value": {
+                      "bottom": 0,
+                      "flexDirection": "row",
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": [
+                        {
+                          "translateX": -429,
+                        },
+                      ],
+                    },
+                  }
+                }
+                jestInlineStyle={{}}
+                style={
+                  [
+                    {
+                      "bottom": 0,
+                      "flexDirection": "row",
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": [
+                        {
+                          "translateX": -429,
+                        },
+                      ],
+                    },
+                  ]
+                }
               >
-                <Text
-                  size="full"
-                  style={
+                <BVLinearGradient
+                  colors={
+                    [
+                      4293586928,
+                      4294967295,
+                      4293586928,
+                    ]
+                  }
+                  endPoint={
                     {
-                      "color": "rgba(34, 63, 70, 1)",
-                      "fontFamily": "Markpro-Medium",
-                      "fontSize": 16,
-                      "fontWeight": 600,
-                      "textAlign": "auto",
-                      "width": "100%",
+                      "x": 1,
+                      "y": 0,
                     }
                   }
-                  testID="title-test-id"
-                >
-                  TEST WITH TITLE
-                </Text>
-                <View
-                  height={16}
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0,
+                      "y": 0,
+                    }
+                  }
                   style={
                     {
-                      "flex": undefined,
-                      "flexDirection": "column",
                       "height": 31,
-                      "maxHeight": 31,
+                      "width": 429,
                     }
                   }
-                >
-                  <View
-                    backgroundColor="rgba(234, 239, 240, 1)"
-                    borderRadius={4}
-                    height={16}
-                    overflowHidden={true}
-                    style={
-                      {
-                        "backgroundColor": "rgba(234, 239, 240, 1)",
-                        "flex": undefined,
-                        "flexDirection": "column",
-                        "height": 31,
-                        "maxHeight": 31,
-                        "overflow": "hidden",
-                        "width": 429,
-                      }
-                    }
-                    width={223}
-                  >
-                    <View
-                      collapsable={false}
-                      jestAnimatedProps={
-                        {
-                          "value": {},
-                        }
-                      }
-                      jestAnimatedStyle={
-                        {
-                          "value": {
-                            "bottom": 0,
-                            "flexDirection": "row",
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "translateX": -429,
-                              },
-                            ],
-                          },
-                        }
-                      }
-                      jestInlineStyle={{}}
-                      style={
-                        [
-                          {
-                            "bottom": 0,
-                            "flexDirection": "row",
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "translateX": -429,
-                              },
-                            ],
-                          },
-                        ]
-                      }
-                    >
-                      <BVLinearGradient
-                        colors={
-                          [
-                            4293586928,
-                            4294967295,
-                            4293586928,
-                          ]
-                        }
-                        endPoint={
-                          {
-                            "x": 1,
-                            "y": 0,
-                          }
-                        }
-                        locations={null}
-                        startPoint={
-                          {
-                            "x": 0,
-                            "y": 0,
-                          }
-                        }
-                        style={
-                          {
-                            "height": 31,
-                            "width": 429,
-                          }
-                        }
-                      />
-                    </View>
-                  </View>
-                </View>
+                />
               </View>
             </View>
           </View>
         </View>
-        <View
-          style={
-            {
-              "flexShrink": 1,
-            }
-          }
-        />
-      </View>
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
-        style={
-          [
-            {
-              "alignSelf": "center",
-              "elevation": 999999,
-              "flex": 0,
-              "maxWidth": "100%",
-              "position": "absolute",
-              "zIndex": 999999,
-            },
-            {
-              "flexDirection": "column-reverse",
-              "justifyContent": "flex-start",
-              "top": 30,
-              "width": 750,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            {
-              "bottom": 0,
-            }
-          }
-        >
-          <RCTSafeAreaView />
-        </View>
-      </View>
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
-        style={
-          [
-            {
-              "alignSelf": "center",
-              "elevation": 999999,
-              "flex": 0,
-              "maxWidth": "100%",
-              "position": "absolute",
-              "zIndex": 999999,
-            },
-            {
-              "bottom": 40,
-              "flexDirection": "column",
-              "justifyContent": "flex-end",
-              "width": 750,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            {
-              "bottom": 0,
-            }
-          }
-        >
-          <RCTSafeAreaView />
-        </View>
       </View>
     </View>
-  </KeyboardProvider>
+  </View>
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "elevation": 999999,
+          "flex": 0,
+          "maxWidth": "100%",
+          "position": "absolute",
+          "zIndex": 999999,
+        },
+        {
+          "flexDirection": "column-reverse",
+          "justifyContent": "flex-start",
+          "top": 30,
+          "width": 750,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "bottom": 0,
+        }
+      }
+    >
+      <RCTSafeAreaView />
+    </View>
+  </View>
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "elevation": 999999,
+          "flex": 0,
+          "maxWidth": "100%",
+          "position": "absolute",
+          "zIndex": 999999,
+        },
+        {
+          "bottom": 40,
+          "flexDirection": "column",
+          "justifyContent": "flex-end",
+          "width": 750,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "bottom": 0,
+        }
+      }
+    >
+      <RCTSafeAreaView />
+    </View>
+  </View>
 </View>
 `;

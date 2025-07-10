@@ -3,18 +3,7 @@
 exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
 <View
   flex={1}
-  onMoveShouldSetResponder={[Function]}
-  onMoveShouldSetResponderCapture={[Function]}
-  onResponderEnd={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderReject={[Function]}
-  onResponderRelease={[Function]}
-  onResponderStart={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  onStartShouldSetResponderCapture={[Function]}
+  pointerEvents="box-none"
   style={
     {
       "flex": 1,
@@ -22,546 +11,516 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
     }
   }
 >
-  <KeyboardProvider
-    enabled={true}
-  >
-    <View
-      flex={1}
-      pointerEvents="box-none"
-      style={
-        {
-          "flex": 1,
-          "flexDirection": "column",
-        }
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "backgroundColor": "rgba(61, 88, 94, 1)",
+        "flex": 1,
+        "paddingHorizontal": 0,
       }
-    >
+    }
+    keyboardShouldPersistTaps="handled"
+    scrollEnabled={false}
+    showsHorizontalScrollIndicator={false}
+    showsVerticalScrollIndicator={false}
+    testID="result-container-test-id"
+  >
+    <View>
+      <View
+        hidden={
+          {
+            "statusBar": true,
+          }
+        }
+        style="dark"
+      />
       <View
         style={
           {
+            "height": 0,
+          }
+        }
+      />
+      <View
+        minHeight={56}
+        paddingVertical={0}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "rgba(61, 88, 94, 1)",
+            "flex": undefined,
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "minHeight": 108,
+            "paddingBottom": 0,
+            "paddingHorizontal": 46,
+            "paddingVertical": 0,
+          }
+        }
+        testID="header-test-id"
+      >
+        <View
+          height={56}
+          style={
+            {
+              "flex": undefined,
+              "flexDirection": "row",
+              "height": 108,
+              "maxHeight": 108,
+            }
+          }
+        >
+          <View
+            flexShrink={1}
+            height={56}
+            justifyContentCenter={true}
+            minWidth={56}
+            relative={true}
+            style={
+              {
+                "flex": undefined,
+                "flexDirection": "column",
+                "flexShrink": 1,
+                "height": 108,
+                "justifyContent": "center",
+                "maxHeight": 108,
+                "minWidth": 108,
+                "position": "relative",
+              }
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              alignItemsCenter={false}
+              alignItemsFlexStart={true}
+              animated={false}
+              collapsable={false}
+              focusable={true}
+              height={56}
+              justifyContentCenter={true}
+              minWidth={56}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "flex-start",
+                  "flex": 1,
+                  "flexDirection": "column",
+                  "height": 108,
+                  "justifyContent": "center",
+                  "maxHeight": 108,
+                  "minWidth": 108,
+                  "width": 108,
+                }
+              }
+              testID="header-left-pressable-test-id"
+              width={56}
+            />
+          </View>
+          <View
+            alignItemsCenter={true}
+            flex={1}
+            height={56}
+            justifyContentCenter={true}
+            minWidth={56}
+            relative={true}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+                "height": 108,
+                "justifyContent": "center",
+                "maxHeight": 108,
+                "minWidth": 108,
+                "position": "relative",
+              }
+            }
+          >
+            <Text
+              justifyContentCenter={true}
+              numberOfLines={1}
+              style={
+                {
+                  "color": "white",
+                  "fontFamily": "Markpro-Bold",
+                  "fontSize": 16,
+                  "fontWeight": undefined,
+                  "textAlign": "center",
+                }
+              }
+              testID="header-title-test-id"
+            >
+              Test Title Header
+            </Text>
+          </View>
+          <View
+            alignItemsFlexEnd={true}
+            flexShrink={1}
+            height={56}
+            justifyContentCenter={true}
+            minWidth={56}
+            relative={true}
+            style={
+              {
+                "alignItems": "flex-end",
+                "flex": undefined,
+                "flexDirection": "column",
+                "flexShrink": 1,
+                "height": 108,
+                "justifyContent": "center",
+                "maxHeight": 108,
+                "minWidth": 108,
+                "position": "relative",
+              }
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              alignItemsCenter={false}
+              alignItemsFlexEnd={true}
+              alignItemsFlexStart={true}
+              animated={false}
+              collapsable={false}
+              focusable={true}
+              height={56}
+              justifyContentCenter={true}
+              minWidth={56}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "flex": 1,
+                  "flexDirection": "column",
+                  "height": 108,
+                  "justifyContent": "center",
+                  "maxHeight": 108,
+                  "minWidth": 108,
+                }
+              }
+              testID="header-right-pressable-test-id"
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        flex={1}
+        style={
+          {
+            "backgroundColor": "rgba(34, 63, 70, 1)",
             "flex": 1,
+            "flexDirection": "column",
+            "paddingBottom": 0,
+            "paddingHorizontal": 46,
           }
         }
       >
-        <RCTScrollView
-          contentContainerStyle={
+        <View
+          alignItemsCenter={true}
+          flex={1}
+          justifyContentCenter={true}
+          style={
             {
-              "backgroundColor": "rgba(61, 88, 94, 1)",
+              "alignItems": "center",
               "flex": 1,
-              "paddingHorizontal": 0,
+              "flexDirection": "column",
+              "justifyContent": "center",
             }
           }
-          keyboardShouldPersistTaps="handled"
-          scrollEnabled={false}
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-          testID="result-container-test-id"
         >
-          <View>
-            <View
-              hidden={
+          <View
+            alignItemsCenter={true}
+            justifyContentCenter={true}
+            style={
+              {
+                "alignItems": "center",
+                "flex": undefined,
+                "flexDirection": "column",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Image
+              height={220}
+              overflowHidden={true}
+              resizeMode="contain"
+              source={
                 {
-                  "statusBar": true,
+                  "testUri": "../../../src/assets/images/empty-state/money-transfer-1.png",
                 }
               }
-              style="dark"
+              style={
+                {
+                  "height": 423,
+                  "maxHeight": 423,
+                  "overflow": "hidden",
+                  "resizeMode": "contain",
+                  "width": 423,
+                }
+              }
+              testID="empty-state-image-test-id"
+              width={220}
             />
             <View
               style={
                 {
-                  "height": 0,
+                  "flex": undefined,
+                  "flexDirection": "column",
                 }
               }
-            />
+            >
+              <Text
+                marginBottom={8}
+                style={
+                  {
+                    "color": "white",
+                    "fontFamily": "Markpro-Bold",
+                    "fontSize": 18,
+                    "fontWeight": undefined,
+                    "marginBottom": 16,
+                    "textAlign": "center",
+                  }
+                }
+                testID="empty-state-title-test-id"
+              >
+                Test Title
+              </Text>
+            </View>
             <View
-              minHeight={56}
-              paddingVertical={0}
+              alignItemsCenter={true}
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "rgba(61, 88, 94, 1)",
                   "flex": undefined,
                   "flexDirection": "column",
-                  "justifyContent": "center",
-                  "minHeight": 108,
-                  "paddingBottom": 0,
-                  "paddingHorizontal": 46,
-                  "paddingVertical": 0,
-                }
-              }
-              testID="header-test-id"
-            >
-              <View
-                height={56}
-                style={
-                  {
-                    "flex": undefined,
-                    "flexDirection": "row",
-                    "height": 108,
-                    "maxHeight": 108,
-                  }
-                }
-              >
-                <View
-                  flexShrink={1}
-                  height={56}
-                  justifyContentCenter={true}
-                  minWidth={56}
-                  relative={true}
-                  style={
-                    {
-                      "flex": undefined,
-                      "flexDirection": "column",
-                      "flexShrink": 1,
-                      "height": 108,
-                      "justifyContent": "center",
-                      "maxHeight": 108,
-                      "minWidth": 108,
-                      "position": "relative",
-                    }
-                  }
-                >
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    alignItemsCenter={false}
-                    alignItemsFlexStart={true}
-                    animated={false}
-                    collapsable={false}
-                    focusable={true}
-                    height={56}
-                    justifyContentCenter={true}
-                    minWidth={56}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "alignItems": "flex-start",
-                        "flex": 1,
-                        "flexDirection": "column",
-                        "height": 108,
-                        "justifyContent": "center",
-                        "maxHeight": 108,
-                        "minWidth": 108,
-                        "width": 108,
-                      }
-                    }
-                    testID="header-left-pressable-test-id"
-                    width={56}
-                  />
-                </View>
-                <View
-                  alignItemsCenter={true}
-                  flex={1}
-                  height={56}
-                  justifyContentCenter={true}
-                  minWidth={56}
-                  relative={true}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "flexDirection": "column",
-                      "height": 108,
-                      "justifyContent": "center",
-                      "maxHeight": 108,
-                      "minWidth": 108,
-                      "position": "relative",
-                    }
-                  }
-                >
-                  <Text
-                    justifyContentCenter={true}
-                    numberOfLines={1}
-                    style={
-                      {
-                        "color": "rgba(255, 255, 255, 1)",
-                        "fontFamily": "Markpro-Bold",
-                        "fontSize": 16,
-                        "fontWeight": undefined,
-                        "textAlign": "center",
-                      }
-                    }
-                    testID="header-title-test-id"
-                  >
-                    Test Title Header
-                  </Text>
-                </View>
-                <View
-                  alignItemsFlexEnd={true}
-                  flexShrink={1}
-                  height={56}
-                  justifyContentCenter={true}
-                  minWidth={56}
-                  relative={true}
-                  style={
-                    {
-                      "alignItems": "flex-end",
-                      "flex": undefined,
-                      "flexDirection": "column",
-                      "flexShrink": 1,
-                      "height": 108,
-                      "justifyContent": "center",
-                      "maxHeight": 108,
-                      "minWidth": 108,
-                      "position": "relative",
-                    }
-                  }
-                >
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    alignItemsCenter={false}
-                    alignItemsFlexEnd={true}
-                    alignItemsFlexStart={true}
-                    animated={false}
-                    collapsable={false}
-                    focusable={true}
-                    height={56}
-                    justifyContentCenter={true}
-                    minWidth={56}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flex": 1,
-                        "flexDirection": "column",
-                        "height": 108,
-                        "justifyContent": "center",
-                        "maxHeight": 108,
-                        "minWidth": 108,
-                      }
-                    }
-                    testID="header-right-pressable-test-id"
-                  />
-                </View>
-              </View>
-            </View>
-            <View
-              flex={1}
-              style={
-                {
-                  "backgroundColor": "rgba(34, 63, 70, 1)",
-                  "flex": 1,
-                  "flexDirection": "column",
-                  "paddingBottom": 0,
-                  "paddingHorizontal": 46,
                 }
               }
             >
-              <View
-                alignItemsCenter={true}
-                flex={1}
-                justifyContentCenter={true}
+              <Text
+                marginBottom={8}
                 style={
                   {
-                    "alignItems": "center",
-                    "flex": 1,
-                    "flexDirection": "column",
-                    "justifyContent": "center",
+                    "color": "white",
+                    "fontFamily": "Markpro-Medium",
+                    "fontSize": 16,
+                    "fontWeight": undefined,
+                    "marginBottom": 16,
+                    "textAlign": "center",
                   }
                 }
+                testID="empty-state-desc-test-id"
               >
-                <View
-                  alignItemsCenter={true}
-                  justifyContentCenter={true}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flex": undefined,
-                      "flexDirection": "column",
-                      "justifyContent": "center",
-                    }
-                  }
-                >
-                  <Image
-                    height={220}
-                    overflowHidden={true}
-                    resizeMode="contain"
-                    source={
-                      {
-                        "testUri": "../../../src/assets/images/empty-state/money-transfer-1.png",
-                      }
-                    }
-                    style={
-                      {
-                        "height": 423,
-                        "maxHeight": 423,
-                        "overflow": "hidden",
-                        "resizeMode": "contain",
-                        "width": 423,
-                      }
-                    }
-                    testID="empty-state-image-test-id"
-                    width={220}
-                  />
-                  <View
-                    style={
-                      {
-                        "flex": undefined,
-                        "flexDirection": "column",
-                      }
-                    }
-                  >
-                    <Text
-                      marginBottom={8}
-                      style={
-                        {
-                          "color": "rgba(255, 255, 255, 1)",
-                          "fontFamily": "Markpro-Bold",
-                          "fontSize": 18,
-                          "fontWeight": undefined,
-                          "marginBottom": 16,
-                          "textAlign": "center",
-                        }
-                      }
-                      testID="empty-state-title-test-id"
-                    >
-                      Test Title
-                    </Text>
-                  </View>
-                  <View
-                    alignItemsCenter={true}
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flex": undefined,
-                        "flexDirection": "column",
-                      }
-                    }
-                  >
-                    <Text
-                      marginBottom={8}
-                      style={
-                        {
-                          "color": "rgba(255, 255, 255, 1)",
-                          "fontFamily": "Markpro-Medium",
-                          "fontSize": 16,
-                          "fontWeight": undefined,
-                          "marginBottom": 16,
-                          "textAlign": "center",
-                        }
-                      }
-                      testID="empty-state-desc-test-id"
-                    >
-                      Test Description
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              flexShrink={1}
-              paddingBottom={24}
-              paddingTop={24}
-              style={
-                {
-                  "backgroundColor": "rgba(34, 63, 70, 1)",
-                  "flex": undefined,
-                  "flexDirection": "column",
-                  "flexShrink": 1,
-                  "paddingBottom": 46,
-                  "paddingHorizontal": 46,
-                  "paddingTop": 46,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "flex": undefined,
-                    "flexDirection": "column",
-                    "gap": 16,
-                  }
-                }
-              >
-                <View
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "rgba(63, 182, 210, 1)",
-                      "borderColor": "white",
-                      "borderRadius": 16,
-                      "borderWidth": undefined,
-                      "color": undefined,
-                      "flex": undefined,
-                      "flexDirection": "row",
-                      "height": 108,
-                      "justifyContent": "center",
-                      "opacity": 1,
-                      "position": "relative",
-                      "width": 658,
-                    }
-                  }
-                  testID="test-action-id"
-                >
-                  <Text
-                    numberOfLines={1}
-                    style={
-                      {
-                        "color": "rgba(255, 255, 255, 1)",
-                        "flexShrink": 1,
-                        "fontFamily": "Markpro-Medium",
-                        "fontSize": 26,
-                        "fontWeight": 600,
-                        "textAlign": "center",
-                        "textAlignVertical": "center",
-                      }
-                    }
-                  >
-                    Test Action Text
-                  </Text>
-                </View>
-              </View>
+                Test Description
+              </Text>
             </View>
           </View>
-        </RCTScrollView>
-        <View
-          style={
-            {
-              "flexShrink": 1,
-            }
-          }
-        />
-      </View>
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
-        style={
-          [
-            {
-              "alignSelf": "center",
-              "elevation": 999999,
-              "flex": 0,
-              "maxWidth": "100%",
-              "position": "absolute",
-              "zIndex": 999999,
-            },
-            {
-              "flexDirection": "column-reverse",
-              "justifyContent": "flex-start",
-              "top": 30,
-              "width": 750,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            {
-              "bottom": 0,
-            }
-          }
-        >
-          <RCTSafeAreaView />
         </View>
       </View>
       <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
+        flexShrink={1}
+        paddingBottom={24}
+        paddingTop={24}
         style={
-          [
-            {
-              "alignSelf": "center",
-              "elevation": 999999,
-              "flex": 0,
-              "maxWidth": "100%",
-              "position": "absolute",
-              "zIndex": 999999,
-            },
-            {
-              "bottom": 40,
-              "flexDirection": "column",
-              "justifyContent": "flex-end",
-              "width": 750,
-            },
-          ]
+          {
+            "backgroundColor": "rgba(34, 63, 70, 1)",
+            "flex": undefined,
+            "flexDirection": "column",
+            "flexShrink": 1,
+            "paddingBottom": 46,
+            "paddingHorizontal": 46,
+            "paddingTop": 46,
+          }
         }
       >
         <View
           style={
             {
-              "bottom": 0,
+              "flex": undefined,
+              "flexDirection": "column",
+              "gap": 16,
             }
           }
         >
-          <RCTSafeAreaView />
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "primary",
+                "borderColor": "white",
+                "borderRadius": 16,
+                "borderWidth": undefined,
+                "color": undefined,
+                "flex": undefined,
+                "flexDirection": "row",
+                "height": 108,
+                "justifyContent": "center",
+                "opacity": 1,
+                "position": "relative",
+                "width": 658,
+              }
+            }
+            testID="test-action-id"
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                {
+                  "color": "rgba(255, 255, 255, 1)",
+                  "flexShrink": 1,
+                  "fontFamily": "Markpro-Medium",
+                  "fontSize": 26,
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                }
+              }
+            >
+              Test Action Text
+            </Text>
+          </View>
         </View>
       </View>
     </View>
-  </KeyboardProvider>
+  </RCTScrollView>
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "elevation": 999999,
+          "flex": 0,
+          "maxWidth": "100%",
+          "position": "absolute",
+          "zIndex": 999999,
+        },
+        {
+          "flexDirection": "column-reverse",
+          "justifyContent": "flex-start",
+          "top": 30,
+          "width": 750,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "bottom": 0,
+        }
+      }
+    >
+      <RCTSafeAreaView />
+    </View>
+  </View>
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "elevation": 999999,
+          "flex": 0,
+          "maxWidth": "100%",
+          "position": "absolute",
+          "zIndex": 999999,
+        },
+        {
+          "bottom": 40,
+          "flexDirection": "column",
+          "justifyContent": "flex-end",
+          "width": 750,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "bottom": 0,
+        }
+      }
+    >
+      <RCTSafeAreaView />
+    </View>
+  </View>
 </View>
 `;

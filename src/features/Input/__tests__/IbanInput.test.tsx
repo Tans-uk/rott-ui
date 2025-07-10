@@ -5,6 +5,7 @@ import {fireEvent, render, waitFor} from '@utils'
 describe('IBAN Input -> Custom Input', () => {
   const inputTestId = 'iban-input-test-id'
   const clearIbanIconTestId = 'clear-iban-icon-test-id'
+  const ibanIconTestId = 'iban-icon-test-id'
 
   it('ilk render anında snapshot ile eşleşmeli', () => {
     const renderedInput = render(<IbanInput name='test' testID={inputTestId} />)
@@ -46,7 +47,7 @@ describe('IBAN Input -> Custom Input', () => {
     expect(queryByTestId('clear-iban-icon-test-id')).toBeNull()
   })
 
-  it('içerik boş olduğunda temizleme iconu görünmemeli', async () => {
+  it('içerik boş olduğunda temizleme iconu görünmeli', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId, queryByTestId, rerender} = render(
       <IbanInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -58,9 +59,10 @@ describe('IBAN Input -> Custom Input', () => {
     })
 
     let clearInputElement = getByTestId(clearIbanIconTestId)
+    let iconElement = getByTestId(ibanIconTestId)
 
     expect(clearInputElement).toBeTruthy()
-    expect(clearInputElement?.children[0] as any).toHaveProp('name', 'REMOVE_CIRCLE')
+    expect(iconElement).toHaveProp('name', 'REMOVE_CIRCLE')
 
     expect(onChangeTextMock).toHaveBeenCalledWith('TR123')
 

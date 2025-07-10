@@ -21,5 +21,6 @@ export const Modal: ModalService = {
   updateModal: (modalToRender: ModalProps) => modalRef.current?.updateModal(modalToRender),
   hideModal: (id?: number) => modalRef.current?.hideModal(id),
   hasModalById: (id: number) => modalRef.current?.hasModalById(id) ?? false,
-  hideAllModal: () => modalRef.current?.hideAllModal(),
+  hideAllModal: (predicate: (value: ModalProps, index: number, array: ModalProps[]) => unknown) =>
+    modalRef.current?.hideAllModal(predicate),
 }

@@ -1,4 +1,4 @@
-import type {IconTypes} from './iconType'
+import type {IconTypes} from './iconType.type'
 
 import type {CommonUiProps, Variant} from '@models'
 

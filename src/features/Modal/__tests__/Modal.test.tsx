@@ -6,7 +6,8 @@ import {Label} from '../../Label'
 import {ModalComponent} from '../components'
 import type {ModalProps} from '../models'
 
-import {fireEvent, render, translator, waitFor} from '@utils'
+import {translator} from '@libs'
+import {fireEvent, render, waitFor} from '@utils'
 
 describe('Modal -> Custom Component', () => {
   const onCloseMock = jest.fn()

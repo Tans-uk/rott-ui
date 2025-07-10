@@ -1,4 +1,4 @@
-import {isValidElement, useEffect, useMemo, useRef, type FC} from 'react'
+import {isValidElement, useContext, useEffect, useMemo, useRef, type FC} from 'react'
 
 import {InteractionManager, Platform, Modal as RNModal} from 'react-native'
 
@@ -14,10 +14,10 @@ import {
   type ModalProps,
 } from '@features/Modal'
 import {Pressable} from '@features/Pressable'
-import {getHasDynamicIslandState, getHasNotchState, useSafeArea} from '@hooks'
-import {addMatcherWait} from '@libs'
+import {useSafeArea} from '@hooks'
 import {themeConfig} from '@providers'
 import {colorFromVariant, display} from '@utils'
+import {RottUiContext} from 'src/contexts'
 
 import {KeyboardStickyView} from 'react-native-keyboard-controller'
 import Animated, {
@@ -69,8 +69,7 @@ export const ModalComponent: FC<ModalProps> = ({
     slideToCloseTestId: 'slide-to-close-button-test-id',
   }
 
-  const hasNotch = useAppSelector(getHasNotchState)
-  const hasDynamicIsland = useAppSelector(getHasDynamicIslandState)
+  const {hasNotch, hasDynamicIsland} = useContext(RottUiContext)
   const interactionRef = useRef<number>(undefined)
 
   const {bottom} = useSafeArea()
@@ -130,7 +129,7 @@ export const ModalComponent: FC<ModalProps> = ({
     if (visible) translateY.value = 0
     else {
       interactionRef.current = InteractionManager?.createInteractionHandle()
-      addMatcherWait(
+      setTimeout(
         () =>
           interactionRef.current &&
           InteractionManager.clearInteractionHandle(interactionRef.current),

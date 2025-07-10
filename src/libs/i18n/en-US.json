@@ -25,6 +25,9 @@
     "COMMON.LAST.6.MONTHS": "Last 6 Months",
     "COMMON.THIS.YEAR": "This Year",
     "COMMON.SELECT.DATE": "Select Date",
+    "COMMON.TRANSACTION.DATE": "Transaction Date",
+    "COMMON.TRANSACTION.TIME": "Transaction Time",
+    "COMMON.TRANSACTION.DATETIME": "Transaction Date & Time",
     "COMMON.SEARCH": "Search",
     "COMMON.CLEAR": "Clear",
     "COMMON.CONFIRM": "Confirm",
@@ -33,7 +36,7 @@
     "COMMON.ACCOUNT.SELECTION": "Account Selection",
     "COMMON.UNKNOWN": "Unknown",
     "COMMON.AUTOMATIC": "Automatic",
-  
+    "COMMON.SELECTED.ITEMS": "{count} items selected",
     "OTP.SMS.VERIFICATION.CODE": "SMS verification code",
     "OTP.TITLE": "Please enter the SMS verification code sent to your phone",
     "OTP.INSTRUCTIONS": "Please enter the code\nsent to your phone number {phoneNumber}.",
@@ -46,6 +49,7 @@
   
     "CVC.CODE": "CVC Code",
     "CVC.INFO.TITLE": "CVC - Card Verification Code",
+    "CVC.LABEL.DESCRIPTION": "(PASSWORD ON THE BACK OF THE CARD)",
     "CVC.INFO.DESCRIPTION": "The Card Verification Code or CVC* is an additional code printed on your bank or credit card. It is the last three digits of the number written on the signature strip on the back of your card.",
   
     "DAY.1": "Monday",

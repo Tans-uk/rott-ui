@@ -9,7 +9,6 @@ import {InputStyleNormalizer} from '../utils'
 import {Icon} from '@features/Icon'
 import {Item} from '@features/Item'
 import {Pressable} from '@features/Pressable'
-import {redirect} from '@utils'
 
 import MaskInput from 'react-native-mask-input'
 
@@ -20,6 +19,7 @@ export const IbanInput: FC<IbanInputProps> = ({
   disabled,
   size,
   value,
+  rightIcon,
   ...props
 }) => {
   const clearIconVisible = value !== 'TR' && !value?.isEmpty()
@@ -62,10 +62,6 @@ export const IbanInput: FC<IbanInputProps> = ({
     onChangeText!(isValue)
   }
 
-  const handleIbanScanned = (iban: string) => {
-    handleTextChange(iban) // Tarama sonucu IBAN'ı input alanına yazdır
-  }
-
   return (
     <Item row>
       <MaskInput
@@ -75,7 +71,7 @@ export const IbanInput: FC<IbanInputProps> = ({
         placeholder='TR00 0000 0000 0000 0000 0000 00'
         keyboardType='number-pad'
         maxLength={34}
-        onChangeText={(masked, unmasked) => {
+        onChangeText={(_masked, unmasked) => {
           if (unmasked.length === 0) handleTextChange('TR')
           else if (unmasked.length <= 32) handleTextChange(unmasked)
           else return
@@ -97,15 +93,12 @@ export const IbanInput: FC<IbanInputProps> = ({
         <Pressable
           testID={clearIconVisible ? 'clear-iban-icon-test-id' : 'qr-iban-icon-test-id'}
           disabled={clearIconVisible && disabled}
-          onPress={() => {
+          onPress={(event) => {
             if (clearIconVisible) handleTextChange('TR')
-            else {
-              redirect('IbanScannerScreen', {
-                onScanned: handleIbanScanned,
-              })
-            }
+            else !!rightIcon?.onPress && rightIcon?.onPress(event)
           }}>
           <Icon
+            testID='iban-icon-test-id'
             name={clearIconVisible ? 'REMOVE_CIRCLE' : 'IBAN_QR'}
             mode={clearIconVisible ? 'fill' : 'stroke'}
             strokeWidth={clearIconVisible ? 0 : 2}

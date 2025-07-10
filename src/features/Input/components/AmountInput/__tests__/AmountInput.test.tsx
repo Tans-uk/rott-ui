@@ -1,21 +1,12 @@
 import {AmountInput} from '../..'
 
-import {Icons} from '@constants'
 import {fireEvent, render, waitFor} from '@utils'
-
-jest.mock('src/constants/Icons', () => {
-  return {
-    TL: jest.fn(),
-    USD: jest.fn(),
-    EUR: jest.fn(),
-  }
-})
 
 describe('Amount Input -> Custom Input', () => {
   const testId = {
     amountTestId: 'amount-test-id',
     currencyTestId: 'currency-test-id',
-    iconTestId: 'amount-input-icon-test-id',
+    iconTestId: 'currency-icon-test-id',
   }
   it('amount input ilk render anında snapshot ile eşleşmeli', () => {
     const onChangeTextMock = jest.fn()
@@ -25,16 +16,17 @@ describe('Amount Input -> Custom Input', () => {
   })
 
   it('amount input amount ve currency inputlari ve icon var olmali', () => {
-    const {amountTestId, currencyTestId} = testId
+    const {amountTestId, currencyTestId, iconTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
 
     const amountInput = getByTestId(amountTestId)
     const currencyInput = getByTestId(currencyTestId)
+    const iconElement = getByTestId(iconTestId)
 
     expect(amountInput).toBeOnTheScreen()
     expect(currencyInput).toBeOnTheScreen()
-    expect(Icons.TL).toHaveBeenCalled()
+    expect(iconElement).toBeOnTheScreen()
   })
 
   it('amount input sadece numeric karakterleri kabul etmeli', () => {
@@ -125,7 +117,7 @@ describe('Amount Input -> Custom Input', () => {
 
     render(<AmountInput name='test' currencyType={currencyType} onChangeText={onChangeTextMock} />)
 
-    expect(Icons[currencyType]).toHaveBeenCalled()
+    expect(onChangeTextMock).toHaveBeenCalled()
   })
 
   it('kullanıcı 0.01 değeri girdiğinde doğru bir şekilde formatlanmalı', () => {

@@ -73,6 +73,13 @@ export const SelectInput: FC<SelectInputProps> = ({
   const [selectItems, setSelectItems] = useState<SelectProps[]>([])
   const multiSelection = type === 'multiSelect'
 
+  const textVariant =
+    theme === 'dark'
+      ? 'white'
+      : (!multiSelection && selectItem) || (multiSelection && selectItems.length > 0)
+        ? 'grey-900'
+        : 'grey-200'
+
   const handleItem = (selectedValue: Nullable<string>) => {
     const predicate = ({value: filterValue}: SelectProps) => filterValue === selectedValue
     const filteredItem = list?.find(predicate) ?? extraDisplayData?.find(predicate)
@@ -112,6 +119,12 @@ export const SelectInput: FC<SelectInputProps> = ({
       onSelectChange!(tempSelectedList.map((selectedItem) => selectedItem.value) as any)
       setSelectItems(tempSelectedList)
     }
+  }
+
+  const handleSelectInputModal = () => {
+    if (disabled || readOnly || isLoading) return
+    !!onTouched && onTouched()
+    showModal()
   }
 
   const {showModal} = useModal(
@@ -178,12 +191,6 @@ export const SelectInput: FC<SelectInputProps> = ({
     [list, selectItem, selectItems]
   )
 
-  const handleSelectInputModal = () => {
-    if (disabled || readOnly || isLoading) return
-    !!onTouched && onTouched()
-    showModal()
-  }
-
   useEffect(() => {
     if (defaultValue && !multiSelection) handleItem(defaultValue as string)
     else if (defaultValue && multiSelection && isArray) {
@@ -203,13 +210,6 @@ export const SelectInput: FC<SelectInputProps> = ({
     else if (value && value !== selectItem?.value && !multiSelection && typeof value === 'string')
       handleItem(value)
   }, [value, extraDisplayData])
-
-  const textVariant =
-    theme === 'dark'
-      ? 'white'
-      : (!multiSelection && selectItem) || (multiSelection && selectItems.length > 0)
-        ? 'grey-900'
-        : 'grey-200'
 
   return (
     <Item testID={testID}>
@@ -237,7 +237,7 @@ export const SelectInput: FC<SelectInputProps> = ({
             {!multiSelection && (selectItem ? selectItem?.label : (placeholder ?? label))}
             {multiSelection &&
               (selectItems.length > 0
-                ? translator('OPEN.BANKING.SELECT.PTTBANK.SELECTED.ACCOUNT', {
+                ? translator('COMMON.SELECTED.ITEMS', {
                     count: selectItems.length,
                   })
                 : (placeholder ?? label))}

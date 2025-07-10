@@ -1,9 +1,20 @@
 import {type FC, type PropsWithChildren} from 'react'
 
+import {Platform, StatusBar} from 'react-native'
+
+import {RottUiContext} from '@contexts'
 import {ActionMenuProvider} from '@features/ActionMenu'
 import {AlertDialogProvider} from '@features/AlertDialog'
 import {ModalProvider} from '@features/Modal'
 import {NotificationProvider} from '@features/Notification'
+
+import {
+  getApiLevelSync,
+  getSystemVersion,
+  getTotalMemorySync,
+  hasDynamicIsland,
+  hasNotch,
+} from 'react-native-device-info'
 
 interface RottProviderProps extends PropsWithChildren {
   config?: any
@@ -66,9 +77,6 @@ export let themeConfig = {
   },
   texts: {},
   images: {
-    ONBOARDING_BG_1: require('../assets/images/onBoarding/onboarding_BG-1.png'),
-    ONBOARDING_BG_2: require('../assets/images/onBoarding/onboarding_BG-2.png'),
-    ONBOARDING_BG_3: require('../assets/images/onBoarding/onboarding_BG-3.png'),
     ONBOARDING_1: require('../assets/images/onBoarding/Onboarding-1.png'),
     ONBOARDING_2: require('../assets/images/onBoarding/Onboarding-2.png'),
     ONBOARDING_3: require('../assets/images/onBoarding/Onboarding-3.png'),
@@ -76,11 +84,14 @@ export let themeConfig = {
     HGS_LOGO_WHITE: require('../assets/images/logo/HGS-LogoWhite.png'),
     PTTBANK_BLACK: require('../assets/images/logo/pttbank-Black.png'),
     PTTBANK_WHITE: require('../assets/images/logo/pttbank-White.png'),
-    QR_BUTTON: require('../assets/images/logo/QR-Button.png'),
+    QR_BUTTON: require('../assets/images/logo/qr-button.png'),
+    QR_BACKGROUND_BLUR: require('../assets/images/qr/qr-background-blur.png'),
     PTTBANK_BLACK_COLORED: require('../assets/images/logo/pttbank-BlackColored.png'),
     GRADIENT_BG: require('../assets/images/splash/graident_bg.png'),
     PHONE_ICON: require('../assets/images/entry/021-telefon.png'),
     NOTIFICATION_ICON: require('../assets/images/entry/028-bildirim.png'),
+    NOTIFICATION: require('../assets/images/notifications/notification.png'),
+    NOTIFICATION_LOCKED: require('../assets/images/notifications/notification-locked.png'),
     DUMMY_PROFILE: require('../assets/images/entry/012-kullanici.png'),
     SOCIAL_HELP_ICON: require('../assets/images/entry/036-yardim-kampanyasi.png'),
     POS: require('../assets/images/entry/pos.png'),
@@ -133,15 +144,19 @@ export let themeConfig = {
     CARD_BRAND_MASTERCARD: require('../assets/images/card/cardBrand/master-card.png'),
     CARD_BRAND_MAESTRO: require('../assets/images/card/cardBrand/maestro.png'),
 
+    FAST_LOGO: require('../assets/images/fast/fast-tcmb.png'),
+
     EMPTY_TRANSACTIONS: require('../assets/images/empty-state/credit-card.png'),
     EMPTY_TRANSACTIONS_LIGHT: require('../assets/images/empty-state/credit-card-light.png'),
     EMPTY_PHONE: require('../assets/images/empty-state/phone.png'),
     EMPTY_CARD_CHECK: require('../assets/images/empty-state/card-check.png'),
     EMPTY_CARD_ERROR1: require('../assets/images/empty-state/card-error-1.png'),
     EMPTY_CARD_INFO: require('../assets/images/empty-state/card-info.png'),
+    EMPTY_CARD_WARNING: require('../assets/images/empty-state/card-warning.png'),
     EMPTY_CARD_ERROR: require('../assets/images/empty-state/card-error-2.png'),
+    EMPTY_MOBILE_LOCKED: require('../assets/images/empty-state/mobile-locked.png'),
     EMPTY_MONEY_TRANSFER: require('../assets/images/empty-state/money-transfer-1.png'),
-    EMPTY_PAYMENT: require('../assets/images/empty-state/money-transfer-1.png'),
+    EMPTY_MONEY_STATUS: require('../assets/images/empty-state/money-transfer-2.png'),
     EMPTY_NOTIFICATION: require('../assets/images/empty-state/notifications.png'),
     EMPTY_NO_INTERNET: require('../assets/images/empty-state/no-internet.png'),
     EMPTY_LIST_ERROR: require('../assets/images/empty-state/list-error-empty-state.png'),
@@ -151,6 +166,13 @@ export let themeConfig = {
     EMPTY_GENERAL_CHECK: require('../assets/images/empty-state/general-check.png'),
     EMPTY_GENERAL_INFO: require('../assets/images/empty-state/general-info.png'),
     EMPTY_GENERAL_WARNING: require('../assets/images/empty-state/general-warning.png'),
+    EMPTY_PASSWORD: require('../assets/images/empty-state/unlock-password.png'),
+    EMPTY_NO_ADDRESS: require('../assets/images/empty-state/no-address.png'),
+    EMPTY_DOCUMENT_INFO: require('../assets/images/empty-state/document-info.png'),
+
+    NEAR_PTT_BUILDING: require('../assets/images/nearPtt/ptt-building.png'),
+    NEAR_PTT_ATM: require('../assets/images/nearPtt/ptt-atm.png'),
+    NEAR_PTT_BRANCH: require('../assets/images/nearPtt/ptt-branch.png'),
   },
   icons: {
     // Currency Imports
@@ -183,6 +205,7 @@ export let themeConfig = {
     MONEY_USER: require('../assets/icons/svg/interface/ptt-money-user.svg'),
     NOTIFICATION: require('../assets/icons/svg/interface/ptt-notification.svg'),
     QR_TRANSFER: require('../assets/icons/svg/interface/ptt-qr-transfer.svg'),
+    IBAN_QR: require('../assets/icons/svg/interface/ptt-iban-qr.svg'),
     REMOVE_BIG: require('../assets/icons/svg/interface/ptt-remove-big.svg'),
     REMOVE_CIRCLE: require('../assets/icons/svg/interface/ptt-remove-circle.svg'),
     REMOVE: require('../assets/icons/svg/interface/ptt-remove.svg'),
@@ -202,6 +225,7 @@ export let themeConfig = {
     STAR: require('../assets/icons/svg/interface/ptt-star.svg'),
     STAR_FILL: require('../assets/icons/svg/interface/ptt-star-fill.svg'),
     CARD_USER: require('../assets/icons/svg/interface/ptt-card-user.svg'),
+    ID_CARD: require('../assets/icons/svg/interface/ptt-id-card.svg'),
     LOCK: require('../assets/icons/svg/interface/ptt-lock.svg'),
     MONEY_CHECK: require('../assets/icons/svg/interface/ptt-money-check.svg'),
     MONEY_REMOVE: require('../assets/icons/svg/interface/ptt-money-remove.svg'),
@@ -210,6 +234,13 @@ export let themeConfig = {
     ADD: require('../assets/icons/svg/interface/ptt-add.svg'),
     BULLETED_LIST: require('../assets/icons/svg/interface/ptt-bulleted-list.svg'),
     FILTER: require('../assets/icons/svg/interface/ptt-filter.svg'),
+    REFRESH: require('../assets/icons/svg/interface/ptt-refresh.svg'),
+    ADD_CIRCLE: require('../assets/icons/svg/interface/ptt-add-circle.svg'),
+    PLUS_CIRCLE_REMOVE: require('../assets/icons/svg/interface/ptt-plus-circle-remove.svg'),
+    FAST: require('../assets/icons/svg/interface/ptt-fast-icon.svg'),
+    ALARM: require('../assets/icons/svg/interface/ptt-alarm-check.svg'),
+    QR: require('../assets/icons/svg/interface/ptt-qr.svg'),
+    BURGER_MENU: require('../assets/icons/svg/interface/ptt-burger-menu.svg'),
 
     // Menu Imports
     MENU_CAR: require('../assets/icons/svg/menu/ptt-menu-car.svg'),
@@ -226,6 +257,8 @@ export let themeConfig = {
     MENU_HGS: require('../assets/icons/svg/menu/ptt-menu-hgs.svg'),
     MENU_OLDIES: require('../assets/icons/svg/menu/ptt-menu-oldies.svg'),
     MENU_SHIELD: require('../assets/icons/svg/menu/ptt-menu-shield.svg'),
+    MENU_CIRCLE_TEST: require('../assets/icons/svg/menu/ptt-menu-circle-test.svg'),
+    MENU_BANKING: require('../assets/icons/svg/interface/ptt-banking.svg'),
 
     // Notification Imports
     NOTIFICATION_ELLIPSE: require('../assets/icons/svg/notification/ptt-ellipse.svg'),
@@ -244,6 +277,18 @@ export let themeConfig = {
     DASHBOARD_MORE_LOCK: require('../assets/icons/svg/interface/ptt-lock.svg'),
     DASHBOARD_MORE_BANK: require('../assets/icons/svg/interface/ptt-banking.svg'),
     DASHBOARD_MORE_CALLING: require('../assets/icons/svg/interface/ptt-calling.svg'),
+
+    // License Plate Imports
+    PLATE_NUMBER_TR: require('../assets/icons/svg/licensePlates/TR.svg'),
+    PLATE_NUMBER_GLOBAL: require('../assets/icons/svg/licensePlates/Global.svg'),
+
+    // Near PTT Imports
+    PTT_MAP: require('../assets/icons/svg/nearPtt/ptt-map.svg'),
+    PTT_BULLETED_LIST: require('../assets/icons/svg/nearPtt/ptt-bulleted-list.svg'),
+
+    // Notification Imports
+    CHECK_CIRCLE_FILL: require('../assets/icons/svg/notification/ptt-check-fill.svg'),
+    INFORMATION_CIRCLE_FILL: require('../assets/icons/svg/notification/ptt-information-fill.svg'),
   },
   fontSizes: {
     xs: 10,
@@ -254,18 +299,36 @@ export let themeConfig = {
     '2xl': 24,
     '3xl': 36,
   },
+  goBack: () => {},
 }
 
 export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
   if (config) themeConfig = {...themeConfig, ...config}
 
   return (
-    <NotificationProvider>
-      <ModalProvider>
-        <ActionMenuProvider>
-          <AlertDialogProvider>{children}</AlertDialogProvider>
-        </ActionMenuProvider>
-      </ModalProvider>
-    </NotificationProvider>
+    <RottUiContext.Provider
+      value={{
+        language: {
+          name: 'en-US',
+        },
+        hasDynamicIsland: hasDynamicIsland(),
+        hasNotch:
+          !hasNotch() && Platform.OS === 'android' && StatusBar.currentHeight! > 24
+            ? true
+            : hasNotch(),
+        deviceInfo: {
+          operatingSystemVersion: getSystemVersion(),
+          apiLevel: getApiLevelSync(),
+          totalMemory: getTotalMemorySync(),
+        },
+      }}>
+      <NotificationProvider>
+        <ModalProvider>
+          <ActionMenuProvider>
+            <AlertDialogProvider>{children}</AlertDialogProvider>
+          </ActionMenuProvider>
+        </ModalProvider>
+      </NotificationProvider>
+    </RottUiContext.Provider>
   )
 }

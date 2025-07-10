@@ -3,18 +3,7 @@
 exports[`Alert component renderlandığında snapshot ile eşleşmeli 1`] = `
 <View
   flex={1}
-  onMoveShouldSetResponder={[Function]}
-  onMoveShouldSetResponderCapture={[Function]}
-  onResponderEnd={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderReject={[Function]}
-  onResponderRelease={[Function]}
-  onResponderStart={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  onStartShouldSetResponderCapture={[Function]}
+  pointerEvents="box-none"
   style={
     {
       "flex": 1,
@@ -22,136 +11,106 @@ exports[`Alert component renderlandığında snapshot ile eşleşmeli 1`] = `
     }
   }
 >
-  <KeyboardProvider
-    enabled={true}
+  <View
+    alignItemsCenter={true}
+    backgroundColor="warning"
+    borderRadius={0}
+    justifyContentCenter={true}
+    paddingHorizontal={16}
+    paddingVertical={8}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "warning",
+        "flex": undefined,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingHorizontal": 31,
+        "paddingVertical": 16,
+        "width": "100%",
+      }
+    }
+    testID="alert-test-id"
   >
-    <View
-      flex={1}
-      pointerEvents="box-none"
+    <Text
+      flexShrink={1}
       style={
         {
-          "flex": 1,
-          "flexDirection": "column",
+          "color": "white",
+          "flexShrink": 1,
+          "fontFamily": "Markpro-Medium",
+          "fontSize": 14,
+          "fontWeight": undefined,
+          "textAlign": "auto",
         }
       }
     >
-      <View
-        style={
-          {
-            "flex": 1,
-          }
+      Test Alert
+    </Text>
+  </View>
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "elevation": 999999,
+          "flex": 0,
+          "maxWidth": "100%",
+          "position": "absolute",
+          "zIndex": 999999,
+        },
+        {
+          "flexDirection": "column-reverse",
+          "justifyContent": "flex-start",
+          "top": 30,
+          "width": 750,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "bottom": 0,
         }
-      >
-        <View
-          alignItemsCenter={true}
-          backgroundColor="rgba(255, 117, 24, 1)"
-          borderRadius={0}
-          justifyContentCenter={true}
-          paddingHorizontal={16}
-          paddingVertical={8}
-          style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "rgba(255, 117, 24, 1)",
-              "flex": undefined,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "paddingHorizontal": 31,
-              "paddingVertical": 16,
-              "width": "100%",
-            }
-          }
-          testID="alert-test-id"
-        >
-          <Text
-            flexShrink={1}
-            style={
-              {
-                "color": "rgba(255, 255, 255, 1)",
-                "flexShrink": 1,
-                "fontFamily": "Markpro-Medium",
-                "fontSize": 14,
-                "fontWeight": undefined,
-                "textAlign": "auto",
-              }
-            }
-          >
-            Test Alert
-          </Text>
-        </View>
-        <View
-          style={
-            {
-              "flexShrink": 1,
-            }
-          }
-        />
-      </View>
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
-        style={
-          [
-            {
-              "alignSelf": "center",
-              "elevation": 999999,
-              "flex": 0,
-              "maxWidth": "100%",
-              "position": "absolute",
-              "zIndex": 999999,
-            },
-            {
-              "flexDirection": "column-reverse",
-              "justifyContent": "flex-start",
-              "top": 30,
-              "width": 750,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            {
-              "bottom": 0,
-            }
-          }
-        >
-          <RCTSafeAreaView />
-        </View>
-      </View>
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
-        style={
-          [
-            {
-              "alignSelf": "center",
-              "elevation": 999999,
-              "flex": 0,
-              "maxWidth": "100%",
-              "position": "absolute",
-              "zIndex": 999999,
-            },
-            {
-              "bottom": 40,
-              "flexDirection": "column",
-              "justifyContent": "flex-end",
-              "width": 750,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            {
-              "bottom": 0,
-            }
-          }
-        >
-          <RCTSafeAreaView />
-        </View>
-      </View>
+      }
+    >
+      <RCTSafeAreaView />
     </View>
-  </KeyboardProvider>
+  </View>
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "elevation": 999999,
+          "flex": 0,
+          "maxWidth": "100%",
+          "position": "absolute",
+          "zIndex": 999999,
+        },
+        {
+          "bottom": 40,
+          "flexDirection": "column",
+          "justifyContent": "flex-end",
+          "width": 750,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "bottom": 0,
+        }
+      }
+    >
+      <RCTSafeAreaView />
+    </View>
+  </View>
 </View>
 `;

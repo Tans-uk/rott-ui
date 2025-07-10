@@ -18,7 +18,7 @@ const jestConfiguration: JestConfigWithTsJest = {
     '^.+\\.(ts|tsx)?$': [
       'ts-jest',
       {
-        tsconfig: 'tsconfig.spec.json',
+        tsconfig: 'tsconfig.json',
         isolatedModules,
       },
     ],
@@ -52,7 +52,7 @@ const jestConfiguration: JestConfigWithTsJest = {
   ],
   // setupFiles: ['./jest.setup.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  setupFilesAfterEnv: ['./jest.setup.ts', 'jest-date-mock'],
+  setupFilesAfterEnv: ['./jest.setup.ts'],
   moduleDirectories: [
     'node_modules',
     'utils',

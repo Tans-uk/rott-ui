@@ -61,6 +61,11 @@ buck-out/
 android/app/libs
 android/keystores/debug.keystore
 
+# Testing
+/coverage
+/jest-test-reports
+.jest-cache/
+
 # Yarn
 .yarn/*
 !.yarn/patches

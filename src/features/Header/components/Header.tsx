@@ -95,7 +95,7 @@ export const Header: FC<HeaderProps> = ({
               justifyContentCenter
               onPress={(event) => {
                 !!leftIcon?.onPress && leftIcon?.onPress(event)
-                !preventGoBack && back && goBack()
+                !preventGoBack && back && themeConfig.goBack()
               }}>
               <Icon
                 testID='header-left-icon-test-id'

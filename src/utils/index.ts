@@ -8,5 +8,5 @@ export * from './justifyContentConverter'
 export * from './sizeToPercentage'
 export * from './colorFromVariant'
 export * from './testUtils'
-
+export * from './searchTextNormalizer'
 export {display}

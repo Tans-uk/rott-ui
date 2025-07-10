@@ -6,5 +6,7 @@ export interface ModalContextModel {
   updateModal: (modalToRender: ModalProps, id?: number) => void
   hideModal: (id?: number) => void
   hasModalById: (id: number) => boolean
-  hideAllModal: () => void
+  hideAllModal: (
+    predicate: (value: ModalProps, index: number, array: ModalProps[]) => unknown
+  ) => void
 }

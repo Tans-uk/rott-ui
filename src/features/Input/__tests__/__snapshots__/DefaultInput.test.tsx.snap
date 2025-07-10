@@ -3,18 +3,7 @@
 exports[`Default Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1`] = `
 <View
   flex={1}
-  onMoveShouldSetResponder={[Function]}
-  onMoveShouldSetResponderCapture={[Function]}
-  onResponderEnd={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderReject={[Function]}
-  onResponderRelease={[Function]}
-  onResponderStart={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  onStartShouldSetResponderCapture={[Function]}
+  pointerEvents="box-none"
   style={
     {
       "flex": 1,
@@ -22,117 +11,87 @@ exports[`Default Input -> Custom Input ilk render anında snapshot ile eşleşme
     }
   }
 >
-  <KeyboardProvider
-    enabled={true}
+  <TextInput
+    autoCapitalize="none"
+    editable={true}
+    keyboardType="default"
+    name="test"
+    onChangeText={[Function]}
+    style={
+      {
+        "color": "rgba(255, 255, 255, 1)",
+        "fontFamily": "Markpro-Medium",
+        "fontSize": 18,
+        "height": 89,
+        "letterSpacing": 0.5,
+        "width": "100%",
+      }
+    }
+    testID="default-input-test-id"
+  />
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "elevation": 999999,
+          "flex": 0,
+          "maxWidth": "100%",
+          "position": "absolute",
+          "zIndex": 999999,
+        },
+        {
+          "flexDirection": "column-reverse",
+          "justifyContent": "flex-start",
+          "top": 30,
+          "width": 750,
+        },
+      ]
+    }
   >
     <View
-      flex={1}
-      pointerEvents="box-none"
       style={
         {
-          "flex": 1,
-          "flexDirection": "column",
+          "bottom": 0,
         }
       }
     >
-      <View
-        style={
-          {
-            "flex": 1,
-          }
-        }
-      >
-        <TextInput
-          autoCapitalize="none"
-          editable={true}
-          keyboardType="default"
-          name="test"
-          onChangeText={[Function]}
-          style={
-            {
-              "color": "rgba(255, 255, 255, 1)",
-              "fontFamily": "Markpro-Medium",
-              "fontSize": 18,
-              "height": 89,
-              "letterSpacing": 0.5,
-              "width": "100%",
-            }
-          }
-          testID="default-input-test-id"
-        />
-        <View
-          style={
-            {
-              "flexShrink": 1,
-            }
-          }
-        />
-      </View>
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
-        style={
-          [
-            {
-              "alignSelf": "center",
-              "elevation": 999999,
-              "flex": 0,
-              "maxWidth": "100%",
-              "position": "absolute",
-              "zIndex": 999999,
-            },
-            {
-              "flexDirection": "column-reverse",
-              "justifyContent": "flex-start",
-              "top": 30,
-              "width": 750,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            {
-              "bottom": 0,
-            }
-          }
-        >
-          <RCTSafeAreaView />
-        </View>
-      </View>
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
-        style={
-          [
-            {
-              "alignSelf": "center",
-              "elevation": 999999,
-              "flex": 0,
-              "maxWidth": "100%",
-              "position": "absolute",
-              "zIndex": 999999,
-            },
-            {
-              "bottom": 40,
-              "flexDirection": "column",
-              "justifyContent": "flex-end",
-              "width": 750,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            {
-              "bottom": 0,
-            }
-          }
-        >
-          <RCTSafeAreaView />
-        </View>
-      </View>
+      <RCTSafeAreaView />
     </View>
-  </KeyboardProvider>
+  </View>
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "elevation": 999999,
+          "flex": 0,
+          "maxWidth": "100%",
+          "position": "absolute",
+          "zIndex": 999999,
+        },
+        {
+          "bottom": 40,
+          "flexDirection": "column",
+          "justifyContent": "flex-end",
+          "width": 750,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "bottom": 0,
+        }
+      }
+    >
+      <RCTSafeAreaView />
+    </View>
+  </View>
 </View>
 `;

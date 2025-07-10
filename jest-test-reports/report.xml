@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="11" failures="1" errors="0" time="3.107">
+  <testsuite name="IBAN Input -&gt; Custom Input" errors="0" failures="1" skipped="9" timestamp="2025-07-10T11:56:04" time="3.09" tests="11">
+    <testcase classname="IBAN Input -&gt; Custom Input ilk render anında snapshot ile eşleşmeli" name="IBAN Input -&gt; Custom Input ilk render anında snapshot ile eşleşmeli" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input ilk renderlandiginda ilk renderlandiginda içerik boş olmalı" name="IBAN Input -&gt; Custom Input ilk renderlandiginda ilk renderlandiginda içerik boş olmalı" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input ilk renderlandiginda icerik temizleme iconu gorunmemeli" name="IBAN Input -&gt; Custom Input ilk renderlandiginda icerik temizleme iconu gorunmemeli" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input içerik boş olduğunda temizleme iconu görünmemeli" name="IBAN Input -&gt; Custom Input içerik boş olduğunda temizleme iconu görünmemeli" time="0.051">
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input içerik boş olduğunda temizleme iconu görünmemeli" name="IBAN Input -&gt; Custom Input içerik boş olduğunda temizleme iconu görünmemeli" time="0.071">
+      <failure>Error: expect(received).toHaveProp()
+
+received value must be a host element.
+Received has type:  object
+Received has value: {&quot;_fiber&quot;: {&quot;_debugHookTypes&quot;: null, &quot;_debugInfo&quot;: null, &quot;_debugNeedsRemount&quot;: false, &quot;_debugOwner&quot;: [FiberNode], &quot;actualDuration&quot;: -0, &quot;actualStartTime&quot;: 1752148567948, &quot;alternate&quot;: null, &quot;child&quot;: [FiberNode], &quot;childLanes&quot;: 0, &quot;deletions&quot;: null, &quot;dependencies&quot;: null, &quot;elementType&quot;: [Function Icon], &quot;flags&quot;: 1, &quot;index&quot;: 0, &quot;key&quot;: null, &quot;lanes&quot;: 0, &quot;memoizedProps&quot;: [Object], &quot;memoizedState&quot;: null, &quot;mode&quot;: 1, &quot;pendingProps&quot;: [Object], &quot;ref&quot;: null, &quot;refCleanup&quot;: null, &quot;return&quot;: [FiberNode], &quot;selfBaseDuration&quot;: -0, &quot;sibling&quot;: null, &quot;stateNode&quot;: null, &quot;subtreeFlags&quot;: 1, &quot;tag&quot;: 0, &quot;treeBaseDuration&quot;: -0, &quot;type&quot;: [Function Icon], &quot;updateQueue&quot;: null}}
+    at __EXTERNAL_MATCHER_TRAP__ (/Users/dogukantansuk/Projects/Tansuk/@tansuk/rott-ui/node_modules/expect/build/index.js:325:30)
+    at Object.throwingMatcher [as toHaveProp] (/Users/dogukantansuk/Projects/Tansuk/@tansuk/rott-ui/node_modules/expect/build/index.js:326:15)
+    at Object.&lt;anonymous&gt; (/Users/dogukantansuk/Projects/Tansuk/@tansuk/rott-ui/src/features/Input/__tests__/IbanInput.test.tsx:63:51)</failure>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input TR digerlerinden sonraki degerler sadece numeric karakterleri kabul etmeli" name="IBAN Input -&gt; Custom Input TR digerlerinden sonraki degerler sadece numeric karakterleri kabul etmeli" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input kopyalanan IBAN yapıştırıldığında Bosluklar trimlenmeli" name="IBAN Input -&gt; Custom Input kopyalanan IBAN yapıştırıldığında Bosluklar trimlenmeli" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input kopyalanan IBAN yapıştırıldığında Sadece Sayi gelmisse basina TR getirerek dogru format saglanmali" name="IBAN Input -&gt; Custom Input kopyalanan IBAN yapıştırıldığında Sadece Sayi gelmisse basina TR getirerek dogru format saglanmali" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input kopyalanan IBAN yapıştırıldığında yapistirilan degerde TR ile gelmisse dogru format saglanmali" name="IBAN Input -&gt; Custom Input kopyalanan IBAN yapıştırıldığında yapistirilan degerde TR ile gelmisse dogru format saglanmali" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input kopyalanan IBAN yapıştırıldığında yapistirilan degerde TR yok ise dogru format saglanmali" name="IBAN Input -&gt; Custom Input kopyalanan IBAN yapıştırıldığında yapistirilan degerde TR yok ise dogru format saglanmali" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="IBAN Input -&gt; Custom Input Iban input render olduğu zaman klavye olarak number-pad ekranda görülmeli" name="IBAN Input -&gt; Custom Input Iban input render olduğu zaman klavye olarak number-pad ekranda görülmeli" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+</testsuites>

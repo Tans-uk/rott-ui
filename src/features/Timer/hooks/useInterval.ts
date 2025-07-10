@@ -8,7 +8,7 @@ export const useInterval = (
   reset?: boolean
 ): void => {
   const savedCallback = useRef<Nullable<CallbackFunction>>(null)
-  const intervalIdRef = useRef<Nullable<NodeJS.Timeout>>(null)
+  const intervalIdRef = useRef<Nullable<NodeJS.Timeout | number>>(null)
 
   // Store the callback function in a ref
   useEffect(() => {

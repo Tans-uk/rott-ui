@@ -13,7 +13,8 @@ export const TabStyle = (props?: any) =>
       justifyContent: 'center',
     },
     textStyle: {
-      fontFamily: Fonts.MARKPRO_BOLD,
+      // TODO: Add Font Family
+      // fontFamily: '',
       fontSize: 14,
       color: props?.isSelected ? themeConfig.colors['grey-900'] : themeConfig.colors['grey-100'],
     },

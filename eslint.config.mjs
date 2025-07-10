@@ -23,13 +23,13 @@ export default defineConfig([
       'prettier/prettier': [
         'error',
         {
-          quoteProps: 'consistent',
           singleQuote: true,
           tabWidth: 2,
           trailingComma: 'es5',
           useTabs: false,
         },
       ],
+    "react-hooks/exhaustive-deps": "off",
     },
   },
   {

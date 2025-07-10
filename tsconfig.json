@@ -17,7 +17,9 @@
       "@models": ["./src/models/index"],
       "@models/*": ["./src/models/*"],
       "@providers": ["./src/providers/index"],
-      "@providers/*": ["./src/providers/*"]
+      "@providers/*": ["./src/providers/*"],
+      "@contexts": ["./src/contexts/index"],
+      "@contexts/*": ["./src/contexts/*"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -39,7 +41,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "verbatimModuleSyntax": true,
-    "types": ["react-native", "jest", "node"]
+    "verbatimModuleSyntax": false,
+    "types": ["jest", "node"],
+    "typeRoots": ["./node_modules/@types/"]
   }
 }

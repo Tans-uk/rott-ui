@@ -7,11 +7,15 @@ import {
   type PrimitiveType,
 } from 'react-intl'
 
-import '../arrayExtensions'
-import '../stringExtensions'
+import '../../../utils/arrayExtensions'
+import '../../../utils/stringExtensions'
+
+import {useContext} from 'react'
 
 import {languageMessages} from '../providers'
 import type {TranslationLanguageTypes} from './models'
+
+import {RottUiContext} from 'src/contexts'
 
 /**
  *
@@ -37,14 +41,14 @@ export const formatMessage = (
   descriptor?: MessageDescriptor
 ): string => {
   const cache = createIntlCache()
-  const selectedLang = store.getState().app.lang
+  const {language} = useContext(RottUiContext)
 
   const intl = createIntl(
     {
-      locale: selectedLang?.name ?? 'tr-TR',
+      locale: language?.name ?? 'en-US',
       messages:
-        Object.entries(languageMessages).find((key) => key[0] === selectedLang?.name)?.[1] ??
-        languageMessages['tr-TR'],
+        Object.entries(languageMessages).find((key) => key[0] === language?.name)?.[1] ??
+        languageMessages['en-US'],
     },
     cache
   )

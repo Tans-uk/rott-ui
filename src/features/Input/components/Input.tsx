@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {memo, type FC} from 'react'
+import {memo, useContext, type FC} from 'react'
 
 import type {InputProps} from '../models'
 import {InputStyles} from '../styles'
@@ -25,7 +25,8 @@ import {ToggleInput} from './ToggleInput'
 
 import {Icon, Item, Label, Pressable, Separator} from '@features'
 import {themeConfig} from '@providers'
-import {colorFromVariant, getLanguageState, useAppSelector} from '@utils'
+import {colorFromVariant} from '@utils'
+import {RottUiContext} from 'src/contexts/rottUiContext'
 
 export const Input: FC<InputProps> = memo((props) => {
   const {
@@ -43,7 +44,7 @@ export const Input: FC<InputProps> = memo((props) => {
       ? themeConfig.colors['grey-200']
       : themeConfig.colors.white,
   } = props
-  const appLanguage = useAppSelector(getLanguageState)
+  const {language} = useContext(RottUiContext)
   const hasError = !!props?.onBlur && !!touched && !!errorMessage
 
   const getInputElement = () => {
@@ -143,8 +144,8 @@ export const Input: FC<InputProps> = memo((props) => {
                     : 'grey-900'
               }>
               {typeof label === 'string'
-                ? label?.toLocaleUpperCase(appLanguage?.name)
-                : label.text?.toLocaleUpperCase(appLanguage?.name)}
+                ? label?.toLocaleUpperCase(language?.name)
+                : label.text?.toLocaleUpperCase(language?.name)}
             </Label>
 
             {isLabelObject && label.description && (
@@ -154,7 +155,7 @@ export const Input: FC<InputProps> = memo((props) => {
                 fontFamily={label.fontFamily ?? 'Markpro-Medium'}
                 variant={label.descriptionVariant ?? 'grey-200'}
                 marginLeft={4}>
-                {`(${label.description?.toLocaleUpperCase(appLanguage?.name)})`}
+                {`(${label.description?.toLocaleUpperCase(language?.name)})`}
               </Label>
             )}
 

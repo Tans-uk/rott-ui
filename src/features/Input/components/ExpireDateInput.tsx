@@ -35,9 +35,9 @@ export const ExpireDateInput: FC<ExpireDateInputProps> = ({
 
     const month = matchFormatValidation[1]
     const year = matchFormatValidation[2]
+    if (!month || !year) return ''
 
     const currentYear = new Date().getFullYear() % 100
-
     const formattedMonth = parseInt(month, 10) > 12 ? '12' : month
     const formattedYear = parseInt(year, 10) < currentYear ? currentYear : year
 
@@ -50,7 +50,7 @@ export const ExpireDateInput: FC<ExpireDateInputProps> = ({
       mask={MASK}
       placeholder={formatMessage('EXPIRE.DATE.PLACEHOLDER')}
       keyboardType='number-pad'
-      onChangeText={(_masked, unmasked) => onChangeText!(formatMMYY(unmasked))}
+      onChangeText={(_masked, unmasked) => !!onChangeText && onChangeText(formatMMYY(unmasked))}
       style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
       {...props}
     />

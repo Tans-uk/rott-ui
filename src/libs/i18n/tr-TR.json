@@ -25,6 +25,9 @@
     "COMMON.LAST.6.MONTHS": "Son 6 Ay",
     "COMMON.THIS.YEAR": "Bu Yıl",
     "COMMON.SELECT.DATE": "Tarih Seç",
+    "COMMON.TRANSACTION.DATE": "İşlem Tarihi",
+    "COMMON.TRANSACTION.TIME": "İşlem Saati",
+    "COMMON.TRANSACTION.DATETIME": "İşlem Tarihi & Saati",
     "COMMON.SEARCH": "Ara",
     "COMMON.CLEAR": "Temizle",
     "COMMON.CONFIRM": "Uygula",
@@ -33,7 +36,7 @@
     "COMMON.ACCOUNT.SELECTION": "Account Selection",
     "COMMON.UNKNOWN": "Bilinmiyor",
     "COMMON.AUTOMATIC": "Otomatik",
-  
+    "COMMON.SELECTED.ITEMS": "{count} seçildi",
     "OTP.SMS.VERIFICATION.CODE": "SMS doğrulama kodu",
     "OTP.TITLE": "Sms Şifre Doğrulama",
     "OTP.INSTRUCTIONS": "Lütfen {phoneNumber} no'lu\ntelefonunuza gelen şifreyi giriniz.",
@@ -46,6 +49,7 @@
   
     "CVC.CODE": "CVC Kodu",
     "CVC.INFO.TITLE": "CVC - Kart Doğrulama Kodu",
+    "CVC.LABEL.DESCRIPTION": "(KART ARKASINDAKI ŞİFRE)",
     "CVC.INFO.DESCRIPTION": "Kart Doğrulama Kodu veya CVC*, banka veya kredi kartınızın üzerine basılan ekstra bir koddur. Kartınızın arka yüzündeki imza şeridinde yazılı olan numaranın son üç hanesidir.",
   
     "DAY.1": "Pazartesi",

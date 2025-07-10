@@ -3,6 +3,7 @@ import {type FC} from 'react'
 import type {IconProps} from '../models'
 
 import {Item} from '@features/Item'
+import {themeConfig} from '@providers'
 import {colorFromVariant, display} from '@utils'
 
 export const Icon: FC<IconProps> = ({
@@ -14,14 +15,18 @@ export const Icon: FC<IconProps> = ({
   mode = 'stroke',
   noStroke,
   color,
+  opacity,
   ...props
 }) => {
-  const IconComponent = Icons[name]
+  const IconComponent = themeConfig.icons[name]
 
   if (!IconComponent) return null
 
+  // Convert opacity to number if it's a string, ensuring type compatibility with ItemProps
+  const itemOpacity = typeof opacity === 'string' ? parseFloat(opacity) : opacity
+
   return (
-    <Item {...props}>
+    <Item {...props} opacity={itemOpacity}>
       <IconComponent
         fill={mode === 'fill' ? (color ?? colorFromVariant(variant)) : 'transparent'}
         stroke={color ?? colorFromVariant(variant)}
@@ -38,6 +43,7 @@ export const Icon: FC<IconProps> = ({
         strokeLinejoin='round'
         width={display.px(width)}
         height={display.px(height)}
+        opacity={opacity}
       />
     </Item>
   )

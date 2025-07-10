@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+# Rules for commit messages
+
+- You must follow https://github.com/conventional-changelog/commitlint/#what-is-commitlint rules for commit messages.
+- Commit messages must be in English.
+  ✖ body's lines must not be longer than 100 characters [body-max-line-length]
+  ✖ subject may not be empty [subject-empty]
+  ✖ type may not be empty [type-empty]

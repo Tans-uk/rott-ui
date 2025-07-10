@@ -70,7 +70,7 @@ export const Container: FC<ContainerProps> = ({
         <Pressable
           backgroundColor={themeConfig.colors['neutral-alpha-900']}
           style={[StyleSheet.absoluteFill]}
-          onPress={goBack}
+          onPress={themeConfig.goBack}
         />
       )}
 

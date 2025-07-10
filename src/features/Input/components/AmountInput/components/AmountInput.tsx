@@ -163,6 +163,7 @@ export const AmountInput: FC<AmountInputProps> = ({
 
       <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
         <Icon
+          testID='currency-icon-test-id'
           name={currencyType as IconTypes}
           width={InputStyleNormalizer({size}).icon.width}
           height={InputStyleNormalizer({size}).icon.height}
