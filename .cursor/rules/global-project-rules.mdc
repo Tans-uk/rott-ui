@@ -6,6 +6,60 @@ alwaysApply: true
 
 - You must follow https://github.com/conventional-changelog/commitlint/#what-is-commitlint rules for commit messages.
 - Commit messages must be in English.
-  ✖ body's lines must not be longer than 100 characters [body-max-line-length]
-  ✖ subject may not be empty [subject-empty]
-  ✖ type may not be empty [type-empty]
+
+## Commit Message Format
+
+```
+type(scope?): subject
+
+body?
+
+footer?
+```
+
+### Required Rules
+
+- ✖ type may not be empty [type-empty]
+- ✖ subject may not be empty [subject-empty]
+- ✖ body's lines must not be longer than 100 characters [body-max-line-length]
+
+### Commit Types
+
+Must use one of these conventional types (based on Angular convention):
+
+- **feat**: A new feature for the user
+- **fix**: A bug fix for the user
+- **docs**: Documentation only changes
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+- **perf**: A code change that improves performance
+- **test**: Adding missing tests or correcting existing tests
+- **build**: Changes that affect the build system or external dependencies
+- **ci**: Changes to CI configuration files and scripts
+- **chore**: Other changes that don't modify src or test files
+- **revert**: Reverts a previous commit
+
+### Scope (Optional)
+
+- Scope is optional but recommended for clarity
+- Multiple scopes are supported with delimiters: "/", "\" and ","
+- Examples: `feat(auth)`, `fix(ui/button)`, `docs(api,cli)`
+
+### Examples
+
+```
+feat(blog): add comment section
+fix(server): send cors headers
+chore: run tests on travis ci
+docs(readme): update installation guide
+test(auth): add login validation tests
+```
+
+### Additional Guidelines
+
+- Use imperative mood in subject line ("add" not "added" or "adds")
+- Don't capitalize first letter of subject
+- No dot (.) at the end of subject
+- Subject should be 50 characters or less
+- Separate subject from body with a blank line
+- Use body to explain what and why, not how
