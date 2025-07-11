@@ -6,6 +6,7 @@ alwaysApply: true
 
 - You must follow https://github.com/conventional-changelog/commitlint/#what-is-commitlint rules for commit messages.
 - Commit messages must be in English.
+- Body must be less than 100 characters
 
 ## Commit Message Format
 
@@ -63,4 +64,3 @@ test(auth): add login validation tests
 - Subject should be 50 characters or less
 - Separate subject from body with a blank line
 - Use body to explain what and why, not how
-- Body must be less than 100 characters
