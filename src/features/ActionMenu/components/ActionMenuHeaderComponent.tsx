@@ -31,6 +31,7 @@ export const ActionMenuHeaderComponent: FC<ActionMenuHeaderProps> = ({title, sub
                 {title}
               </Label>
             )}
+
             {subTitle && (
               <Label fontSize='sm' variant='grey-900' fontWeight={500}>
                 {subTitle}

@@ -23,7 +23,7 @@ interface RottProviderProps extends PropsWithChildren {
 export let themeConfig = {
   colors: {
     // PRIMARY
-    primary: 'rgba(63, 182, 210, 1)',
+    primary: 'rgba(0, 169, 206, 1)',
     secondary: 'rgba(255, 199, 44, 1)',
     'grey-900': 'rgba(34, 63, 70, 1)',
     'grey-800': 'rgba(61, 88, 94, 1)',

@@ -48,22 +48,6 @@ export const Skeleton: FC<SkeletonProps> = ({
   const animatedValue = useSharedValue(0)
   const animationWidth = display.px(width as number)
 
-  useEffect(() => {
-    if (!show) return
-
-    if (!noAnimation) {
-      animatedValue.value = withRepeat(
-        withTiming(1, {
-          duration: 1400,
-          easing: Easing.ease,
-        }),
-        // -1 Verilme değerinin sebebi sonsuz bir animasyon yapmak için. Eğer değer 0 verilirse animasyon tek sefer çalışır. Birden fazla verilirse animasyon birden fazla kere çalışır. Örnek 5 verilirse animasyon 5 kere çalışır.
-        -1,
-        false
-      )
-    }
-  }, [show])
-
   const animatedGradientStyle = useAnimatedStyle(() => {
     return {
       ...StyleSheet.absoluteFillObject,
@@ -82,8 +66,23 @@ export const Skeleton: FC<SkeletonProps> = ({
     style: {...StyleSheet.absoluteFillObject, _width},
   })
 
-  if (!show) return null
+  useEffect(() => {
+    if (!show) return
 
+    if (!noAnimation) {
+      animatedValue.value = withRepeat(
+        withTiming(1, {
+          duration: 1400,
+          easing: Easing.ease,
+        }),
+        // -1 Verilme değerinin sebebi sonsuz bir animasyon yapmak için. Eğer değer 0 verilirse animasyon tek sefer çalışır. Birden fazla verilirse animasyon birden fazla kere çalışır. Örnek 5 verilirse animasyon 5 kere çalışır.
+        -1,
+        false
+      )
+    }
+  }, [show])
+
+  if (!show) return null
   return (
     <Item
       testID={testID}

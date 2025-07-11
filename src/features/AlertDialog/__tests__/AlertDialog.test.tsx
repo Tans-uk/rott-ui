@@ -76,18 +76,32 @@ describe('AlertDialogComponent', () => {
     expect(renderedAlertDialog.toJSON()).toMatchSnapshot()
   })
 
+  it('title ve text ekranda düzgün şekilde renderlanmalı', () => {
+    const {alertDialogTestId} = testId
+    const {getByText} = render(
+      <AlertDialogComponent visible testID={alertDialogTestId} {...mockLessThanOrEqualTwoButtons} />
+    )
+
+    const title = getByText(formatMessage('TEST.WITH.PARAM', {testText: 'Test Title'}), {
+      exact: true,
+    })
+    const text = getByText(formatMessage('TEST.WITH.PARAM', {testText: 'Test Text'}), {
+      exact: true,
+    })
+
+    expect(title).toBeOnTheScreen()
+    expect(text).toBeOnTheScreen()
+  })
+
   it('iki button tanımlı ise alert dialog doğru renderlanmalı', () => {
     const {alertDialogTestId} = testId
     const {getByText} = render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockLessThanOrEqualTwoButtons} />
     )
-    const title = getByText(formatMessage('TEST.WITH.PARAM', {testText: 'Test Title'}))
-    const text = getByText(formatMessage('TEST.WITH.PARAM', {testText: 'Test Text'}))
+
     const confirmButton = getByText(formatMessage('COMMON.OK'))
     const cancelButton = getByText(formatMessage('COMMON.CANCEL'))
 
-    expect(title).toBeOnTheScreen()
-    expect(text).toBeOnTheScreen()
     expect(confirmButton).toBeOnTheScreen()
     expect(cancelButton).toBeOnTheScreen()
   })
@@ -97,14 +111,11 @@ describe('AlertDialogComponent', () => {
     const {getByText} = render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockMoreThanTwoButtons} />
     )
-    const title = getByText(formatMessage('TEST.WITH.PARAM', {testText: 'Test Title'}))
-    const text = getByText(formatMessage('TEST.WITH.PARAM', {testText: 'Test Text'}))
+
     const confirmButton = getByText(formatMessage('COMMON.OK'))
     const cancelButton = getByText(formatMessage('COMMON.CANCEL'))
     const backButton = getByText(formatMessage('COMMON.BACK'))
 
-    expect(title).toBeOnTheScreen()
-    expect(text).toBeOnTheScreen()
     expect(confirmButton).toBeOnTheScreen()
     expect(cancelButton).toBeOnTheScreen()
     expect(backButton).toBeOnTheScreen()

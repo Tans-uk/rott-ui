@@ -120,7 +120,6 @@ describe('ActionMenuHeader -> Custom Component', () => {
 
     const container = getByTestId(actionMenuHeaderId)
 
-    expect(container).toHaveTextContent(titleMock)
-    expect(container).toHaveTextContent(subTitleMock)
+    expect(container).toHaveTextContent(titleMock + subTitleMock)
   })
 })

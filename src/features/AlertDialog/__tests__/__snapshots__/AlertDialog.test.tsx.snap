@@ -40,7 +40,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
       }
     >
       <ActivityIndicator
-        color="rgba(63, 182, 210, 1)"
+        color="rgba(0, 169, 206, 1)"
         size="large"
       />
     </View>

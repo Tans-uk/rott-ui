@@ -63,3 +63,4 @@ test(auth): add login validation tests
 - Subject should be 50 characters or less
 - Separate subject from body with a blank line
 - Use body to explain what and why, not how
+- Body must be less than 100 characters

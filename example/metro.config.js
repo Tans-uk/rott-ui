@@ -17,4 +17,15 @@ const config = withMetroConfig(getDefaultConfig(__dirname), {
 
 config.resolver.unstable_enablePackageExports = true
 
+// Exclude test files and testing utilities from bundling
+config.resolver.platforms = ['ios', 'android', 'native', 'web']
+config.resolver.blockList = [
+  /.*\/__tests__\/.*/,
+  /.*\.test\.(js|jsx|ts|tsx)$/,
+  /.*\.spec\.(js|jsx|ts|tsx)$/,
+  /.*\/testUtils\.ts$/,
+  /.*\/commonUiTestExtension\.ts$/,
+  /@testing-library\/.*/,
+]
+
 module.exports = config

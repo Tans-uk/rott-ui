@@ -32,7 +32,10 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace @tansuk/rott-ui-example",
+    "example": "yarn workspace @tansuk/rott-ui-example start",
+    "example:android": "yarn workspace @tansuk/rott-ui-example android",
+    "example:ios": "yarn workspace @tansuk/rott-ui-example ios",
+    "example:web": "yarn workspace @tansuk/rott-ui-example web",
     "test": "jest",
     "test:u": "jest -u",
     "typecheck": "tsc",
