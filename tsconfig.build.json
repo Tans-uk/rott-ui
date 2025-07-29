@@ -1,4 +1,12 @@
 {
   "extends": "./tsconfig",
-  "exclude": ["example", "lib", "**/__tests__/**/*", "**/*.test.*", "**/*.spec.*"]
+  "exclude": [
+    "example",
+    "example-rn-cli",
+    "lib",
+    "**/__tests__/**/*",
+    "**/testUtils.*",
+    "**/*.test.*",
+    "**/*.spec.*"
+  ]
 }

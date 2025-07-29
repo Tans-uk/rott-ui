@@ -2,7 +2,7 @@ import {EmptyState} from '../components'
 
 import {Label} from '@features/Label'
 import {formatMessage} from '@libs'
-import {render} from '@utils'
+import {render} from 'src/__tests__/utils/testUtils'
 
 describe('EmptyState -> Custom Component', () => {
   const testId = {

@@ -2,7 +2,7 @@ import {Label} from '../../Label'
 import {CheckBoxInput} from '../components'
 
 import {translator} from '@libs'
-import {fireEvent, render} from '@utils'
+import {fireEvent, render} from 'src/__tests__/utils/testUtils'
 
 describe('CheckBox Input -> Custom Input', () => {
   const testId = {

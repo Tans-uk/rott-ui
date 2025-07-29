@@ -7,15 +7,15 @@ import {
   type PrimitiveType,
 } from 'react-intl'
 
-import '../../../utils/arrayExtensions'
-import '../../../utils/stringExtensions'
-
 import {useContext} from 'react'
+
+import '@utils/arrayExtensions'
+import '@utils/stringExtensions'
 
 import {languageMessages} from '../providers'
 import type {TranslationLanguageTypes} from './models'
 
-import {RottUiContext} from 'src/contexts'
+import {RottUiContext} from '@contexts'
 
 /**
  *

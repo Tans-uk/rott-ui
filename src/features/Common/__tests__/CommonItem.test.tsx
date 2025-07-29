@@ -1,7 +1,7 @@
 import {CommonItem, type CommonItemProps, type IconProps} from '@features'
 import {formatMessage} from '@libs'
 import {themeConfig} from '@providers'
-import {fireEvent, render, waitFor} from '@utils'
+import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Common -> Common Item', () => {
   const onPressMock = jest.fn()

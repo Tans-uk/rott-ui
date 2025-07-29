@@ -1,6 +1,6 @@
 import {DefaultInput} from '../components'
 
-import {render, userEvent} from '@utils'
+import {render, userEvent} from 'src/__tests__/utils/testUtils'
 
 describe('Default Input -> Custom Input', () => {
   const testId = 'default-input-test-id'

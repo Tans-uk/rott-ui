@@ -5,7 +5,3 @@ export * from './models'
 export * from './libs'
 export * from './contexts'
 export * from './constants'
-
-export function multiply(a: number, b: number): number {
-  return a * b
-}

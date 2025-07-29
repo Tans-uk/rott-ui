@@ -1,7 +1,7 @@
 import {Input} from '../components'
 
 import type {IconTypes} from '@features/Icon'
-import {fireEvent, render} from '@utils'
+import {fireEvent, render} from 'src/__tests__/utils/testUtils'
 
 describe('Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'

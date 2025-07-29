@@ -1,5 +1,5 @@
 import {Alert} from '@features'
-import {render} from '@utils'
+import {render} from 'src/__tests__/utils/testUtils'
 
 describe('Alert component', () => {
   const testId = {

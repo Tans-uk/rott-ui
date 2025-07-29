@@ -1,6 +1,6 @@
 import {SelectInput} from '../components'
 
-import {fireEvent, render, waitFor} from '@utils'
+import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Select Input -> Custom Input', () => {
   const testId = {

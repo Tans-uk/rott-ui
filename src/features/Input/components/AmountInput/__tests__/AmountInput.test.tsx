@@ -1,6 +1,6 @@
 import {AmountInput} from '../..'
 
-import {fireEvent, render, waitFor} from '@utils'
+import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Amount Input -> Custom Input', () => {
   const testId = {

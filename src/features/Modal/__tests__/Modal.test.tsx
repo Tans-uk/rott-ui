@@ -7,7 +7,7 @@ import {ModalComponent} from '../components'
 import type {ModalProps} from '../models'
 
 import {translator} from '@libs'
-import {fireEvent, render, waitFor} from '@utils'
+import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Modal -> Custom Component', () => {
   const onCloseMock = jest.fn()

@@ -1,5 +1,5 @@
 import {TimerComponent} from '@features'
-import {render} from '@utils'
+import {render} from 'src/__tests__/utils/testUtils'
 
 describe('Timer -> Custom Component', () => {
   const timerInitialTime = 180

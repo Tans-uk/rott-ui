@@ -1,2 +1,2 @@
 export * from './ToasterNotificationProvider'
-export * from './NotificationProdiver'
+export * from './NotificationProvider'

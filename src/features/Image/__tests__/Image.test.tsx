@@ -1,7 +1,7 @@
 import {Image} from '../components'
 import type {ImageTypes} from '../models'
 
-import {render} from '@utils'
+import {render} from 'src/__tests__/utils/testUtils'
 
 describe('Image -> Custom Component', () => {
   const testId = {

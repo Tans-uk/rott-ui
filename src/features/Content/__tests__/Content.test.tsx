@@ -1,5 +1,5 @@
 import {Content} from '@features'
-import {render} from '@utils'
+import {render} from 'src/__tests__/utils/testUtils'
 
 describe('Content -> Custom Component', () => {
   const testId = {

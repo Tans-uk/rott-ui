@@ -1,5 +1,5 @@
 import {Item, Label, Skeleton, type SkeletonStyleProps} from '@features'
-import {render} from '@utils'
+import {render} from 'src/__tests__/utils/testUtils'
 
 const testId = {
   itemTestId: 'item-test-id',

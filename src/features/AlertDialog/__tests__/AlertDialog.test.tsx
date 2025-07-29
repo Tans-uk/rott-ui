@@ -2,7 +2,7 @@ import {AlertDialogComponent} from '../components/AlertDialogComponent'
 import type {AlertDialogProps} from '../models'
 
 import {formatMessage} from '@libs'
-import {render} from '@utils'
+import {render} from 'src/__tests__/utils/testUtils'
 
 const mockLessThanOrEqualTwoButtons: AlertDialogProps = {
   title: formatMessage('TEST.WITH.PARAM', {testText: 'Test Title'}),

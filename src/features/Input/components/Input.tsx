@@ -23,10 +23,10 @@ import {SelectInput} from './SelectInput'
 import {StatementInput} from './StatementInput'
 import {ToggleInput} from './ToggleInput'
 
+import {RottUiContext} from '@contexts'
 import {Icon, Item, Label, Pressable, Separator} from '@features'
 import {themeConfig} from '@providers'
 import {colorFromVariant} from '@utils'
-import {RottUiContext} from 'src/contexts/rottUiContext'
 
 export const Input: FC<InputProps> = memo((props) => {
   const {

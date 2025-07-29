@@ -2,6 +2,9 @@ import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import prettier from 'eslint-plugin-prettier';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import { defineConfig } from 'eslint/config';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,27 +18,41 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([
+  js.configs.recommended,
+  ...fixupConfigRules(compat.extends('prettier')),
   {
-    extends: fixupConfigRules(compat.extends('@react-native', 'prettier')),
-    plugins: { prettier },
+    plugins: { 
+      prettier, 
+      react, 
+      'react-hooks': reactHooks,
+      '@typescript-eslint': typescriptEslint
+    },
     rules: {
+      'prettier/prettier': ['error', {
+        singleQuote: true,
+        tabWidth: 2,
+        trailingComma: 'es5',
+        useTabs: false,
+      }],
       'react/react-in-jsx-scope': 'off',
-      'prettier/prettier': [
-        'error',
-        {
-          singleQuote: true,
-          tabWidth: 2,
-          trailingComma: 'es5',
-          useTabs: false,
-        },
-      ],
-    "react-hooks/exhaustive-deps": "off",
+      'react-hooks/exhaustive-deps': 'off',
+      '@typescript-eslint/no-unused-vars': 'error',
+      'no-use-before-define': 1,
+      'no-console': 'error',
+      'jsx-quotes': ['error', 'prefer-single'],
+      'indent': ['error', 2],
+      'linebreak-style': 1,
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'never'],
+      'newline-before-return': 'error',
+      'react/no-array-index-key': 'error',
+      'no-dupe-keys': 'error',
+      'no-empty': 'error',
+      'comma-dangle': ['off', 'never'],
+      'curly': ['error', 'multi-or-nest']
     },
   },
   {
-    ignores: [
-      'node_modules/',
-      'lib/'
-    ],
+    ignores: ['node_modules/', 'lib/'],
   },
 ]);

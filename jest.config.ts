@@ -36,6 +36,7 @@ const jestConfiguration: JestConfigWithTsJest = {
       '@react-native-clipboard/\\w*|' +
       '@react-native-firebase/\\w*|' +
       '@react-native-masked-view/\\w*|' +
+      '@react-native/eslint-config|' +
       '@shopify/flash-list|' +
       // Third-party libraries used in the project that need transformation
       'jail-monkey|' +

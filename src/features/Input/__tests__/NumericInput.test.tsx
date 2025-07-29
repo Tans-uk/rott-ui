@@ -1,6 +1,6 @@
 import {NumericInput} from '../components'
 
-import {fireEvent, render, waitFor} from '@utils'
+import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Numeric Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'

@@ -1,6 +1,6 @@
 import {ExpireDateInput} from '../components'
 
-import {fireEvent, render} from '@utils'
+import {fireEvent, render} from 'src/__tests__/utils/testUtils'
 
 describe('ExpireDate Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'

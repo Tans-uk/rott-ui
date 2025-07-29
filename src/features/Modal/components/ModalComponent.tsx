@@ -2,6 +2,7 @@ import {isValidElement, useContext, useEffect, useMemo, useRef, type FC} from 'r
 
 import {InteractionManager, Platform, Modal as RNModal} from 'react-native'
 
+import {RottUiContext} from '@contexts'
 import {Content} from '@features/Content'
 import {Header, type HeaderProps} from '@features/Header'
 import {Icon} from '@features/Icon'
@@ -17,7 +18,6 @@ import {Pressable} from '@features/Pressable'
 import {useSafeArea} from '@hooks'
 import {themeConfig} from '@providers'
 import {colorFromVariant, display} from '@utils'
-import {RottUiContext} from 'src/contexts'
 
 import {KeyboardStickyView} from 'react-native-keyboard-controller'
 import Animated, {
