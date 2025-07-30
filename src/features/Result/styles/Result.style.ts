@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-import {themeConfig} from '@providers'
+import {themeConfig} from '../../../providers'
 
 export const ResultStyles = () =>
   StyleSheet.create({

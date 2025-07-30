@@ -1,8 +1,8 @@
 import {memo, type FC, type PropsWithChildren} from 'react'
 
-import {Item} from '@features/Item'
-import type {Theme} from '@models'
-import {themeConfig} from '@providers'
+import type {Theme} from '../../../models'
+import {themeConfig} from '../../../providers'
+import {Item} from '../../Item'
 
 interface FormContainerProps extends PropsWithChildren {
   hasError?: boolean

@@ -1,6 +1,5 @@
+import {render, userEvent} from '../../../__tests__/utils/testUtils'
 import {StatementInput} from '../components'
-
-import {render, userEvent} from 'src/__tests__/utils/testUtils'
 
 describe('Statement Input -> Custom Input', () => {
   const testId = 'statement-input-test-id'

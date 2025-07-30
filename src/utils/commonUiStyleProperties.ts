@@ -2,10 +2,9 @@ import type {FlexAlignType} from 'react-native'
 
 import {alignItemsConvert} from './alignItemsConverter'
 import {colorFromVariant} from './colorFromVariant'
+import display from './display'
 import {justifyContentConvert} from './justifyContentConverter'
 import {sizeToPercentage} from './sizeToPercentage'
-
-import {display} from '@utils'
 
 export const commonUiStyleProperties = (props?: any) => {
   const styles: Record<string, any> = {}

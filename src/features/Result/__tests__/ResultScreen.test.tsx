@@ -1,7 +1,6 @@
+import {render} from '../../../__tests__/utils/testUtils'
+import {ImageTypes} from '../../Image'
 import {ResultScreen} from '../components'
-
-import type {ImageTypes} from '@features/Image'
-import {render} from 'src/__tests__/utils/testUtils'
 
 describe('ResultScreen Test', () => {
   const mockDetailElement = {

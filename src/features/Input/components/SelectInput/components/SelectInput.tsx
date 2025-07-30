@@ -1,19 +1,18 @@
 import {useEffect, useState, type FC} from 'react'
 
+import {translator} from '../../../../../libs'
+import {ModalIdEnum} from '../../../../../models'
+import {themeConfig} from '../../../../../providers'
+import {Icon} from '../../../../Icon'
+import {Item} from '../../../../Item'
+import {Label} from '../../../../Label'
+import {Modal, useModal} from '../../../../Modal'
+import {Pressable} from '../../../../Pressable'
+import {InputStyleNormalizer} from '../../../utils'
 import type {SelectInputProps, SelectProps} from '../models'
 import {SelectInputStyles} from '../styles'
 import {modalHeightPercentageNormalizer} from '../utils'
 import {SelectInputModalComponent} from './SelectInputModalComponent'
-
-import {Icon} from '@features/Icon'
-import {InputStyleNormalizer} from '@features/Input/utils'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {Modal, useModal} from '@features/Modal'
-import {Pressable} from '@features/Pressable'
-import {translator} from '@libs'
-import {ModalIdEnum} from '@models'
-import {themeConfig} from '@providers'
 
 /**
  *

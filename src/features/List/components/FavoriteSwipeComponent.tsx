@@ -1,11 +1,11 @@
 import {type FC} from 'react'
 
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {Pressable} from '@features/Pressable'
-import {formatMessage} from '@libs'
-import {themeConfig} from '@providers'
+import {formatMessage} from '../../../libs'
+import {themeConfig} from '../../../providers'
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
 
 interface FavoriteSwipeComponentProps {
   index: number

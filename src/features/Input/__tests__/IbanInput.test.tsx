@@ -1,6 +1,5 @@
+import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {IbanInput} from '../components'
-
-import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('IBAN Input -> Custom Input', () => {
   const inputTestId = 'iban-input-test-id'

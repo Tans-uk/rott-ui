@@ -2,16 +2,15 @@ import {type FC} from 'react'
 
 import {ActivityIndicator, StyleSheet, TouchableOpacity} from 'react-native'
 
+import {Size} from '../../../models'
+import {themeConfig} from '../../../providers'
+import {display} from '../../../utils'
+import {Icon, IconTypes} from '../../Icon'
+import {Image} from '../../Image'
+import {Label} from '../../Label'
 import type {ButtonProps} from '../models'
 import {ButtonStyles} from '../styles'
 import {buttonSizeNormalizer} from '../utils'
-
-import {Icon, type IconTypes} from '@features/Icon'
-import {Image} from '@features/Image'
-import {Label} from '@features/Label'
-import {type Size} from '@models'
-import {themeConfig} from '@providers'
-import {display} from '@utils'
 
 export const Button: FC<ButtonProps> = ({
   variant = 'primary',

@@ -2,16 +2,17 @@ import {type FC} from 'react'
 
 import {ActivityIndicator} from 'react-native'
 
-import {Button} from '@features'
-import {AlertDialog, type AlertDialogModel} from '@features/AlertDialog'
-import {EmptyState} from '@features/EmptyState'
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {Separator} from '@features/Separator'
-import {formatMessage} from '@libs'
-import {themeConfig} from '@providers'
-import {display} from '@utils'
+import {AlertDialog} from '..'
+import {formatMessage} from '../../../libs'
+import {themeConfig} from '../../../providers'
+import {display} from '../../../utils'
+import {Button} from '../../Button'
+import {EmptyState} from '../../EmptyState'
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Separator} from '../../Separator'
+import {type AlertDialogModel} from '../models'
 
 export const AlertDialogComponent: FC<AlertDialogModel> = ({
   id,

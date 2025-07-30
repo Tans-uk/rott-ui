@@ -2,9 +2,8 @@ import {type FC} from 'react'
 
 import {StyleSheet, View, type ViewProps} from 'react-native'
 
+import {type CommonUiProps} from '../../../models'
 import {SeparatorStyles} from '../styles'
-
-import {type CommonUiProps} from '@models'
 
 interface SeparatorProps extends ViewProps, CommonUiProps {
   height?: number | string

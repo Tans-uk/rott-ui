@@ -1,15 +1,14 @@
 import {isValidElement, type FC} from 'react'
 
+import {themeConfig} from '../../../providers'
+import {Content} from '../../Content'
+import {Icon, type IconProps} from '../../Icon'
+import {Image} from '../../Image'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
 import {useHeader} from '../hooks'
 import type {HeaderProps} from '../models'
-
-import {Content} from '@features/Content'
-import {Icon, type IconProps} from '@features/Icon'
-import {Image} from '@features/Image'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {Pressable} from '@features/Pressable'
-import {themeConfig} from '@providers'
 
 /**
  *

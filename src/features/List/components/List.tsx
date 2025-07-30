@@ -4,16 +4,16 @@ import React, {forwardRef, isValidElement, useState, type FC, type ReactNode, ty
 
 import {StyleSheet} from 'react-native'
 
+import {formatMessage} from '../../../libs'
+import type {CommonUiProps, Variant} from '../../../models'
+import {display} from '../../../utils'
+import {EmptyState, type EmptyStateProps} from '../../EmptyState'
+import {Item} from '../../Item'
+import {Separator} from '../../Separator'
 import {ListStyles} from '../styles'
 import {ListSkeletonItem} from './ListSkeletonItem'
 
-import {EmptyState, type EmptyStateProps} from '@features/EmptyState'
-import {Item} from '@features/Item'
-import {Separator} from '@features/Separator'
-import {formatMessage} from '@libs'
-import type {CommonUiProps, Variant} from '@models'
 import {FlashList, type FlashListProps} from '@shopify/flash-list'
-import {display} from '@utils'
 
 interface ListProps<T> extends CommonUiProps, FlashListProps<T> {
   renderSeparator?: boolean

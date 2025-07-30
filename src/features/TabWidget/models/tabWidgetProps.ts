@@ -1,6 +1,6 @@
 import type {JSX} from 'react'
 
-import {type CommonUiProps} from '@models'
+import {type CommonUiProps} from '../../../models'
 
 export interface TabWidgetProps extends CommonUiProps {
   testID?: string

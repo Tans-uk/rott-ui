@@ -14,7 +14,9 @@ export const PlateNumberInput: FC<PlateNumberInputProps> = ({
   ...props
 }) => {
   const handleTextChange = (plateNumber: string) => {
-    const replacedPlateNumber = plateNumber.replace(/[^0-9A-Z]/g, '')
+    const replacedPlateNumber = plateNumber
+      .replace(/[^0-9A-Za-z]/g, '')
+      .replace(/[a-z]/g, (char) => char.toUpperCase())
     onChangeText!(replacedPlateNumber)
   }
 

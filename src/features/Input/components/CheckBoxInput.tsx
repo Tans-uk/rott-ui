@@ -3,14 +3,13 @@ import {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
+import {themeConfig} from '../../../providers'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
 import {type CheckBoxInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputStyleNormalizer} from '../utils'
-
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {Pressable} from '@features/Pressable'
-import {themeConfig} from '@providers'
 
 export const CheckBoxInput: FC<CheckBoxInputProps> = ({
   description,

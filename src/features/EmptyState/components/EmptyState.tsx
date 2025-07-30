@@ -1,10 +1,9 @@
 import {type FC} from 'react'
 
+import {Image} from '../../Image'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
 import type {EmptyStateProps} from '../models'
-
-import {Image} from '@features/Image'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
 
 /**
  * Result - Islem Sonucu Ekrani

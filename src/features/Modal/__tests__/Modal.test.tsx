@@ -1,13 +1,12 @@
 import React from 'react'
 
+import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
+import {translator} from '../../../libs'
 import {Content} from '../../Content'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {ModalComponent} from '../components'
 import type {ModalProps} from '../models'
-
-import {translator} from '@libs'
-import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Modal -> Custom Component', () => {
   const onCloseMock = jest.fn()

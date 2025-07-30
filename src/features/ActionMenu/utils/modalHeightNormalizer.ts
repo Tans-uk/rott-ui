@@ -1,4 +1,4 @@
-import {display} from '@utils'
+import {display} from '../../../utils'
 
 export const modalHeightNormalizer = (
   dataLength: number,

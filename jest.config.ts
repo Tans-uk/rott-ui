@@ -1,6 +1,4 @@
-import {compilerOptions} from './tsconfig.json'
-
-import {pathsToModuleNameMapper, type JestConfigWithTsJest} from 'ts-jest'
+import {type JestConfigWithTsJest} from 'ts-jest'
 import {defaults as tsjPreset} from 'ts-jest/presets'
 
 const isolatedModules = process.env.ISOLATED_MODULES === 'true'
@@ -60,9 +58,7 @@ const jestConfiguration: JestConfigWithTsJest = {
     __dirname, // the root directory
   ],
   roots: ['<rootDir>'],
-  modulePaths: [compilerOptions.baseUrl], // <-- This will be set to 'baseUrl' value
   moduleNameMapper: {
-    ...pathsToModuleNameMapper(compilerOptions.paths, {prefix: '<rootDir>/'}),
     '^@babel/runtime/helpers/interopRequireDefault$':
       '<rootDir>/node_modules/@babel/runtime/helpers/interopRequireDefault',
     'tr-TR.json': '<rootDir>/src/libs/i18n/tr-TR.json',

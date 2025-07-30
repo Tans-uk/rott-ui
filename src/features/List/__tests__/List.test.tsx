@@ -1,8 +1,7 @@
 import {Text} from 'react-native'
 
+import {render, waitFor} from '../../../__tests__/utils/testUtils'
 import {List} from '../components'
-
-import {render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('List -> Custom Component', () => {
   const customSeparatorTestId = 'custom-separator-test-id'

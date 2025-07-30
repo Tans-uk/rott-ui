@@ -1,10 +1,9 @@
 import {type FC} from 'react'
 
+import {themeConfig} from '../../../providers'
+import {colorFromVariant, display} from '../../../utils'
+import {Item} from '../../Item'
 import type {IconProps} from '../models'
-
-import {Item} from '@features/Item'
-import {themeConfig} from '@providers'
-import {colorFromVariant, display} from '@utils'
 
 export const Icon: FC<IconProps> = ({
   name,

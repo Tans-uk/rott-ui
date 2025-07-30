@@ -1,7 +1,6 @@
+import type {Size, Theme, Variant} from '../../../models'
+import type {FontFamily} from '../../Label'
 import type {InputLabelIconProps} from './inputLabelIconProps.interface'
-
-import type {FontFamily} from '@features/Label'
-import type {Size, Theme, Variant} from '@models'
 
 export interface InputLabelProps {
   text: string

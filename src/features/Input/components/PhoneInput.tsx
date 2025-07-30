@@ -2,14 +2,13 @@ import {type FC} from 'react'
 
 import {PermissionsAndroid, Platform, StyleSheet} from 'react-native'
 
+import {themeConfig} from '../../../providers'
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Pressable} from '../../Pressable'
 import type {PhoneInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputStyleNormalizer} from '../utils'
-
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {Pressable} from '@features/Pressable'
-import {themeConfig} from '@providers'
 
 import MaskInput from 'react-native-mask-input'
 import {selectContactPhone} from 'react-native-select-contact'

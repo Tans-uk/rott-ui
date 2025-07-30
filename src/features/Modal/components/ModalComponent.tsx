@@ -2,22 +2,19 @@ import {isValidElement, useContext, useEffect, useMemo, useRef, type FC} from 'r
 
 import {InteractionManager, Platform, Modal as RNModal} from 'react-native'
 
-import {RottUiContext} from '@contexts'
-import {Content} from '@features/Content'
-import {Header, type HeaderProps} from '@features/Header'
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {
-  Modal,
-  ModalContentContainer,
-  ModalStyles,
-  PanResponderAnimation,
-  type ModalProps,
-} from '@features/Modal'
-import {Pressable} from '@features/Pressable'
-import {useSafeArea} from '@hooks'
-import {themeConfig} from '@providers'
-import {colorFromVariant, display} from '@utils'
+import {Modal, PanResponderAnimation} from '..'
+import {RottUiContext} from '../../../contexts'
+import {useSafeArea} from '../../../hooks'
+import {themeConfig} from '../../../providers'
+import {colorFromVariant, display} from '../../../utils'
+import {Content} from '../../Content'
+import {Header, type HeaderProps} from '../../Header'
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Pressable} from '../../Pressable'
+import {ModalProps} from '../models'
+import {ModalStyles} from '../style'
+import {ModalContentContainer} from './ModalContainer'
 
 import {KeyboardStickyView} from 'react-native-keyboard-controller'
 import Animated, {

@@ -1,13 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import {type FC} from 'react'
 
-import type {ActionMenuProps} from '../models'
+import {ActionMenu} from '..'
+import {translator} from '../../../libs'
+import {themeConfig} from '../../../providers'
+import {display} from '../../../utils'
+import {Button} from '../../Button'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {List} from '../../List'
+import {Pressable} from '../../Pressable'
+import type {ActionMenuProps, ActionModel} from '../models'
 import {ActionMenuStyles} from '../styles'
-
-import {ActionMenu, Button, Item, Label, List, Pressable, type ActionModel} from '@features'
-import {translator} from '@libs'
-import {themeConfig} from '@providers'
-import {display} from '@utils'
 
 /**
  * Action Menu

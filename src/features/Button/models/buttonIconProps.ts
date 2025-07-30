@@ -1,4 +1,4 @@
-import {type IconProps} from '@features/Icon'
+import {type IconProps} from '../../Icon/models'
 
 export interface ButtonIconProps extends IconProps {
   absolute?: boolean

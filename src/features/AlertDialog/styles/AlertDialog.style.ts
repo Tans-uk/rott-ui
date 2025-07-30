@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-import {commonUiStyleProperties} from '@utils'
+import {commonUiStyleProperties} from '../../../utils'
 
 export const AlertDialogStyles = (props: any) =>
   StyleSheet.create({

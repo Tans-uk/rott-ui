@@ -1,11 +1,10 @@
 import type {ReactNode} from 'react'
 
+import type {IconTypes} from '../../../features/Icon/models'
+import type {ImageTypes} from '../../../features/Image/models'
+import type {ModalProps} from '../../../features/Modal/models'
+import type {Size, Variant} from '../../../models'
 import type {ResultActionModel} from './resultActionModel'
-
-import type {IconTypes} from '@features/Icon'
-import type {ImageTypes} from '@features/Image'
-import type {ModalProps} from '@features/Modal'
-import type {Size, Variant} from '@models'
 
 /**
  * Result Data Tipi

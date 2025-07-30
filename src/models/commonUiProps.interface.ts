@@ -1,7 +1,7 @@
 import {type Size} from './size.type'
 import {type Variant} from './variant.type'
 
-import {type FontFamily, type FontWeight} from '@features/Label'
+import {type FontFamily, type FontWeight} from '../features/Label/models'
 
 export interface CommonUiProps {
   heightNormalizeBased?: boolean

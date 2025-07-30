@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 
-import {themeConfig} from '@providers'
-import {commonUiStyleProperties} from '@utils'
+import {themeConfig} from '../../../providers'
+import {commonUiStyleProperties} from '../../../utils'
 
 export const ContainerStyles = ({flex, noPadding, ...props}: any) =>
   StyleSheet.create({

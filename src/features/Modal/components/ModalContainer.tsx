@@ -3,11 +3,10 @@ import {type FC} from 'react'
 
 import {ScrollView, type GestureResponderEvent} from 'react-native'
 
+import {useSafeArea} from '../../../hooks'
+import {Content} from '../../Content'
+import {Pressable} from '../../Pressable'
 import {type ModalProps} from '../models'
-
-import {Content} from '@features/Content'
-import {Pressable} from '@features/Pressable'
-import {useSafeArea} from '@hooks'
 
 interface ModalContainerProps extends ModalProps {
   onPress?: (event: GestureResponderEvent) => void

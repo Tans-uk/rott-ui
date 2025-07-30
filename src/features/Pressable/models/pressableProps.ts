@@ -7,7 +7,7 @@ import {
   type TextStyle,
 } from 'react-native'
 
-import {type CommonUiProps, type Size, type Variant} from '@models'
+import {type CommonUiProps, type Size, type Variant} from '../../../models'
 
 export interface PressableProps extends CommonUiProps, RNPressableProps {
   ref?: Ref<View> | Ref<View | Ref<View>> | any

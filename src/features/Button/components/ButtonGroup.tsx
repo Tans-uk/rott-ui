@@ -2,14 +2,13 @@ import {type FC} from 'react'
 
 import {Platform} from 'react-native'
 
+import {useSafeArea} from '../../../hooks'
+import {themeConfig} from '../../../providers'
+import {Content, type ContentProps} from '../../Content'
+import {Image, type ImageProps} from '../../Image'
+import {Item} from '../../Item'
 import type {ButtonProps} from '../models'
 import {Button} from './Button'
-
-import {Content, type ContentProps} from '@features/Content'
-import {Image, type ImageProps} from '@features/Image'
-import {Item} from '@features/Item'
-import {useSafeArea} from '@hooks'
-import {themeConfig} from '@providers'
 
 interface ButtonGroupProps extends ContentProps {
   buttons: ButtonProps | Nullable<ButtonProps>[]

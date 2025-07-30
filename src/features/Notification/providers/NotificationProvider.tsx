@@ -1,13 +1,13 @@
 import {useCallback, useMemo, useState, type FC, type PropsWithChildren} from 'react'
 
-import {Item} from '@features/Item'
 import {
   NotificationContext,
+  NotificationModel,
   notificationRef,
   ToasterNotificationProvider,
-  useNotification,
-  type NotificationModel,
-} from '@features/Notification'
+} from '..'
+import {Item} from '../../Item'
+import {useNotification} from '../hooks'
 
 import {Toast} from 'react-native-toast-notifications'
 

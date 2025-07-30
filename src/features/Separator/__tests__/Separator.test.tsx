@@ -1,7 +1,6 @@
+import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
+import {render} from '../../../__tests__/utils/testUtils'
 import {Separator} from '../components'
-
-import {render} from 'src/__tests__/utils/testUtils'
-import {commonUiTestExtension} from 'src/__tests__/utils/commonUiTestExtension'
 
 const testId = {
   separatorTestId: 'separator-test-id',

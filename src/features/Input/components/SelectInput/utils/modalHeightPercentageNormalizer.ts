@@ -1,7 +1,6 @@
+import {display} from '../../../../../utils'
 import {HEADER_HEIGHT, LIST_BOTTOM_MARGIN} from '../constants'
 import {listHeightNormalizer} from './listHeightNormalizer'
-
-import {display} from '@utils'
 
 /**
  * Modal Yuksekligini Eleman Sayisina Gore Yuzde (%) Olarak Hesaplar

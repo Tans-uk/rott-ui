@@ -1,6 +1,5 @@
+import {CommonUiProps, Variant} from '../../../models'
 import type {IconTypes} from './iconType.type'
-
-import type {CommonUiProps, Variant} from '@models'
 
 import type {SvgProps} from 'react-native-svg'
 

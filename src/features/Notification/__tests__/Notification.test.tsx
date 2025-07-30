@@ -1,6 +1,7 @@
-import {NotificationComponent, NotificationProvider} from '@features'
-import {formatMessage} from '@libs'
-import {fireEvent, render} from 'src/__tests__/utils/testUtils'
+import {fireEvent, render} from '../../../__tests__/utils/testUtils'
+import {formatMessage} from '../../../libs'
+import {NotificationComponent} from '../components'
+import {NotificationProvider} from '../providers'
 
 const mockProps = {
   title: formatMessage('TEST.WITH.PARAM', {testText: 'Test Title'}),

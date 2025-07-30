@@ -2,8 +2,8 @@ import type {PropsWithChildren, ReactNode} from 'react'
 
 import type {ModalProps as RNModalProps} from 'react-native'
 
-import type {HeaderProps} from '@features/Header'
-import type {Variant} from '@models'
+import type {Variant} from '../../../models'
+import type {HeaderProps} from '../../Header'
 
 export interface ModalProps
   extends PropsWithChildren,

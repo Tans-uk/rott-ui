@@ -5,8 +5,8 @@ import {StyleSheet} from 'react-native'
 import {type TimerProps} from '../models'
 import {TimerStyles} from '../style'
 
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
 
 export const TimerComponent: FC<TimerProps> = ({color, time, style, ...props}) => {
   const renderTime = () => {

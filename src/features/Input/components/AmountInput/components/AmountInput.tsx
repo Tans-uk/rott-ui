@@ -2,14 +2,14 @@ import {useCallback, useEffect, useRef, useState, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {themeConfig} from '../../../../../providers'
+import {Icon, type IconTypes} from '../../../../Icon'
+import {Item} from '../../../../Item'
+import {Label} from '../../../../Label'
+import {InputStyles} from '../../../styles'
+import {InputStyleNormalizer} from '../../../utils'
 import type {AmountInputProps} from '../models'
 import {AmountInputStyles} from '../styles'
-
-import {Icon, type IconTypes} from '@features/Icon'
-import {InputStyleNormalizer, InputStyles} from '@features/Input'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {themeConfig} from '@providers'
 
 export const AmountInput: FC<AmountInputProps> = ({
   fontSize,

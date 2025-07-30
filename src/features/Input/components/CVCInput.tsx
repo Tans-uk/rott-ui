@@ -2,15 +2,14 @@ import {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {formatMessage, translator} from '../../../libs'
+import {AlertDialog} from '../../AlertDialog'
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
 import type {CVCInputProps} from '../models'
 import {CVCInputStyles, InputStyles} from '../styles'
-
-import {AlertDialog} from '@features/AlertDialog'
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {Pressable} from '@features/Pressable'
-import {formatMessage, translator} from '@libs'
 
 export const CVCInput: FC<CVCInputProps> = ({fontSize, onChangeText, theme, size, ...props}) => {
   const handleTextChange = (inputText: string) => {

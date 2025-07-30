@@ -1,16 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import {isValidElement, memo, type FC} from 'react'
 
+import {themeConfig} from '../../../providers'
+import {colorFromVariant} from '../../../utils'
+import {Icon, type IconProps} from '../../Icon'
+import {CheckBoxInput} from '../../Input'
+import {Item} from '../../Item'
+import {Label, type LabelProps} from '../../Label'
+import {Pressable} from '../../Pressable'
 import type {CommonItemProps} from '../models'
 import {CommonItemContainer} from './CommonItemContainer'
-
-import {Icon, type IconProps} from '@features/Icon'
-import {CheckBoxInput} from '@features/Input'
-import {Item} from '@features/Item'
-import {Label, type LabelProps} from '@features/Label'
-import {Pressable} from '@features/Pressable'
-import {themeConfig} from '@providers'
-import {colorFromVariant} from '@utils'
 
 /**
  *  Common Item Component

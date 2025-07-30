@@ -1,8 +1,13 @@
 import {isValidElement, type FC} from 'react'
 
 import type {ToggleInputProps} from '../models'
+import { Item } from '../../Item'
+import { Separator } from '../../Separator'
+import { Toggle } from '../../Toggle'
+import { Label } from '../../Label'
+import { Input } from './Input'
 
-import {Input, Item, Label, Separator, Toggle} from '@features'
+
 
 export const ToggleInput: FC<ToggleInputProps> = ({
   testID,

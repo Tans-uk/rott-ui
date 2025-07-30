@@ -2,13 +2,12 @@ import {type FC} from 'react'
 
 import {StyleSheet, View} from 'react-native'
 
+import {themeConfig} from '../../../providers'
 import {type ContentProps} from '../models'
 import {ContentStyles} from '../styles'
 
-import {useSafeArea} from '@hooks'
-import {themeConfig} from '@providers'
-
 import {KeyboardAwareScrollView} from 'react-native-keyboard-controller'
+import {useSafeArea} from 'react-native-safe-area-context'
 
 export const Content: FC<ContentProps> = ({
   row,

@@ -1,10 +1,9 @@
 import {useState, type FC} from 'react'
 
+import {display} from '../../../utils'
+import {Item} from '../../Item'
 import {type TabWidgetProps} from '../models'
 import {TabWidgetItem} from './TabWidgetItem'
-
-import {Item} from '@features/Item'
-import {display} from '@utils'
 
 import {SceneMap, TabView} from 'react-native-tab-view'
 

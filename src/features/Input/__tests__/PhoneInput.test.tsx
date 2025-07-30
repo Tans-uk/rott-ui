@@ -1,6 +1,5 @@
+import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {PhoneInput} from '../components'
-
-import {fireEvent, render} from 'src/__tests__/utils/testUtils'
 
 describe('Phone Input -> Custom Input', () => {
   const testId = {

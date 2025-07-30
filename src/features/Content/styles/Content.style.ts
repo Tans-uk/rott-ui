@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-import {commonUiStyleProperties, display} from '@utils'
+import {commonUiStyleProperties, display} from '../../../utils'
 
 export const ContentStyles = (props?: any) =>
   StyleSheet.create({

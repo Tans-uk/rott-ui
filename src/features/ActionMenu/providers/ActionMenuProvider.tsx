@@ -1,17 +1,13 @@
 import {useCallback, useMemo, type FC, type PropsWithChildren} from 'react'
 
-import {
-  ActionMenuComponent,
-  ActionMenuContext,
-  ActionMenuHeaderComponent,
-  actionMenuRef,
-  modalHeightNormalizer,
-  useActionMenu,
-  type ActionMenuProps,
-} from '@features/ActionMenu'
-import {Modal} from '@features/Modal'
-import {themeConfig} from '@providers'
-import {display} from '@utils'
+import {ActionMenuContext, actionMenuRef} from '..'
+import {themeConfig} from '../../../providers'
+import {display} from '../../../utils'
+import {Modal} from '../../Modal'
+import {ActionMenuComponent, ActionMenuHeaderComponent} from '../components'
+import {useActionMenu} from '../hooks'
+import {ActionMenuProps} from '../models'
+import {modalHeightNormalizer} from '../utils'
 
 export const ActionMenuProvider: FC<PropsWithChildren> = ({children}) => {
   const showActionMenu = useCallback((actionMenuProps: ActionMenuProps) => {

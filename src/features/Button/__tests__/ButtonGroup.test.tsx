@@ -1,6 +1,5 @@
+import {render} from '../../../__tests__/utils/testUtils'
 import {ButtonGroup} from '../components'
-
-import {render} from 'src/__tests__/utils/testUtils'
 
 describe('ButtonGroup -> Custom Component', () => {
   const testIDs = {

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-import {commonUiStyleProperties} from '@utils'
+import {commonUiStyleProperties} from '../../../utils'
 
 export const ImageStyles = (props?: any) =>
   StyleSheet.create({

@@ -1,6 +1,5 @@
+import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {ActionMenuComponent, ActionMenuHeaderComponent} from '../components'
-
-import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 const testId = {
   actionMenuTestId: 'action-menu-test-id',

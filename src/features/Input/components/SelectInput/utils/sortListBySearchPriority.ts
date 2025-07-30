@@ -1,6 +1,5 @@
+import {searchTextNormalizer, searchTextWithTRNormalizer} from '../../../../../utils'
 import type {SelectProps} from '../models'
-
-import {searchTextNormalizer, searchTextWithTRNormalizer} from '@utils'
 
 export const sortListBySearchPriority = (list: SelectProps[], searchText: string) => {
   const normalizedSearchText = searchTextNormalizer(searchText)

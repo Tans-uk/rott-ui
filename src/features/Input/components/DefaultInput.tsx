@@ -2,11 +2,10 @@ import {useCallback, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
 import type {DefaultInputProps} from '../models'
 import {InputStyles} from '../styles'
-
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
 
 export const DefaultInput: FC<DefaultInputProps> = ({
   label,

@@ -1,4 +1,4 @@
-import type {Variant} from '@models'
+import type {Variant} from '../../../models'
 
 export interface ResultActionModel {
   title: string

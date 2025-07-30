@@ -7,14 +7,13 @@ import {
   type ImageURISource,
 } from 'react-native'
 
+import {themeConfig} from '../../../providers'
 import type {ImageProps} from '../models'
 import {ImageStyles} from '../styles'
 
-import {themeConfig} from '@providers'
-
 export const Image: FC<ImageProps> = ({variant, size, style, source, name, ...props}) => {
   const imageSource = Object.entries(themeConfig.images).find(
-    (image) => image[0]?.toLowerCase() === name?.toLowerCase()
+    (image) => image[0]?.toLowerCase() === (name as string)?.toLowerCase()
   )
 
   const uriImageSource = {...(source as ImageURISource), cache: 'reload'} as ImageSourcePropType

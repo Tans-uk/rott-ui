@@ -1,7 +1,6 @@
+import {EmptyStateProps} from '../../EmptyState'
+import type {IconProps} from '../../Icon'
 import type {AlertDialogButtonProps} from './alertDialogButtonProps'
-
-import type {EmptyStateProps} from '@features/EmptyState'
-import type {IconProps} from '@features/Icon'
 
 export interface AlertDialogModel {
   id?: number

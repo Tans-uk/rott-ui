@@ -1,7 +1,6 @@
+import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
+import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {Pressable} from '../components'
-
-import {commonUiTestExtension} from 'src/__tests__/utils/commonUiTestExtension'
-import {fireEvent, render} from 'src/__tests__/utils/testUtils'
 
 const testId = {
   pressableTestId: 'pressable-test-id',

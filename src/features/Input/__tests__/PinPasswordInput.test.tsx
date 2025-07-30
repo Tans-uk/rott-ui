@@ -1,6 +1,5 @@
+import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {PinPasswordInput} from '../components'
-
-import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Pin Password Input -> Custom Input', () => {
   const pinPasswordInputTestId = 'input-test-id'

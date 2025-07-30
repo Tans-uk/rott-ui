@@ -1,13 +1,12 @@
 import {type FC} from 'react'
 
+import {ButtonGroup} from '../../Button'
+import {Container} from '../../Container'
+import {Content} from '../../Content'
+import {EmptyState} from '../../EmptyState'
+import {Header} from '../../Header'
+import {Item} from '../../Item'
 import type {ResultScreenParamModel} from '../models'
-
-import {ButtonGroup} from '@features/Button'
-import {Container} from '@features/Container'
-import {Content} from '@features/Content'
-import {EmptyState} from '@features/EmptyState'
-import {Header} from '@features/Header'
-import {Item} from '@features/Item'
 
 /**
  * Result - Islem Sonucu Ekrani

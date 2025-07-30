@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 
-import {themeConfig} from '@providers'
-import {display} from '@utils'
+import {themeConfig} from '../../../providers'
+import {display} from '../../../utils'
 
 export const ToggleStyles = () =>
   StyleSheet.create({

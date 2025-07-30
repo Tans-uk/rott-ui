@@ -2,11 +2,10 @@ import {isValidElement, type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
+import {Label} from '../../Label'
 import type {PressableProps} from '../models'
 import {PressableStyles} from '../styles'
 import {PressableContainer} from './PressableContainer'
-
-import {Label} from '@features/Label'
 
 export const Pressable: FC<PressableProps> = ({
   text,

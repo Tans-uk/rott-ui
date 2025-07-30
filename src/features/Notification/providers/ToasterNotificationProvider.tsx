@@ -1,9 +1,8 @@
 import {type FC, type PropsWithChildren} from 'react'
 
+import {type Variant} from '../../../models'
+import {Icon, IconTypes} from '../../Icon'
 import {NotificationComponent} from '../components'
-
-import {Icon, type IconTypes} from '@features/Icon'
-import {type Variant} from '@models'
 
 import {ToastProvider} from 'react-native-toast-notifications'
 

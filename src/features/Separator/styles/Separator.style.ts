@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-import {colorFromVariant, commonUiStyleProperties} from '@utils'
+import {colorFromVariant, commonUiStyleProperties} from '../../../utils'
 
 export const SeparatorStyles = (props?: any) =>
   StyleSheet.create({

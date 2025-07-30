@@ -3741,6 +3741,7 @@ __metadata:
     react-native-svg-transformer: ">=1.5.1"
     react-native-tab-view: ">=4.0.2"
     react-native-toast-notifications: ">=3.4.0"
+    react-native-worklets: ">=0.4.0"
   languageName: unknown
   linkType: soft
 

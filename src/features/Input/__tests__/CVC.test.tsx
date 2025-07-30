@@ -1,6 +1,5 @@
+import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {CVCInput} from '../components'
-
-import {fireEvent, render} from 'src/__tests__/utils/testUtils'
 
 describe('CVC Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'

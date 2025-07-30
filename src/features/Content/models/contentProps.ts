@@ -2,7 +2,7 @@ import type {PropsWithChildren} from 'react'
 
 import type {StyleProp, ViewProps, ViewStyle} from 'react-native'
 
-import {type CommonUiProps} from '@models'
+import {type CommonUiProps} from '../../../models'
 
 export interface ContentProps extends PropsWithChildren, CommonUiProps, ViewProps {
   row?: boolean

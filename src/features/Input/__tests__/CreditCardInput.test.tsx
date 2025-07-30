@@ -1,6 +1,5 @@
+import {fireEvent, render, userEvent, waitFor} from '../../../__tests__/utils/testUtils'
 import {CreditCardInput} from '../components'
-
-import {fireEvent, render, userEvent, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('CreditCard Input -> Custom Input', () => {
   const creditCartInputTestId = 'input-test-id'

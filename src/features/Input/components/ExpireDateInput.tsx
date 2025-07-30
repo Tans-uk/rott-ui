@@ -2,10 +2,9 @@ import {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
+import {formatMessage} from '../../../libs'
 import type {ExpireDateInputProps} from '../models'
 import {InputStyles} from '../styles'
-
-import {formatMessage} from '@libs'
 
 import MaskInput from 'react-native-mask-input'
 

@@ -1,6 +1,6 @@
+import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {DateInput} from '../components'
 
-import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 import {startOfDay} from 'date-fns'
 
 describe('Date Input -> Custom Input', () => {

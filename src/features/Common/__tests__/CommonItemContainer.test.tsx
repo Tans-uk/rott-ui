@@ -1,7 +1,6 @@
+import {render} from '../../../__tests__/utils/testUtils'
 import {Label} from '../../Label'
 import {CommonItemContainer} from '../components'
-
-import {render} from 'src/__tests__/utils/testUtils'
 
 describe('Common -> Common Item Container', () => {
   it('common item container ilk renderlandığında snapshot ile eşleşmeli', () => {

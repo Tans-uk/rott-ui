@@ -1,5 +1,5 @@
-import {type Variant} from '@models'
-import {themeConfig} from '@providers'
+import {type Variant} from '../models'
+import {themeConfig} from '../providers'
 
 export const colorFromVariant = (variant: Variant = 'primary') => {
   return typeof variant === 'string' ? variant : themeConfig.colors[variant]

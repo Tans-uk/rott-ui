@@ -1,8 +1,8 @@
 import {type FC} from 'react'
 
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {themeConfig} from '@providers'
+import {themeConfig} from '../../../providers'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
 
 interface ActionMenuHeaderProps {
   title?: Nullable<string>

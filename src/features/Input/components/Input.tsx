@@ -1,6 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import {memo, useContext, type FC} from 'react'
 
+import {RottUiContext} from '../../../contexts'
+import {themeConfig} from '../../../providers'
+import {colorFromVariant} from '../../../utils'
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
+import {Separator} from '../../Separator'
 import type {InputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputStyleNormalizer} from '../utils'
@@ -22,11 +30,6 @@ import {PlateNumberInput} from './PlateNumberInput'
 import {SelectInput} from './SelectInput'
 import {StatementInput} from './StatementInput'
 import {ToggleInput} from './ToggleInput'
-
-import {RottUiContext} from '@contexts'
-import {Icon, Item, Label, Pressable, Separator} from '@features'
-import {themeConfig} from '@providers'
-import {colorFromVariant} from '@utils'
 
 export const Input: FC<InputProps> = memo((props) => {
   const {

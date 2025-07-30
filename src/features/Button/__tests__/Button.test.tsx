@@ -1,8 +1,7 @@
+import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
+import {fireEvent, render} from '../../../__tests__/utils/testUtils'
+import {colorFromVariant} from '../../../utils'
 import {Button} from '../components'
-
-import {colorFromVariant} from '@utils'
-import {fireEvent, render} from 'src/__tests__/utils/testUtils'
-import {commonUiTestExtension} from 'src/__tests__/utils/commonUiTestExtension'
 
 const testId = {
   buttonTestId: 'button-test-id',

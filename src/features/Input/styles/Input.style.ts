@@ -1,9 +1,8 @@
 import {StyleSheet} from 'react-native'
 
+import {themeConfig} from '../../../providers'
+import {commonUiStyleProperties, fontSizeNormalizer} from '../../../utils'
 import {InputStyleNormalizer} from '../utils'
-
-import {themeConfig} from '@providers'
-import {commonUiStyleProperties, fontSizeNormalizer} from '@utils'
 
 export const InputStyles = (props?: any) =>
   StyleSheet.create({

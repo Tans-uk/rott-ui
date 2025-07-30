@@ -1,4 +1,4 @@
-import type {Size} from '@models'
+import type {Size} from '../models'
 
 /**
  *

@@ -2,11 +2,13 @@ import {type FC, type PropsWithChildren} from 'react'
 
 import {Platform, StatusBar} from 'react-native'
 
-import {RottUiContext} from '@contexts'
-import {ActionMenuProvider} from '@features/ActionMenu'
-import {AlertDialogProvider} from '@features/AlertDialog'
-import {ModalProvider} from '@features/Modal'
-import {NotificationProvider} from '@features/Notification'
+import {RottUiContext} from '../contexts'
+import {
+  ActionMenuProvider,
+  AlertDialogProvider,
+  ModalProvider,
+  NotificationProvider,
+} from '../features'
 
 import {
   getApiLevelSync,
@@ -15,6 +17,7 @@ import {
   hasDynamicIsland,
   hasNotch,
 } from 'react-native-device-info'
+import {SafeAreaProvider} from 'react-native-safe-area-context'
 
 interface RottProviderProps extends PropsWithChildren {
   config?: any
@@ -306,29 +309,31 @@ export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
   if (config) themeConfig = {...themeConfig, ...config}
 
   return (
-    <RottUiContext.Provider
-      value={{
-        language: {
-          name: 'en-US',
-        },
-        hasDynamicIsland: hasDynamicIsland(),
-        hasNotch:
-          !hasNotch() && Platform.OS === 'android' && StatusBar.currentHeight! > 24
-            ? true
-            : hasNotch(),
-        deviceInfo: {
-          operatingSystemVersion: getSystemVersion(),
-          apiLevel: getApiLevelSync(),
-          totalMemory: getTotalMemorySync(),
-        },
-      }}>
-      <NotificationProvider>
-        <ModalProvider>
-          <ActionMenuProvider>
-            <AlertDialogProvider>{children}</AlertDialogProvider>
-          </ActionMenuProvider>
-        </ModalProvider>
-      </NotificationProvider>
-    </RottUiContext.Provider>
+    <SafeAreaProvider>
+      <RottUiContext.Provider
+        value={{
+          language: {
+            name: 'en-US',
+          },
+          hasDynamicIsland: hasDynamicIsland(),
+          hasNotch:
+            !hasNotch() && Platform.OS === 'android' && StatusBar.currentHeight! > 24
+              ? true
+              : hasNotch(),
+          deviceInfo: {
+            operatingSystemVersion: getSystemVersion(),
+            apiLevel: getApiLevelSync(),
+            totalMemory: getTotalMemorySync(),
+          },
+        }}>
+        <NotificationProvider>
+          <ModalProvider>
+            <ActionMenuProvider>
+              <AlertDialogProvider>{children}</AlertDialogProvider>
+            </ActionMenuProvider>
+          </ModalProvider>
+        </NotificationProvider>
+      </RottUiContext.Provider>
+    </SafeAreaProvider>
   )
 }

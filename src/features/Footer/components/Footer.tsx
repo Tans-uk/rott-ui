@@ -1,6 +1,6 @@
 import type {FC, PropsWithChildren} from 'react'
 
-import {Content} from '@features/Content'
+import {Content} from '../../Content'
 
 export const Footer: FC<PropsWithChildren> = ({children}) => {
   return (

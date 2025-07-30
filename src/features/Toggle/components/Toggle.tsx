@@ -1,11 +1,10 @@
 import {useEffect, useMemo, type FC} from 'react'
 
+import {themeConfig} from '../../../providers'
+import {display} from '../../../utils'
+import {Item} from '../../Item'
+import {Pressable} from '../../Pressable'
 import {ToggleStyles} from '../style'
-
-import {Item} from '@features/Item'
-import {Pressable} from '@features/Pressable'
-import {themeConfig} from '@providers'
-import {display} from '@utils'
 
 import Animated, {
   Easing,

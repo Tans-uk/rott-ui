@@ -1,4 +1,4 @@
-import {en, formatMessage, tr, translator} from '@libs'
+import {en, formatMessage, tr, translator} from '../../../../libs'
 
 describe('Util -> Translator', () => {
   it('english dil snapshotı eşleşmeli', () => {

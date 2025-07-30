@@ -1,4 +1,4 @@
-import type {BaseInputProps} from './baseInputProps.interface'
+import {BaseInputProps} from './baseInputProps.interface'
 
 export interface PhoneInputProps extends BaseInputProps {
   type?: 'phone'

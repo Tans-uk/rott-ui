@@ -1,6 +1,5 @@
+import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {PlateNumberInput} from '../components'
-
-import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Plate Number Input -> Custom Input', () => {
   const plateNumberInputTestId = 'input-test-id'

@@ -2,14 +2,13 @@ import {type FC} from 'react'
 
 import {Linking} from 'react-native'
 
+import {themeConfig} from '../../../providers'
+import {Icon} from '../../Icon'
+import {Image} from '../../Image'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
 import type {BottomMenuItemModel} from '../models'
 import {BottomMenuStyles} from '../styles'
-
-import {Icon} from '@features/Icon'
-import {Image} from '@features/Image'
-import {Label} from '@features/Label'
-import {Pressable} from '@features/Pressable'
-import {themeConfig} from '@providers'
 
 export const BottomMenuItem: FC<BottomMenuItemModel> = ({
   testID,

@@ -1,8 +1,8 @@
 import type {FC, PropsWithChildren} from 'react'
 
-import {en, tr} from '@libs'
-import {themeConfig} from '@providers'
-// Package Imports
+import {en, tr} from '../../../libs'
+import {themeConfig} from '../../../providers'
+
 import {IntlProvider} from 'react-intl'
 
 export const languageMessages = {

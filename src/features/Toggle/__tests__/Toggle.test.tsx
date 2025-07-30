@@ -1,7 +1,6 @@
+import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
+import {themeConfig} from '../../../providers'
 import {Toggle} from '../components'
-
-import {themeConfig} from '@providers'
-import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Toggle -> Custom Component', () => {
   const toggleContainerTestId = 'toggle-container-test-id'

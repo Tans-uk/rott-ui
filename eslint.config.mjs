@@ -15,7 +15,7 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
   allConfig: js.configs.all,
-});
+})
 
 export default defineConfig([
   js.configs.recommended,
@@ -28,12 +28,6 @@ export default defineConfig([
       '@typescript-eslint': typescriptEslint
     },
     rules: {
-      'prettier/prettier': ['error', {
-        singleQuote: true,
-        tabWidth: 2,
-        trailingComma: 'es5',
-        useTabs: false,
-      }],
       'react/react-in-jsx-scope': 'off',
       'react-hooks/exhaustive-deps': 'off',
       '@typescript-eslint/no-unused-vars': 'error',

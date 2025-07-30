@@ -1,11 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import {type FC} from 'react'
 
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {Pressable} from '@features/Pressable'
-import {themeConfig} from '@providers'
-import {display} from '@utils'
+import {themeConfig} from '../../../providers'
+import {display} from '../../../utils'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
 
 import {TabBar, type NavigationState, type SceneRendererProps} from 'react-native-tab-view'
 

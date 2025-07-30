@@ -1,6 +1,6 @@
+import {IconProps} from '../../../../Icon'
+import type {BaseInputProps} from '../../../models'
 import type {DataModel} from './dataModel.interface'
-
-import type {BaseInputProps, IconProps} from '@features'
 
 import type {DatePickerProps} from 'react-native-date-picker'
 

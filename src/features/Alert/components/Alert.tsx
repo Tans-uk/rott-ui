@@ -1,12 +1,11 @@
 import {type FC} from 'react'
 
+import {type CommonUiProps} from '../../../models'
+import {colorFromVariant} from '../../../utils'
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
 import type {AlertModel} from '../models'
-
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {type CommonUiProps} from '@models'
-import {colorFromVariant} from '@utils'
 
 interface AlertProps extends AlertModel, Omit<CommonUiProps, 'size' | 'variant'> {
   testID?: string

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-import {display} from '@utils'
+import {display} from '../../../../../utils'
 
 export const SelectInputStyles = () =>
   StyleSheet.create({

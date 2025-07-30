@@ -1,6 +1,6 @@
 import {type ImageResizeMode} from 'react-native'
 
-import {type ImageTypes} from '@features/Image'
+import {type ImageTypes} from '../../Image'
 
 export interface ButtonImageProps {
   name?: ImageTypes

@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import {useContext} from 'react'
+
 import {
   createIntl,
   createIntlCache,
@@ -7,15 +9,12 @@ import {
   type PrimitiveType,
 } from 'react-intl'
 
-import {useContext} from 'react'
-
 import '@utils/arrayExtensions'
 import '@utils/stringExtensions'
 
+import {RottUiContext} from '../../../contexts'
 import {languageMessages} from '../providers'
 import type {TranslationLanguageTypes} from './models'
-
-import {RottUiContext} from '@contexts'
 
 /**
  *

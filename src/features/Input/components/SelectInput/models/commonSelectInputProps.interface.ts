@@ -1,10 +1,10 @@
 import type {ReactNode, Ref} from 'react'
 
+import {Size} from '../../../../../models'
+import type {EmptyStateProps} from '../../../../EmptyState/models'
+import type {BaseInputProps} from '../../../models'
 import type {SelectProps} from './selectProps.interface'
 
-import type {EmptyStateProps} from '@features/EmptyState'
-import type {BaseInputProps} from '@features/Input/models'
-import type {Size} from '@models'
 import type {FlashListProps} from '@shopify/flash-list'
 
 /** TODO: BasInputProps'tan herhangi bir property omit edilmemelidir.

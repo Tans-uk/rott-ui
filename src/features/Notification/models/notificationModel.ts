@@ -1,4 +1,5 @@
-import type {Variant} from '@models'
+import { Variant } from "../../../models"
+
 
 export interface NotificationModel {
   title: string

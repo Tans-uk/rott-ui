@@ -2,11 +2,11 @@
 
 import {type FC} from 'react'
 
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {Label} from '@features/Label'
-import {type CommonUiProps, type Variant} from '@models'
-import {colorFromVariant} from '@utils'
+import {Icon} from '../../../../Icon'
+import {Item} from '../../../../Item'
+import {Label} from '../../../../Label'
+import {type CommonUiProps, type Variant} from '../../../../../models'
+import {colorFromVariant} from '../../../../../utils'
 
 export interface InputValidationProps extends CommonUiProps {
   name: string

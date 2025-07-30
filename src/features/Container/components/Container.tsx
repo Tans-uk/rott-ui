@@ -2,12 +2,11 @@ import type {FC, PropsWithChildren} from 'react'
 
 import {ScrollView, StyleSheet, View, type ViewProps} from 'react-native'
 
+import {useSafeArea} from '../../../hooks'
+import {type CommonUiProps} from '../../../models'
+import {themeConfig} from '../../../providers'
+import {Pressable} from '../../Pressable'
 import {ContainerStyles} from '../styles'
-
-import {Pressable} from '@features/Pressable'
-import {useSafeArea} from '@hooks'
-import {type CommonUiProps} from '@models'
-import {themeConfig} from '@providers'
 
 import {SystemBars} from 'react-native-edge-to-edge'
 

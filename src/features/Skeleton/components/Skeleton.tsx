@@ -2,9 +2,10 @@ import {useEffect, type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
-import {Item, type SkeletonStyleProps} from '@features'
-import {themeConfig} from '@providers'
-import {display} from '@utils'
+import {themeConfig} from '../../../providers'
+import {display} from '../../../utils'
+import {Item} from '../../Item'
+import type {SkeletonStyleProps} from '../models'
 
 import LinearGradient from 'react-native-linear-gradient'
 import Animated, {

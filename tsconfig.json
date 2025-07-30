@@ -1,26 +1,6 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "baseUrl": "./",
-    "paths": {
-      "@tansuk/rott-ui": ["./src"],
-      "@features": ["./src/features"],
-      "@features/*": ["./src/features/*"],
-      "@constants": ["./src/constants"],
-      "@constants/*": ["./src/constants/*"],
-      "@utils": ["./src/utils"],
-      "@utils/*": ["./src/utils/*"],
-      "@libs": ["./src/libs"],
-      "@libs/*": ["./src/libs/*"],
-      "@hooks": ["./src/hooks"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@models": ["./src/models"],
-      "@models/*": ["./src/models/*"],
-      "@providers": ["./src/providers"],
-      "@providers/*": ["./src/providers/*"],
-      "@contexts": ["./src/contexts"],
-      "@contexts/*": ["./src/contexts/*"]
-    },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
@@ -43,6 +23,10 @@
     "target": "ESNext",
     "verbatimModuleSyntax": false,
     "types": ["jest", "node"],
-    "typeRoots": ["./node_modules/@types/"],
-  }
+    "typeRoots": ["./node_modules/@types/"]
+  },
+  "exclude": [
+    "example",
+    "example-rn-cli",
+  ]
 }

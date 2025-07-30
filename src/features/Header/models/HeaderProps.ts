@@ -2,11 +2,10 @@ import {type PropsWithChildren} from 'react'
 
 import {type ViewProps} from 'react-native'
 
+import {type CommonUiProps} from '../../../models'
+import type {ImageTypes} from '../../Image/models'
+import type {LabelProps} from '../../Label/models'
 import type {HeaderIconProps} from './HeaderIconProps'
-
-import type {ImageTypes} from '@features/Image'
-import type {LabelProps} from '@features/Label'
-import {type CommonUiProps} from '@models'
 
 export interface HeaderProps extends ViewProps, CommonUiProps, PropsWithChildren {
   back?: boolean

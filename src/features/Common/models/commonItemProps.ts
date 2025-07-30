@@ -1,8 +1,8 @@
 import {type ReactNode} from 'react'
 
-import {type IconProps, type IconTypes} from '@features/Icon'
-import {type LabelProps} from '@features/Label'
-import {type CommonUiProps, type Variant} from '@models'
+import {type CommonUiProps, type Variant} from '../../../models'
+import {type IconProps, type IconTypes} from '../../Icon'
+import {type LabelProps} from '../../Label'
 
 export interface CommonItemProps extends CommonUiProps {
   testID?: string

@@ -8,12 +8,11 @@ import {
   type TextInputSelectionChangeEventData,
 } from 'react-native'
 
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Pressable} from '../../Pressable'
 import type {PasswordInputProps} from '../models'
 import {InputStyles, PasswordInputStyles} from '../styles'
-
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {Pressable} from '@features/Pressable'
 
 export const PasswordInput: FC<PasswordInputProps> = ({
   fontSize,

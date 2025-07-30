@@ -1,5 +1,5 @@
-import type {Size} from '@models'
-import {display} from '@utils'
+import type {Size} from '../../../models'
+import {display} from '../../../utils'
 
 export const buttonSizeNormalizer = (buttonSize: Size | {width: string; height: string}) => {
   switch (buttonSize) {

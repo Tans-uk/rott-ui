@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {memo} from 'react'
 
-import {Item} from '@features/Item'
+import {Item} from '../../Item'
 
 export const ListSkeletonItem = memo(() => {
   return (

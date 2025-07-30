@@ -2,21 +2,21 @@ import {useState, type FC} from 'react'
 
 import {ActivityIndicator} from 'react-native'
 
+import {formatMessage} from '../../../../../libs'
+import {themeConfig} from '../../../../../providers'
+import {display, searchTextNormalizer} from '../../../../../utils'
+import {CommonItem} from '../../../../Common'
+import {Icon} from '../../../../Icon'
+import {Item} from '../../../../Item'
+import {List} from '../../../../List'
+import {Pressable} from '../../../../Pressable'
 import {DefaultInput} from '../../DefaultInput'
 import {ITEM_HEIGHT, LIST_MAX_ITEM_COUNT} from '../constants'
 import {type SelectInputModalComponentProps, type SelectProps} from '../models'
 import {SelectInputStyles} from '../styles'
 import {listHeightNormalizer, sortListBySearchPriority} from '../utils'
 
-import {CommonItem} from '@features/Common'
-import {Icon} from '@features/Icon'
-import {Item} from '@features/Item'
-import {List} from '@features/List'
-import {Pressable} from '@features/Pressable'
-import {formatMessage} from '@libs'
-import {themeConfig} from '@providers'
-import type {ListRenderItem} from '@shopify/flash-list'
-import {display, searchTextNormalizer} from '@utils'
+import {ListRenderItem} from '@shopify/flash-list'
 
 export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
   searchable,

@@ -2,10 +2,9 @@ import {type PropsWithChildren} from 'react'
 
 import {type TouchableOpacityProps} from 'react-native'
 
+import {type CommonUiProps, type Size, type Variant} from '../../../models'
 import {type ButtonIconProps} from './buttonIconProps'
 import {type ButtonImageProps} from './buttonImageProps'
-
-import {type CommonUiProps, type Size, type Variant} from '@models'
 
 export interface ButtonProps
   extends TouchableOpacityProps,

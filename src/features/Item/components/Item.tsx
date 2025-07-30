@@ -2,10 +2,9 @@ import {type FC} from 'react'
 
 import {StyleSheet, View, type ViewProps} from 'react-native'
 
+import {type CommonUiProps} from '../../../models'
+import {Skeleton, type SkeletonStyleProps} from '../../Skeleton'
 import {ItemStyles} from '../styles'
-
-import {Skeleton, type SkeletonStyleProps} from '@features/Skeleton'
-import {type CommonUiProps} from '@models'
 
 interface ItemProps extends ViewProps, CommonUiProps {
   row?: boolean

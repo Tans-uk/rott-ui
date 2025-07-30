@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 
-import {themeConfig} from '@providers'
-import {commonUiStyleProperties, display} from '@utils'
+import {themeConfig} from '../../../providers'
+import {commonUiStyleProperties, display} from '../../../utils'
 
 export const TabStyle = (props?: any) =>
   StyleSheet.create({

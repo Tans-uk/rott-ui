@@ -1,8 +1,7 @@
+import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
+import {Icon, type IconTypes} from '../../Icon'
+import type {ImageTypes} from '../../Image'
 import {Header} from '../components'
-
-import {Icon, type IconTypes} from '@features/Icon'
-import type {ImageTypes} from '@features/Image'
-import {fireEvent, render, waitFor} from 'src/__tests__/utils/testUtils'
 
 describe('Header -> Custom Component', () => {
   const testId = {

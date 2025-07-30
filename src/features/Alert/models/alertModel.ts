@@ -1,6 +1,6 @@
-import type {IconProps} from '@features/Icon'
-import type {LabelProps} from '@features/Label'
-import type {Size, Variant} from '@models'
+import type {Size, Variant} from '../../../models'
+import type {IconProps} from '../../Icon'
+import type {LabelProps} from '../../Label'
 
 export interface AlertModel {
   text: string | LabelProps

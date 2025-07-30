@@ -1,5 +1,5 @@
-import {type Size} from '@models'
-import {display, fontSizeNormalizer} from '@utils'
+import {type Size} from '../../../models'
+import {display, fontSizeNormalizer} from '../../../utils'
 
 interface InputStyleProps {
   height: number

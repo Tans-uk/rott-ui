@@ -2,7 +2,7 @@ import {createContext} from 'react'
 
 import {Platform, StatusBar} from 'react-native'
 
-import {RottUiContextModel} from '@models/rottUiContextModel.interface'
+import {RottUiContextModel} from '../models/rottUiContextModel.interface'
 
 import {
   getApiLevelSync,

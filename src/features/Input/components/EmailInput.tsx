@@ -4,8 +4,7 @@ import {StyleSheet, TextInput} from 'react-native'
 
 import type {EmailInputProps} from '../models'
 import {InputStyles} from '../styles'
-
-import {Item} from '@features'
+import { Item } from '../../Item'
 
 export const EmailInput: FC<EmailInputProps> = ({
   disabled,

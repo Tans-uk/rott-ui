@@ -1,9 +1,7 @@
+import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
+import {fireEvent, render} from '../../../__tests__/utils/testUtils'
+import {Label} from '../../Label'
 import {Tab} from '../Tab'
-
-import {Label} from '@features/Label'
-
-import {fireEvent, render} from 'src/__tests__/utils/testUtils'
-import { commonUiTestExtension } from 'src/__tests__/utils/commonUiTestExtension'
 
 const testId = {
   tabTestId: (name: string) => `${name}-test-id`,

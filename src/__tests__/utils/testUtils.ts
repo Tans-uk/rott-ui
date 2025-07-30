@@ -1,4 +1,5 @@
-import {RottProvider} from '@providers'
+import {RottProvider} from '../../providers'
+
 import {render} from '@testing-library/react-native'
 
 /**

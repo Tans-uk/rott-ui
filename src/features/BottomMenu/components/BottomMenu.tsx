@@ -2,12 +2,11 @@ import {type FC} from 'react'
 
 import {Platform} from 'react-native'
 
+import {useSafeArea} from '../../../hooks'
+import {themeConfig} from '../../../providers'
+import {Content} from '../../Content'
 import type {BottomMenuItemModel} from '../models'
 import {BottomMenuItem} from './BottomMenuItem'
-
-import {Content} from '@features/Content'
-import {useSafeArea} from '@hooks'
-import {themeConfig} from '@providers'
 
 interface BottomMenuProps {
   menuItems: BottomMenuItemModel[]

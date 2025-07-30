@@ -1,4 +1,4 @@
-import {formatMessage, type TranslationLanguageTypes} from '@libs'
+import {formatMessage, type TranslationLanguageTypes} from '../../../libs'
 
 export const formatByDateMode = (
   mode: 'date' | 'time' | 'datetime' | 'modal-date' | 'modal-time' | 'modal-datetime',
