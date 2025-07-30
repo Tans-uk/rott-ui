@@ -1,6 +1,6 @@
 {
   "name": "@tansuk/rott-ui",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "This is property based full built-in UI Kit for React-Native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
