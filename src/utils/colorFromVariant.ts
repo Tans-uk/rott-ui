@@ -2,7 +2,9 @@ import {type Variant} from '../models'
 import {themeConfig} from '../providers'
 
 export const colorFromVariant = (variant: Variant = 'primary') => {
-  return typeof variant === 'string' ? variant : themeConfig.colors[variant]
+  return Object.keys(themeConfig.colors).includes(variant)
+    ? themeConfig.colors[variant as keyof typeof themeConfig.colors]
+    : variant
 }
 
 export const textcolorFromVariant = (variant: Variant = 'primary') => {
