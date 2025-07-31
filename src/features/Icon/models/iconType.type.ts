@@ -1,3 +1,3 @@
 import {themeConfig} from '../../../providers'
 
-export type IconTypes = Keyof<typeof themeConfig.icons>
+export type IconTypes = keyof typeof themeConfig.icons

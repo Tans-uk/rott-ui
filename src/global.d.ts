@@ -30,19 +30,5 @@ interface Array<T> {
   hasItems: () => boolean
 }
 
-/**
- * İstenilen tipi **typeof** olarak verirseniz objenin içinde ki tüm keyleri alacak şekilde nesne türetir.
- *
- * Örnek;
- * ```
- * import en from '@libs/i18n'
- *
- * keyof typeof en
- * ```
- * **translator** ve Icon elementinin **name** propertysine bakılabilir.
- *
- */
-type Keyof<T> = keyof T
-
 import('./../node_modules/react-native-reanimated/src/reanimated2/globals')
 typeof globalThis

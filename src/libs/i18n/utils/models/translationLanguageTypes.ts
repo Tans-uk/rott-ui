@@ -1,3 +1,3 @@
 import type {en} from '../..'
 
-export type TranslationLanguageTypes = Keyof<typeof en>
+export type TranslationLanguageTypes = keyof typeof en
