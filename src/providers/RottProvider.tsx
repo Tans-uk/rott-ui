@@ -42,6 +42,11 @@ export let themeConfig = {
     warning: 'rgba(255, 117, 24, 1)',
     mint: 'rgba(32, 150, 110, 1)',
 
+    'success-notification': 'rgba(72, 193, 181, 1)',
+    'danger-notification': 'rgba(209, 94, 83, 1)',
+    'warning-notification': 'rgba(255, 173, 50, 1)',
+    'info-notification': 'rgba(77, 175, 234, 1)',
+
     // NEUTRAL/ALPHA
     'neutral-alpha-900': 'rgba(34, 63, 70, 0.9)',
     'neutral-alpha-700': 'rgba(34, 63, 70, 0.75)',
