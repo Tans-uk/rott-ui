@@ -2,7 +2,7 @@
 alwaysApply: true
 ---
 
-# Rules for commit messages
+# Rules for commit message
 
 - You must follow https://github.com/conventional-changelog/commitlint/#what-is-commitlint rules for commit messages.
 - Commit messages must be in English.

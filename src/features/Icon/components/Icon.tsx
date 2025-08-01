@@ -17,8 +17,7 @@ export const Icon: FC<IconProps> = ({
   opacity,
   ...props
 }) => {
-  const IconComponent = themeConfig.icons[name]
-
+  const IconComponent = themeConfig.icons[name]?.default
   if (!IconComponent) return null
 
   // Convert opacity to number if it's a string, ensuring type compatibility with ItemProps
