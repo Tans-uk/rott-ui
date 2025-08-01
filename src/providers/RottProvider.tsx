@@ -190,7 +190,7 @@ export let themeConfig = {
     USD: require('../assets/icons/svg/currency/ptt-usd.svg'),
 
     // Interface Imports
-    SEND_MONEY: require('../assets/icons/svg/interface/ptt-send-money.svg'),
+    SEND_MONEY: require('../assets/icons/svg/interface/ptt-sendmoney.svg'),
     ABOUT_PHONE: require('../assets/icons/svg/interface/ptt-about-phone.svg'),
     ARROW_DOWN: require('../assets/icons/svg/interface/ptt-arrow-down.svg'),
     ARROW_LEFT: require('../assets/icons/svg/interface/ptt-arrow-left.svg'),
