@@ -42,10 +42,10 @@ config.resolver = {
   ],
 }
 
-// SVG transformer
-config.transformer = {
-  ...config.transformer,
-  babelTransformerPath: require.resolve('react-native-svg-transformer'),
-}
+// // SVG transformer
+// config.transformer = {
+//   ...config.transformer,
+//   babelTransformerPath: require.resolve('react-native-svg-transformer'),
+// }
 
 module.exports = config
