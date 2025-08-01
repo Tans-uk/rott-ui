@@ -69,7 +69,9 @@ export const ButtonStyles = (props?: any) => {
             : undefined,
 
       opacity: props?.disabled ? 0.6 : 1,
-      backgroundColor: colorFromVariant(props?.variant),
+      backgroundColor: props?.backgroundColor
+        ? props?.backgroundColor
+        : colorFromVariant(props?.variant),
     },
     buttonTextStyle: {
       color: props?.color ? colorFromVariant(props?.color) : textcolorFromVariant(props?.variant),
