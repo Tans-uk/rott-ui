@@ -21,7 +21,7 @@ describe('Common -> Common Item', () => {
       color: themeConfig.colors.primary,
     },
     rightIcon: {
-      name: 'ADD',
+      name: 'PLUS',
       width: 24,
       height: 24,
       color: themeConfig.colors.primary,

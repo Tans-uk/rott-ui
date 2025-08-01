@@ -36,7 +36,7 @@ export const ToasterNotificationProvider: FC<PropsWithChildren> = ({children}) =
             title={title}
             description={description}
             variantColor='rgba(209, 94, 83, 1)'
-            iconElement={notificationIcon('INFORMATION_CIRCLE_FILL', 'danger-notification')}
+            iconElement={notificationIcon('INFORMATION_CIRCLE', 'danger-notification')}
             onClose={onHide}
           />
         ),
@@ -45,7 +45,7 @@ export const ToasterNotificationProvider: FC<PropsWithChildren> = ({children}) =
             title={title}
             description={description}
             variantColor='rgba(255, 173, 50, 1)'
-            iconElement={notificationIcon('INFORMATION_CIRCLE_FILL', 'warning-notification')}
+            iconElement={notificationIcon('INFORMATION_CIRCLE', 'warning-notification')}
             onClose={onHide}
           />
         ),
@@ -54,7 +54,7 @@ export const ToasterNotificationProvider: FC<PropsWithChildren> = ({children}) =
             title={title}
             description={description}
             variantColor='rgba(77, 175, 234, 1)'
-            iconElement={notificationIcon('INFORMATION_CIRCLE_FILL', 'info-notification')}
+            iconElement={notificationIcon('INFORMATION_CIRCLE', 'info-notification')}
             onClose={onHide}
           />
         ),
