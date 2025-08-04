@@ -45,7 +45,7 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
         <Text
           style={
             {
-              "color": "grey-900",
+              "color": "rgba(34, 63, 70, 1)",
               "fontFamily": "Markpro-Bold",
               "fontSize": 10,
               "fontWeight": undefined,
@@ -60,7 +60,7 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
       </View>
       <View
         backgroundColor="rgba(255, 255, 255, 1)"
-        borderColor="primary"
+        borderColor="rgba(0, 169, 206, 1)"
         paddingHorizontal={16}
         style={
           {
@@ -99,7 +99,7 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
     <View
       style={
         {
-          "backgroundColor": "neutral-alpha-200",
+          "backgroundColor": "rgba(34, 63, 70, 0.15)",
           "height": 2,
           "maxHeight": 2,
           "opacity": 1,

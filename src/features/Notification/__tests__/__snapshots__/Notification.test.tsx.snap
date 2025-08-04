@@ -64,7 +64,7 @@ exports[`Notification -> Custom Component notification ilk render anında snapsh
       left={0}
       style={
         {
-          "backgroundColor": "info-notification",
+          "backgroundColor": "rgba(77, 175, 234, 1)",
           "flex": undefined,
           "flexDirection": "column",
           "justifyContent": "center",
@@ -123,7 +123,7 @@ exports[`Notification -> Custom Component notification ilk render anında snapsh
           lineBreakMode="tail"
           style={
             {
-              "color": "white",
+              "color": "rgba(255, 255, 255, 1)",
               "fontFamily": "Markpro-Book",
               "fontSize": 14,
               "fontWeight": 500,
@@ -138,7 +138,7 @@ exports[`Notification -> Custom Component notification ilk render anında snapsh
           marginTop={4}
           style={
             {
-              "color": "white",
+              "color": "rgba(255, 255, 255, 1)",
               "fontFamily": "Markpro-Book",
               "fontSize": 12,
               "fontWeight": 500,
