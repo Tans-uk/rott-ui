@@ -102,10 +102,8 @@ export const Header: FC<HeaderProps> = ({
                 height={24}
                 strokeWidth={back ? 2 : leftIcon?.strokeWidth}
                 variant={(leftIcon as IconProps)?.variant}
-                mode={(leftIcon as IconProps)?.mode ?? 'stroke'}
-                noStroke={
-                  (leftIcon as IconProps)?.noStroke ?? (leftIcon as IconProps)?.mode === 'fill'
-                }
+                mode={(leftIcon as IconProps)?.mode}
+                noStroke={(leftIcon as IconProps)?.noStroke}
                 {...(typeof leftIcon === 'object' ? (leftIcon as IconProps) : {})}
                 name={back ? 'CHEVRON_LEFT' : ((leftIcon as IconProps)?.name ?? leftIcon)}
               />
@@ -184,10 +182,8 @@ export const Header: FC<HeaderProps> = ({
                 height={24}
                 strokeWidth={back ? 2 : rightIcon?.strokeWidth}
                 variant={(rightIcon as IconProps)?.variant}
-                mode={(rightIcon as IconProps)?.mode ?? 'stroke'}
-                noStroke={
-                  (rightIcon as IconProps)?.noStroke ?? (rightIcon as IconProps)?.mode === 'fill'
-                }
+                mode={(rightIcon as IconProps)?.mode}
+                noStroke={(rightIcon as IconProps)?.noStroke}
                 {...(typeof rightIcon === 'object' ? (rightIcon as IconProps) : {})}
                 name={(rightIcon as IconProps)?.name ?? rightIcon}
               />

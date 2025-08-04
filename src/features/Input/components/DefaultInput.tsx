@@ -60,8 +60,8 @@ export const DefaultInput: FC<DefaultInputProps> = ({
         height={icon.height ?? 24}
         name={icon.name}
         mode={icon.mode}
-        noStroke={icon.mode === 'fill'}
-        strokeWidth={icon.mode === 'stroke' ? (icon.strokeWidth ?? 1.5) : undefined}
+        noStroke={icon.noStroke}
+        strokeWidth={icon.strokeWidth}
       />
       <TextInput
         editable={!disabled}

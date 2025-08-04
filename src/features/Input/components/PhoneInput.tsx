@@ -100,7 +100,6 @@ export const PhoneInput: FC<PhoneInputProps> = ({
               width={InputStyleNormalizer({size}).icon.width}
               height={InputStyleNormalizer({size}).icon.height}
               color={themeConfig.colors['grey-200']}
-              mode='stroke'
             />
           </Pressable>
         </Item>

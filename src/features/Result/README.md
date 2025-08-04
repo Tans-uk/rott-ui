@@ -3,7 +3,7 @@
 | Params      | Type                        | isRequire            | Description                                                                                     |
 | ----------- | --------------------------- | -------------------- | ----------------------------------------------------------------------------------------------- |
 | variant     | `string` -> `ResultVariant` | :white_check_mark:   | `success` `error` `warning` `info` degerlerinden birini almalidir                               |
-| iconName    | `string` -> `IconKeys`     | :white_check_mark:   | Sonuç ekranında gösterilecek olan Icon ismi. `RESULT_NAME` seklinde adlandırmak uygun olacaktır |
+| iconName    | `string` -> `IconKeys`      | :white_check_mark:   | Sonuç ekranında gösterilecek olan Icon ismi. `RESULT_NAME` seklinde adlandırmak uygun olacaktır |
 | actions     | `ResultActionsProps[]`      | :white_large_square: | Sonuç ekranında çıkacak buton listesi                                                           |
 | onClose     | `function`                  | :white_large_square: | Modal Kapatılırken Yapılacak İşlemler                                                           |
 | title       | `string` or `JSX.Element`   | :white_large_square: | Icon altında bulunan başlık gölümü                                                              |

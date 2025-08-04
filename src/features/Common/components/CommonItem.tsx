@@ -155,10 +155,8 @@ export const CommonItem: FC<CommonItemProps> = memo(
                       width={24}
                       height={24}
                       variant={(leftIcon as IconProps)?.variant ?? 'grey-900'}
-                      mode={(leftIcon as IconProps)?.mode ?? 'stroke'}
-                      noStroke={
-                        (leftIcon as IconProps)?.noStroke ?? (leftIcon as IconProps).mode === 'fill'
-                      }
+                      mode={(leftIcon as IconProps)?.mode}
+                      noStroke={(leftIcon as IconProps)?.noStroke}
                       {...(typeof leftIcon === 'object' ? (leftIcon as IconProps) : {})}
                       name={(leftIcon as IconProps)?.name ?? leftIcon}
                     />
@@ -279,11 +277,8 @@ export const CommonItem: FC<CommonItemProps> = memo(
                       width={24}
                       height={24}
                       variant={(rightIcon as IconProps).variant ?? 'grey-900'}
-                      mode={(rightIcon as IconProps).mode ?? 'stroke'}
-                      noStroke={
-                        (rightIcon as IconProps).noStroke ??
-                        (rightIcon as IconProps).mode === 'fill'
-                      }
+                      mode={(rightIcon as IconProps).mode}
+                      noStroke={(rightIcon as IconProps).noStroke}
                       {...(typeof rightIcon === 'object' ? (rightIcon as IconProps) : {})}
                       name={(rightIcon as IconProps).name ?? rightIcon}
                     />
