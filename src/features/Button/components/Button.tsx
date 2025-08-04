@@ -5,7 +5,7 @@ import {ActivityIndicator, StyleSheet, TouchableOpacity} from 'react-native'
 import {Size} from '../../../models'
 import {themeConfig} from '../../../providers'
 import {display} from '../../../utils'
-import {Icon, IconTypes} from '../../Icon'
+import {Icon, IconKeys} from '../../Icon'
 import {Image} from '../../Image'
 import {Label} from '../../Label'
 import type {ButtonProps} from '../models'
@@ -87,7 +87,7 @@ export const Button: FC<ButtonProps> = ({
           testID='button-left-icon-test-id'
           marginRight={leftIcon.absolute ? 0 : 8}
           variant={leftIcon?.variant}
-          name={leftIcon?.name as IconTypes}
+          name={leftIcon?.name as IconKeys}
           width={
             leftIcon?.width ??
             buttonSizeNormalizer(typeof size === 'string' ? size : (size.height as Size)).icon
@@ -159,7 +159,7 @@ export const Button: FC<ButtonProps> = ({
           testID='button-right-icon-test-id'
           marginLeft={rightIcon.absolute ? 0 : 8}
           variant={rightIcon?.variant}
-          name={rightIcon?.name as IconTypes}
+          name={rightIcon?.name as IconKeys}
           width={
             rightIcon.width ??
             buttonSizeNormalizer(typeof size === 'string' ? size : (size.height as Size)).icon

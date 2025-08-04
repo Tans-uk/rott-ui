@@ -1,6 +1,6 @@
 import type {ReactNode} from 'react'
 
-import type {IconTypes} from '../../../features/Icon/models'
+import type {IconKeys} from '../../../features/Icon/models'
 import type {ImageTypes} from '../../../features/Image/models'
 import type {ModalProps} from '../../../features/Modal/models'
 import type {Size, Variant} from '../../../models'
@@ -48,7 +48,7 @@ export interface ResultProps extends Omit<ModalProps, 'fullScreen'> {
    * - 'info': İşlem hakkında bilgilendirici bilgiler sağlandı.
    */
   variant: Variant
-  iconName: IconTypes
+  iconName: IconKeys
 
   actions?: ResultActionModel[]
   fontSize?: Size

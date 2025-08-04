@@ -60,7 +60,7 @@
 
 | Parametreler | Type               | Zorunluluk           | Varsayılan Değer | Açıklama             |
 | ------------ | ------------------ | -------------------- | ---------------- | -------------------- |
-| name         | `IconTypes`        | :white_check_mark:   |                  | Label Text           |
+| name         | `IconKeys`        | :white_check_mark:   |                  | Label Text           |
 | width        | `number`           | :white_large_square: | `18`             | Açıklama             |
 | height       | `number`           | :white_large_square: | `18`             | Label Text Boyutu    |
 | variant      | `Variant`          | :white_large_square: |                  | Açıklama Text Boyutu |

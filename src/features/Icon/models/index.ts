@@ -1,3 +1,3 @@
-export * from './iconProps'
-export * from './iconType.type'
-export * from './iconMode'
+export * from './iconProps.interface'
+export * from './iconKeys.type'
+export * from './iconMode.type'

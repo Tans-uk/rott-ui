@@ -3,7 +3,7 @@ import {useCallback, useEffect, useRef, useState, type FC} from 'react'
 import {StyleSheet, TextInput} from 'react-native'
 
 import {themeConfig} from '../../../../../providers'
-import {Icon, type IconTypes} from '../../../../Icon'
+import {Icon, type IconKeys} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
 import {InputStyles} from '../../../styles'
@@ -164,7 +164,7 @@ export const AmountInput: FC<AmountInputProps> = ({
       <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
         <Icon
           testID='currency-icon-test-id'
-          name={currencyType as IconTypes}
+          name={currencyType as IconKeys}
           width={InputStyleNormalizer({size}).icon.width}
           height={InputStyleNormalizer({size}).icon.height}
           color={themeConfig.colors['grey-200']}
