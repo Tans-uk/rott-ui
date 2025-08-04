@@ -168,8 +168,6 @@ export const AmountInput: FC<AmountInputProps> = ({
           width={InputStyleNormalizer({size}).icon.width}
           height={InputStyleNormalizer({size}).icon.height}
           color={themeConfig.colors['grey-200']}
-          mode='fill'
-          noStroke
         />
       </Item>
     </Item>

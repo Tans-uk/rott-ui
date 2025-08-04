@@ -242,22 +242,13 @@ export const SelectInput: FC<SelectInputProps> = ({
                 : (placeholder ?? label))}
           </Label>
 
-          {!readOnly && (
-            <Icon
-              name='CHEVRON_RIGHT'
-              height={25}
-              width={25}
-              strokeWidth={1.5}
-              variant={textVariant}
-            />
-          )}
+          {!readOnly && <Icon name='CHEVRON_RIGHT' height={25} width={25} variant={textVariant} />}
 
           {readOnly && (
             <Icon
               name='ID_CARD'
               height={25}
               width={25}
-              strokeWidth={1.5}
               variant={theme === 'dark' ? 'white' : 'grey-200'}
             />
           )}

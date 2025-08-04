@@ -36,8 +36,6 @@ export const Alert: FC<AlertProps> = ({
           testID='alert-left-icon'
           width={24}
           height={24}
-          mode='stroke'
-          strokeWidth={1.5}
           variant='white'
           marginRight={8}
           {...leftIcon}
@@ -52,8 +50,6 @@ export const Alert: FC<AlertProps> = ({
           testID='alert-right-icon'
           width={24}
           height={24}
-          mode='stroke'
-          strokeWidth={1.5}
           variant='white'
           marginLeft={8}
           {...rightIcon}

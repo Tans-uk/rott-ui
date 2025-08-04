@@ -70,8 +70,6 @@ export const PasswordInput: FC<PasswordInputProps> = ({
           name={isSecure ? 'EYE_DISABLE' : 'EYE'}
           height={24}
           width={24}
-          mode='stroke'
-          strokeWidth={1.5}
         />
       </Pressable>
     </Item>
