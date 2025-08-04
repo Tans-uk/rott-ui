@@ -1,5 +1,5 @@
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
-import {IconTypes} from '../../Icon'
+import {IconKeys} from '../../Icon'
 import {Input} from '../components'
 
 describe('Input -> Custom Input', () => {
@@ -91,7 +91,7 @@ describe('Input -> Custom Input', () => {
   })
 
   it('label icon belirtilmis ise ekranda renderlanmali', async () => {
-    const mockIcon = 'INFORMATION' as IconTypes
+    const mockIcon = 'INFORMATION' as IconKeys
     const {getByTestId} = render(
       <Input
         type='default'
@@ -114,7 +114,7 @@ describe('Input -> Custom Input', () => {
   })
 
   it('label icon belirtilmis onPress methodu calismali', async () => {
-    const mockIcon = 'INFORMATION' as IconTypes
+    const mockIcon = 'INFORMATION' as IconKeys
     const mockIconOnPress = jest.fn()
     const {getByTestId} = render(
       <Input

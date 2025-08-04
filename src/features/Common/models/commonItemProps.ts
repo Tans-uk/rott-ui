@@ -1,7 +1,7 @@
 import {type ReactNode} from 'react'
 
 import {type CommonUiProps, type Variant} from '../../../models'
-import {type IconProps, type IconTypes} from '../../Icon'
+import {type IconProps, type IconKeys} from '../../Icon'
 import {type LabelProps} from '../../Label'
 
 export interface CommonItemProps extends CommonUiProps {
@@ -11,8 +11,8 @@ export interface CommonItemProps extends CommonUiProps {
   height?: number
   backgroundColor?: Variant
 
-  leftIcon?: IconTypes | IconProps | ReactNode
-  rightIcon?: IconTypes | IconProps | ReactNode
+  leftIcon?: IconKeys | IconProps | ReactNode
+  rightIcon?: IconKeys | IconProps | ReactNode
 
   title: string | (LabelProps & {skeleton?: boolean}) | ReactNode
   subTitle?: string | (LabelProps & {skeleton?: boolean}) | ReactNode

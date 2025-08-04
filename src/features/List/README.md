@@ -6,10 +6,10 @@ Varsayılan List Item Component tir
 
 | Parametreler       | Type                       | Zorunluluk           | Açıklama                                                    |
 | ------------------ | -------------------------- | -------------------- | ----------------------------------------------------------- |
-| icon               | `IconTypes`                | :white_large_square: | Solda renderlanacak icon                                    |
+| icon               | `IconKeys`                | :white_large_square: | Solda renderlanacak icon                                    |
 | title              | `TranslationLanguageTypes` | :white_check_mark:   | Başlık                                                      |
 | subTitle           | `TranslationLanguageTypes` | :white_large_square: | Alt Başlık                                                  |
-| rightIcon          | `IconTypes`                | :white_large_square: | Sağda renderlanacak icon                                    |
+| rightIcon          | `IconKeys`                | :white_large_square: | Sağda renderlanacak icon                                    |
 | color              | `Variant`                  | :white_large_square: | Yazı Rengi - Varsayılan Renk: `grey-100`                    |
 | fontFamily         | `FontFamily`               | :white_large_square: | Yazı Fontu - Varsayılan Font: `Markpro-Medium`              |
 | onAction           | `function`                 | :white_large_square: | Item Tıklandığında Çalışacak Fonksiyon                      |

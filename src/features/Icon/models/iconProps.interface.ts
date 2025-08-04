@@ -1,5 +1,5 @@
 import {CommonUiProps, Variant} from '../../../models'
-import type {IconTypes} from './iconType.type'
+import type {IconKeys} from './iconKeys.type'
 
 import type {SvgProps} from 'react-native-svg'
 
@@ -17,11 +17,15 @@ export interface IconProps
       | 'fill'
     >,
     CommonUiProps {
-  name: IconTypes
+  name: IconKeys
   width?: number
   height?: number
   variant?: Variant
   strokeWidth?: number
+  strokeLinecap?: 'round' | 'square' | 'butt'
+  strokeLinejoin?: 'round' | 'miter' | 'bevel'
   noStroke?: boolean
   mode?: 'stroke' | 'fill'
+  fill?: string
+  stroke?: string
 }
