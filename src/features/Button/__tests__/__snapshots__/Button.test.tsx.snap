@@ -42,7 +42,7 @@ exports[`Button -> Custom Component butonun snapshotı ile eşleşmeli 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "primary",
+        "backgroundColor": "rgba(0, 169, 206, 1)",
         "borderColor": "white",
         "borderRadius": 16,
         "borderWidth": undefined,
