@@ -1,15 +1,14 @@
-import type {Size, Theme, Variant} from '../../../models'
-import type {FontFamily} from '../../Label'
+import type {Size, Theme, ThemeConfig} from '../../../models'
 import type {InputLabelIconProps} from './inputLabelIconProps.interface'
 
-export interface InputLabelProps {
+export interface InputLabelProps<TTheme extends ThemeConfig> {
   text: string
-  variant?: Variant
+  variant?: keyof TTheme['colors']
   description?: string
   size?: Size
   descriptionSize?: Size
-  descriptionVariant?: Variant
+  descriptionVariant?: keyof TTheme['colors']
   theme?: Theme
-  fontFamily?: FontFamily
-  icon?: InputLabelIconProps
+  fontFamily?: keyof TTheme['fontFamilies']
+  icon?: InputLabelIconProps<TTheme>
 }

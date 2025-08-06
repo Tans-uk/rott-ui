@@ -3,12 +3,13 @@ import {type FC} from 'react'
 import {StyleSheet} from 'react-native'
 
 import {formatMessage} from '../../../libs'
+import {ThemeConfig} from '../../../models'
 import type {ExpireDateInputProps} from '../models'
-import {InputStyles} from '../styles'
+import {useInputStyles} from '../styles'
 
 import MaskInput from 'react-native-mask-input'
 
-export const ExpireDateInput: FC<ExpireDateInputProps> = ({
+export const ExpireDateInput: FC<ExpireDateInputProps<ThemeConfig>> = ({
   fontSize,
   onChangeText,
   theme,
@@ -16,6 +17,7 @@ export const ExpireDateInput: FC<ExpireDateInputProps> = ({
   size,
   ...props
 }) => {
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
   const MASK = [/\d/, /\d/, '/', /\d/, /\d/]
 
   //TODO: formatMMYY refactor edilebilir mi?
@@ -50,7 +52,7 @@ export const ExpireDateInput: FC<ExpireDateInputProps> = ({
       placeholder={formatMessage('EXPIRE.DATE.PLACEHOLDER')}
       keyboardType='number-pad'
       onChangeText={(_masked, unmasked) => !!onChangeText && onChangeText(formatMMYY(unmasked))}
-      style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+      style={StyleSheet.flatten([defaultTextInputStyle])}
       {...props}
     />
   )

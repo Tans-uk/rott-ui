@@ -9,26 +9,34 @@ import {
   type TouchableOpacityProps,
 } from 'react-native'
 
-import {TabStyle} from './styles'
+import {ThemeConfig, type CommonUiProps} from '../../models'
+import {useTabStyle} from './styles'
 
-import {type CommonUiProps} from '../../models'
-
-interface TabProps extends TouchableOpacityProps, CommonUiProps {
+interface TabProps<TTheme extends ThemeConfig>
+  extends TouchableOpacityProps,
+    CommonUiProps<TTheme> {
   title?: string
   isSelected?: boolean
   onPress?: (event: GestureResponderEvent) => void
   onLayout?: (event: LayoutChangeEvent) => void
 }
 
-export const Tab: FC<TabProps> = ({title, isSelected, onPress, onLayout, ...props}) => {
+export const Tab: FC<TabProps<ThemeConfig>> = ({
+  title,
+  isSelected,
+  onPress,
+  onLayout,
+  ...props
+}) => {
+  const {container, textStyle} = useTabStyle(props)
   return (
     <TouchableOpacity
-      style={TabStyle(props).container}
+      style={container}
       onPress={onPress}
       onLayout={onLayout}
       aria-selected={isSelected}
       {...props}>
-      <Text style={StyleSheet.flatten([TabStyle({isSelected}).textStyle])}>{title}</Text>
+      <Text style={StyleSheet.flatten([textStyle])}>{title}</Text>
     </TouchableOpacity>
   )
 }

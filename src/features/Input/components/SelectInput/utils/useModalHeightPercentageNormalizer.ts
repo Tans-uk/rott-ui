@@ -1,4 +1,4 @@
-import {display} from '../../../../../utils'
+import {useDisplay} from '../../../../../hooks'
 import {HEADER_HEIGHT, LIST_BOTTOM_MARGIN} from '../constants'
 import {listHeightNormalizer} from './listHeightNormalizer'
 
@@ -7,18 +7,19 @@ import {listHeightNormalizer} from './listHeightNormalizer'
  * @param itemCount eleman sayisi
  * @returns Modal Yukseklik Yuzdesi
  */
-export const modalHeightPercentageNormalizer = (
+export const useModalHeightPercentageNormalizer = (
   itemCount: number,
   searchable: boolean,
   showDescription: boolean,
   itemHeight: number = 56
 ) => {
+  const {normalize, percentage} = useDisplay()
   const listHeight = listHeightNormalizer(itemCount, showDescription, itemHeight)
 
-  const modalHeightPX = display.normalize(
+  const modalHeightPX = normalize(
     listHeight + HEADER_HEIGHT(searchable) + LIST_BOTTOM_MARGIN,
     'height'
   )
 
-  return (modalHeightPX * 100) / display.percentage(100, 'height') + 1
+  return (modalHeightPX * 100) / percentage(100, 'height') + 1
 }

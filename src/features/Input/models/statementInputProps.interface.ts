@@ -1,5 +1,6 @@
+import { ThemeConfig } from '../../../models'
 import type {BaseInputProps} from './baseInputProps.interface'
 
-export interface StatementInputProps extends BaseInputProps {
+export interface StatementInputProps<TTheme extends ThemeConfig> extends BaseInputProps<TTheme> {
   type?: 'statement'
 }

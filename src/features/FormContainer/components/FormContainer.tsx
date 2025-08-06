@@ -1,7 +1,7 @@
-import {memo, type FC, type PropsWithChildren} from 'react'
+import {memo, useContext, type FC, type PropsWithChildren} from 'react'
 
+import {RottUiContext} from '../../../contexts'
 import type {Theme} from '../../../models'
-import {themeConfig} from '../../../providers'
 import {Item} from '../../Item'
 
 interface FormContainerProps extends PropsWithChildren {
@@ -14,12 +14,12 @@ interface FormContainerProps extends PropsWithChildren {
 
 export const FormContainer: FC<FormContainerProps> = memo(
   ({hasError, children, theme = 'light', marginBottom, marginTop, noPadding}) => {
+    const {colors} = useContext(RottUiContext)
+
     return (
       <Item
         overflowHidden
-        backgroundColor={
-          theme === 'light' ? themeConfig.colors.white : themeConfig.colors['grey-800']
-        }
+        backgroundColor={theme === 'light' ? colors.white : colors['grey-800']}
         borderRadius={8}
         paddingTop={noPadding ? 0 : 4}
         paddingBottom={hasError ? 0 : noPadding ? 0 : 4}

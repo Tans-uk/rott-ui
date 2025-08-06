@@ -1,9 +1,7 @@
 import {type Size} from './size.type'
-import {type Variant} from './variant.type'
+import {ThemeConfig} from './themeConfig.interface'
 
-import {type FontFamily, type FontWeight} from '../features/Label/models'
-
-export interface CommonUiProps {
+export interface CommonUiProps<TTheme extends ThemeConfig> {
   heightNormalizeBased?: boolean
   size?: Size
 
@@ -14,11 +12,11 @@ export interface CommonUiProps {
   minWidth?: number | string
   minHeight?: number | string
 
-  fontSize?: Omit<Size, 'full'> | 'xxxl' | number
-  fontFamily?: FontFamily
-  fontWeight?: FontWeight
+  fontSize?: keyof TTheme['fontSizes']
+  fontFamily?: keyof TTheme['fontFamilies']
+  fontWeight?: keyof TTheme['fontWeights']
   color?: string
-  variant?: Variant
+  variant?: keyof TTheme['colors']
 
   flex?: number
   flexGrow?: number

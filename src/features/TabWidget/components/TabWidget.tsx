@@ -1,13 +1,14 @@
 import {useState, type FC} from 'react'
 
-import {display} from '../../../utils'
+import {useDisplay} from '../../../hooks'
+import {ThemeConfig} from '../../../models'
 import {Item} from '../../Item'
 import {type TabWidgetProps} from '../models'
 import {TabWidgetItem} from './TabWidgetItem'
 
 import {SceneMap, TabView} from 'react-native-tab-view'
 
-export const TabWidget: FC<TabWidgetProps> = ({
+export const TabWidget: FC<TabWidgetProps<ThemeConfig>> = ({
   titles,
   tabs,
   testID = 'tabview-test-id',
@@ -19,6 +20,7 @@ export const TabWidget: FC<TabWidgetProps> = ({
   disabled = false,
   ...props
 }) => {
+  const {percentage} = useDisplay()
   const [index, setIndex] = useState(defaultIndex)
   const routes = Array.from(titles).map((title, routeIndex) => ({
     key: routeIndex.toString(),
@@ -55,7 +57,7 @@ export const TabWidget: FC<TabWidgetProps> = ({
           />
         )}
         onIndexChange={handleOnIndexChange}
-        initialLayout={{width: display.percentage(100)}}
+        initialLayout={{width: percentage(100)}}
         swipeEnabled={swipeEnabled && !disabled}
       />
     </Item>

@@ -1,9 +1,9 @@
-import {CommonUiProps, Variant} from '../../../models'
-import type {IconKeys} from './iconKeys.type'
+import {CommonUiProps} from '../../../models'
+import {ThemeConfig} from './../../../models/themeConfig.interface'
 
 import type {SvgProps} from 'react-native-svg'
 
-export interface IconProps
+export interface IconProps<TTheme extends ThemeConfig>
   extends Omit<
       SvgProps,
       | 'color'
@@ -16,11 +16,11 @@ export interface IconProps
       | 'strokeWidth'
       | 'fill'
     >,
-    CommonUiProps {
-  name: IconKeys
+    CommonUiProps<TTheme> {
+  name: keyof TTheme['icons']
   width?: number
   height?: number
-  variant?: Variant
+  variant?: keyof TTheme['colors']
   strokeWidth?: number
   strokeLinecap?: 'round' | 'square' | 'butt'
   strokeLinejoin?: 'round' | 'miter' | 'bevel'

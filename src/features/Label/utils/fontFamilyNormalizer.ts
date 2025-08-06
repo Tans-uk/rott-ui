@@ -1,6 +1,4 @@
-import type {FontWeight} from '../models'
-
-export const fontFamilyNormalizer = (weight: FontWeight = 500) => {
+export const fontFamilyNormalizer = (weight: number | string = 500) => {
   switch (weight) {
     case 100:
     case 200:

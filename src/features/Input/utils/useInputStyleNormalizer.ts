@@ -1,5 +1,6 @@
+import {useDisplay} from '../../../hooks'
 import {type Size} from '../../../models'
-import {display, fontSizeNormalizer} from '../../../utils'
+import {fontSizeNormalizer} from '../../../utils'
 
 interface InputStyleProps {
   height: number
@@ -18,18 +19,20 @@ interface InputStyleNormalizerProps {
   placeholderSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | number
 }
 
-export function InputStyleNormalizer({
+export function useInputStyleNormalizer({
   size = 'lg',
   placeholderSize,
 }: InputStyleNormalizerProps): InputStyleProps {
+  const {normalize} = useDisplay()
+
   switch (size) {
     case 'xs':
     case 'sm':
       return {
-        height: display.normalize(40),
-        paddingHorizontal: display.normalize(16, 'height'),
+        height: normalize(40),
+        paddingHorizontal: normalize(16, 'height'),
         placeholderSize: fontSizeNormalizer(placeholderSize ?? 'md'),
-        bottomElementPadding: display.normalize(6, 'height'),
+        bottomElementPadding: normalize(6, 'height'),
         icon: {
           height: 18,
           width: 18,
@@ -41,10 +44,10 @@ export function InputStyleNormalizer({
     case 'xxl':
     case 'full':
       return {
-        height: display.normalize(56, 'height'),
-        paddingHorizontal: display.normalize(16, 'height'),
+        height: normalize(56, 'height'),
+        paddingHorizontal: normalize(16, 'height'),
         placeholderSize: fontSizeNormalizer(placeholderSize ?? 'xl'),
-        bottomElementPadding: display.normalize(12, 'height'),
+        bottomElementPadding: normalize(12, 'height'),
         icon: {
           height: 24,
           width: 24,
@@ -55,10 +58,10 @@ export function InputStyleNormalizer({
     case 'md':
     default:
       return {
-        height: display.normalize(48, 'height'),
-        paddingHorizontal: display.normalize(16, 'height'),
+        height: normalize(48, 'height'),
+        paddingHorizontal: normalize(16, 'height'),
         placeholderSize: fontSizeNormalizer(placeholderSize ?? 'lg'),
-        bottomElementPadding: display.normalize(8, 'height'),
+        bottomElementPadding: normalize(8, 'height'),
         icon: {
           height: 24,
           width: 24,

@@ -1,1 +1,1 @@
-export * from './Separator.style'
+export * from './useSeparator.style'

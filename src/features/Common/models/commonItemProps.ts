@@ -1,22 +1,22 @@
 import {type ReactNode} from 'react'
 
-import {type CommonUiProps, type Variant} from '../../../models'
-import {type IconProps, type IconKeys} from '../../Icon'
+import {ThemeConfig, type CommonUiProps} from '../../../models'
+import {type IconProps} from '../../Icon'
 import {type LabelProps} from '../../Label'
 
-export interface CommonItemProps extends CommonUiProps {
+export interface CommonItemProps<TTheme extends ThemeConfig> extends CommonUiProps<TTheme> {
   testID?: string
   index?: number
   width?: number
   height?: number
-  backgroundColor?: Variant
+  backgroundColor?: string
 
-  leftIcon?: IconKeys | IconProps | ReactNode
-  rightIcon?: IconKeys | IconProps | ReactNode
+  leftIcon?: IconProps<TTheme> | ReactNode
+  rightIcon?: IconProps<TTheme> | ReactNode
 
-  title: string | (LabelProps & {skeleton?: boolean}) | ReactNode
-  subTitle?: string | (LabelProps & {skeleton?: boolean}) | ReactNode
-  description?: string | LabelProps | ReactNode
+  title: string | (LabelProps<TTheme> & {skeleton?: boolean}) | ReactNode
+  subTitle?: string | (LabelProps<TTheme> & {skeleton?: boolean}) | ReactNode
+  description?: string | LabelProps<TTheme> | ReactNode
 
   showSelected?: boolean
   selectedPosition?: string | 'left' | 'right'

@@ -1,6 +1,6 @@
 import type {ReactNode, Ref} from 'react'
 
-import {Size} from '../../../../../models'
+import {Size, ThemeConfig} from '../../../../../models'
 import type {EmptyStateProps} from '../../../../EmptyState/models'
 import type {BaseInputProps} from '../../../models'
 import type {SelectProps} from './selectProps.interface'
@@ -12,7 +12,8 @@ import type {FlashListProps} from '@shopify/flash-list'
  * Select bileşeni anatomik olarak kullanıcı girdisi alan bir TexTInput'tan oluşmaz.
  * Projede çok fazla yeri etkilediğinden şimdilik BaseInputProps kullanılmış ve value değeri omit edilmiştir.
  */
-export interface CommonSelectInputProps extends Omit<BaseInputProps, 'value' | 'defaultValue'> {
+export interface CommonSelectInputProps<TTheme extends ThemeConfig>
+  extends Omit<BaseInputProps<TTheme>, 'value' | 'defaultValue'> {
   emptyState?: EmptyStateProps
   onTouched?: () => void
   sortByName?: boolean

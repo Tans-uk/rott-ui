@@ -2,12 +2,13 @@ import {useCallback, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import type {DefaultInputProps} from '../models'
-import {InputStyles} from '../styles'
+import {useInputStyles} from '../styles'
 
-export const DefaultInput: FC<DefaultInputProps> = ({
+export const DefaultInput: FC<DefaultInputProps<ThemeConfig>> = ({
   label,
   placeholder,
   fontSize,
@@ -19,6 +20,13 @@ export const DefaultInput: FC<DefaultInputProps> = ({
   onChangeText,
   ...props
 }) => {
+  const {defaultTextInputStyle} = useInputStyles({
+    fontSize,
+    theme,
+    size,
+    includeBorderRadius: true,
+    ...props,
+  })
   const handleChangeText = useCallback(
     (value: string) => {
       if (keyboard === 'default') {
@@ -69,15 +77,7 @@ export const DefaultInput: FC<DefaultInputProps> = ({
         autoCapitalize='none'
         placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
         onChangeText={(text) => onChangeText!(text)}
-        style={StyleSheet.flatten([
-          InputStyles({
-            fontSize,
-            theme,
-            size,
-            includeBorderRadius: true,
-            ...props,
-          }).defaultTextInputStyle,
-        ])}
+        style={StyleSheet.flatten([defaultTextInputStyle])}
         {...props}
       />
     </Item>
@@ -87,10 +87,7 @@ export const DefaultInput: FC<DefaultInputProps> = ({
       keyboardType='default'
       autoCapitalize='none'
       placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
-      style={StyleSheet.flatten([
-        InputStyles({fontSize, theme, size, includeBorderRadius: true, ...props})
-          .defaultTextInputStyle,
-      ])}
+      style={StyleSheet.flatten([defaultTextInputStyle])}
       onChangeText={handleChangeText}
       {...props}
     />

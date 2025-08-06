@@ -1,6 +1,7 @@
 import {type FC} from 'react'
 
-import {ButtonGroup} from '../../Button'
+import {ThemeConfig} from '../../../models'
+import {ButtonGroup, type ButtonProps} from '../../Button'
 import {Container} from '../../Container'
 import {Content} from '../../Content'
 import {EmptyState} from '../../EmptyState'
@@ -24,14 +25,14 @@ import type {ResultScreenParamModel} from '../models'
  *
  */
 
-interface ResultScreenProps {
+interface ResultScreenProps<TTheme extends ThemeConfig> {
   route: {
     [key: string]: any
-    params: ResultScreenParamModel
+    params: ResultScreenParamModel<TTheme>
   }
 }
 
-export const ResultScreen: FC<ResultScreenProps> = ({route: {params}}) => {
+export const ResultScreen: FC<ResultScreenProps<ThemeConfig>> = ({route: {params}}) => {
   const {header, state, title, description, actions, isFastTransfer} = params
 
   return (
@@ -74,7 +75,7 @@ export const ResultScreen: FC<ResultScreenProps> = ({route: {params}}) => {
               fontSize: 'xl',
               size: 'full',
               text: actionButtonText,
-            }
+            } as unknown as ButtonProps<ThemeConfig>
           }) ?? []
         }
         isFastTransfer={isFastTransfer}

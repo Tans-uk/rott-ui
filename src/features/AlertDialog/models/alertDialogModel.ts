@@ -1,3 +1,4 @@
+import {ThemeConfig} from '../../../models'
 import {EmptyStateProps} from '../../EmptyState'
 import type {IconProps} from '../../Icon'
 import type {AlertDialogButtonProps} from './alertDialogButtonProps'
@@ -8,12 +9,12 @@ export interface AlertDialogModel {
   text?: string
   showActivityIndicator?: boolean
   emptyState?: EmptyStateProps
-  icon?: IconProps
+  icon?: IconProps<ThemeConfig>
   buttons?:
-    | Nullable<AlertDialogButtonProps>[]
+    | Nullable<AlertDialogButtonProps<ThemeConfig>>[]
     | {
-        cancelButton?: AlertDialogButtonProps
-        confirmButton?: AlertDialogButtonProps
+        cancelButton?: AlertDialogButtonProps<ThemeConfig>
+        confirmButton?: AlertDialogButtonProps<ThemeConfig>
       }
 
   /**

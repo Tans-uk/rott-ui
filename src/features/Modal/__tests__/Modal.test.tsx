@@ -2,6 +2,7 @@ import React from 'react'
 
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {translator} from '../../../libs'
+import {ThemeConfig} from '../../../models'
 import {Content} from '../../Content'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
@@ -20,7 +21,7 @@ describe('Modal -> Custom Component', () => {
     slideToCloseTestId: 'slide-to-close-button-test-id',
   }
 
-  const dummyDataFullScreen: ModalProps = {
+  const dummyDataFullScreen: ModalProps<ThemeConfig> = {
     testID: testId.modalTestId,
     header: {
       title: translator('TEST'),
@@ -33,7 +34,7 @@ describe('Modal -> Custom Component', () => {
     onClose: onCloseMock,
   }
 
-  const dummyData: ModalProps = {
+  const dummyData: ModalProps<ThemeConfig> = {
     testID: testId.modalTestId,
     header: {
       title: translator('TEST'),

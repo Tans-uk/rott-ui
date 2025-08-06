@@ -1,43 +1,40 @@
 import type {FlexAlignType} from 'react-native'
 
-import {alignItemsConvert} from './alignItemsConverter'
-import {colorFromVariant} from './colorFromVariant'
-import display from './display'
-import {justifyContentConvert} from './justifyContentConverter'
-import {sizeToPercentage} from './sizeToPercentage'
+import {useColorFromVariant} from '.'
+import {alignItemsConvert} from '../utils/alignItemsConverter'
+import {justifyContentConvert} from '../utils/justifyContentConverter'
+import {sizeToPercentage} from '../utils/sizeToPercentage'
+import {useDisplay} from './useDisplay'
 
-export const commonUiStyleProperties = (props?: any) => {
+export const useCommonUiStyleProperties = (props?: any): Record<string, any> => {
+  const colorFromVariant = useColorFromVariant()
+  const {normalize} = useDisplay()
+
   const styles: Record<string, any> = {}
 
   // Width handling
-  if (typeof props?.width === 'number') styles.width = display.normalize(props?.width)
+  if (typeof props?.width === 'number') styles.width = normalize(props?.width)
   else if (props?.size) styles.width = sizeToPercentage(props?.size)
 
   // Height handling
   if (typeof props?.height === 'number') {
-    styles.height = display.normalize(
-      props?.height,
-      props.heightNormalizeBased ? 'height' : 'width'
-    )
+    styles.height = normalize(props?.height, props.heightNormalizeBased ? 'height' : 'width')
   }
 
   // Max/Min dimensions
-  if (typeof props?.maxWidth === 'number') styles.maxWidth = display.normalize(props?.maxWidth)
+  if (typeof props?.maxWidth === 'number') styles.maxWidth = normalize(props?.maxWidth)
 
   if (typeof props?.height === 'number' || typeof props?.maxHeight === 'number') {
-    styles.maxHeight = display.normalize(
+    styles.maxHeight = normalize(
       props?.maxHeight ?? props?.height,
       props.heightNormalizeBased ? 'height' : 'width'
     )
   }
 
-  if (typeof props?.minWidth === 'number') styles.minWidth = display.normalize(props?.minWidth)
+  if (typeof props?.minWidth === 'number') styles.minWidth = normalize(props?.minWidth)
 
   if (typeof props?.minHeight === 'number') {
-    styles.minHeight = display.normalize(
-      props?.minHeight,
-      props.heightNormalizeBased ? 'height' : 'width'
-    )
+    styles.minHeight = normalize(props?.minHeight, props.heightNormalizeBased ? 'height' : 'width')
   }
 
   // Background color
@@ -47,74 +44,74 @@ export const commonUiStyleProperties = (props?: any) => {
   // Margins
   if (props?.marginTop !== undefined) {
     styles.marginTop = Number(props?.marginTop)
-      ? display.normalize(props?.marginTop, !props.heightNormalizeBased ? 'width' : 'height')
+      ? normalize(props?.marginTop, !props.heightNormalizeBased ? 'width' : 'height')
       : props?.marginTop
   }
 
   if (props?.marginBottom !== undefined) {
     styles.marginBottom = Number(props?.marginBottom)
-      ? display.normalize(props?.marginBottom, !props.heightNormalizeBased ? 'width' : 'height')
+      ? normalize(props?.marginBottom, !props.heightNormalizeBased ? 'width' : 'height')
       : props?.marginBottom
   }
 
   if (props?.marginLeft !== undefined) {
     styles.marginLeft = Number(props?.marginLeft)
-      ? display.normalize(props?.marginLeft, props.heightNormalizeBased ? 'height' : 'width')
+      ? normalize(props?.marginLeft, props.heightNormalizeBased ? 'height' : 'width')
       : props?.marginLeft
   }
 
   if (props?.marginRight !== undefined) {
     styles.marginRight = Number(props?.marginRight)
-      ? display.normalize(props?.marginRight, props.heightNormalizeBased ? 'height' : 'width')
+      ? normalize(props?.marginRight, props.heightNormalizeBased ? 'height' : 'width')
       : props?.marginRight
   }
 
   if (props?.marginVertical !== undefined) {
     styles.marginVertical = Number(props?.marginVertical)
-      ? display.normalize(props?.marginVertical, !props.heightNormalizeBased ? 'width' : 'height')
+      ? normalize(props?.marginVertical, !props.heightNormalizeBased ? 'width' : 'height')
       : props?.marginVertical
   }
 
   if (props?.marginHorizontal !== undefined) {
     styles.marginHorizontal = Number(props?.marginHorizontal)
-      ? display.normalize(props?.marginHorizontal, props.heightNormalizeBased ? 'height' : 'width')
+      ? normalize(props?.marginHorizontal, props.heightNormalizeBased ? 'height' : 'width')
       : props?.marginHorizontal
   }
 
   // Paddings
   if (props?.paddingTop !== undefined) {
     styles.paddingTop = Number(props?.paddingTop)
-      ? display.normalize(props?.paddingTop, !props.heightNormalizeBased ? 'width' : 'height')
+      ? normalize(props?.paddingTop, !props.heightNormalizeBased ? 'width' : 'height')
       : props?.paddingTop
   }
 
   if (props?.paddingBottom !== undefined) {
     styles.paddingBottom = Number(props?.paddingBottom)
-      ? display.normalize(props?.paddingBottom, !props.heightNormalizeBased ? 'width' : 'height')
+      ? normalize(props?.paddingBottom, !props.heightNormalizeBased ? 'width' : 'height')
       : props?.paddingBottom
   }
 
   if (props?.paddingLeft !== undefined) {
     styles.paddingLeft = Number(props?.paddingLeft)
-      ? display.normalize(props?.paddingLeft, props.heightNormalizeBased ? 'height' : 'width')
+      ? normalize(props?.paddingLeft, props.heightNormalizeBased ? 'height' : 'width')
       : props?.paddingLeft
   }
 
   if (props?.paddingRight !== undefined) {
     styles.paddingRight = Number(props?.paddingRight)
-      ? display.normalize(props?.paddingRight, props.heightNormalizeBased ? 'height' : 'width')
+      ? normalize(props?.paddingRight, props.heightNormalizeBased ? 'height' : 'width')
       : props?.paddingRight
   }
 
   if (props?.paddingVertical !== undefined) {
     styles.paddingVertical = Number(props?.paddingVertical)
-      ? display.normalize(props?.paddingVertical, !props.heightNormalizeBased ? 'width' : 'height')
+      ? normalize(props?.paddingVertical, !props.heightNormalizeBased ? 'width' : 'height')
       : props?.paddingVertical
   }
 
   if (props?.paddingHorizontal !== undefined) {
     styles.paddingHorizontal = Number(props?.paddingHorizontal)
-      ? display.normalize(props?.paddingHorizontal, props.heightNormalizeBased ? 'height' : 'width')
+      ? normalize(props?.paddingHorizontal, props.heightNormalizeBased ? 'height' : 'width')
       : props?.paddingHorizontal
   }
 
@@ -131,25 +128,25 @@ export const commonUiStyleProperties = (props?: any) => {
   // Position values
   if (props?.left !== undefined) {
     styles.left = Number(props?.left)
-      ? display.normalize(props?.left, props.heightNormalizeBased ? 'height' : 'width')
+      ? normalize(props?.left, props.heightNormalizeBased ? 'height' : 'width')
       : props?.left
   }
 
   if (props?.right !== undefined) {
     styles.right = Number(props?.right)
-      ? display.normalize(props?.right, props.heightNormalizeBased ? 'height' : 'width')
+      ? normalize(props?.right, props.heightNormalizeBased ? 'height' : 'width')
       : props?.right
   }
 
   if (props?.top !== undefined) {
     styles.top = Number(props?.top)
-      ? display.normalize(props?.top, !props.heightNormalizeBased ? 'width' : 'height')
+      ? normalize(props?.top, !props.heightNormalizeBased ? 'width' : 'height')
       : props?.top
   }
 
   if (props?.bottom !== undefined) {
     styles.bottom = Number(props?.bottom)
-      ? display.normalize(props?.bottom, !props.heightNormalizeBased ? 'width' : 'height')
+      ? normalize(props?.bottom, !props.heightNormalizeBased ? 'width' : 'height')
       : props?.bottom
   }
 

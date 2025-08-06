@@ -2,11 +2,12 @@ import {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import {Item} from '../../Item'
 import type {NumericInputProps} from '../models'
-import {InputStyles} from '../styles'
+import {useInputStyles} from '../styles'
 
-export const NumericInput: FC<NumericInputProps> = ({
+export const NumericInput: FC<NumericInputProps<ThemeConfig>> = ({
   label,
   placeholder,
   fontSize,
@@ -25,7 +26,7 @@ export const NumericInput: FC<NumericInputProps> = ({
       <TextInput
         editable={!disabled}
         placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+        style={StyleSheet.flatten([useInputStyles({fontSize, theme, size}).defaultTextInputStyle])}
         keyboardType='number-pad'
         onChangeText={handleTextChange}
         {...props}

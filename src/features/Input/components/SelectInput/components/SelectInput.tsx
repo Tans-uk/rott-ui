@@ -1,17 +1,17 @@
-import {useEffect, useState, type FC} from 'react'
+import {useContext, useEffect, useState, type FC} from 'react'
 
+import {RottUiContext} from '../../../../../contexts'
 import {translator} from '../../../../../libs'
 import {ModalIdEnum} from '../../../../../models'
-import {themeConfig} from '../../../../../providers'
 import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
 import {Modal, useModal} from '../../../../Modal'
 import {Pressable} from '../../../../Pressable'
-import {InputStyleNormalizer} from '../../../utils'
+import {useInputStyleNormalizer} from '../../../utils'
 import type {SelectInputProps, SelectProps} from '../models'
-import {SelectInputStyles} from '../styles'
-import {modalHeightPercentageNormalizer} from '../utils'
+import {useSelectInputStyles} from '../styles'
+import {useModalHeightPercentageNormalizer} from '../utils'
 import {SelectInputModalComponent} from './SelectInputModalComponent'
 
 /**
@@ -67,6 +67,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   name,
   type = 'select',
 }) => {
+  const {colors} = useContext(RottUiContext)
   const isArray = Array.isArray(defaultValue)
   const [selectItem, setSelectItem] = useState<Nullable<SelectProps>>(null)
   const [selectItems, setSelectItems] = useState<SelectProps[]>([])
@@ -129,7 +130,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   const {showModal} = useModal(
     {
       id: modalId ?? ModalIdEnum.SelectInput,
-      backgroundColor: themeConfig.colors['grey-900'],
+      backgroundColor: colors['grey-900'],
       testID: 'select-modal-test-id',
       visible: true,
       slideToClose: true,
@@ -137,7 +138,7 @@ export const SelectInput: FC<SelectInputProps> = ({
       height:
         list?.length === 0
           ? 55
-          : modalHeightPercentageNormalizer(list?.length ?? 50, searchable, showDescription, 72),
+          : useModalHeightPercentageNormalizer(list?.length ?? 50, searchable, showDescription, 72),
       closeButton: false,
       headerBackgroundColor: 'grey-900',
       panResponderBackgroundColor: 'grey-900',
@@ -152,8 +153,8 @@ export const SelectInput: FC<SelectInputProps> = ({
           height: 24,
           strokeWidth: 2,
           rounded: true,
-          backgroundColor: themeConfig.colors['grey-800'],
-          borderColor: themeConfig.colors.primary,
+          backgroundColor: colors['grey-800'],
+          borderColor: colors.primary,
           alignItemsCenter: true,
           onPress: () => {
             Modal.hideModal(modalId ?? ModalIdEnum.SelectInput)
@@ -224,14 +225,15 @@ export const SelectInput: FC<SelectInputProps> = ({
           row
           alignItemsCenter
           height={
-            InputStyleNormalizer({size}).height - (selectItem?.description || description ? 8 : 0)
+            useInputStyleNormalizer({size}).height -
+            (selectItem?.description || description ? 8 : 0)
           }>
           <Label
             testID='select-input-selected-item-test-id'
-            fontSize={fontSize ?? InputStyleNormalizer({size}).placeholderSize}
+            fontSize={fontSize ?? useInputStyleNormalizer({size}).placeholderSize.toString()}
             fontFamily='Markpro-Medium'
             variant={textVariant}
-            style={SelectInputStyles().pressableTextStyle}
+            style={useSelectInputStyles().pressableTextStyle}
             numberOfLines={1}>
             {!multiSelection && (selectItem ? selectItem?.label : (placeholder ?? label))}
             {multiSelection &&
@@ -259,7 +261,9 @@ export const SelectInput: FC<SelectInputProps> = ({
             <Label
               testID='selected-description-test-id'
               fontSize={
-                descriptionFontSize ?? fontSize ?? InputStyleNormalizer({size}).placeholderSize
+                descriptionFontSize ??
+                fontSize ??
+                useInputStyleNormalizer({size}).placeholderSize.toString()
               }
               fontFamily='Markpro-Medium'
               variant={textVariant}>

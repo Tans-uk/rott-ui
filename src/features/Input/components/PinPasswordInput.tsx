@@ -2,11 +2,12 @@ import {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import {Item} from '../../Item'
 import type {PinPasswordInputProps} from '../models'
-import {InputStyles} from '../styles'
+import {useInputStyles} from '../styles'
 
-export const PinPasswordInput: FC<PinPasswordInputProps> = ({
+export const PinPasswordInput: FC<PinPasswordInputProps<ThemeConfig>> = ({
   fontSize,
   onChangeText,
   theme,
@@ -14,6 +15,7 @@ export const PinPasswordInput: FC<PinPasswordInputProps> = ({
   size,
   ...props
 }) => {
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
   const handleTextChange = (inputText: string) => {
     if (onChangeText) onChangeText(inputText.replace(/[^0-9]/g, ''))
   }
@@ -23,7 +25,7 @@ export const PinPasswordInput: FC<PinPasswordInputProps> = ({
       <TextInput
         editable={!disabled}
         placeholder='____'
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+        style={StyleSheet.flatten([defaultTextInputStyle])}
         keyboardType='number-pad'
         maxLength={4}
         secureTextEntry={true}

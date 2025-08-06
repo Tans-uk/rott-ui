@@ -1,6 +1,6 @@
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
-import {themeConfig} from '../../../providers'
+import {RottUiContext} from '../../../contexts'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 
@@ -10,6 +10,8 @@ interface ActionMenuHeaderProps {
 }
 
 export const ActionMenuHeaderComponent: FC<ActionMenuHeaderProps> = ({title, subTitle}) => {
+  const {colors} = useContext(RottUiContext)
+
   return (
     <Item size='full' alignItemsCenter>
       <Item testID='action-menu-header-test-id' width={342}>
@@ -18,7 +20,7 @@ export const ActionMenuHeaderComponent: FC<ActionMenuHeaderProps> = ({title, sub
             justifyContentCenter
             alignItemsCenter
             size='full'
-            backgroundColor={themeConfig.colors['grey-100']}
+            backgroundColor={colors['grey-100']}
             borderTopStartRadius={12}
             borderTopEndRadius={12}
             height={54}>
@@ -26,14 +28,14 @@ export const ActionMenuHeaderComponent: FC<ActionMenuHeaderProps> = ({title, sub
               <Label
                 fontSize='xl'
                 variant='grey-900'
-                fontWeight={700}
+                fontWeight={'700'}
                 marginBottom={subTitle ? 4 : undefined}>
                 {title}
               </Label>
             )}
 
             {subTitle && (
-              <Label fontSize='sm' variant='grey-900' fontWeight={500}>
+              <Label fontSize='sm' variant='grey-900' fontWeight={'500'}>
                 {subTitle}
               </Label>
             )}

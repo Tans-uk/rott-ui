@@ -1,5 +1,6 @@
+import {ThemeConfig} from '../../../models'
 import type {BaseInputProps} from './baseInputProps.interface'
 
-export interface CreditCardInputProps extends BaseInputProps {
+export interface CreditCardInputProps<TTheme extends ThemeConfig> extends BaseInputProps<TTheme> {
   type?: 'creditCard'
 }

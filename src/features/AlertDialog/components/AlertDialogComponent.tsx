@@ -1,11 +1,11 @@
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
 import {ActivityIndicator} from 'react-native'
 
 import {AlertDialog} from '..'
+import {RottUiContext} from '../../../contexts'
+import {useDisplay} from '../../../hooks'
 import {formatMessage} from '../../../libs'
-import {themeConfig} from '../../../providers'
-import {display} from '../../../utils'
 import {Button} from '../../Button'
 import {EmptyState} from '../../EmptyState'
 import {Icon} from '../../Icon'
@@ -31,6 +31,8 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
   showActivityIndicator,
   autoClose,
 }) => {
+  const {colors} = useContext(RottUiContext)
+  const {setWidth} = useDisplay()
   const hasMoreThanTwoButtons = Array.isArray(buttons)
   if (autoClose) {
     setTimeout(() => {
@@ -43,12 +45,12 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
       testID='alert-dialog-test-id'
       alignItemsCenter
       justifyContentCenter
-      width={display.setWidth(80)}
+      width={setWidth(80)}
       borderRadius={16}
-      backgroundColor={themeConfig.colors['grey-100']}>
+      backgroundColor={colors['grey-100']}>
       {showActivityIndicator && (
         <Item marginTop={24}>
-          <ActivityIndicator size='large' color={themeConfig.colors.primary} />
+          <ActivityIndicator size='large' color={colors.primary} />
         </Item>
       )}
 
@@ -60,7 +62,7 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
               fontFamily='Markpro-Bold'
               textCenter
               fontSize='xl'
-              fontWeight={700}>
+              fontWeight={'700'}>
               {title}
             </Label>
           </Item>
@@ -99,7 +101,12 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
           alignItemsCenter
           marginTop={icon ? 8 : 0}
           marginHorizontal={16}>
-          <Label variant='grey-900' fontFamily='Markpro' textCenter fontSize='lg' fontWeight={500}>
+          <Label
+            variant='grey-900'
+            fontFamily='Markpro'
+            textCenter
+            fontSize='lg'
+            fontWeight={'500'}>
             {text}
           </Label>
         </Item>
@@ -115,7 +122,7 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
               variant='transparent'
               color={buttons?.cancelButton?.variant || 'danger'}
               fontSize='lg'
-              fontWeight={500}
+              fontWeight={'500'}
               onPress={() => {
                 !!buttons?.cancelButton?.onPress && buttons.cancelButton.onPress()
 
@@ -135,7 +142,7 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
               variant='transparent'
               color={buttons?.confirmButton?.variant || 'danger'}
               fontSize='lg'
-              fontWeight={500}
+              fontWeight={'500'}
               onPress={() => {
                 !!buttons?.confirmButton?.onPress && buttons.confirmButton.onPress()
               }}>
@@ -157,7 +164,7 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
                         variant='transparent'
                         color={buttonVariant}
                         fontSize='lg'
-                        fontWeight={500}
+                        fontWeight={'500'}
                         onPress={() => {
                           !!buttonOnPress && buttonOnPress()
 

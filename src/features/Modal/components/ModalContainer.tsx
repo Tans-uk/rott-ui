@@ -4,15 +4,16 @@ import {type FC} from 'react'
 import {ScrollView, type GestureResponderEvent} from 'react-native'
 
 import {useSafeArea} from '../../../hooks'
+import {ThemeConfig} from '../../../models'
 import {Content} from '../../Content'
 import {Pressable} from '../../Pressable'
 import {type ModalProps} from '../models'
 
-interface ModalContainerProps extends ModalProps {
+interface ModalContainerProps<TTheme extends ThemeConfig> extends ModalProps<TTheme> {
   onPress?: (event: GestureResponderEvent) => void
 }
 
-export const ModalContentContainer: FC<ModalContainerProps> = ({
+export const ModalContentContainer: FC<ModalContainerProps<ThemeConfig>> = ({
   transparent,
   height,
   backgroundColor,

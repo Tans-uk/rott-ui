@@ -1,1 +1,1 @@
-export * from './Result.style'
+export * from './useResult.style'

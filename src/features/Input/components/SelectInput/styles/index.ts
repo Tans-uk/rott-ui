@@ -1,1 +1,1 @@
-export * from './SelectInput.style'
+export * from './useSelectInput.style'

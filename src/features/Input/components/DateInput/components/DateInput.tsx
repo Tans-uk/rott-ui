@@ -1,12 +1,12 @@
 // React Imports
-import {useEffect, useRef, type FC} from 'react'
+import {useContext, useEffect, useRef, type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
+import {RottUiContext} from '../../../../../contexts'
+import {useDisplay} from '../../../../../hooks'
 import {formatMessage} from '../../../../../libs'
-import {ModalIdEnum} from '../../../../../models'
-import {themeConfig} from '../../../../../providers'
-import {display} from '../../../../../utils'
+import {ModalIdEnum, ThemeConfig} from '../../../../../models'
 import {Button} from '../../../../Button'
 import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
@@ -15,8 +15,8 @@ import {List} from '../../../../List'
 import {Modal, useModal} from '../../../../Modal'
 import {Pressable} from '../../../../Pressable'
 import {Separator} from '../../../../Separator'
-import {DateInputStyles, InputStyles} from '../../../styles'
-import {formatByDateMode, InputStyleNormalizer} from '../../../utils'
+import {DateInputStyles, useInputStyles} from '../../../styles'
+import {formatByDateMode, useInputStyleNormalizer} from '../../../utils'
 import type {DataModel, DateInputProps} from '../models'
 
 import {startOfDay} from 'date-fns'
@@ -56,7 +56,7 @@ import DatePicker from 'react-native-date-picker'
  * lütfen ={true} şeklinde tanımlama yapmayınız.
  */
 let externalDate = new Date()
-export const DateInput: FC<DateInputProps> = ({
+export const DateInput: FC<DateInputProps<ThemeConfig>> = ({
   placeholder = 'Lütfen bir tarih seçiniz',
   onDateChange,
   mode = 'date',
@@ -72,8 +72,10 @@ export const DateInput: FC<DateInputProps> = ({
   viewType = 'input',
   ...props
 }) => {
+  const {colors} = useContext(RottUiContext)
   const selectedItem = useRef<DataModel>(undefined)
-
+  const {defaultTextInputStyle} = useInputStyles({theme, size, includeBorderRadius: true, ...props})
+  const {setHeight} = useDisplay()
   const handleConfirmPress = (date?: Date | DataModel) => {
     let validDate: Date
 
@@ -134,13 +136,15 @@ export const DateInput: FC<DateInputProps> = ({
       testID: 'date-input-modal',
       visible: true,
       height: modalHeightCalculator(),
-      onClose: () => hideModal(ModalIdEnum.NativeDatePicker),
+      onClose: () => {
+        hideModal(ModalIdEnum.NativeDatePicker)
+      },
       disableOutsideClick: false,
-      backgroundColor: themeConfig.colors.white,
+      backgroundColor: colors.white,
       header: (
         <Item
           justifyContentCenter
-          backgroundColor={themeConfig.colors['grey-900']}
+          backgroundColor={colors['grey-900']}
           height={50}
           style={DateInputStyles().dateInputHeaderStyle}>
           <Pressable
@@ -149,7 +153,7 @@ export const DateInput: FC<DateInputProps> = ({
             text={formatMessage('COMMON.OK')}
             textVariant='white'
             textSize='xl'
-            textWeight={700}
+            textWeight={'700'}
             style={DateInputStyles().confirmButtonStyle}
           />
 
@@ -160,7 +164,7 @@ export const DateInput: FC<DateInputProps> = ({
               text={formatMessage('COMMON.CLEAR')}
               textVariant='white'
               textSize='xl'
-              textWeight={700}
+              textWeight={'700'}
               style={DateInputStyles().cancelButtonStyle}
             />
           )}
@@ -196,7 +200,7 @@ export const DateInput: FC<DateInputProps> = ({
       onClose: () => hideModal(ModalIdEnum.DatePickerModal),
       headerBackgroundColor: 'grey-900',
       panResponderBackgroundColor: 'grey-900',
-      backgroundColor: themeConfig.colors['grey-900'],
+      backgroundColor: colors['grey-900'],
       header: {
         height: 40,
         leftIcon: {
@@ -206,8 +210,8 @@ export const DateInput: FC<DateInputProps> = ({
           width: 24,
           height: 24,
           strokeWidth: 2,
-          backgroundColor: themeConfig.colors['grey-800'],
-          borderColor: themeConfig.colors.primary,
+          backgroundColor: colors['grey-800'],
+          borderColor: colors.primary,
           borderRadius: 24,
           alignItemsCenter: true,
           onPress: () => hideModal(ModalIdEnum.DatePickerModal),
@@ -215,14 +219,10 @@ export const DateInput: FC<DateInputProps> = ({
         title: formatMessage('COMMON.TRANSACTION.DATE'),
       },
       children: (
-        <Item paddingTop={16} flex={1} backgroundColor={themeConfig.colors['grey-900']}>
-          <Separator
-            width='full'
-            height={1}
-            backgroundColor={themeConfig.colors['neutral-grey-alpha-200']}
-          />
+        <Item paddingTop={16} flex={1} backgroundColor={colors['grey-900']}>
+          <Separator width='full' height={1} backgroundColor={colors['neutral-grey-alpha-200']} />
           <List
-            height={display.setHeight(modalHeightCalculator(data?.length))}
+            height={setHeight(modalHeightCalculator(data?.length))}
             data={
               data
                 ? [
@@ -266,9 +266,7 @@ export const DateInput: FC<DateInputProps> = ({
                           height={24}
                           borderRadius={24}
                           borderWidth={2}
-                          borderColor={
-                            selected ? themeConfig.colors.primary : themeConfig.colors['grey-200']
-                          }
+                          borderColor={selected ? colors.primary : colors['grey-200']}
                           justifyContentCenter
                           alignItemsCenter
                           absolute
@@ -278,10 +276,10 @@ export const DateInput: FC<DateInputProps> = ({
                               width={16}
                               height={16}
                               borderRadius={16}
-                              backgroundColor={themeConfig.colors.primary}
+                              backgroundColor={colors.primary}
                               // eslint-disable-next-line react-native/no-inline-styles
                               style={{
-                                shadowColor: themeConfig.colors['neutral-blue-soft'],
+                                shadowColor: colors['neutral-blue-soft'],
                                 shadowOffset: {
                                   width: 0,
                                   height: 0,
@@ -289,7 +287,7 @@ export const DateInput: FC<DateInputProps> = ({
                                 shadowOpacity: 1,
                                 shadowRadius: 1,
                                 borderWidth: 2,
-                                borderColor: themeConfig.colors['neutral-blue-soft'],
+                                borderColor: colors['neutral-blue-soft'],
                               }}
                             />
                           )}
@@ -300,7 +298,7 @@ export const DateInput: FC<DateInputProps> = ({
                   <Separator
                     width='full'
                     height={1}
-                    backgroundColor={themeConfig.colors['neutral-grey-alpha-200']}
+                    backgroundColor={colors['neutral-grey-alpha-200']}
                   />
                 </>
               )
@@ -326,7 +324,7 @@ export const DateInput: FC<DateInputProps> = ({
         <Item row>
           <Pressable
             size='full'
-            height={InputStyleNormalizer({size}).height}
+            height={useInputStyleNormalizer({size}).height}
             testID={testID ?? 'date-input-value-container'}
             flex={0}
             justifyContentCenter
@@ -345,14 +343,7 @@ export const DateInput: FC<DateInputProps> = ({
                   : placeholder
             }
             textStyle={DateInputStyles().pressableTextStyle}
-            style={StyleSheet.flatten([
-              InputStyles({
-                theme,
-                size,
-                includeBorderRadius: true,
-                ...props,
-              }).defaultTextInputStyle,
-            ])}
+            style={StyleSheet.flatten([defaultTextInputStyle])}
             textVariant={theme === 'dark' ? 'white' : value ? 'grey-900' : 'grey-200'}
             onPress={() => {
               if (disabled) return
@@ -367,12 +358,12 @@ export const DateInput: FC<DateInputProps> = ({
 
               mode.includes('modal') ? showModalDatePicker() : showNativeDatePicker()
             }}>
-            <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
+            <Item absolute right={0} bottom={useInputStyleNormalizer({size}).icon.paddingBottom}>
               <Icon
                 name='CALENDAR'
-                width={InputStyleNormalizer({size}).icon.width}
-                height={InputStyleNormalizer({size}).icon.height}
-                color={themeConfig.colors['grey-200']}
+                width={useInputStyleNormalizer({size}).icon.width}
+                height={useInputStyleNormalizer({size}).icon.height}
+                color={colors['grey-200']}
                 mode='stroke'
                 strokeWidth={2}
               />

@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import {isValidElement, memo, type FC} from 'react'
+import {isValidElement, memo, useContext, type FC} from 'react'
 
-import {themeConfig} from '../../../providers'
-import {colorFromVariant} from '../../../utils'
+import {RottUiContext} from '../../../contexts'
+import {useColorFromVariant} from '../../../hooks'
+import {ThemeConfig} from '../../../models'
 import {Icon, type IconProps} from '../../Icon'
 import {CheckBoxInput} from '../../Input'
 import {Item} from '../../Item'
@@ -34,7 +35,7 @@ import {CommonItemContainer} from './CommonItemContainer'
  *
  * @returns Standart List Item Renderlar
  */
-export const CommonItem: FC<CommonItemProps> = memo(
+export const CommonItem: FC<CommonItemProps<ThemeConfig>> = memo(
   ({
     testID,
     width,
@@ -61,6 +62,9 @@ export const CommonItem: FC<CommonItemProps> = memo(
     value,
     ...props
   }) => {
+    const colorFromVariant = useColorFromVariant()
+    const {colors} = useContext(RottUiContext)
+
     return (
       <CommonItemContainer width={width} height={height}>
         <Pressable
@@ -85,9 +89,7 @@ export const CommonItem: FC<CommonItemProps> = memo(
                   marginRight={8}
                   borderRadius={24}
                   borderWidth={2}
-                  borderColor={
-                    selected ? themeConfig.colors.primary : themeConfig.colors['grey-200']
-                  }
+                  borderColor={selected ? colors.primary : colors['grey-200']}
                   justifyContentCenter
                   alignItemsCenter>
                   {(selected || selectionDisabled) && (
@@ -95,13 +97,9 @@ export const CommonItem: FC<CommonItemProps> = memo(
                       width={selected ? 16 : 24}
                       height={selected ? 16 : 24}
                       borderRadius={13}
-                      backgroundColor={
-                        selected ? themeConfig.colors.primary : themeConfig.colors['grey-200']
-                      }
+                      backgroundColor={selected ? colors.primary : colors['grey-200']}
                       style={{
-                        shadowColor: selected
-                          ? themeConfig.colors['neutral-blue-soft']
-                          : themeConfig.colors['grey-200'],
+                        shadowColor: selected ? colors['neutral-blue-soft'] : colors['grey-200'],
                         shadowOffset: {
                           width: 0,
                           height: 0,
@@ -109,9 +107,7 @@ export const CommonItem: FC<CommonItemProps> = memo(
                         shadowOpacity: selected ? 1 : 0,
                         shadowRadius: 1,
                         borderWidth: 2,
-                        borderColor: selected
-                          ? themeConfig.colors['neutral-blue-soft']
-                          : themeConfig.colors['grey-200'],
+                        borderColor: selected ? colors['neutral-blue-soft'] : colors['grey-200'],
                       }}
                     />
                   )}
@@ -142,9 +138,10 @@ export const CommonItem: FC<CommonItemProps> = memo(
                 marginRight={8}
                 disabled={selectionDisabled}
                 onPress={(event) => {
-                  !!(leftIcon as IconProps)?.onPress && (leftIcon as IconProps)?.onPress?.(event)
+                  !!(leftIcon as IconProps<ThemeConfig>)?.onPress &&
+                    (leftIcon as IconProps<ThemeConfig>)?.onPress?.(event)
 
-                  !!onPress && !(leftIcon as IconProps)?.onPress && onPress()
+                  !!onPress && !(leftIcon as IconProps<ThemeConfig>)?.onPress && onPress()
                 }}
                 {...(typeof leftIcon === 'object' ? {...leftIcon} : null)}
                 key={undefined}>
@@ -154,11 +151,13 @@ export const CommonItem: FC<CommonItemProps> = memo(
                     <Icon
                       width={24}
                       height={24}
-                      variant={(leftIcon as IconProps)?.variant ?? 'grey-900'}
-                      mode={(leftIcon as IconProps)?.mode}
-                      noStroke={(leftIcon as IconProps)?.noStroke}
-                      {...(typeof leftIcon === 'object' ? (leftIcon as IconProps) : {})}
-                      name={(leftIcon as IconProps)?.name ?? leftIcon}
+                      variant={(leftIcon as IconProps<ThemeConfig>)?.variant ?? 'grey-900'}
+                      mode={(leftIcon as IconProps<ThemeConfig>)?.mode}
+                      noStroke={(leftIcon as IconProps<ThemeConfig>)?.noStroke}
+                      {...(typeof leftIcon === 'object'
+                        ? (leftIcon as IconProps<ThemeConfig>)
+                        : {})}
+                      name={(leftIcon as IconProps<ThemeConfig>)?.name ?? leftIcon}
                     />
                   </Item>
                 )}
@@ -171,21 +170,22 @@ export const CommonItem: FC<CommonItemProps> = memo(
               {isValidElement(title) && <>{title}</>}
               {!isValidElement(title) && (
                 <>
-                  {(((title as LabelProps)?.text && (title as LabelProps)?.text !== '') ||
+                  {(((title as LabelProps<ThemeConfig>)?.text &&
+                    (title as LabelProps<ThemeConfig>)?.text !== '') ||
                     (typeof title === 'string' && title !== '')) && (
                     <Label
                       testID='title-test-id'
-                      variant={(title as LabelProps)?.variant ?? 'grey-900'}
-                      fontSize={(title as LabelProps)?.fontSize ?? 'lg'}
-                      fontFamily={(title as LabelProps)?.fontFamily}
-                      fontWeight={(title as LabelProps)?.fontWeight ?? 600}
-                      size={(title as LabelProps)?.size ?? 'full'}
+                      variant={(title as LabelProps<ThemeConfig>)?.variant ?? 'grey-900'}
+                      fontSize={(title as LabelProps<ThemeConfig>)?.fontSize ?? 'lg'}
+                      fontFamily={(title as LabelProps<ThemeConfig>)?.fontFamily}
+                      fontWeight={(title as LabelProps<ThemeConfig>)?.fontWeight ?? '600'}
+                      size={(title as LabelProps<ThemeConfig>)?.size ?? 'full'}
                       {...(typeof title === 'object' ? {...title} : null)}>
-                      {typeof title === 'string' ? title : (title as LabelProps)?.text}
+                      {typeof title === 'string' ? title : (title as LabelProps<ThemeConfig>)?.text}
                     </Label>
                   )}
 
-                  {(!(title as LabelProps)?.text || title === '') && (
+                  {(!(title as LabelProps<ThemeConfig>)?.text || title === '') && (
                     <Item
                       height={16}
                       skeletonShow
@@ -204,21 +204,26 @@ export const CommonItem: FC<CommonItemProps> = memo(
                   {isValidElement(subTitle) && <>{subTitle}</>}
                   {!isValidElement(subTitle) && (
                     <>
-                      {(((subTitle as LabelProps)?.text && (subTitle as LabelProps)?.text !== '') ||
+                      {(((subTitle as LabelProps<ThemeConfig>)?.text &&
+                        (subTitle as LabelProps<ThemeConfig>)?.text !== '') ||
                         (typeof subTitle === 'string' && subTitle !== '')) && (
                         <Label
                           testID='subtitle-test-id'
-                          variant={(subTitle as LabelProps)?.variant ?? 'grey-900'}
-                          fontSize={(subTitle as LabelProps)?.fontSize ?? 'md'}
-                          fontFamily={(subTitle as LabelProps)?.fontFamily ?? 'Markpro-Medium'}
-                          fontWeight={(subTitle as LabelProps)?.fontWeight ?? 600}
-                          marginTop={(subTitle as LabelProps)?.marginTop ?? 8}
+                          variant={(subTitle as LabelProps<ThemeConfig>)?.variant ?? 'grey-900'}
+                          fontSize={(subTitle as LabelProps<ThemeConfig>)?.fontSize ?? 'md'}
+                          fontFamily={
+                            (subTitle as LabelProps<ThemeConfig>)?.fontFamily ?? 'Markpro-Medium'
+                          }
+                          fontWeight={(subTitle as LabelProps<ThemeConfig>)?.fontWeight ?? '600'}
+                          marginTop={(subTitle as LabelProps<ThemeConfig>)?.marginTop ?? 8}
                           {...(typeof subTitle === 'object' ? {...subTitle} : null)}>
-                          {typeof subTitle === 'string' ? subTitle : (subTitle as LabelProps)?.text}
+                          {typeof subTitle === 'string'
+                            ? subTitle
+                            : (subTitle as LabelProps<ThemeConfig>)?.text}
                         </Label>
                       )}
 
-                      {(!(subTitle as LabelProps)?.text || subTitle === '') && (
+                      {(!(subTitle as LabelProps<ThemeConfig>)?.text || subTitle === '') && (
                         <Item
                           marginTop={8}
                           height={16}
@@ -240,15 +245,17 @@ export const CommonItem: FC<CommonItemProps> = memo(
                   {!isValidElement(description) && (
                     <Label
                       testID='description-test-id'
-                      variant={(description as LabelProps)?.variant ?? 'grey-900'}
-                      fontSize={(description as LabelProps)?.fontSize ?? 'md'}
-                      fontFamily={(description as LabelProps)?.fontFamily ?? 'Markpro-Medium'}
-                      fontWeight={(description as LabelProps)?.fontWeight ?? 600}
-                      marginTop={(description as LabelProps)?.marginTop ?? 8}
+                      variant={(description as LabelProps<ThemeConfig>)?.variant ?? 'grey-900'}
+                      fontSize={(description as LabelProps<ThemeConfig>)?.fontSize ?? 'md'}
+                      fontFamily={
+                        (description as LabelProps<ThemeConfig>)?.fontFamily ?? 'Markpro-Medium'
+                      }
+                      fontWeight={(description as LabelProps<ThemeConfig>)?.fontWeight ?? '600'}
+                      marginTop={(description as LabelProps<ThemeConfig>)?.marginTop ?? 8}
                       {...(typeof description === 'object' ? {...description} : null)}>
                       {typeof description === 'string'
                         ? description
-                        : (description as LabelProps)?.text}
+                        : (description as LabelProps<ThemeConfig>)?.text}
                     </Label>
                   )}
                 </Item>
@@ -261,14 +268,15 @@ export const CommonItem: FC<CommonItemProps> = memo(
               <Pressable
                 testID='right-icon-test-id'
                 flex={0}
-                marginLeft={(rightIcon as IconProps)?.marginLeft ?? 16}
+                marginLeft={(rightIcon as IconProps<ThemeConfig>)?.marginLeft ?? 16}
                 {...(typeof rightIcon === 'object' ? {...rightIcon} : null)}
                 key={undefined}
                 disabled={selectionDisabled}
                 onPress={(event) => {
-                  !!(rightIcon as IconProps)?.onPress && (rightIcon as IconProps)?.onPress?.(event)
+                  !!(rightIcon as IconProps<ThemeConfig>)?.onPress &&
+                    (rightIcon as IconProps<ThemeConfig>)?.onPress?.(event)
 
-                  !!onPress && !(rightIcon as IconProps)?.onPress && onPress()
+                  !!onPress && !(rightIcon as IconProps<ThemeConfig>)?.onPress && onPress()
                 }}>
                 {!showSelected && isValidElement(rightIcon) && <>{rightIcon}</>}
                 {!showSelected && !isValidElement(rightIcon) && (
@@ -276,11 +284,13 @@ export const CommonItem: FC<CommonItemProps> = memo(
                     <Icon
                       width={24}
                       height={24}
-                      variant={(rightIcon as IconProps).variant ?? 'grey-900'}
-                      mode={(rightIcon as IconProps).mode}
-                      noStroke={(rightIcon as IconProps).noStroke}
-                      {...(typeof rightIcon === 'object' ? (rightIcon as IconProps) : {})}
-                      name={(rightIcon as IconProps).name ?? rightIcon}
+                      variant={(rightIcon as IconProps<ThemeConfig>).variant ?? 'grey-900'}
+                      mode={(rightIcon as IconProps<ThemeConfig>).mode}
+                      noStroke={(rightIcon as IconProps<ThemeConfig>).noStroke}
+                      {...(typeof rightIcon === 'object'
+                        ? (rightIcon as IconProps<ThemeConfig>)
+                        : {})}
+                      name={(rightIcon as IconProps<ThemeConfig>).name ?? rightIcon}
                     />
                   </Item>
                 )}
@@ -299,9 +309,7 @@ export const CommonItem: FC<CommonItemProps> = memo(
                   marginLeft={8}
                   borderRadius={24}
                   borderWidth={2}
-                  borderColor={
-                    selected ? themeConfig.colors.primary : themeConfig.colors['grey-200']
-                  }
+                  borderColor={selected ? colors.primary : colors['grey-200']}
                   justifyContentCenter
                   alignItemsCenter>
                   {(selected || selectionDisabled) && (
@@ -309,13 +317,9 @@ export const CommonItem: FC<CommonItemProps> = memo(
                       width={selected ? 16 : 24}
                       height={selected ? 16 : 24}
                       borderRadius={13}
-                      backgroundColor={
-                        selected ? themeConfig.colors.primary : themeConfig.colors['grey-200']
-                      }
+                      backgroundColor={selected ? colors.primary : colors['grey-200']}
                       style={{
-                        shadowColor: selected
-                          ? themeConfig.colors['neutral-blue-soft']
-                          : themeConfig.colors['grey-200'],
+                        shadowColor: selected ? colors['neutral-blue-soft'] : colors['grey-200'],
                         shadowOffset: {
                           width: 0,
                           height: 0,
@@ -323,9 +327,7 @@ export const CommonItem: FC<CommonItemProps> = memo(
                         shadowOpacity: selected ? 1 : 0,
                         shadowRadius: 1,
                         borderWidth: 2,
-                        borderColor: selected
-                          ? themeConfig.colors['neutral-blue-soft']
-                          : themeConfig.colors['grey-200'],
+                        borderColor: selected ? colors['neutral-blue-soft'] : colors['grey-200'],
                       }}
                     />
                   )}

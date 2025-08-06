@@ -88,7 +88,7 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
       <Text
         style={
           {
-            "color": "grey-200",
+            "color": "rgba(161, 173, 175, 1)",
             "fontFamily": "Markpro-Bold",
             "fontSize": 10,
             "fontWeight": 700,
@@ -98,26 +98,6 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
       >
         (PASSWORD ON THE BACK OF THE CARD)
       </Text>
-      <View
-        marginLeft={4}
-        style={
-          {
-            "flex": undefined,
-            "flexDirection": "column",
-            "marginLeft": 8,
-          }
-        }
-      >
-        <SvgMock
-          fill="transparent"
-          height={35}
-          stroke="grey-200"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          width={35}
-        />
-      </View>
     </View>
   </View>
   <View

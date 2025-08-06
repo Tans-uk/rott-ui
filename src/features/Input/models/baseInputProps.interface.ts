@@ -1,14 +1,16 @@
 import type {TextInputProps} from 'react-native'
 
-import {type CommonUiProps, type Theme, type Variant} from '../../../models'
-import { InputType } from './inputType.type'
-import { InputLabelProps } from './inputLabelProps.interface'
+import {ThemeConfig, type CommonUiProps, type Theme} from '../../../models'
+import {InputLabelProps} from './inputLabelProps.interface'
+import {InputType} from './inputType.type'
 
 /** Tüm input tiplerinde ortak olarak kullanılan propertylerdir. */
-export interface BaseInputProps extends CommonUiProps, TextInputProps {
+export interface BaseInputProps<TTheme extends ThemeConfig>
+  extends CommonUiProps<TTheme>,
+    TextInputProps {
   name: string
   type?: InputType
-  label?: string | InputLabelProps
+  label?: string | InputLabelProps<TTheme>
   disabled?: boolean
   isLoading?: boolean
   errorMessage?: string
@@ -16,7 +18,7 @@ export interface BaseInputProps extends CommonUiProps, TextInputProps {
   renderSeparator?: boolean
   border?: {
     width?: number
-    variant?: Variant
+    variant?: keyof TTheme['colors']
     radius?: number
   }
   touched?: Nullable<boolean>

@@ -1,13 +1,15 @@
 import {type FC} from 'react'
 
-import {type CommonUiProps} from '../../../models'
-import {colorFromVariant} from '../../../utils'
+import {useColorFromVariant} from '../../../hooks'
+import {ThemeConfig, type CommonUiProps} from '../../../models'
 import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import type {AlertModel} from '../models'
 
-interface AlertProps extends AlertModel, Omit<CommonUiProps, 'size' | 'variant'> {
+interface AlertProps
+  extends AlertModel<ThemeConfig>,
+    Omit<CommonUiProps<ThemeConfig>, 'size' | 'variant'> {
   testID?: string
 }
 
@@ -20,6 +22,7 @@ export const Alert: FC<AlertProps> = ({
   testID,
   borderRadius = 0,
 }) => {
+  const colorFromVariant = useColorFromVariant()
   return (
     <Item
       row

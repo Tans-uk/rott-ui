@@ -1,9 +1,11 @@
 import {StyleSheet} from 'react-native'
 
-import {commonUiStyleProperties} from '../../../utils'
+import {useCommonUiStyleProperties} from '../../../hooks'
 
-export const PressableStyles = (props: any) =>
-  StyleSheet.create({
+export const usePressableStyles = (props: any) => {
+  const {commonUiStyleProperties} = useCommonUiStyleProperties(props)
+
+  return StyleSheet.create({
     defaultPressableStyle: {
       ...commonUiStyleProperties(props),
 
@@ -12,3 +14,4 @@ export const PressableStyles = (props: any) =>
       flex: props?.flex === 0 ? 0 : 1,
     } as any,
   })
+}

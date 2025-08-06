@@ -1,6 +1,9 @@
+import {useContext} from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
+import {RottUiContext} from '../../../contexts'
 import {formatMessage} from '../../../libs'
-import {themeConfig} from '../../../providers'
+import {ThemeConfig} from '../../../models'
 import {IconProps} from '../../Icon'
 import {CommonItem} from '../components'
 import type {CommonItemProps} from '../models'
@@ -9,8 +12,9 @@ describe('Common -> Common Item', () => {
   const onPressMock = jest.fn()
   const leftIconOnPressMock = jest.fn()
   const rightIconOnPressMock = jest.fn()
+  const {colors} = useContext(RottUiContext)
 
-  const dummyData: CommonItemProps = {
+  const dummyData: CommonItemProps<ThemeConfig> = {
     title: formatMessage('TEST.WITH.PARAM', {testText: 'TITLE'}),
     subTitle: formatMessage('TEST.WITH.PARAM', {testText: 'SUBTITLE'}),
     description: formatMessage('TEST.WITH.PARAM', {testText: 'DESCRIPTION'}),
@@ -18,13 +22,13 @@ describe('Common -> Common Item', () => {
       name: 'STAR',
       width: 24,
       height: 24,
-      color: themeConfig.colors.primary,
+      color: colors.primary,
     },
     rightIcon: {
       name: 'PLUS',
       width: 24,
       height: 24,
-      color: themeConfig.colors.primary,
+      color: colors.primary,
     },
   }
 
@@ -129,7 +133,12 @@ describe('Common -> Common Item', () => {
         title={title}
         subTitle={subTitle}
         description={description}
-        leftIcon={{onPress: leftIconOnPressMock, ...(leftIcon as IconProps)} as IconProps}
+        leftIcon={
+          {
+            onPress: leftIconOnPressMock,
+            ...(leftIcon as IconProps<ThemeConfig>),
+          } as IconProps<ThemeConfig>
+        }
         onPress={onPressMock}
       />
     )
@@ -197,7 +206,12 @@ describe('Common -> Common Item', () => {
         title={title}
         subTitle={subTitle}
         description={description}
-        rightIcon={{onPress: rightIconOnPressMock, ...(rightIcon as IconProps)} as IconProps}
+        rightIcon={
+          {
+            onPress: rightIconOnPressMock,
+            ...(rightIcon as IconProps<ThemeConfig>),
+          } as IconProps<ThemeConfig>
+        }
         onPress={onPressMock}
       />
     )

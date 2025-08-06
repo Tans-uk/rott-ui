@@ -1,6 +1,6 @@
 import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
-import {colorFromVariant} from '../../../utils'
+import {useColorFromVariant} from '../../../hooks'
 import {Button} from '../components'
 
 const testId = {
@@ -109,6 +109,7 @@ describe('Button -> Custom Component', () => {
   })
 
   it('buton ekranda olmalı ve outline variantı ile renderlanmalı', () => {
+    const colorFromVariant = useColorFromVariant()
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = render(
       <Button variant='primary-outline' testID={buttonTestId}>

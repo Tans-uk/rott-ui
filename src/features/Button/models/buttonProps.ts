@@ -2,15 +2,15 @@ import {type PropsWithChildren} from 'react'
 
 import {type TouchableOpacityProps} from 'react-native'
 
-import {type CommonUiProps, type Size, type Variant} from '../../../models'
+import {ThemeConfig, type CommonUiProps, type Size} from '../../../models'
 import {type ButtonIconProps} from './buttonIconProps'
 import {type ButtonImageProps} from './buttonImageProps'
 
-export interface ButtonProps
+export interface ButtonProps<TTheme extends ThemeConfig>
   extends TouchableOpacityProps,
-    Omit<CommonUiProps, 'size'>,
+    Omit<CommonUiProps<TTheme>, 'size'>,
     PropsWithChildren {
-  color?: Variant
+  color?: string
   isLoading?: boolean
   loadingText?: string
   backgroundColor?: string
@@ -21,10 +21,10 @@ export interface ButtonProps
         height?: Omit<Size, 'xl' | 'xxl'> | number
       }
 
-  leftImage?: ButtonImageProps
-  rightImage?: ButtonImageProps
-  leftIcon?: ButtonIconProps
-  rightIcon?: ButtonIconProps
+  leftImage?: ButtonImageProps<TTheme>
+  rightImage?: ButtonImageProps<TTheme>
+  leftIcon?: ButtonIconProps<TTheme>
+  rightIcon?: ButtonIconProps<TTheme>
 
   height?: Size
   width?: Size

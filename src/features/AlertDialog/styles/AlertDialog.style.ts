@@ -1,11 +1,13 @@
 import {StyleSheet} from 'react-native'
 
-import {commonUiStyleProperties} from '../../../utils'
+import {useCommonUiStyleProperties} from '../../../hooks'
 
-export const AlertDialogStyles = (props: any) =>
-  StyleSheet.create({
+export const AlertDialogStyles = (props: any) => {
+  const {commonUiStyleProperties} = useCommonUiStyleProperties(props)
+
+  return StyleSheet.create({
     defaultInformationModalStyle: {
-      ...commonUiStyleProperties(props),
+      ...commonUiStyleProperties,
     } as any,
     InformationModalView: {
       shadowOffset: {
@@ -17,3 +19,4 @@ export const AlertDialogStyles = (props: any) =>
       elevation: 5,
     },
   })
+}

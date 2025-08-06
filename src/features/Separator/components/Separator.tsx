@@ -2,17 +2,17 @@ import {type FC} from 'react'
 
 import {StyleSheet, View, type ViewProps} from 'react-native'
 
-import {type CommonUiProps} from '../../../models'
-import {SeparatorStyles} from '../styles'
+import {ThemeConfig, type CommonUiProps} from '../../../models'
+import {useSeparatorStyles} from '../styles'
 
-interface SeparatorProps extends ViewProps, CommonUiProps {
+interface SeparatorProps<TTheme extends ThemeConfig> extends ViewProps, CommonUiProps<TTheme> {
   height?: number | string
   width?: number | string
   orientation?: 'vertical' | 'horizontal'
   opacity?: number
 }
 
-export const Separator: FC<SeparatorProps> = ({
+export const Separator: FC<SeparatorProps<ThemeConfig>> = ({
   height = 1,
   width = 1,
   style,
@@ -20,19 +20,15 @@ export const Separator: FC<SeparatorProps> = ({
   orientation = 'horizontal',
   opacity = 1,
   ...props
-}) => (
-  <View
-    style={StyleSheet.flatten([
-      SeparatorStyles({
-        height: orientation === 'vertical' && size ? undefined : height,
-        width: orientation === 'horizontal' && size ? undefined : width,
-        size,
-        orientation,
-        opacity,
-        ...props,
-      }).defaultSeparator,
-      style,
-    ])}
-    {...props}
-  />
-)
+}) => {
+  const {defaultSeparator} = useSeparatorStyles({
+    height: orientation === 'vertical' && size ? undefined : height,
+    width: orientation === 'horizontal' && size ? undefined : width,
+    size,
+    orientation,
+    opacity,
+    ...props,
+  })
+
+  return <View style={StyleSheet.flatten([defaultSeparator.defaultSeparator, style])} {...props} />
+}

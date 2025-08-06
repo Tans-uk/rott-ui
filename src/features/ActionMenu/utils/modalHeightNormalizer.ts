@@ -1,4 +1,4 @@
-import {display} from '../../../utils'
+import {useDisplay} from '../../../hooks'
 
 export const modalHeightNormalizer = (
   dataLength: number,
@@ -8,11 +8,13 @@ export const modalHeightNormalizer = (
   maxItem: number,
   itemHeight: number
 ) => {
+  const {px, setHeight} = useDisplay()
+
   const showItemCount = dataLength > maxItem ? maxItem : dataLength
-  const headerHeight = display.px(56)
-  const cancelButtonHeight = display.px(56)
-  const cancelButtonMarginTop = display.px(16)
-  const listBottomPosition = display.px(24)
+  const headerHeight = px(56)
+  const cancelButtonHeight = px(56)
+  const cancelButtonMarginTop = px(16)
+  const listBottomPosition = px(24)
 
   return (
     ((showItemCount * itemHeight +
@@ -22,6 +24,6 @@ export const modalHeightNormalizer = (
       listBottomPosition +
       separatorTotalHeight) *
       100) /
-    display.setHeight(100)
+    setHeight(100)
   )
 }

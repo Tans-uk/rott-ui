@@ -2,11 +2,12 @@ import {useCallback, useState, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
+import {Item} from '../../Item'
 import type {EmailInputProps} from '../models'
-import {InputStyles} from '../styles'
-import { Item } from '../../Item'
+import {useInputStyles} from '../styles'
 
-export const EmailInput: FC<EmailInputProps> = ({
+export const EmailInput: FC<EmailInputProps<ThemeConfig>> = ({
   disabled,
   fontSize,
   theme,
@@ -16,7 +17,7 @@ export const EmailInput: FC<EmailInputProps> = ({
   ...props
 }) => {
   const [value, setValue] = useState<string>(propValue || '')
-
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
   const handleChangeText = useCallback(
     (text: string) => {
       setValue(text)
@@ -35,7 +36,7 @@ export const EmailInput: FC<EmailInputProps> = ({
         autoCapitalize='none'
         onChangeText={handleChangeText}
         value={value}
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+        style={StyleSheet.flatten([defaultTextInputStyle])}
         {...props}
       />
     </Item>

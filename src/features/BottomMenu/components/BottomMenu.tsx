@@ -1,18 +1,20 @@
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
 import {Platform} from 'react-native'
 
+import {RottUiContext} from '../../../contexts'
 import {useSafeArea} from '../../../hooks'
-import {themeConfig} from '../../../providers'
+import {ThemeConfig} from '../../../models'
 import {Content} from '../../Content'
 import type {BottomMenuItemModel} from '../models'
 import {BottomMenuItem} from './BottomMenuItem'
 
 interface BottomMenuProps {
-  menuItems: BottomMenuItemModel[]
+  menuItems: BottomMenuItemModel<ThemeConfig>[]
 }
 
 export const BottomMenu: FC<BottomMenuProps> = ({menuItems}) => {
+  const {colors} = useContext(RottUiContext)
   const {bottom} = useSafeArea()
 
   let absoluteHeight = 64 + bottom // 56 dip yükseklik + 8 dip boşluk + bottom inset
@@ -31,7 +33,7 @@ export const BottomMenu: FC<BottomMenuProps> = ({menuItems}) => {
       borderTopStartRadius={24}
       borderTopEndRadius={24}
       justifyContentSpaceAround
-      backgroundColor={themeConfig.colors.secondary}
+      backgroundColor={colors.secondary}
       height={absoluteHeight}>
       {menuItems.map((props) => (
         <BottomMenuItem key={`${props?.title ?? 'Main_'}`} {...props} />

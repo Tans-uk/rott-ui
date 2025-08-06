@@ -3,9 +3,11 @@ import {type FC} from 'react'
 import {StyleSheet, TextInput} from 'react-native'
 
 import type {PlateNumberInputProps} from '../models'
-import {InputStyles} from '../styles'
+import {useInputStyles} from '../styles'
 
-export const PlateNumberInput: FC<PlateNumberInputProps> = ({
+import { ThemeConfig } from '../../../models'
+
+export const PlateNumberInput: FC<PlateNumberInputProps<ThemeConfig>> = ({
   fontSize,
   onChangeText,
   theme,
@@ -13,6 +15,7 @@ export const PlateNumberInput: FC<PlateNumberInputProps> = ({
   size,
   ...props
 }) => {
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
   const handleTextChange = (plateNumber: string) => {
     const replacedPlateNumber = plateNumber
       .replace(/[^0-9A-Za-z]/g, '')
@@ -24,7 +27,7 @@ export const PlateNumberInput: FC<PlateNumberInputProps> = ({
     <TextInput
       editable={!disabled}
       placeholder='_________'
-      style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+      style={StyleSheet.flatten([defaultTextInputStyle])}
       keyboardType='default'
       maxLength={9}
       autoCapitalize='characters'

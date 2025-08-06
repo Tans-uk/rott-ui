@@ -1,5 +1,6 @@
 import {createRef} from 'react'
 
+import {ThemeConfig} from '../../models'
 import {useModal} from './hooks'
 import type {ModalProps} from './models'
 
@@ -17,10 +18,16 @@ export const modalRef = createRef<ModalService>()
 
 export const Modal: ModalService = {
   modals: modalRef.current?.modals ?? [],
-  showModal: (modalOptions?: ModalProps) => modalRef.current?.showModal(modalOptions),
-  updateModal: (modalToRender: ModalProps) => modalRef.current?.updateModal(modalToRender),
+  showModal: (modalOptions?: ModalProps<ThemeConfig>) => modalRef.current?.showModal(modalOptions),
+  updateModal: (modalToRender: ModalProps<ThemeConfig>) =>
+    modalRef.current?.updateModal(modalToRender),
   hideModal: (id?: number) => modalRef.current?.hideModal(id),
   hasModalById: (id: number) => modalRef.current?.hasModalById(id) ?? false,
-  hideAllModal: (predicate: (value: ModalProps, index: number, array: ModalProps[]) => unknown) =>
-    modalRef.current?.hideAllModal(predicate),
+  hideAllModal: (
+    predicate: (
+      value: ModalProps<ThemeConfig>,
+      index: number,
+      array: ModalProps<ThemeConfig>[]
+    ) => unknown
+  ) => modalRef.current?.hideAllModal(predicate),
 }

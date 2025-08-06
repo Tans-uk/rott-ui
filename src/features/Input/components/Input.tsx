@@ -2,16 +2,16 @@
 import {memo, useContext, type FC} from 'react'
 
 import {RottUiContext} from '../../../contexts'
-import {themeConfig} from '../../../providers'
-import {colorFromVariant} from '../../../utils'
+import {useColorFromVariant} from '../../../hooks'
+import {ThemeConfig} from '../../../models'
 import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 import {Separator} from '../../Separator'
 import type {InputProps} from '../models'
-import {InputStyles} from '../styles'
-import {InputStyleNormalizer} from '../utils'
+import {useInputStyles} from '../styles'
+import {useInputStyleNormalizer} from '../utils'
 import {AmountInput} from './AmountInput/components/AmountInput'
 import {CheckBoxInput} from './CheckBoxInput'
 import {CreditCardInput} from './CreditCardInput'
@@ -31,7 +31,10 @@ import {SelectInput} from './SelectInput'
 import {StatementInput} from './StatementInput'
 import {ToggleInput} from './ToggleInput'
 
-export const Input: FC<InputProps> = memo((props) => {
+export const Input: FC<InputProps<ThemeConfig>> = memo((props) => {
+  const {language, colors} = useContext(RottUiContext)
+  const colorFromVariant = useColorFromVariant()
+
   const {
     label,
     type,
@@ -43,11 +46,8 @@ export const Input: FC<InputProps> = memo((props) => {
     border,
     touched = null,
     name,
-    placeholderTextColor = theme === 'light'
-      ? themeConfig.colors['grey-200']
-      : themeConfig.colors.white,
+    placeholderTextColor = theme === 'light' ? colors['grey-200'] : colors.white,
   } = props
-  const {language} = useContext(RottUiContext)
   const hasError = !!props?.onBlur && !!touched && !!errorMessage
 
   const getInputElement = () => {
@@ -128,11 +128,11 @@ export const Input: FC<InputProps> = memo((props) => {
     <Item>
       <Item
         paddingTop={label && type !== 'toggle' ? 16 : 0}
-        style={InputStyles({disabled}).textInputContainer}>
+        style={useInputStyles({disabled}).textInputContainer}>
         {label && type !== 'toggle' && (
           <Item
             row
-            paddingHorizontal={InputStyleNormalizer({size: size}).paddingHorizontal}
+            paddingHorizontal={useInputStyleNormalizer({size: size}).paddingHorizontal}
             alignItemsCenter>
             <Label
               testID='input-label-test-id'
@@ -190,10 +190,8 @@ export const Input: FC<InputProps> = memo((props) => {
           paddingHorizontal={type !== 'toggle' ? 16 : 0}
           borderWidth={border?.width}
           borderRadius={border?.radius}
-          borderColor={colorFromVariant(border?.variant)}
-          backgroundColor={
-            theme === 'light' ? themeConfig.colors.white : themeConfig.colors['grey-800']
-          }>
+          borderColor={colorFromVariant(border?.variant ?? 'grey-200')}
+          backgroundColor={theme === 'light' ? colors.white : colors['grey-800']}>
           {getInputElement()}
         </Item>
       </Item>

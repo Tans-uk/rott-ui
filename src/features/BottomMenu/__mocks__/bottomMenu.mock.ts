@@ -1,6 +1,7 @@
+import {ThemeConfig} from '../../../models'
 import type {BottomMenuItemModel} from '../models'
 
-export const bottomMenuListItemMock: BottomMenuItemModel[] = [
+export const bottomMenuListItemMock: BottomMenuItemModel<ThemeConfig>[] = [
   {
     testID: 'bottom-menu-item-1-test-id',
     title: 'Menu 1',

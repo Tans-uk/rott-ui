@@ -1,12 +1,16 @@
 import {Platform, StyleSheet} from 'react-native'
 
-import {colorFromVariant, commonUiStyleProperties, fontSizeNormalizer} from '../../../utils'
+import {useColorFromVariant, useCommonUiStyleProperties} from '../../../hooks'
+import {fontSizeNormalizer} from '../../../utils'
 import {fontFamilyNormalizer} from '../utils'
 
-export const LabelStyles = (props?: any) =>
-  StyleSheet.create({
+export const useLabel = (props?: any) => {
+  const colorFromVariant = useColorFromVariant()
+  const {commonUiStyleProperties} = useCommonUiStyleProperties(props)
+
+  return StyleSheet.create({
     defaultLabelStyle: {
-      ...commonUiStyleProperties(props),
+      ...commonUiStyleProperties,
 
       textAlign: props?.textCenter ? 'center' : 'auto',
       fontSize: fontSizeNormalizer(props?.fontSize),
@@ -18,3 +22,4 @@ export const LabelStyles = (props?: any) =>
       color: props?.color ?? colorFromVariant(props?.variant),
     } as any,
   })
+}

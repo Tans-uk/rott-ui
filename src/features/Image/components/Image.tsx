@@ -1,4 +1,4 @@
-import type {FC} from 'react'
+import {useContext, type FC} from 'react'
 
 import {
   Image as RNImage,
@@ -7,12 +7,22 @@ import {
   type ImageURISource,
 } from 'react-native'
 
-import {themeConfig} from '../../../providers'
+import {RottUiContext} from '../../../contexts'
+import {ThemeConfig} from '../../../models'
 import type {ImageProps} from '../models'
-import {ImageStyles} from '../styles'
+import {useImageStyles} from '../styles'
 
-export const Image: FC<ImageProps> = ({variant, size, style, source, name, ...props}) => {
-  const imageSource = Object.entries(themeConfig.images).find(
+export const Image: FC<ImageProps<ThemeConfig>> = ({
+  variant,
+  size,
+  style,
+  source,
+  name,
+  ...props
+}) => {
+  const {defaultImageStyle} = useImageStyles({variant, size, ...props})
+  const {images} = useContext(RottUiContext)
+  const imageSource = Object.entries(images).find(
     (image) => image[0]?.toLowerCase() === (name as string)?.toLowerCase()
   )
 
@@ -20,8 +30,8 @@ export const Image: FC<ImageProps> = ({variant, size, style, source, name, ...pr
 
   return (
     <RNImage
-      style={StyleSheet.flatten([ImageStyles({variant, size, ...props}).defaultImageStyle, style])}
-      source={source ? uriImageSource : themeConfig.images[imageSource?.[0] as never]}
+      style={StyleSheet.flatten([defaultImageStyle, style])}
+      source={source ? uriImageSource : images[imageSource?.[0] as never]}
       {...props}
     />
   )

@@ -2,17 +2,16 @@ import {type FC} from 'react'
 
 import {ActivityIndicator, StyleSheet, TouchableOpacity} from 'react-native'
 
-import {Size} from '../../../models'
-import {themeConfig} from '../../../providers'
-import {display} from '../../../utils'
-import {Icon, IconKeys} from '../../Icon'
+import {useColorFromVariant, useDisplay} from '../../../hooks'
+import {Size, ThemeConfig} from '../../../models'
+import {Icon} from '../../Icon'
 import {Image} from '../../Image'
 import {Label} from '../../Label'
 import type {ButtonProps} from '../models'
-import {ButtonStyles} from '../styles'
+import {useButtonStyle} from '../styles'
 import {buttonSizeNormalizer} from '../utils'
 
-export const Button: FC<ButtonProps> = ({
+export const Button: FC<ButtonProps<ThemeConfig>> = ({
   variant = 'primary',
   color,
   size = {height: 'lg'},
@@ -52,42 +51,43 @@ export const Button: FC<ButtonProps> = ({
   text,
   ...props
 }) => {
+  const colorFromVariant = useColorFromVariant()
+  const {normalize} = useDisplay()
+  const {buttonTextStyle, defaultButtonStyle} = useButtonStyle({
+    variant,
+    color,
+    size,
+    flex,
+    flexGrow,
+    borderWidth,
+    borderRadius,
+    borderColor,
+    circle,
+    width,
+    height,
+    includeJustifyContent: true,
+    justifyContentCenter,
+    justifyContentFlexEnd,
+    justifyContentFlexStart,
+    justifyContentSpaceAround,
+    justifyContentSpaceBetween,
+    ...props,
+  })
+
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      style={StyleSheet.flatten([
-        ButtonStyles({
-          variant,
-          color,
-          size,
-          flex,
-          flexGrow,
-          borderWidth,
-          borderRadius,
-          borderColor,
-          circle,
-          width,
-          height,
-          includeJustifyContent: true,
-          justifyContentCenter,
-          justifyContentFlexEnd,
-          justifyContentFlexStart,
-          justifyContentSpaceAround,
-          justifyContentSpaceBetween,
-          ...props,
-        }).defaultButtonStyle,
-        style,
-      ])}
+      style={StyleSheet.flatten([defaultButtonStyle, style])}
       {...props}>
       {leftIcon && !isLoading && (
         <Icon
           {...leftIcon}
           absolute={leftIcon.absolute}
-          left={leftIcon.absolute ? display.normalize(24) : undefined}
+          left={leftIcon.absolute ? normalize(24) : undefined}
           testID='button-left-icon-test-id'
           marginRight={leftIcon.absolute ? 0 : 8}
           variant={leftIcon?.variant}
-          name={leftIcon?.name as IconKeys}
+          name={leftIcon?.name}
           width={
             leftIcon?.width ??
             buttonSizeNormalizer(typeof size === 'string' ? size : (size.height as Size)).icon
@@ -102,7 +102,7 @@ export const Button: FC<ButtonProps> = ({
       {leftImage && !isLoading && (
         <Image
           testID='button-left-image-test-id'
-          left={leftImage.absolute ? display.normalize(24) : undefined}
+          left={leftImage.absolute ? normalize(24) : undefined}
           name={leftImage.name}
           absolute={leftImage.absolute}
           marginRight={leftImage.absolute ? 0 : 8}
@@ -125,28 +125,25 @@ export const Button: FC<ButtonProps> = ({
           textCenter
           fontFamily={(fontFamily ?? !fontWeight) ? 'Markpro-Bold' : undefined}
           fontSize={
-            typeof size === 'object'
+            (typeof size === 'object'
               ? buttonSizeNormalizer(size.height as Size).fontSize
-              : buttonSizeNormalizer(size).fontSize
+              : buttonSizeNormalizer(size).fontSize) as any
           }
           fontWeight={fontWeight}
-          style={ButtonStyles({color, variant}).buttonTextStyle}>
+          style={buttonTextStyle}>
           {children ?? text}
         </Label>
       )}
 
       {isLoading && (
         <ActivityIndicator
-          color={themeConfig.colors.white}
+          color={colorFromVariant('white')}
           testID='button-loading-indicator-test-id'
         />
       )}
 
       {isLoading && loadingText && (
-        <Label
-          testID='button-loading-text-test-id'
-          style={ButtonStyles({color, variant}).buttonTextStyle}
-          marginLeft={8}>
+        <Label testID='button-loading-text-test-id' style={buttonTextStyle} marginLeft={8}>
           {loadingText}
         </Label>
       )}
@@ -155,11 +152,11 @@ export const Button: FC<ButtonProps> = ({
         <Icon
           {...rightIcon}
           absolute={rightIcon.absolute}
-          right={rightIcon.absolute ? display.normalize(24) : undefined}
+          right={rightIcon.absolute ? normalize(24) : undefined}
           testID='button-right-icon-test-id'
           marginLeft={rightIcon.absolute ? 0 : 8}
           variant={rightIcon?.variant}
-          name={rightIcon?.name as IconKeys}
+          name={rightIcon?.name}
           width={
             rightIcon.width ??
             buttonSizeNormalizer(typeof size === 'string' ? size : (size.height as Size)).icon
@@ -174,7 +171,7 @@ export const Button: FC<ButtonProps> = ({
       {rightImage && !isLoading && (
         <Image
           testID='button-right-image-test-id'
-          right={rightImage.absolute ? display.normalize(24) : undefined}
+          right={rightImage.absolute ? normalize(24) : undefined}
           name={rightImage.name}
           absolute={rightImage.absolute}
           marginRight={rightImage.absolute ? 0 : 8}

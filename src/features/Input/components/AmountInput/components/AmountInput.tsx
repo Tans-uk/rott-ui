@@ -1,17 +1,18 @@
-import {useCallback, useEffect, useRef, useState, type FC} from 'react'
+import {useCallback, useContext, useEffect, useRef, useState, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
-import {themeConfig} from '../../../../../providers'
-import {Icon, type IconKeys} from '../../../../Icon'
+import {RottUiContext} from '../../../../../contexts'
+import {ThemeConfig} from '../../../../../models'
+import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
-import {InputStyles} from '../../../styles'
-import {InputStyleNormalizer} from '../../../utils'
+import {useInputStyles} from '../../../styles'
+import {useInputStyleNormalizer} from '../../../utils'
 import type {AmountInputProps} from '../models'
 import {AmountInputStyles} from '../styles'
 
-export const AmountInput: FC<AmountInputProps> = ({
+export const AmountInput: FC<AmountInputProps<ThemeConfig>> = ({
   fontSize,
   onChangeText,
   value,
@@ -21,6 +22,8 @@ export const AmountInput: FC<AmountInputProps> = ({
   currencyType = 'TL',
   ...props
 }) => {
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
+  const {colors} = useContext(RottUiContext)
   const amountRef = useRef<TextInput>(null)
   const currencyRef = useRef<TextInput>(null)
   const [amount, setAmount] = useState('')
@@ -73,11 +76,11 @@ export const AmountInput: FC<AmountInputProps> = ({
 
   const placeholderColorNormalizer =
     theme === 'dark'
-      ? themeConfig.colors.white
+      ? colors.white
       : (!amount && !currency) ||
           ((amount === '0' || amount === '') && (!currency || currency === '' || currency === '00'))
-        ? themeConfig.colors['grey-200']
-        : themeConfig.colors['grey-900']
+        ? colors['grey-200']
+        : colors['grey-900']
 
   useEffect(() => {
     const initialAmount = value?.split(',')[0]
@@ -108,26 +111,15 @@ export const AmountInput: FC<AmountInputProps> = ({
           value={amount}
           keyboardType='number-pad'
           onChangeText={(text) => amountNormalizer(text)}
-          style={StyleSheet.flatten([
-            InputStyles({fontSize, theme, size}).defaultTextInputStyle,
-            AmountInputStyles().amountInputStyle,
-            {
-              color: placeholderColorNormalizer,
-            },
-          ])}
+          style={StyleSheet.flatten([defaultTextInputStyle, AmountInputStyles().amountInputStyle])}
           placeholderTextColor={placeholderColorNormalizer}
         />
 
         <Item
           justifyContentFlexEnd
-          paddingBottom={InputStyleNormalizer({size}).bottomElementPadding}>
+          paddingBottom={useInputStyleNormalizer({size}).bottomElementPadding}>
           <Label
-            fontSize={
-              fontSize ??
-              InputStyleNormalizer({
-                size,
-              }).placeholderSize
-            }
+            fontSize={fontSize ?? useInputStyleNormalizer({size}).placeholderSize.toString()}
             fontWeight='bold'
             color={placeholderColorNormalizer as string}>
             ,
@@ -150,24 +142,18 @@ export const AmountInput: FC<AmountInputProps> = ({
           }}
           onFocus={() => (currency === '00' ? setCurrency('') : undefined)}
           onBlur={() => (currency.isEmpty() || currency === '0' ? setCurrency('00') : undefined)}
-          style={StyleSheet.flatten([
-            InputStyles({fontSize, theme, size}).defaultTextInputStyle,
-            AmountInputStyles().amountInputStyle,
-            {
-              color: placeholderColorNormalizer,
-            },
-          ])}
+          style={StyleSheet.flatten([defaultTextInputStyle, AmountInputStyles().amountInputStyle])}
           placeholderTextColor={placeholderColorNormalizer}
         />
       </Item>
 
-      <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
+      <Item absolute right={0} bottom={useInputStyleNormalizer({size}).icon.paddingBottom}>
         <Icon
           testID='currency-icon-test-id'
-          name={currencyType as IconKeys}
-          width={InputStyleNormalizer({size}).icon.width}
-          height={InputStyleNormalizer({size}).icon.height}
-          color={themeConfig.colors['grey-200']}
+          name={currencyType ?? ''}
+          width={useInputStyleNormalizer({size}).icon.width}
+          height={useInputStyleNormalizer({size}).icon.height}
+          color={colors['grey-200']}
         />
       </Item>
     </Item>

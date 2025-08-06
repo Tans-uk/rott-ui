@@ -8,13 +8,14 @@ import {
   type TextInputSelectionChangeEventData,
 } from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import {Pressable} from '../../Pressable'
 import type {PasswordInputProps} from '../models'
-import {InputStyles, PasswordInputStyles} from '../styles'
+import {PasswordInputStyles, useInputStyles} from '../styles'
 
-export const PasswordInput: FC<PasswordInputProps> = ({
+export const PasswordInput: FC<PasswordInputProps<ThemeConfig>> = ({
   fontSize,
   onChangeText,
   secureTextEntry = true,
@@ -26,6 +27,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
 }) => {
   const inputRef = useRef<any>(null)
   const [isSecure, setIsSecure] = useState(secureTextEntry)
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
   const handleTextChange = (inputText: string) => {
     onChangeText!(inputText.replace(/[^0-9]/g, ''))
   }
@@ -47,7 +49,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
         ref={inputRef}
         editable={!disabled}
         placeholder='*******'
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+        style={StyleSheet.flatten([defaultTextInputStyle])}
         keyboardType='number-pad'
         secureTextEntry={isSecure}
         onChangeText={handleTextChange}

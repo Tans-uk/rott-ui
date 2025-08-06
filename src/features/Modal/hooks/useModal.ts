@@ -1,5 +1,6 @@
 import {useContext, useEffect, useMemo, useRef} from 'react'
 
+import {ThemeConfig} from '../../../models'
 import {ModalContext} from '../contexts'
 import type {ModalProps} from '../models'
 
@@ -49,7 +50,10 @@ const isShallowEqual = (obj1: any, obj2: any) => {
   return result
 }
 
-export const useModal = (modalToRender?: ModalProps, modalDependencies?: any[]) => {
+export const useModal = <TTheme extends ThemeConfig>(
+  modalToRender?: ModalProps<TTheme>,
+  modalDependencies?: any[]
+) => {
   const {modals, showModal, updateModal, hideModal, hasModalById, hideAllModal} =
     useContext(ModalContext)
 
@@ -58,7 +62,8 @@ export const useModal = (modalToRender?: ModalProps, modalDependencies?: any[]) 
   const modalHook = useMemo(
     () => ({
       modals,
-      showModal: (modalOptions?: ModalProps) => showModal(modalOptions ?? modalToRender!),
+      showModal: (modalOptions?: ModalProps<ThemeConfig>) =>
+        showModal(modalOptions ?? (modalToRender! as ModalProps<ThemeConfig>)),
       updateModal,
       hideModal,
       hasModalById,
@@ -70,7 +75,7 @@ export const useModal = (modalToRender?: ModalProps, modalDependencies?: any[]) 
   useEffect(() => {
     // console.log('useEffect', 'prevDeps: ', prevDeps.current, 'modalDeps: ', modalDependencies)
     if (!isShallowEqual(prevDeps.current, modalDependencies))
-      updateModal(modalToRender!, modalToRender?.id)
+      updateModal(modalToRender! as ModalProps<ThemeConfig>, modalToRender?.id)
 
     prevDeps.current = modalDependencies
   }, [modalDependencies])

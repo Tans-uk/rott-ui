@@ -1,5 +1,5 @@
 export * from './commonUiProps.interface'
 export * from './size.type'
-export * from './variant.type'
 export * from './modalId.enum'
+export * from './themeConfig.interface'
 export * from './theme.type'

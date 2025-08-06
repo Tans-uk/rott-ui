@@ -1,11 +1,15 @@
+import {useContext} from 'react'
+
 import {StyleSheet} from 'react-native'
 
-import {themeConfig} from '../../../providers'
+import {RottUiContext} from '../../../contexts'
 
-export const ModalStyles = () =>
-  StyleSheet.create({
+export const useModalStyles = () => {
+  const {colors} = useContext(RottUiContext)
+
+  return StyleSheet.create({
     fadedBackgroundStyles: {
-      backgroundColor: themeConfig.colors['neutral-alpha-700'],
+      backgroundColor: colors['neutral-alpha-700'],
       justifyContent: 'center',
       alignContent: 'center',
     },
@@ -14,9 +18,10 @@ export const ModalStyles = () =>
       flex: 1,
 
       elevation: 5,
-      shadowColor: themeConfig.colors['neutral-shadow-300'],
+      shadowColor: colors['neutral-shadow-300'],
       shadowOffset: {width: 0, height: -8},
       shadowOpacity: 1,
       shadowRadius: 35,
     },
   })
+}

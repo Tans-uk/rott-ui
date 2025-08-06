@@ -1,5 +1,6 @@
 import {createRef} from 'react'
 
+import {ThemeConfig} from '../../models'
 import {useNotification} from './hooks'
 import type {NotificationModel} from './models'
 
@@ -13,7 +14,8 @@ type NotificationService = ReturnType<typeof useNotification>
 export const notificationRef = createRef<NotificationService>()
 
 export const Notification = {
-  show: (notification: NotificationModel) => notificationRef.current?.show(notification),
+  show: (notification: NotificationModel<ThemeConfig>) =>
+    notificationRef.current?.show(notification),
   hide: (id: string) => notificationRef.current?.hide(id),
   hideAll: () => notificationRef.current?.hideAll,
 

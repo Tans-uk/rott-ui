@@ -1,10 +1,13 @@
+import {useContext} from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
-import {themeConfig} from '../../../providers'
+import {RottUiContext} from '../../../contexts'
 import {Toggle} from '../components'
 
 describe('Toggle -> Custom Component', () => {
   const toggleContainerTestId = 'toggle-container-test-id'
   const toggleTestId = 'toggle-test-id'
+  const {colors} = useContext(RottUiContext)
 
   it('toggle ilk render anında snapshot ile eşleşmeli', () => {
     const renderedToggle = render(<Toggle isOn={false} />)
@@ -41,7 +44,7 @@ describe('Toggle -> Custom Component', () => {
       const toggleContainer = getByTestId(toggleTestId)
 
       expect(toggleContainer).toHaveStyle({
-        backgroundColor: themeConfig.colors['grey-200'],
+        backgroundColor: colors['grey-200'],
       })
     })
 
@@ -51,7 +54,7 @@ describe('Toggle -> Custom Component', () => {
       const toggleContainer = getByTestId(toggleTestId)
 
       expect(toggleContainer).toHaveStyle({
-        backgroundColor: themeConfig.colors.primary,
+        backgroundColor: colors.primary,
       })
     })
   })

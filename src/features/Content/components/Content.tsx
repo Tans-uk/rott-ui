@@ -1,15 +1,16 @@
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
 import {StyleSheet, View} from 'react-native'
 
-import {themeConfig} from '../../../providers'
+import {RottUiContext} from '../../../contexts'
+import {ThemeConfig} from '../../../models'
 import {type ContentProps} from '../models'
-import {ContentStyles} from '../styles'
+import {useContentStyle} from '../styles'
 
 import {KeyboardAwareScrollView} from 'react-native-keyboard-controller'
 import {useSafeArea} from 'react-native-safe-area-context'
 
-export const Content: FC<ContentProps> = ({
+export const Content: FC<ContentProps<ThemeConfig>> = ({
   row,
   size,
   noPadding,
@@ -33,6 +34,7 @@ export const Content: FC<ContentProps> = ({
   boxShadow,
   ...props
 }) => {
+  const {colors} = useContext(RottUiContext)
   const {bottom} = useSafeArea()
 
   let unusablePaddingBottom = 0
@@ -46,7 +48,7 @@ export const Content: FC<ContentProps> = ({
   if (useBottomInset && !hasBottomMenu && scrollEnabled)
     keyboardAvoidingViewContainerPaddingBottom += 24
 
-  const contentStyles = ContentStyles({
+  const {defaultContentStyle, scrollViewStyle} = useContentStyle({
     size,
     row,
     justifyContentCenter,
@@ -56,7 +58,7 @@ export const Content: FC<ContentProps> = ({
     includeAlignItems: true,
     includeJustifyContent: true,
     paddingHorizontal,
-    backgroundColor: defaultBackgroundColor ? themeConfig.colors['grey-900'] : backgroundColor,
+    backgroundColor: defaultBackgroundColor ? colors['grey-900'] : backgroundColor,
     includeBorderRadius: true,
     paddingBottom: unusablePaddingBottom,
     keyboardAvoidingViewContainerPaddingBottom,
@@ -65,16 +67,13 @@ export const Content: FC<ContentProps> = ({
   })
 
   return (
-    <View style={StyleSheet.flatten([contentStyles.defaultContentStyle, style])} {...props}>
+    <View style={StyleSheet.flatten([defaultContentStyle, style])} {...props}>
       {scrollEnabled || keyboardAvoidingView ? (
         <KeyboardAwareScrollView
           testID={`${keyboardAvoidingView ? 'keyboard-avoiding-view' : 'scroll-view'}-test-id`}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={StyleSheet.flatten([
-            contentStyles.scrollViewStyle,
-            contentContainerStyle,
-          ])}
+          contentContainerStyle={StyleSheet.flatten([scrollViewStyle, contentContainerStyle])}
           contentInsetAdjustmentBehavior='always' // ios only
           enabled={keyboardAvoidingView}
           refreshControl={refreshControl}

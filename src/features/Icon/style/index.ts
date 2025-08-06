@@ -1,1 +1,1 @@
-export * from './Icon.style'
+export * from './useIcon.style'

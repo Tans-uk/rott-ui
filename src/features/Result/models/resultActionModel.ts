@@ -1,9 +1,9 @@
-import type {Variant} from '../../../models'
+import {ThemeConfig} from '../../../models'
 
-export interface ResultActionModel {
+export interface ResultActionModel<TTheme extends ThemeConfig> {
   title: string
   name?: string
   action: () => void
-  variant?: Variant
+  variant?: keyof TTheme['colors']
   testID?: string
 }

@@ -1,9 +1,9 @@
-import {useEffect, type FC} from 'react'
+import {useContext, useEffect, type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
-import {themeConfig} from '../../../providers'
-import {display} from '../../../utils'
+import {RottUiContext} from '../../../contexts'
+import {useDisplay} from '../../../hooks'
 import {Item} from '../../Item'
 import type {SkeletonStyleProps} from '../models'
 
@@ -39,15 +39,16 @@ export const Skeleton: FC<SkeletonProps> = ({
   radius = 4,
   noAnimation = false,
   show = false,
-  colors = [
-    themeConfig.colors['grey-100'],
-    themeConfig.colors.white,
-    themeConfig.colors['grey-100'],
-  ],
-  backgroundColor = themeConfig.colors['grey-100'],
+  colors,
+  backgroundColor,
 }) => {
+  const {px} = useDisplay()
+  const {colors: colorsContext} = useContext(RottUiContext)
+  colors = [colorsContext['grey-100']!, colorsContext.white!, colorsContext['grey-100']!]
+  backgroundColor = backgroundColor ?? colorsContext['grey-100']
+
   const animatedValue = useSharedValue(0)
-  const animationWidth = display.px(width as number)
+  const animationWidth = px(width as number)
 
   const animatedGradientStyle = useAnimatedStyle(() => {
     return {
@@ -96,8 +97,8 @@ export const Skeleton: FC<SkeletonProps> = ({
         <LinearGradient
           {...getGradientProps(width!)}
           style={{
-            width: width ? display.px(width) : undefined,
-            height: height ? display.px(height) : undefined,
+            width: width ? px(width) : undefined,
+            height: height ? px(height) : undefined,
           }}
           colors={colors}
         />

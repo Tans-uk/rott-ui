@@ -1,12 +1,13 @@
 import type {GestureResponderEvent, StyleProp, ViewStyle} from 'react-native'
 
-import type {IconProps} from '../../Icon/models'
-import type {ImageProps} from '../../Image/models'
+import {ThemeConfig} from '../../../models'
+import type {IconProps} from '../../Icon'
+import type {ImageProps} from '../../Image'
 
-export interface BottomMenuItemModel {
+export interface BottomMenuItemModel<TTheme extends ThemeConfig> {
   testID?: string
-  icon?: IconProps
-  image?: ImageProps
+  icon?: IconProps<TTheme>
+  image?: ImageProps<TTheme>
   title?: string
   containerStyle?: StyleProp<ViewStyle>
   onPress?: (event: GestureResponderEvent) => void

@@ -2,24 +2,26 @@
 
 import {type FC} from 'react'
 
+import {useColorFromVariant} from '../../../../../hooks'
+import {type CommonUiProps, type ThemeConfig} from '../../../../../models'
 import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
-import {type CommonUiProps, type Variant} from '../../../../../models'
-import {colorFromVariant} from '../../../../../utils'
 
-export interface InputValidationProps extends CommonUiProps {
+export interface InputValidationProps<TTheme extends ThemeConfig> extends CommonUiProps<TTheme> {
   name: string
-  variant?: Variant
+  variant?: string
   message: string
 }
 
-export const InputValidation: FC<InputValidationProps> = ({
+export const InputValidation: FC<InputValidationProps<ThemeConfig>> = ({
   name,
   variant = 'danger',
   message,
   ...props
 }) => {
+  const colorFromVariant = useColorFromVariant()
+
   return (
     <Item
       row

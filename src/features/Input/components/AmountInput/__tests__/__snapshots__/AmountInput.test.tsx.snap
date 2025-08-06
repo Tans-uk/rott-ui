@@ -114,27 +114,7 @@ exports[`Amount Input -> Custom Input amount input ilk render anında snapshot i
           "right": 0,
         }
       }
-    >
-      <View
-        style={
-          {
-            "flex": undefined,
-            "flexDirection": "column",
-          }
-        }
-        testID="currency-icon-test-id"
-      >
-        <SvgMock
-          fill="rgba(161, 173, 175, 1)"
-          height={46}
-          stroke="rgba(161, 173, 175, 1)"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={0}
-          width={46}
-        />
-      </View>
-    </View>
+    />
   </View>
   <View
     onLayout={[Function]}

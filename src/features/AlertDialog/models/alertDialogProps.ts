@@ -1,3 +1,4 @@
+import {ThemeConfig} from '../../../models'
 import type {EmptyStateProps} from '../../EmptyState/models'
 import type {IconProps} from '../../Icon/models'
 import type {ModalProps} from '../../Modal/models'
@@ -5,7 +6,7 @@ import type {AlertDialogButtonProps} from './alertDialogButtonProps'
 
 export interface AlertDialogProps
   extends Omit<
-    ModalProps,
+    ModalProps<ThemeConfig>,
     | 'header'
     | 'headerTitle'
     | 'fullScreen'
@@ -21,12 +22,12 @@ export interface AlertDialogProps
   title?: string
   text?: string
   emptyState?: EmptyStateProps
-  icon?: IconProps
+  icon?: IconProps<ThemeConfig>
   buttons?:
-    | Nullable<AlertDialogButtonProps>[]
+    | Nullable<AlertDialogButtonProps<ThemeConfig>>[]
     | {
-        cancelButton?: AlertDialogButtonProps
-        confirmButton?: AlertDialogButtonProps
+        cancelButton?: AlertDialogButtonProps<ThemeConfig>
+        confirmButton?: AlertDialogButtonProps<ThemeConfig>
       }
   showActivityIndicator?: boolean
 }

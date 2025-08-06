@@ -4,16 +4,15 @@ import {InteractionManager, Platform, Modal as RNModal} from 'react-native'
 
 import {Modal, PanResponderAnimation} from '..'
 import {RottUiContext} from '../../../contexts'
-import {useSafeArea} from '../../../hooks'
-import {themeConfig} from '../../../providers'
-import {colorFromVariant, display} from '../../../utils'
+import {useColorFromVariant, useDisplay, useSafeArea} from '../../../hooks'
+import {ThemeConfig} from '../../../models'
 import {Content} from '../../Content'
 import {Header, type HeaderProps} from '../../Header'
 import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import {Pressable} from '../../Pressable'
 import {ModalProps} from '../models'
-import {ModalStyles} from '../style'
+import {useModalStyles} from '../style'
 import {ModalContentContainer} from './ModalContainer'
 
 import {KeyboardStickyView} from 'react-native-keyboard-controller'
@@ -24,7 +23,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
-export const ModalComponent: FC<ModalProps> = ({
+export const ModalComponent: FC<ModalProps<ThemeConfig>> = ({
   id,
   animationType = 'fade',
   fullScreen,
@@ -36,9 +35,8 @@ export const ModalComponent: FC<ModalProps> = ({
   disableOutsideClick,
 
   height = fullScreen ? 100 : 0,
-  backgroundColor = fullScreen
-    ? themeConfig.colors['grey-900']
-    : themeConfig.colors['neutral-alpha-100'],
+  backgroundColor,
+
   panResponderBackgroundColor = 'grey-800',
   /**
    * Custom Header element verildiği zaman tasarımda renk bozulması yaşamamak için bu değerin tanımlanması gerekir.
@@ -57,6 +55,16 @@ export const ModalComponent: FC<ModalProps> = ({
   sticksToKeyboard = false,
   ...props
 }) => {
+  const {animatedViewStyles, fadedBackgroundStyles} = useModalStyles()
+  const {setHeightDevice, setHeight} = useDisplay()
+  const {
+    colors,
+    deviceInfo: {hasNotch, hasDynamicIsland},
+  } = useContext(RottUiContext)
+  backgroundColor = fullScreen ? colors['grey-900'] : colors['neutral-alpha-100']
+
+  const colorFromVariant = useColorFromVariant()
+
   const hasChildModal =
     modals?.length && modals?.length > 1 && id ? modals?.some((modal) => modal.id! > id) : false
 
@@ -66,12 +74,11 @@ export const ModalComponent: FC<ModalProps> = ({
     slideToCloseTestId: 'slide-to-close-button-test-id',
   }
 
-  const {hasNotch, hasDynamicIsland} = useContext(RottUiContext)
   const interactionRef = useRef<number>(undefined)
 
   const {bottom} = useSafeArea()
 
-  const maxHeight = display.setHeightDevice(100)
+  const maxHeight = setHeightDevice(100)
 
   /** Height 100 verildiyse veya fullScreen ise kullanılan cihazı baz alır.
    * Eğer 0 ile 100 arası bir height verildiyse bu değer referans cihaza göre hesaplanır.
@@ -84,7 +91,7 @@ export const ModalComponent: FC<ModalProps> = ({
       ? maxHeight
       : Math.min(
           maxHeight,
-          display.setHeight(height > 100 || height < 0 ? 100 : height) +
+          setHeight(height > 100 || height < 0 ? 100 : height) +
             (Platform.OS === 'android' ? bottom : 0) // ios'te sistem navigasyonu şeffaf ve boşluklu olduğu için bu düzeltmeye ihtiyaç duyulmaz
         )
 
@@ -157,12 +164,12 @@ export const ModalComponent: FC<ModalProps> = ({
           onPress={() => {
             if (!fullScreen && !!onClose && !disableOutsideClick) closeModalAnimation()
           }}
-          style={ModalStyles().fadedBackgroundStyles}
+          style={fadedBackgroundStyles}
         />
       )}
       <KeyboardStickyView enabled={canStickToKeyboard && sticksToKeyboard}>
-        <Content noPadding backgroundColor={themeConfig.colors['neutral-alpha-700']} row>
-          <Animated.View style={[ModalStyles().animatedViewStyles, animatedStyles]}>
+        <Content noPadding backgroundColor={colors['neutral-alpha-700']} row>
+          <Animated.View style={[animatedViewStyles, animatedStyles]}>
             <ModalContentContainer
               height={modalHeightByPercentage}
               backgroundColor={transparent ? 'transparent' : backgroundColor}
@@ -177,8 +184,8 @@ export const ModalComponent: FC<ModalProps> = ({
                     headerBackgroundColor
                       ? colorFromVariant(headerBackgroundColor)
                       : fullScreen
-                        ? themeConfig.colors['grey-800']
-                        : themeConfig.colors['grey-900']
+                        ? colors['grey-800']
+                        : colors['grey-900']
                   }
                   borderTopStartRadius={fullScreen ? 0 : 24}
                   borderTopEndRadius={fullScreen ? 0 : 24}
@@ -215,21 +222,23 @@ export const ModalComponent: FC<ModalProps> = ({
                   {!isValidElement(header) && (
                     <Header
                       testID={headerTestId}
-                      title={(header as HeaderProps)?.title}
-                      subTitle={(header as HeaderProps)?.subTitle}
-                      logo={(header as HeaderProps)?.logo}
+                      title={(header as HeaderProps<ThemeConfig>)?.title}
+                      subTitle={(header as HeaderProps<ThemeConfig>)?.subTitle}
+                      logo={(header as HeaderProps<ThemeConfig>)?.logo}
                       paddingHorizontal={
-                        (header as HeaderProps) ? (header as HeaderProps).paddingHorizontal : 0
+                        (header as HeaderProps<ThemeConfig>)
+                          ? (header as HeaderProps<ThemeConfig>).paddingHorizontal
+                          : 0
                       }
                       rightIcon={
                         closeButton
                           ? {name: 'REMOVE_BIG', onPress: () => closeModalAnimation!()}
-                          : (header as HeaderProps)?.rightIcon
-                            ? (header as HeaderProps)?.rightIcon
+                          : (header as HeaderProps<ThemeConfig>)?.rightIcon
+                            ? (header as HeaderProps<ThemeConfig>)?.rightIcon
                             : undefined
                       }
-                      leftIcon={(header as HeaderProps)?.leftIcon}
-                      {...(header as HeaderProps)}
+                      leftIcon={(header as HeaderProps<ThemeConfig>)?.leftIcon}
+                      {...(header as HeaderProps<ThemeConfig>)}
                     />
                   )}
                 </Item>

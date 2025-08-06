@@ -1,1 +1,1 @@
-export * from './Image.style'
+export * from './useImage.style'

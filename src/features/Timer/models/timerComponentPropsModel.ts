@@ -1,8 +1,8 @@
 import type {ViewProps} from 'react-native'
 
-import {type CommonUiProps} from '../../../models'
+import {ThemeConfig, type CommonUiProps} from '../../../models'
 
-export interface TimerProps extends ViewProps, CommonUiProps {
+export interface TimerProps<TTheme extends ThemeConfig> extends ViewProps, CommonUiProps<TTheme> {
   time: number
   color?: string
 }

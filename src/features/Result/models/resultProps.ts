@@ -1,9 +1,7 @@
 import type {ReactNode} from 'react'
 
-import type {IconKeys} from '../../../features/Icon/models'
-import type {ImageTypes} from '../../../features/Image/models'
 import type {ModalProps} from '../../../features/Modal/models'
-import type {Size, Variant} from '../../../models'
+import type {Size, ThemeConfig} from '../../../models'
 import type {ResultActionModel} from './resultActionModel'
 
 /**
@@ -35,7 +33,8 @@ import type {ResultActionModel} from './resultActionModel'
  * ];
  * ```
  */
-export interface ResultProps extends Omit<ModalProps, 'fullScreen'> {
+export interface ResultProps<TTheme extends ThemeConfig>
+  extends Omit<ModalProps<TTheme>, 'fullScreen'> {
   title?: string | ReactNode
   description?: string | ReactNode
 
@@ -47,21 +46,21 @@ export interface ResultProps extends Omit<ModalProps, 'fullScreen'> {
    * - 'error': İşlem başarısız oldu.
    * - 'info': İşlem hakkında bilgilendirici bilgiler sağlandı.
    */
-  variant: Variant
-  iconName: IconKeys
+  variant: keyof TTheme['colors']
+  iconName: keyof TTheme['icons']
 
-  actions?: ResultActionModel[]
+  actions?: ResultActionModel<TTheme>[]
   fontSize?: Size
 
   isShow?: boolean
 }
 
-export interface ResultScreenParamModel {
+export interface ResultScreenParamModel<TTheme extends ThemeConfig> {
   header?: string
-  state: ImageTypes
+  state: keyof TTheme['images']
   title?: string
   description?: string
-  actions?: ResultActionModel[]
+  actions?: ResultActionModel<TTheme>[]
   fontSize?: Size
   isFastTransfer?: boolean
 }

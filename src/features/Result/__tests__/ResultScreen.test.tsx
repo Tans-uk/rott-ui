@@ -1,12 +1,11 @@
 import {render} from '../../../__tests__/utils/testUtils'
-import {ImageTypes} from '../../Image'
 import {ResultScreen} from '../components'
 
 describe('ResultScreen Test', () => {
   const mockDetailElement = {
     texts: {
       header: 'Test Title Header',
-      state: 'EMPTY_MONEY_TRANSFER' as ImageTypes,
+      state: 'EMPTY_MONEY_TRANSFER',
       title: 'Test Title',
       description: 'Test Description',
       actionText: 'Test Action Text',

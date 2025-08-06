@@ -1,6 +1,7 @@
-import {isValidElement, type FC} from 'react'
+import {isValidElement, useContext, type FC} from 'react'
 
-import {themeConfig} from '../../../providers'
+import {RottUiContext} from '../../../contexts'
+import {ThemeConfig} from '../../../models'
 import {Content} from '../../Content'
 import {Icon, type IconProps} from '../../Icon'
 import {Image} from '../../Image'
@@ -27,7 +28,7 @@ import type {HeaderProps} from '../models'
  * @param paddingVertical - Dikeyde kisisellestirilebilir bosluk
  *
  */
-export const Header: FC<HeaderProps> = ({
+export const Header: FC<HeaderProps<ThemeConfig>> = ({
   back,
   title,
   subTitle,
@@ -49,6 +50,8 @@ export const Header: FC<HeaderProps> = ({
   height = 56,
   ...props
 }) => {
+  const {colors, goBack} = useContext(RottUiContext)
+
   const isLeftElement = isValidElement(leftElement)
   const isRightElement = isValidElement(rightElement)
 
@@ -67,7 +70,7 @@ export const Header: FC<HeaderProps> = ({
       noPadding
       paddingHorizontal={paddingHorizontal ?? 24}
       paddingVertical={paddingVertical ?? 0}
-      backgroundColor={defaultBackgroundColor ? themeConfig.colors['grey-800'] : backgroundColor}
+      backgroundColor={defaultBackgroundColor ? colors['grey-800'] : backgroundColor}
       justifyContentCenter
       alignItemsCenter
       {...props}>
@@ -94,18 +97,20 @@ export const Header: FC<HeaderProps> = ({
               justifyContentCenter
               onPress={(event) => {
                 !!leftIcon?.onPress && leftIcon?.onPress(event)
-                !preventGoBack && back && themeConfig.goBack()
+                !preventGoBack && back && goBack()
               }}>
               <Icon
                 testID='header-left-icon-test-id'
                 width={24}
                 height={24}
                 strokeWidth={back ? 2 : leftIcon?.strokeWidth}
-                variant={(leftIcon as IconProps)?.variant}
-                mode={(leftIcon as IconProps)?.mode}
-                noStroke={(leftIcon as IconProps)?.noStroke}
-                {...(typeof leftIcon === 'object' ? (leftIcon as IconProps) : {})}
-                name={back ? 'CHEVRON_LEFT' : ((leftIcon as IconProps)?.name ?? leftIcon)}
+                variant={(leftIcon as IconProps<ThemeConfig>)?.variant}
+                mode={(leftIcon as IconProps<ThemeConfig>)?.mode}
+                noStroke={(leftIcon as IconProps<ThemeConfig>)?.noStroke}
+                {...(typeof leftIcon === 'object' ? (leftIcon as IconProps<ThemeConfig>) : {})}
+                name={
+                  back ? 'CHEVRON_LEFT' : ((leftIcon as IconProps<ThemeConfig>)?.name ?? leftIcon)
+                }
               />
             </Pressable>
           )}
@@ -181,11 +186,11 @@ export const Header: FC<HeaderProps> = ({
                 width={24}
                 height={24}
                 strokeWidth={back ? 2 : rightIcon?.strokeWidth}
-                variant={(rightIcon as IconProps)?.variant}
-                mode={(rightIcon as IconProps)?.mode}
-                noStroke={(rightIcon as IconProps)?.noStroke}
-                {...(typeof rightIcon === 'object' ? (rightIcon as IconProps) : {})}
-                name={(rightIcon as IconProps)?.name ?? rightIcon}
+                variant={(rightIcon as IconProps<ThemeConfig>)?.variant}
+                mode={(rightIcon as IconProps<ThemeConfig>)?.mode}
+                noStroke={(rightIcon as IconProps<ThemeConfig>)?.noStroke}
+                {...(typeof rightIcon === 'object' ? (rightIcon as IconProps<ThemeConfig>) : {})}
+                name={(rightIcon as IconProps<ThemeConfig>)?.name ?? rightIcon}
               />
             )}
           </Pressable>

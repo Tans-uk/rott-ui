@@ -1,17 +1,22 @@
 import {StyleSheet} from 'react-native'
 
 import {
-  colorFromVariant,
-  commonUiStyleProperties,
-  display,
-  textcolorFromVariant,
-} from '../../../utils'
+  useColorFromVariant,
+  useCommonUiStyleProperties,
+  useDisplay,
+  useTextColorFromVariant,
+} from '../../../hooks'
 import {buttonSizeNormalizer} from '../utils'
 
-export const ButtonStyles = (props?: any) => {
+export const useButtonStyle = (props?: any) => {
+  const colorFromVariant = useColorFromVariant()
+  const textColorFromVariant = useTextColorFromVariant(props?.variant)
+  const {px} = useDisplay()
+  const {commonUiStyleProperties} = useCommonUiStyleProperties(props)
+
   return StyleSheet.create({
     defaultButtonStyle: {
-      ...(commonUiStyleProperties(props) as any),
+      ...commonUiStyleProperties,
 
       position: 'relative',
       flexDirection: 'row',
@@ -20,7 +25,7 @@ export const ButtonStyles = (props?: any) => {
       alignItems: 'center',
       color: props?.color,
 
-      borderRadius: props.borderRadius ? display.px(props.borderRadius) : display.px(8),
+      borderRadius: props.borderRadius ? px(props.borderRadius) : px(8),
       borderWidth: props?.variant?.includes('outline') ? 2 : undefined,
       borderColor: props?.variant?.includes('outline')
         ? colorFromVariant(props?.variant?.replace('-outline', ''))
@@ -30,7 +35,7 @@ export const ButtonStyles = (props?: any) => {
         typeof props?.height === 'number' ||
         typeof props?.size === 'number' ||
         (typeof props?.size === 'object' && typeof props?.size.height === 'number')
-          ? display.px(
+          ? px(
               props.size
                 ? props.size.height !== undefined
                   ? props.size.height
@@ -51,7 +56,7 @@ export const ButtonStyles = (props?: any) => {
         typeof props?.width === 'number' ||
         typeof props?.size === 'number' ||
         (typeof props?.size === 'object' && typeof props?.size.width === 'number')
-          ? display.px(
+          ? px(
               props.size
                 ? props.size.width !== undefined
                   ? props.size.width
@@ -74,7 +79,7 @@ export const ButtonStyles = (props?: any) => {
         : colorFromVariant(props?.variant),
     },
     buttonTextStyle: {
-      color: props?.color ? colorFromVariant(props?.color) : textcolorFromVariant(props?.variant),
+      color: props?.color ? colorFromVariant(props?.color) : textColorFromVariant,
       textAlignVertical: 'center',
       flexShrink: 1,
     },

@@ -1,74 +1,72 @@
 /* eslint-disable react-native/no-inline-styles */
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
-import {themeConfig} from '../../../providers'
-import {display} from '../../../utils'
+import {RottUiContext} from '../../../contexts'
+import {useDisplay} from '../../../hooks'
+import {ThemeConfig} from '../../../models'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 
 import {TabBar, type NavigationState, type SceneRendererProps} from 'react-native-tab-view'
 
-interface TabWidgetItemProps {
+interface TabWidgetItemProps<TTheme extends ThemeConfig> {
   testID?: string
   routesLength: number
   tabBarOnChange: (key: string) => void
-  backgroundColor?: string
+  backgroundColor?: keyof TTheme['colors']
   disabled?: boolean
 }
 
 export const TabWidgetItem: FC<
-  TabWidgetItemProps &
+  TabWidgetItemProps<ThemeConfig> &
     SceneRendererProps & {
       navigationState: NavigationState<{
         key: string
         title: string
       }>
     }
-> = ({
-  testID,
-  routesLength,
-  tabBarOnChange,
-  backgroundColor = themeConfig.colors['grey-800'],
-  disabled,
-  ...props
-}) => {
+> = ({testID, routesLength, tabBarOnChange, backgroundColor, disabled, ...props}) => {
+  const {px, percentage} = useDisplay()
+  const {colors} = useContext(RottUiContext)
+  backgroundColor = backgroundColor ?? colors['grey-800']
+
   return (
     <TabBar
       {...props}
-      indicatorStyle={{backgroundColor: themeConfig.colors.primary, height: 3}}
+      indicatorStyle={{backgroundColor: colors.primary, height: 3}}
       tabStyle={{
         alignContent: 'center',
         height: 56,
-        borderBottomWidth: display.px(1),
+        borderBottomWidth: px(1),
       }}
       testID={testID}
       style={{
         marginTop: 0,
         backgroundColor: backgroundColor,
-        borderBottomColor: themeConfig.colors['neutral-grey-alpha-200'],
-        borderBottomWidth: display.px(1),
+        borderBottomColor: colors['neutral-grey-alpha-200'],
+        borderBottomWidth: px(1),
       }}
       renderTabBarItem={({route}) => (
         <Pressable onPress={() => !disabled && tabBarOnChange(route.key)}>
           <Item
-            style={{flex: 1, width: display.percentage(100 / routesLength)}}
+            style={{flex: 1, width: percentage(100 / routesLength)}}
             height={56}
             justifyContentCenter
             alignItemsCenter>
             <Label
               fontSize='sm'
-              fontWeight={700}
+              fontWeight={'700'}
               fontFamily='Markpro-Bold'
               numberOfLines={1}
-              color={themeConfig.colors.white}>
+              color={colors.white}>
               {route.title}
             </Label>
           </Item>
         </Pressable>
       )}
-      activeColor={themeConfig.colors.white}
-      inactiveColor={themeConfig.colors['neutral-blue-alpha']}
+      activeColor={colors.white}
+      inactiveColor={colors['neutral-blue-alpha']}
     />
   )
 }

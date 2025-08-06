@@ -1,45 +1,47 @@
+import {useDisplay} from '../../../hooks'
 import type {Size} from '../../../models'
-import {display} from '../../../utils'
 
 export const buttonSizeNormalizer = (buttonSize: Size | {width: string; height: string}) => {
+  const {px, fontPixel} = useDisplay()
+
   switch (buttonSize) {
     case 'xs':
       return {
-        width: display.px(85.5),
-        height: display.px(36),
-        fontSize: display.fontPixel(12),
-        icon: display.px(18),
+        width: px(85.5),
+        height: px(36),
+        fontSize: fontPixel(12),
+        icon: px(18),
       }
     case 'sm':
       return {
-        width: display.px(114),
-        height: display.px(40),
-        fontSize: display.fontPixel(14),
-        icon: display.px(20),
+        width: px(114),
+        height: px(40),
+        fontSize: fontPixel(14),
+        icon: px(20),
       }
     case 'md':
       return {
-        width: display.px(171),
-        height: display.px(48),
-        fontSize: display.fontPixel(14),
-        icon: display.px(24),
+        width: px(171),
+        height: px(48),
+        fontSize: fontPixel(14),
+        icon: px(24),
       }
     case 'lg':
       return {
-        width: display.px(228),
-        height: display.px(56),
-        fontSize: display.fontPixel(16),
-        icon: display.px(24),
+        width: px(228),
+        height: px(56),
+        fontSize: fontPixel(16),
+        icon: px(24),
       }
     case 'xl':
     case 'xxl':
     case 'full':
     default:
       return {
-        width: display.px(342),
-        height: display.px(56),
-        fontSize: display.fontPixel(16),
-        icon: display.px(24),
+        width: px(342),
+        height: px(56),
+        fontSize: fontPixel(16),
+        icon: px(24),
       }
   }
 }

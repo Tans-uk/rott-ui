@@ -1,19 +1,20 @@
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
 import {PermissionsAndroid, Platform, StyleSheet} from 'react-native'
 
-import {themeConfig} from '../../../providers'
+import {RottUiContext} from '../../../contexts'
+import {ThemeConfig} from '../../../models'
 import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import {Pressable} from '../../Pressable'
 import type {PhoneInputProps} from '../models'
-import {InputStyles} from '../styles'
-import {InputStyleNormalizer} from '../utils'
+import {useInputStyles} from '../styles'
+import {useInputStyleNormalizer} from '../utils'
 
 import MaskInput from 'react-native-mask-input'
 import {selectContactPhone} from 'react-native-select-contact'
 
-export const PhoneInput: FC<PhoneInputProps> = ({
+export const PhoneInput: FC<PhoneInputProps<ThemeConfig>> = ({
   fontSize,
   onChangeText,
   theme,
@@ -23,6 +24,8 @@ export const PhoneInput: FC<PhoneInputProps> = ({
   maxLength = 16,
   ...props
 }) => {
+  const {colors} = useContext(RottUiContext)
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
   const MASK = [
     '0',
     '(',
@@ -78,12 +81,12 @@ export const PhoneInput: FC<PhoneInputProps> = ({
         placeholder='0(XXX) XXX XX XX'
         keyboardType='number-pad'
         onChangeText={(_masked, unmasked) => handleTextChange(unmasked)}
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+        style={StyleSheet.flatten([defaultTextInputStyle])}
         {...props}
       />
 
       {selectContacts && (
-        <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
+        <Item absolute right={0} bottom={useInputStyleNormalizer({size}).icon.paddingBottom}>
           <Pressable
             testID='contact-pressable-test-id'
             width={40}
@@ -97,9 +100,9 @@ export const PhoneInput: FC<PhoneInputProps> = ({
             <Icon
               testID='phone-icon-test-id'
               name='PHONE_BOOK'
-              width={InputStyleNormalizer({size}).icon.width}
-              height={InputStyleNormalizer({size}).icon.height}
-              color={themeConfig.colors['grey-200']}
+              width={useInputStyleNormalizer({size}).icon.width}
+              height={useInputStyleNormalizer({size}).icon.height}
+              color={colors['grey-200']}
             />
           </Pressable>
         </Item>

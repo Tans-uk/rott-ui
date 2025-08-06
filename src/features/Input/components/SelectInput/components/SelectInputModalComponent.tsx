@@ -1,10 +1,11 @@
-import {useState, type FC} from 'react'
+import {useContext, useState, type FC} from 'react'
 
 import {ActivityIndicator} from 'react-native'
 
+import {RottUiContext} from '../../../../../contexts'
+import {useDisplay} from '../../../../../hooks'
 import {formatMessage} from '../../../../../libs'
-import {themeConfig} from '../../../../../providers'
-import {display, searchTextNormalizer} from '../../../../../utils'
+import {searchTextNormalizer} from '../../../../../utils'
 import {CommonItem} from '../../../../Common'
 import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
@@ -13,7 +14,7 @@ import {Pressable} from '../../../../Pressable'
 import {DefaultInput} from '../../DefaultInput'
 import {ITEM_HEIGHT, LIST_MAX_ITEM_COUNT} from '../constants'
 import {type SelectInputModalComponentProps, type SelectProps} from '../models'
-import {SelectInputStyles} from '../styles'
+import {useSelectInputStyles} from '../styles'
 import {listHeightNormalizer, sortListBySearchPriority} from '../utils'
 
 import {ListRenderItem} from '@shopify/flash-list'
@@ -35,6 +36,9 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
   onViewableItemsChanged,
   name,
 }) => {
+  const {colors} = useContext(RottUiContext)
+  const {px} = useDisplay()
+
   const [searchText, setSearchText] = useState<string>('')
   const normalizedSearchText = searchTextNormalizer(searchText)
   const multiSelection = selectedItemValue && typeof selectedItemValue !== 'string'
@@ -58,8 +62,8 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
       return (
         <ActivityIndicator
           size='small'
-          color={themeConfig.colors.white}
-          style={SelectInputStyles().activityIndicator}
+          color={colors.white}
+          style={useSelectInputStyles().activityIndicator}
         />
       )
     }
@@ -118,9 +122,9 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
             paddingHorizontal={8}
             value={searchText}
             onChangeText={setSearchText}
-            backgroundColor={themeConfig.colors['grey-800']}
+            backgroundColor={colors['grey-800']}
             borderRadius={8}
-            placeholderTextColor={themeConfig.colors.white}
+            placeholderTextColor={colors.white}
           />
 
           {!searchText.isEmpty() && (
@@ -151,8 +155,7 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
           height={
             !filteredListData || filteredListData?.length === 0
               ? 355
-              : listHeightNormalizer(filteredListData?.length ?? 0, showDescription, 72) +
-                display.px(1)
+              : listHeightNormalizer(filteredListData?.length ?? 0, showDescription, 72) + px(1)
           }
           separatorVariant='neutral-grey-alpha-200'
           data={filteredListData}
@@ -163,7 +166,7 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
           scrollEnabled={(filteredListData?.length ?? 0) > LIST_MAX_ITEM_COUNT ? true : false}
           emptyState={{
             name: emptyState?.name ?? 'EMPTY_LIST_ERROR',
-            background: emptyState?.background ?? themeConfig.colors.transparent,
+            background: emptyState?.background ?? colors.transparent,
             title: emptyState?.title,
             description: emptyState?.title,
           }}

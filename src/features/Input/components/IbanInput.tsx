@@ -2,16 +2,17 @@ import {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import {Pressable} from '../../Pressable'
 import type {IbanInputProps} from '../models'
-import {InputStyles} from '../styles'
-import {InputStyleNormalizer} from '../utils'
+import {useInputStyles} from '../styles'
+import {useInputStyleNormalizer} from '../utils'
 
 import MaskInput from 'react-native-mask-input'
 
-export const IbanInput: FC<IbanInputProps> = ({
+export const IbanInput: FC<IbanInputProps<ThemeConfig>> = ({
   fontSize = 'md',
   onChangeText,
   theme,
@@ -21,6 +22,7 @@ export const IbanInput: FC<IbanInputProps> = ({
   rightIcon,
   ...props
 }) => {
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
   const clearIconVisible = value !== 'TR' && !value?.isEmpty()
   const MASK = [
     'TR',
@@ -76,19 +78,13 @@ export const IbanInput: FC<IbanInputProps> = ({
           else return
         }}
         onFocus={() => value === '' && handleTextChange('TR')}
-        style={StyleSheet.flatten([
-          InputStyles({
-            fontSize,
-            theme,
-            size,
-          }).defaultTextInputStyle,
-        ])}
+        style={StyleSheet.flatten([defaultTextInputStyle])}
         numberOfLines={1}
         value={value}
         {...props}
       />
 
-      <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
+      <Item absolute right={0} bottom={useInputStyleNormalizer({size}).icon.paddingBottom}>
         <Pressable
           testID={clearIconVisible ? 'clear-iban-icon-test-id' : 'qr-iban-icon-test-id'}
           disabled={clearIconVisible && disabled}
@@ -101,8 +97,8 @@ export const IbanInput: FC<IbanInputProps> = ({
             name={clearIconVisible ? 'REMOVE_CIRCLE' : 'IBAN_QR'}
             variant='grey-200'
             noStroke={clearIconVisible}
-            width={InputStyleNormalizer({size}).icon.width}
-            height={InputStyleNormalizer({size}).icon.height}
+            width={useInputStyleNormalizer({size}).icon.width}
+            height={useInputStyleNormalizer({size}).icon.height}
           />
         </Pressable>
       </Item>

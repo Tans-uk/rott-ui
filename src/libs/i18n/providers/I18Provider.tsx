@@ -1,7 +1,7 @@
-import type {FC, PropsWithChildren} from 'react'
+import {useContext, type FC, type PropsWithChildren} from 'react'
 
+import {RottUiContext} from '../../../contexts'
 import {en, tr} from '../../../libs'
-import {themeConfig} from '../../../providers'
 
 import {IntlProvider} from 'react-intl'
 
@@ -11,7 +11,8 @@ export const languageMessages = {
 }
 
 export const I18nProvider: FC<PropsWithChildren> = ({children}) => {
-  const appLanguage = themeConfig.options.appLanguage
+  const {language} = useContext(RottUiContext)
+  const appLanguage = language
 
   return (
     <IntlProvider

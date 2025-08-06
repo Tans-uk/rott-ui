@@ -1,11 +1,12 @@
-import {useCallback, useMemo} from 'react'
+import {useCallback} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import type {StatementInputProps} from '../models'
-import {InputStyles} from '../styles'
+import {useInputStyles} from '../styles'
 
-export const StatementInput: React.FC<StatementInputProps> = ({
+export const StatementInput: React.FC<StatementInputProps<ThemeConfig>> = ({
   disabled,
   placeholder,
   label,
@@ -16,6 +17,13 @@ export const StatementInput: React.FC<StatementInputProps> = ({
   onChangeText,
   ...props
 }) => {
+  const {defaultTextInputStyle} = useInputStyles({
+    fontSize,
+    theme,
+    size,
+    includeBorderRadius: true,
+    ...props,
+  })
   const handleChangeText = useCallback(
     (value: string) => {
       const formattedValue = value.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ0-9 .,\-/]/g, '')
@@ -31,13 +39,6 @@ export const StatementInput: React.FC<StatementInputProps> = ({
     [maxLength, onChangeText]
   )
 
-  const inputStyles = useMemo(
-    () =>
-      InputStyles({fontSize, theme, size, includeBorderRadius: true, ...props})
-        .defaultTextInputStyle,
-    [fontSize, theme, size, props]
-  )
-
   return (
     <TextInput
       testID='statement-input-test-id'
@@ -45,7 +46,7 @@ export const StatementInput: React.FC<StatementInputProps> = ({
       autoCapitalize='none'
       editable={!disabled}
       placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
-      style={StyleSheet.flatten([inputStyles])}
+      style={StyleSheet.flatten([defaultTextInputStyle])}
       onChangeText={handleChangeText}
       maxLength={maxLength}
       {...props}

@@ -52,31 +52,11 @@ exports[`Component -> BottomMenuItem bottom menu item componenti snapshot ile eÅ
     }
     testID="bottom-menu-item-1-test-id"
   >
-    <View
-      marginBottom={8}
-      style={
-        {
-          "flex": undefined,
-          "flexDirection": "column",
-          "marginBottom": 16,
-        }
-      }
-    >
-      <SvgMock
-        fill="transparent"
-        height={46}
-        stroke="grey-900"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        width={46}
-      />
-    </View>
     <Text
       numberOfLines={1}
       style={
         {
-          "color": "grey-900",
+          "color": "rgba(34, 63, 70, 1)",
           "fontFamily": "Markpro-Bold",
           "fontSize": 10,
           "fontWeight": "bold",

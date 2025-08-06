@@ -1,15 +1,14 @@
 import {isValidElement, type FC} from 'react'
 
+import {ThemeConfig} from '../../../models'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Separator} from '../../Separator'
+import {Toggle} from '../../Toggle'
 import type {ToggleInputProps} from '../models'
-import { Item } from '../../Item'
-import { Separator } from '../../Separator'
-import { Toggle } from '../../Toggle'
-import { Label } from '../../Label'
-import { Input } from './Input'
+import {Input} from './Input'
 
-
-
-export const ToggleInput: FC<ToggleInputProps> = ({
+export const ToggleInput: FC<ToggleInputProps<ThemeConfig>> = ({
   testID,
   checked = false,
   onToggle,

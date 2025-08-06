@@ -1,9 +1,9 @@
 import type {TranslationLanguageTypes} from '../../../libs'
-import type {Variant} from '../../../models'
+import {ThemeConfig} from '../../../models'
 
-export interface AlertDialogButtonProps {
+export interface AlertDialogButtonProps<TTheme extends ThemeConfig> {
   testID?: string
-  variant?: Variant
+  variant?: keyof TTheme['colors']
   text: TranslationLanguageTypes
   onPress?: () => void
 }

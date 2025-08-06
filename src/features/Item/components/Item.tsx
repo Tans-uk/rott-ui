@@ -2,11 +2,11 @@ import {type FC} from 'react'
 
 import {StyleSheet, View, type ViewProps} from 'react-native'
 
-import {type CommonUiProps} from '../../../models'
+import {ThemeConfig, type CommonUiProps} from '../../../models'
 import {Skeleton, type SkeletonStyleProps} from '../../Skeleton'
-import {ItemStyles} from '../styles'
+import {useItemStyles} from '../styles'
 
-interface ItemProps extends ViewProps, CommonUiProps {
+interface ItemProps<TTheme extends ThemeConfig> extends ViewProps, CommonUiProps<TTheme> {
   row?: boolean
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
   skeletonShow?: boolean
@@ -19,7 +19,7 @@ interface ItemProps extends ViewProps, CommonUiProps {
 }
 
 // TODO: Animated View sonra incelenecek
-export const Item: FC<ItemProps> = ({
+export const Item: FC<ItemProps<ThemeConfig>> = ({
   row,
   size,
   gap,
@@ -34,21 +34,18 @@ export const Item: FC<ItemProps> = ({
   flexWrap,
   ...props
 }) => {
+  const {defaultItemStyles} = useItemStyles({
+    row,
+    includeAlignItems: true,
+    includeJustifyContent: true,
+    size,
+    gap,
+    flexWrap,
+    ...props,
+  })
+
   return (
-    <View
-      {...props}
-      style={StyleSheet.flatten([
-        ItemStyles({
-          row,
-          includeAlignItems: true,
-          includeJustifyContent: true,
-          size,
-          gap,
-          flexWrap,
-          ...props,
-        }).defaultItemStyles,
-        style,
-      ])}>
+    <View {...props} style={StyleSheet.flatten([defaultItemStyles, style])}>
       {skeletonShow && skeletonStyle ? (
         <Skeleton
           testID={skeletonTestID}

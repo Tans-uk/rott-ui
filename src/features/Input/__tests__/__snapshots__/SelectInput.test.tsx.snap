@@ -83,7 +83,7 @@ exports[`Select Input -> Custom Input ilk render anında snapshot ile eşleşmel
           numberOfLines={1}
           style={
             {
-              "color": "grey-200",
+              "color": "rgba(161, 173, 175, 1)",
               "fontFamily": "Markpro-Medium",
               "fontSize": 18,
               "fontWeight": undefined,
@@ -96,24 +96,6 @@ exports[`Select Input -> Custom Input ilk render anında snapshot ile eşleşmel
         >
           Select
         </Text>
-        <View
-          style={
-            {
-              "flex": undefined,
-              "flexDirection": "column",
-            }
-          }
-        >
-          <SvgMock
-            fill="transparent"
-            height={48}
-            stroke="grey-200"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            width={48}
-          />
-        </View>
       </View>
     </View>
   </View>

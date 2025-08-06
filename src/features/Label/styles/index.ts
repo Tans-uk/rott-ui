@@ -1,1 +1,1 @@
-export * from './Label.style'
+export * from './useLabel.style'

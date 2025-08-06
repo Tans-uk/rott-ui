@@ -1,12 +1,11 @@
 import {render} from '../../../__tests__/utils/testUtils'
 import {Image} from '../components'
-import type {ImageTypes} from '../models'
 
 describe('Image -> Custom Component', () => {
   const testId = {
     imageTestId: 'image-test-id',
   }
-  const testIconName: ImageTypes = 'PTTBANK_WHITE'
+  const testIconName = 'PTTBANK_WHITE'
 
   it('image elementi snapshot ile eşleşmeli', () => {
     const {imageTestId} = testId

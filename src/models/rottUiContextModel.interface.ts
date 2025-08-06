@@ -1,9 +1,8 @@
 import {DeviceInfoModel} from './deviceInfoModel.interface'
 import {Language} from './language.interface'
+import {ThemeConfig} from './themeConfig.interface'
 
-export interface RottUiContextModel {
+export interface RottUiContextModel extends ThemeConfig {
   language: Language
-  hasDynamicIsland: boolean
-  hasNotch: boolean
   deviceInfo: DeviceInfoModel
 }

@@ -1,16 +1,17 @@
 import {useCallback, useMemo, useState, type FC, type PropsWithChildren} from 'react'
 
 import {modalRef} from '..'
+import {ThemeConfig} from '../../../models'
 import {ModalComponent} from '../components'
 import {ModalContext} from '../contexts'
 import {useModal} from '../hooks'
 import type {ModalProps} from '../models'
 
 export const ModalProvider: FC<PropsWithChildren> = ({children}) => {
-  const [modals, setModals] = useState<ModalProps[]>([])
+  const [modals, setModals] = useState<ModalProps<ThemeConfig>[]>([])
 
   const showModal = useCallback(
-    (modalToRender: ModalProps) =>
+    (modalToRender: ModalProps<ThemeConfig>) =>
       setModals((prevState) => {
         const shouldUpdate = prevState.some((modal) => modal.id === modalToRender?.id)
         if (shouldUpdate) {
@@ -28,7 +29,7 @@ export const ModalProvider: FC<PropsWithChildren> = ({children}) => {
   )
 
   const updateModal = useCallback(
-    (modalToRender: ModalProps, id?: number) => {
+    (modalToRender: ModalProps<ThemeConfig>, id?: number) => {
       setModals((prevState) => {
         const modalToUpdate = prevState.find(
           (modal) => modal.id === id || modal.id === modalToRender?.id
@@ -63,7 +64,13 @@ export const ModalProvider: FC<PropsWithChildren> = ({children}) => {
   )
 
   const hideAllModal = useCallback(
-    (predicate: (value: ModalProps, index: number, array: ModalProps[]) => unknown) => {
+    (
+      predicate: (
+        value: ModalProps<ThemeConfig>,
+        index: number,
+        array: ModalProps<ThemeConfig>[]
+      ) => unknown
+    ) => {
       const modalsAfterDelete = modals?.filter(predicate)
       setModals(modalsAfterDelete)
     },

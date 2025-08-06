@@ -1,8 +1,9 @@
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
 import {Linking} from 'react-native'
 
-import {themeConfig} from '../../../providers'
+import {RottUiContext} from '../../../contexts'
+import {ThemeConfig} from '../../../models'
 import {Icon} from '../../Icon'
 import {Image} from '../../Image'
 import {Label} from '../../Label'
@@ -10,7 +11,7 @@ import {Pressable} from '../../Pressable'
 import type {BottomMenuItemModel} from '../models'
 import {BottomMenuStyles} from '../styles'
 
-export const BottomMenuItem: FC<BottomMenuItemModel> = ({
+export const BottomMenuItem: FC<BottomMenuItemModel<ThemeConfig>> = ({
   testID,
   title,
   icon,
@@ -20,6 +21,7 @@ export const BottomMenuItem: FC<BottomMenuItemModel> = ({
   url,
   phone,
 }) => {
+  const {colors} = useContext(RottUiContext)
   const isPhone = !!phone && !phone.isEmpty()
 
   return (
@@ -52,7 +54,7 @@ export const BottomMenuItem: FC<BottomMenuItemModel> = ({
           {...image}
           width={image?.width ? image?.width : 24}
           height={image?.height ? image.height : 24}
-          tintColor={image?.width && image?.height ? undefined : themeConfig.colors['grey-900']}
+          tintColor={image?.width && image?.height ? undefined : colors['grey-900']}
           marginBottom={8}
           resizeMode='contain'
           name={image.name}

@@ -1,8 +1,8 @@
-import {useCallback, useMemo, type FC, type PropsWithChildren} from 'react'
+import {useCallback, useContext, useMemo, type FC, type PropsWithChildren} from 'react'
 
 import {ActionMenuContext, actionMenuRef} from '..'
-import {themeConfig} from '../../../providers'
-import {display} from '../../../utils'
+import {RottUiContext} from '../../../contexts'
+import {useDisplay} from '../../../hooks'
 import {Modal} from '../../Modal'
 import {ActionMenuComponent, ActionMenuHeaderComponent} from '../components'
 import {useActionMenu} from '../hooks'
@@ -10,14 +10,16 @@ import {ActionMenuProps} from '../models'
 import {modalHeightNormalizer} from '../utils'
 
 export const ActionMenuProvider: FC<PropsWithChildren> = ({children}) => {
+  const {colors} = useContext(RottUiContext)
+  const {px} = useDisplay()
   const showActionMenu = useCallback((actionMenuProps: ActionMenuProps) => {
     const ITEM_HEIGHT = actionMenuProps.itemHeight === undefined ? 56 : actionMenuProps.itemHeight
     const MAX_ITEM = actionMenuProps.maxItem === undefined ? 4 : actionMenuProps.maxItem
 
     const SEPARATOR_TOTAL_HEIGHT =
       (actionMenuProps.data?.length ?? 0) > MAX_ITEM
-        ? MAX_ITEM * display.px(1)
-        : (actionMenuProps.data?.length ?? 0) * display.px(1)
+        ? MAX_ITEM * px(1)
+        : (actionMenuProps.data?.length ?? 0) * px(1)
 
     const modalHeightPercentage = modalHeightNormalizer(
       actionMenuProps.data?.length ?? 0,
@@ -36,7 +38,7 @@ export const ActionMenuProvider: FC<PropsWithChildren> = ({children}) => {
       onClose: () => Modal.hideModal(),
       headerBackgroundColor: 'transparent',
       panResponderBackgroundColor: 'transparent',
-      backgroundColor: themeConfig.colors.transparent,
+      backgroundColor: colors.transparent,
       header: (actionMenuProps.title || actionMenuProps.subTitle) && (
         <ActionMenuHeaderComponent
           title={actionMenuProps.title}

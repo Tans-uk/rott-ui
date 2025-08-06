@@ -1,11 +1,12 @@
+import {ThemeConfig} from '../../../../../models'
 import {IconProps} from '../../../../Icon'
 import type {BaseInputProps} from '../../../models'
 import type {DataModel} from './dataModel.interface'
 
 import type {DatePickerProps} from 'react-native-date-picker'
 
-export interface DateInputProps
-  extends BaseInputProps,
+export interface DateInputProps<TTheme extends ThemeConfig>
+  extends BaseInputProps<TTheme>,
     Omit<DatePickerProps, 'style' | 'date' | 'mode' | 'theme'> {
   type?: 'date'
   mode?: 'date' | 'time' | 'datetime' | 'modal-date' | 'modal-time' | 'modal-datetime'
@@ -13,5 +14,5 @@ export interface DateInputProps
   viewType?: 'input' | 'button'
   allowClear?: boolean
   date?: Date
-  icon?: IconProps
+  icon?: IconProps<TTheme>
 }

@@ -1,8 +1,8 @@
 import type {JSX} from 'react'
 
-import {type CommonUiProps} from '../../../models'
+import {ThemeConfig, type CommonUiProps} from '../../../models'
 
-export interface TabWidgetProps extends CommonUiProps {
+export interface TabWidgetProps<TTheme extends ThemeConfig> extends CommonUiProps<TTheme> {
   testID?: string
   titles: string[]
   tabs?: JSX.Element[]

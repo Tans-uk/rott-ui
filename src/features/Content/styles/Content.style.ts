@@ -1,11 +1,14 @@
 import {StyleSheet} from 'react-native'
 
-import {commonUiStyleProperties, display} from '../../../utils'
+import {useCommonUiStyleProperties, useDisplay} from '../../../hooks'
 
-export const ContentStyles = (props?: any) =>
-  StyleSheet.create({
+export const useContentStyle = (props?: any) => {
+  const commonUiStyleProperties = useCommonUiStyleProperties(props)
+  const {px} = useDisplay()
+
+  return StyleSheet.create({
     defaultContentStyle: {
-      ...commonUiStyleProperties(props),
+      ...commonUiStyleProperties,
 
       flexDirection: props?.row ? 'row' : 'column',
 
@@ -13,8 +16,9 @@ export const ContentStyles = (props?: any) =>
     } as any,
     scrollViewStyle: {
       paddingBottom: props?.keyboardAvoidingViewContainerPaddingBottom
-        ? display.px(props.keyboardAvoidingViewContainerPaddingBottom)
+        ? px(props.keyboardAvoidingViewContainerPaddingBottom)
         : 0,
       flexGrow: 1,
     },
   })
+}

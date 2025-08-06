@@ -2,15 +2,15 @@ import type {PropsWithChildren} from 'react'
 
 import type {TextProps} from 'react-native'
 
-import type {FontFamily} from './fontFamily'
-import type {FontWeight} from './fontWeight'
+import {ThemeConfig, type CommonUiProps} from '../../../models'
 
-import {type CommonUiProps} from '../../../models'
-
-export interface LabelProps extends TextProps, CommonUiProps, PropsWithChildren {
+export interface LabelProps<TTheme extends ThemeConfig>
+  extends TextProps,
+    CommonUiProps<TTheme>,
+    PropsWithChildren {
   text?: string
   textCenter?: boolean
-  fontWeight?: FontWeight
-  fontFamily?: FontFamily
+  fontWeight?: keyof TTheme['fontWeights']
+  fontFamily?: keyof TTheme['fontFamilies']
   letterSpacing?: number
 }

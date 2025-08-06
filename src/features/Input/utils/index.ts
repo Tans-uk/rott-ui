@@ -1,2 +1,2 @@
 export * from './formatByDateMode'
-export * from './inputNormalizer'
+export * from './useInputStyleNormalizer'

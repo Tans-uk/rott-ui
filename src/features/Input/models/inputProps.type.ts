@@ -1,3 +1,4 @@
+import {ThemeConfig} from '../../../models'
 import {AmountInputProps, DateInputProps, SelectInputProps} from '../components'
 import {CheckBoxInputProps} from './checkBoxInputProps.interface'
 import {CreditCardInputProps} from './creditCardInputProps.interface'
@@ -15,22 +16,22 @@ import {PlateNumberInputProps} from './plateNumberInputProps.interface'
 import {StatementInputProps} from './statementInputProps.interface'
 import {ToggleInputProps} from './toggleInputProps.interface'
 
-export type InputProps = {type: InputType} & (
-  | AmountInputProps
-  | CVCInputProps
-  | CreditCardInputProps
-  | DateInputProps
-  | DefaultInputProps
-  | EmailInputProps
-  | ExpireDateInputProps
-  | IbanInputProps
-  | NumericInputProps
-  | PasswordInputProps
-  | PhoneInputProps
-  | PinPasswordInputProps
-  | PlateNumberInputProps
-  | CheckBoxInputProps
+export type InputProps<TTheme extends ThemeConfig> = {type: InputType} & (
+  | AmountInputProps<TTheme>
+  | CVCInputProps<TTheme>
+  | CreditCardInputProps<TTheme>
+  | DateInputProps<TTheme>
+  | DefaultInputProps<TTheme>
+  | EmailInputProps<TTheme>
+  | ExpireDateInputProps<TTheme>
+  | IbanInputProps<TTheme>
+  | NumericInputProps<TTheme>
+  | PasswordInputProps<TTheme>
+  | PhoneInputProps<TTheme>
+  | PinPasswordInputProps<TTheme>
+  | PlateNumberInputProps<TTheme>
+  | CheckBoxInputProps<TTheme>
   | SelectInputProps
-  | StatementInputProps
-  | ToggleInputProps
+  | StatementInputProps<TTheme>
+  | ToggleInputProps<TTheme>
 )

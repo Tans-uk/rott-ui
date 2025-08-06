@@ -1,13 +1,14 @@
 import {type FC, type PropsWithChildren} from 'react'
 
-import {type Variant} from '../../../models'
-import {Icon, IconKeys} from '../../Icon'
+import {Icon} from '../../Icon'
 import {NotificationComponent} from '../components'
 
 import {ToastProvider} from 'react-native-toast-notifications'
 
-export const ToasterNotificationProvider: FC<PropsWithChildren> = ({children}) => {
-  const notificationIcon = (name: IconKeys, variant: Variant) => {
+interface ToasterNotificationProviderProps extends PropsWithChildren {}
+
+export const ToasterNotificationProvider: FC<ToasterNotificationProviderProps> = ({children}) => {
+  const notificationIcon = (name: string, variant: string) => {
     return <Icon name={name} width={20} height={20} mode='fill' variant={variant} />
   }
 

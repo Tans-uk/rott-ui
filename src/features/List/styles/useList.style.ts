@@ -1,9 +1,11 @@
 import {StyleSheet} from 'react-native'
 
-import {commonUiStyleProperties} from '../../../utils'
+import {useCommonUiStyleProperties} from '../../../hooks'
 
-export const ListStyles = (props?: any) =>
-  StyleSheet.create({
+export const useListStyles = (props?: any) => {
+  const {commonUiStyleProperties} = useCommonUiStyleProperties(props)
+
+  return StyleSheet.create({
     defaultListContainerStyle: {
       ...commonUiStyleProperties(props),
 
@@ -13,3 +15,4 @@ export const ListStyles = (props?: any) =>
       height: props?.containerHeight,
     },
   })
+}

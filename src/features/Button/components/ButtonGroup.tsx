@@ -1,20 +1,21 @@
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
 import {Platform} from 'react-native'
 
+import {RottUiContext} from '../../../contexts'
 import {useSafeArea} from '../../../hooks'
-import {themeConfig} from '../../../providers'
+import {ThemeConfig} from '../../../models'
 import {Content, type ContentProps} from '../../Content'
 import {Image, type ImageProps} from '../../Image'
 import {Item} from '../../Item'
 import type {ButtonProps} from '../models'
 import {Button} from './Button'
 
-interface ButtonGroupProps extends ContentProps {
-  buttons: ButtonProps | Nullable<ButtonProps>[]
+interface ButtonGroupProps<TTheme extends ThemeConfig> extends ContentProps<TTheme> {
+  buttons: ButtonProps<TTheme> | Nullable<ButtonProps<TTheme>>[]
   hideButtons?: boolean
   sticky?: boolean
-  image?: ImageProps
+  image?: ImageProps<TTheme>
   children?: any
   isFastTransfer?: boolean
 }
@@ -24,7 +25,7 @@ interface ButtonGroupProps extends ContentProps {
  * @param hideButtons - Butonları gizler, !!! TODO: Daha sonra daha iyi bir çözüm bulunabilir mi bakılmalı!
  * @returns
  */
-export const ButtonGroup: FC<ButtonGroupProps> = ({
+export const ButtonGroup: FC<ButtonGroupProps<ThemeConfig>> = ({
   buttons,
   hideButtons,
   sticky,
@@ -34,6 +35,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   isFastTransfer,
   ...props
 }) => {
+  const {colors} = useContext(RottUiContext)
   /**
    * Ekranın altındaki NavBar ile çakışan Content'lerde (Örn:ButtonGroup) otomatik olarak 24 birim padding ekler.
    * IOS'te navbar transparan olduğu için eğer Navbar var ise 24 birim eklenmez. Çünkü kendisi boşluk gibi görünür.
@@ -47,12 +49,12 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
 
   const hasMoreThanOneButton = Array.isArray(buttons)
   const stickyBottomProps = {
-    shadowColor: themeConfig.colors['neutral-shadow-300'],
+    shadowColor: colors['neutral-shadow-300'],
     shadowOffset: {width: 0, height: -8},
     shadowOpacity: 1,
     shadowRadius: 35,
     borderTopWidth: 1,
-    borderTopColor: themeConfig.colors['neutral-grey-alpha-200'],
+    borderTopColor: colors['neutral-grey-alpha-200'],
   }
 
   return (

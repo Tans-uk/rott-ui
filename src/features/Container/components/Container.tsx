@@ -1,16 +1,16 @@
-import type {FC, PropsWithChildren} from 'react'
+import {useContext, type FC, type PropsWithChildren} from 'react'
 
 import {ScrollView, StyleSheet, View, type ViewProps} from 'react-native'
 
+import {RottUiContext} from '../../../contexts'
 import {useSafeArea} from '../../../hooks'
-import {type CommonUiProps} from '../../../models'
-import {themeConfig} from '../../../providers'
+import {ThemeConfig, type CommonUiProps} from '../../../models'
 import {Pressable} from '../../Pressable'
-import {ContainerStyles} from '../styles'
+import {useContainerStyle} from '../styles'
 
 import {SystemBars} from 'react-native-edge-to-edge'
 
-interface ContainerProps extends ViewProps, CommonUiProps, PropsWithChildren {
+interface ContainerProps extends ViewProps, CommonUiProps<ThemeConfig>, PropsWithChildren {
   center?: boolean
   noPadding?: boolean
   showStatusBar?: boolean
@@ -39,6 +39,7 @@ export const Container: FC<ContainerProps> = ({
   style,
   ...props
 }) => {
+  const {colors, goBack} = useContext(RottUiContext)
   const {top} = useSafeArea()
 
   return (
@@ -48,7 +49,7 @@ export const Container: FC<ContainerProps> = ({
       showsHorizontalScrollIndicator={false}
       scrollEnabled={false}
       contentContainerStyle={StyleSheet.flatten([
-        ContainerStyles({
+        useContainerStyle({
           center,
           noPadding,
           disableSafeAreaView,
@@ -67,9 +68,9 @@ export const Container: FC<ContainerProps> = ({
 
       {closeOnClick && (
         <Pressable
-          backgroundColor={themeConfig.colors['neutral-alpha-900']}
+          backgroundColor={colors['neutral-alpha-900']}
           style={[StyleSheet.absoluteFill]}
-          onPress={themeConfig.goBack}
+          onPress={goBack}
         />
       )}
 

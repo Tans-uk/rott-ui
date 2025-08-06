@@ -1,10 +1,13 @@
 import {StyleSheet} from 'react-native'
 
-import {commonUiStyleProperties} from '../../../utils'
+import {useCommonUiStyleProperties} from '../../../hooks'
 
-export const TimerStyles = (props?: any) =>
-  StyleSheet.create({
+export const useTimerStyles = (props?: any) => {
+  const {commonUiStyleProperties} = useCommonUiStyleProperties(props)
+
+  return StyleSheet.create({
     defaultTimerContainer: {
-      ...commonUiStyleProperties(props),
+      ...commonUiStyleProperties,
     } as any,
   })
+}

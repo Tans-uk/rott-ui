@@ -93,27 +93,7 @@ exports[`IBAN Input -> Custom Input ilk render anında snapshot ile eşleşmeli 
           }
         }
         testID="clear-iban-icon-test-id"
-      >
-        <View
-          style={
-            {
-              "flex": undefined,
-              "flexDirection": "column",
-            }
-          }
-          testID="iban-icon-test-id"
-        >
-          <SvgMock
-            fill="grey-200"
-            height={46}
-            stroke="grey-200"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={0}
-            width={46}
-          />
-        </View>
-      </View>
+      />
     </View>
   </View>
   <View

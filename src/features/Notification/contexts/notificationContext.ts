@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {createContext} from 'react'
 
+import {ThemeConfig} from '../../../models'
 import type {NotificationContextModel, NotificationModel} from '../models'
 
 export const NotificationContext = createContext<NotificationContextModel>({
   notifications: 0,
-  show: (_notification: NotificationModel) => '',
+  show: (_notification: NotificationModel<ThemeConfig>) => '',
   hide: (_id: string) => {},
   hideAll: () => {},
 

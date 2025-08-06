@@ -2,9 +2,10 @@ import type {ReactNode} from 'react'
 
 import type {NativeSyntheticEvent, TargetedEvent} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import type {BaseInputProps} from './baseInputProps.interface'
 
-export interface CheckBoxInputProps extends BaseInputProps {
+export interface CheckBoxInputProps<TTheme extends ThemeConfig> extends BaseInputProps<TTheme> {
   type?: 'checkbox'
   description?: ReactNode
   checked?: boolean

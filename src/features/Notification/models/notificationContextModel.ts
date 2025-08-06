@@ -1,8 +1,9 @@
+import {ThemeConfig} from '../../../models'
 import type {NotificationModel} from './notificationModel'
 
 export interface NotificationContextModel {
   notifications: number
-  show: (notification: NotificationModel) => string
+  show: (notification: NotificationModel<ThemeConfig>) => string
   hide: (id: string) => void
   hideAll: () => void
 

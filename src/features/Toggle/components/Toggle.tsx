@@ -1,10 +1,10 @@
-import {useEffect, useMemo, type FC} from 'react'
+import {useContext, useEffect, useMemo, type FC} from 'react'
 
-import {themeConfig} from '../../../providers'
-import {display} from '../../../utils'
+import {RottUiContext} from '../../../contexts'
+import {useDisplay} from '../../../hooks'
 import {Item} from '../../Item'
 import {Pressable} from '../../Pressable'
-import {ToggleStyles} from '../style'
+import {useToggleStyle} from '../style'
 
 import Animated, {
   Easing,
@@ -23,8 +23,11 @@ interface ToggleProps {
 }
 
 export const Toggle: FC<ToggleProps> = ({testID, isOn, onToggleChange, disabled}) => {
+  const {px} = useDisplay()
+  const {colors} = useContext(RottUiContext)
+  const {toggleContainer, toggleWheelStyle} = useToggleStyle()
   const animatedValue = useSharedValue(isOn === true ? 1 : 0)
-  const marginRange = useMemo(() => [display.px(4), display.px(36)], [])
+  const marginRange = useMemo(() => [px(4), px(36)], [])
 
   const moveToggleStyle = useAnimatedStyle(
     () => ({
@@ -35,8 +38,7 @@ export const Toggle: FC<ToggleProps> = ({testID, isOn, onToggleChange, disabled}
 
   const moveToggleBackgroundColorStyle = useAnimatedStyle(
     () => ({
-      backgroundColor:
-        animatedValue.value === 1 ? themeConfig.colors.primary : themeConfig.colors['grey-200'],
+      backgroundColor: animatedValue.value === 1 ? colors.primary : colors['grey-200'],
     }),
     []
   )
@@ -65,8 +67,8 @@ export const Toggle: FC<ToggleProps> = ({testID, isOn, onToggleChange, disabled}
         testID='toggle-container-test-id'>
         <Animated.View
           testID='toggle-test-id'
-          style={[ToggleStyles().toggleContainer, moveToggleBackgroundColorStyle]}>
-          <Animated.View style={[ToggleStyles().toggleWheelStyle, moveToggleStyle]} />
+          style={[toggleContainer, moveToggleBackgroundColorStyle]}>
+          <Animated.View style={[toggleWheelStyle, moveToggleStyle]} />
         </Animated.View>
       </Pressable>
     </Item>

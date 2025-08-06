@@ -7,16 +7,18 @@ import {
   type TextStyle,
 } from 'react-native'
 
-import {type CommonUiProps, type Size, type Variant} from '../../../models'
+import {ThemeConfig, type CommonUiProps, type Size} from '../../../models'
 
-export interface PressableProps extends CommonUiProps, RNPressableProps {
+export interface PressableProps<TTheme extends ThemeConfig>
+  extends CommonUiProps<TTheme>,
+    RNPressableProps {
   ref?: Ref<View> | Ref<View | Ref<View>> | any
   row?: boolean
   text?: string
   textStyle?: StyleProp<TextStyle>
-  textVariant?: Variant
+  textVariant?: keyof TTheme['colors']
   textSize?: Size
-  textWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 'bold' | 'normal'
+  textWeight?: keyof TTheme['fontWeights']
   animated?: boolean
   children?: any
 }

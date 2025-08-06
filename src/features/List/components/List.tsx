@@ -4,27 +4,29 @@ import React, {forwardRef, isValidElement, useState, type FC, type ReactNode, ty
 
 import {StyleSheet} from 'react-native'
 
+import {useDisplay} from '../../../hooks'
 import {formatMessage} from '../../../libs'
-import type {CommonUiProps, Variant} from '../../../models'
-import {display} from '../../../utils'
+import type {CommonUiProps, ThemeConfig} from '../../../models'
 import {EmptyState, type EmptyStateProps} from '../../EmptyState'
 import {Item} from '../../Item'
 import {Separator} from '../../Separator'
-import {ListStyles} from '../styles'
+import {useListStyles} from '../styles'
 import {ListSkeletonItem} from './ListSkeletonItem'
 
 import {FlashList, type FlashListProps} from '@shopify/flash-list'
 
-interface ListProps<T> extends CommonUiProps, FlashListProps<T> {
+interface ListProps<TTheme extends ThemeConfig, T>
+  extends CommonUiProps<TTheme>,
+    FlashListProps<T> {
   renderSeparator?: boolean
   separatorWidth?: number
   separatorHeight?: number
-  separatorVariant?: Variant
+  separatorVariant?: keyof TTheme['colors']
   headerSeparator?: boolean
   footerSeparator?: boolean
   ref?: Ref<T> | undefined
 
-  emptyStateContainerProps?: CommonUiProps
+  emptyStateContainerProps?: CommonUiProps<TTheme>
   emptyState?: EmptyStateProps | ReactNode | 'no-empty-state'
   isLoading?: boolean
   listSkeletonItem?: React.JSX.Element
@@ -32,7 +34,7 @@ interface ListProps<T> extends CommonUiProps, FlashListProps<T> {
   itemsToShow?: number
 }
 
-export const List: FC<ListProps<any>> = forwardRef(
+export const List: FC<ListProps<ThemeConfig, any>> = forwardRef(
   (
     {
       renderSeparator,
@@ -59,6 +61,7 @@ export const List: FC<ListProps<any>> = forwardRef(
   ) => {
     const minContainerHeight = 283
     const [containerHeight, setContainerHeight] = useState(0)
+    const {setWidth} = useDisplay()
 
     const customRenderSeparator = () => {
       return (
@@ -87,7 +90,7 @@ export const List: FC<ListProps<any>> = forwardRef(
           setContainerHeight(Math.max(minContainerHeight, e.nativeEvent.layout.height))
         }
         style={StyleSheet.flatten([
-          ListStyles({
+          useListStyles({
             width,
             height: itemsToShow
               ? itemsToShow * calculatedEstimatedItemSize + (renderSeparator ? itemsToShow * 1 : 0)
@@ -105,7 +108,7 @@ export const List: FC<ListProps<any>> = forwardRef(
               {!isValidElement(emptyState) && emptyState !== 'no-empty-state' && (
                 <Item
                   width='full'
-                  maxWidth={display.setWidth(100)} // horizontal list empty state durumda gereklidir
+                  maxWidth={setWidth(100)} // horizontal list empty state durumda gereklidir
                   paddingVertical={16}
                   paddingHorizontal={24}
                   borderTopEndRadius={8}
@@ -117,7 +120,7 @@ export const List: FC<ListProps<any>> = forwardRef(
                   }
                   alignItemsCenter
                   justifyContentCenter
-                  style={ListStyles({containerHeight}).emptyStateContainer} // containerHeight onLayout ile okunduğu için display util'leri kullanılmadan direkt stil ile verilmiştir
+                  style={useListStyles({containerHeight}).emptyStateContainer} // containerHeight onLayout ile okunduğu için display util'leri kullanılmadan direkt stil ile verilmiştir
                   /** TODO: opacity yerine containerHeight belirlenene kadar display: 'none' kullanılmalı.
                    * Testlerde sorun çıkardığı için şimdilik bu şekilde bırakıldı.
                    */

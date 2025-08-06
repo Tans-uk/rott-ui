@@ -1,8 +1,7 @@
-import { Variant } from "../../../models"
+import {ThemeConfig} from '../../../models'
 
-
-export interface NotificationModel {
+export interface NotificationModel<TTheme extends ThemeConfig> {
   title: string
   description?: string
-  variant: Variant
+  variant: keyof TTheme['colors']
 }

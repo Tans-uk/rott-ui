@@ -6,6 +6,7 @@ import {
   notificationRef,
   ToasterNotificationProvider,
 } from '..'
+import {ThemeConfig} from '../../../models'
 import {Item} from '../../Item'
 import {useNotification} from '../hooks'
 
@@ -34,7 +35,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({children}) => {
     if (notifications === 0) setHasAnyNotification(false)
   }
 
-  const baseNotification = ({title, description, variant}: NotificationModel) =>
+  const baseNotification = ({title, description, variant}: NotificationModel<ThemeConfig>) =>
     Toast.show(title, {
       type: variant,
       data: {title, description, variant},
@@ -42,7 +43,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({children}) => {
     })
 
   const show = useCallback(
-    (notification: NotificationModel) => {
+    (notification: NotificationModel<ThemeConfig>) => {
       increment()
 
       return baseNotification(notification)

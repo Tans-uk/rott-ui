@@ -1,6 +1,7 @@
 import {cloneElement, type ReactElement} from 'react'
 
-import {display} from '../../utils'
+import {useDisplay} from '../../hooks'
+import {render} from './testUtils'
 
 /*
  Dışarıdan element alınacağı için verilen elementi istenilen property ile klonlayıp öyle test etmektedir.
@@ -9,6 +10,7 @@ import {display} from '../../utils'
 
 export const commonUiTestExtension = (element: ReactElement<any>, testId: string) => {
   const elementName = (element.type as any).name
+  const {normalize} = useDisplay()
 
   return describe(`${elementName} -> Common UI Test`, () => {
     it(`${elementName} marginTop propertysi aldığında styleları arasında marginTop ve verilen değer olmalıdır`, () => {
@@ -20,7 +22,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
       const renderedElement = getByTestId(testId)
 
       expect(renderedElement).toHaveStyle({
-        marginTop: display.normalize(10, 'width'),
+        marginTop: normalize(10, 'width'),
       })
     })
 
@@ -33,7 +35,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
       const renderedElement = getByTestId(testId)
 
       expect(renderedElement).toHaveStyle({
-        marginBottom: display.normalize(10, 'width'),
+        marginBottom: normalize(10, 'width'),
       })
     })
 
@@ -45,7 +47,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
 
       const renderedElement = getByTestId(testId)
 
-      expect(renderedElement).toHaveStyle({marginLeft: display.normalize(10, 'width')})
+      expect(renderedElement).toHaveStyle({marginLeft: normalize(10, 'width')})
     })
 
     it(`${elementName} marginRight propertysi aldığında styleları arasında marginRight ve verilen değer olmalıdır`, () => {
@@ -56,7 +58,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
 
       const renderedElement = getByTestId(testId)
 
-      expect(renderedElement).toHaveStyle({marginRight: display.normalize(10, 'width')})
+      expect(renderedElement).toHaveStyle({marginRight: normalize(10, 'width')})
     })
 
     it(`${elementName} paddingTop propertysi aldığında styleları arasında paddingTop ve verilen değer olmalıdır`, () => {
@@ -68,7 +70,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
       const renderedElement = getByTestId(testId)
 
       expect(renderedElement).toHaveStyle({
-        paddingTop: display.normalize(10, 'width'),
+        paddingTop: normalize(10, 'width'),
       })
     })
 
@@ -81,7 +83,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
       const renderedElement = getByTestId(testId)
 
       expect(renderedElement).toHaveStyle({
-        paddingBottom: display.normalize(10, 'width'),
+        paddingBottom: normalize(10, 'width'),
       })
     })
 
@@ -93,7 +95,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
 
       const renderedElement = getByTestId(testId)
 
-      expect(renderedElement).toHaveStyle({paddingLeft: display.normalize(10, 'width')})
+      expect(renderedElement).toHaveStyle({paddingLeft: normalize(10, 'width')})
     })
 
     it(`${elementName} paddingRight propertysi aldığında styleları arasında paddingRight ve verilen değer olmalıdır`, () => {
@@ -104,7 +106,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
 
       const renderedElement = getByTestId(testId)
 
-      expect(renderedElement).toHaveStyle({paddingRight: display.normalize(10, 'width')})
+      expect(renderedElement).toHaveStyle({paddingRight: normalize(10, 'width')})
     })
 
     it(`${elementName} paddingVertical propertysi aldığında styleları arasında paddingVertical ve verilen değer olmalıdır`, () => {
@@ -115,7 +117,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
 
       const renderedElement = getByTestId(testId)
 
-      expect(renderedElement).toHaveStyle({paddingVertical: display.normalize(10, 'width')})
+      expect(renderedElement).toHaveStyle({paddingVertical: normalize(10, 'width')})
     })
 
     it(`${elementName} paddingHorizontal propertysi aldığında styleları arasında paddingHorizontal ve verilen değer olmalıdır`, () => {
@@ -126,7 +128,7 @@ export const commonUiTestExtension = (element: ReactElement<any>, testId: string
 
       const renderedElement = getByTestId(testId)
 
-      expect(renderedElement).toHaveStyle({paddingHorizontal: display.normalize(10, 'width')})
+      expect(renderedElement).toHaveStyle({paddingHorizontal: normalize(10, 'width')})
     })
   })
 }

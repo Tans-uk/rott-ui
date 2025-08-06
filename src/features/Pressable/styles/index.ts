@@ -1,1 +1,1 @@
-export * from './Pressable.style'
+export * from './usePressable.style'

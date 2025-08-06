@@ -1,11 +1,13 @@
 import {StyleSheet} from 'react-native'
 
-import {display} from '../../../../../utils'
+import {useDisplay} from '../../../../../hooks'
 
-export const SelectInputStyles = () =>
-  StyleSheet.create({
+export const useSelectInputStyles = () => {
+  const {setHeight, px} = useDisplay()
+
+  return StyleSheet.create({
     selectInputModalStyle: {
-      height: display.setHeight(65),
+      height: setHeight(65),
     },
     pressableTextStyle: {
       // TODO: Android sorunu çözüldükten sonra bakılması gerekiyor.
@@ -13,6 +15,7 @@ export const SelectInputStyles = () =>
       width: '90%',
     },
     activityIndicator: {
-      height: display.px(72),
+      height: px(72),
     },
   })
+}

@@ -2,16 +2,16 @@ import type {PropsWithChildren, ReactNode} from 'react'
 
 import type {ModalProps as RNModalProps} from 'react-native'
 
-import type {Variant} from '../../../models'
+import type {ThemeConfig} from '../../../models'
 import type {HeaderProps} from '../../Header'
 
-export interface ModalProps
+export interface ModalProps<TTheme extends ThemeConfig>
   extends PropsWithChildren,
     Omit<RNModalProps, 'transparent' | 'animated' | 'id'> {
   id?: number
   fullScreen?: boolean
 
-  header?: ReactNode | HeaderProps
+  header?: ReactNode | HeaderProps<TTheme>
   closeButton?: boolean
   onClose?: () => void
   disableOutsideClick?: boolean
@@ -21,8 +21,8 @@ export interface ModalProps
    */
   height?: number
   backgroundColor?: string
-  panResponderBackgroundColor?: Variant
-  headerBackgroundColor?: Variant
+  panResponderBackgroundColor?: keyof TTheme['colors']
+  headerBackgroundColor?: keyof TTheme['colors']
   slideToClose?: boolean
 
   alignItemsCenter?: boolean
@@ -35,7 +35,7 @@ export interface ModalProps
    * Bu özellik aktif edilmezse backgroundColor='transparent' verilse dahi arka plana tıklandığında modal kapanmamaktadır.
    * */
   transparent?: boolean
-  modals?: ModalProps[]
+  modals?: ModalProps<TTheme>[]
 
   modalContainerMarginBottom?: number
   children?: any

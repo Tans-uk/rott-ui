@@ -1,10 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
-import {type FC} from 'react'
+import {useContext, type FC} from 'react'
 
 import {ActionMenu} from '..'
+import {RottUiContext} from '../../../contexts'
+import {useDisplay} from '../../../hooks'
 import {translator} from '../../../libs'
-import {themeConfig} from '../../../providers'
-import {display} from '../../../utils'
 import {Button} from '../../Button'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
@@ -31,6 +31,8 @@ export const ActionMenuComponent: FC<ActionMenuProps> = ({
   maxItem,
   separatorTotalHeight,
 }) => {
+  const {colors} = useContext(RottUiContext)
+  const {normalize} = useDisplay()
   const itemCount = (data?.length ?? 0) > maxItem! ? maxItem! : (data?.length ?? 0)
 
   // Listede renderlanacak Item
@@ -45,7 +47,7 @@ export const ActionMenuComponent: FC<ActionMenuProps> = ({
       justifyContentCenter
       alignItemsCenter
       onPress={() => onAction()}>
-      <Label fontSize='lg' variant='grey-900' fontWeight={500}>
+      <Label fontSize='lg' variant='grey-900' fontWeight={'500'}>
         {renderItemTitle}
       </Label>
     </Pressable>
@@ -55,7 +57,7 @@ export const ActionMenuComponent: FC<ActionMenuProps> = ({
     <Item size='full' style={ActionMenuStyles().actionMenuContainer} alignItemsCenter>
       <Item
         width={342}
-        backgroundColor={themeConfig.colors['grey-100']}
+        backgroundColor={colors['grey-100']}
         borderTopStartRadius={!(title || subTitle) ? 12 : 0}
         borderTopEndRadius={!(title || subTitle) ? 12 : 0}
         borderBottomStartRadius={12}
@@ -73,7 +75,7 @@ export const ActionMenuComponent: FC<ActionMenuProps> = ({
           renderSeparator
           headerSeparator
           footerSeparator
-          estimatedItemSize={display.normalize(itemHeight!, 'height')}
+          estimatedItemSize={normalize(itemHeight!, 'height')}
           showsVerticalScrollIndicator={false}
           scrollEnabled={(data?.length ?? 0) > maxItem!}
         />

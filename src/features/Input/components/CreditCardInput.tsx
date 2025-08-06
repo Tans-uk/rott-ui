@@ -2,13 +2,14 @@ import {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import type {CreditCardInputProps} from '../models'
-import {InputStyles} from '../styles'
+import {useInputStyles} from '../styles'
 
 // Package Imports
 import MaskInput from 'react-native-mask-input'
 
-export const CreditCardInput: FC<CreditCardInputProps> = ({
+export const CreditCardInput: FC<CreditCardInputProps<ThemeConfig>> = ({
   fontSize,
   onChangeText,
   theme,
@@ -16,6 +17,7 @@ export const CreditCardInput: FC<CreditCardInputProps> = ({
   size,
   ...props
 }) => {
+  const {defaultTextInputStyle} = useInputStyles({fontSize, theme, size})
   const MASK = [
     /\d/,
     /\d/,
@@ -51,7 +53,7 @@ export const CreditCardInput: FC<CreditCardInputProps> = ({
       keyboardType='number-pad'
       maxLength={19}
       onChangeText={(_masked, unmasked) => handleOnChangeText(unmasked)}
-      style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+      style={StyleSheet.flatten([defaultTextInputStyle])}
       {...props}
     />
   )

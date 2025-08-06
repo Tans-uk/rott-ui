@@ -2,9 +2,10 @@ import {type FC, type PropsWithChildren} from 'react'
 
 import {Animated, Pressable as RNPressable} from 'react-native'
 
+import {ThemeConfig} from '../../../models'
 import type {PressableProps} from '../models'
 
-export const PressableContainer: FC<PropsWithChildren<PressableProps>> = ({
+export const PressableContainer: FC<PropsWithChildren<PressableProps<ThemeConfig>>> = ({
   children: containerChildren,
   ...containerProps
 }) => {

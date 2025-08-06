@@ -1,6 +1,5 @@
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
-import {Icon, type IconKeys} from '../../Icon'
-import type {ImageTypes} from '../../Image'
+import {Icon} from '../../Icon'
 import {Header} from '../components'
 
 describe('Header -> Custom Component', () => {
@@ -15,7 +14,7 @@ describe('Header -> Custom Component', () => {
     back: 'header-back-test-id',
   }
 
-  const IMG: {logo: ImageTypes; rightIcon: IconKeys} = {
+  const IMG: {logo: string; rightIcon: string} = {
     logo: 'PTTBANK_WHITE',
     rightIcon: 'REMOVE_CIRCLE',
   }
