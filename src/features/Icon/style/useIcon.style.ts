@@ -7,7 +7,7 @@ export const useIconStyles = (props?: any) => {
 
   return StyleSheet.create({
     defaultIconStyle: {
-      ...commonUiStyleProperties(props),
+      ...commonUiStyleProperties,
     } as any,
   })
 }

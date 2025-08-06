@@ -7,7 +7,7 @@ export const useListStyles = (props?: any) => {
 
   return StyleSheet.create({
     defaultListContainerStyle: {
-      ...commonUiStyleProperties(props),
+      ...commonUiStyleProperties,
 
       flexDirection: props?.horizontal ? 'row' : 'column',
     } as any,

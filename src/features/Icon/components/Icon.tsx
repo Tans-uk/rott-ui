@@ -35,7 +35,7 @@ export const Icon: FC<IconProps<ThemeConfig>> = ({
 
   return (
     <Item {...props} opacity={itemOpacity}>
-      <IconComponent
+      <IconComponent.default
         fill={fill}
         stroke={stroke}
         strokeWidth={strokeWidth}

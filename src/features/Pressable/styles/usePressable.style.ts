@@ -7,7 +7,7 @@ export const usePressableStyles = (props: any) => {
 
   return StyleSheet.create({
     defaultPressableStyle: {
-      ...commonUiStyleProperties(props),
+      ...commonUiStyleProperties,
 
       flexDirection: props?.row ? 'row' : 'column',
 
