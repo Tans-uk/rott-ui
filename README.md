@@ -29,3 +29,32 @@ MIT
 ---
 
 Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+
+### Using `rott.config.ts` for type-safe theming
+
+1) Create `rott.config.ts` in your app root:
+
+```ts
+import { defineRottConfig } from '@tansuk/rott-ui'
+
+export const config = defineRottConfig({
+  colors: {
+    brandPrimary: '#123456',
+    brandAccent: '#ff00aa',
+  },
+} as const)
+```
+
+2) Map the module in your `tsconfig.json` so the library can resolve it:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "rott.config": ["./rott.config.ts"]
+    }
+  }
+}
+```
+
+Now, components that accept a `variant` prop will autocomplete the keys defined in your `colors`.

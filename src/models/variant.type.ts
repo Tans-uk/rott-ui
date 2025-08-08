@@ -1,3 +1,1 @@
-import {themeConfig} from '../providers'
-
-export type Variant = keyof typeof themeConfig.colors
+export type Variant = import('../theme').TThemeVariant
