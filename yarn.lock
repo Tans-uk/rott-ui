@@ -3074,7 +3074,7 @@ __metadata:
     react-native-linear-gradient: ^2.8.3
     react-native-mask-input: ^1.2.3
     react-native-pager-view: ^6.8.1
-    react-native-reanimated: ^3.18.0
+    react-native-reanimated: 4.0.1
     react-native-safe-area-context: 5.4.1
     react-native-select-contact: ^1.6.3
     react-native-svg: ^15.12.0
@@ -3100,7 +3100,7 @@ __metadata:
     react-native-keyboard-controller: ">=1.17.3"
     react-native-linear-gradient: 2.8.3
     react-native-mask-input: ">=1.2.3"
-    react-native-reanimated: ">=3.0.0"
+    react-native-reanimated: 4.0.1
     react-native-safe-area-context: ">=5.4.1"
     react-native-select-contact: ">=1.6.3"
     react-native-svg: ">=15.12.0"
@@ -10608,17 +10608,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-is-edge-to-edge@npm:1.1.7":
-  version: 1.1.7
-  resolution: "react-native-is-edge-to-edge@npm:1.1.7"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 4cdf2b2fb5b131f2015c26d2cb7688b4a0c5f3c8474b1bf0ddfa9eabb0263df440c87262ae8f812a6ecab0d5310df0373bddad4b51f53dabb2ffee01e9ef0f44
-  languageName: node
-  linkType: hard
-
-"react-native-is-edge-to-edge@npm:^1.1.6":
+"react-native-is-edge-to-edge@npm:^1.1.6, react-native-is-edge-to-edge@npm:^1.2.1":
   version: 1.2.1
   resolution: "react-native-is-edge-to-edge@npm:1.2.1"
   peerDependencies:
@@ -10681,27 +10671,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:^3.18.0":
-  version: 3.19.0
-  resolution: "react-native-reanimated@npm:3.19.0"
+"react-native-reanimated@npm:4.0.1":
+  version: 4.0.1
+  resolution: "react-native-reanimated@npm:4.0.1"
   dependencies:
-    "@babel/plugin-transform-arrow-functions": ^7.0.0-0
-    "@babel/plugin-transform-class-properties": ^7.0.0-0
-    "@babel/plugin-transform-classes": ^7.0.0-0
-    "@babel/plugin-transform-nullish-coalescing-operator": ^7.0.0-0
-    "@babel/plugin-transform-optional-chaining": ^7.0.0-0
-    "@babel/plugin-transform-shorthand-properties": ^7.0.0-0
-    "@babel/plugin-transform-template-literals": ^7.0.0-0
-    "@babel/plugin-transform-unicode-regex": ^7.0.0-0
-    "@babel/preset-typescript": ^7.16.7
-    convert-source-map: ^2.0.0
-    invariant: ^2.2.4
-    react-native-is-edge-to-edge: 1.1.7
+    react-native-is-edge-to-edge: ^1.2.1
+    semver: 7.7.2
   peerDependencies:
     "@babel/core": ^7.0.0-0
     react: "*"
     react-native: "*"
-  checksum: 5e3b298f1b94deb88f2d4ec8283808158ae2bef0cbb120b9a3232ad98a183fb472232de4c5bdd4652848fba9b9919a6a06a727650345494ff53764e6cea52133
+    react-native-worklets: ">=0.3.0"
+  checksum: a8749d8fc4a606ddefd718cc899c9d080a213d424ca0a474d99eb8406c4404edf86971986cc74df3372351a26ece1bccb2cc248778d55a019be0f9a071516727
   languageName: node
   linkType: hard
 
@@ -11390,6 +11371,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"semver@npm:7.7.2, semver@npm:^7.1.3, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3, semver@npm:^7.7.2":
+  version: 7.7.2
+  resolution: "semver@npm:7.7.2"
+  bin:
+    semver: bin/semver.js
+  checksum: dd94ba8f1cbc903d8eeb4dd8bf19f46b3deb14262b6717d0de3c804b594058ae785ef2e4b46c5c3b58733c99c83339068203002f9e37cfe44f7e2cc5e3d2f621
+  languageName: node
+  linkType: hard
+
 "semver@npm:^5.6.0":
   version: 5.7.2
   resolution: "semver@npm:5.7.2"
@@ -11405,15 +11395,6 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: ae47d06de28836adb9d3e25f22a92943477371292d9b665fb023fae278d345d508ca1958232af086d85e0155aee22e313e100971898bbb8d5d89b8b1d4054ca2
-  languageName: node
-  linkType: hard
-
-"semver@npm:^7.1.3, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3, semver@npm:^7.7.2":
-  version: 7.7.2
-  resolution: "semver@npm:7.7.2"
-  bin:
-    semver: bin/semver.js
-  checksum: dd94ba8f1cbc903d8eeb4dd8bf19f46b3deb14262b6717d0de3c804b594058ae785ef2e4b46c5c3b58733c99c83339068203002f9e37cfe44f7e2cc5e3d2f621
   languageName: node
   linkType: hard
 

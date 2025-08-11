@@ -329,9 +329,7 @@ export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
     <SafeAreaProvider>
       <RottUiContext.Provider
         value={{
-          language: {
-            name: 'en-US',
-          },
+          language: config?.language ?? themeConfig.options.appLanguage,
           hasDynamicIsland: hasDynamicIsland(),
           hasNotch:
             !hasNotch() && Platform.OS === 'android' && StatusBar.currentHeight! > 24

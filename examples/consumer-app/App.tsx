@@ -178,7 +178,7 @@ function App() {
               }}
               rightIcon={{
                 name: 'ARROW_LEFT',
-                variant: 'danger',
+                variant: 'cindoruk',
                 absolute: true,
                 mode: 'fill',
                 noStroke: true,
