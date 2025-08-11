@@ -1,9 +1,10 @@
 import {type Variant} from '../models'
 import {themeConfig} from '../providers'
+import {theme} from '../theme'
 
 export const colorFromVariant = (variant: Variant = 'primary') => {
-  return Object.keys(themeConfig.colors).includes(variant as string)
-    ? themeConfig.colors[variant as keyof typeof themeConfig.colors]
+  return Object.keys(theme.colors).includes(variant as string)
+    ? theme.colors[variant as keyof typeof theme.colors]
     : variant
 }
 
