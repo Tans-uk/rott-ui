@@ -1,6 +1,6 @@
 import {ThemeConfig} from '../models'
 
-export let defaultThemeConfig: ThemeConfig = {
+export const defaultThemeConfig = {
   referenceDevice: {
     width: 390,
     height: 844,
@@ -321,4 +321,4 @@ export let defaultThemeConfig: ThemeConfig = {
     'Markpro-Thin': '100',
   },
   goBack: () => {},
-}
+} as const satisfies ThemeConfig

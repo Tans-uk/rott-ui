@@ -1,0 +1,10 @@
+{
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "rott.config": ["./rott.config.ts"]
+    }
+  },
+  "include": ["./rott.config.ts", "**/*.ts", "**/*.tsx"]
+}
