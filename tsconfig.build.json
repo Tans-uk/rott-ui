@@ -1,8 +1,7 @@
 {
   "extends": "./tsconfig",
   "exclude": [
-    "example",
-    "example-rn-cli",
+    "examples/*",
     "lib",
     "**/__tests__/**/*",
     "**/testUtils.*",

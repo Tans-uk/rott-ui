@@ -12,7 +12,7 @@ type ExtractUserColors<T> = T extends {colors: infer C} ? C : never
 type UserColors = ExtractUserColors<UserConfig>
 type StringKeys<T> = Extract<keyof T, string>
 
-export type TThemeVariant = StringKeys<DefaultColors> | StringKeys<UserColors>
+export type TThemeVariant = NoInfer<StringKeys<DefaultColors>> | NoInfer<StringKeys<UserColors>>
 
 let userConfig: Partial<ThemeConfig> | Record<string, unknown> = {}
 try {

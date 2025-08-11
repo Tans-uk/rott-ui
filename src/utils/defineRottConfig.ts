@@ -1,4 +1,4 @@
-import { ThemeConfig } from '../models/themeConfig.interface'
+import {ThemeConfig} from '../models/themeConfig.interface'
 
 export function defineRottConfig<T extends Partial<ThemeConfig>>(config: T): T {
   if (process.env.NODE_ENV === 'development') {
@@ -11,5 +11,3 @@ export function defineRottConfig<T extends Partial<ThemeConfig>>(config: T): T {
   }
   return config
 }
-
-

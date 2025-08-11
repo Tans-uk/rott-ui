@@ -1,1 +1,1 @@
-export type Variant = import('../theme').TThemeVariant
+export type Variant = NoInfer<import('../theme').TThemeVariant>
