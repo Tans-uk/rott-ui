@@ -1,4 +1,4 @@
-import {type FC, type PropsWithChildren} from 'react'
+import {useEffect, useState, type FC, type PropsWithChildren} from 'react'
 
 import {Platform, StatusBar} from 'react-native'
 
@@ -9,6 +9,7 @@ import {
   ModalProvider,
   NotificationProvider,
 } from '../features'
+import {Language} from '../models'
 
 import {
   getApiLevelSync,
@@ -323,13 +324,22 @@ export let themeConfig = {
 }
 
 export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
+  const [language, setLanguage] = useState<Language>(
+    config?.language ?? themeConfig.options.appLanguage
+  )
+
   if (config) themeConfig = {...themeConfig, ...config}
+
+  useEffect(() => {
+    if (config?.language?.name !== language.name)
+      setLanguage(config?.language ?? themeConfig.options.appLanguage)
+  }, [config?.language])
 
   return (
     <SafeAreaProvider>
       <RottUiContext.Provider
         value={{
-          language: config?.language ?? themeConfig.options.appLanguage,
+          language,
           hasDynamicIsland: hasDynamicIsland(),
           hasNotch:
             !hasNotch() && Platform.OS === 'android' && StatusBar.currentHeight! > 24
@@ -340,6 +350,7 @@ export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
             apiLevel: getApiLevelSync(),
             totalMemory: getTotalMemorySync(),
           },
+          setLanguage,
         }}>
         <NotificationProvider>
           <ModalProvider>

@@ -2,7 +2,7 @@ import {createContext} from 'react'
 
 import {Platform, StatusBar} from 'react-native'
 
-import {RottUiContextModel} from '../models/rottUiContextModel.interface'
+import {Language, RottUiContextModel} from '../models'
 
 import {
   getApiLevelSync,
@@ -24,4 +24,6 @@ export const RottUiContext = createContext<RottUiContextModel>({
     apiLevel: getApiLevelSync(),
     totalMemory: getTotalMemorySync(),
   },
+
+  setLanguage: (_language: Language) => {},
 })
