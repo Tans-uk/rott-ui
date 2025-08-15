@@ -15,8 +15,8 @@ interface BottomMenuProps {
 export const BottomMenu: FC<BottomMenuProps> = ({menuItems}) => {
   const {bottom} = useSafeArea()
 
-  let absoluteHeight = 64 + bottom // 56 dip yükseklik + 8 dip boşluk + bottom inset
-  if (Platform.OS === 'ios' && bottom > 0) absoluteHeight -= 8 // ios'te navigation bar şeffaf ve boşluklu olduğu için 8 dip boşluğa gerek yoktur
+  let absoluteHeight = 72 + bottom // 56 dip yükseklik + 10 dip boşluk + bottom inset
+  if (Platform.OS === 'ios' && bottom > 0) absoluteHeight -= 16 // ios'te navigation bar şeffaf ve boşluklu olduğu için 16 dip boşluğa gerek yoktur
 
   return (
     <Content
@@ -25,14 +25,14 @@ export const BottomMenu: FC<BottomMenuProps> = ({menuItems}) => {
       absolute
       noPadding
       bottom={0}
-      paddingTop={12}
       paddingHorizontal={8}
       size='full'
       borderTopStartRadius={24}
       borderTopEndRadius={24}
       justifyContentSpaceAround
       backgroundColor={themeConfig.colors.secondary}
-      height={absoluteHeight}>
+      height={absoluteHeight}
+      heightNormalizeBased>
       {menuItems.map((props) => (
         <BottomMenuItem key={`${props?.title ?? 'Main_'}`} {...props} />
       ))}

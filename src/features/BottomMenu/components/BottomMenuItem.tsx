@@ -26,6 +26,8 @@ export const BottomMenuItem: FC<BottomMenuItemModel> = ({
     <Pressable
       testID={testID}
       alignItemsCenter
+      justifyContentCenter
+      height={56}
       width={containerStyle ? 56 : undefined}
       style={containerStyle}
       onPress={async (event) => {
@@ -43,7 +45,7 @@ export const BottomMenuItem: FC<BottomMenuItemModel> = ({
           variant={icon.variant ?? 'grey-900'}
           mode={icon?.mode}
           strokeWidth={icon?.strokeWidth ? icon?.strokeWidth : 2}
-          marginBottom={8}
+          marginBottom={4}
         />
       )}
 
@@ -53,7 +55,6 @@ export const BottomMenuItem: FC<BottomMenuItemModel> = ({
           width={image?.width ? image?.width : 24}
           height={image?.height ? image.height : 24}
           tintColor={image?.width && image?.height ? undefined : themeConfig.colors['grey-900']}
-          marginBottom={8}
           resizeMode='contain'
           name={image.name}
         />
