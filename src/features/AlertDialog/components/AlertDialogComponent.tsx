@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import {useEffect, type FC} from 'react'
 
 import {ActivityIndicator} from 'react-native'
 
@@ -32,11 +32,19 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
   autoClose,
 }) => {
   const hasMoreThanTwoButtons = Array.isArray(buttons)
-  if (autoClose) {
-    setTimeout(() => {
-      AlertDialog.hide(id)
-    }, autoClose)
-  }
+
+  let autoCloseTimer: ReturnType<typeof setTimeout> | null = null
+  useEffect(() => {
+    if (autoClose) {
+      autoCloseTimer = setTimeout(() => {
+        AlertDialog.hide(id)
+      }, autoClose)
+    }
+
+    return () => {
+      if (autoCloseTimer) clearTimeout(autoCloseTimer)
+    }
+  }, [autoClose])
 
   return (
     <Item
