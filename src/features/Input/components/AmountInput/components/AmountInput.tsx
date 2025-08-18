@@ -137,6 +137,7 @@ export const AmountInput: FC<AmountInputProps> = ({
         <TextInput
           ref={currencyRef}
           testID='currency-test-id'
+          editable={!disabled}
           maxLength={2}
           placeholder='00'
           value={currency}
