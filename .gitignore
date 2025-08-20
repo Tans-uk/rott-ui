@@ -89,3 +89,4 @@ android/generated
 
 # React Native Nitro Modules
 nitrogen/
+jest-test-reports/
