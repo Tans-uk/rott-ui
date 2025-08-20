@@ -21,7 +21,7 @@ import type {DataModel, DateInputProps} from '../models'
 
 import {startOfDay} from 'date-fns'
 
-import DatePicker from 'react-native-date-picker'
+import DatePicker from '@react-native-community/datetimepicker'
 
 /**
  *
@@ -171,12 +171,12 @@ export const DateInput: FC<DateInputProps> = ({
           <DatePicker
             testID={testID ?? 'date-input-test-id'}
             mode={mode?.replace('modal-', '') as any}
-            date={value ? new Date(value) : new Date()}
+            value={value ? new Date(value) : new Date()}
             minimumDate={minimumDate}
             maximumDate={maximumDate}
-            theme='light'
-            onDateChange={(date) => (externalDate = date)}
+            themeVariant='light'
             {...props}
+            onChange={(_event, date) => !!date && (externalDate = date)}
           />
         </Item>
       ),
