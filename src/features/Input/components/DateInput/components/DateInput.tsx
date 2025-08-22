@@ -1,8 +1,9 @@
 // React Imports
-import {useEffect, useRef, type FC} from 'react'
+import {useContext, useEffect, useRef, type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
+import {RottUiContext} from '../../../../../contexts'
 import {formatMessage} from '../../../../../libs'
 import {ModalIdEnum} from '../../../../../models'
 import {themeConfig} from '../../../../../providers'
@@ -72,6 +73,7 @@ export const DateInput: FC<DateInputProps> = ({
   viewType = 'input',
   ...props
 }) => {
+  const {language} = useContext(RottUiContext)
   const selectedItem = useRef<DataModel>(undefined)
 
   const handleConfirmPress = (date?: Date | DataModel) => {
@@ -174,8 +176,10 @@ export const DateInput: FC<DateInputProps> = ({
             value={value ? new Date(value) : new Date()}
             minimumDate={minimumDate}
             maximumDate={maximumDate}
+            locale={language.name}
             themeVariant='light'
             {...props}
+            display='spinner'
             onChange={(_event, date) => !!date && (externalDate = date)}
           />
         </Item>
