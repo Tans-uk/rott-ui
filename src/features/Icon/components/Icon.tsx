@@ -1,10 +1,9 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
-import {themeConfig} from '../../../providers'
+import {theme} from '../../../theme'
 import {colorFromVariant, display} from '../../../utils'
 import {Item} from '../../Item'
 import type {IconProps} from '../models'
-import React from 'react'
 
 export const Icon: FC<IconProps> = ({
   name,
@@ -22,7 +21,7 @@ export const Icon: FC<IconProps> = ({
   opacity,
   ...props
 }) => {
-  const IconComponent = themeConfig.icons[name]
+  const IconComponent = theme.icons[name]
   if (!IconComponent) return null
 
   if (mode === 'fill') fill = color ?? colorFromVariant(variant)

@@ -1,4 +1,4 @@
-import {useEffect, type FC} from 'react'
+import React, {useEffect, type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
@@ -15,7 +15,6 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated'
-import React from 'react'
 
 interface SkeletonProps extends SkeletonStyleProps {
   show: boolean
