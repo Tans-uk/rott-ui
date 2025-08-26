@@ -1,3 +1,1 @@
-import {themeConfig} from '../../../providers'
-
-export type IconKeys = keyof typeof themeConfig.icons
+export type IconKeys = NoInfer<import('../../../theme').TThemeIcons>
