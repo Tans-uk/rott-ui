@@ -5,6 +5,7 @@ import {StyleSheet, TextInput} from 'react-native'
 import {Item} from '../../Item'
 import type {PinPasswordInputProps} from '../models'
 import {InputStyles} from '../styles'
+import React from 'react'
 
 export const PinPasswordInput: FC<PinPasswordInputProps> = ({
   fontSize,

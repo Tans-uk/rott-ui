@@ -2,6 +2,7 @@
 import {memo} from 'react'
 
 import {Item} from '../../Item'
+import React from 'react'
 
 export const ListSkeletonItem = memo(() => {
   return (

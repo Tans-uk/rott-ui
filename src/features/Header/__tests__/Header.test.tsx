@@ -1,3 +1,4 @@
+import React from 'react'
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {Icon, type IconKeys} from '../../Icon'
 import type {ImageTypes} from '../../Image'

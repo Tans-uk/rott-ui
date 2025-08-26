@@ -6,6 +6,7 @@ import {type TabWidgetProps} from '../models'
 import {TabWidgetItem} from './TabWidgetItem'
 
 import {SceneMap, TabView} from 'react-native-tab-view'
+import React from 'react'
 
 export const TabWidget: FC<TabWidgetProps> = ({
   titles,

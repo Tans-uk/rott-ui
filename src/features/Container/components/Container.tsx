@@ -9,6 +9,7 @@ import {Pressable} from '../../Pressable'
 import {ContainerStyles} from '../styles'
 
 import {SystemBars} from 'react-native-edge-to-edge'
+import React from 'react'
 
 interface ContainerProps extends ViewProps, CommonUiProps, PropsWithChildren {
   center?: boolean

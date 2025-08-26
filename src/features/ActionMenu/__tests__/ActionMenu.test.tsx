@@ -1,3 +1,5 @@
+import React from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {ActionMenuComponent, ActionMenuHeaderComponent} from '../components'
 

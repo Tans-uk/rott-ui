@@ -1,3 +1,4 @@
+import React from 'react'
 import {fireEvent, render, userEvent, waitFor} from '../../../__tests__/utils/testUtils'
 import {CreditCardInput} from '../components'
 

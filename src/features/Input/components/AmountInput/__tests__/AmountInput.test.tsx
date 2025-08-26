@@ -1,3 +1,4 @@
+import React from 'react'
 import {AmountInput} from '../..'
 import {fireEvent, render, waitFor} from '../../../../../__tests__/utils/testUtils'
 

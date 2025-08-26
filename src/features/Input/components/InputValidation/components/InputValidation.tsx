@@ -7,6 +7,7 @@ import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
 import {type CommonUiProps, type Variant} from '../../../../../models'
 import {colorFromVariant} from '../../../../../utils'
+import React from 'react'
 
 export interface InputValidationProps extends CommonUiProps {
   name: string

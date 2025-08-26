@@ -1,8 +1,8 @@
 import type {TextInputProps} from 'react-native'
 
 import {type CommonUiProps, type Theme, type Variant} from '../../../models'
-import { InputType } from './inputType.type'
-import { InputLabelProps } from './inputLabelProps.interface'
+import {InputLabelProps} from './inputLabelProps.interface'
+import {InputType} from './inputType.type'
 
 /** Tüm input tiplerinde ortak olarak kullanılan propertylerdir. */
 export interface BaseInputProps extends CommonUiProps, TextInputProps {

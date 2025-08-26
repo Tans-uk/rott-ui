@@ -1,6 +1,7 @@
 import {bottomMenuListItemMock} from '../__mocks__'
 import {render} from '../../../../src/__tests__/utils/testUtils'
 import {BottomMenu} from '../components'
+import React from 'react'
 
 describe('Component -> BottomMenu', () => {
   const testIDs = {

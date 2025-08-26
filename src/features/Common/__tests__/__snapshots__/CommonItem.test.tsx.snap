@@ -133,46 +133,20 @@ exports[`Common -> Common Item common item ilk renderlandığında snapshot ile 
               width={223}
             >
               <View
-                collapsable={false}
-                jestAnimatedProps={
-                  {
-                    "value": {},
-                  }
-                }
-                jestAnimatedStyle={
-                  {
-                    "value": {
-                      "bottom": 0,
-                      "flexDirection": "row",
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -429,
-                        },
-                      ],
-                    },
-                  }
-                }
-                jestInlineStyle={{}}
                 style={
-                  [
-                    {
-                      "bottom": 0,
-                      "flexDirection": "row",
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -429,
-                        },
-                      ],
-                    },
-                  ]
+                  {
+                    "bottom": 0,
+                    "flexDirection": "row",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -429,
+                      },
+                    ],
+                  }
                 }
               >
                 <BVLinearGradient

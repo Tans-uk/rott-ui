@@ -1,3 +1,4 @@
+import React from 'react'
 import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
 import {render} from '../../../__tests__/utils/testUtils'
 import {Separator} from '../components'

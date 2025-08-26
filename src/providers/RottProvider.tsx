@@ -19,6 +19,7 @@ import {
   hasNotch,
 } from 'react-native-device-info'
 import {SafeAreaProvider} from 'react-native-safe-area-context'
+import React from 'react'
 
 interface RottProviderProps extends PropsWithChildren {
   config?: any

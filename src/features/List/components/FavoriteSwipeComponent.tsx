@@ -6,6 +6,7 @@ import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
+import React from 'react'
 
 interface FavoriteSwipeComponentProps {
   index: number

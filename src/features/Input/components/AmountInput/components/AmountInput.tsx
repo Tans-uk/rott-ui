@@ -10,6 +10,7 @@ import {InputStyles} from '../../../styles'
 import {InputStyleNormalizer} from '../../../utils'
 import type {AmountInputProps} from '../models'
 import {AmountInputStyles} from '../styles'
+import React from 'react'
 
 export const AmountInput: FC<AmountInputProps> = ({
   fontSize,

@@ -10,6 +10,7 @@ import {InputStyles} from '../styles'
 import {InputStyleNormalizer} from '../utils'
 
 import MaskInput from 'react-native-mask-input'
+import React from 'react'
 
 export const IbanInput: FC<IbanInputProps> = ({
   fontSize = 'md',

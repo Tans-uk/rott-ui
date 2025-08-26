@@ -13,6 +13,7 @@ import {Item} from '../../Item'
 import {Pressable} from '../../Pressable'
 import type {PasswordInputProps} from '../models'
 import {InputStyles, PasswordInputStyles} from '../styles'
+import React from 'react'
 
 export const PasswordInput: FC<PasswordInputProps> = ({
   fontSize,

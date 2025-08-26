@@ -15,12 +15,12 @@ import {
   formatMessage,
   Header,
   Icon,
+  Input,
   Item,
   Label,
   Pressable,
   RottProvider,
 } from '@tansuk/rott-ui';
-import React from 'react';
 
 function App() {
   // Bottom menu items
@@ -32,13 +32,13 @@ function App() {
         noStroke: true,
         mode: 'fill',
       },
-      title: formatMessage('BOTTOM.MENU.FAST'),
+      title: 'Fast',
       onPress: () => {},
     },
     {
       testID: 'near-ptt-atm-tab-screen-test-id',
       icon: { name: 'LOCATION', noStroke: true },
-      title: formatMessage('BOTTOM.MENU.NEAREST.PTT'),
+      title: 'Near PTT ATM',
       onPress: () => {},
     },
     {
@@ -59,7 +59,7 @@ function App() {
         name: 'MENU_CAR',
         noStroke: true,
       },
-      title: formatMessage('BOTTOM.MENU.VEHICLE.OPERATIONS'),
+      title: 'Vehicle Operations',
       onPress: () => {},
     },
     {
@@ -68,13 +68,17 @@ function App() {
         name: 'MENU_CARD_I',
         noStroke: true,
       },
-      title: formatMessage('BOTTOM.MENU.CARD.OPERATION'),
+      title: 'Card Operations',
       onPress: () => {},
     },
   ];
 
   return (
-    <RottProvider>
+    <RottProvider
+      config={{
+        options: { appLanguage: { name: 'tr-TR' } },
+      }}
+    >
       <Container noPadding>
         <Header
           height={40}
@@ -87,13 +91,7 @@ function App() {
                 justifyContentCenter
                 onPress={() => {}}
               >
-                <Icon
-                  name="CALLING"
-                  height={24}
-                  width={24}
-                  variant="primary"
-                  noStroke
-                />
+                <Icon name="CALLING" height={24} width={24} noStroke />
               </Pressable>
 
               <Pressable
@@ -128,6 +126,15 @@ function App() {
           marginBottom={88}
         >
           <Item marginTop={24}>
+            <Input
+              name="date"
+              type="date"
+              mode="datetime"
+              value={new Date().toISOString()}
+              onDateChange={event => {
+                console.log(event);
+              }}
+            />
             <Button
               testID="login-button-test-id"
               key="h4"
@@ -169,7 +176,7 @@ function App() {
               testID="social-help-button-test-id"
               size={{ width: 'full', height: 'md' }}
               fontSize="lg"
-              variant="mint"
+              variant="primary"
               marginTop={8}
               leftImage={{
                 name: 'SOCIAL_HELP_ICON',
@@ -178,7 +185,7 @@ function App() {
               }}
               rightIcon={{
                 name: 'ARROW_LEFT',
-                variant: 'cindoruk',
+                variant: 'danger',
                 absolute: true,
                 mode: 'fill',
                 noStroke: true,

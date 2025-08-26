@@ -1,3 +1,4 @@
+import React from 'react'
 import {render} from '../../../__tests__/utils/testUtils'
 import {Label} from '../../Label'
 import {CommonItemContainer} from '../components'

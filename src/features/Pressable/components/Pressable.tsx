@@ -6,6 +6,7 @@ import {Label} from '../../Label'
 import type {PressableProps} from '../models'
 import {PressableStyles} from '../styles'
 import {PressableContainer} from './PressableContainer'
+import React from 'react'
 
 export const Pressable: FC<PressableProps> = ({
   text,

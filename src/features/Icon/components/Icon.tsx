@@ -4,6 +4,7 @@ import {themeConfig} from '../../../providers'
 import {colorFromVariant, display} from '../../../utils'
 import {Item} from '../../Item'
 import type {IconProps} from '../models'
+import React from 'react'
 
 export const Icon: FC<IconProps> = ({
   name,

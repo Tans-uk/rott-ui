@@ -57,8 +57,12 @@ export const defaultThemeConfig = {
 
     transparent: 'rgba(0, 0, 0, 0)',
   },
-  language: {
-    name: 'en-US',
+  options: {
+    hasNotch: false,
+    hasDynamicIsland: false,
+    appLanguage: {
+      name: 'en-US',
+    },
   },
   images: {
     ONBOARDING_1: require('../assets/images/onBoarding/Onboarding-1.png'),
@@ -237,6 +241,7 @@ export const defaultThemeConfig = {
     QR: require('../assets/icons/svg/interface/ptt-qr.svg'),
     BURGER_MENU: require('../assets/icons/svg/interface/ptt-burgermenu.svg'),
     EXTERNAL_LINK: require('../assets/icons/svg/interface/ptt-external-link.svg'),
+    CAR_TIME: require('../assets/icons/svg/interface/ptt-car-time.svg'),
 
     // Menu Imports
     MENU_CAR: require('../assets/icons/svg/menu/ptt-menu-car.svg'),

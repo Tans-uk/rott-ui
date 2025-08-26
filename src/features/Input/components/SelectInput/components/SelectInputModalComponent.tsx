@@ -17,6 +17,7 @@ import {SelectInputStyles} from '../styles'
 import {listHeightNormalizer, sortListBySearchPriority} from '../utils'
 
 import {ListRenderItem} from '@shopify/flash-list'
+import React from 'react'
 
 export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
   searchable,

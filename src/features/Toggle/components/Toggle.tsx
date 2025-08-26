@@ -14,6 +14,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
+import React from 'react'
 
 interface ToggleProps {
   testID?: string

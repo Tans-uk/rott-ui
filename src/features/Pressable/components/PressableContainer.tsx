@@ -3,6 +3,7 @@ import {type FC, type PropsWithChildren} from 'react'
 import {Animated, Pressable as RNPressable} from 'react-native'
 
 import type {PressableProps} from '../models'
+import React from 'react'
 
 export const PressableContainer: FC<PropsWithChildren<PressableProps>> = ({
   children: containerChildren,

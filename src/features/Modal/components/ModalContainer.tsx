@@ -7,6 +7,7 @@ import {useSafeArea} from '../../../hooks'
 import {Content} from '../../Content'
 import {Pressable} from '../../Pressable'
 import {type ModalProps} from '../models'
+import React from 'react'
 
 interface ModalContainerProps extends ModalProps {
   onPress?: (event: GestureResponderEvent) => void

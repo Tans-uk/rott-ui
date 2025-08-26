@@ -11,6 +11,7 @@ import {Label} from '../../Label'
 import type {ButtonProps} from '../models'
 import {ButtonStyles} from '../styles'
 import {buttonSizeNormalizer} from '../utils'
+import React from 'react'
 
 export const Button: FC<ButtonProps> = ({
   variant = 'primary',

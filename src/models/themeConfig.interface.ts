@@ -7,8 +7,12 @@ export interface ThemeConfig {
     width: number
     height: number
   }
+  options?: {
+    hasNotch: boolean
+    hasDynamicIsland: boolean
+    appLanguage: Language
+  }
   colors: Record<string, string>
-  language: Language
   images: Record<string, ImageSourcePropType>
   icons: Record<string, ImageSourcePropType>
   fontSizes: Record<string, number>

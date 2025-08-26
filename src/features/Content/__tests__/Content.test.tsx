@@ -1,3 +1,4 @@
+import React from 'react'
 import {render} from '../../../__tests__/utils/testUtils'
 import {Content} from '../components'
 
