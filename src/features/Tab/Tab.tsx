@@ -12,6 +12,7 @@ import {
 import {TabStyle} from './styles'
 
 import {type CommonUiProps} from '../../models'
+import React from 'react'
 
 interface TabProps extends TouchableOpacityProps, CommonUiProps {
   title?: string

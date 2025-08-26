@@ -1,3 +1,5 @@
+import React from 'react'
+
 import {render} from '../../../__tests__/utils/testUtils'
 import {ButtonGroup} from '../components'
 

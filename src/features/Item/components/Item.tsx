@@ -5,6 +5,7 @@ import {StyleSheet, View, type ViewProps} from 'react-native'
 import {type CommonUiProps} from '../../../models'
 import {Skeleton, type SkeletonStyleProps} from '../../Skeleton'
 import {ItemStyles} from '../styles'
+import React from 'react'
 
 interface ItemProps extends ViewProps, CommonUiProps {
   row?: boolean

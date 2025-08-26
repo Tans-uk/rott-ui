@@ -7,6 +7,7 @@ import {AlertDialogComponent} from '../components'
 import {AlertDialogContext} from '../contexts'
 import {useAlertDialog} from '../hooks'
 import type {AlertDialogModel} from '../models'
+import React from 'react'
 
 export const AlertDialogProvider: FC<PropsWithChildren> = ({children}) => {
   const {showModal} = useModal({}, [])

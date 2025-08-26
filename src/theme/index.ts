@@ -14,7 +14,7 @@ type StringKeys<T> = Extract<keyof T, string>
 
 export type TThemeVariant = NoInfer<StringKeys<DefaultColors>> | NoInfer<StringKeys<UserColors>>
 
-let userConfig: Partial<ThemeConfig> | Record<string, unknown> = {}
+let userConfig: Partial<ThemeConfig> = {}
 try {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   userConfig = require('rott.config').config as Partial<ThemeConfig>

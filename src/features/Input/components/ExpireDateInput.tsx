@@ -7,6 +7,7 @@ import type {ExpireDateInputProps} from '../models'
 import {InputStyles} from '../styles'
 
 import MaskInput from 'react-native-mask-input'
+import React from 'react'
 
 export const ExpireDateInput: FC<ExpireDateInputProps> = ({
   fontSize,

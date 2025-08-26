@@ -4,6 +4,7 @@ import {StyleSheet, TextInput} from 'react-native'
 
 import type {StatementInputProps} from '../models'
 import {InputStyles} from '../styles'
+import React from 'react'
 
 export const StatementInput: React.FC<StatementInputProps> = ({
   disabled,

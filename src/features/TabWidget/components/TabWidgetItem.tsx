@@ -8,6 +8,7 @@ import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 
 import {TabBar, type NavigationState, type SceneRendererProps} from 'react-native-tab-view'
+import React from 'react'
 
 interface TabWidgetItemProps {
   testID?: string

@@ -13,7 +13,7 @@
   "dependencies": {
     "@react-native/new-app-screen": "0.80.2",
     "@shopify/flash-list": "^1.8.3",
-    "@tansuk/rott-ui": "file:../../",
+    "@tansuk/rott-ui": "workspace:*",
     "babel-plugin-module-resolver": "^5.0.2",
     "date-fns": "^4.1.0",
     "react": "19.1.0",

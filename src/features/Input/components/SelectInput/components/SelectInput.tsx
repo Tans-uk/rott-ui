@@ -13,6 +13,7 @@ import type {SelectInputProps, SelectProps} from '../models'
 import {SelectInputStyles} from '../styles'
 import {modalHeightPercentageNormalizer} from '../utils'
 import {SelectInputModalComponent} from './SelectInputModalComponent'
+import React from 'react'
 
 /**
  *

@@ -5,6 +5,7 @@ import {StyleSheet, TextInput} from 'react-native'
 import {Item} from '../../Item'
 import type {NumericInputProps} from '../models'
 import {InputStyles} from '../styles'
+import React from 'react'
 
 export const NumericInput: FC<NumericInputProps> = ({
   label,

@@ -4,6 +4,7 @@ import {themeConfig} from '../../../providers'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
+import React from 'react'
 
 interface NotificationMessageProps {
   title?: string

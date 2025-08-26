@@ -4,6 +4,7 @@ import {StyleSheet, TextInput} from 'react-native'
 
 import type {PlateNumberInputProps} from '../models'
 import {InputStyles} from '../styles'
+import React from 'react'
 
 export const PlateNumberInput: FC<PlateNumberInputProps> = ({
   fontSize,

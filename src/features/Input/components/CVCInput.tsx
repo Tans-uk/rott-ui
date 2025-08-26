@@ -10,6 +10,7 @@ import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 import type {CVCInputProps} from '../models'
 import {CVCInputStyles, InputStyles} from '../styles'
+import React from 'react'
 
 export const CVCInput: FC<CVCInputProps> = ({fontSize, onChangeText, theme, size, ...props}) => {
   const handleTextChange = (inputText: string) => {

@@ -7,6 +7,7 @@ import {TimerStyles} from '../style'
 
 import {Item} from '../../Item'
 import {Label} from '../../Label'
+import React from 'react'
 
 export const TimerComponent: FC<TimerProps> = ({color, time, style, ...props}) => {
   const renderTime = () => {

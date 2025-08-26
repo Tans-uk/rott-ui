@@ -1,10 +1,9 @@
-import {isValidElement, useContext, useEffect, useMemo, useRef, type FC} from 'react'
+import {isValidElement, useEffect, useMemo, useRef, type FC} from 'react'
 
 import {InteractionManager, Platform, Modal as RNModal} from 'react-native'
 
 import {Modal, PanResponderAnimation} from '..'
-import {RottUiContext} from '../../../contexts'
-import {useSafeArea} from '../../../hooks'
+import {useRottContext, useSafeArea} from '../../../hooks'
 import {themeConfig} from '../../../providers'
 import {colorFromVariant, display} from '../../../utils'
 import {Content} from '../../Content'
@@ -23,6 +22,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
+import React from 'react'
 
 export const ModalComponent: FC<ModalProps> = ({
   id,
@@ -66,7 +66,7 @@ export const ModalComponent: FC<ModalProps> = ({
     slideToCloseTestId: 'slide-to-close-button-test-id',
   }
 
-  const {hasNotch, hasDynamicIsland} = useContext(RottUiContext)
+  const {hasNotch, hasDynamicIsland} = useRottContext()
   const interactionRef = useRef<number>(undefined)
 
   const {bottom} = useSafeArea()

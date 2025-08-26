@@ -1,3 +1,5 @@
+import React from 'react'
+
 import {render} from '../../../__tests__/utils/testUtils'
 import {formatMessage} from '../../../libs'
 import {AlertDialogComponent} from '../components/AlertDialogComponent'

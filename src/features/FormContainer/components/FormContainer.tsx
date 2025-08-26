@@ -3,6 +3,7 @@ import {memo, type FC, type PropsWithChildren} from 'react'
 import type {Theme} from '../../../models'
 import {themeConfig} from '../../../providers'
 import {Item} from '../../Item'
+import React from 'react'
 
 interface FormContainerProps extends PropsWithChildren {
   hasError?: boolean

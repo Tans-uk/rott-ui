@@ -1,3 +1,4 @@
+import React from 'react'
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {translator} from '../../../libs'
 import {Label} from '../../Label'

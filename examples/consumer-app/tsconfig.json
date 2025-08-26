@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "rott.config": ["./rott.config.ts"]
+      "rott.config": ["./rott.config.ts"],
+      "@tansuk/rott-ui": ["../../src"]
     }
   },
   "include": ["./rott.config.ts", "**/*.ts", "**/*.tsx"]

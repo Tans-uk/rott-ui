@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
-import {memo, useContext, type FC} from 'react'
+import {memo, type FC} from 'react'
 
-import {RottUiContext} from '../../../contexts'
+import {useRottContext} from '../../../hooks'
 import {themeConfig} from '../../../providers'
 import {colorFromVariant} from '../../../utils'
 import {Icon} from '../../Icon'
@@ -30,6 +30,7 @@ import {PlateNumberInput} from './PlateNumberInput'
 import {SelectInput} from './SelectInput'
 import {StatementInput} from './StatementInput'
 import {ToggleInput} from './ToggleInput'
+import React from 'react'
 
 export const Input: FC<InputProps> = memo((props) => {
   const {
@@ -47,7 +48,7 @@ export const Input: FC<InputProps> = memo((props) => {
       ? themeConfig.colors['grey-200']
       : themeConfig.colors.white,
   } = props
-  const {language} = useContext(RottUiContext)
+  const {language} = useRottContext()
   const hasError = !!props?.onBlur && !!touched && !!errorMessage
 
   const getInputElement = () => {

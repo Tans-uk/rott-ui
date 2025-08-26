@@ -1,9 +1,9 @@
 // React Imports
-import {useContext, useEffect, useRef, type FC} from 'react'
+import {useEffect, useRef, type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
-import {RottUiContext} from '../../../../../contexts'
+import {useRottContext} from '../../../../../hooks'
 import {formatMessage} from '../../../../../libs'
 import {ModalIdEnum} from '../../../../../models'
 import {themeConfig} from '../../../../../providers'
@@ -23,6 +23,7 @@ import type {DataModel, DateInputProps} from '../models'
 import {startOfDay} from 'date-fns'
 
 import DatePicker from '@react-native-community/datetimepicker'
+import React from 'react'
 
 /**
  *
@@ -73,7 +74,7 @@ export const DateInput: FC<DateInputProps> = ({
   viewType = 'input',
   ...props
 }) => {
-  const {language} = useContext(RottUiContext)
+  const {language} = useRottContext()
   const selectedItem = useRef<DataModel>(undefined)
 
   const handleConfirmPress = (date?: Date | DataModel) => {

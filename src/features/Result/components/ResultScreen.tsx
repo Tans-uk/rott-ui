@@ -7,6 +7,7 @@ import {EmptyState} from '../../EmptyState'
 import {Header} from '../../Header'
 import {Item} from '../../Item'
 import type {ResultScreenParamModel} from '../models'
+import React from 'react'
 
 /**
  * Result - Islem Sonucu Ekrani

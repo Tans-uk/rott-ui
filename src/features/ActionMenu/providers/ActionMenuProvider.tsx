@@ -1,4 +1,4 @@
-import {useCallback, useMemo, type FC, type PropsWithChildren} from 'react'
+import React, {useCallback, useMemo, type FC, type PropsWithChildren} from 'react'
 
 import {ActionMenuContext, actionMenuRef} from '..'
 import {themeConfig} from '../../../providers'

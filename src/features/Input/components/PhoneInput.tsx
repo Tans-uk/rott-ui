@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {PermissionsAndroid, Platform, StyleSheet} from 'react-native'
 

@@ -9,6 +9,7 @@ import {Image, type ImageProps} from '../../Image'
 import {Item} from '../../Item'
 import type {ButtonProps} from '../models'
 import {Button} from './Button'
+import React from 'react'
 
 interface ButtonGroupProps extends ContentProps {
   buttons: ButtonProps | Nullable<ButtonProps>[]

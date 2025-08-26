@@ -10,6 +10,7 @@ import {
 import {themeConfig} from '../../../providers'
 import type {ImageProps} from '../models'
 import {ImageStyles} from '../styles'
+import React from 'react'
 
 export const Image: FC<ImageProps> = ({variant, size, style, source, name, ...props}) => {
   const imageSource = Object.entries(themeConfig.images).find(

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {ActionMenu} from '..'
 import {translator} from '../../../libs'
@@ -13,10 +13,7 @@ import {Pressable} from '../../Pressable'
 import type {ActionMenuProps, ActionModel} from '../models'
 import {ActionMenuStyles} from '../styles'
 
-/**
- * Action Menu
- *
- * @param title Başlık alanı
+/* @param title Başlık alanı
  * @param subTitle Alt başlık alanı
  * @param data ActionModel[] formatında veri listesi
  * @param visible ActionMenu komponentin bulunduğu yerdeki Show state i

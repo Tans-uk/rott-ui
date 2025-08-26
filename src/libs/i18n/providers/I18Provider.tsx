@@ -4,6 +4,7 @@ import {en, tr} from '../../../libs'
 import {themeConfig} from '../../../providers'
 
 import {IntlProvider} from 'react-intl'
+import React from 'react'
 
 export const languageMessages = {
   'tr-TR': tr,

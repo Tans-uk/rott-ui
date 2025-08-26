@@ -1,3 +1,4 @@
+import React from 'react'
 import {render, userEvent} from '../../../__tests__/utils/testUtils'
 import {StatementInput} from '../components'
 

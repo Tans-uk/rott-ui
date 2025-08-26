@@ -10,6 +10,7 @@ import {Pressable} from '../../Pressable'
 import {type CheckBoxInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputStyleNormalizer} from '../utils'
+import React from 'react'
 
 export const CheckBoxInput: FC<CheckBoxInputProps> = ({
   description,

@@ -10,6 +10,7 @@ import {Label, type LabelProps} from '../../Label'
 import {Pressable} from '../../Pressable'
 import type {CommonItemProps} from '../models'
 import {CommonItemContainer} from './CommonItemContainer'
+import React from 'react'
 
 /**
  *  Common Item Component

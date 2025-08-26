@@ -6,6 +6,7 @@ import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import type {DefaultInputProps} from '../models'
 import {InputStyles} from '../styles'
+import React from 'react'
 
 export const DefaultInput: FC<DefaultInputProps> = ({
   label,
