@@ -13,7 +13,7 @@ exports[`Alert component renderlandığında snapshot ile eşleşmeli 1`] = `
 >
   <View
     alignItemsCenter={true}
-    backgroundColor="rgba(255, 117, 24, 1)"
+    backgroundColor="#FF7518"
     borderRadius={0}
     justifyContentCenter={true}
     paddingHorizontal={16}
@@ -21,7 +21,7 @@ exports[`Alert component renderlandığında snapshot ile eşleşmeli 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "rgba(255, 117, 24, 1)",
+        "backgroundColor": "#FF7518",
         "flex": undefined,
         "flexDirection": "row",
         "justifyContent": "center",
@@ -36,7 +36,7 @@ exports[`Alert component renderlandığında snapshot ile eşleşmeli 1`] = `
       flexShrink={1}
       style={
         {
-          "color": "rgba(255, 255, 255, 1)",
+          "color": "#FFFFFF",
           "flexShrink": 1,
           "fontFamily": "Markpro-Medium",
           "fontSize": 14,

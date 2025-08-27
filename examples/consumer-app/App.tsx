@@ -4,6 +4,7 @@
  *
  * @format
  */
+import React from 'react';
 
 import {
   AlertDialog,
@@ -12,7 +13,6 @@ import {
   Button,
   Container,
   Content,
-  formatMessage,
   Header,
   Icon,
   Input,

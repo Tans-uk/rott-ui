@@ -49,7 +49,6 @@ const jestConfiguration: JestConfigWithTsJest = {
       '@testing-library/react-native' +
       '))',
   ],
-  // setupFiles: ['./jest.setup.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['./jest.setup.ts'],
   moduleDirectories: [
@@ -67,6 +66,13 @@ const jestConfiguration: JestConfigWithTsJest = {
   },
   silent: true,
   cacheDirectory: '<rootDir>/.jest-cache',
+  testPathIgnorePatterns: [
+    'node_modules/',
+    'examples/',
+    'lib/',
+    '.jest-cache/',
+    'src/__tests__/utils',
+  ],
 }
 
 export default jestConfiguration

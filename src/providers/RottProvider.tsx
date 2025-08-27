@@ -1,4 +1,4 @@
-import {useEffect, useState, type FC, type PropsWithChildren} from 'react'
+import React, {useEffect, useState, type FC, type PropsWithChildren} from 'react'
 
 import {Platform, StatusBar} from 'react-native'
 
@@ -9,7 +9,8 @@ import {
   ModalProvider,
   NotificationProvider,
 } from '../features'
-import {Language} from '../models'
+import {I18nProvider} from '../libs'
+import {Language, ThemeConfig} from '../models'
 
 import {
   getApiLevelSync,
@@ -19,13 +20,16 @@ import {
   hasNotch,
 } from 'react-native-device-info'
 import {SafeAreaProvider} from 'react-native-safe-area-context'
-import React from 'react'
 
 interface RottProviderProps extends PropsWithChildren {
-  config?: any
+  config?: Partial<ThemeConfig>
 }
 
-export let themeConfig = {
+export let themeConfig: ThemeConfig = {
+  referenceDevice: {
+    width: 390,
+    height: 844,
+  },
   colors: {
     // PRIMARY
     primary: 'rgba(0, 169, 206, 1)',
@@ -81,11 +85,10 @@ export let themeConfig = {
   options: {
     hasNotch: false,
     hasDynamicIsland: false,
-    appLanguage: {
+    language: {
       name: 'en-US',
     },
   },
-  texts: {},
   images: {
     ONBOARDING_1: require('../assets/images/onBoarding/Onboarding-1.png'),
     ONBOARDING_2: require('../assets/images/onBoarding/Onboarding-2.png'),
@@ -321,20 +324,45 @@ export let themeConfig = {
     '2xl': 24,
     '3xl': 36,
   },
+  fontFamilies: {
+    Markpro: 'Markpro',
+    'Markpro-Black': 'Markpro-Black',
+    'Markpro-Bold': 'Markpro-Bold',
+    'Markpro-Book': 'Markpro-Book',
+    'Markpro-ExtraLight': 'Markpro-ExtraLight',
+    'Markpro-Heavy': 'Markpro-Heavy',
+    'Markpro-Light': 'Markpro-Light',
+    'Markpro-Medium': 'Markpro-Medium',
+    'Markpro-Regular': 'Markpro-Regular',
+    'Markpro-SemiBold': 'Markpro-SemiBold',
+    'Markpro-Thin': 'Markpro-Thin',
+  },
+  fontWeights: {
+    'Markpro-Black': '900',
+    'Markpro-Bold': '700',
+    'Markpro-Book': '500',
+    'Markpro-ExtraLight': '200',
+    'Markpro-Heavy': '800',
+    'Markpro-Light': '300',
+    'Markpro-Medium': '500',
+    'Markpro-Regular': '400',
+    'Markpro-SemiBold': '600',
+    'Markpro-Thin': '100',
+  },
   goBack: () => {},
 }
 
 export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
   const [language, setLanguage] = useState<Language>(
-    config?.language ?? themeConfig.options.appLanguage
+    config?.options?.language ?? themeConfig.options?.language ?? {name: 'en-US'}
   )
 
   if (config) themeConfig = {...themeConfig, ...config}
 
   useEffect(() => {
-    if (config?.language?.name !== language.name)
-      setLanguage(config?.language ?? themeConfig.options.appLanguage)
-  }, [config?.language])
+    if (config?.options?.language?.name !== language.name)
+      setLanguage(config?.options?.language ?? themeConfig.options?.language ?? {name: 'en-US'})
+  }, [config?.options?.language])
 
   return (
     <SafeAreaProvider>
@@ -353,13 +381,15 @@ export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
           },
           setLanguage,
         }}>
-        <NotificationProvider>
-          <ModalProvider>
-            <ActionMenuProvider>
-              <AlertDialogProvider>{children}</AlertDialogProvider>
-            </ActionMenuProvider>
-          </ModalProvider>
-        </NotificationProvider>
+        <I18nProvider>
+          <NotificationProvider>
+            <ModalProvider>
+              <ActionMenuProvider>
+                <AlertDialogProvider>{children}</AlertDialogProvider>
+              </ActionMenuProvider>
+            </ModalProvider>
+          </NotificationProvider>
+        </I18nProvider>
       </RottUiContext.Provider>
     </SafeAreaProvider>
   )

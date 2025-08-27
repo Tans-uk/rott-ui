@@ -104,15 +104,15 @@ exports[`Select Input -> Custom Input ilk render anında snapshot ile eşleşmel
             }
           }
         >
-          <SvgMock
-            fill="transparent"
+          <Text
+            fill="grey-200"
             height={48}
-            stroke="grey-200"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
+            strokeWidth={0}
+            testID="mock-icon"
             width={48}
-          />
+          >
+            MockIcon
+          </Text>
         </View>
       </View>
     </View>

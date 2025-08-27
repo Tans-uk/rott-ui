@@ -10,7 +10,7 @@ export interface ThemeConfig {
   options?: {
     hasNotch: boolean
     hasDynamicIsland: boolean
-    appLanguage: Language
+    language: Language
   }
   colors: Record<string, string>
   images: Record<string, ImageSourcePropType>

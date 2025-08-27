@@ -16,8 +16,8 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
     borderTopEndRadius={24}
     borderTopStartRadius={24}
     bottom={0}
-    height={64}
-    paddingTop={12}
+    height={72}
+    heightNormalizeBased={true}
     style={
       {
         "backgroundColor": "rgba(255, 199, 44, 1)",
@@ -26,12 +26,11 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
         "bottom": 0,
         "flex": undefined,
         "flexDirection": "row",
-        "height": 123,
+        "height": 114,
         "justifyContent": "space-around",
-        "maxHeight": 123,
+        "maxHeight": 114,
         "paddingBottom": 0,
-        "paddingHorizontal": 16,
-        "paddingTop": 23,
+        "paddingHorizontal": 13,
         "position": "absolute",
         "width": "100%",
       }
@@ -61,6 +60,8 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
       animated={false}
       collapsable={false}
       focusable={true}
+      height={56}
+      justifyContentCenter={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -75,29 +76,32 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
           "alignItems": "center",
           "flex": 1,
           "flexDirection": "column",
+          "height": 108,
+          "justifyContent": "center",
+          "maxHeight": 108,
         }
       }
       testID="bottom-menu-item-1-test-id"
     >
       <View
-        marginBottom={8}
+        marginBottom={4}
         style={
           {
             "flex": undefined,
             "flexDirection": "column",
-            "marginBottom": 16,
+            "marginBottom": 8,
           }
         }
       >
-        <SvgMock
-          fill="transparent"
+        <Text
+          fill="grey-900"
           height={46}
-          stroke="grey-900"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           strokeWidth={2}
+          testID="mock-icon"
           width={46}
-        />
+        >
+          MockIcon
+        </Text>
       </View>
       <Text
         numberOfLines={1}
@@ -137,6 +141,8 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
       animated={false}
       collapsable={false}
       focusable={true}
+      height={56}
+      justifyContentCenter={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -151,29 +157,32 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
           "alignItems": "center",
           "flex": 1,
           "flexDirection": "column",
+          "height": 108,
+          "justifyContent": "center",
+          "maxHeight": 108,
         }
       }
       testID="bottom-menu-item-2-test-id"
     >
       <View
-        marginBottom={8}
+        marginBottom={4}
         style={
           {
             "flex": undefined,
             "flexDirection": "column",
-            "marginBottom": 16,
+            "marginBottom": 8,
           }
         }
       >
-        <SvgMock
-          fill="transparent"
+        <Text
+          fill="grey-900"
           height={46}
-          stroke="grey-900"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           strokeWidth={2}
+          testID="mock-icon"
           width={46}
-        />
+        >
+          MockIcon
+        </Text>
       </View>
       <Text
         numberOfLines={1}

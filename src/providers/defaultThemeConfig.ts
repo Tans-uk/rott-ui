@@ -60,7 +60,7 @@ export const defaultThemeConfig = {
   options: {
     hasNotch: false,
     hasDynamicIsland: false,
-    appLanguage: {
+    language: {
       name: 'en-US',
     },
   },

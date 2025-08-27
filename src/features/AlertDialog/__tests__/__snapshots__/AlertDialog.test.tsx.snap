@@ -112,15 +112,15 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
           }
         }
       >
-        <SvgMock
-          fill="transparent"
+        <Text
+          fill="success"
           height={123}
-          stroke="success"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1}
+          strokeWidth={0}
+          testID="mock-icon"
           width={123}
-        />
+        >
+          MockIcon
+        </Text>
       </View>
       <View
         alignItemsCenter={true}
@@ -306,7 +306,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
           numberOfLines={1}
           style={
             {
-              "color": "primary",
+              "color": "#00A9CE",
               "flexShrink": 1,
               "fontFamily": "Markpro-Book",
               "fontSize": 26,

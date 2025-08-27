@@ -1,10 +1,9 @@
-import type {FC, PropsWithChildren} from 'react'
+import React, {type FC, type PropsWithChildren} from 'react'
 
 import {en, tr} from '../../../libs'
-import {themeConfig} from '../../../providers'
+import {theme} from '../../../theme'
 
 import {IntlProvider} from 'react-intl'
-import React from 'react'
 
 export const languageMessages = {
   'tr-TR': tr,
@@ -12,7 +11,7 @@ export const languageMessages = {
 }
 
 export const I18nProvider: FC<PropsWithChildren> = ({children}) => {
-  const appLanguage = themeConfig.options.appLanguage
+  const appLanguage = theme.options?.appLanguage
 
   return (
     <IntlProvider

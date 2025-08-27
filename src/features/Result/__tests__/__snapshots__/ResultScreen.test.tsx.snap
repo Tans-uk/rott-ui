@@ -139,7 +139,27 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
               }
               testID="header-left-pressable-test-id"
               width={56}
-            />
+            >
+              <View
+                style={
+                  {
+                    "flex": undefined,
+                    "flexDirection": "column",
+                  }
+                }
+                testID="header-left-icon-test-id"
+              >
+                <Text
+                  fill="#FFFFFF"
+                  height={46}
+                  strokeWidth={0}
+                  testID="mock-icon"
+                  width={46}
+                >
+                  MockIcon
+                </Text>
+              </View>
+            </View>
           </View>
           <View
             alignItemsCenter={true}
@@ -166,7 +186,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
               numberOfLines={1}
               style={
                 {
-                  "color": "white",
+                  "color": "#FFFFFF",
                   "fontFamily": "Markpro-Bold",
                   "fontSize": 16,
                   "fontWeight": undefined,
@@ -248,7 +268,27 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                 }
               }
               testID="header-right-pressable-test-id"
-            />
+            >
+              <View
+                style={
+                  {
+                    "flex": undefined,
+                    "flexDirection": "column",
+                  }
+                }
+                testID="header-right-icon-test-id"
+              >
+                <Text
+                  fill="#FFFFFF"
+                  height={46}
+                  strokeWidth={0}
+                  testID="mock-icon"
+                  width={46}
+                >
+                  MockIcon
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>
@@ -322,7 +362,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                 marginBottom={8}
                 style={
                   {
-                    "color": "white",
+                    "color": "#FFFFFF",
                     "fontFamily": "Markpro-Bold",
                     "fontSize": 18,
                     "fontWeight": undefined,
@@ -349,7 +389,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                 marginBottom={8}
                 style={
                   {
-                    "color": "white",
+                    "color": "#FFFFFF",
                     "fontFamily": "Markpro-Medium",
                     "fontSize": 16,
                     "fontWeight": undefined,
@@ -421,7 +461,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "primary",
+                "backgroundColor": "#00A9CE",
                 "borderColor": "white",
                 "borderRadius": 16,
                 "borderWidth": undefined,

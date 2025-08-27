@@ -43,7 +43,7 @@ export const Skeleton: FC<SkeletonProps> = ({
     themeConfig.colors['grey-100'],
     themeConfig.colors.white,
     themeConfig.colors['grey-100'],
-  ],
+  ] as (string | number)[],
   backgroundColor = themeConfig.colors['grey-100'],
 }) => {
   const animatedValue = useSharedValue(0)

@@ -103,15 +103,15 @@ exports[`IBAN Input -> Custom Input ilk render anında snapshot ile eşleşmeli 
           }
           testID="iban-icon-test-id"
         >
-          <SvgMock
+          <Text
             fill="grey-200"
             height={46}
-            stroke="grey-200"
-            strokeLinecap="round"
-            strokeLinejoin="round"
             strokeWidth={0}
+            testID="mock-icon"
             width={46}
-          />
+          >
+            MockIcon
+          </Text>
         </View>
       </View>
     </View>
