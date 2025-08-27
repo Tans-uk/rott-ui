@@ -150,7 +150,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                 testID="header-left-icon-test-id"
               >
                 <Text
-                  fill="#FFFFFF"
+                  fill="rgba(255, 255, 255, 1)"
                   height={46}
                   strokeWidth={0}
                   testID="mock-icon"
@@ -186,7 +186,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
               numberOfLines={1}
               style={
                 {
-                  "color": "#FFFFFF",
+                  "color": "rgba(255, 255, 255, 1)",
                   "fontFamily": "Markpro-Bold",
                   "fontSize": 16,
                   "fontWeight": undefined,
@@ -279,7 +279,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                 testID="header-right-icon-test-id"
               >
                 <Text
-                  fill="#FFFFFF"
+                  fill="rgba(255, 255, 255, 1)"
                   height={46}
                   strokeWidth={0}
                   testID="mock-icon"
@@ -362,7 +362,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                 marginBottom={8}
                 style={
                   {
-                    "color": "#FFFFFF",
+                    "color": "rgba(255, 255, 255, 1)",
                     "fontFamily": "Markpro-Bold",
                     "fontSize": 18,
                     "fontWeight": undefined,
@@ -389,7 +389,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                 marginBottom={8}
                 style={
                   {
-                    "color": "#FFFFFF",
+                    "color": "rgba(255, 255, 255, 1)",
                     "fontFamily": "Markpro-Medium",
                     "fontSize": 16,
                     "fontWeight": undefined,
@@ -461,7 +461,7 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#00A9CE",
+                "backgroundColor": "rgba(0, 169, 206, 1)",
                 "borderColor": "white",
                 "borderRadius": 16,
                 "borderWidth": undefined,

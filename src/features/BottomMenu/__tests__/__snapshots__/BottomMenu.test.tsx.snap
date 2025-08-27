@@ -94,7 +94,7 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
         }
       >
         <Text
-          fill="grey-900"
+          fill="rgba(34, 63, 70, 1)"
           height={46}
           strokeWidth={2}
           testID="mock-icon"
@@ -107,7 +107,7 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
         numberOfLines={1}
         style={
           {
-            "color": "grey-900",
+            "color": "rgba(34, 63, 70, 1)",
             "fontFamily": "Markpro-Bold",
             "fontSize": 10,
             "fontWeight": "bold",
@@ -175,7 +175,7 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
         }
       >
         <Text
-          fill="grey-900"
+          fill="rgba(34, 63, 70, 1)"
           height={46}
           strokeWidth={2}
           testID="mock-icon"
@@ -188,7 +188,7 @@ exports[`Component -> BottomMenu bottom menu componenti snapshotı ile eşleşme
         numberOfLines={1}
         style={
           {
-            "color": "grey-900",
+            "color": "rgba(34, 63, 70, 1)",
             "fontFamily": "Markpro-Bold",
             "fontSize": 10,
             "fontWeight": "bold",

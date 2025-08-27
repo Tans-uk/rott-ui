@@ -170,7 +170,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
               <View>
                 <View
                   alignItemsCenter={true}
-                  backgroundColor="grey-800"
+                  backgroundColor="rgba(61, 88, 94, 1)"
                   borderTopEndRadius={24}
                   borderTopStartRadius={24}
                   justifyContentCenter={true}
@@ -178,7 +178,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                   style={
                     {
                       "alignItems": "center",
-                      "backgroundColor": "grey-800",
+                      "backgroundColor": "rgba(61, 88, 94, 1)",
                       "flex": undefined,
                       "flexDirection": "column",
                       "justifyContent": "center",
@@ -189,7 +189,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                 >
                   <View
                     alignItemsCenter={true}
-                    backgroundColor="grey-800"
+                    backgroundColor="rgba(61, 88, 94, 1)"
                     borderTopEndRadius={24}
                     borderTopStartRadius={24}
                     justifyContentCenter={true}
@@ -208,7 +208,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                     style={
                       {
                         "alignItems": "center",
-                        "backgroundColor": "grey-800",
+                        "backgroundColor": "rgba(61, 88, 94, 1)",
                         "flex": undefined,
                         "flexDirection": "column",
                         "justifyContent": "center",
@@ -226,7 +226,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                       testID="slide-to-close-button-test-id"
                     >
                       <Text
-                        fill="neutral-grey-alpha-200"
+                        fill="rgba(234, 239, 240, 0.15)"
                         height={77}
                         strokeWidth={0}
                         testID="mock-icon"
@@ -344,7 +344,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                             testID="header-left-icon-test-id"
                           >
                             <Text
-                              fill="#FFFFFF"
+                              fill="rgba(255, 255, 255, 1)"
                               height={46}
                               strokeWidth={0}
                               testID="mock-icon"
@@ -478,7 +478,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                             testID="header-right-icon-test-id"
                           >
                             <Text
-                              fill="#FFFFFF"
+                              fill="rgba(255, 255, 255, 1)"
                               height={46}
                               strokeWidth={0}
                               testID="mock-icon"
@@ -503,7 +503,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                   <Text
                     style={
                       {
-                        "color": "#111111",
+                        "color": "rgba(17, 17, 17, 1)",
                         "fontFamily": "Markpro-Medium",
                         "fontSize": 14,
                         "fontWeight": undefined,

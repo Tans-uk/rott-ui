@@ -77,7 +77,7 @@ exports[`ButtonGroup -> Custom Component buton grubunun snapshotı ile eşleşme
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#00A9CE",
+            "backgroundColor": "rgba(0, 169, 206, 1)",
             "borderColor": "white",
             "borderRadius": 16,
             "borderWidth": undefined,
@@ -140,8 +140,8 @@ exports[`ButtonGroup -> Custom Component buton grubunun snapshotı ile eşleşme
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "secondary-outline",
-            "borderColor": "secondary",
+            "backgroundColor": "transparent",
+            "borderColor": "rgba(255, 199, 44, 1)",
             "borderRadius": 16,
             "borderWidth": 2,
             "color": undefined,

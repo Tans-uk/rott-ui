@@ -62,7 +62,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
       <Text
         style={
           {
-            "color": "grey-900",
+            "color": "rgba(34, 63, 70, 1)",
             "fontFamily": "Markpro-Bold",
             "fontSize": 18,
             "fontWeight": undefined,
@@ -76,7 +76,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
     <View
       style={
         {
-          "backgroundColor": "neutral-alpha-200",
+          "backgroundColor": "rgba(34, 63, 70, 0.15)",
           "height": 2,
           "maxHeight": 2,
           "opacity": 1,
@@ -113,7 +113,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
         }
       >
         <Text
-          fill="success"
+          fill="rgba(63, 182, 24, 1)"
           height={123}
           strokeWidth={0}
           testID="mock-icon"
@@ -142,7 +142,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
         <Text
           style={
             {
-              "color": "grey-900",
+              "color": "rgba(34, 63, 70, 1)",
               "fontFamily": "Markpro",
               "fontSize": 16,
               "fontWeight": undefined,
@@ -157,7 +157,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
     <View
       style={
         {
-          "backgroundColor": "neutral-alpha-200",
+          "backgroundColor": "rgba(34, 63, 70, 0.15)",
           "height": 2,
           "maxHeight": 2,
           "opacity": 1,
@@ -210,7 +210,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "transparent",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
             "borderColor": "white",
             "borderRadius": 16,
             "borderWidth": undefined,
@@ -230,7 +230,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
           numberOfLines={1}
           style={
             {
-              "color": "danger",
+              "color": "rgba(246, 83, 83, 1)",
               "flexShrink": 1,
               "fontFamily": "Markpro-Book",
               "fontSize": 26,
@@ -246,7 +246,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
       <View
         style={
           {
-            "backgroundColor": "neutral-alpha-200",
+            "backgroundColor": "rgba(34, 63, 70, 0.15)",
             "height": 106,
             "maxHeight": 106,
             "opacity": 1,
@@ -286,7 +286,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "transparent",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
             "borderColor": "white",
             "borderRadius": 16,
             "borderWidth": undefined,
@@ -306,7 +306,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
           numberOfLines={1}
           style={
             {
-              "color": "#00A9CE",
+              "color": "rgba(0, 169, 206, 1)",
               "flexShrink": 1,
               "fontFamily": "Markpro-Book",
               "fontSize": 26,

@@ -73,7 +73,7 @@ exports[`Date Input -> Custom Input ilk render anında snapshot ile eşleşmeli 
       <Text
         style={
           {
-            "color": "grey-200",
+            "color": "rgba(161, 173, 175, 1)",
             "fontFamily": "Markpro-Medium",
             "fontSize": 16,
             "fontWeight": undefined,

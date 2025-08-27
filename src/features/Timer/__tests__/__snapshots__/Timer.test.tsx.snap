@@ -22,7 +22,7 @@ exports[`Timer -> Custom Component timer ilk render anında snapshot ile eşleş
     <Text
       style={
         {
-          "color": "#111111",
+          "color": "rgba(17, 17, 17, 1)",
           "fontFamily": "Markpro-Bold",
           "fontSize": 18,
           "fontWeight": "bold",

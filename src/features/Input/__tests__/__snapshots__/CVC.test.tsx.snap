@@ -88,7 +88,7 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
       <Text
         style={
           {
-            "color": "grey-200",
+            "color": "rgba(161, 173, 175, 1)",
             "fontFamily": "Markpro-Bold",
             "fontSize": 10,
             "fontWeight": 700,
@@ -109,7 +109,7 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
         }
       >
         <Text
-          fill="grey-200"
+          fill="rgba(161, 173, 175, 1)"
           height={35}
           strokeWidth={0}
           testID="mock-icon"

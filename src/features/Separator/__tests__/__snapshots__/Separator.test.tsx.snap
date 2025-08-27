@@ -14,7 +14,7 @@ exports[`Separator -> Custom Component separator component render olmalı ve sna
   <View
     style={
       {
-        "backgroundColor": "#00A9CE",
+        "backgroundColor": "rgba(0, 169, 206, 1)",
         "height": 2,
         "maxHeight": 2,
         "opacity": 1,
