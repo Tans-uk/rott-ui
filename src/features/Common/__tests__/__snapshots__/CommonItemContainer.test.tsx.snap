@@ -22,7 +22,7 @@ exports[`Common -> Common Item Container common item container ilk renderlandÄ±Ä
     <Text
       style={
         {
-          "color": "rgba(17, 17, 17, 1)",
+          "color": "#111111",
           "fontFamily": "Markpro-Medium",
           "fontSize": 14,
           "fontWeight": undefined,

@@ -339,7 +339,7 @@ exports[`List -> Custom Component list ilk render anında snapshot ile eşleşme
                 <View
                   style={
                     {
-                      "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                      "backgroundColor": "neutral-alpha-200",
                       "height": 39,
                       "maxHeight": 39,
                       "opacity": 1,
@@ -373,7 +373,7 @@ exports[`List -> Custom Component list ilk render anında snapshot ile eşleşme
                 <View
                   style={
                     {
-                      "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                      "backgroundColor": "neutral-alpha-200",
                       "height": 39,
                       "maxHeight": 39,
                       "opacity": 1,

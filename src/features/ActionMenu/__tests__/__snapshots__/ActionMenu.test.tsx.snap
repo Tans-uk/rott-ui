@@ -391,7 +391,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                   <View
                     style={
                       {
-                        "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                        "backgroundColor": "neutral-alpha-200",
                         "height": 2,
                         "maxHeight": 2,
                         "opacity": 1,
@@ -483,7 +483,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                         <Text
                           style={
                             {
-                              "color": "rgba(34, 63, 70, 1)",
+                              "color": "grey-900",
                               "fontFamily": "Markpro-Book",
                               "fontSize": 16,
                               "fontWeight": 500,
@@ -498,7 +498,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                     <View
                       style={
                         {
-                          "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                          "backgroundColor": "neutral-alpha-200",
                           "height": 2,
                           "maxHeight": 2,
                           "opacity": 1,
@@ -575,7 +575,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                         <Text
                           style={
                             {
-                              "color": "rgba(34, 63, 70, 1)",
+                              "color": "grey-900",
                               "fontFamily": "Markpro-Book",
                               "fontSize": 16,
                               "fontWeight": 500,
@@ -590,7 +590,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                     <View
                       style={
                         {
-                          "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                          "backgroundColor": "neutral-alpha-200",
                           "height": 2,
                           "maxHeight": 2,
                           "opacity": 1,
@@ -667,7 +667,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                         <Text
                           style={
                             {
-                              "color": "rgba(34, 63, 70, 1)",
+                              "color": "grey-900",
                               "fontFamily": "Markpro-Book",
                               "fontSize": 16,
                               "fontWeight": 500,
@@ -682,7 +682,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                     <View
                       style={
                         {
-                          "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                          "backgroundColor": "neutral-alpha-200",
                           "height": 2,
                           "maxHeight": 2,
                           "opacity": 1,
@@ -759,7 +759,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                         <Text
                           style={
                             {
-                              "color": "rgba(34, 63, 70, 1)",
+                              "color": "grey-900",
                               "fontFamily": "Markpro-Book",
                               "fontSize": 16,
                               "fontWeight": 500,
@@ -785,7 +785,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                   <View
                     style={
                       {
-                        "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                        "backgroundColor": "neutral-alpha-200",
                         "height": 2,
                         "maxHeight": 2,
                         "opacity": 1,
@@ -840,7 +840,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
       style={
         {
           "alignItems": "center",
-          "backgroundColor": "rgba(0, 169, 206, 1)",
+          "backgroundColor": "#00A9CE",
           "borderColor": "white",
           "borderRadius": 16,
           "borderWidth": undefined,

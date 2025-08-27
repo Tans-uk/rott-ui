@@ -21,7 +21,7 @@ export const Icon: FC<IconProps> = ({
   opacity,
   ...props
 }) => {
-  const IconComponent = theme.icons[name]
+  const IconComponent = theme?.icons?.[name]
   if (!IconComponent) return null
 
   if (mode === 'fill') fill = color ?? colorFromVariant(variant)

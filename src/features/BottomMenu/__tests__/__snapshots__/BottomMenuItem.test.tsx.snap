@@ -34,6 +34,8 @@ exports[`Component -> BottomMenuItem bottom menu item componenti snapshot ile eÅ
     animated={false}
     collapsable={false}
     focusable={true}
+    height={56}
+    justifyContentCenter={true}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -48,29 +50,32 @@ exports[`Component -> BottomMenuItem bottom menu item componenti snapshot ile eÅ
         "alignItems": "center",
         "flex": 1,
         "flexDirection": "column",
+        "height": 108,
+        "justifyContent": "center",
+        "maxHeight": 108,
       }
     }
     testID="bottom-menu-item-1-test-id"
   >
     <View
-      marginBottom={8}
+      marginBottom={4}
       style={
         {
           "flex": undefined,
           "flexDirection": "column",
-          "marginBottom": 16,
+          "marginBottom": 8,
         }
       }
     >
-      <SvgMock
-        fill="transparent"
+      <Text
+        fill="grey-900"
         height={46}
-        stroke="grey-900"
-        strokeLinecap="round"
-        strokeLinejoin="round"
         strokeWidth={2}
+        testID="mock-icon"
         width={46}
-      />
+      >
+        MockIcon
+      </Text>
     </View>
     <Text
       numberOfLines={1}

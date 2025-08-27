@@ -79,6 +79,7 @@ exports[`Amount Input -> Custom Input amount input ilk render anında snapshot i
         </Text>
       </View>
       <TextInput
+        editable={true}
         keyboardType="number-pad"
         maxLength={2}
         onBlur={[Function]}
@@ -124,15 +125,15 @@ exports[`Amount Input -> Custom Input amount input ilk render anında snapshot i
         }
         testID="currency-icon-test-id"
       >
-        <SvgMock
+        <Text
           fill="rgba(161, 173, 175, 1)"
           height={46}
-          stroke="rgba(161, 173, 175, 1)"
-          strokeLinecap="round"
-          strokeLinejoin="round"
           strokeWidth={0}
+          testID="mock-icon"
           width={46}
-        />
+        >
+          MockIcon
+        </Text>
       </View>
     </View>
   </View>

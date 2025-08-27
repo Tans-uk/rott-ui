@@ -7,7 +7,7 @@ import {type ContentProps} from '../models'
 import {ContentStyles} from '../styles'
 
 import {KeyboardAwareScrollView} from 'react-native-keyboard-controller'
-import {useSafeArea} from 'react-native-safe-area-context'
+import {useSafeArea} from '../../../hooks'
 import React from 'react'
 
 export const Content: FC<ContentProps> = ({

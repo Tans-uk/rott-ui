@@ -1,6 +1,7 @@
 import {cloneElement, type ReactElement} from 'react'
 
 import {display} from '../../utils'
+import {render} from './testUtils'
 
 /*
  Dışarıdan element alınacağı için verilen elementi istenilen property ile klonlayıp öyle test etmektedir.

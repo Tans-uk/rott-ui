@@ -58,7 +58,7 @@ exports[`EmptyState -> Custom Component ilk render anında snapshot ile eşleşm
         marginBottom={8}
         style={
           {
-            "color": "rgba(255, 255, 255, 1)",
+            "color": "#FFFFFF",
             "fontFamily": "Markpro-Medium",
             "fontSize": 16,
             "fontWeight": undefined,

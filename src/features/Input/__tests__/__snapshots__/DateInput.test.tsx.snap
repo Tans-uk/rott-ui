@@ -146,15 +146,15 @@ exports[`Date Input -> Custom Input ilk render anında snapshot ile eşleşmeli 
             }
           }
         >
-          <SvgMock
-            fill="transparent"
+          <Text
             height={46}
             stroke="rgba(161, 173, 175, 1)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
             strokeWidth={2}
+            testID="mock-icon"
             width={46}
-          />
+          >
+            MockIcon
+          </Text>
         </View>
       </View>
     </View>

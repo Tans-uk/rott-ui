@@ -294,3 +294,33 @@ jest.mock('./src/hooks/useSafeArea', () => ({
     right: 0,
   })),
 }))
+
+// Mock theme icons
+jest.mock('./src/theme', () => {
+  const React = require('react')
+  const {Text} = require('react-native')
+
+  const MockIcon = React.forwardRef((props: any, ref: any) =>
+    React.createElement(Text, {ref, testID: 'mock-icon', ...props}, 'MockIcon')
+  )
+  MockIcon.default = MockIcon
+
+  return {
+    theme: {
+      icons: new Proxy(
+        {},
+        {
+          get() {
+            return MockIcon
+          },
+        }
+      ),
+      colors: {
+        primary: '#00A9CE',
+        white: '#FFFFFF',
+        black: '#111111',
+        warning: '#FF7518',
+      },
+    },
+  }
+})

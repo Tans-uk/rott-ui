@@ -108,7 +108,27 @@ exports[`Header -> Custom Component yalnızca başlık çalışmalı ve snapshot
           }
           testID="header-left-pressable-test-id"
           width={56}
-        />
+        >
+          <View
+            style={
+              {
+                "flex": undefined,
+                "flexDirection": "column",
+              }
+            }
+            testID="header-left-icon-test-id"
+          >
+            <Text
+              fill="#FFFFFF"
+              height={46}
+              strokeWidth={0}
+              testID="mock-icon"
+              width={46}
+            >
+              MockIcon
+            </Text>
+          </View>
+        </View>
       </View>
       <View
         alignItemsCenter={true}
@@ -135,7 +155,7 @@ exports[`Header -> Custom Component yalnızca başlık çalışmalı ve snapshot
           numberOfLines={1}
           style={
             {
-              "color": "white",
+              "color": "#FFFFFF",
               "fontFamily": "Markpro-Bold",
               "fontSize": 16,
               "fontWeight": undefined,
@@ -217,7 +237,27 @@ exports[`Header -> Custom Component yalnızca başlık çalışmalı ve snapshot
             }
           }
           testID="header-right-pressable-test-id"
-        />
+        >
+          <View
+            style={
+              {
+                "flex": undefined,
+                "flexDirection": "column",
+              }
+            }
+            testID="header-right-icon-test-id"
+          >
+            <Text
+              fill="#FFFFFF"
+              height={46}
+              strokeWidth={0}
+              testID="mock-icon"
+              width={46}
+            >
+              MockIcon
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
   </View>

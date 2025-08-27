@@ -83,39 +83,6 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
         }
       >
         <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
-          }
-          jestAnimatedStyle={
-            {
-              "value": {
-                "transform": [
-                  {
-                    "translateY": undefined,
-                  },
-                ],
-              },
-            }
-          }
-          jestInlineStyle={
-            [
-              {
-                "elevation": 5,
-                "flex": 1,
-                "flexDirection": "row",
-                "shadowColor": "rgba(6, 14, 16, 0.30)",
-                "shadowOffset": {
-                  "height": -8,
-                  "width": 0,
-                },
-                "shadowOpacity": 1,
-                "shadowRadius": 35,
-              },
-            ]
-          }
           style={
             [
               {
@@ -133,7 +100,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
               {
                 "transform": [
                   {
-                    "translateY": undefined,
+                    "translateY": 0,
                   },
                 ],
               },
@@ -258,15 +225,15 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                       }
                       testID="slide-to-close-button-test-id"
                     >
-                      <SvgMock
-                        fill="transparent"
+                      <Text
+                        fill="neutral-grey-alpha-200"
                         height={77}
-                        stroke="neutral-grey-alpha-200"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1}
+                        strokeWidth={0}
+                        testID="mock-icon"
                         width={77}
-                      />
+                      >
+                        MockIcon
+                      </Text>
                     </View>
                   </View>
                   <View
@@ -366,7 +333,27 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                           }
                           testID="header-left-pressable-test-id"
                           width={56}
-                        />
+                        >
+                          <View
+                            style={
+                              {
+                                "flex": undefined,
+                                "flexDirection": "column",
+                              }
+                            }
+                            testID="header-left-icon-test-id"
+                          >
+                            <Text
+                              fill="#FFFFFF"
+                              height={46}
+                              strokeWidth={0}
+                              testID="mock-icon"
+                              width={46}
+                            >
+                              MockIcon
+                            </Text>
+                          </View>
+                        </View>
                       </View>
                       <View
                         alignItemsCenter={true}
@@ -490,15 +477,15 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                             }
                             testID="header-right-icon-test-id"
                           >
-                            <SvgMock
-                              fill="transparent"
+                            <Text
+                              fill="#FFFFFF"
                               height={46}
-                              stroke="white"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1}
+                              strokeWidth={0}
+                              testID="mock-icon"
                               width={46}
-                            />
+                            >
+                              MockIcon
+                            </Text>
                           </View>
                         </View>
                       </View>
@@ -516,7 +503,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                   <Text
                     style={
                       {
-                        "color": "black",
+                        "color": "#111111",
                         "fontFamily": "Markpro-Medium",
                         "fontSize": 14,
                         "fontWeight": undefined,

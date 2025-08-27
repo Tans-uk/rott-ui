@@ -108,15 +108,15 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
           }
         }
       >
-        <SvgMock
-          fill="transparent"
+        <Text
+          fill="grey-200"
           height={35}
-          stroke="grey-200"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
+          strokeWidth={0}
+          testID="mock-icon"
           width={35}
-        />
+        >
+          MockIcon
+        </Text>
       </View>
     </View>
   </View>
