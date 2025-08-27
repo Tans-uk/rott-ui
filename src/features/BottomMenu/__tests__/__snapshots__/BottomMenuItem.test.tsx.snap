@@ -68,7 +68,7 @@ exports[`Component -> BottomMenuItem bottom menu item componenti snapshot ile e≈
       }
     >
       <Text
-        fill="grey-900"
+        fill="rgba(34, 63, 70, 1)"
         height={46}
         strokeWidth={2}
         testID="mock-icon"
@@ -81,7 +81,7 @@ exports[`Component -> BottomMenuItem bottom menu item componenti snapshot ile e≈
       numberOfLines={1}
       style={
         {
-          "color": "grey-900",
+          "color": "rgba(34, 63, 70, 1)",
           "fontFamily": "Markpro-Bold",
           "fontSize": 10,
           "fontWeight": "bold",

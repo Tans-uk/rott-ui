@@ -39,7 +39,7 @@ exports[`Common -> Common Item common item ilk renderlandığında snapshot ile 
       }
       accessible={true}
       animated={false}
-      backgroundColor="grey-200"
+      backgroundColor="rgba(161, 173, 175, 1)"
       collapsable={false}
       focusable={true}
       onBlur={[Function]}
@@ -56,7 +56,7 @@ exports[`Common -> Common Item common item ilk renderlandığında snapshot ile 
       paddingVertical={16}
       style={
         {
-          "backgroundColor": "grey-200",
+          "backgroundColor": "rgba(161, 173, 175, 1)",
           "flex": 1,
           "flexDirection": "column",
           "overflow": "hidden",
@@ -91,7 +91,7 @@ exports[`Common -> Common Item common item ilk renderlandığında snapshot ile 
             size="full"
             style={
               {
-                "color": "grey-900",
+                "color": "rgba(34, 63, 70, 1)",
                 "fontFamily": "Markpro-Medium",
                 "fontSize": 16,
                 "fontWeight": 600,
