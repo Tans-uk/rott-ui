@@ -2,6 +2,8 @@ import {TranslationLanguageTypes} from '../utils'
 
 import {PrimitiveType, useIntl} from 'react-intl'
 
+import '../../../utils/stringExtensions'
+
 /**
  * @description This hook is used to return the translator function to be used.
  */
