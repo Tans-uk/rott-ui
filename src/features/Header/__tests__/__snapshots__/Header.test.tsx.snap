@@ -1,329 +1,333 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header -> Custom Component yalnızca başlık çalışmalı ve snapshot eşleşmeli 1`] = `
-<View
-  flex={1}
-  pointerEvents="box-none"
-  style={
-    {
-      "flex": 1,
-      "flexDirection": "column",
-    }
-  }
+<KeyboardProvider
+  enabled={true}
 >
   <View
-    minHeight={56}
-    paddingVertical={0}
+    flex={1}
+    pointerEvents="box-none"
     style={
       {
-        "alignItems": "center",
-        "flex": undefined,
+        "flex": 1,
         "flexDirection": "column",
-        "justifyContent": "center",
-        "minHeight": 108,
-        "paddingBottom": 0,
-        "paddingHorizontal": 46,
-        "paddingVertical": 0,
       }
     }
-    testID="header-test-id"
   >
     <View
-      height={56}
+      minHeight={56}
+      paddingVertical={0}
       style={
         {
+          "alignItems": "center",
           "flex": undefined,
-          "flexDirection": "row",
-          "height": 108,
-          "maxHeight": 108,
+          "flexDirection": "column",
+          "justifyContent": "center",
+          "minHeight": 108,
+          "paddingBottom": 0,
+          "paddingHorizontal": 46,
+          "paddingVertical": 0,
         }
       }
+      testID="header-test-id"
     >
       <View
-        flexShrink={1}
         height={56}
-        justifyContentCenter={true}
-        minWidth={56}
-        relative={true}
         style={
           {
             "flex": undefined,
-            "flexDirection": "column",
-            "flexShrink": 1,
+            "flexDirection": "row",
             "height": 108,
-            "justifyContent": "center",
             "maxHeight": 108,
-            "minWidth": 108,
-            "position": "relative",
           }
         }
       >
         <View
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          alignItemsCenter={false}
-          alignItemsFlexStart={true}
-          animated={false}
-          collapsable={false}
-          focusable={true}
+          flexShrink={1}
           height={56}
           justifyContentCenter={true}
           minWidth={56}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          relative={true}
           style={
             {
-              "alignItems": "flex-start",
+              "flex": undefined,
+              "flexDirection": "column",
+              "flexShrink": 1,
+              "height": 108,
+              "justifyContent": "center",
+              "maxHeight": 108,
+              "minWidth": 108,
+              "position": "relative",
+            }
+          }
+        >
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            alignItemsCenter={false}
+            alignItemsFlexStart={true}
+            animated={false}
+            collapsable={false}
+            focusable={true}
+            height={56}
+            justifyContentCenter={true}
+            minWidth={56}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "flex-start",
+                "flex": 1,
+                "flexDirection": "column",
+                "height": 108,
+                "justifyContent": "center",
+                "maxHeight": 108,
+                "minWidth": 108,
+                "width": 108,
+              }
+            }
+            testID="header-left-pressable-test-id"
+            width={56}
+          >
+            <View
+              style={
+                {
+                  "flex": undefined,
+                  "flexDirection": "column",
+                }
+              }
+              testID="header-left-icon-test-id"
+            >
+              <Text
+                fill="rgba(255, 255, 255, 1)"
+                height={46}
+                strokeWidth={0}
+                testID="mock-icon"
+                width={46}
+              >
+                MockIcon
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          alignItemsCenter={true}
+          flex={1}
+          height={56}
+          justifyContentCenter={true}
+          minWidth={56}
+          relative={true}
+          style={
+            {
+              "alignItems": "center",
               "flex": 1,
               "flexDirection": "column",
               "height": 108,
               "justifyContent": "center",
               "maxHeight": 108,
               "minWidth": 108,
-              "width": 108,
+              "position": "relative",
             }
           }
-          testID="header-left-pressable-test-id"
-          width={56}
         >
-          <View
+          <Text
+            justifyContentCenter={true}
+            numberOfLines={1}
             style={
               {
-                "flex": undefined,
-                "flexDirection": "column",
+                "color": "rgba(255, 255, 255, 1)",
+                "fontFamily": "Markpro-Bold",
+                "fontSize": 16,
+                "fontWeight": undefined,
+                "textAlign": "center",
               }
             }
-            testID="header-left-icon-test-id"
+            testID="header-title-test-id"
           >
-            <Text
-              fill="rgba(255, 255, 255, 1)"
-              height={46}
-              strokeWidth={0}
-              testID="mock-icon"
-              width={46}
-            >
-              MockIcon
-            </Text>
-          </View>
+            Test Başlık
+          </Text>
         </View>
-      </View>
-      <View
-        alignItemsCenter={true}
-        flex={1}
-        height={56}
-        justifyContentCenter={true}
-        minWidth={56}
-        relative={true}
-        style={
-          {
-            "alignItems": "center",
-            "flex": 1,
-            "flexDirection": "column",
-            "height": 108,
-            "justifyContent": "center",
-            "maxHeight": 108,
-            "minWidth": 108,
-            "position": "relative",
-          }
-        }
-      >
-        <Text
-          justifyContentCenter={true}
-          numberOfLines={1}
-          style={
-            {
-              "color": "rgba(255, 255, 255, 1)",
-              "fontFamily": "Markpro-Bold",
-              "fontSize": 16,
-              "fontWeight": undefined,
-              "textAlign": "center",
-            }
-          }
-          testID="header-title-test-id"
-        >
-          Test Başlık
-        </Text>
-      </View>
-      <View
-        alignItemsFlexEnd={true}
-        flexShrink={1}
-        height={56}
-        justifyContentCenter={true}
-        minWidth={56}
-        relative={true}
-        style={
-          {
-            "alignItems": "flex-end",
-            "flex": undefined,
-            "flexDirection": "column",
-            "flexShrink": 1,
-            "height": 108,
-            "justifyContent": "center",
-            "maxHeight": 108,
-            "minWidth": 108,
-            "position": "relative",
-          }
-        }
-      >
         <View
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          alignItemsCenter={false}
           alignItemsFlexEnd={true}
-          alignItemsFlexStart={true}
-          animated={false}
-          collapsable={false}
-          focusable={true}
+          flexShrink={1}
           height={56}
           justifyContentCenter={true}
           minWidth={56}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          relative={true}
           style={
             {
               "alignItems": "flex-end",
-              "flex": 1,
+              "flex": undefined,
               "flexDirection": "column",
+              "flexShrink": 1,
               "height": 108,
               "justifyContent": "center",
               "maxHeight": 108,
               "minWidth": 108,
+              "position": "relative",
             }
           }
-          testID="header-right-pressable-test-id"
         >
           <View
-            style={
+            accessibilityState={
               {
-                "flex": undefined,
-                "flexDirection": "column",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
-            testID="header-right-icon-test-id"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            alignItemsCenter={false}
+            alignItemsFlexEnd={true}
+            alignItemsFlexStart={true}
+            animated={false}
+            collapsable={false}
+            focusable={true}
+            height={56}
+            justifyContentCenter={true}
+            minWidth={56}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "flex-end",
+                "flex": 1,
+                "flexDirection": "column",
+                "height": 108,
+                "justifyContent": "center",
+                "maxHeight": 108,
+                "minWidth": 108,
+              }
+            }
+            testID="header-right-pressable-test-id"
           >
-            <Text
-              fill="rgba(255, 255, 255, 1)"
-              height={46}
-              strokeWidth={0}
-              testID="mock-icon"
-              width={46}
+            <View
+              style={
+                {
+                  "flex": undefined,
+                  "flexDirection": "column",
+                }
+              }
+              testID="header-right-icon-test-id"
             >
-              MockIcon
-            </Text>
+              <Text
+                fill="rgba(255, 255, 255, 1)"
+                height={46}
+                strokeWidth={0}
+                testID="mock-icon"
+                width={46}
+              >
+                MockIcon
+              </Text>
+            </View>
           </View>
         </View>
       </View>
     </View>
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "flexDirection": "column-reverse",
-          "justifyContent": "flex-start",
-          "top": 30,
-          "width": 750,
-        },
-      ]
-    }
-  >
     <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
       style={
-        {
-          "bottom": 0,
-        }
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "flexDirection": "column-reverse",
+            "justifyContent": "flex-start",
+            "top": 30,
+            "width": 750,
+          },
+        ]
       }
     >
-      <RCTSafeAreaView />
-    </View>
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "bottom": 40,
-          "flexDirection": "column",
-          "justifyContent": "flex-end",
-          "width": 750,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        {
-          "bottom": 0,
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
         }
+      >
+        <RCTSafeAreaView />
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "bottom": 40,
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+            "width": 750,
+          },
+        ]
       }
     >
-      <RCTSafeAreaView />
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
+        }
+      >
+        <RCTSafeAreaView />
+      </View>
     </View>
   </View>
-</View>
+</KeyboardProvider>
 `;
