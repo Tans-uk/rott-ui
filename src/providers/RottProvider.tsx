@@ -1,24 +1,19 @@
-import React, {useEffect, useState, type FC, type PropsWithChildren} from 'react'
+import React, {type FC, type PropsWithChildren} from 'react'
 
-import {Platform, StatusBar} from 'react-native'
-
-import {RottUiContext} from '../contexts'
+import {initialState, RottUiContext} from '../contexts'
 import {
   ActionMenuProvider,
   AlertDialogProvider,
   ModalProvider,
   NotificationProvider,
 } from '../features'
-import {I18nProvider} from '../libs'
+import {languageMessages} from '../libs'
 import {Language, ThemeConfig} from '../models'
+import {theme} from '../theme'
 
-import {
-  getApiLevelSync,
-  getSystemVersion,
-  getTotalMemorySync,
-  hasDynamicIsland,
-  hasNotch,
-} from 'react-native-device-info'
+import {IntlProvider} from 'react-intl'
+
+import {KeyboardProvider} from 'react-native-keyboard-controller'
 import {SafeAreaProvider} from 'react-native-safe-area-context'
 
 interface RottProviderProps extends PropsWithChildren {
@@ -353,43 +348,34 @@ export let themeConfig: ThemeConfig = {
 }
 
 export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
-  const [language, setLanguage] = useState<Language>(
-    config?.options?.language ?? themeConfig.options?.language ?? {name: 'en-US'}
-  )
-
-  if (config) themeConfig = {...themeConfig, ...config}
-
-  useEffect(() => {
-    if (config?.options?.language?.name !== language.name)
-      setLanguage(config?.options?.language ?? themeConfig.options?.language ?? {name: 'en-US'})
-  }, [config?.options?.language])
+  const defaultLanguage: Language = {name: 'en-US'}
+  const language: Language = config?.options?.language ?? theme.options?.language
+  const resolvedLanguage =
+    language && Object.keys(languageMessages).includes(language.name)
+      ? {name: language.name}
+      : defaultLanguage
 
   return (
     <SafeAreaProvider>
       <RottUiContext.Provider
         value={{
-          language,
-          hasDynamicIsland: hasDynamicIsland(),
-          hasNotch:
-            !hasNotch() && Platform.OS === 'android' && StatusBar.currentHeight! > 24
-              ? true
-              : hasNotch(),
-          deviceInfo: {
-            operatingSystemVersion: getSystemVersion(),
-            apiLevel: getApiLevelSync(),
-            totalMemory: getTotalMemorySync(),
-          },
-          setLanguage,
+          ...initialState,
+          language: resolvedLanguage,
         }}>
-        <I18nProvider>
-          <NotificationProvider>
-            <ModalProvider>
-              <ActionMenuProvider>
-                <AlertDialogProvider>{children}</AlertDialogProvider>
-              </ActionMenuProvider>
-            </ModalProvider>
-          </NotificationProvider>
-        </I18nProvider>
+        <IntlProvider
+          defaultLocale={defaultLanguage.name}
+          locale={resolvedLanguage.name}
+          messages={languageMessages[resolvedLanguage.name as keyof typeof languageMessages]}>
+          <KeyboardProvider enabled={true}>
+            <NotificationProvider>
+              <ModalProvider>
+                <ActionMenuProvider>
+                  <AlertDialogProvider>{children}</AlertDialogProvider>
+                </ActionMenuProvider>
+              </ModalProvider>
+            </NotificationProvider>
+          </KeyboardProvider>
+        </IntlProvider>
       </RottUiContext.Provider>
     </SafeAreaProvider>
   )

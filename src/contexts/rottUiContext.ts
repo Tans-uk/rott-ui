@@ -2,7 +2,7 @@ import {createContext} from 'react'
 
 import {Platform, StatusBar} from 'react-native'
 
-import {Language, RottUiContextModel} from '../models'
+import {RottUiContextModel} from '../models'
 
 import {
   getApiLevelSync,
@@ -12,7 +12,7 @@ import {
   hasNotch,
 } from 'react-native-device-info'
 
-export const RottUiContext = createContext<RottUiContextModel>({
+export const initialState: RottUiContextModel = {
   language: {
     name: 'en-US',
   },
@@ -24,6 +24,6 @@ export const RottUiContext = createContext<RottUiContextModel>({
     apiLevel: getApiLevelSync(),
     totalMemory: getTotalMemorySync(),
   },
+}
 
-  setLanguage: (_language: Language) => {},
-})
+export const RottUiContext = createContext<RottUiContextModel>(initialState)

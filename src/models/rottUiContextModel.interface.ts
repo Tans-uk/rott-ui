@@ -6,5 +6,4 @@ export interface RottUiContextModel {
   hasDynamicIsland: boolean
   hasNotch: boolean
   deviceInfo: DeviceInfoModel
-  setLanguage: (language: Language) => void
 }
