@@ -131,7 +131,10 @@ jest.mock('react-native-reanimated', () => {
       useWorkletCallback: jest.fn((fn) => fn),
 
       // Animation functions for new API
-      withTiming: jest.fn((value) => value),
+      withTiming: jest.fn((value, _config, callback) => {
+        if (callback) setTimeout(callback, 0)
+        return value
+      }),
       withSpring: jest.fn((value) => value),
       withDecay: jest.fn((value) => value),
       withSequence: jest.fn((...values) => values[values.length - 1]),
@@ -139,7 +142,7 @@ jest.mock('react-native-reanimated', () => {
       withRepeat: jest.fn((value) => value),
 
       // Gesture handler
-      runOnJS: jest.fn((fn) => fn),
+      runOnJS: jest.fn((fn) => () => fn()),
       runOnUI: jest.fn((fn) => fn),
 
       // Layout animations
@@ -174,9 +177,12 @@ jest.mock('react-native-reanimated', () => {
     useSharedValue: jest.fn((value) => ({value})),
     useDerivedValue: jest.fn((fn) => ({value: fn()})),
     useAnimatedStyle: jest.fn((fn) => fn()),
-    withTiming: jest.fn((value) => value),
+    withTiming: jest.fn((value, _config, callback) => {
+      if (callback) setTimeout(callback, 0)
+      return value
+    }),
     withSpring: jest.fn((value) => value),
-    runOnJS: jest.fn((fn) => fn),
+    runOnJS: jest.fn((fn) => () => fn()),
     runOnUI: jest.fn((fn) => fn),
   }
 })
