@@ -1,6 +1,6 @@
-import {useEffect, useState, type FC} from 'react'
+import React, {useEffect, useState, type FC} from 'react'
 
-import {translator} from '../../../../../libs'
+import {formatMessage, useTranslator} from '../../../../../libs'
 import {ModalIdEnum} from '../../../../../models'
 import {themeConfig} from '../../../../../providers'
 import {Icon} from '../../../../Icon'
@@ -13,7 +13,6 @@ import type {SelectInputProps, SelectProps} from '../models'
 import {SelectInputStyles} from '../styles'
 import {modalHeightPercentageNormalizer} from '../utils'
 import {SelectInputModalComponent} from './SelectInputModalComponent'
-import React from 'react'
 
 /**
  *
@@ -39,7 +38,7 @@ import React from 'react'
  */
 export const SelectInput: FC<SelectInputProps> = ({
   label,
-  placeholder = translator('INPUT.DROPDOWN'),
+  placeholder = formatMessage('INPUT.DROPDOWN'),
   onSelectChange,
   searchable = false,
   value,
@@ -68,6 +67,8 @@ export const SelectInput: FC<SelectInputProps> = ({
   name,
   type = 'select',
 }) => {
+  const {translator} = useTranslator()
+
   const isArray = Array.isArray(defaultValue)
   const [selectItem, setSelectItem] = useState<Nullable<SelectProps>>(null)
   const [selectItems, setSelectItems] = useState<SelectProps[]>([])

@@ -16,7 +16,7 @@ exports[`ExpireDate Input -> Custom Input ilk render anında snapshot ile eşle�
     keyboardType="number-pad"
     name="test"
     onChangeText={[Function]}
-    placeholder="EXPIRE.DATE.PLACEHOLDER"
+    placeholder="Month / Year"
     style={
       {
         "color": "rgba(255, 255, 255, 1)",

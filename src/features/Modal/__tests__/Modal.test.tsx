@@ -1,12 +1,12 @@
 import React from 'react'
 
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
-import {translator} from '../../../libs'
 import {Content} from '../../Content'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {ModalComponent} from '../components'
 import type {ModalProps} from '../models'
+import { formatMessage } from '../../../libs'
 
 describe('Modal -> Custom Component', () => {
   const onCloseMock = jest.fn()
@@ -23,7 +23,7 @@ describe('Modal -> Custom Component', () => {
   const dummyDataFullScreen: ModalProps = {
     testID: testId.modalTestId,
     header: {
-      title: translator('TEST'),
+      title: formatMessage('TEST'),
       logo: 'PTTBANK_BLACK_COLORED',
     },
     slideToClose: true,
@@ -36,7 +36,7 @@ describe('Modal -> Custom Component', () => {
   const dummyData: ModalProps = {
     testID: testId.modalTestId,
     header: {
-      title: translator('TEST'),
+      title: formatMessage('TEST'),
       logo: 'PTTBANK_BLACK_COLORED',
     },
     visible: true,
@@ -58,7 +58,7 @@ describe('Modal -> Custom Component', () => {
     const renderedModal = render(
       <ModalComponent {...dummyData}>
         <Item>
-          <Label>{translator('TEST')}</Label>
+          <Label>{formatMessage('TEST')}</Label>
         </Item>
       </ModalComponent>
     )
@@ -70,12 +70,12 @@ describe('Modal -> Custom Component', () => {
     const {queryByText} = render(
       <ModalComponent {...dummyData} visible={false}>
         <Item>
-          <Label>{translator('TEST.WITH.PARAM', {testText: 'test'})}</Label>
+          <Label>{formatMessage('TEST.WITH.PARAM', {testText: 'test'})}</Label>
         </Item>
       </ModalComponent>
     )
 
-    const testLabelByText = queryByText(translator('TEST.WITH.PARAM', {testText: 'test'}))
+    const testLabelByText = queryByText(formatMessage('TEST.WITH.PARAM', {testText: 'test'}))
 
     expect(testLabelByText).not.toBeOnTheScreen()
   })
@@ -88,11 +88,11 @@ describe('Modal -> Custom Component', () => {
         {...dummyData}
         header={
           <Content testID={headerTestId}>
-            <Label>{translator('TEST')}</Label>
+            <Label>{formatMessage('TEST')}</Label>
           </Content>
         }>
         <Item>
-          <Label>{translator('TEST.WITH.PARAM', {testText: 'test'})}</Label>
+          <Label>{formatMessage('TEST.WITH.PARAM', {testText: 'test'})}</Label>
         </Item>
       </ModalComponent>
     )
@@ -116,12 +116,12 @@ describe('Modal -> Custom Component', () => {
       <ModalComponent
         {...dummyData}
         header={{
-          title: translator('TEST'),
+          title: formatMessage('TEST'),
           logo: 'PTTBANK_BLACK_COLORED',
-          children: <Label testID={'header-children-test-id'}>{translator('TEST')}</Label>,
+          children: <Label testID={'header-children-test-id'}>{formatMessage('TEST')}</Label>,
         }}>
         <Item>
-          <Label>{translator('TEST.WITH.PARAM', {testText: 'test'})}</Label>
+          <Label>{formatMessage('TEST.WITH.PARAM', {testText: 'test'})}</Label>
         </Item>
       </ModalComponent>
     )
@@ -183,11 +183,11 @@ describe('Modal -> Custom Component', () => {
   it('modal verilen children elementi ekranda göstermeli', () => {
     const {getByText} = render(
       <ModalComponent fullScreen visible>
-        <Label>{translator('TEST')}</Label>
+        <Label>{formatMessage('TEST')}</Label>
       </ModalComponent>
     )
 
-    const testLabelByText = getByText(translator('TEST'))
+    const testLabelByText = getByText(formatMessage('TEST'))
 
     expect(testLabelByText).toBeOnTheScreen()
   })

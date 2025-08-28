@@ -68,7 +68,7 @@ exports[`EmptyState -> Custom Component ilk render anında snapshot ile eşleşm
         }
         testID="empty-state-desc-test-id"
       >
-        TEST
+        ASD
       </Text>
     </View>
   </View>

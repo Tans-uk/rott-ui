@@ -101,7 +101,7 @@ exports[`Common -> Common Item common item ilk renderlandığında snapshot ile 
             }
             testID="title-test-id"
           >
-            TEST.WITH.PARAM
+            TEST WITH TITLE
           </Text>
           <View
             height={16}
