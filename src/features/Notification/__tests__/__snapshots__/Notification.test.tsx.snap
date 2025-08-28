@@ -132,7 +132,7 @@ exports[`Notification -> Custom Component notification ilk render anında snapsh
           }
           testID="notification-title-test-id"
         >
-          TEST.WITH.PARAM
+          TEST WITH Test Title
         </Text>
         <Text
           marginTop={4}
@@ -148,7 +148,7 @@ exports[`Notification -> Custom Component notification ilk render anında snapsh
           }
           testID="notification-desc-test-id"
         >
-          TEST.WITH.PARAM
+          TEST WITH Test Description
         </Text>
       </View>
     </View>

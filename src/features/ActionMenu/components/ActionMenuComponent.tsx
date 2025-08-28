@@ -2,7 +2,7 @@
 import React, {type FC} from 'react'
 
 import {ActionMenu} from '..'
-import {translator} from '../../../libs'
+import {useTranslator} from '../../../libs'
 import {themeConfig} from '../../../providers'
 import {display} from '../../../utils'
 import {Button} from '../../Button'
@@ -28,6 +28,8 @@ export const ActionMenuComponent: FC<ActionMenuProps> = ({
   maxItem,
   separatorTotalHeight,
 }) => {
+  const {translator} = useTranslator()
+
   const itemCount = (data?.length ?? 0) > maxItem! ? maxItem! : (data?.length ?? 0)
 
   // Listede renderlanacak Item

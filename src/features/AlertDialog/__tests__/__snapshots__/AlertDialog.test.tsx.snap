@@ -70,7 +70,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
           }
         }
       >
-        TEST.WITH.PARAM
+        TEST WITH Test Title
       </Text>
     </View>
     <View
@@ -150,7 +150,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
             }
           }
         >
-          TEST.WITH.PARAM
+          TEST WITH Test Text
         </Text>
       </View>
     </View>
@@ -240,7 +240,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
             }
           }
         >
-          COMMON.CANCEL
+          Cancel
         </Text>
       </View>
       <View
@@ -316,7 +316,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
             }
           }
         >
-          COMMON.OK
+          Ok
         </Text>
       </View>
     </View>
