@@ -1,205 +1,209 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Amount Input -> Custom Input amount input ilk render anında snapshot ile eşleşmeli 1`] = `
-<View
-  flex={1}
-  pointerEvents="box-none"
-  style={
-    {
-      "flex": 1,
-      "flexDirection": "column",
-    }
-  }
+<KeyboardProvider
+  enabled={true}
 >
   <View
-    onTouchStart={[Function]}
-    relative={true}
+    flex={1}
+    pointerEvents="box-none"
     style={
       {
-        "flex": undefined,
+        "flex": 1,
         "flexDirection": "column",
-        "position": "relative",
       }
     }
   >
     <View
-      name="test"
+      onTouchStart={[Function]}
+      relative={true}
       style={
         {
           "flex": undefined,
-          "flexDirection": "row",
+          "flexDirection": "column",
+          "position": "relative",
         }
       }
     >
-      <TextInput
-        editable={true}
-        keyboardType="number-pad"
-        maxLength={11}
-        nativeID="amount-native-id"
-        onChangeText={[Function]}
-        placeholder="0"
-        placeholderTextColor="rgba(161, 173, 175, 1)"
-        style={
-          {
-            "color": "rgba(161, 173, 175, 1)",
-            "fontFamily": "Markpro-Medium",
-            "fontSize": 18,
-            "height": 89,
-            "letterSpacing": 0.5,
-            "width": "auto",
-          }
-        }
-        testID="amount-test-id"
-        value=""
-      />
       <View
-        justifyContentFlexEnd={true}
-        paddingBottom={19}
+        name="test"
         style={
           {
             "flex": undefined,
-            "flexDirection": "column",
-            "justifyContent": "flex-end",
-            "paddingBottom": 37,
+            "flexDirection": "row",
           }
         }
       >
-        <Text
+        <TextInput
+          editable={true}
+          keyboardType="number-pad"
+          maxLength={11}
+          nativeID="amount-native-id"
+          onChangeText={[Function]}
+          placeholder="0"
+          placeholderTextColor="rgba(161, 173, 175, 1)"
           style={
             {
               "color": "rgba(161, 173, 175, 1)",
-              "fontFamily": "Markpro-Bold",
+              "fontFamily": "Markpro-Medium",
               "fontSize": 18,
-              "fontWeight": "bold",
-              "textAlign": "auto",
+              "height": 89,
+              "letterSpacing": 0.5,
+              "width": "auto",
+            }
+          }
+          testID="amount-test-id"
+          value=""
+        />
+        <View
+          justifyContentFlexEnd={true}
+          paddingBottom={19}
+          style={
+            {
+              "flex": undefined,
+              "flexDirection": "column",
+              "justifyContent": "flex-end",
+              "paddingBottom": 37,
             }
           }
         >
-          ,
-        </Text>
+          <Text
+            style={
+              {
+                "color": "rgba(161, 173, 175, 1)",
+                "fontFamily": "Markpro-Bold",
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "textAlign": "auto",
+              }
+            }
+          >
+            ,
+          </Text>
+        </View>
+        <TextInput
+          editable={true}
+          keyboardType="number-pad"
+          maxLength={2}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          placeholder="00"
+          placeholderTextColor="rgba(161, 173, 175, 1)"
+          style={
+            {
+              "color": "rgba(161, 173, 175, 1)",
+              "fontFamily": "Markpro-Medium",
+              "fontSize": 18,
+              "height": 89,
+              "letterSpacing": 0.5,
+              "width": "auto",
+            }
+          }
+          testID="currency-test-id"
+          value=""
+        />
       </View>
-      <TextInput
-        editable={true}
-        keyboardType="number-pad"
-        maxLength={2}
-        onBlur={[Function]}
-        onChangeText={[Function]}
-        onFocus={[Function]}
-        onKeyPress={[Function]}
-        placeholder="00"
-        placeholderTextColor="rgba(161, 173, 175, 1)"
+      <View
+        absolute={true}
+        bottom={16}
+        right={0}
         style={
           {
-            "color": "rgba(161, 173, 175, 1)",
-            "fontFamily": "Markpro-Medium",
-            "fontSize": 18,
-            "height": 89,
-            "letterSpacing": 0.5,
-            "width": "auto",
+            "bottom": 31,
+            "flex": undefined,
+            "flexDirection": "column",
+            "position": "absolute",
+            "right": 0,
           }
         }
-        testID="currency-test-id"
-        value=""
-      />
+      >
+        <View
+          style={
+            {
+              "flex": undefined,
+              "flexDirection": "column",
+            }
+          }
+          testID="currency-icon-test-id"
+        >
+          <Text
+            fill="rgba(161, 173, 175, 1)"
+            height={46}
+            strokeWidth={0}
+            testID="mock-icon"
+            width={46}
+          >
+            MockIcon
+          </Text>
+        </View>
+      </View>
     </View>
     <View
-      absolute={true}
-      bottom={16}
-      right={0}
+      onLayout={[Function]}
+      pointerEvents="box-none"
       style={
-        {
-          "bottom": 31,
-          "flex": undefined,
-          "flexDirection": "column",
-          "position": "absolute",
-          "right": 0,
-        }
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "flexDirection": "column-reverse",
+            "justifyContent": "flex-start",
+            "top": 30,
+            "width": 750,
+          },
+        ]
       }
     >
       <View
         style={
           {
-            "flex": undefined,
-            "flexDirection": "column",
+            "bottom": 0,
           }
         }
-        testID="currency-icon-test-id"
       >
-        <Text
-          fill="rgba(161, 173, 175, 1)"
-          height={46}
-          strokeWidth={0}
-          testID="mock-icon"
-          width={46}
-        >
-          MockIcon
-        </Text>
+        <RCTSafeAreaView />
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "bottom": 40,
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+            "width": 750,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
+        }
+      >
+        <RCTSafeAreaView />
       </View>
     </View>
   </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "flexDirection": "column-reverse",
-          "justifyContent": "flex-start",
-          "top": 30,
-          "width": 750,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        {
-          "bottom": 0,
-        }
-      }
-    >
-      <RCTSafeAreaView />
-    </View>
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "bottom": 40,
-          "flexDirection": "column",
-          "justifyContent": "flex-end",
-          "width": 750,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        {
-          "bottom": 0,
-        }
-      }
-    >
-      <RCTSafeAreaView />
-    </View>
-  </View>
-</View>
+</KeyboardProvider>
 `;

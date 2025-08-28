@@ -1,210 +1,183 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşleşmeli 1`] = `
-<View
-  flex={1}
-  pointerEvents="box-none"
-  style={
-    {
-      "flex": 1,
-      "flexDirection": "column",
-    }
-  }
+<KeyboardProvider
+  enabled={true}
 >
-  <Modal
-    animationType="fade"
-    hardwareAccelerated={false}
-    navigationBarTranslucent={true}
-    onRequestClose={[Function]}
-    statusBarTranslucent={true}
+  <View
+    flex={1}
+    pointerEvents="box-none"
     style={
       {
-        "height": 422,
+        "flex": 1,
+        "flexDirection": "column",
       }
     }
-    testID="modal-test-id"
-    transparent={true}
-    visible={true}
   >
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      animated={false}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+    <Modal
+      animationType="fade"
+      hardwareAccelerated={false}
+      navigationBarTranslucent={true}
+      onRequestClose={[Function]}
+      statusBarTranslucent={true}
       style={
         {
-          "alignContent": "center",
-          "backgroundColor": "rgba(34, 63, 70, 0.75)",
-          "flex": 1,
-          "flexDirection": "column",
-          "justifyContent": "center",
+          "height": 422,
         }
       }
-      testID="outside-tap-area-test-id"
-    />
-    <View
-      enabled={false}
+      testID="modal-test-id"
+      transparent={true}
+      visible={true}
     >
       <View
-        style={
+        accessibilityState={
           {
-            "backgroundColor": "rgba(34, 63, 70, 0.75)",
-            "flex": undefined,
-            "flexDirection": "row",
-            "paddingBottom": 0,
-            "paddingHorizontal": 0,
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        animated={false}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignContent": "center",
+            "backgroundColor": "rgba(34, 63, 70, 0.75)",
+            "flex": 1,
+            "flexDirection": "column",
+            "justifyContent": "center",
+          }
+        }
+        testID="outside-tap-area-test-id"
+      />
+      <View
+        enabled={false}
       >
         <View
           style={
-            [
-              {
-                "elevation": 5,
-                "flex": 1,
-                "flexDirection": "row",
-                "shadowColor": "rgba(6, 14, 16, 0.30)",
-                "shadowOffset": {
-                  "height": -8,
-                  "width": 0,
-                },
-                "shadowOpacity": 1,
-                "shadowRadius": 35,
-              },
-              {
-                "transform": [
-                  {
-                    "translateY": 0,
-                  },
-                ],
-              },
-            ]
+            {
+              "backgroundColor": "rgba(34, 63, 70, 0.75)",
+              "flex": undefined,
+              "flexDirection": "row",
+              "paddingBottom": 0,
+              "paddingHorizontal": 0,
+            }
           }
         >
           <View
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            animated={false}
-            backgroundColor="rgba(34, 63, 70, 0.10)"
-            borderTopEndRadius={24}
-            borderTopStartRadius={24}
-            collapsable={false}
-            focusable={true}
-            height={422}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              {
-                "backgroundColor": "rgba(34, 63, 70, 0.10)",
-                "flex": 1,
-                "flexDirection": "column",
-                "height": 812,
-                "maxHeight": 812,
-              }
-            }
-            testID="pressable-test-id"
-          >
-            <RCTScrollView
-              contentContainerStyle={
+              [
                 {
-                  "alignItems": undefined,
+                  "elevation": 5,
                   "flex": 1,
-                  "justifyContent": undefined,
-                  "paddingBottom": 0,
+                  "flexDirection": "row",
+                  "shadowColor": "rgba(6, 14, 16, 0.30)",
+                  "shadowOffset": {
+                    "height": -8,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 1,
+                  "shadowRadius": 35,
+                },
+                {
+                  "transform": [
+                    {
+                      "translateY": 0,
+                    },
+                  ],
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
-              keyboardShouldPersistTaps="handled"
-              scrollEnabled={false}
-              showsHorizontalScrollIndicator={false}
-              showsVerticalScrollIndicator={false}
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              animated={false}
+              backgroundColor="rgba(34, 63, 70, 0.10)"
+              borderTopEndRadius={24}
+              borderTopStartRadius={24}
+              collapsable={false}
+              focusable={true}
+              height={422}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "rgba(34, 63, 70, 0.10)",
+                  "flex": 1,
+                  "flexDirection": "column",
+                  "height": 812,
+                  "maxHeight": 812,
+                }
+              }
+              testID="pressable-test-id"
             >
-              <View>
-                <View
-                  alignItemsCenter={true}
-                  backgroundColor="rgba(61, 88, 94, 1)"
-                  borderTopEndRadius={24}
-                  borderTopStartRadius={24}
-                  justifyContentCenter={true}
-                  paddingTop={8}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "rgba(61, 88, 94, 1)",
-                      "flex": undefined,
-                      "flexDirection": "column",
-                      "justifyContent": "center",
-                      "paddingTop": 16,
-                      "width": "100%",
-                    }
+              <RCTScrollView
+                contentContainerStyle={
+                  {
+                    "alignItems": undefined,
+                    "flex": 1,
+                    "justifyContent": undefined,
+                    "paddingBottom": 0,
                   }
-                >
+                }
+                keyboardShouldPersistTaps="handled"
+                scrollEnabled={false}
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
+              >
+                <View>
                   <View
                     alignItemsCenter={true}
                     backgroundColor="rgba(61, 88, 94, 1)"
                     borderTopEndRadius={24}
                     borderTopStartRadius={24}
                     justifyContentCenter={true}
-                    onMoveShouldSetResponder={[Function]}
-                    onMoveShouldSetResponderCapture={[Function]}
-                    onResponderEnd={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderReject={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderStart={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    onStartShouldSetResponderCapture={[Function]}
+                    paddingTop={8}
                     style={
                       {
                         "alignItems": "center",
@@ -212,378 +185,409 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                         "flex": undefined,
                         "flexDirection": "column",
                         "justifyContent": "center",
+                        "paddingTop": 16,
                         "width": "100%",
                       }
                     }
                   >
                     <View
+                      alignItemsCenter={true}
+                      backgroundColor="rgba(61, 88, 94, 1)"
+                      borderTopEndRadius={24}
+                      borderTopStartRadius={24}
+                      justifyContentCenter={true}
+                      onMoveShouldSetResponder={[Function]}
+                      onMoveShouldSetResponderCapture={[Function]}
+                      onResponderEnd={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderReject={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderStart={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      onStartShouldSetResponderCapture={[Function]}
                       style={
                         {
+                          "alignItems": "center",
+                          "backgroundColor": "rgba(61, 88, 94, 1)",
                           "flex": undefined,
                           "flexDirection": "column",
-                        }
-                      }
-                      testID="slide-to-close-button-test-id"
-                    >
-                      <Text
-                        fill="rgba(234, 239, 240, 0.15)"
-                        height={77}
-                        strokeWidth={0}
-                        testID="mock-icon"
-                        width={77}
-                      >
-                        MockIcon
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    minHeight={56}
-                    paddingVertical={0}
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flex": undefined,
-                        "flexDirection": "column",
-                        "justifyContent": "center",
-                        "minHeight": 108,
-                        "paddingBottom": 0,
-                        "paddingHorizontal": 46,
-                        "paddingVertical": 0,
-                      }
-                    }
-                    testID="modal-header-test-id"
-                  >
-                    <View
-                      height={56}
-                      style={
-                        {
-                          "flex": undefined,
-                          "flexDirection": "row",
-                          "height": 108,
-                          "maxHeight": 108,
+                          "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
                     >
                       <View
-                        flexShrink={1}
-                        height={56}
-                        justifyContentCenter={true}
-                        minWidth={56}
-                        relative={true}
                         style={
                           {
                             "flex": undefined,
                             "flexDirection": "column",
-                            "flexShrink": 1,
+                          }
+                        }
+                        testID="slide-to-close-button-test-id"
+                      >
+                        <Text
+                          fill="rgba(234, 239, 240, 0.15)"
+                          height={77}
+                          strokeWidth={0}
+                          testID="mock-icon"
+                          width={77}
+                        >
+                          MockIcon
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      minHeight={56}
+                      paddingVertical={0}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flex": undefined,
+                          "flexDirection": "column",
+                          "justifyContent": "center",
+                          "minHeight": 108,
+                          "paddingBottom": 0,
+                          "paddingHorizontal": 46,
+                          "paddingVertical": 0,
+                        }
+                      }
+                      testID="modal-header-test-id"
+                    >
+                      <View
+                        height={56}
+                        style={
+                          {
+                            "flex": undefined,
+                            "flexDirection": "row",
                             "height": 108,
-                            "justifyContent": "center",
                             "maxHeight": 108,
-                            "minWidth": 108,
-                            "position": "relative",
                           }
                         }
                       >
                         <View
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": undefined,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          alignItemsCenter={false}
-                          alignItemsFlexStart={true}
-                          animated={false}
-                          collapsable={false}
-                          focusable={true}
+                          flexShrink={1}
                           height={56}
                           justifyContentCenter={true}
                           minWidth={56}
-                          onBlur={[Function]}
-                          onClick={[Function]}
-                          onFocus={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
+                          relative={true}
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "flex": undefined,
+                              "flexDirection": "column",
+                              "flexShrink": 1,
+                              "height": 108,
+                              "justifyContent": "center",
+                              "maxHeight": 108,
+                              "minWidth": 108,
+                              "position": "relative",
+                            }
+                          }
+                        >
+                          <View
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            alignItemsCenter={false}
+                            alignItemsFlexStart={true}
+                            animated={false}
+                            collapsable={false}
+                            focusable={true}
+                            height={56}
+                            justifyContentCenter={true}
+                            minWidth={56}
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "alignItems": "flex-start",
+                                "flex": 1,
+                                "flexDirection": "column",
+                                "height": 108,
+                                "justifyContent": "center",
+                                "maxHeight": 108,
+                                "minWidth": 108,
+                                "width": 108,
+                              }
+                            }
+                            testID="header-left-pressable-test-id"
+                            width={56}
+                          >
+                            <View
+                              style={
+                                {
+                                  "flex": undefined,
+                                  "flexDirection": "column",
+                                }
+                              }
+                              testID="header-left-icon-test-id"
+                            >
+                              <Text
+                                fill="rgba(255, 255, 255, 1)"
+                                height={46}
+                                strokeWidth={0}
+                                testID="mock-icon"
+                                width={46}
+                              >
+                                MockIcon
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          alignItemsCenter={true}
+                          flex={1}
+                          height={56}
+                          justifyContentCenter={true}
+                          minWidth={56}
+                          relative={true}
+                          style={
+                            {
+                              "alignItems": "center",
                               "flex": 1,
                               "flexDirection": "column",
                               "height": 108,
                               "justifyContent": "center",
                               "maxHeight": 108,
                               "minWidth": 108,
-                              "width": 108,
+                              "position": "relative",
                             }
                           }
-                          testID="header-left-pressable-test-id"
-                          width={56}
                         >
-                          <View
-                            style={
+                          <Image
+                            height={24}
+                            source={
                               {
-                                "flex": undefined,
-                                "flexDirection": "column",
+                                "testUri": "../../../src/assets/images/logo/pttbank-BlackColored.png",
                               }
                             }
-                            testID="header-left-icon-test-id"
-                          >
-                            <Text
-                              fill="rgba(255, 255, 255, 1)"
-                              height={46}
-                              strokeWidth={0}
-                              testID="mock-icon"
-                              width={46}
-                            >
-                              MockIcon
-                            </Text>
-                          </View>
+                            style={
+                              {
+                                "height": 46,
+                                "maxHeight": 46,
+                                "overflow": "hidden",
+                                "resizeMode": "contain",
+                                "width": 244,
+                              }
+                            }
+                            testID="header-logo-test-id"
+                            width={127}
+                          />
                         </View>
-                      </View>
-                      <View
-                        alignItemsCenter={true}
-                        flex={1}
-                        height={56}
-                        justifyContentCenter={true}
-                        minWidth={56}
-                        relative={true}
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flex": 1,
-                            "flexDirection": "column",
-                            "height": 108,
-                            "justifyContent": "center",
-                            "maxHeight": 108,
-                            "minWidth": 108,
-                            "position": "relative",
-                          }
-                        }
-                      >
-                        <Image
-                          height={24}
-                          source={
-                            {
-                              "testUri": "../../../src/assets/images/logo/pttbank-BlackColored.png",
-                            }
-                          }
-                          style={
-                            {
-                              "height": 46,
-                              "maxHeight": 46,
-                              "overflow": "hidden",
-                              "resizeMode": "contain",
-                              "width": 244,
-                            }
-                          }
-                          testID="header-logo-test-id"
-                          width={127}
-                        />
-                      </View>
-                      <View
-                        alignItemsFlexEnd={true}
-                        flexShrink={1}
-                        height={56}
-                        justifyContentCenter={true}
-                        minWidth={56}
-                        relative={true}
-                        style={
-                          {
-                            "alignItems": "flex-end",
-                            "flex": undefined,
-                            "flexDirection": "column",
-                            "flexShrink": 1,
-                            "height": 108,
-                            "justifyContent": "center",
-                            "maxHeight": 108,
-                            "minWidth": 108,
-                            "position": "relative",
-                          }
-                        }
-                      >
                         <View
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": undefined,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          alignItemsCenter={false}
                           alignItemsFlexEnd={true}
-                          alignItemsFlexStart={true}
-                          animated={false}
-                          collapsable={false}
-                          focusable={true}
+                          flexShrink={1}
                           height={56}
                           justifyContentCenter={true}
                           minWidth={56}
-                          name="REMOVE_BIG"
-                          onBlur={[Function]}
-                          onClick={[Function]}
-                          onFocus={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
+                          relative={true}
                           style={
                             {
                               "alignItems": "flex-end",
-                              "flex": 1,
+                              "flex": undefined,
                               "flexDirection": "column",
+                              "flexShrink": 1,
                               "height": 108,
                               "justifyContent": "center",
                               "maxHeight": 108,
                               "minWidth": 108,
+                              "position": "relative",
                             }
                           }
-                          testID="header-right-pressable-test-id"
                         >
                           <View
-                            onPress={[Function]}
-                            style={
+                            accessibilityState={
                               {
-                                "flex": undefined,
-                                "flexDirection": "column",
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": undefined,
+                                "selected": undefined,
                               }
                             }
-                            testID="header-right-icon-test-id"
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            alignItemsCenter={false}
+                            alignItemsFlexEnd={true}
+                            alignItemsFlexStart={true}
+                            animated={false}
+                            collapsable={false}
+                            focusable={true}
+                            height={56}
+                            justifyContentCenter={true}
+                            minWidth={56}
+                            name="REMOVE_BIG"
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "alignItems": "flex-end",
+                                "flex": 1,
+                                "flexDirection": "column",
+                                "height": 108,
+                                "justifyContent": "center",
+                                "maxHeight": 108,
+                                "minWidth": 108,
+                              }
+                            }
+                            testID="header-right-pressable-test-id"
                           >
-                            <Text
-                              fill="rgba(255, 255, 255, 1)"
-                              height={46}
-                              strokeWidth={0}
-                              testID="mock-icon"
-                              width={46}
+                            <View
+                              onPress={[Function]}
+                              style={
+                                {
+                                  "flex": undefined,
+                                  "flexDirection": "column",
+                                }
+                              }
+                              testID="header-right-icon-test-id"
                             >
-                              MockIcon
-                            </Text>
+                              <Text
+                                fill="rgba(255, 255, 255, 1)"
+                                height={46}
+                                strokeWidth={0}
+                                testID="mock-icon"
+                                width={46}
+                              >
+                                MockIcon
+                              </Text>
+                            </View>
                           </View>
                         </View>
                       </View>
                     </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "flex": undefined,
-                      "flexDirection": "column",
-                    }
-                  }
-                >
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "rgba(17, 17, 17, 1)",
-                        "fontFamily": "Markpro-Medium",
-                        "fontSize": 14,
-                        "fontWeight": undefined,
-                        "textAlign": "auto",
+                        "flex": undefined,
+                        "flexDirection": "column",
                       }
                     }
                   >
-                    TEST
-                  </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "rgba(17, 17, 17, 1)",
+                          "fontFamily": "Markpro-Medium",
+                          "fontSize": 14,
+                          "fontWeight": undefined,
+                          "textAlign": "auto",
+                        }
+                      }
+                    >
+                      ASD
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            </RCTScrollView>
+              </RCTScrollView>
+            </View>
           </View>
         </View>
       </View>
-    </View>
-  </Modal>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "flexDirection": "column-reverse",
-          "justifyContent": "flex-start",
-          "top": 30,
-          "width": 750,
-        },
-      ]
-    }
-  >
+    </Modal>
     <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
       style={
-        {
-          "bottom": 0,
-        }
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "flexDirection": "column-reverse",
+            "justifyContent": "flex-start",
+            "top": 30,
+            "width": 750,
+          },
+        ]
       }
     >
-      <RCTSafeAreaView />
-    </View>
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "bottom": 40,
-          "flexDirection": "column",
-          "justifyContent": "flex-end",
-          "width": 750,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        {
-          "bottom": 0,
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
         }
+      >
+        <RCTSafeAreaView />
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "bottom": 40,
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+            "width": 750,
+          },
+        ]
       }
     >
-      <RCTSafeAreaView />
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
+        }
+      >
+        <RCTSafeAreaView />
+      </View>
     </View>
   </View>
-</View>
+</KeyboardProvider>
 `;

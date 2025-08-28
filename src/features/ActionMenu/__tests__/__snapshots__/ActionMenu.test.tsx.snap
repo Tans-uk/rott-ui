@@ -1,114 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşmeli 1`] = `
-<View
-  flex={1}
-  pointerEvents="box-none"
-  style={
-    {
-      "flex": 1,
-      "flexDirection": "column",
-    }
-  }
+<KeyboardProvider
+  enabled={true}
 >
   <View
-    alignItemsCenter={true}
+    flex={1}
+    pointerEvents="box-none"
     style={
       {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "flex": undefined,
+        "flex": 1,
         "flexDirection": "column",
-        "width": "100%",
       }
     }
   >
     <View
-      backgroundColor="rgba(234, 239, 240, 1)"
-      borderBottomEndRadius={12}
-      borderBottomStartRadius={12}
-      borderTopEndRadius={0}
-      borderTopStartRadius={0}
-      marginBottom={16}
+      alignItemsCenter={true}
       style={
         {
-          "backgroundColor": "rgba(234, 239, 240, 1)",
+          "alignItems": "center",
+          "alignSelf": "center",
           "flex": undefined,
           "flexDirection": "column",
-          "marginBottom": 31,
-          "width": 658,
+          "width": "100%",
         }
       }
-      width={342}
     >
       <View
-        onLayout={[Function]}
-        overflowHidden={true}
+        backgroundColor="rgba(234, 239, 240, 1)"
+        borderBottomEndRadius={12}
+        borderBottomStartRadius={12}
+        borderTopEndRadius={0}
+        borderTopStartRadius={0}
+        marginBottom={16}
         style={
           {
+            "backgroundColor": "rgba(234, 239, 240, 1)",
             "flex": undefined,
             "flexDirection": "column",
-            "height": NaN,
-            "maxHeight": NaN,
-            "minHeight": 2,
-            "overflow": "hidden",
+            "marginBottom": 31,
             "width": 658,
           }
         }
+        width={342}
       >
         <View
+          onLayout={[Function]}
+          overflowHidden={true}
           style={
             {
-              "flex": 1,
+              "flex": undefined,
+              "flexDirection": "column",
+              "height": NaN,
+              "maxHeight": NaN,
+              "minHeight": 2,
               "overflow": "hidden",
+              "width": 658,
             }
           }
         >
-          <RCTScrollView
-            ItemSeparatorComponent={[Function]}
-            ListEmptyComponent={[Function]}
-            ListFooterComponent={[Function]}
-            ListHeaderComponent={[Function]}
-            applyWindowCorrection={[Function]}
-            canChangeSize={true}
-            contentContainerStyle={
+          <View
+            style={
               {
-                "backgroundColor": undefined,
-                "minHeight": 1,
-                "minWidth": 1,
-                "paddingLeft": 0,
-                "paddingRight": 0,
+                "flex": 1,
+                "overflow": "hidden",
               }
             }
-            contentHeight={200}
-            contentWidth={400}
-            data={
-              [
+          >
+            <RCTScrollView
+              ItemSeparatorComponent={[Function]}
+              ListEmptyComponent={[Function]}
+              ListFooterComponent={[Function]}
+              ListHeaderComponent={[Function]}
+              applyWindowCorrection={[Function]}
+              canChangeSize={true}
+              contentContainerStyle={
                 {
-                  "action": [Function],
-                  "name": "para-gonder",
-                  "title": "Para Gonder",
-                },
-                {
-                  "action": [Function],
-                  "name": "hesap-hareketleri-incele",
-                  "title": "Hesap Hareketleri Incele",
-                },
-                {
-                  "action": [Function],
-                  "name": "fatura-ode",
-                  "title": "Fatura Öde",
-                },
-                {
-                  "action": [Function],
-                  "name": "hesap-bilgilerini-paylas",
-                  "title": "Hesap Bilgilerini Paylaş",
-                },
-              ]
-            }
-            dataProvider={
-              DataProvider {
-                "_data": [
+                  "backgroundColor": undefined,
+                  "minHeight": 1,
+                  "minWidth": 1,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                }
+              }
+              contentHeight={200}
+              contentWidth={400}
+              data={
+                [
                   {
                     "action": [Function],
                     "name": "para-gonder",
@@ -129,145 +107,11 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                     "name": "hesap-bilgilerini-paylas",
                     "title": "Hesap Bilgilerini Paylaş",
                   },
-                ],
-                "_firstIndexToProcess": 0,
-                "_hasStableIds": false,
-                "_requiresDataChangeHandling": false,
-                "_size": 4,
-                "getStableId": [Function],
-                "rowHasChanged": [Function],
+                ]
               }
-            }
-            disableRecycling={false}
-            estimatedItemSize={50}
-            extendedState={{}}
-            externalScrollView={[Function]}
-            finalRenderAheadOffset={250}
-            forceNonDeterministicRendering={true}
-            horizontal={false}
-            initialOffset={0}
-            initialRenderIndex={0}
-            isHorizontal={false}
-            layoutProvider={
-              GridLayoutProviderWithProps {
-                "_acceptableRelayoutDelta": 1,
-                "_getHeightOrWidth": [Function],
-                "_getLayoutTypeForIndex": [Function],
-                "_getSpan": [Function],
-                "_hasExpired": false,
-                "_isHorizontal": false,
-                "_lastLayoutManager": GridLayoutManager {
-                  "_acceptableRelayoutDelta": 1,
-                  "_getSpan": [Function],
-                  "_isGridHorizontal": false,
-                  "_isHorizontal": false,
-                  "_layoutProvider": [Circular],
-                  "_layouts": [
-                    {
-                      "height": 50,
-                      "type": 0,
-                      "width": 400,
-                      "x": 0,
-                      "y": 0,
-                    },
-                    {
-                      "height": 50,
-                      "type": 0,
-                      "width": 400,
-                      "x": 0,
-                      "y": 50,
-                    },
-                    {
-                      "height": 50,
-                      "type": 0,
-                      "width": 400,
-                      "x": 0,
-                      "y": 100,
-                    },
-                    {
-                      "height": 50,
-                      "type": 0,
-                      "width": 400,
-                      "x": 0,
-                      "y": 150,
-                    },
-                  ],
-                  "_maxSpan": 1,
-                  "_renderWindowSize": {
-                    "height": 900,
-                    "width": 400,
-                  },
-                  "_totalHeight": 200,
-                  "_totalWidth": 400,
-                  "_window": {
-                    "height": 900,
-                    "width": 400,
-                  },
-                },
-                "_maxSpan": 1,
-                "_renderWindowSize": {
-                  "height": 900,
-                  "width": 400,
-                },
-                "_setLayoutForType": [Function],
-                "_tempDim": {
-                  "height": 0,
-                  "width": 0,
-                },
-                "averageWindow": AverageWindow {
-                  "currentAverage": 50,
-                  "currentCount": 1,
-                  "inputValues": [
-                    50,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                    ,
-                  ],
-                  "nextIndex": 1,
-                },
-                "defaultEstimatedItemSize": 100,
-                "layoutObject": {
-                  "size": undefined,
-                  "span": undefined,
-                },
-                "props": {
-                  "ItemSeparatorComponent": [Function],
-                  "ListEmptyComponent": [Function],
-                  "ListFooterComponent": [Function],
-                  "ListHeaderComponent": [Function],
-                  "data": [
+              dataProvider={
+                DataProvider {
+                  "_data": [
                     {
                       "action": [Function],
                       "name": "para-gonder",
@@ -289,655 +133,815 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
                       "title": "Hesap Bilgilerini Paylaş",
                     },
                   ],
-                  "estimatedItemSize": 50,
-                  "horizontal": false,
-                  "numColumns": 1,
-                  "renderItem": [Function],
-                  "scrollEnabled": false,
-                  "showsVerticalScrollIndicator": false,
-                  "testID": "action-menu-test-id",
-                },
-                "renderWindowInsets": {
-                  "height": 0,
-                  "width": 0,
-                },
-                "shouldRefreshWithAnchoring": true,
-              }
-            }
-            maxRenderAhead={750}
-            numColumns={1}
-            onEndReached={[Function]}
-            onEndReachedThreshold={0}
-            onEndReachedThresholdRelative={0}
-            onItemLayout={[Function]}
-            onLayout={[Function]}
-            onScroll={[Function]}
-            onScrollBeginDrag={[Function]}
-            onSizeChanged={[Function]}
-            onVisibleIndicesChanged={[Function]}
-            removeClippedSubviews={false}
-            renderAheadOffset={0}
-            renderAheadStep={250}
-            renderContentContainer={[Function]}
-            renderItem={[Function]}
-            renderItemContainer={[Function]}
-            rowRenderer={[Function]}
-            scrollEnabled={false}
-            scrollEventThrottle={16}
-            scrollThrottle={16}
-            scrollViewProps={
-              {
-                "contentContainerStyle": {
-                  "backgroundColor": undefined,
-                  "minHeight": 1,
-                  "minWidth": 1,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                },
-                "onLayout": [Function],
-                "onScrollBeginDrag": [Function],
-                "refreshControl": undefined,
-                "style": {
-                  "minHeight": 1,
-                  "minWidth": 1,
-                },
-              }
-            }
-            showsVerticalScrollIndicator={false}
-            style={
-              {
-                "minHeight": 1,
-                "minWidth": 1,
-              }
-            }
-            suppressBoundedSizeException={true}
-            testID="action-menu-test-id"
-            windowCorrectionConfig={
-              {
-                "applyToInitialOffset": true,
-                "applyToItemScroll": true,
-                "value": {
-                  "endCorrection": 0,
-                  "startCorrection": 0,
-                  "windowShift": -1,
-                },
-              }
-            }
-          >
-            <View>
-              <View
-                style={
-                  {
-                    "flexDirection": "column",
-                  }
+                  "_firstIndexToProcess": 0,
+                  "_hasStableIds": false,
+                  "_requiresDataChangeHandling": false,
+                  "_size": 4,
+                  "getStableId": [Function],
+                  "rowHasChanged": [Function],
                 }
-              >
+              }
+              disableRecycling={false}
+              estimatedItemSize={50}
+              extendedState={{}}
+              externalScrollView={[Function]}
+              finalRenderAheadOffset={250}
+              forceNonDeterministicRendering={true}
+              horizontal={false}
+              initialOffset={0}
+              initialRenderIndex={0}
+              isHorizontal={false}
+              layoutProvider={
+                GridLayoutProviderWithProps {
+                  "_acceptableRelayoutDelta": 1,
+                  "_getHeightOrWidth": [Function],
+                  "_getLayoutTypeForIndex": [Function],
+                  "_getSpan": [Function],
+                  "_hasExpired": false,
+                  "_isHorizontal": false,
+                  "_lastLayoutManager": GridLayoutManager {
+                    "_acceptableRelayoutDelta": 1,
+                    "_getSpan": [Function],
+                    "_isGridHorizontal": false,
+                    "_isHorizontal": false,
+                    "_layoutProvider": [Circular],
+                    "_layouts": [
+                      {
+                        "height": 50,
+                        "type": 0,
+                        "width": 400,
+                        "x": 0,
+                        "y": 0,
+                      },
+                      {
+                        "height": 50,
+                        "type": 0,
+                        "width": 400,
+                        "x": 0,
+                        "y": 50,
+                      },
+                      {
+                        "height": 50,
+                        "type": 0,
+                        "width": 400,
+                        "x": 0,
+                        "y": 100,
+                      },
+                      {
+                        "height": 50,
+                        "type": 0,
+                        "width": 400,
+                        "x": 0,
+                        "y": 150,
+                      },
+                    ],
+                    "_maxSpan": 1,
+                    "_renderWindowSize": {
+                      "height": 900,
+                      "width": 400,
+                    },
+                    "_totalHeight": 200,
+                    "_totalWidth": 400,
+                    "_window": {
+                      "height": 900,
+                      "width": 400,
+                    },
+                  },
+                  "_maxSpan": 1,
+                  "_renderWindowSize": {
+                    "height": 900,
+                    "width": 400,
+                  },
+                  "_setLayoutForType": [Function],
+                  "_tempDim": {
+                    "height": 0,
+                    "width": 0,
+                  },
+                  "averageWindow": AverageWindow {
+                    "currentAverage": 50,
+                    "currentCount": 1,
+                    "inputValues": [
+                      50,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                      ,
+                    ],
+                    "nextIndex": 1,
+                  },
+                  "defaultEstimatedItemSize": 100,
+                  "layoutObject": {
+                    "size": undefined,
+                    "span": undefined,
+                  },
+                  "props": {
+                    "ItemSeparatorComponent": [Function],
+                    "ListEmptyComponent": [Function],
+                    "ListFooterComponent": [Function],
+                    "ListHeaderComponent": [Function],
+                    "data": [
+                      {
+                        "action": [Function],
+                        "name": "para-gonder",
+                        "title": "Para Gonder",
+                      },
+                      {
+                        "action": [Function],
+                        "name": "hesap-hareketleri-incele",
+                        "title": "Hesap Hareketleri Incele",
+                      },
+                      {
+                        "action": [Function],
+                        "name": "fatura-ode",
+                        "title": "Fatura Öde",
+                      },
+                      {
+                        "action": [Function],
+                        "name": "hesap-bilgilerini-paylas",
+                        "title": "Hesap Bilgilerini Paylaş",
+                      },
+                    ],
+                    "estimatedItemSize": 50,
+                    "horizontal": false,
+                    "numColumns": 1,
+                    "renderItem": [Function],
+                    "scrollEnabled": false,
+                    "showsVerticalScrollIndicator": false,
+                    "testID": "action-menu-test-id",
+                  },
+                  "renderWindowInsets": {
+                    "height": 0,
+                    "width": 0,
+                  },
+                  "shouldRefreshWithAnchoring": true,
+                }
+              }
+              maxRenderAhead={750}
+              numColumns={1}
+              onEndReached={[Function]}
+              onEndReachedThreshold={0}
+              onEndReachedThresholdRelative={0}
+              onItemLayout={[Function]}
+              onLayout={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onSizeChanged={[Function]}
+              onVisibleIndicesChanged={[Function]}
+              removeClippedSubviews={false}
+              renderAheadOffset={0}
+              renderAheadStep={250}
+              renderContentContainer={[Function]}
+              renderItem={[Function]}
+              renderItemContainer={[Function]}
+              rowRenderer={[Function]}
+              scrollEnabled={false}
+              scrollEventThrottle={16}
+              scrollThrottle={16}
+              scrollViewProps={
+                {
+                  "contentContainerStyle": {
+                    "backgroundColor": undefined,
+                    "minHeight": 1,
+                    "minWidth": 1,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                  "onLayout": [Function],
+                  "onScrollBeginDrag": [Function],
+                  "refreshControl": undefined,
+                  "style": {
+                    "minHeight": 1,
+                    "minWidth": 1,
+                  },
+                }
+              }
+              showsVerticalScrollIndicator={false}
+              style={
+                {
+                  "minHeight": 1,
+                  "minWidth": 1,
+                }
+              }
+              suppressBoundedSizeException={true}
+              testID="action-menu-test-id"
+              windowCorrectionConfig={
+                {
+                  "applyToInitialOffset": true,
+                  "applyToItemScroll": true,
+                  "value": {
+                    "endCorrection": 0,
+                    "startCorrection": 0,
+                    "windowShift": -1,
+                  },
+                }
+              }
+            >
+              <View>
                 <View
                   style={
                     {
-                      "paddingLeft": 0,
-                      "paddingTop": 0,
+                      "flexDirection": "column",
                     }
-                  }
-                />
-                <View
-                  style={
-                    [
-                      undefined,
-                      undefined,
-                    ]
                   }
                 >
                   <View
                     style={
                       {
-                        "backgroundColor": "rgba(34, 63, 70, 0.15)",
-                        "height": 2,
-                        "maxHeight": 2,
-                        "opacity": 1,
-                        "width": "100%",
+                        "paddingLeft": 0,
+                        "paddingTop": 0,
                       }
                     }
-                    variant="neutral-alpha-200"
+                  />
+                  <View
+                    style={
+                      [
+                        undefined,
+                        undefined,
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                          "height": 2,
+                          "maxHeight": 2,
+                          "opacity": 1,
+                          "width": "100%",
+                        }
+                      }
+                      variant="neutral-alpha-200"
+                    />
+                  </View>
+                  <AutoLayoutView
+                    enableInstrumentation={false}
+                    horizontal={false}
+                    onBlankAreaEvent={[Function]}
+                    onLayout={[Function]}
+                    renderAheadOffset={0}
+                    scrollOffset={0}
+                    style={
+                      {
+                        "height": 200,
+                        "width": 400,
+                      }
+                    }
+                    windowSize={900}
+                  >
+                    <CellContainer
+                      index={0}
+                      onLayout={[Function]}
+                      style={
+                        {
+                          "alignItems": "stretch",
+                          "flexDirection": "column",
+                          "left": 0,
+                          "position": "absolute",
+                          "top": 0,
+                          "width": 400,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "flexDirection": "column",
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          alignItemsCenter={true}
+                          animated={false}
+                          collapsable={false}
+                          focusable={true}
+                          justifyContentCenter={true}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flex": 1,
+                              "flexDirection": "column",
+                              "justifyContent": "center",
+                            }
+                          }
+                          testID="action-menu-data-para-gonder-test-id"
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "rgba(34, 63, 70, 1)",
+                                "fontFamily": "Markpro-Book",
+                                "fontSize": 16,
+                                "fontWeight": 500,
+                                "textAlign": "auto",
+                              }
+                            }
+                          >
+                            Para Gonder
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                            "height": 2,
+                            "maxHeight": 2,
+                            "opacity": 1,
+                            "width": "100%",
+                          }
+                        }
+                        variant="neutral-alpha-200"
+                      />
+                    </CellContainer>
+                    <CellContainer
+                      index={1}
+                      onLayout={[Function]}
+                      style={
+                        {
+                          "alignItems": "stretch",
+                          "flexDirection": "column",
+                          "left": 0,
+                          "position": "absolute",
+                          "top": 50,
+                          "width": 400,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "flexDirection": "column",
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          alignItemsCenter={true}
+                          animated={false}
+                          collapsable={false}
+                          focusable={true}
+                          justifyContentCenter={true}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flex": 1,
+                              "flexDirection": "column",
+                              "justifyContent": "center",
+                            }
+                          }
+                          testID="action-menu-data-hesap-hareketleri-incele-test-id"
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "rgba(34, 63, 70, 1)",
+                                "fontFamily": "Markpro-Book",
+                                "fontSize": 16,
+                                "fontWeight": 500,
+                                "textAlign": "auto",
+                              }
+                            }
+                          >
+                            Hesap Hareketleri Incele
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                            "height": 2,
+                            "maxHeight": 2,
+                            "opacity": 1,
+                            "width": "100%",
+                          }
+                        }
+                        variant="neutral-alpha-200"
+                      />
+                    </CellContainer>
+                    <CellContainer
+                      index={2}
+                      onLayout={[Function]}
+                      style={
+                        {
+                          "alignItems": "stretch",
+                          "flexDirection": "column",
+                          "left": 0,
+                          "position": "absolute",
+                          "top": 100,
+                          "width": 400,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "flexDirection": "column",
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          alignItemsCenter={true}
+                          animated={false}
+                          collapsable={false}
+                          focusable={true}
+                          justifyContentCenter={true}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flex": 1,
+                              "flexDirection": "column",
+                              "justifyContent": "center",
+                            }
+                          }
+                          testID="action-menu-data-fatura-ode-test-id"
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "rgba(34, 63, 70, 1)",
+                                "fontFamily": "Markpro-Book",
+                                "fontSize": 16,
+                                "fontWeight": 500,
+                                "textAlign": "auto",
+                              }
+                            }
+                          >
+                            Fatura Öde
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                            "height": 2,
+                            "maxHeight": 2,
+                            "opacity": 1,
+                            "width": "100%",
+                          }
+                        }
+                        variant="neutral-alpha-200"
+                      />
+                    </CellContainer>
+                    <CellContainer
+                      index={3}
+                      onLayout={[Function]}
+                      style={
+                        {
+                          "alignItems": "stretch",
+                          "flexDirection": "column",
+                          "left": 0,
+                          "position": "absolute",
+                          "top": 150,
+                          "width": 400,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "flexDirection": "column",
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          alignItemsCenter={true}
+                          animated={false}
+                          collapsable={false}
+                          focusable={true}
+                          justifyContentCenter={true}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flex": 1,
+                              "flexDirection": "column",
+                              "justifyContent": "center",
+                            }
+                          }
+                          testID="action-menu-data-hesap-bilgilerini-paylas-test-id"
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "rgba(34, 63, 70, 1)",
+                                "fontFamily": "Markpro-Book",
+                                "fontSize": 16,
+                                "fontWeight": 500,
+                                "textAlign": "auto",
+                              }
+                            }
+                          >
+                            Hesap Bilgilerini Paylaş
+                          </Text>
+                        </View>
+                      </View>
+                    </CellContainer>
+                  </AutoLayoutView>
+                  <CellContainer
+                    index={-1}
+                    style={
+                      [
+                        undefined,
+                        undefined,
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                          "height": 2,
+                          "maxHeight": 2,
+                          "opacity": 1,
+                          "width": "100%",
+                        }
+                      }
+                      variant="neutral-alpha-200"
+                    />
+                  </CellContainer>
+                  <View
+                    style={
+                      {
+                        "paddingBottom": 0,
+                        "paddingRight": 0,
+                      }
+                    }
                   />
                 </View>
-                <AutoLayoutView
-                  enableInstrumentation={false}
-                  horizontal={false}
-                  onBlankAreaEvent={[Function]}
-                  onLayout={[Function]}
-                  renderAheadOffset={0}
-                  scrollOffset={0}
-                  style={
-                    {
-                      "height": 200,
-                      "width": 400,
-                    }
-                  }
-                  windowSize={900}
-                >
-                  <CellContainer
-                    index={0}
-                    onLayout={[Function]}
-                    style={
-                      {
-                        "alignItems": "stretch",
-                        "flexDirection": "column",
-                        "left": 0,
-                        "position": "absolute",
-                        "top": 0,
-                        "width": 400,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexDirection": "column",
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        alignItemsCenter={true}
-                        animated={false}
-                        collapsable={false}
-                        focusable={true}
-                        justifyContentCenter={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onFocus={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flex": 1,
-                            "flexDirection": "column",
-                            "justifyContent": "center",
-                          }
-                        }
-                        testID="action-menu-data-para-gonder-test-id"
-                      >
-                        <Text
-                          style={
-                            {
-                              "color": "rgba(34, 63, 70, 1)",
-                              "fontFamily": "Markpro-Book",
-                              "fontSize": 16,
-                              "fontWeight": 500,
-                              "textAlign": "auto",
-                            }
-                          }
-                        >
-                          Para Gonder
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "backgroundColor": "rgba(34, 63, 70, 0.15)",
-                          "height": 2,
-                          "maxHeight": 2,
-                          "opacity": 1,
-                          "width": "100%",
-                        }
-                      }
-                      variant="neutral-alpha-200"
-                    />
-                  </CellContainer>
-                  <CellContainer
-                    index={1}
-                    onLayout={[Function]}
-                    style={
-                      {
-                        "alignItems": "stretch",
-                        "flexDirection": "column",
-                        "left": 0,
-                        "position": "absolute",
-                        "top": 50,
-                        "width": 400,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexDirection": "column",
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        alignItemsCenter={true}
-                        animated={false}
-                        collapsable={false}
-                        focusable={true}
-                        justifyContentCenter={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onFocus={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flex": 1,
-                            "flexDirection": "column",
-                            "justifyContent": "center",
-                          }
-                        }
-                        testID="action-menu-data-hesap-hareketleri-incele-test-id"
-                      >
-                        <Text
-                          style={
-                            {
-                              "color": "rgba(34, 63, 70, 1)",
-                              "fontFamily": "Markpro-Book",
-                              "fontSize": 16,
-                              "fontWeight": 500,
-                              "textAlign": "auto",
-                            }
-                          }
-                        >
-                          Hesap Hareketleri Incele
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "backgroundColor": "rgba(34, 63, 70, 0.15)",
-                          "height": 2,
-                          "maxHeight": 2,
-                          "opacity": 1,
-                          "width": "100%",
-                        }
-                      }
-                      variant="neutral-alpha-200"
-                    />
-                  </CellContainer>
-                  <CellContainer
-                    index={2}
-                    onLayout={[Function]}
-                    style={
-                      {
-                        "alignItems": "stretch",
-                        "flexDirection": "column",
-                        "left": 0,
-                        "position": "absolute",
-                        "top": 100,
-                        "width": 400,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexDirection": "column",
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        alignItemsCenter={true}
-                        animated={false}
-                        collapsable={false}
-                        focusable={true}
-                        justifyContentCenter={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onFocus={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flex": 1,
-                            "flexDirection": "column",
-                            "justifyContent": "center",
-                          }
-                        }
-                        testID="action-menu-data-fatura-ode-test-id"
-                      >
-                        <Text
-                          style={
-                            {
-                              "color": "rgba(34, 63, 70, 1)",
-                              "fontFamily": "Markpro-Book",
-                              "fontSize": 16,
-                              "fontWeight": 500,
-                              "textAlign": "auto",
-                            }
-                          }
-                        >
-                          Fatura Öde
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "backgroundColor": "rgba(34, 63, 70, 0.15)",
-                          "height": 2,
-                          "maxHeight": 2,
-                          "opacity": 1,
-                          "width": "100%",
-                        }
-                      }
-                      variant="neutral-alpha-200"
-                    />
-                  </CellContainer>
-                  <CellContainer
-                    index={3}
-                    onLayout={[Function]}
-                    style={
-                      {
-                        "alignItems": "stretch",
-                        "flexDirection": "column",
-                        "left": 0,
-                        "position": "absolute",
-                        "top": 150,
-                        "width": 400,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexDirection": "column",
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        alignItemsCenter={true}
-                        animated={false}
-                        collapsable={false}
-                        focusable={true}
-                        justifyContentCenter={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onFocus={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flex": 1,
-                            "flexDirection": "column",
-                            "justifyContent": "center",
-                          }
-                        }
-                        testID="action-menu-data-hesap-bilgilerini-paylas-test-id"
-                      >
-                        <Text
-                          style={
-                            {
-                              "color": "rgba(34, 63, 70, 1)",
-                              "fontFamily": "Markpro-Book",
-                              "fontSize": 16,
-                              "fontWeight": 500,
-                              "textAlign": "auto",
-                            }
-                          }
-                        >
-                          Hesap Bilgilerini Paylaş
-                        </Text>
-                      </View>
-                    </View>
-                  </CellContainer>
-                </AutoLayoutView>
-                <CellContainer
-                  index={-1}
-                  style={
-                    [
-                      undefined,
-                      undefined,
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "backgroundColor": "rgba(34, 63, 70, 0.15)",
-                        "height": 2,
-                        "maxHeight": 2,
-                        "opacity": 1,
-                        "width": "100%",
-                      }
-                    }
-                    variant="neutral-alpha-200"
-                  />
-                </CellContainer>
-                <View
-                  style={
-                    {
-                      "paddingBottom": 0,
-                      "paddingRight": 0,
-                    }
-                  }
-                />
               </View>
-            </View>
-          </RCTScrollView>
+            </RCTScrollView>
+          </View>
         </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "rgba(0, 169, 206, 1)",
+            "borderColor": "white",
+            "borderRadius": 16,
+            "borderWidth": undefined,
+            "color": undefined,
+            "flex": undefined,
+            "flexDirection": "row",
+            "height": 108,
+            "justifyContent": "center",
+            "marginBottom": 41,
+            "opacity": 1,
+            "position": "relative",
+            "width": 658,
+          }
+        }
+        testID="action-menu-cancel-test-id"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            {
+              "color": "rgba(255, 255, 255, 1)",
+              "flexShrink": 1,
+              "fontFamily": "Markpro-Bold",
+              "fontSize": 26,
+              "fontWeight": undefined,
+              "textAlign": "center",
+              "textAlignVertical": "center",
+            }
+          }
+        >
+          Cancel
+        </Text>
       </View>
     </View>
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onLayout={[Function]}
+      pointerEvents="box-none"
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "rgba(0, 169, 206, 1)",
-          "borderColor": "white",
-          "borderRadius": 16,
-          "borderWidth": undefined,
-          "color": undefined,
-          "flex": undefined,
-          "flexDirection": "row",
-          "height": 108,
-          "justifyContent": "center",
-          "marginBottom": 41,
-          "opacity": 1,
-          "position": "relative",
-          "width": 658,
-        }
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "flexDirection": "column-reverse",
+            "justifyContent": "flex-start",
+            "top": 30,
+            "width": 750,
+          },
+        ]
       }
-      testID="action-menu-cancel-test-id"
     >
-      <Text
-        numberOfLines={1}
+      <View
         style={
           {
-            "color": "rgba(255, 255, 255, 1)",
-            "flexShrink": 1,
-            "fontFamily": "Markpro-Bold",
-            "fontSize": 26,
-            "fontWeight": undefined,
-            "textAlign": "center",
-            "textAlignVertical": "center",
+            "bottom": 0,
           }
         }
       >
-        Cancel
-      </Text>
+        <RCTSafeAreaView />
+      </View>
     </View>
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "flexDirection": "column-reverse",
-          "justifyContent": "flex-start",
-          "top": 30,
-          "width": 750,
-        },
-      ]
-    }
-  >
     <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
       style={
-        {
-          "bottom": 0,
-        }
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "bottom": 40,
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+            "width": 750,
+          },
+        ]
       }
     >
-      <RCTSafeAreaView />
-    </View>
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "bottom": 40,
-          "flexDirection": "column",
-          "justifyContent": "flex-end",
-          "width": 750,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        {
-          "bottom": 0,
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
         }
-      }
-    >
-      <RCTSafeAreaView />
+      >
+        <RCTSafeAreaView />
+      </View>
     </View>
   </View>
-</View>
+</KeyboardProvider>
 `;

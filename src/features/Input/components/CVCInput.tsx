@@ -2,7 +2,7 @@ import {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
-import {formatMessage, translator} from '../../../libs'
+import {formatMessage, useTranslator} from '../../../libs'
 import {AlertDialog} from '../../AlertDialog'
 import {Icon} from '../../Icon'
 import {Item} from '../../Item'
@@ -13,6 +13,8 @@ import {CVCInputStyles, InputStyles} from '../styles'
 import React from 'react'
 
 export const CVCInput: FC<CVCInputProps> = ({fontSize, onChangeText, theme, size, ...props}) => {
+  const {translator} = useTranslator()
+
   const handleTextChange = (inputText: string) => {
     let text = inputText.replace(/[^0-9]/g, '')
     text = text.length > 3 ? text.substring(0, 3) : text
