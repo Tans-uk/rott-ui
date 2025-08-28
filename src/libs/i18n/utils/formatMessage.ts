@@ -7,7 +7,7 @@ import '../../../utils/arrayExtensions'
 import '../../../utils/stringExtensions'
 
 import {RottUiContext} from '../../../contexts'
-import {languageMessages} from '../providers'
+import {languageMessages} from '../constants'
 import type {TranslationLanguageTypes} from './models'
 
 /**
