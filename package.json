@@ -33,6 +33,7 @@
   ],
   "scripts": {
     "example": "yarn workspace UIExample start",
+    "example:pod": "yarn workspace UIExample pod",
     "example:android": "yarn workspace UIExample android",
     "example:ios": "yarn workspace UIExample ios",
     "example:web": "yarn workspace UIExample web",
