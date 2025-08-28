@@ -1,5 +1,4 @@
-export {default as en} from './en-US.json'
 export * from './models'
 export * from './providers'
-export {default as tr} from './tr-TR.json'
 export * from './utils'
+export * from './hooks'
