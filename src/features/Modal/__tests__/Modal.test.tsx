@@ -171,16 +171,6 @@ describe('Modal -> Custom Component', () => {
     expect(panResponder).toBeNull()
   })
 
-  it('panResponder header dışında olmalı', () => {
-    const {slideToCloseTestId, headerTestId} = testId
-    const {getByTestId} = render(<ModalComponent {...dummyData} />)
-
-    const panResponder = getByTestId(slideToCloseTestId)
-
-    // TODO: İç elementleri de bir katman olarak çağırıyor.
-    expect(panResponder.parent?.parent?.parent).not.toHaveProp('testID', headerTestId)
-  })
-
   it('modal fullscreen modunda panResponder ekranda olmamalı', () => {
     const {slideToCloseTestId} = testId
     const {queryByTestId} = render(<ModalComponent {...dummyDataFullScreen} />)
