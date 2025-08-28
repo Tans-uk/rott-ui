@@ -1,7 +1,8 @@
 import React, {type FC, type PropsWithChildren} from 'react'
 
-import {en, tr} from '../../../libs'
 import {theme} from '../../../theme'
+import en from '../en-US.json'
+import tr from '../tr-TR.json'
 
 import {IntlProvider} from 'react-intl'
 
