@@ -1,127 +1,131 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tab -> Custom Component Tab snapshotı ile eşleşmeli 1`] = `
-<View
-  flex={1}
-  pointerEvents="box-none"
-  style={
-    {
-      "flex": 1,
-      "flexDirection": "column",
-    }
-  }
+<KeyboardProvider
+  enabled={true}
 >
   <View
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": false,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={false}
-    onClick={[Function]}
-    onLayout={[MockFunction]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      {
-        "alignItems": "center",
-        "justifyContent": "center",
-        "opacity": 1,
-        "width": 307,
-      }
-    }
-    testID="tab-test-id"
-  >
-    <Text
-      style={
-        {
-          "color": "rgba(234, 239, 240, 1)",
-          "fontSize": 14,
-        }
-      }
-    />
-  </View>
-  <View
-    onLayout={[Function]}
+    flex={1}
     pointerEvents="box-none"
     style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "flexDirection": "column-reverse",
-          "justifyContent": "flex-start",
-          "top": 30,
-          "width": 750,
-        },
-      ]
+      {
+        "flex": 1,
+        "flexDirection": "column",
+      }
     }
   >
     <View
-      style={
+      accessibilityState={
         {
-          "bottom": 0,
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": false,
         }
       }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onLayout={[MockFunction]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "opacity": 1,
+          "width": 307,
+        }
+      }
+      testID="tab-test-id"
     >
-      <RCTSafeAreaView />
+      <Text
+        style={
+          {
+            "color": "rgba(234, 239, 240, 1)",
+            "fontSize": 14,
+          }
+        }
+      />
     </View>
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "bottom": 40,
-          "flexDirection": "column",
-          "justifyContent": "flex-end",
-          "width": 750,
-        },
-      ]
-    }
-  >
     <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
       style={
-        {
-          "bottom": 0,
-        }
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "flexDirection": "column-reverse",
+            "justifyContent": "flex-start",
+            "top": 30,
+            "width": 750,
+          },
+        ]
       }
     >
-      <RCTSafeAreaView />
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
+        }
+      >
+        <RCTSafeAreaView />
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "bottom": 40,
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+            "width": 750,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
+        }
+      >
+        <RCTSafeAreaView />
+      </View>
     </View>
   </View>
-</View>
+</KeyboardProvider>
 `;

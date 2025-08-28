@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Util -> Translator english dil snapshotı eşleşmeli 1`] = `
+exports[`Util -> FormatMessage english dil snapshotı eşleşmeli 1`] = `
 {
   "COMMON.ACCOUNT.SELECTION": "Account Selection",
   "COMMON.AUTOMATIC": "Automatic",
@@ -104,7 +104,7 @@ sent to your phone number {phoneNumber}.",
   "PROFILE.LOGOUT.DESCRIPTION": "Are you sure you want to switch accounts?",
   "PROFILE.LOGOUT.TITLE": "Confirm Account Change",
   "SELECT.MONTH": "{month} Month",
-  "TEST": "TEST",
+  "TEST": "ASD",
   "TEST.WITH.PARAM": "TEST WITH {testText}",
   "VALIDATION.CONFIRMATION": "{name} confirmation is required.",
   "VALIDATION.CONFIRMATION_NOT_MATCH": "{name} and {confirmName} didn't match.",
@@ -123,7 +123,7 @@ sent to your phone number {phoneNumber}.",
 }
 `;
 
-exports[`Util -> Translator türkçe dil snapshotı eşleşmeli 1`] = `
+exports[`Util -> FormatMessage türkçe dil snapshotı eşleşmeli 1`] = `
 {
   "COMMON.ACCOUNT.SELECTION": "Account Selection",
   "COMMON.AUTOMATIC": "Otomatik",

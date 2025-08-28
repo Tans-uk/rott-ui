@@ -1,177 +1,181 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli 1`] = `
-<View
-  flex={1}
-  pointerEvents="box-none"
-  style={
-    {
-      "flex": 1,
-      "flexDirection": "column",
-    }
-  }
+<KeyboardProvider
+  enabled={true}
 >
   <View
+    flex={1}
+    pointerEvents="box-none"
     style={
       {
-        "flex": undefined,
+        "flex": 1,
         "flexDirection": "column",
       }
     }
   >
     <View
-      paddingTop={16}
       style={
         {
           "flex": undefined,
           "flexDirection": "column",
-          "opacity": 1,
-          "paddingTop": 31,
         }
       }
     >
       <View
-        alignItemsCenter={true}
-        paddingHorizontal={26}
+        paddingTop={16}
         style={
           {
-            "alignItems": "center",
-            "flex": undefined,
-            "flexDirection": "row",
-            "paddingHorizontal": 50,
-          }
-        }
-      >
-        <Text
-          style={
-            {
-              "color": "rgba(34, 63, 70, 1)",
-              "fontFamily": "Markpro-Bold",
-              "fontSize": 10,
-              "fontWeight": undefined,
-              "letterSpacing": 0.5,
-              "textAlign": "auto",
-            }
-          }
-          testID="input-label-test-id"
-        >
-          TEST LABEL
-        </Text>
-      </View>
-      <View
-        backgroundColor="rgba(255, 255, 255, 1)"
-        borderColor="rgba(0, 169, 206, 1)"
-        paddingHorizontal={16}
-        style={
-          {
-            "backgroundColor": "rgba(255, 255, 255, 1)",
             "flex": undefined,
             "flexDirection": "column",
-            "paddingHorizontal": 31,
+            "opacity": 1,
+            "paddingTop": 31,
           }
         }
       >
-        <TextInput
-          autoCapitalize="none"
-          editable={true}
-          keyboardType="default"
-          name="input"
-          onChangeText={[Function]}
-          placeholder="Test Label"
-          placeholderTextColor="rgba(161, 173, 175, 1)"
-          renderSeparator={true}
+        <View
+          alignItemsCenter={true}
+          paddingHorizontal={26}
           style={
             {
-              "color": "rgba(34, 63, 70, 1)",
-              "fontFamily": "Markpro-Medium",
-              "fontSize": 16,
-              "height": 76,
-              "letterSpacing": 0.5,
-              "width": "100%",
+              "alignItems": "center",
+              "flex": undefined,
+              "flexDirection": "row",
+              "paddingHorizontal": 50,
             }
           }
-          testID="input-test-id"
-          touched={null}
-          type="default"
-        />
+        >
+          <Text
+            style={
+              {
+                "color": "rgba(34, 63, 70, 1)",
+                "fontFamily": "Markpro-Bold",
+                "fontSize": 10,
+                "fontWeight": undefined,
+                "letterSpacing": 0.5,
+                "textAlign": "auto",
+              }
+            }
+            testID="input-label-test-id"
+          >
+            TEST LABEL
+          </Text>
+        </View>
+        <View
+          backgroundColor="rgba(255, 255, 255, 1)"
+          borderColor="rgba(0, 169, 206, 1)"
+          paddingHorizontal={16}
+          style={
+            {
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "flex": undefined,
+              "flexDirection": "column",
+              "paddingHorizontal": 31,
+            }
+          }
+        >
+          <TextInput
+            autoCapitalize="none"
+            editable={true}
+            keyboardType="default"
+            name="input"
+            onChangeText={[Function]}
+            placeholder="Test Label"
+            placeholderTextColor="rgba(161, 173, 175, 1)"
+            renderSeparator={true}
+            style={
+              {
+                "color": "rgba(34, 63, 70, 1)",
+                "fontFamily": "Markpro-Medium",
+                "fontSize": 16,
+                "height": 76,
+                "letterSpacing": 0.5,
+                "width": "100%",
+              }
+            }
+            testID="input-test-id"
+            touched={null}
+            type="default"
+          />
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "backgroundColor": "rgba(34, 63, 70, 0.15)",
+            "height": 2,
+            "maxHeight": 2,
+            "opacity": 1,
+            "width": "100%",
+          }
+        }
+        variant="neutral-alpha-200"
+      />
+    </View>
+    <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "flexDirection": "column-reverse",
+            "justifyContent": "flex-start",
+            "top": 30,
+            "width": 750,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
+        }
+      >
+        <RCTSafeAreaView />
       </View>
     </View>
     <View
+      onLayout={[Function]}
+      pointerEvents="box-none"
       style={
-        {
-          "backgroundColor": "rgba(34, 63, 70, 0.15)",
-          "height": 2,
-          "maxHeight": 2,
-          "opacity": 1,
-          "width": "100%",
-        }
-      }
-      variant="neutral-alpha-200"
-    />
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "flexDirection": "column-reverse",
-          "justifyContent": "flex-start",
-          "top": 30,
-          "width": 750,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        {
-          "bottom": 0,
-        }
+        [
+          {
+            "alignSelf": "center",
+            "elevation": 999999,
+            "flex": 0,
+            "maxWidth": "100%",
+            "position": "absolute",
+            "zIndex": 999999,
+          },
+          {
+            "bottom": 40,
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+            "width": 750,
+          },
+        ]
       }
     >
-      <RCTSafeAreaView />
-    </View>
-  </View>
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      [
-        {
-          "alignSelf": "center",
-          "elevation": 999999,
-          "flex": 0,
-          "maxWidth": "100%",
-          "position": "absolute",
-          "zIndex": 999999,
-        },
-        {
-          "bottom": 40,
-          "flexDirection": "column",
-          "justifyContent": "flex-end",
-          "width": 750,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        {
-          "bottom": 0,
+      <View
+        style={
+          {
+            "bottom": 0,
+          }
         }
-      }
-    >
-      <RCTSafeAreaView />
+      >
+        <RCTSafeAreaView />
+      </View>
     </View>
   </View>
-</View>
+</KeyboardProvider>
 `;

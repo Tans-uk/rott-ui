@@ -1,6 +1,6 @@
 import React from 'react'
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
-import {translator} from '../../../libs'
+import {formatMessage} from '../../../libs'
 import {Label} from '../../Label'
 import {CheckBoxInput} from '../components'
 
@@ -33,16 +33,16 @@ describe('CheckBox Input -> Custom Input', () => {
 
   it('checkbox render olduğunda description string olarak verilmişse ekranda default label ile renderlanmalı', () => {
     const {checkboxDefaultLabelTestId} = testId
-    const {getByText} = render(<CheckBoxInput name='test' description={translator('TEST')} />)
+    const {getByText} = render(<CheckBoxInput name='test' description={formatMessage('TEST')} />)
 
-    const checkboxLabel = getByText(translator('TEST'))
+    const checkboxLabel = getByText(formatMessage('TEST'))
     expect(checkboxLabel).toHaveProp('testID', checkboxDefaultLabelTestId)
   })
 
   it('checkbox render olduğunda description React element olarak verilmişse default label ile renderlanmamalı', () => {
     const {checkboxDefaultLabelTestId} = testId
     const {queryByTestId} = render(
-      <CheckBoxInput name='test' description={<Label>{translator('TEST')}</Label>} />
+      <CheckBoxInput name='test' description={<Label>{formatMessage('TEST')}</Label>} />
     )
 
     const checkboxLabel = queryByTestId(checkboxDefaultLabelTestId)
