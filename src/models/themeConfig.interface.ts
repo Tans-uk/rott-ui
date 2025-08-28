@@ -8,9 +8,9 @@ export interface ThemeConfig {
     height: number
   }
   options?: {
-    hasNotch: boolean
-    hasDynamicIsland: boolean
-    language: Language
+    hasNotch?: boolean
+    hasDynamicIsland?: boolean
+    language?: Language
   }
   colors: Record<string, string>
   images: Record<string, ImageSourcePropType>

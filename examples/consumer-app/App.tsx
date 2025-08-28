@@ -76,7 +76,11 @@ function App() {
   return (
     <RottProvider
       config={{
-        options: { appLanguage: { name: 'tr-TR' } },
+        options: {
+          language: { name: 'en-US' },
+          hasNotch: false,
+          hasDynamicIsland: false,
+        },
       }}
     >
       <Container noPadding>
@@ -190,7 +194,20 @@ function App() {
                 mode: 'fill',
                 noStroke: true,
               }}
-              onPress={() => {}}
+              onPress={() =>
+                AlertDialog.show({
+                  title: 'Test',
+                  text: 'Test',
+                  buttons: [
+                    {
+                      text: 'OK',
+                      variant: 'primary',
+                      size: 'full',
+                      onPress: () => {},
+                    },
+                  ],
+                })
+              }
             >
               Social Help
             </Button>
