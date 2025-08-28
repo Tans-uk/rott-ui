@@ -351,9 +351,7 @@ export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
   const defaultLanguage: Language = {name: 'en-US'}
   const language: Language = config?.options?.language ?? theme.options?.language
   const resolvedLanguage =
-    language && Object.keys(languageMessages).includes(language.name)
-      ? {name: language.name}
-      : defaultLanguage
+    language && Object.keys(languageMessages).includes(language.name) ? language : defaultLanguage
 
   return (
     <SafeAreaProvider>
