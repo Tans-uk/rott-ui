@@ -1,5 +1,5 @@
 // React Imports
-import {useEffect, useRef, type FC} from 'react'
+import React, {useEffect, useRef, type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
@@ -23,7 +23,6 @@ import type {DataModel, DateInputProps} from '../models'
 import {startOfDay} from 'date-fns'
 
 import DatePicker from '@react-native-community/datetimepicker'
-import React from 'react'
 
 /**
  *
