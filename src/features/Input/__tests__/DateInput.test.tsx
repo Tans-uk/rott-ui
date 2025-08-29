@@ -140,12 +140,13 @@ describe('Date Input -> Custom Input', () => {
 
   it('maximum date verildikten sonra daha ileri bir gün seçilirse tanımlanan maximum date değer olarak atanmalı.', async () => {
     const onDateChangeMock = jest.fn(() => currentDate)
+    const maxDate = new Date(currentDate)
     const {getByTestId} = render(
       <DateInput
         name='test'
         mode='date'
         date={currentDate}
-        maximumDate={currentDate}
+        maximumDate={maxDate}
         onDateChange={onDateChangeMock}
       />
     )
@@ -160,12 +161,14 @@ describe('Date Input -> Custom Input', () => {
       const dateInput = getByTestId(dateInputTestId)
       expect(dateInput).toBeOnTheScreen()
 
-      fireEvent(dateInput, 'onDateChange', new Date(currentDate.setHours(24)))
+      // Create a new date that's one day after the maximum date without mutating currentDate
+      const futureDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000)
+      fireEvent(dateInput, 'onDateChange', futureDate)
 
       const confirmButton = getByTestId(dateInputConfirmButtonTestId)
       fireEvent.press(confirmButton)
     })
 
-    expect(onDateChangeMock).toHaveBeenCalledWith(startOfDay(currentDate))
+    expect(onDateChangeMock).toHaveBeenCalledWith(startOfDay(maxDate)) 
   })
 })
