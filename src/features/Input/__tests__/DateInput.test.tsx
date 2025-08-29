@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {DateInput} from '../components'
 
@@ -45,7 +46,7 @@ describe('Date Input -> Custom Input', () => {
     const {getByTestId, queryByTestId} = render(
       <DateInput
         name='test'
-        value={new Date() as any} // Fix: Pass a valid date value in the format 'YYYY-MM-DD'.
+        value={currentDate.toDateString()} // Fix: Pass a valid date value in the format 'YYYY-MM-DD'.
         date={currentDate}
         mode='date'
         allowClear
@@ -149,8 +150,11 @@ describe('Date Input -> Custom Input', () => {
       />
     )
 
-    const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
-    fireEvent.press(dateInputValueContainer)
+    await waitFor(() => {
+      const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
+
+      fireEvent.press(dateInputValueContainer)
+    })
 
     await waitFor(() => {
       const dateInput = getByTestId(dateInputTestId)
