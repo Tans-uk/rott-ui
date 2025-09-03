@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { IntlProvider } from 'react-intl';
-import { useLanguageState } from './contexts/LanguageStateProvider';
+import { useLanguageState } from './src/contexts/LanguageStateProvider';
 
 export const languageMessages = {
   'en-US': {

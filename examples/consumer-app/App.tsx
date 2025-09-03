@@ -7,9 +7,9 @@
 import React from 'react';
 
 import { RottProvider } from '@tansuk/rott-ui';
-import { LanguageStateProvider, useLanguageState } from './contexts';
+import { LanguageStateProvider, useLanguageState } from './src/contexts';
 import { I18nProvider } from './I18nProvider';
-import EntryScreen from './features/auth/components/EntryScreen';
+import EntryScreen from './src/features/auth/components/EntryScreen';
 
 function AppContent() {
   const { selectedLanguage } = useLanguageState();

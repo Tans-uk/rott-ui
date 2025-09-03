@@ -9,20 +9,26 @@ import {
   Separator,
   CommonItem,
   Label,
-  Button,
   Content,
   BottomMenu,
   Input,
-  AlertDialog,
   BottomMenuItemModel,
+  FormContainer,
+  ButtonGroup,
 } from '@tansuk/rott-ui';
 import { useIntl } from 'react-intl';
 import { useLanguageState } from '../../../contexts';
-import { languageMessages } from '../../../I18nProvider';
+import { languageMessages } from '../../../../I18nProvider';
+import { useState } from 'react';
 
 export default function EntryScreen() {
   const { selectedLanguage, setLanguage } = useLanguageState();
   const intl = useIntl();
+
+  const [{ username, password }, setCredentials] = useState({
+    username: '',
+    password: '',
+  });
 
   // Bottom menu items
   const entryScreenItems: BottomMenuItemModel[] = [
@@ -78,7 +84,7 @@ export default function EntryScreen() {
     <Container noPadding>
       <Header
         height={40}
-        logo="PTTBANK_WHITE"
+        logo="PTTBANK_BLACK"
         leftElement={
           <Item flex={1} row width={80}>
             <Pressable
@@ -178,94 +184,39 @@ export default function EntryScreen() {
         }
       />
 
-      <Content
-        flex={1}
-        justifyContentCenter
-        alignItemsCenter
-        useBottomInset
-        marginBottom={88}
-      >
-        <Item marginTop={24}>
-          <Input
-            name="date"
-            type="date"
-            mode="datetime"
-            value={new Date().toISOString()}
-            onDateChange={event => {
-              console.log(event);
-            }}
+      <Content flex={1} justifyContentCenter alignItemsCenter useBottomInset>
+        <Item size="full" alignItemsCenter>
+          <FormContainer>
+            <Input
+              label="Username"
+              name="username"
+              type="default"
+              value={username}
+              size="full"
+              onChangeText={text =>
+                setCredentials({ username: text, password })
+              }
+            />
+
+            <Input
+              label="Password"
+              name="password"
+              type="password"
+              value={password}
+              size="full"
+              onChangeText={text =>
+                setCredentials({ username, password: text })
+              }
+              renderSeparator={false}
+            />
+          </FormContainer>
+
+          <ButtonGroup
+            buttons={[
+              { text: 'Login', variant: 'primary', size: 'full' },
+              { text: 'Register', variant: 'secondary-outline', size: 'full' },
+            ]}
           />
-          <Button
-            testID="login-button-test-id"
-            key="h4"
-            size="full"
-            variant="primary"
-            fontSize="xl"
-            onPress={() => AlertDialog.test()}
-            marginBottom={24}
-          >
-            {intl.formatMessage({ id: 'COMMON.LOGIN' })}
-          </Button>
-
-          <Button
-            testID="hgs-button-test-id"
-            size={{ width: 'full', height: 'md' }}
-            fontSize="lg"
-            variant="white"
-            leftImage={{
-              name: 'HGS_LOGO',
-              absolute: true,
-              width: 48,
-              height: 48,
-            }}
-            rightIcon={{
-              name: 'ARROW_RIGHT',
-              variant: 'primary',
-              mode: 'fill',
-              noStroke: true,
-              absolute: true,
-              width: 80,
-              height: 80,
-            }}
-            onPress={() => {}}
-          >
-            HGS
-          </Button>
-
-          <Button
-            testID="social-help-button-test-id"
-            size={{ width: 'full', height: 'md' }}
-            fontSize="lg"
-            variant="primary"
-            marginTop={8}
-            leftImage={{
-              name: 'SOCIAL_HELP_ICON',
-              tintColor: 'white',
-              absolute: true,
-            }}
-            rightIcon={{
-              name: 'ARROW_LEFT',
-              variant: 'danger',
-              absolute: true,
-              mode: 'fill',
-              noStroke: true,
-            }}
-            onPress={() =>
-              AlertDialog.show({
-                title: 'Test',
-                text: 'Test',
-                buttons: [
-                  {
-                    variant: 'primary',
-                    size: 'full',
-                    onPress: () => {},
-                  },
-                ],
-              })
-            }
-          >
-            {intl.formatMessage({ id: 'COMMON.SOCIAL_HELP' })}
-          </Button>
         </Item>
       </Content>
 

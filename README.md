@@ -40,23 +40,24 @@ npm install react react-native react-intl date-fns \
 
 #### Key Dependencies & Links
 
-| Package | Version | Repository |
-|---------|---------|------------|
-| `@shopify/flash-list` | >=1.8.0 | [GitHub](https://github.com/Shopify/flash-list) |
-| `react-native-reanimated` | 4.0.1 | [GitHub](https://github.com/software-mansion/react-native-reanimated) |
-| `react-native-safe-area-context` | >=5.4.1 | [GitHub](https://github.com/th3rdwave/react-native-safe-area-context) |
-| `react-native-svg` | >=15.12.0 | [GitHub](https://github.com/software-mansion/react-native-svg) |
-| `react-native-linear-gradient` | 2.8.3 | [GitHub](https://github.com/react-native-linear-gradient/react-native-linear-gradient) |
-| `react-intl` | >=7.1.0 | [GitHub](https://github.com/formatjs/formatjs) |
-| `date-fns` | >=4.0.0 | [GitHub](https://github.com/date-fns/date-fns) |
+| Package                          | Version   | Repository                                                                             |
+| -------------------------------- | --------- | -------------------------------------------------------------------------------------- |
+| `@shopify/flash-list`            | >=1.8.0   | [GitHub](https://github.com/Shopify/flash-list)                                        |
+| `react-native-reanimated`        | 4.0.1     | [GitHub](https://github.com/software-mansion/react-native-reanimated)                  |
+| `react-native-safe-area-context` | >=5.4.1   | [GitHub](https://github.com/th3rdwave/react-native-safe-area-context)                  |
+| `react-native-svg`               | >=15.12.0 | [GitHub](https://github.com/software-mansion/react-native-svg)                         |
+| `react-native-linear-gradient`   | 2.8.3     | [GitHub](https://github.com/react-native-linear-gradient/react-native-linear-gradient) |
+| `react-intl`                     | >=7.1.0   | [GitHub](https://github.com/formatjs/formatjs)                                         |
+| `date-fns`                       | >=4.0.0   | [GitHub](https://github.com/date-fns/date-fns)                                         |
 
 ## 🚀 Quick Start
 
 ### 1. Wrap your app with RottProvider
 
 ```tsx
-import React from 'react';
-import { RottProvider } from '@tansuk/rott-ui';
+import React from 'react'
+
+import {RottProvider} from '@tansuk/rott-ui'
 
 function App() {
   return (
@@ -67,63 +68,47 @@ function App() {
           hasNotch: false,
           hasDynamicIsland: false,
         },
-      }}
-    >
+      }}>
       {/* Your app content */}
     </RottProvider>
-  );
+  )
 }
 ```
 
 ### 2. Use components in your screens
 
 ```tsx
-import React from 'react';
-import {
-  Container,
-  Header,
-  Content,
-  Button,
-  Input,
-  Modal,
-  Icon,
-  Label
-} from '@tansuk/rott-ui';
+import React from 'react'
+
+import {Button, Container, Content, Header, Icon, Input, Label, Modal} from '@tansuk/rott-ui'
 
 export default function MyScreen() {
   return (
     <Container noPadding>
       <Header
         height={40}
-        logo="MY_LOGO"
-        leftElement={
-          <Icon name="MENU" height={24} width={24} />
-        }
+        logo='MY_LOGO'
+        leftElement={<Icon name='MENU' height={24} width={24} />}
       />
-      
+
       <Content flex={1} justifyContentCenter alignItemsCenter>
-        <Input
-          name="email"
-          type="email"
-          placeholder="Enter your email"
-        />
-        
+        <Input name='email' type='email' placeholder='Enter your email' />
+
         <Button
-          size="full"
-          variant="primary"
-          fontSize="xl"
+          size='full'
+          variant='primary'
+          fontSize='xl'
           marginTop={16}
-          onPress={() => console.log('Button pressed!')}
-        >
+          onPress={() => console.log('Button pressed!')}>
           Get Started
         </Button>
-        
-        <Label fontSize="lg" variant="secondary" marginTop={8}>
+
+        <Label fontSize='lg' variant='secondary' marginTop={8}>
           Welcome to Rott UI
         </Label>
       </Content>
     </Container>
-  );
+  )
 }
 ```
 
@@ -132,7 +117,7 @@ export default function MyScreen() {
 Create a `rott.config.ts` file in your project root for type-safe theming:
 
 ```typescript
-import { defineRottConfig } from '@tansuk/rott-ui';
+import {defineRottConfig} from '@tansuk/rott-ui'
 
 export const config = defineRottConfig({
   colors: {
@@ -140,7 +125,7 @@ export const config = defineRottConfig({
     brandAccent: '#ff00aa',
     customButton: '#00ff00',
   },
-} as const);
+} as const)
 ```
 
 Add the path mapping to your `tsconfig.json`:
@@ -221,56 +206,52 @@ Here's a complete example from our consumer app:
 
 ```tsx
 import {
-  Container,
-  Header,
-  Content,
-  Button,
-  Input,
-  Modal,
   BottomMenu,
   BottomMenuItemModel,
-} from '@tansuk/rott-ui';
+  Button,
+  Container,
+  Content,
+  Header,
+  Input,
+  Modal,
+} from '@tansuk/rott-ui'
 
 export default function EntryScreen() {
   const menuItems: BottomMenuItemModel[] = [
     {
-      icon: { name: 'FAST', noStroke: true, mode: 'fill' },
+      icon: {name: 'FAST', noStroke: true, mode: 'fill'},
       title: 'Fast',
       onPress: () => {},
     },
     {
-      icon: { name: 'LOCATION', noStroke: true },
+      icon: {name: 'LOCATION', noStroke: true},
       title: 'Near ATM',
       onPress: () => {},
     },
     {
-      image: { name: 'QR_BUTTON', width: 56, height: 56 },
-      containerStyle: { top: -24 },
+      image: {name: 'QR_BUTTON', width: 56, height: 56},
+      containerStyle: {top: -24},
       onPress: () => {},
     },
-  ];
+  ]
 
   return (
     <Container noPadding>
-      <Header
-        height={40}
-        logo="COMPANY_LOGO"
-        rightElement={<NotificationIcon />}
-      />
-      
+      <Header height={40} logo='COMPANY_LOGO' rightElement={<NotificationIcon />} />
+
       <Content flex={1} useBottomInset marginBottom={88}>
         <Input
-          name="date"
-          type="date"
-          mode="datetime"
+          name='date'
+          type='date'
+          mode='datetime'
           value={new Date().toISOString()}
           onDateChange={(date) => console.log(date)}
         />
-        
+
         <Button
-          size="full"
-          variant="primary"
-          fontSize="xl"
+          size='full'
+          variant='primary'
+          fontSize='xl'
           leftImage={{
             name: 'LOGO',
             absolute: true,
@@ -283,15 +264,14 @@ export default function EntryScreen() {
             mode: 'fill',
             absolute: true,
           }}
-          onPress={() => {}}
-        >
+          onPress={() => {}}>
           Get Started
         </Button>
       </Content>
-      
+
       <BottomMenu menuItems={menuItems} />
     </Container>
-  );
+  )
 }
 ```
 
@@ -313,7 +293,7 @@ Modal.showModal({
     },
   },
   children: <SettingsContent />,
-});
+})
 ```
 
 ### Alert Dialogs
@@ -334,32 +314,26 @@ AlertDialog.show({
       onPress: () => AlertDialog.hide(),
     },
   ],
-});
+})
 ```
 
 ### Input Variants
 
 ```tsx
-{/* Date Input */}
-<Input
-  type="date"
-  mode="datetime"
-  onDateChange={(date) => console.log(date)}
-/>
+{
+  /* Date Input */
+}
+;<Input type='date' mode='datetime' onDateChange={(date) => console.log(date)} />
 
-{/* Masked Phone Input */}
-<Input
-  type="phone"
-  mask="+1 ([000]) [000]-[0000]"
-  onChangeText={(text) => console.log(text)}
-/>
+{
+  /* Masked Phone Input */
+}
+;<Input type='phone' mask='+1 ([000]) [000]-[0000]' onChangeText={(text) => console.log(text)} />
 
-{/* Search with Autocomplete */}
-<Input
-  type="search"
-  placeholder="Search..."
-  onSearch={(query) => console.log(query)}
-/>
+{
+  /* Search with Autocomplete */
+}
+;<Input type='search' placeholder='Search...' onSearch={(query) => console.log(query)} />
 ```
 
 ## 🤝 Contributing
