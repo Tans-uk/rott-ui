@@ -21,14 +21,16 @@ describe('Date Input -> Custom Input', () => {
     expect(renderedDateInput).toMatchSnapshot()
   })
 
-  it('date inputa tıklandığında input modal olarak açılmalı', () => {
+  it('date inputa tıklandığında input modal olarak açılmalı', async () => {
     const {getByTestId} = render(<DateInput name='test' date={currentDate} />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
     fireEvent.press(dateInputValueContainer)
 
-    const dateInputModal = getByTestId(dateInputModalTestId)
-    expect(dateInputModal).toBeVisible()
+    await waitFor(() => {
+      const dateInputModal = getByTestId(dateInputModalTestId)
+      expect(dateInputModal).toBeVisible()
+    })
   })
 
   it('date input allowClear propertysi almadıysa değer temizleme butonu ekranda gözükmemeli.', () => {
@@ -169,6 +171,6 @@ describe('Date Input -> Custom Input', () => {
       fireEvent.press(confirmButton)
     })
 
-    expect(onDateChangeMock).toHaveBeenCalledWith(startOfDay(maxDate)) 
+    expect(onDateChangeMock).toHaveBeenCalledWith(startOfDay(maxDate))
   })
 })

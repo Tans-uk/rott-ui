@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {render} from '../../../__tests__/utils/testUtils'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
@@ -21,6 +22,7 @@ describe('Skeleton -> Custom Component', () => {
   it('skeleton snapshotı ile eşleşmeli', () => {
     const {skeletonTestId} = testId
     const {width, height} = skeletonStyle
+
     const rendered = render(
       <Skeleton testID={skeletonTestId} show={true} width={width} height={height} />
     )

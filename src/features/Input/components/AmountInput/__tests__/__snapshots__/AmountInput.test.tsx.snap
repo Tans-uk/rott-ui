@@ -15,10 +15,13 @@ exports[`Amount Input -> Custom Input amount input ilk render anında snapshot i
     }
   >
     <View
+      height={56}
       style={
         {
           "flex": undefined,
           "flexDirection": "column",
+          "height": 108,
+          "maxHeight": 108,
         }
       }
     >
@@ -45,6 +48,7 @@ exports[`Amount Input -> Custom Input amount input ilk render anında snapshot i
         backgroundColor="rgba(61, 88, 94, 1)"
         collapsable={false}
         focusable={true}
+        height={56}
         justifyContentCenter={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -63,7 +67,9 @@ exports[`Amount Input -> Custom Input amount input ilk render anında snapshot i
             "backgroundColor": "rgba(61, 88, 94, 1)",
             "flex": 1,
             "flexDirection": "column",
+            "height": 108,
             "justifyContent": "center",
+            "maxHeight": 108,
             "overflow": "hidden",
             "paddingHorizontal": 31,
             "paddingVertical": 31,

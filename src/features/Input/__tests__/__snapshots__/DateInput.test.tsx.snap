@@ -21,7 +21,6 @@ exports[`Date Input -> Custom Input ilk render anında snapshot ile eşleşmeli 
           "flexDirection": "row",
         }
       }
-      testID="date-input-test-id"
     >
       <View
         height={56}
@@ -150,7 +149,7 @@ exports[`Date Input -> Custom Input ilk render anında snapshot ile eşleşmeli 
                     "width": "100%",
                   }
                 }
-                testID="pressable-test-id"
+                testID="date-input-test-id"
               >
                 <Text
                   style={

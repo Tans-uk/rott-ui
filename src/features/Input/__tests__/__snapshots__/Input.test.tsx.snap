@@ -63,10 +63,13 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
           </Text>
         </View>
         <View
+          height={56}
           style={
             {
               "flex": undefined,
               "flexDirection": "column",
+              "height": 108,
+              "maxHeight": 108,
               "width": "100%",
             }
           }
@@ -94,6 +97,7 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
             backgroundColor="rgba(255, 255, 255, 1)"
             collapsable={false}
             focusable={true}
+            height={56}
             justifyContentCenter={true}
             onBlur={[Function]}
             onClick={[Function]}
@@ -113,7 +117,9 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
                 "backgroundColor": "rgba(255, 255, 255, 1)",
                 "flex": 1,
                 "flexDirection": "column",
+                "height": 108,
                 "justifyContent": "center",
+                "maxHeight": 108,
                 "overflow": "hidden",
                 "paddingHorizontal": 31,
                 "paddingVertical": 31,

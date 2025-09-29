@@ -335,7 +335,7 @@ export const DateInput: FC<DateInputProps> = ({
   return (
     <>
       {viewType === 'input' && (
-        <Item row testID={testID ?? 'date-input-value-container'}>
+        <Item row>
           {/* Item row ile InputContainer'ın row olmasını sağladık */}
           <InputContainer
             {...props}
@@ -351,6 +351,7 @@ export const DateInput: FC<DateInputProps> = ({
               color: themeConfig.colors['grey-200'],
             }}>
             <Pressable
+              testID={testID ?? 'date-input-value-container'}
               textSize='lg'
               text={
                 data && value
