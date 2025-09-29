@@ -15,128 +15,246 @@ exports[`Amount Input -> Custom Input amount input ilk render anında snapshot i
     }
   >
     <View
-      onTouchStart={[Function]}
-      relative={true}
       style={
         {
           "flex": undefined,
           "flexDirection": "column",
-          "position": "relative",
         }
       }
     >
       <View
-        name="test"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        animated={false}
+        backgroundColor="rgba(61, 88, 94, 1)"
+        collapsable={false}
+        focusable={true}
+        justifyContentCenter={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        overflowHidden={true}
+        paddingHorizontal={16}
+        paddingVertical={16}
         style={
           {
-            "flex": undefined,
-            "flexDirection": "row",
+            "backgroundColor": "rgba(61, 88, 94, 1)",
+            "flex": 1,
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingHorizontal": 31,
+            "paddingVertical": 31,
           }
         }
       >
-        <TextInput
-          editable={true}
-          keyboardType="number-pad"
-          maxLength={11}
-          nativeID="amount-native-id"
-          onChangeText={[Function]}
-          placeholder="0"
-          placeholderTextColor="rgba(161, 173, 175, 1)"
-          style={
-            {
-              "color": "rgba(161, 173, 175, 1)",
-              "fontFamily": "Markpro-Medium",
-              "fontSize": 18,
-              "height": 89,
-              "letterSpacing": 0.5,
-              "width": "auto",
-            }
-          }
-          testID="amount-test-id"
-          value=""
-        />
         <View
-          justifyContentFlexEnd={true}
-          paddingBottom={19}
+          alignItemsCenter={true}
+          flex={1}
+          justifyContentCenter={true}
           style={
             {
-              "flex": undefined,
-              "flexDirection": "column",
-              "justifyContent": "flex-end",
-              "paddingBottom": 37,
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
             }
           }
         >
-          <Text
+          <View
+            flex={1}
             style={
               {
-                "color": "rgba(161, 173, 175, 1)",
-                "fontFamily": "Markpro-Bold",
-                "fontSize": 18,
-                "fontWeight": "bold",
-                "textAlign": "auto",
+                "flex": 1,
+                "flexDirection": "column",
               }
             }
           >
-            ,
-          </Text>
-        </View>
-        <TextInput
-          editable={true}
-          keyboardType="number-pad"
-          maxLength={2}
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          placeholder="00"
-          placeholderTextColor="rgba(161, 173, 175, 1)"
-          style={
-            {
-              "color": "rgba(161, 173, 175, 1)",
-              "fontFamily": "Markpro-Medium",
-              "fontSize": 18,
-              "height": 89,
-              "letterSpacing": 0.5,
-              "width": "auto",
+            <View
+              style={
+                {
+                  "flex": undefined,
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <TextInput
+                editable={true}
+                keyboardType="number-pad"
+                maxLength={11}
+                nativeID="amount-native-id"
+                onChangeText={[Function]}
+                placeholder="0"
+                placeholderTextColor="rgba(161, 173, 175, 1)"
+                style={
+                  {
+                    "color": "rgba(161, 173, 175, 1)",
+                    "fontFamily": "Markpro-Medium",
+                    "fontSize": 18,
+                    "height": 89,
+                    "letterSpacing": 0.5,
+                    "width": "auto",
+                  }
+                }
+                testID="amount-test-id"
+                value=""
+              />
+              <View
+                justifyContentFlexEnd={true}
+                paddingBottom={19}
+                style={
+                  {
+                    "flex": undefined,
+                    "flexDirection": "column",
+                    "justifyContent": "flex-end",
+                    "paddingBottom": 37,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    {
+                      "color": "rgba(161, 173, 175, 1)",
+                      "fontFamily": "Markpro-Bold",
+                      "fontSize": 18,
+                      "fontWeight": "bold",
+                      "textAlign": "auto",
+                    }
+                  }
+                >
+                  ,
+                </Text>
+              </View>
+              <TextInput
+                editable={true}
+                keyboardType="number-pad"
+                maxLength={2}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                onKeyPress={[Function]}
+                placeholder="00"
+                placeholderTextColor="rgba(161, 173, 175, 1)"
+                style={
+                  {
+                    "color": "rgba(161, 173, 175, 1)",
+                    "fontFamily": "Markpro-Medium",
+                    "fontSize": 18,
+                    "height": 89,
+                    "letterSpacing": 0.5,
+                    "width": "auto",
+                  }
+                }
+                testID="currency-test-id"
+                value=""
+              />
+            </View>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
             }
-          }
-          testID="currency-test-id"
-          value=""
-        />
-      </View>
-      <View
-        absolute={true}
-        bottom={16}
-        right={0}
-        style={
-          {
-            "bottom": 31,
-            "flex": undefined,
-            "flexDirection": "column",
-            "position": "absolute",
-            "right": 0,
-          }
-        }
-      >
-        <View
-          style={
-            {
-              "flex": undefined,
-              "flexDirection": "column",
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
             }
-          }
-          testID="currency-icon-test-id"
-        >
-          <Text
-            fill="rgba(161, 173, 175, 1)"
-            height={46}
-            strokeWidth={0}
-            testID="mock-icon"
-            width={46}
+            accessible={true}
+            animated={false}
+            collapsable={false}
+            color="rgba(161, 173, 175, 1)"
+            flex={0}
+            focusable={true}
+            height={24}
+            marginLeft={16}
+            name="TL"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "flex": 0,
+                "flexDirection": "column",
+                "height": 46,
+                "marginLeft": 31,
+                "maxHeight": 46,
+                "width": 46,
+              }
+            }
+            testID="right-icon-test-id"
+            width={24}
           >
-            MockIcon
-          </Text>
+            <View
+              height={24}
+              style={
+                {
+                  "flex": undefined,
+                  "flexDirection": "column",
+                  "height": 46,
+                  "maxHeight": 46,
+                  "width": 46,
+                }
+              }
+              width={24}
+            >
+              <View
+                style={
+                  {
+                    "flex": undefined,
+                    "flexDirection": "column",
+                  }
+                }
+              >
+                <Text
+                  fill="rgba(161, 173, 175, 1)"
+                  height={46}
+                  name="TL"
+                  strokeWidth={0}
+                  testID="currency-icon-test-id"
+                  width={46}
+                >
+                  MockIcon
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
     </View>

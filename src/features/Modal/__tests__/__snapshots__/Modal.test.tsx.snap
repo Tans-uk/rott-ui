@@ -226,13 +226,13 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                             "flexDirection": "column",
                           }
                         }
-                        testID="slide-to-close-button-test-id"
                       >
                         <Text
                           fill="rgba(234, 239, 240, 0.15)"
                           height={77}
+                          name="LINE"
                           strokeWidth={0}
-                          testID="mock-icon"
+                          testID="slide-to-close-button-test-id"
                           width={77}
                         >
                           MockIcon
@@ -344,13 +344,12 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                                   "flexDirection": "column",
                                 }
                               }
-                              testID="header-left-icon-test-id"
                             >
                               <Text
                                 fill="rgba(255, 255, 255, 1)"
                                 height={46}
                                 strokeWidth={0}
-                                testID="mock-icon"
+                                testID="header-left-icon-test-id"
                                 width={46}
                               >
                                 MockIcon
@@ -478,13 +477,13 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                                   "flexDirection": "column",
                                 }
                               }
-                              testID="header-right-icon-test-id"
                             >
                               <Text
                                 fill="rgba(255, 255, 255, 1)"
                                 height={46}
+                                name="REMOVE_BIG"
                                 strokeWidth={0}
-                                testID="mock-icon"
+                                testID="header-right-icon-test-id"
                                 width={46}
                               >
                                 MockIcon

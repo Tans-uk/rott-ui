@@ -23,6 +23,7 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
       }
     >
       <View
+        opacity={1}
         paddingTop={16}
         style={
           {
@@ -62,41 +63,113 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
           </Text>
         </View>
         <View
-          backgroundColor="rgba(255, 255, 255, 1)"
-          borderColor="rgba(0, 169, 206, 1)"
-          paddingHorizontal={16}
           style={
             {
-              "backgroundColor": "rgba(255, 255, 255, 1)",
               "flex": undefined,
               "flexDirection": "column",
-              "paddingHorizontal": 31,
+              "width": "100%",
             }
           }
         >
-          <TextInput
-            autoCapitalize="none"
-            editable={true}
-            keyboardType="default"
-            name="input"
-            onChangeText={[Function]}
-            placeholder="Test Label"
-            placeholderTextColor="rgba(161, 173, 175, 1)"
-            renderSeparator={true}
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            animated={false}
+            backgroundColor="rgba(255, 255, 255, 1)"
+            collapsable={false}
+            focusable={true}
+            justifyContentCenter={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            overflowHidden={true}
+            paddingHorizontal={16}
+            paddingVertical={16}
+            size="full"
             style={
               {
-                "color": "rgba(34, 63, 70, 1)",
-                "fontFamily": "Markpro-Medium",
-                "fontSize": 16,
-                "height": 76,
-                "letterSpacing": 0.5,
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "flex": 1,
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "overflow": "hidden",
+                "paddingHorizontal": 31,
+                "paddingVertical": 31,
                 "width": "100%",
               }
             }
-            testID="input-test-id"
-            touched={null}
-            type="default"
-          />
+          >
+            <View
+              alignItemsCenter={true}
+              flex={1}
+              justifyContentCenter={true}
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                flex={1}
+                style={
+                  {
+                    "flex": 1,
+                    "flexDirection": "column",
+                  }
+                }
+              >
+                <TextInput
+                  autoCapitalize="none"
+                  editable={true}
+                  keyboardType="default"
+                  maxFontSizeMultiplier={1.2}
+                  name="input"
+                  onChangeText={[Function]}
+                  placeholder="Test Label"
+                  placeholderTextColor="rgba(161, 173, 175, 1)"
+                  renderSeparator={true}
+                  style={
+                    {
+                      "color": "rgba(34, 63, 70, 1)",
+                      "fontFamily": "Markpro-Medium",
+                      "fontSize": 18,
+                      "height": 89,
+                      "letterSpacing": 0.5,
+                      "width": "100%",
+                    }
+                  }
+                  testID="input-test-id"
+                  touched={null}
+                  type="default"
+                />
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View

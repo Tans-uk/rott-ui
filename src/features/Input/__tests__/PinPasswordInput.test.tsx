@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {PinPasswordInput} from '../components'
 
@@ -20,6 +21,7 @@ describe('Pin Password Input -> Custom Input', () => {
         onChangeText={onChangeTextMock}
       />
     )
+
     const pinPasswordInputElement = getByTestId(pinPasswordInputTestId)
     fireEvent.changeText(pinPasswordInputElement, 'aaA*a123')
 
@@ -35,6 +37,7 @@ describe('Pin Password Input -> Custom Input', () => {
         onChangeText={onChangeTextMock}
       />
     )
+
     const pinPasswordInputElement = getByTestId(pinPasswordInputTestId)
     await waitFor(() => {
       fireEvent.changeText(pinPasswordInputElement, 'aaA*a123')

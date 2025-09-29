@@ -9,9 +9,9 @@ interface LanguageStateContextType {
   setLanguage: (language: Language) => void;
 }
 
-const LanguageStateContext = createContext<LanguageStateContextType | undefined>(
-  undefined,
-);
+const LanguageStateContext = createContext<
+  LanguageStateContextType | undefined
+>(undefined);
 
 interface LanguageStateProviderProps {
   children: ReactNode;
@@ -20,7 +20,7 @@ interface LanguageStateProviderProps {
 
 export const LanguageStateProvider: React.FC<LanguageStateProviderProps> = ({
   children,
-  initialLanguage = { name: 'fr-FR' },
+  initialLanguage = { name: 'en-US' },
 }) => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<Language>(initialLanguage);
@@ -39,7 +39,9 @@ export const LanguageStateProvider: React.FC<LanguageStateProviderProps> = ({
 export const useLanguageState = (): LanguageStateContextType => {
   const context = useContext(LanguageStateContext);
   if (context === undefined) {
-    throw new Error('useLanguageState must be used within a LanguageStateProvider');
+    throw new Error(
+      'useLanguageState must be used within a LanguageStateProvider',
+    );
   }
   return context;
 };

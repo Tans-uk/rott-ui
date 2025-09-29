@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, userEvent, waitFor} from '../../../__tests__/utils/testUtils'
 import {CreditCardInput} from '../components'
 
@@ -26,20 +27,26 @@ describe('CreditCard Input -> Custom Input', () => {
   })
 
   // TODO: bu test kontrol edilecek
-  // it('credit card inputu maksimum 16 karakter kabul etmeli', async () => {
-  //   const onChangeTextMock = jest.fn()
-  //   const user = userEvent.setup()
-  //   const {getByTestId, rerender} = render(
-  //     <CreditCardInput name='test' testID={creditCartInputTestId} onChangeText={onChangeTextMock} />
-  //   )
+  it('credit card inputu maksimum 16 karakter kabul etmeli', async () => {
+    let mockValue = ''
+    const setMockValue = (value: string) => {
+      mockValue = value
+    }
+    const user = userEvent.setup()
+    const {getByTestId} = render(
+      <CreditCardInput
+        value={mockValue}
+        name='test'
+        testID={creditCartInputTestId}
+        onChangeText={setMockValue}
+      />
+    )
 
-  //   const creditCardInputElement = getByTestId(creditCartInputTestId)
-  //   await user.paste(creditCardInputElement, '444433332222111100')
+    const creditCardInputElement = getByTestId(creditCartInputTestId)
+    await user.paste(creditCardInputElement, '444433332222111100')
 
-  //   rerender(<CreditCardInput name='test' testID={creditCartInputTestId} onChangeText={onChangeTextMock} />)
-
-  //   expect(creditCardInputElement.props.value).toBe('4444-3333-2222-1111')
-  // })
+    expect(mockValue).toBe('4444333322221111')
+  })
 
   it('credit card inputu girilen degeri maskesiz geri donmeli', async () => {
     const onChangeTextMock = jest.fn()

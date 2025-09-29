@@ -19,6 +19,7 @@ export const sizeToPercentage = (size: Size) => {
       return '85%'
     case 'xxl':
       return '92.5%'
+    default:
     case 'full':
       return '100%'
   }

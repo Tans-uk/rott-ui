@@ -18,6 +18,7 @@ export interface IconProps
     >,
     CommonUiProps {
   name: IconKeys
+  testID?: string
   width?: number
   height?: number
   variant?: Variant

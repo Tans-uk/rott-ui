@@ -110,8 +110,8 @@ exports[`Select Input -> Custom Input ilk render anında snapshot ile eşleşmel
             <Text
               fill="rgba(161, 173, 175, 1)"
               height={48}
+              name="CHEVRON_RIGHT"
               strokeWidth={0}
-              testID="mock-icon"
               width={48}
             >
               MockIcon

@@ -1,11 +1,10 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
-import {Item} from '../../Item'
 import type {PinPasswordInputProps} from '../models'
 import {InputStyles} from '../styles'
-import React from 'react'
+import {InputContainer} from './InputContainer'
 
 export const PinPasswordInput: FC<PinPasswordInputProps> = ({
   fontSize,
@@ -20,7 +19,7 @@ export const PinPasswordInput: FC<PinPasswordInputProps> = ({
   }
 
   return (
-    <Item row>
+    <InputContainer {...props} size={size} theme={theme}>
       <TextInput
         editable={!disabled}
         placeholder='____'
@@ -31,6 +30,6 @@ export const PinPasswordInput: FC<PinPasswordInputProps> = ({
         onChangeText={handleTextChange}
         {...props}
       />
-    </Item>
+    </InputContainer>
   )
 }

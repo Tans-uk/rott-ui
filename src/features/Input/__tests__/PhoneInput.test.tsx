@@ -1,11 +1,11 @@
 import React from 'react'
+
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {PhoneInput} from '../components'
 
 describe('Phone Input -> Custom Input', () => {
   const testId = {
     inputTestId: 'phone-input-test-id',
-    iconTestId: 'phone-icon-test-id',
     contactPressableTestId: 'contact-pressable-test-id',
   }
 
@@ -31,6 +31,7 @@ describe('Phone Input -> Custom Input', () => {
     const {getByTestId} = render(
       <PhoneInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
     )
+
     const inputElement = getByTestId(inputTestId)
     fireEvent.changeText(inputElement, 'aaA*a123')
 
@@ -38,10 +39,10 @@ describe('Phone Input -> Custom Input', () => {
   })
 
   it('varsayilan olarak rehber iconu olmalı', () => {
-    const {inputTestId, iconTestId} = testId
+    const {inputTestId, contactPressableTestId} = testId
     const {getByTestId} = render(<PhoneInput name='test' testID={inputTestId} />)
 
-    const iconElement = getByTestId(iconTestId)
+    const iconElement = getByTestId(contactPressableTestId)
 
     expect(iconElement).toBeOnTheScreen()
   })
@@ -53,6 +54,7 @@ describe('Phone Input -> Custom Input', () => {
       const {getByTestId} = render(
         <PhoneInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
       )
+
       const inputElement = getByTestId(inputTestId)
       fireEvent.changeText(inputElement, 'aaA*a 123')
 
@@ -65,6 +67,7 @@ describe('Phone Input -> Custom Input', () => {
       const {getByTestId} = render(
         <PhoneInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
       )
+
       const inputElement = getByTestId(inputTestId)
       fireEvent.changeText(inputElement, '+90543')
 

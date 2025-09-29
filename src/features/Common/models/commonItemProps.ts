@@ -7,8 +7,8 @@ import {type LabelProps} from '../../Label'
 export interface CommonItemProps extends CommonUiProps {
   testID?: string
   index?: number
-  width?: number
-  height?: number
+  width?: number | string
+  height?: number | string
   backgroundColor?: Variant
 
   leftIcon?: IconKeys | IconProps | ReactNode

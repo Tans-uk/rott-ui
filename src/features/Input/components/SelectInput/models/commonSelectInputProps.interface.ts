@@ -21,7 +21,7 @@ export interface CommonSelectInputProps extends Omit<BaseInputProps, 'value' | '
   onViewableItemsChanged?: FlashListProps<any>['onViewableItemsChanged']
   extraDisplayData?: Nullable<SelectProps[]>
   modalId?: number
-  descriptionFontSize?: Size
+  descriptionFontSize?: Exclude<Size, 'full'>
   showSelected?: boolean
   searchable?: boolean
   showDescription?: boolean

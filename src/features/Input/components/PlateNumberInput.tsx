@@ -1,10 +1,10 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
 import type {PlateNumberInputProps} from '../models'
 import {InputStyles} from '../styles'
-import React from 'react'
+import {InputContainer} from './InputContainer'
 
 export const PlateNumberInput: FC<PlateNumberInputProps> = ({
   fontSize,
@@ -22,15 +22,17 @@ export const PlateNumberInput: FC<PlateNumberInputProps> = ({
   }
 
   return (
-    <TextInput
-      editable={!disabled}
-      placeholder='_________'
-      style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
-      keyboardType='default'
-      maxLength={9}
-      autoCapitalize='characters'
-      onChangeText={handleTextChange}
-      {...props}
-    />
+    <InputContainer {...props} size={size} theme={theme}>
+      <TextInput
+        editable={!disabled}
+        placeholder='_________'
+        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+        keyboardType='default'
+        maxLength={9}
+        autoCapitalize='characters'
+        onChangeText={handleTextChange}
+        {...props}
+      />
+    </InputContainer>
   )
 }

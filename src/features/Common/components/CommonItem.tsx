@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {isValidElement, memo, type FC} from 'react'
+import React, {isValidElement, memo, type FC} from 'react'
 
 import {themeConfig} from '../../../providers'
 import {colorFromVariant} from '../../../utils'
@@ -10,7 +10,6 @@ import {Label, type LabelProps} from '../../Label'
 import {Pressable} from '../../Pressable'
 import type {CommonItemProps} from '../models'
 import {CommonItemContainer} from './CommonItemContainer'
-import React from 'react'
 
 /**
  *  Common Item Component
@@ -60,18 +59,21 @@ export const CommonItem: FC<CommonItemProps> = memo(
 
     onPress,
     value,
+    size,
+    gap,
     ...props
   }) => {
     return (
-      <CommonItemContainer width={width} height={height}>
+      <CommonItemContainer width={width} height={height} size={size}>
         <Pressable
           testID={testID}
           backgroundColor={colorFromVariant(backgroundColor)}
+          overflowHidden
           disabled={selectionDisabled}
           onPress={() => !!onPress && onPress(value)}
-          overflowHidden
           paddingVertical={paddingVertical ?? 16}
           paddingHorizontal={paddingHorizontal ?? 16}
+          size={size}
           width={width}
           height={height}
           {...props}>
@@ -235,6 +237,7 @@ export const CommonItem: FC<CommonItemProps> = memo(
                   )}
                 </>
               )}
+
               {description && (
                 <Item>
                   {isValidElement(description) && <>{description}</>}
@@ -260,10 +263,10 @@ export const CommonItem: FC<CommonItemProps> = memo(
             {/* Right Icon / Element */}
             {selectedPosition !== 'right' && rightIcon && (
               <Pressable
-                testID='right-icon-test-id'
                 flex={0}
                 marginLeft={(rightIcon as IconProps)?.marginLeft ?? 16}
                 {...(typeof rightIcon === 'object' ? {...rightIcon} : null)}
+                testID={'right-icon-test-id'}
                 key={undefined}
                 disabled={selectionDisabled}
                 onPress={(event) => {

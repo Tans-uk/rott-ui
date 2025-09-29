@@ -1,4 +1,4 @@
-import {useRef, useState, type FC} from 'react'
+import React, {useRef, useState, type FC} from 'react'
 
 import {
   Platform,
@@ -8,12 +8,9 @@ import {
   type TextInputSelectionChangeEventData,
 } from 'react-native'
 
-import {Icon} from '../../Icon'
-import {Item} from '../../Item'
-import {Pressable} from '../../Pressable'
 import type {PasswordInputProps} from '../models'
-import {InputStyles, PasswordInputStyles} from '../styles'
-import React from 'react'
+import {InputStyles} from '../styles'
+import {InputContainer} from './InputContainer'
 
 export const PasswordInput: FC<PasswordInputProps> = ({
   fontSize,
@@ -23,6 +20,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   disabled,
   size,
   value,
+  backgroundColor,
   ...props
 }) => {
   const inputRef = useRef<any>(null)
@@ -43,7 +41,18 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   }
 
   return (
-    <Item row>
+    <InputContainer
+      {...props}
+      size={size}
+      theme={theme}
+      rightIcon={{
+        testID: 'show-password-icon-test-id',
+        name: isSecure ? 'EYE_DISABLE' : 'EYE',
+        variant: theme === 'dark' ? 'white' : !value ? 'grey-200' : 'grey-900',
+        height: 24,
+        width: 24,
+        onPress: () => setIsSecure(!isSecure),
+      }}>
       <TextInput
         ref={inputRef}
         editable={!disabled}
@@ -57,22 +66,6 @@ export const PasswordInput: FC<PasswordInputProps> = ({
         onSelectionChange={handleSelectionChange} // Android'de yapıştırma işlemini engelle
         {...props}
       />
-
-      <Pressable
-        testID='show-password-icon-test-id'
-        style={PasswordInputStyles().showPasswordIcon}
-        justifyContentCenter
-        alignItemsCenter
-        onPress={() => {
-          setIsSecure(!isSecure)
-        }}>
-        <Icon
-          variant={theme === 'dark' ? 'white' : !value ? 'grey-200' : 'grey-900'}
-          name={isSecure ? 'EYE_DISABLE' : 'EYE'}
-          height={24}
-          width={24}
-        />
-      </Pressable>
-    </Item>
+    </InputContainer>
   )
 }

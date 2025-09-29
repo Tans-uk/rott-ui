@@ -1,16 +1,15 @@
-import {useCallback, useEffect, useRef, useState, type FC} from 'react'
+import React, {useCallback, useEffect, useRef, useState, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
 import {themeConfig} from '../../../../../providers'
-import {Icon, type IconKeys} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
 import {InputStyles} from '../../../styles'
 import {InputStyleNormalizer} from '../../../utils'
+import {InputContainer} from '../../InputContainer'
 import type {AmountInputProps} from '../models'
 import {AmountInputStyles} from '../styles'
-import React from 'react'
 
 export const AmountInput: FC<AmountInputProps> = ({
   fontSize,
@@ -97,8 +96,20 @@ export const AmountInput: FC<AmountInputProps> = ({
   }, [amount, currency])
 
   return (
-    <Item relative onTouchStart={() => amountRef.current?.focus()}>
-      <Item row {...props}>
+    <InputContainer
+      {...props}
+      size={size}
+      theme={theme}
+      relative
+      onTouchStart={() => amountRef.current?.focus()}
+      rightIcon={{
+        testID: 'currency-icon-test-id',
+        name: currencyType ?? 'TL',
+        width: InputStyleNormalizer({size}).icon.width,
+        height: InputStyleNormalizer({size}).icon.height,
+        color: themeConfig.colors['grey-200'],
+      }}>
+      <Item row>
         <TextInput
           ref={amountRef}
           nativeID='amount-native-id'
@@ -162,16 +173,6 @@ export const AmountInput: FC<AmountInputProps> = ({
           placeholderTextColor={placeholderColorNormalizer}
         />
       </Item>
-
-      <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
-        <Icon
-          testID='currency-icon-test-id'
-          name={currencyType as IconKeys}
-          width={InputStyleNormalizer({size}).icon.width}
-          height={InputStyleNormalizer({size}).icon.height}
-          color={themeConfig.colors['grey-200']}
-        />
-      </Item>
-    </Item>
+    </InputContainer>
   )
 }

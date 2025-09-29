@@ -1,9 +1,8 @@
-import {memo, type FC, type PropsWithChildren} from 'react'
+import React, {memo, type FC, type PropsWithChildren} from 'react'
 
-import type {Theme} from '../../../models'
+import type {Size, Theme} from '../../../models'
 import {themeConfig} from '../../../providers'
 import {Item} from '../../Item'
-import React from 'react'
 
 interface FormContainerProps extends PropsWithChildren {
   hasError?: boolean
@@ -11,16 +10,18 @@ interface FormContainerProps extends PropsWithChildren {
   marginBottom?: number
   marginTop?: number
   noPadding?: boolean
+  size?: Size
 }
 
 export const FormContainer: FC<FormContainerProps> = memo(
-  ({hasError, children, theme = 'light', marginBottom, marginTop, noPadding}) => {
+  ({hasError, children, theme = 'light', marginBottom, marginTop, noPadding, size = 'full'}) => {
     return (
       <Item
         overflowHidden
         backgroundColor={
           theme === 'light' ? themeConfig.colors.white : themeConfig.colors['grey-800']
         }
+        size={size}
         borderRadius={8}
         paddingTop={noPadding ? 0 : 4}
         paddingBottom={hasError ? 0 : noPadding ? 0 : 4}

@@ -14,26 +14,108 @@ exports[`Plate Number Input -> Custom Input plate number input ilk render anınd
       }
     }
   >
-    <TextInput
-      autoCapitalize="characters"
-      editable={true}
-      keyboardType="default"
-      maxLength={9}
-      name="test"
-      onChangeText={[Function]}
-      placeholder="_________"
+    <View
       style={
         {
-          "color": "rgba(255, 255, 255, 1)",
-          "fontFamily": "Markpro-Medium",
-          "fontSize": 18,
-          "height": 89,
-          "letterSpacing": 0.5,
-          "width": "100%",
+          "flex": undefined,
+          "flexDirection": "column",
         }
       }
-      testID="input-test-id"
-    />
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        animated={false}
+        backgroundColor="rgba(61, 88, 94, 1)"
+        collapsable={false}
+        focusable={true}
+        justifyContentCenter={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        overflowHidden={true}
+        paddingHorizontal={16}
+        paddingVertical={16}
+        style={
+          {
+            "backgroundColor": "rgba(61, 88, 94, 1)",
+            "flex": 1,
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingHorizontal": 31,
+            "paddingVertical": 31,
+          }
+        }
+      >
+        <View
+          alignItemsCenter={true}
+          flex={1}
+          justifyContentCenter={true}
+          style={
+            {
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            flex={1}
+            style={
+              {
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          >
+            <TextInput
+              autoCapitalize="characters"
+              editable={true}
+              keyboardType="default"
+              maxLength={9}
+              name="test"
+              onChangeText={[Function]}
+              placeholder="_________"
+              style={
+                {
+                  "color": "rgba(255, 255, 255, 1)",
+                  "fontFamily": "Markpro-Medium",
+                  "fontSize": 18,
+                  "height": 89,
+                  "letterSpacing": 0.5,
+                  "width": "100%",
+                }
+              }
+              testID="input-test-id"
+            />
+          </View>
+        </View>
+      </View>
+    </View>
     <View
       onLayout={[Function]}
       pointerEvents="box-none"

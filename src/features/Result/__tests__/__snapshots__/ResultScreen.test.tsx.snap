@@ -150,13 +150,12 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                       "flexDirection": "column",
                     }
                   }
-                  testID="header-left-icon-test-id"
                 >
                   <Text
                     fill="rgba(255, 255, 255, 1)"
                     height={46}
                     strokeWidth={0}
-                    testID="mock-icon"
+                    testID="header-left-icon-test-id"
                     width={46}
                   >
                     MockIcon
@@ -279,13 +278,12 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                       "flexDirection": "column",
                     }
                   }
-                  testID="header-right-icon-test-id"
                 >
                   <Text
                     fill="rgba(255, 255, 255, 1)"
                     height={46}
                     strokeWidth={0}
-                    testID="mock-icon"
+                    testID="header-right-icon-test-id"
                     width={46}
                   >
                     MockIcon

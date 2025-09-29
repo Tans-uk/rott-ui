@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {IconKeys} from '../../Icon'
 import {Input} from '../components'
@@ -111,7 +112,7 @@ describe('Input -> Custom Input', () => {
     const labelDescriptionIconElement = getByTestId(inputLabelIconTestId)
     expect(labelDescriptionIconElement).toBeOnTheScreen()
 
-    expect(labelDescriptionIconElement.children[0]).toHaveProp('name', mockIcon)
+    expect(labelDescriptionIconElement).toHaveProp('name', mockIcon)
   })
 
   it('label icon belirtilmis onPress methodu calismali', async () => {

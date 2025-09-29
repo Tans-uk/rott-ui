@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Icon -> Custom Component icon bileşeninin snapshot ile eşleşmeli 1`] = `
+exports[`InputLabel ilk render anında snapshot ile eşleşmeli 1`] = `
 <KeyboardProvider
   enabled={true}
 >
@@ -15,21 +15,32 @@ exports[`Icon -> Custom Component icon bileşeninin snapshot ile eşleşmeli 1`]
     }
   >
     <View
+      alignItemsCenter={true}
+      paddingHorizontal={26}
       style={
         {
+          "alignItems": "center",
           "flex": undefined,
-          "flexDirection": "column",
+          "flexDirection": "row",
+          "paddingHorizontal": 50,
         }
       }
     >
-      <MockSvgIcon
-        fill="#FFFFFF"
-        height={16}
-        name="ARROW_LEFT"
-        strokeWidth={0}
-        testID="icon-test-id"
-        width={16}
-      />
+      <Text
+        style={
+          {
+            "color": "rgba(34, 63, 70, 1)",
+            "fontFamily": "Markpro-Bold",
+            "fontSize": 10,
+            "fontWeight": undefined,
+            "letterSpacing": 0.5,
+            "textAlign": "auto",
+          }
+        }
+        testID="input-label-test-id"
+      >
+        TEST LABEL
+      </Text>
     </View>
     <View
       onLayout={[Function]}

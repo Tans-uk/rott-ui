@@ -1,16 +1,13 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
-import {Icon} from '../../Icon'
-import {Item} from '../../Item'
-import {Pressable} from '../../Pressable'
 import type {IbanInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputStyleNormalizer} from '../utils'
+import {InputContainer} from './InputContainer'
 
 import MaskInput from 'react-native-mask-input'
-import React from 'react'
 
 export const IbanInput: FC<IbanInputProps> = ({
   fontSize = 'md',
@@ -63,7 +60,23 @@ export const IbanInput: FC<IbanInputProps> = ({
   }
 
   return (
-    <Item row>
+    <InputContainer
+      {...props}
+      size={size}
+      theme={theme}
+      rightIcon={{
+        testID: clearIconVisible ? 'clear-iban-icon-test-id' : 'qr-iban-icon-test-id',
+        disabled: clearIconVisible && disabled,
+        onPress: (event) => {
+          if (clearIconVisible) handleTextChange('TR')
+          else !!rightIcon?.onPress && rightIcon?.onPress(event)
+        },
+        name: clearIconVisible ? 'REMOVE_CIRCLE' : 'IBAN_QR',
+        variant: 'grey-200',
+        noStroke: clearIconVisible,
+        width: InputStyleNormalizer({size}).icon.width,
+        height: InputStyleNormalizer({size}).icon.height,
+      }}>
       <MaskInput
         editable={!disabled}
         testID='iban-input-test-id'
@@ -88,25 +101,6 @@ export const IbanInput: FC<IbanInputProps> = ({
         value={value}
         {...props}
       />
-
-      <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
-        <Pressable
-          testID={clearIconVisible ? 'clear-iban-icon-test-id' : 'qr-iban-icon-test-id'}
-          disabled={clearIconVisible && disabled}
-          onPress={(event) => {
-            if (clearIconVisible) handleTextChange('TR')
-            else !!rightIcon?.onPress && rightIcon?.onPress(event)
-          }}>
-          <Icon
-            testID='iban-icon-test-id'
-            name={clearIconVisible ? 'REMOVE_CIRCLE' : 'IBAN_QR'}
-            variant='grey-200'
-            noStroke={clearIconVisible}
-            width={InputStyleNormalizer({size}).icon.width}
-            height={InputStyleNormalizer({size}).icon.height}
-          />
-        </Pressable>
-      </Item>
-    </Item>
+    </InputContainer>
   )
 }

@@ -18,29 +18,10 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
       style={
         {
           "flex": undefined,
-          "flexDirection": "row",
+          "flexDirection": "column",
         }
       }
     >
-      <TextInput
-        editable={true}
-        keyboardType="number-pad"
-        maxLength={3}
-        name="test"
-        onChangeText={[Function]}
-        placeholder="***"
-        style={
-          {
-            "color": "rgba(255, 255, 255, 1)",
-            "fontFamily": "Markpro-Medium",
-            "fontSize": 18,
-            "height": 89,
-            "letterSpacing": 0.5,
-            "width": "100%",
-          }
-        }
-        testID="input-test-id"
-      />
       <View
         accessibilityState={
           {
@@ -60,8 +41,8 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
           }
         }
         accessible={true}
-        alignItemsCenter={true}
         animated={false}
+        backgroundColor="rgba(61, 88, 94, 1)"
         collapsable={false}
         focusable={true}
         justifyContentCenter={true}
@@ -74,52 +55,63 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        row={true}
+        overflowHidden={true}
+        paddingHorizontal={16}
+        paddingVertical={16}
         style={
           {
-            "alignItems": "center",
+            "backgroundColor": "rgba(61, 88, 94, 1)",
             "flex": 1,
-            "flexDirection": "row",
+            "flexDirection": "column",
             "justifyContent": "center",
-            "left": 116,
-            "position": "absolute",
-            "top": -29,
+            "overflow": "hidden",
+            "paddingHorizontal": 31,
+            "paddingVertical": 31,
           }
         }
-        testID="info-icon-test-id"
       >
-        <Text
-          style={
-            {
-              "color": "rgba(161, 173, 175, 1)",
-              "fontFamily": "Markpro-Bold",
-              "fontSize": 10,
-              "fontWeight": 700,
-              "textAlign": "auto",
-            }
-          }
-        >
-          (PASSWORD ON THE BACK OF THE CARD)
-        </Text>
         <View
-          marginLeft={4}
+          alignItemsCenter={true}
+          flex={1}
+          justifyContentCenter={true}
           style={
             {
-              "flex": undefined,
-              "flexDirection": "column",
-              "marginLeft": 8,
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
             }
           }
         >
-          <Text
-            fill="rgba(161, 173, 175, 1)"
-            height={35}
-            strokeWidth={0}
-            testID="mock-icon"
-            width={35}
+          <View
+            flex={1}
+            style={
+              {
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
           >
-            MockIcon
-          </Text>
+            <TextInput
+              editable={true}
+              keyboardType="number-pad"
+              maxLength={3}
+              name="test"
+              onChangeText={[Function]}
+              placeholder="***"
+              style={
+                {
+                  "color": "rgba(255, 255, 255, 1)",
+                  "fontFamily": "Markpro-Medium",
+                  "fontSize": 18,
+                  "height": 89,
+                  "letterSpacing": 0.5,
+                  "width": "100%",
+                }
+              }
+              testID="input-test-id"
+            />
+          </View>
         </View>
       </View>
     </View>

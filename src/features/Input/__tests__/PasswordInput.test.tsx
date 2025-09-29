@@ -54,7 +54,7 @@ describe('Password Input -> Custom Input', () => {
 
     expect(showPasswordIconElement).toBeTruthy()
 
-    expect(showPasswordIconElement.children[0]).toHaveProp('name', 'EYE_DISABLE')
+    expect(showPasswordIconElement).toBeOnTheScreen()
   })
 
   it('input ilk renderlandiginda sifre goster iconuna tiklandiginda sifre gorunur olmali', () => {

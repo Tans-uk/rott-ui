@@ -128,7 +128,9 @@ describe('Icon -> Custom Component', () => {
   describe('Icon -> Mode Behavior', () => {
     it('fill mode ile variant color fill olarak uygulanmalı', () => {
       render(<Icon name='ARROW_LEFT' mode='fill' variant='primary' testID={testIds.iconTestId} />)
+
       expect(colorFromVariant).toHaveBeenCalledWith('primary')
+
       const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
       expect(lastCall.fill).toBe('#007AFF')
       expect(lastCall.strokeWidth).toBe(0)
@@ -136,7 +138,9 @@ describe('Icon -> Custom Component', () => {
 
     it('stroke mode ile variant color stroke olarak uygulanmalı', () => {
       render(<Icon name='ARROW_LEFT' mode='stroke' variant='danger' testID={testIds.iconTestId} />)
+
       expect(colorFromVariant).toHaveBeenCalledWith('danger')
+
       const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
       expect(lastCall.stroke).toBe('#FF3B30')
       expect(lastCall.strokeWidth).toBe(1)

@@ -73,8 +73,8 @@ exports[`Component -> BottomMenuItem bottom menu item componenti snapshot ile e≈
         <Text
           fill="rgba(34, 63, 70, 1)"
           height={46}
+          name="ARROW_DOWN"
           strokeWidth={2}
-          testID="mock-icon"
           width={46}
         >
           MockIcon

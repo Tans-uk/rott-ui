@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {PlateNumberInput} from '../components'
 
@@ -11,7 +12,7 @@ describe('Plate Number Input -> Custom Input', () => {
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('plate number input numeric karakterleri ve buyuk karakterleri kabul etmeli', () => {
+  it('plate number input numeric karakterleri kabul etmeli, küçük harfleri büyük harfe çevirmeli', () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = render(
       <PlateNumberInput
@@ -24,10 +25,10 @@ describe('Plate Number Input -> Custom Input', () => {
     const plateNumberInputElement = getByTestId(plateNumberInputTestId)
     fireEvent.changeText(plateNumberInputElement, 'abc*D123')
 
-    expect(onChangeTextMock).toHaveBeenCalledWith('D123')
+    expect(onChangeTextMock).toHaveBeenCalledWith('ABCD123')
   })
 
-  it('plate number input küçük harf ve özel karakter kabul etmemeli', async () => {
+  it('plate number input özel karakter kabul etmemeli', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = render(
       <PlateNumberInput
@@ -52,7 +53,7 @@ describe('Plate Number Input -> Custom Input', () => {
     expect(plateNumberInputElement.props.keyboardType).toBe('default')
   })
 
-  it('kopyalanan plate number yapıştırıldığında bosluklar trimlenmeli ve buyuk harf kabul etmeli', async () => {
+  it('kopyalanan plate number yapıştırıldığında bosluklar trimlenmeli ve küçük harfler büyük harfe çevrilmeli', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = render(
       <PlateNumberInput
@@ -67,6 +68,6 @@ describe('Plate Number Input -> Custom Input', () => {
       fireEvent.changeText(plateNumberInputElement, 'Abc 1234')
     })
 
-    expect(onChangeTextMock).toHaveBeenCalledWith('A1234')
+    expect(onChangeTextMock).toHaveBeenCalledWith('ABC1234')
   })
 })

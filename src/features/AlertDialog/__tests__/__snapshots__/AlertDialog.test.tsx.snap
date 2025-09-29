@@ -118,8 +118,8 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
           <Text
             fill="rgba(63, 182, 24, 1)"
             height={123}
+            name="QR_TRANSFER"
             strokeWidth={0}
-            testID="mock-icon"
             width={123}
           >
             MockIcon

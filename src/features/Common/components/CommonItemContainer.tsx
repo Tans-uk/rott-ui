@@ -1,17 +1,18 @@
-import {memo, type FC, type PropsWithChildren} from 'react'
+import React, {memo, type FC, type PropsWithChildren} from 'react'
 
+import {Size} from '../../../models'
 import {Item} from '../../Item'
-import React from 'react'
 
 interface CommonItemContainerProps extends PropsWithChildren {
-  width?: number
-  height?: number
+  width?: number | string
+  height?: number | string
+  size?: Size
 }
 
 export const CommonItemContainer: FC<CommonItemContainerProps> = memo(
-  ({children, width, height}) => {
+  ({children, width, height, size}) => {
     return (
-      <Item width={width} height={height}>
+      <Item width={width} height={height} size={size}>
         {children}
       </Item>
     )

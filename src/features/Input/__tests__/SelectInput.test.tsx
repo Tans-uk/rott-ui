@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {SelectInput} from '../components'
 
@@ -79,7 +80,7 @@ describe('Select Input -> Custom Input', () => {
 
     const listElement = getByTestId(listTestId)
     mockData.map((item) => {
-      expect(listElement).toHaveTextContent(item.label)
+      expect(listElement).toContainEqual(item.label)
     })
   })
 

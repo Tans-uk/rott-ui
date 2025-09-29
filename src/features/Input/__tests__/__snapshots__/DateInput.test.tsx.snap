@@ -21,143 +21,236 @@ exports[`Date Input -> Custom Input ilk render anında snapshot ile eşleşmeli 
           "flexDirection": "row",
         }
       }
+      testID="date-input-test-id"
     >
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        animated={false}
-        collapsable={false}
-        flex={0}
-        focusable={true}
-        height={89}
-        justifyContentCenter={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        size="full"
+        height={56}
         style={
           {
-            "color": "rgba(255, 255, 255, 1)",
-            "flex": 0,
+            "flex": undefined,
             "flexDirection": "column",
-            "fontFamily": "Markpro-Medium",
-            "fontSize": 18,
-            "height": 89,
-            "justifyContent": "center",
-            "letterSpacing": 0.5,
-            "maxHeight": 171,
-            "width": "100%",
+            "height": 108,
+            "maxHeight": 108,
           }
         }
-        testID="date-input-test-id"
-      >
-        <Text
-          style={
-            {
-              "color": "rgba(161, 173, 175, 1)",
-              "fontFamily": "Markpro-Medium",
-              "fontSize": 16,
-              "fontWeight": undefined,
-              "letterSpacing": 0.5,
-              "textAlign": "auto",
-            }
-          }
-        >
-          Lütfen bir tarih seçiniz
-        </Text>
-      </View>
-      <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        animated={false}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "flex": 1,
-            "flexDirection": "column",
-          }
-        }
-        testID="pressable-test-id"
       >
         <View
-          absolute={true}
-          bottom={16}
-          right={0}
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          animated={false}
+          backgroundColor="rgba(61, 88, 94, 1)"
+          collapsable={false}
+          focusable={true}
+          height={56}
+          justifyContentCenter={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          overflowHidden={true}
+          paddingHorizontal={16}
+          paddingVertical={16}
           style={
             {
-              "bottom": 31,
-              "flex": undefined,
+              "backgroundColor": "rgba(61, 88, 94, 1)",
+              "flex": 1,
               "flexDirection": "column",
-              "position": "absolute",
-              "right": 0,
+              "height": 108,
+              "justifyContent": "center",
+              "maxHeight": 108,
+              "overflow": "hidden",
+              "paddingHorizontal": 31,
+              "paddingVertical": 31,
             }
           }
         >
           <View
+            alignItemsCenter={true}
+            flex={1}
+            justifyContentCenter={true}
             style={
               {
-                "flex": undefined,
-                "flexDirection": "column",
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "row",
+                "justifyContent": "center",
               }
             }
           >
-            <Text
-              height={46}
-              stroke="rgba(161, 173, 175, 1)"
-              strokeWidth={2}
-              testID="mock-icon"
-              width={46}
+            <View
+              flex={1}
+              style={
+                {
+                  "flex": 1,
+                  "flexDirection": "column",
+                }
+              }
             >
-              MockIcon
-            </Text>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                animated={false}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "color": "rgba(255, 255, 255, 1)",
+                    "flex": 1,
+                    "flexDirection": "column",
+                    "fontFamily": "Markpro-Medium",
+                    "fontSize": 18,
+                    "height": 89,
+                    "letterSpacing": 0.5,
+                    "width": "100%",
+                  }
+                }
+                testID="pressable-test-id"
+              >
+                <Text
+                  style={
+                    {
+                      "color": "rgba(161, 173, 175, 1)",
+                      "fontFamily": "Markpro-Medium",
+                      "fontSize": 16,
+                      "fontWeight": undefined,
+                      "letterSpacing": 0.5,
+                      "textAlign": "auto",
+                    }
+                  }
+                >
+                  Lütfen bir tarih seçiniz
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              animated={false}
+              collapsable={false}
+              color="rgba(161, 173, 175, 1)"
+              flex={0}
+              focusable={true}
+              height={24}
+              marginLeft={16}
+              name="CALENDAR"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "flex": 0,
+                  "flexDirection": "column",
+                  "height": 46,
+                  "marginLeft": 31,
+                  "maxHeight": 46,
+                  "width": 46,
+                }
+              }
+              testID="right-icon-test-id"
+              width={24}
+            >
+              <View
+                height={24}
+                style={
+                  {
+                    "flex": undefined,
+                    "flexDirection": "column",
+                    "height": 46,
+                    "maxHeight": 46,
+                    "width": 46,
+                  }
+                }
+                width={24}
+              >
+                <View
+                  onPress={[Function]}
+                  style={
+                    {
+                      "flex": undefined,
+                      "flexDirection": "column",
+                    }
+                  }
+                >
+                  <Text
+                    fill="rgba(161, 173, 175, 1)"
+                    height={46}
+                    name="CALENDAR"
+                    strokeWidth={0}
+                    width={46}
+                  >
+                    MockIcon
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>

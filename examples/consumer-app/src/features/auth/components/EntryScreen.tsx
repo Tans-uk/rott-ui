@@ -15,6 +15,7 @@ import {
   BottomMenuItemModel,
   FormContainer,
   ButtonGroup,
+  useTranslator,
 } from '@tansuk/rott-ui';
 import { useIntl } from 'react-intl';
 import { useLanguageState } from '../../../contexts';
@@ -25,9 +26,35 @@ export default function EntryScreen() {
   const { selectedLanguage, setLanguage } = useLanguageState();
   const intl = useIntl();
 
-  const [{ username, password }, setCredentials] = useState({
+  const [
+    {
+      email,
+      cvc,
+      username,
+      password,
+      expireDate,
+      plateNumber,
+      iban,
+      amount,
+      creditCard,
+      date,
+      phone,
+      pinPassword,
+    },
+    setCredentials,
+  ] = useState({
+    email: '',
+    cvc: '',
     username: '',
     password: '',
+    expireDate: '',
+    plateNumber: '',
+    iban: '',
+    amount: '',
+    creditCard: '',
+    date: '',
+    phone: '',
+    pinPassword: '',
   });
 
   // Bottom menu items
@@ -80,8 +107,10 @@ export default function EntryScreen() {
     },
   ];
 
+  const { translator } = useTranslator();
+
   return (
-    <Container noPadding>
+    <Container>
       <Header
         height={40}
         logo="PTTBANK_BLACK"
@@ -177,47 +206,324 @@ export default function EntryScreen() {
             </Pressable>
           </Item>
         }
-        rightElement={
-          <Item width={80} alignItemsFlexEnd>
-            {/* <NotificationIcon height={40} /> */}
-          </Item>
-        }
+        rightElement={<Item width={80} alignItemsFlexEnd />}
       />
 
-      <Content flex={1} justifyContentCenter alignItemsCenter useBottomInset>
-        <Item size="full" alignItemsCenter>
-          <FormContainer>
-            <Input
-              label="Username"
-              name="username"
-              type="default"
-              value={username}
-              size="full"
-              onChangeText={text =>
-                setCredentials({ username: text, password })
-              }
-            />
-
-            <Input
-              label="Password"
-              name="password"
-              type="password"
-              value={password}
-              size="full"
-              onChangeText={text =>
-                setCredentials({ username, password: text })
-              }
-              renderSeparator={false}
-            />
-          </FormContainer>
-
-          <ButtonGroup
-            buttons={[
-              { text: 'Login', variant: 'primary', size: 'full' },
-              { text: 'Register', variant: 'secondary-outline', size: 'full' },
-            ]}
+      <Content
+        flex={1}
+        justifyContentCenter
+        alignItemsCenter
+        scrollEnabled
+        useBottomInset
+      >
+        <FormContainer>
+          <Input
+            label="E-mail"
+            name="email"
+            type="email"
+            size="full"
+            value={email}
+            onChangeText={text =>
+              setCredentials({
+                email: text,
+                cvc,
+                username,
+                password,
+                expireDate,
+                plateNumber,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
           />
-        </Item>
+
+          <Input
+            label={{
+              text: 'CVC',
+              theme: 'dark',
+            }}
+            name="cvc"
+            type="cvc"
+            size="full"
+            value={cvc}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc: text,
+                username,
+                password,
+                expireDate,
+                plateNumber,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="Username"
+            name="username"
+            type="default"
+            size="full"
+            rightIcon={{
+              name: 'ARROW_RIGHT',
+              width: 24,
+              height: 24,
+              variant: 'grey-200',
+              noStroke: true,
+              onPress: () => {},
+            }}
+            value={username}
+            onChangeText={text =>
+              setCredentials({
+                username: text,
+                email,
+                cvc,
+                password,
+                expireDate,
+                plateNumber,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            leftIcon={{
+              name: 'LOCK',
+              width: 24,
+              height: 24,
+              variant: 'grey-200',
+              noStroke: true,
+              onPress: () => {},
+            }}
+            label="Password"
+            name="password"
+            type="password"
+            value={password}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password: text,
+                expireDate,
+                plateNumber,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="Expire Date"
+            name="expireDate"
+            type="expireDate"
+            value={expireDate}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password,
+                expireDate: text,
+                plateNumber,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="Plate Number"
+            name="plateNumber"
+            type="plateNumber"
+            value={plateNumber}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password,
+                expireDate,
+                plateNumber: text,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="IBAN"
+            name="iban"
+            type="iban"
+            value={iban}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password,
+                expireDate,
+                iban: text,
+                amount,
+                plateNumber,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="Amount"
+            name="amount"
+            type="amount"
+            value={amount}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password,
+                expireDate,
+                iban,
+                plateNumber,
+                amount: text,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="Credit Card"
+            name="creditCard"
+            type="creditCard"
+            value={creditCard}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password,
+                expireDate,
+                iban,
+                plateNumber,
+                amount,
+                creditCard: text,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="Date"
+            name="date"
+            type="date"
+            mode="modal-date"
+            value={date}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password,
+                expireDate,
+                iban,
+                plateNumber,
+                amount,
+                creditCard,
+                date: text,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            type="phone"
+            label="Phone"
+            name="phone"
+            value={phone}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password,
+                expireDate,
+                iban,
+                plateNumber,
+                amount,
+                creditCard,
+                date,
+                phone: text,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            type="pinPassword"
+            label="Pin Password"
+            name="pinPassword"
+            value={pinPassword}
+            onChangeText={text =>
+              setCredentials({
+                email,
+                cvc,
+                username,
+                password,
+                expireDate,
+                iban,
+                plateNumber,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword: text,
+              })
+            }
+            rightIcon={{
+              name: 'EYE',
+              width: 24,
+              height: 24,
+              variant: 'grey-200',
+              noStroke: true,
+              onPress: () => {},
+            }}
+          />
+        </FormContainer>
       </Content>
 
       <BottomMenu menuItems={entryScreenItems} />
