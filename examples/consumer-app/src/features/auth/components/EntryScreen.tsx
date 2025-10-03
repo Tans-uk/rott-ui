@@ -14,8 +14,6 @@ import {
   Input,
   BottomMenuItemModel,
   FormContainer,
-  ButtonGroup,
-  useTranslator,
 } from '@tansuk/rott-ui';
 import { useIntl } from 'react-intl';
 import { useLanguageState } from '../../../contexts';
@@ -28,6 +26,9 @@ export default function EntryScreen() {
 
   const [
     {
+      select,
+      numeric,
+      checkbox,
       email,
       cvc,
       username,
@@ -43,6 +44,9 @@ export default function EntryScreen() {
     },
     setCredentials,
   ] = useState({
+    select: '',
+    numeric: '',
+    checkbox: false,
     email: '',
     cvc: '',
     username: '',
@@ -106,8 +110,6 @@ export default function EntryScreen() {
       onPress: () => {},
     },
   ];
-
-  const { translator } = useTranslator();
 
   return (
     <Container>
@@ -218,6 +220,92 @@ export default function EntryScreen() {
       >
         <FormContainer>
           <Input
+            label="Select"
+            name="select"
+            type="select"
+            size="full"
+            list={[
+              { label: 'Select', value: 'select' },
+              { label: 'Select 2', value: 'select2', selected: true },
+            ]}
+            showSelected
+            value={select}
+            onSelectChange={text =>
+              setCredentials({
+                select: text,
+                numeric,
+                email,
+                checkbox,
+                cvc,
+                username,
+                password,
+                expireDate,
+                plateNumber,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="Numeric"
+            name="numeric"
+            type="numeric"
+            size="full"
+            value={numeric}
+            onChangeText={text =>
+              setCredentials({
+                select,
+                numeric: text,
+                email,
+                checkbox,
+                cvc,
+                username,
+                password,
+                expireDate,
+                plateNumber,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
+            label="Checkbox"
+            name="checkbox"
+            type="checkbox"
+            size="full"
+            checked={checkbox}
+            onCheckChange={text =>
+              setCredentials({
+                select,
+                numeric,
+                checkbox: !!text,
+                email,
+                cvc,
+                username,
+                password,
+                expireDate,
+                plateNumber,
+                iban,
+                amount,
+                creditCard,
+                date,
+                phone,
+                pinPassword,
+              })
+            }
+          />
+
+          <Input
             label="E-mail"
             name="email"
             type="email"
@@ -225,6 +313,9 @@ export default function EntryScreen() {
             value={email}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email: text,
                 cvc,
                 username,
@@ -252,6 +343,9 @@ export default function EntryScreen() {
             value={cvc}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc: text,
                 username,
@@ -284,6 +378,9 @@ export default function EntryScreen() {
             value={username}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 username: text,
                 email,
                 cvc,
@@ -315,6 +412,9 @@ export default function EntryScreen() {
             value={password}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,
@@ -338,6 +438,9 @@ export default function EntryScreen() {
             value={expireDate}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,
@@ -361,6 +464,9 @@ export default function EntryScreen() {
             value={plateNumber}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,
@@ -384,6 +490,9 @@ export default function EntryScreen() {
             value={iban}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,
@@ -407,6 +516,9 @@ export default function EntryScreen() {
             value={amount}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,
@@ -430,6 +542,9 @@ export default function EntryScreen() {
             value={creditCard}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,
@@ -454,6 +569,9 @@ export default function EntryScreen() {
             value={date}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,
@@ -477,6 +595,9 @@ export default function EntryScreen() {
             value={phone}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,
@@ -500,6 +621,9 @@ export default function EntryScreen() {
             value={pinPassword}
             onChangeText={text =>
               setCredentials({
+                select,
+                numeric,
+                checkbox,
                 email,
                 cvc,
                 username,

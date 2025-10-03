@@ -9,6 +9,7 @@ import {Label} from '../../../../Label'
 import {Modal, useModal} from '../../../../Modal'
 import {Pressable} from '../../../../Pressable'
 import {InputStyleNormalizer} from '../../../utils'
+import {InputContainer} from '../../InputContainer'
 import type {SelectInputProps, SelectProps} from '../models'
 import {SelectInputStyles} from '../styles'
 import {modalHeightPercentageNormalizer} from '../utils'
@@ -66,6 +67,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   isLoading,
   name,
   type = 'select',
+  ...props
 }) => {
   const {translator} = useTranslator()
 
@@ -213,7 +215,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   }, [value, extraDisplayData])
 
   return (
-    <Item testID={testID}>
+    <InputContainer testID={testID} size={size} theme={theme} name={name} {...props}>
       <Pressable
         testID='select-input-selection-test-id'
         size='full'
@@ -270,6 +272,6 @@ export const SelectInput: FC<SelectInputProps> = ({
           </Item>
         )}
       </Pressable>
-    </Item>
+    </InputContainer>
   )
 }

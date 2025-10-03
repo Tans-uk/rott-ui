@@ -1,4 +1,4 @@
-import {isValidElement, type FC} from 'react'
+import React, {isValidElement, type FC} from 'react'
 
 import {themeConfig} from '../../../providers'
 import {Content} from '../../Content'
@@ -9,7 +9,6 @@ import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 import {useHeader} from '../hooks'
 import type {HeaderProps} from '../models'
-import React from 'react'
 
 /**
  *

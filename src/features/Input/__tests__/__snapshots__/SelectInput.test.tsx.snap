@@ -15,13 +15,15 @@ exports[`Select Input -> Custom Input ilk render anında snapshot ile eşleşmel
     }
   >
     <View
+      height={56}
       style={
         {
           "flex": undefined,
           "flexDirection": "column",
+          "height": 108,
+          "maxHeight": 108,
         }
       }
-      testID="select-test-id"
     >
       <View
         accessibilityState={
@@ -42,11 +44,11 @@ exports[`Select Input -> Custom Input ilk render anında snapshot ile eşleşmel
           }
         }
         accessible={true}
-        alignItemsCenter={true}
         animated={false}
+        backgroundColor="rgba(61, 88, 94, 1)"
         collapsable={false}
-        flex={0}
         focusable={true}
+        height={56}
         justifyContentCenter={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -57,65 +59,141 @@ exports[`Select Input -> Custom Input ilk render anında snapshot ile eşleşmel
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        size="full"
+        overflowHidden={true}
+        paddingHorizontal={16}
+        paddingVertical={16}
         style={
           {
-            "alignItems": "center",
-            "flex": 0,
+            "backgroundColor": "rgba(61, 88, 94, 1)",
+            "flex": 1,
             "flexDirection": "column",
+            "height": 108,
             "justifyContent": "center",
-            "width": "100%",
+            "maxHeight": 108,
+            "overflow": "hidden",
+            "paddingHorizontal": 31,
+            "paddingVertical": 31,
           }
         }
-        testID="select-input-selection-test-id"
       >
         <View
           alignItemsCenter={true}
-          height={89}
+          flex={1}
+          justifyContentCenter={true}
           style={
             {
               "alignItems": "center",
-              "flex": undefined,
+              "flex": 1,
               "flexDirection": "row",
-              "height": 171,
-              "maxHeight": 171,
+              "justifyContent": "center",
             }
           }
         >
-          <Text
-            numberOfLines={1}
-            style={
-              {
-                "color": "rgba(161, 173, 175, 1)",
-                "fontFamily": "Markpro-Medium",
-                "fontSize": 18,
-                "fontWeight": undefined,
-                "letterSpacing": 0.5,
-                "textAlign": "auto",
-                "width": "90%",
-              }
-            }
-            testID="select-input-selected-item-test-id"
-          >
-            Select
-          </Text>
           <View
+            flex={1}
             style={
               {
-                "flex": undefined,
+                "flex": 1,
                 "flexDirection": "column",
               }
             }
           >
-            <Text
-              fill="rgba(161, 173, 175, 1)"
-              height={48}
-              name="CHEVRON_RIGHT"
-              strokeWidth={0}
-              width={48}
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              alignItemsCenter={true}
+              animated={false}
+              collapsable={false}
+              flex={0}
+              focusable={true}
+              justifyContentCenter={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              size="full"
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": 0,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "width": "100%",
+                }
+              }
+              testID="select-input-selection-test-id"
             >
-              MockIcon
-            </Text>
+              <View
+                alignItemsCenter={true}
+                height={89}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flex": undefined,
+                    "flexDirection": "row",
+                    "height": 171,
+                    "maxHeight": 171,
+                  }
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    {
+                      "color": "rgba(161, 173, 175, 1)",
+                      "fontFamily": "Markpro-Medium",
+                      "fontSize": 18,
+                      "fontWeight": undefined,
+                      "letterSpacing": 0.5,
+                      "textAlign": "auto",
+                      "width": "90%",
+                    }
+                  }
+                  testID="select-input-selected-item-test-id"
+                >
+                  Select
+                </Text>
+                <View
+                  style={
+                    {
+                      "flex": undefined,
+                      "flexDirection": "column",
+                    }
+                  }
+                >
+                  <Text
+                    fill="rgba(161, 173, 175, 1)"
+                    height={48}
+                    name="CHEVRON_RIGHT"
+                    strokeWidth={0}
+                    width={48}
+                  >
+                    MockIcon
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>
