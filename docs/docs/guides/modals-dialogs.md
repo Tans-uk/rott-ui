@@ -254,6 +254,6 @@ const showImageViewer = (imageUrl) => {
 
 ## Related
 
-- [Modal Component](/docs/components/feedback/modal)
-- [AlertDialog Component](/docs/components/feedback/alert-dialog)
-- [ActionMenu Component](/docs/components/feedback/action-menu)
+- [Modal Component](/docs/components/modal)
+- [AlertDialog Component](/docs/components/alert-dialog)
+- [ActionMenu Component](/docs/components/action-menu)

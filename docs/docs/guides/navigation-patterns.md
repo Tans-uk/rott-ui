@@ -170,7 +170,7 @@ function showModalScreen() {
 
 ## Related
 
-- [Header Component](/docs/components/layout/header)
-- [BottomMenu Component](/docs/components/navigation/bottom-menu)
-- [TabWidget Component](/docs/components/navigation/tab-widget)
-- [Modal Component](/docs/components/feedback/modal)
+- [Header Component](/docs/components/header)
+- [BottomMenu Component](/docs/components/bottom-menu)
+- [TabWidget Component](/docs/components/tab-widget)
+- [Modal Component](/docs/components/modal)

@@ -68,7 +68,7 @@ function TabExample() {
 
 ## With TabWidget
 
-For complete tab navigation with swipeable content, use [TabWidget](/docs/components/navigation/tab-widget):
+For complete tab navigation with swipeable content, use [TabWidget](/docs/components/tab-widget):
 
 ```tsx
 import { TabWidget } from '@tansuk/rott-ui';
