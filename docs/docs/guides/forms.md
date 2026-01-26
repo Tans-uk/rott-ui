@@ -340,6 +340,6 @@ function DynamicForm() {
 
 ## Related
 
-- [Input Component](/docs/components/input/input)
-- [Button Component](/docs/components/navigation/button)
-- [FormContainer](/docs/components/utility/form-container)
+- [Input Component](/docs/components/input)
+- [Button Component](/docs/components/button)
+- [FormContainer](/docs/components/form-container)

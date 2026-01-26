@@ -192,4 +192,4 @@ function LanguageSwitcher() {
 ## Related
 
 - [Configuration](/docs/getting-started/configuration)
-- [useTranslator Hook](/docs/api/hooks/use-translator)
+- [useTranslator Hook]()

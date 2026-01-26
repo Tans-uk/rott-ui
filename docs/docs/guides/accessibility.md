@@ -216,5 +216,5 @@ Rott UI helps you meet WCAG 2.1 Level AA:
 ## Related
 
 - [Testing Guide](/docs/guides/testing)
-- [Button Component](/docs/components/navigation/button)
-- [Input Component](/docs/components/input/input)
+- [Button Component](/docs/components/button)
+- [Input Component](/docs/components/input)

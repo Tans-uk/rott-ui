@@ -88,7 +88,6 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/Tans-uk/rott-ui',
           label: 'GitHub',
