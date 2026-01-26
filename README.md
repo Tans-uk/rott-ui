@@ -4,6 +4,19 @@ A comprehensive, property-based React Native UI Kit designed for rapid developme
 
 [![npm version](https://badge.fury.io/js/@tansuk%2Frott-ui.svg)](https://badge.fury.io/js/@tansuk%2Frott-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/docs-docusaurus-blue.svg)](./docs)
+
+## 📚 Documentation
+
+**[View Full Documentation →](./docs)**
+
+Comprehensive documentation with:
+- 🚀 Getting Started guides
+- 📖 All 29 component pages
+- 🎨 Theming system
+- 📝 How-to guides
+- 💡 Complete examples
+- 🌍 Bilingual support (EN/TR)
 
 ## ✨ Features
 
