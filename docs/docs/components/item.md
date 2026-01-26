@@ -63,7 +63,7 @@ import { Item } from '@tansuk/rott-ui';
 | `skeletonShow` | `boolean` | `false` | Show skeleton |
 | `skeletonStyle` | `SkeletonStyleProps` | - | Skeleton style |
 
-Plus all [CommonUiProps](/docs/api/common-ui-props).
+Plus all [CommonUiProps]().
 
 ## Examples
 
