@@ -223,6 +223,8 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
               "height": 108,
               "justifyContent": "center",
               "opacity": 1,
+              "overflow": "hidden",
+              "pointerEvents": "box-only",
               "position": "relative",
               "width": 658,
             }
@@ -299,6 +301,8 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
               "height": 108,
               "justifyContent": "center",
               "opacity": 1,
+              "overflow": "hidden",
+              "pointerEvents": "box-only",
               "position": "relative",
               "width": 658,
             }

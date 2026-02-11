@@ -854,6 +854,8 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
             "justifyContent": "center",
             "marginBottom": 41,
             "opacity": 1,
+            "overflow": "hidden",
+            "pointerEvents": "box-only",
             "position": "relative",
             "width": 658,
           }
