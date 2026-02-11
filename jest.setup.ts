@@ -181,11 +181,27 @@ jest.mock('react-native-reanimated', () => {
       if (callback) setTimeout(callback, 0)
       return value
     }),
+    withRepeat: jest.fn((value) => value),
     withSpring: jest.fn((value) => value),
     runOnJS: jest.fn((fn) => () => fn()),
+    interpolate: jest.fn((value) => value),
     runOnUI: jest.fn((fn) => fn),
+    createAnimatedComponent: jest.fn((Component) => Component),
+    Easing: {
+      linear: jest.fn(),
+      ease: jest.fn(),
+      quad: jest.fn(),
+      cubic: jest.fn(),
+      poly: jest.fn(),
+      sin: jest.fn(),
+      circle: jest.fn(),
+      exp: jest.fn(),
+      elastic: jest.fn(),
+    }
   }
 })
+
+jest.mock('react-native-worklets', () => require('react-native-worklets/src/mock'))
 
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 

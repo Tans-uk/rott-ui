@@ -34,4 +34,6 @@ export interface ButtonProps
 
   circle?: boolean
   text?: string
+
+  ripple?: boolean
 }
