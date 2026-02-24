@@ -25,5 +25,5 @@
     "types": ["jest", "node"],
     "typeRoots": ["./node_modules/@types/"]
   },
-  "exclude": ["examples/*"]
+  "exclude": ["examples/*", "docs/*"]
 }

@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {ActivityIndicator, StyleSheet, TouchableOpacity} from 'react-native'
 
@@ -8,10 +8,10 @@ import {display} from '../../../utils'
 import {Icon, IconKeys} from '../../Icon'
 import {Image} from '../../Image'
 import {Label} from '../../Label'
+import {useRippleAnimation} from '../hooks'
 import type {ButtonProps} from '../models'
 import {ButtonStyles} from '../styles'
 import {buttonSizeNormalizer} from '../utils'
-import React from 'react'
 
 export const Button: FC<ButtonProps> = ({
   variant = 'primary',
@@ -51,11 +51,15 @@ export const Button: FC<ButtonProps> = ({
   children,
   style,
   text,
+  ripple = false,
   ...props
 }) => {
+  const {rippleElement, rippleContainerStyles, handleRipplePressIn} = useRippleAnimation()
+
   return (
     <TouchableOpacity
       activeOpacity={0.8}
+      onPressIn={handleRipplePressIn}
       style={StyleSheet.flatten([
         ButtonStyles({
           variant,
@@ -77,9 +81,12 @@ export const Button: FC<ButtonProps> = ({
           justifyContentSpaceBetween,
           ...props,
         }).defaultButtonStyle,
+        rippleContainerStyles,
         style,
       ])}
       {...props}>
+      {ripple && rippleElement}
+
       {leftIcon && !isLoading && (
         <Icon
           {...leftIcon}

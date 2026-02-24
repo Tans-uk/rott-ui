@@ -90,6 +90,8 @@ exports[`ButtonGroup -> Custom Component buton grubunun snapshotı ile eşleşme
               "height": 108,
               "justifyContent": "center",
               "opacity": 1,
+              "overflow": "hidden",
+              "pointerEvents": "box-only",
               "position": "relative",
               "width": 658,
             }
@@ -153,6 +155,8 @@ exports[`ButtonGroup -> Custom Component buton grubunun snapshotı ile eşleşme
               "height": 108,
               "justifyContent": "center",
               "opacity": 1,
+              "overflow": "hidden",
+              "pointerEvents": "box-only",
               "position": "relative",
               "width": 658,
             }
