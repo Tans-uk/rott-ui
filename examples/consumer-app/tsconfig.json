@@ -7,5 +7,5 @@
       "@tansuk/rott-ui": ["../../src"]
     }
   },
-  "include": ["./rott.config.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["./rott.config.ts", "**/*.ts", "**/*.tsx", ".rott/**/*.d.ts"]
 }
