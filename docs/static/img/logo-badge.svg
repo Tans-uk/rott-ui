@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+  <!-- Badge background -->
+  <rect x="4" y="4" width="92" height="92" rx="20" ry="20" fill="#ffffff"/>
+  <rect x="4" y="4" width="92" height="92" rx="20" ry="20" fill="none" stroke="#e7e5e4" stroke-width="1.5"/>
+
   <!-- Left ear (floppy) -->
   <ellipse cx="27" cy="34" rx="11" ry="14" fill="#1a1a1a" transform="rotate(-15 27 34)"/>
   <!-- Right ear (floppy) -->

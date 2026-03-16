@@ -6,8 +6,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Rott UI',
-  tagline: 'A comprehensive, property-based React Native UI Kit for rapid development',
-  favicon: 'img/favicon.ico',
+  tagline: '29 production-ready React Native components with type-safe theming.',
+  favicon: 'img/favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -79,7 +79,8 @@ const config: Config = {
       title: 'Rott UI',
       logo: {
         alt: 'Rott UI Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo-badge.svg',
+        srcDark: 'img/logo.svg',
       },
       items: [
         {
@@ -102,6 +103,12 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
+      logo: {
+        alt: 'Rott UI',
+        src: 'img/logo.svg',
+        href: '/',
+        width: 80,
+      },
       links: [
         {
           title: 'Documentation',
@@ -151,7 +158,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Doğukan Tansuk. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Doğukan Tansuk — MIT License`,
     },
     prism: {
       theme: prismThemes.github,

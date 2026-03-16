@@ -1,82 +1,58 @@
-import React, {type ReactNode} from 'react'
+import React, { type ReactNode } from 'react'
 
 import HomepageFeatures from '../components/HomepageFeatures'
 import styles from './index.module.css'
 
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import Heading from '@theme/Heading'
 import Layout from '@theme/Layout'
 import clsx from 'clsx'
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext()
+function HomepageHero() {
+  const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className='container'>
-        <Heading as='h1' className='hero__title'>
-          {siteConfig.title}
-        </Heading>
-        <p className='hero__subtitle'>{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+    <header className={styles.hero}>
+      <div className={clsx('container', styles.heroInner)}>
+        <div className={styles.heroEyebrow}>React Native UI Kit</div>
+        <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+        <p className={styles.heroSubtitle}>
+          29 production-ready components. Type-safe theming. Built for React Native.
+        </p>
+
+        <div className={styles.heroActions}>
           <Link
-            className='button button--secondary button--lg'
-            to='/docs/getting-started/installation'
-            style={{marginRight: '1rem'}}>
-            Get Started 🚀
+            className={clsx(styles.btnPrimary, 'button button--lg')}
+            to='/docs/getting-started/installation'>
+            Get Started
           </Link>
           <Link
-            className='button button--outline button--secondary button--lg'
+            className={clsx(styles.btnSecondary, 'button button--lg')}
             to='/docs/components/overview'>
             View Components
           </Link>
         </div>
-        <div
-          style={{
-            marginTop: '2rem',
-            display: 'flex',
-            gap: '1rem',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-          }}>
+
+        <div className={styles.heroBadges}>
           <a
             href='https://www.npmjs.com/package/@tansuk/rott-ui'
             target='_blank'
             rel='noopener noreferrer'
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              color: 'white',
-              textDecoration: 'none',
-            }}>
-            <img src='https://img.shields.io/npm/v/@tansuk/rott-ui.svg' alt='npm version' />
+            className={styles.badgeLink}>
+            <img src='https://img.shields.io/npm/v/@tansuk/rott-ui.svg?style=flat-square&labelColor=1a1a1a&color=92400e' alt='npm version' />
           </a>
           <a
             href='https://github.com/Tans-uk/rott-ui'
             target='_blank'
             rel='noopener noreferrer'
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              color: 'white',
-              textDecoration: 'none',
-            }}>
-            <img src='https://img.shields.io/github/stars/Tans-uk/rott-ui.svg' alt='GitHub stars' />
+            className={styles.badgeLink}>
+            <img src='https://img.shields.io/github/stars/Tans-uk/rott-ui.svg?style=flat-square&labelColor=1a1a1a&color=92400e' alt='GitHub stars' />
           </a>
           <a
             href='https://github.com/Tans-uk/rott-ui/blob/main/LICENSE'
             target='_blank'
             rel='noopener noreferrer'
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              color: 'white',
-              textDecoration: 'none',
-            }}>
-            <img src='https://img.shields.io/badge/license-MIT-blue.svg' alt='MIT License' />
+            className={styles.badgeLink}>
+            <img src='https://img.shields.io/badge/license-MIT-flat-square?style=flat-square&labelColor=1a1a1a&color=92400e' alt='MIT License' />
           </a>
         </div>
       </div>
@@ -84,15 +60,38 @@ function HomepageHeader() {
   )
 }
 
+function HomepageCTA() {
+  return (
+    <section className={styles.ctaSection}>
+      <div className='container'>
+        <div className={styles.ctaInner}>
+          <p className={styles.ctaLabel}>Ready to build?</p>
+          <h2 className={styles.ctaTitle}>Start in under 5 minutes</h2>
+          <p className={styles.ctaDescription}>
+            Install Rott UI, wrap your app with <code>RottProvider</code>, and start using
+            components immediately.
+          </p>
+          <Link
+            className={clsx(styles.btnPrimary, 'button button--lg')}
+            to='/docs/getting-started/installation'>
+            Installation Guide
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext()
+  const { siteConfig } = useDocusaurusContext()
   return (
     <Layout
-      title={`${siteConfig.title} - React Native UI Kit`}
-      description='A comprehensive, property-based React Native UI Kit for rapid development with type-safe theming and extensive customization options.'>
-      <HomepageHeader />
+      title={`${siteConfig.title} — React Native UI Kit`}
+      description='29 production-ready React Native components with type-safe theming. Build beautiful mobile apps faster.'>
+      <HomepageHero />
       <main>
         <HomepageFeatures />
+        <HomepageCTA />
       </main>
     </Layout>
   )

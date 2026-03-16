@@ -33,6 +33,8 @@
     "!**/.*"
   ],
   "scripts": {
+    "docs": "cd docs && npm start",
+    "docs:build": "cd docs && npm run build",
     "example": "yarn workspace UIExample start",
     "example:pod": "yarn workspace UIExample pod",
     "example:android": "yarn workspace UIExample android",

@@ -1,4 +1,4 @@
-import React, {type ReactNode} from 'react'
+import React, { type ReactNode } from 'react'
 
 import styles from './styles.module.css'
 
@@ -7,82 +7,84 @@ import clsx from 'clsx'
 
 type FeatureItem = {
   title: string
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>
+  icon: string
   description: ReactNode
 }
 
 const FeatureList: FeatureItem[] = [
   {
     title: '29 Production-Ready Components',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    icon: '/img/icon-components.svg',
     description: (
       <>
-        From basic buttons to complex modals and input fields. Every component is battle-tested,
-        fully typed, and ready for production use.
+        Buttons, modals, inputs, lists, alerts and more — every component is battle-tested,
+        fully typed, and ready for production.
       </>
     ),
   },
   {
     title: 'Type-Safe Theming',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    icon: '/img/icon-theming.svg',
     description: (
       <>
-        Configure colors, fonts, and styles with full TypeScript support using
-        <code> rott.config.ts</code>. Get autocomplete for your custom theme everywhere.
+        Define your brand colors in <code>rott.config.ts</code> and get full TypeScript
+        autocomplete across every component in your app.
       </>
     ),
   },
   {
     title: 'React Native First',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    icon: '/img/icon-mobile.svg',
     description: (
       <>
-        Optimized for mobile development with platform-specific adaptations, performance
-        optimizations, and comprehensive accessibility features.
+        Optimized for mobile with platform-specific adaptations, safe area handling, and
+        performance-focused rendering.
       </>
     ),
   },
   {
     title: 'Highly Customizable',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    icon: '/img/icon-customize.svg',
     description: (
       <>
-        Every component accepts extensive styling and behavior props. Customize colors, sizes,
-        variants, and more without touching the source code.
+        Every component accepts extensive styling and behavior props. Customize without
+        touching source code.
       </>
     ),
   },
   {
-    title: 'i18n Ready',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Internationalization Ready',
+    icon: '/img/icon-i18n.svg',
     description: (
       <>
-        Built-in internationalization support with React Intl integration. Turkish and English
-        documentation included out of the box.
+        Built-in i18n with React Intl. Turkish and English included. Add any locale without
+        rebuilding your components.
       </>
     ),
   },
   {
     title: 'Performance Optimized',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    icon: '/img/icon-performance.svg',
     description: (
       <>
-        Leverages FlashList, Reanimated, and other performance libraries. Responsive scaling and
-        optimized rendering for smooth experiences.
+        Powered by FlashList, Reanimated, and Worklets. Smooth animations and efficient list
+        rendering out of the box.
       </>
     ),
   },
 ]
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({ title, icon, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className='text--center'>
-        <Svg className={styles.featureSvg} role='img' />
-      </div>
-      <div className='text--center padding-horiz--md'>
-        <Heading as='h3'>{title}</Heading>
-        <p>{description}</p>
+    <div className={clsx('col col--4', styles.featureCol)}>
+      <div className={styles.featureCard}>
+        <div className={styles.featureIconWrap}>
+          <img src={icon} alt='' aria-hidden='true' className={styles.featureIcon} />
+        </div>
+        <Heading as='h3' className={styles.featureTitle}>
+          {title}
+        </Heading>
+        <p className={styles.featureDescription}>{description}</p>
       </div>
     </div>
   )
@@ -92,7 +94,13 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className='container'>
-        <div className='row'>
+        <div className={styles.featuresHeader}>
+          <p className={styles.featuresEyebrow}>Everything you need</p>
+          <Heading as='h2' className={styles.featuresTitle}>
+            Built for production from day one
+          </Heading>
+        </div>
+        <div className={clsx('row', styles.featuresGrid)}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
