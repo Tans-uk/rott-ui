@@ -5,9 +5,7 @@ export function defineRottConfig<T extends Partial<ThemeConfig>>(config: T): T {
     if (!config || typeof config !== 'object') {
       throw new Error('[rott-ui] rott.config.ts must export an object via defineRottConfig')
     }
-    if (!(config as Partial<ThemeConfig>).colors) {
-      throw new Error('[rott-ui] Missing "colors" in rott.config.ts')
-    }
+    /** Empty config is allowed; theme loader uses defaults + consumer asset scan */
   }
   return config
 }
