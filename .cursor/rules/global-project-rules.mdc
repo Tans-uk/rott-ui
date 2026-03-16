@@ -64,3 +64,9 @@ test(auth): add login validation tests
 - Subject should be 50 characters or less
 - Separate subject from body with a blank line
 - Use body to explain what and why, not how
+
+### Commit Workflow
+
+- Group related changes into logical commits (one concern per commit)
+- Use multi-line commit messages when the change needs explanation
+- Wait for user approval before executing each commit
