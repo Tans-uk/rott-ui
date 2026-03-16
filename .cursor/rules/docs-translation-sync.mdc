@@ -1,0 +1,44 @@
+---
+alwaysApply: true
+---
+
+# Documentation Translation Sync (EN/TR)
+
+Rott UI docs support English (default) and Turkish. Keep both locales in sync.
+
+## Structure
+
+- **English (source):** `docs/docs/**/*.md`
+- **Turkish:** `docs/i18n/tr/docusaurus-plugin-content-docs/current/**/*.md`
+
+Turkish files mirror the English folder structure. Example:
+
+- `docs/docs/getting-started/installation.md` → `docs/i18n/tr/docusaurus-plugin-content-docs/current/getting-started/installation.md`
+
+## Rules
+
+1. **When editing English docs:** Update the corresponding Turkish file if it exists. If it does not exist, add it to the translation backlog or create it.
+
+2. **When adding new English docs:** Run `npm run write-translations -- --locale tr` in the `docs/` folder to scaffold Turkish files, then translate.
+
+3. **Content parity:** Turkish docs must cover the same sections, code examples, and admonitions as English. Structure (headings, lists, tables) must match.
+
+4. **Code blocks:** Keep code unchanged in translations. Only translate comments, placeholder text, and UI strings inside examples if appropriate.
+
+5. **Links:** Preserve internal doc links; update link text to Turkish when the target page is translated.
+
+## Verification
+
+Before committing doc changes:
+
+- Compare EN vs TR for modified files (same headings, same number of sections)
+- Ensure new sections in EN have TR equivalents
+- Run `npm run build` in `docs/` to verify both locales build
+
+## Quick Reference
+
+| Action               | Command / Path                                         |
+| -------------------- | ------------------------------------------------------ |
+| Scaffold TR files    | `cd docs && npm run write-translations -- --locale tr` |
+| View TR docs locally | `cd docs && npm start -- --locale tr`                  |
+| Build with TR        | `cd docs && npm run build -- --locale tr`              |
