@@ -308,6 +308,11 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                         >
                           <Image
                             height={24}
+                            source={
+                              {
+                                "testUri": "../../../src/assets/images/logo/pttbank-black-colored.png",
+                              }
+                            }
                             style={
                               {
                                 "height": 46,

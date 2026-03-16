@@ -16,6 +16,11 @@ exports[`Image -> Custom Component image elementi snapshot ile eşleşmeli 1`] =
   >
     <Image
       height={50}
+      source={
+        {
+          "testUri": "../../../src/assets/images/logo/pttbank-white.png",
+        }
+      }
       style={
         {
           "height": 96,

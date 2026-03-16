@@ -193,6 +193,11 @@ exports[`ResultScreen Test ilk render anında snapshot ile eşleşmeli 1`] = `
                 height={220}
                 overflowHidden={true}
                 resizeMode="contain"
+                source={
+                  {
+                    "testUri": "../../../src/assets/images/empty-state/money-transfer-1.png",
+                  }
+                }
                 style={
                   {
                     "height": 423,
