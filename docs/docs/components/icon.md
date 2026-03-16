@@ -23,9 +23,9 @@ The Icon component renders SVG files as React components. This requires `react-n
 ## Basic Usage
 
 ```tsx
-import { Icon } from '@tansuk/rott-ui';
+import {Icon} from '@tansuk/rott-ui'
 
-<Icon name="MENU" width={24} height={24} />
+;<Icon name='MENU' width={24} height={24} />
 ```
 
 ## Icon Sizes
@@ -48,16 +48,21 @@ import { Icon } from '@tansuk/rott-ui';
 ## Stroke vs Fill
 
 ```tsx
-{/* Stroke mode (outline) */}
-<Icon name="HEART" width={24} height={24} mode="stroke" />
+{
+  /* Stroke mode (outline) */
+}
+;<Icon name='HEART' width={24} height={24} mode='stroke' />
 
-{/* Fill mode (solid) */}
-<Icon name="HEART" width={24} height={24} mode="fill" />
+{
+  /* Fill mode (solid) */
+}
+;<Icon name='HEART' width={24} height={24} mode='fill' />
 ```
 
 ## Available Icons
 
 ### Interface Icons
+
 - MENU, CLOSE, REMOVE, PLUS, MINUS
 - ARROW_LEFT, ARROW_RIGHT, CHEVRON_LEFT, CHEVRON_RIGHT
 - CHECK, CHECK_CIRCLE, REMOVE_CIRCLE
@@ -69,19 +74,20 @@ import { Icon } from '@tansuk/rott-ui';
 - And 90+ more...
 
 ### Currency Icons
+
 - MONEY_ADD, MONEY_REMOVE, MONEY_TRANSFER
 - CREDIT_CARD, WALLET
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `name` | `IconKeys` | **Required** | Icon name |
-| `width` | `number` | `24` | Icon width |
-| `height` | `number` | `24` | Icon height |
-| `variant` | `Variant` | `'grey-900'` | Color variant |
-| `mode` | `'stroke' \| 'fill'` | `'stroke'` | Render mode |
-| `strokeWidth` | `number` | `2` | Stroke width |
+| Prop          | Type                 | Default      | Description   |
+| ------------- | -------------------- | ------------ | ------------- |
+| `name`        | `IconKeys`           | **Required** | Icon name     |
+| `width`       | `number`             | `24`         | Icon width    |
+| `height`      | `number`             | `24`         | Icon height   |
+| `variant`     | `Variant`            | `'grey-900'` | Color variant |
+| `mode`        | `'stroke' \| 'fill'` | `'stroke'`   | Render mode   |
+| `strokeWidth` | `number`             | `2`          | Stroke width  |
 
 ## Examples
 
@@ -104,10 +110,7 @@ import { Icon } from '@tansuk/rott-ui';
 ### In Buttons
 
 ```tsx
-<Button 
-  variant="primary"
-  leftIcon={{ name: 'PLUS', width: 20, height: 20 }}
->
+<Button variant='primary' leftIcon={{name: 'PLUS', width: 20, height: 20}}>
   Add Item
 </Button>
 ```
@@ -116,8 +119,19 @@ import { Icon } from '@tansuk/rott-ui';
 
 ```tsx
 <Header
-  title="Settings"
-  leftIcon={[{ name: 'ARROW_LEFT', onPress: () => navigation.goBack() }]}
-  rightIcon={[{ name: 'SEARCH', onPress: () => {} }]}
+  title='Settings'
+  leftIcon={[{name: 'ARROW_LEFT', onPress: () => navigation.goBack()}]}
+  rightIcon={[{name: 'SEARCH', onPress: () => {}}]}
 />
 ```
+
+### Custom Icons (Auto-Discovery)
+
+With `withRottAssets` in your Metro config, SVG files in `src/assets/icons/svg/` are automatically available by filename (without extension):
+
+```tsx
+// src/assets/icons/svg/my-logo.svg → name="my-logo"
+<Icon name="my-logo" width={48} height={48} />
+```
+
+See [rott.config.ts - Asset Auto-Discovery](/docs/theming/rott-config#asset-auto-discovery).

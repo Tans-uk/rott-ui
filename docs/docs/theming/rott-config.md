@@ -154,6 +154,10 @@ Then use them in components:
 <Header logo="logo" />
 ```
 
+:::tip Zero-config alternative: Asset Auto-Discovery
+Instead of manually defining images and icons, you can use **Asset Auto-Discovery**. Add the `withRottAssets()` wrapper to your Metro config and drop files into `src/assets/images/` or `src/assets/icons/svg/`. They are scanned automatically and available by filename (e.g. `my-logo.png` → `name="my-logo"`). See [Asset Auto-Discovery](#asset-auto-discovery) below.
+:::
+
 ### Icons
 
 Add custom SVG icons:
@@ -180,6 +184,103 @@ Use them like built-in icons:
   Button with Custom Icon
 </Button>
 ```
+
+## Asset Auto-Discovery
+
+Asset Auto-Discovery lets you use images and icons **without manually defining them** in `rott.config.ts`. Add files to the correct folders and they are automatically registered.
+
+### Setup
+
+1. Add the `withRottAssets()` wrapper to your Metro config:
+
+```js title="metro.config.js"
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config')
+const { withRottAssets } = require('@tansuk/rott-ui/metro')
+
+const defaultConfig = getDefaultConfig(__dirname)
+const config = {
+  transformer: {
+    babelTransformerPath: require.resolve('react-native-svg-transformer'),
+  },
+  resolver: {
+    assetExts: defaultConfig.resolver.assetExts.filter((ext) => ext !== 'svg'),
+    sourceExts: [...defaultConfig.resolver.sourceExts, 'svg'],
+  },
+}
+
+module.exports = withRottAssets(mergeConfig(defaultConfig, config), {
+  projectRoot: __dirname,
+})
+```
+
+2. Add images to `src/assets/images/` (`.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`)
+3. Add icons to `src/assets/icons/svg/` (`.svg`)
+4. Restart Metro (`npx react-native start --reset-cache`)
+
+### Usage
+
+Use assets by **filename without extension**:
+
+```tsx
+<Image name="my-logo" />
+<Icon name="arrow-right" />
+```
+
+### TypeScript Autocomplete
+
+The wrapper generates `.rott/consumer-assets.d.ts` for autocomplete. Add it to your `tsconfig.json`:
+
+```json
+{
+  "include": ["**/*.ts", "**/*.tsx", ".rott/**/*.d.ts"]
+}
+```
+
+Restart the TypeScript server (`Cmd+Shift+P` → "TypeScript: Restart TS Server") after adding assets.
+
+### Default Directories
+
+| Type   | Path                      |
+| ------ | ------------------------- |
+| Images | `src/assets/images/`      |
+| Icons  | `src/assets/icons/svg/`   |
+
+Override via options: `withRottAssets(config, { imagesDir: 'assets/img', iconsDir: 'assets/ico' })`
+
+### Retina Variants
+
+`@2x` and `@3x` variants (e.g. `logo@2x.png`) are skipped; only the base file is registered.
+
+---
+
+## Empty Config
+
+You can use an **empty config** when you want only consumer-scanned assets (no library defaults):
+
+```typescript title="rott.config.ts"
+import { defineRottConfig } from '@tansuk/rott-ui';
+
+export const config = defineRottConfig({} as const);
+```
+
+With empty config:
+
+- **Images & Icons**: Only assets from your `src/assets/` scan (no default library assets)
+- **Colors, fonts, etc.**: Default theme values are still used
+- **Autocomplete**: Only your consumer asset names appear for `Image` and `Icon`
+
+Use `...defaultThemeConfig` when you want library defaults plus your custom assets:
+
+```typescript
+import { defaultThemeConfig, defineRottConfig } from '@tansuk/rott-ui';
+
+export const config = defineRottConfig({
+  ...defaultThemeConfig,
+  colors: { brandPrimary: '#123456' },
+} as const);
+```
+
+---
 
 ## Advanced Configuration
 

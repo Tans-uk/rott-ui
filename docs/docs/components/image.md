@@ -73,3 +73,14 @@ Plus all React Native Image props.
   borderRadius={12}
 />
 ```
+
+### Custom Images (Auto-Discovery)
+
+With `withRottAssets` in your Metro config, images in `src/assets/images/` are automatically available by filename (without extension):
+
+```tsx
+// src/assets/images/cindoruk.png → name="cindoruk"
+<Image name="cindoruk" width={100} height={100} />
+```
+
+See [rott.config.ts - Asset Auto-Discovery](/docs/theming/rott-config#asset-auto-discovery).

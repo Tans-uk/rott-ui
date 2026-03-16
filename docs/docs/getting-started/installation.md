@@ -42,16 +42,16 @@ npm install react react-native react-intl date-fns \
 
 ### Key Dependencies
 
-| Package | Purpose | Version | Type |
-|---------|---------|---------|------|
-| `@shopify/flash-list` | High-performance lists | ≥1.8.0 | peer |
-| `react-native-reanimated` | Smooth animations | 4.0.1 | peer |
-| `react-native-safe-area-context` | Safe area handling | ≥5.4.1 | peer |
-| `react-native-svg` | SVG icon support | ≥15.12.0 | peer |
-| `react-intl` | Internationalization | ≥7.1.0 | peer |
-| `date-fns` | Date formatting | ≥4.0.0 | peer |
-| `react-native-svg-transformer` | SVG → React component transform | ≥5.0.0 | devDependency |
-| `babel-plugin-module-resolver` | rott.config.ts runtime alias | ≥5.0.0 | devDependency (optional) |
+| Package                          | Purpose                         | Version  | Type                     |
+| -------------------------------- | ------------------------------- | -------- | ------------------------ |
+| `@shopify/flash-list`            | High-performance lists          | ≥1.8.0   | peer                     |
+| `react-native-reanimated`        | Smooth animations               | 4.0.1    | peer                     |
+| `react-native-safe-area-context` | Safe area handling              | ≥5.4.1   | peer                     |
+| `react-native-svg`               | SVG icon support                | ≥15.12.0 | peer                     |
+| `react-intl`                     | Internationalization            | ≥7.1.0   | peer                     |
+| `date-fns`                       | Date formatting                 | ≥4.0.0   | peer                     |
+| `react-native-svg-transformer`   | SVG → React component transform | ≥5.0.0   | devDependency            |
+| `babel-plugin-module-resolver`   | rott.config.ts runtime alias    | ≥5.0.0   | devDependency (optional) |
 
 ## Platform-Specific Setup
 
@@ -92,10 +92,11 @@ npm install react-native-svg-transformer --save-dev
 Create or update your `metro.config.js` to use the SVG transformer:
 
 ```js title="metro.config.js"
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config')
+const {withRottAssets} = require('@tansuk/rott-ui/metro')
 
-const defaultConfig = getDefaultConfig(__dirname);
-const { assetExts, sourceExts } = defaultConfig.resolver;
+const defaultConfig = getDefaultConfig(__dirname)
+const {assetExts, sourceExts} = defaultConfig.resolver
 
 const config = {
   transformer: {
@@ -105,12 +106,18 @@ const config = {
     assetExts: assetExts.filter((ext) => ext !== 'svg'),
     sourceExts: [...sourceExts, 'svg'],
   },
-};
+}
 
-module.exports = mergeConfig(defaultConfig, config);
+module.exports = withRottAssets(mergeConfig(defaultConfig, config), {
+  projectRoot: __dirname,
+})
 ```
 
-:::info Why is this needed?
+:::tip Asset Auto-Discovery
+The `withRottAssets()` wrapper enables **Asset Auto-Discovery**: images in `src/assets/images/` and icons in `src/assets/icons/svg/` are automatically scanned and available by filename. See [rott.config.ts - Asset Auto-Discovery](/docs/theming/rott-config#asset-auto-discovery).
+:::
+
+:::info Why is SVG transformer needed?
 By default, Metro treats `.svg` files as static assets (like images). Moving `svg` from `assetExts` to `sourceExts` allows the SVG transformer to convert `.svg` files into React components at bundle time. Without this setup, any component that renders an SVG icon (Icon, Header, Input, Button with icons, etc.) will throw a render error.
 :::
 
@@ -125,7 +132,7 @@ module.exports = {
     'react-native-worklets/plugin',
     'react-native-reanimated/plugin', // Must be last!
   ],
-};
+}
 ```
 
 :::warning Plugin Order
@@ -158,7 +165,7 @@ module.exports = {
     ],
     'react-native-reanimated/plugin', // Must be last!
   ],
-};
+}
 ```
 
 :::tip
@@ -170,17 +177,18 @@ You can skip this step if you are not using `rott.config.ts`. See the [rott.conf
 Create a simple test file to verify everything is installed correctly:
 
 ```tsx title="App.tsx"
-import React from 'react';
-import { RottProvider, Button } from '@tansuk/rott-ui';
+import React from 'react'
+
+import {Button, RottProvider} from '@tansuk/rott-ui'
 
 export default function App() {
   return (
     <RottProvider>
-      <Button variant="primary" onPress={() => console.log('Works!')}>
+      <Button variant='primary' onPress={() => console.log('Works!')}>
         Test Button
       </Button>
     </RottProvider>
-  );
+  )
 }
 ```
 
