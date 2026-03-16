@@ -114,6 +114,17 @@ npm run android
 - ✅ Create forms with `Input`
 - ✅ Add buttons with `Button`
 
+## Troubleshooting
+
+If icons do not render or you see a component error, verify the following:
+
+- [ ] `react-native-svg` is installed as a peer dependency
+- [ ] `react-native-svg-transformer` is installed as a dev dependency
+- [ ] Metro config moves `svg` from `assetExts` to `sourceExts` (see [Installation - SVG Icon Support](/docs/getting-started/installation#configure-svg-icon-support))
+- [ ] Babel plugins are in the correct order with `reanimated/plugin` last (see [Installation - Babel Plugins](/docs/getting-started/installation#configure-babel-plugins))
+- [ ] If using `rott.config.ts`: `babel-plugin-module-resolver` is installed and configured (see [Installation - Module Resolver](/docs/getting-started/installation#babel-module-resolver))
+- [ ] Metro cache is cleared after config changes: `npx react-native start --reset-cache`
+
 ## Next Steps
 
 - **[Components](/docs/components/overview)** - Explore all 29 components

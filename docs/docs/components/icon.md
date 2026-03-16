@@ -8,6 +8,10 @@ description: SVG icon component with 117+ built-in icons
 
 The Icon component provides access to 117+ built-in SVG icons with support for custom colors, sizes, and stroke/fill modes.
 
+:::info Prerequisites
+The Icon component renders SVG files as React components. This requires `react-native-svg` and `react-native-svg-transformer` to be installed, and your Metro config to include the SVG setup. If icons are not rendering, see [Installation - SVG Icon Support](/docs/getting-started/installation#configure-svg-icon-support).
+:::
+
 ## Features
 
 - 🎨 117+ built-in icons

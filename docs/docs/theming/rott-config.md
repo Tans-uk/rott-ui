@@ -37,7 +37,7 @@ export const config = defineRottConfig({
 
 ### Step 2: Add TypeScript Path Mapping
 
-Add the path mapping to your `tsconfig.json`:
+Add the path mapping to your `tsconfig.json` so the IDE can resolve the module:
 
 ```json title="tsconfig.json"
 {
@@ -48,6 +48,42 @@ Add the path mapping to your `tsconfig.json`:
   }
 }
 ```
+
+:::caution TypeScript paths are compile-time only
+The `tsconfig.json` path mapping provides IDE autocomplete and type checking, but it does **not** work at runtime. Metro/Babel cannot resolve `rott.config` from `tsconfig.json` paths alone. You must also complete **Step 2b** below.
+:::
+
+### Step 2b: Add Babel Module Resolver (Runtime)
+
+Install `babel-plugin-module-resolver` so Metro can resolve `rott.config` at bundle time:
+
+```bash npm2yarn
+npm install babel-plugin-module-resolver --save-dev
+```
+
+Add the alias to your `babel.config.js`:
+
+```js title="babel.config.js"
+module.exports = {
+  presets: ['module:@react-native/babel-preset'],
+  plugins: [
+    [
+      'module-resolver',
+      {
+        alias: {
+          'rott.config': './rott.config.ts',
+        },
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+      },
+    ],
+    'react-native-reanimated/plugin', // Must be last!
+  ],
+};
+```
+
+:::warning Plugin Order
+The `react-native-reanimated/plugin` must **always** be the last plugin. Place `module-resolver` and any other plugins before it. See [Installation - Babel Plugins](/docs/getting-started/installation#babel-module-resolver) for the full plugin order.
+:::
 
 ### Step 3: Use Your Custom Theme
 
@@ -121,6 +157,10 @@ Then use them in components:
 ### Icons
 
 Add custom SVG icons:
+
+:::warning SVG Transformer Required
+Custom SVG icons require `react-native-svg-transformer` to be installed and your Metro config to include the SVG setup. Without this, `require('./path/to/icon.svg')` will fail at runtime. See [Installation - SVG Icon Support](/docs/getting-started/installation#configure-svg-icon-support) for setup instructions.
+:::
 
 ```typescript
 export const config = defineRottConfig({
