@@ -1,8 +1,8 @@
-import type {ReactNode} from 'react'
+import type { ReactNode } from 'react'
 
-import type {CommonUiProps, Size, Variant} from '../../../models'
-import type {ImageProps, ImageTypes} from '../../Image/models'
-import type {FontFamily, FontWeight} from '../../Label/models'
+import type { CommonUiProps, Size, Variant } from '../../../models'
+import type { ImageProps, ImageTypes } from '../../Image/models'
+import type { FontFamily, FontWeight } from '../../Label/models'
 
 interface EmptyStateLabelProps {
   testID?: string

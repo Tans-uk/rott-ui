@@ -10,7 +10,6 @@ import {
 import {languageMessages} from '../libs'
 import {Language, ThemeConfig} from '../models'
 import {theme} from '../theme'
-import {defaultThemeConfig} from './defaultThemeConfig'
 
 import {IntlProvider} from 'react-intl'
 
