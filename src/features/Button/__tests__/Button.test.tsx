@@ -67,7 +67,7 @@ describe('Button -> Custom Component', () => {
     const buttonElemet = getByTestId(buttonTestId)
     fireEvent.press(buttonElemet)
 
-    expect(onPressMock).not.toBeCalled()
+    expect(onPressMock).not.toHaveBeenCalled()
   })
 
   it('left icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', () => {

@@ -63,7 +63,7 @@ describe('Select Input -> Custom Input', () => {
     expect(selectInputModal).toBeVisible()
   })
 
-  it('select input secildigi zaman listenin ekranda gorunur olmali', () => {
+  it('select input secildigi zaman listenin ekranda gorunur olmali', async () => {
     const {
       select: {selectTestId, selectSelectionTestId, listTestId},
     } = testId
@@ -73,13 +73,11 @@ describe('Select Input -> Custom Input', () => {
 
     // Select Modal Acilir
     const selectInputValueContainer = getByTestId(selectSelectionTestId)
-    waitFor(() => {
-      fireEvent.press(selectInputValueContainer)
-    })
+    fireEvent.press(selectInputValueContainer)
 
-    const listElement = getByTestId(listTestId)
-    mockData.map((item) => {
-      expect(listElement).toHaveTextContent(item.label)
+    const listElement = await waitFor(() => getByTestId(listTestId))
+    mockData.forEach((item) => {
+      expect(listElement).toHaveTextContent(new RegExp(item.label))
     })
   })
 
@@ -386,8 +384,8 @@ describe('Select Input -> Custom Input', () => {
 
     // Tum liste ekranda var mi yok mu kiyaslar
     const listElement = getByTestId(listTestId)
-    mockData.slice(0, 10).map((item) => {
-      expect(listElement).toHaveTextContent(item.label)
+    mockData.slice(0, 10).forEach((item) => {
+      expect(listElement).toHaveTextContent(new RegExp(item.label))
     })
   })
 

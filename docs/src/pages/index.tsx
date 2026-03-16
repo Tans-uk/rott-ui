@@ -1,10 +1,10 @@
 import React, {type ReactNode} from 'react'
 
+import HomepageFeatures from '../components/HomepageFeatures'
 import styles from './index.module.css'
 
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import HomepageFeatures from '@site/src/components/HomepageFeatures/index'
 import Heading from '@theme/Heading'
 import Layout from '@theme/Layout'
 import clsx from 'clsx'

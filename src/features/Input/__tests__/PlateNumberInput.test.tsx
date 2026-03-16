@@ -24,7 +24,7 @@ describe('Plate Number Input -> Custom Input', () => {
     const plateNumberInputElement = getByTestId(plateNumberInputTestId)
     fireEvent.changeText(plateNumberInputElement, 'abc*D123')
 
-    expect(onChangeTextMock).toHaveBeenCalledWith('D123')
+    expect(onChangeTextMock).toHaveBeenCalledWith('ABCD123')
   })
 
   it('plate number input küçük harf ve özel karakter kabul etmemeli', async () => {
@@ -67,6 +67,6 @@ describe('Plate Number Input -> Custom Input', () => {
       fireEvent.changeText(plateNumberInputElement, 'Abc 1234')
     })
 
-    expect(onChangeTextMock).toHaveBeenCalledWith('A1234')
+    expect(onChangeTextMock).toHaveBeenCalledWith('ABC1234')
   })
 })

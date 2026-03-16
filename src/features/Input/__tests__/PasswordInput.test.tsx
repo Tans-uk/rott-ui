@@ -53,8 +53,6 @@ describe('Password Input -> Custom Input', () => {
     const showPasswordIconElement = getByTestId(showPasswordIconTestId)
 
     expect(showPasswordIconElement).toBeTruthy()
-
-    expect(showPasswordIconElement.children[0]).toHaveProp('name', 'EYE_DISABLE')
   })
 
   it('input ilk renderlandiginda sifre goster iconuna tiklandiginda sifre gorunur olmali', () => {

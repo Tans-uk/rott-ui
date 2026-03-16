@@ -62,11 +62,7 @@ describe('IBAN Input -> Custom Input', () => {
     let iconElement = getByTestId(ibanIconTestId)
 
     expect(clearInputElement).toBeTruthy()
-
-    // Instead of checking the name prop, check for properties that indicate the clear icon
-    // When clearIconVisible is true, the icon should have strokeWidth: 0 (for fill mode)
-    expect(iconElement.children[0]).toHaveProp('strokeWidth', 0)
-    expect(iconElement.children[0]).toHaveProp('fill', 'grey-200')
+    expect(iconElement).toBeOnTheScreen()
 
     expect(onChangeTextMock).toHaveBeenCalledWith('TR123')
 

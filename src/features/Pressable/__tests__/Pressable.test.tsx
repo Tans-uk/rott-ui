@@ -67,7 +67,7 @@ describe('Pressable -> Custom Component', () => {
     expect(pressableElement).toBeTruthy()
 
     fireEvent.press(pressableElement)
-    expect(onPressMock).not.toBeCalled()
+    expect(onPressMock).not.toHaveBeenCalled()
   })
 
   it('pressable componenti style ile render olmalı', () => {

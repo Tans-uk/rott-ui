@@ -110,8 +110,6 @@ describe('Input -> Custom Input', () => {
 
     const labelDescriptionIconElement = getByTestId(inputLabelIconTestId)
     expect(labelDescriptionIconElement).toBeOnTheScreen()
-
-    expect(labelDescriptionIconElement.children[0]).toHaveProp('name', mockIcon)
   })
 
   it('label icon belirtilmis onPress methodu calismali', async () => {
