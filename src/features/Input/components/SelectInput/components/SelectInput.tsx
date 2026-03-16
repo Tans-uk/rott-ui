@@ -55,7 +55,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   showSelected = false,
   showDescription = false,
   emptyState = {
-    name: 'EMPTY_LIST_ERROR',
+    name: 'list-error-empty-state',
   },
   readOnly,
   onTouched,

@@ -126,7 +126,7 @@ export const List: FC<ListProps<any>> = forwardRef(
                   <EmptyState
                     width={(emptyState as EmptyStateProps)?.width ?? 182}
                     height={(emptyState as EmptyStateProps)?.height ?? 182}
-                    name={(emptyState as EmptyStateProps)?.name ?? 'EMPTY_TRANSACTIONS_LIGHT'}
+                    name={(emptyState as EmptyStateProps)?.name ?? 'money-transfer-1-light'}
                     testID={(emptyState as EmptyStateProps)?.testID ?? 'list-empty-test-id'}
                     title={
                       (emptyState as EmptyStateProps)?.title ?? formatMessage('LIST.EMPTY.WARN')

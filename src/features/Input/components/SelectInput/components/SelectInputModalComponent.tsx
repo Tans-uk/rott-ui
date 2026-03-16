@@ -29,7 +29,7 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
   handleConfirmPress,
   list,
   emptyState = {
-    name: 'EMPTY_LIST_ERROR',
+    name: 'list-error-empty-state',
   },
   sortByName,
   listRef,
@@ -163,7 +163,7 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
           showsVerticalScrollIndicator={false}
           scrollEnabled={(filteredListData?.length ?? 0) > LIST_MAX_ITEM_COUNT ? true : false}
           emptyState={{
-            name: emptyState?.name ?? 'EMPTY_LIST_ERROR',
+            name: emptyState?.name ?? 'list-error-empty-state',
             background: emptyState?.background ?? themeConfig.colors.transparent,
             title: emptyState?.title,
             description: emptyState?.title,
