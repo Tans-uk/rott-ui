@@ -7,7 +7,7 @@ describe('ResultScreen Test', () => {
   const mockDetailElement = {
     texts: {
       header: 'Test Title Header',
-      state: 'EMPTY_MONEY_TRANSFER' as ImageTypes,
+      state: 'money-transfer-1' as ImageTypes,
       title: 'Test Title',
       description: 'Test Description',
       actionText: 'Test Action Text',

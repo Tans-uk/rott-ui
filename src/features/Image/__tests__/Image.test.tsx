@@ -7,7 +7,7 @@ describe('Image -> Custom Component', () => {
   const testId = {
     imageTestId: 'image-test-id',
   }
-  const testIconName: ImageTypes = 'PTTBANK_WHITE'
+  const testIconName: ImageTypes = 'pttbank-white'
 
   it('image elementi snapshot ile eşleşmeli', () => {
     const {imageTestId} = testId

@@ -17,7 +17,7 @@ describe('Header -> Custom Component', () => {
   }
 
   const IMG: {logo: ImageTypes; rightIcon: IconKeys} = {
-    logo: 'PTTBANK_WHITE',
+    logo: 'pttbank-white',
     rightIcon: 'remove-circle',
   }
   const headerText = 'Test Başlık'

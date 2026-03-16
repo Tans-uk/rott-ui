@@ -15,7 +15,7 @@ describe('EmptyState -> Custom Component', () => {
 
   it('ilk render anında snapshot ile eşleşmeli', () => {
     const {description} = testTexts
-    const renderedEmptyState = render(<EmptyState name='EMPTY_PHONE' description={description} />)
+    const renderedEmptyState = render(<EmptyState name='phone' description={description} />)
 
     expect(renderedEmptyState).toMatchSnapshot()
   })
@@ -23,7 +23,7 @@ describe('EmptyState -> Custom Component', () => {
   it('name propertysi EMPTY ile başlamalı', () => {
     const {description} = testTexts
     const {emptyStateImageTestId} = testId
-    const {getByTestId} = render(<EmptyState name='EMPTY_PHONE' description={description} />)
+    const {getByTestId} = render(<EmptyState name='phone' description={description} />)
 
     const imageElement = getByTestId(emptyStateImageTestId)
 
@@ -32,7 +32,7 @@ describe('EmptyState -> Custom Component', () => {
 
   it('description verilen değerler ile ekranda gözükmeli', () => {
     const {description} = testTexts
-    const {getByText} = render(<EmptyState name='EMPTY_PHONE' description={description} />)
+    const {getByText} = render(<EmptyState name='phone' description={description} />)
 
     const descriptionElement = getByText(description)
 
@@ -41,7 +41,7 @@ describe('EmptyState -> Custom Component', () => {
 
   it('description verilmediği zaman ekranda gözükmemeli', () => {
     const {emptyStateDescTestId} = testId
-    const {queryByTestId} = render(<EmptyState name='EMPTY_PHONE' />)
+    const {queryByTestId} = render(<EmptyState name='phone' />)
 
     const descriptionElement = queryByTestId(emptyStateDescTestId)
 
@@ -52,7 +52,7 @@ describe('EmptyState -> Custom Component', () => {
     const {description} = testTexts
     const {getByTestId} = render(
       <EmptyState
-        name='EMPTY_PHONE'
+        name='phone'
         description={<Label testID='custom-label-test-id'>{description}</Label>}
       />
     )
