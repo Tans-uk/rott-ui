@@ -30,11 +30,6 @@ exports[`EmptyState -> Custom Component ilk render anında snapshot ile eşleşm
         height={220}
         overflowHidden={true}
         resizeMode="contain"
-        source={
-          {
-            "testUri": "../../../src/assets/images/empty-state/phone.png",
-          }
-        }
         style={
           {
             "height": 423,

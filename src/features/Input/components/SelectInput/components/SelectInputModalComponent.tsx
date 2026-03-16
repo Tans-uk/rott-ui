@@ -90,7 +90,7 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
         selectionDisabled={item.disabled}
         leftIcon={
           item.disabled ? (
-            <Icon name='LOCK' height={24} width={24} variant='grey-200' strokeWidth={1.5} />
+            <Icon name='lock' height={24} width={24} variant='grey-200' strokeWidth={1.5} />
           ) : null
         }
         selectedPosition='right'
@@ -134,7 +134,7 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
               justifyContentCenter
               alignItemsCenter
               onPress={handleClearSearch}>
-              <Icon name='REMOVE_CIRCLE' height={24} width={24} mode='fill' variant='grey-200' />
+              <Icon name='remove-circle' height={24} width={24} mode='fill' variant='grey-200' />
             </Pressable>
           )}
         </Item>

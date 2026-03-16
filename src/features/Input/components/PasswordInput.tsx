@@ -68,7 +68,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
         }}>
         <Icon
           variant={theme === 'dark' ? 'white' : !value ? 'grey-200' : 'grey-900'}
-          name={isSecure ? 'EYE_DISABLE' : 'EYE'}
+          name={isSecure ? 'eye-disable' : 'eye'}
           height={24}
           width={24}
         />

@@ -56,7 +56,7 @@ export const CVCInput: FC<CVCInputProps> = ({fontSize, onChangeText, theme, size
         <Label variant='grey-200' fontSize='xs' fontWeight={700}>
           {translator('CVC.LABEL.DESCRIPTION')}
         </Label>
-        <Icon name='CHECK_CIRCLE' height={18} width={18} variant='grey-200' marginLeft={4} />
+        <Icon name='check-circle' height={18} width={18} variant='grey-200' marginLeft={4} />
       </Pressable>
     </Item>
   )

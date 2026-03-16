@@ -96,7 +96,7 @@ export const PhoneInput: FC<PhoneInputProps> = ({
             }}>
             <Icon
               testID='phone-icon-test-id'
-              name='PHONE_BOOK'
+              name='phone-book'
               width={InputStyleNormalizer({size}).icon.width}
               height={InputStyleNormalizer({size}).icon.height}
               color={themeConfig.colors['grey-200']}

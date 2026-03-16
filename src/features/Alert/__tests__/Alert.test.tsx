@@ -28,7 +28,7 @@ describe('Alert component', () => {
   it('left icon ve text alanı olmalı', () => {
     const {alertTestId, leftIconTestId} = testId
     const {getByTestId} = render(
-      <Alert text='Test Alert' size='full' variant='warning' leftIcon={{name: 'WARNING_ERROR'}} />
+      <Alert text='Test Alert' size='full' variant='warning' leftIcon={{name: 'warning-error'}} />
     )
 
     const alertComponent = getByTestId(alertTestId)
@@ -54,7 +54,7 @@ describe('Alert component', () => {
   it('right icon ve text alanı olmalı', () => {
     const {alertTestId, rightIconTestId} = testId
     const {getByTestId} = render(
-      <Alert text='Test Alert' size='full' variant='warning' rightIcon={{name: 'WARNING_ERROR'}} />
+      <Alert text='Test Alert' size='full' variant='warning' rightIcon={{name: 'warning-error'}} />
     )
 
     const alertComponent = getByTestId(alertTestId)
@@ -84,8 +84,8 @@ describe('Alert component', () => {
         text='Test Alert'
         size='full'
         variant='warning'
-        leftIcon={{name: 'WARNING_ERROR'}}
-        rightIcon={{name: 'WARNING_ERROR'}}
+        leftIcon={{name: 'warning-error'}}
+        rightIcon={{name: 'warning-error'}}
       />
     )
 

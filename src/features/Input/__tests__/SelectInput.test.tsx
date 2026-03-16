@@ -319,7 +319,7 @@ describe('Select Input -> Custom Input', () => {
     let clearInputElement = getByTestId(searchClearTestId)
 
     expect(clearInputElement).toBeTruthy()
-    expect((clearInputElement?.children[0] as any).props.name).toMatch(/REMOVE_CIRCLE/i)
+    expect((clearInputElement?.children[0] as any).props.name).toMatch(/remove-circle/i)
   })
 
   it('clear iconuna tiklandiginda searchText icerigi temizlenmeli', () => {

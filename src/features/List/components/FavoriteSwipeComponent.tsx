@@ -28,7 +28,7 @@ export const FavoriteSwipeComponent: FC<FavoriteSwipeComponentProps> = ({
       <Icon
         width={16}
         height={16}
-        name={favorite ? 'STAR_FILL' : 'STAR'}
+        name={favorite ? 'star-fill' : 'star'}
         variant={favorite ? 'secondary' : 'info'}
       />
 

@@ -73,7 +73,7 @@ describe('Button -> Custom Component', () => {
   it('left icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', () => {
     const {buttonTestId, buttonText, buttonLeftIconTestId} = testId
     const {getByTestId} = render(
-      <Button testID={buttonTestId} leftIcon={{name: 'REMOVE_CIRCLE'}}>
+      <Button testID={buttonTestId} leftIcon={{name: 'remove-circle'}}>
         {buttonText}
       </Button>
     )
@@ -86,7 +86,7 @@ describe('Button -> Custom Component', () => {
   it('left image propertysi verildiğinde ekranda doğru image ile renderlanmalı', () => {
     const {buttonTestId, buttonText, buttonLeftImageTestId} = testId
     const {getByTestId} = render(
-      <Button testID={buttonTestId} leftImage={{name: 'LEFT_ARROW_ICON', absolute: true}}>
+      <Button testID={buttonTestId} leftImage={{name: 'left-arrow-icon', absolute: true}}>
         {buttonText}
       </Button>
     )
@@ -100,7 +100,7 @@ describe('Button -> Custom Component', () => {
   it('button loading durumundayken verilen left icon görünmemeli', () => {
     const {buttonText, buttonLeftIconTestId} = testId
     const {queryByTestId} = render(
-      <Button leftIcon={{name: 'REMOVE_CIRCLE'}} isLoading>
+      <Button leftIcon={{name: 'remove-circle'}} isLoading>
         {buttonText}
       </Button>
     )
@@ -130,7 +130,7 @@ describe('Button -> Custom Component', () => {
   it('right icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', () => {
     const {buttonTestId, buttonText, buttonRightIconTestId} = testId
     const {getByTestId} = render(
-      <Button testID={buttonTestId} rightIcon={{name: 'REMOVE_CIRCLE'}}>
+      <Button testID={buttonTestId} rightIcon={{name: 'remove-circle'}}>
         {buttonText}
       </Button>
     )
@@ -143,7 +143,7 @@ describe('Button -> Custom Component', () => {
   it('right image propertysi verildiğinde ekranda doğru image ile renderlanmalı', () => {
     const {buttonTestId, buttonText, buttonRightImageTestId} = testId
     const {getByTestId} = render(
-      <Button testID={buttonTestId} rightImage={{name: 'RIGHT_ARROW_ICON', absolute: true}}>
+      <Button testID={buttonTestId} rightImage={{name: 'right-arrow-icon', absolute: true}}>
         {buttonText}
       </Button>
     )
@@ -157,7 +157,7 @@ describe('Button -> Custom Component', () => {
   it('button loading durumundayken verilen right icon görünmemeli', () => {
     const {buttonText, buttonRightIconTestId} = testId
     const {queryByTestId} = render(
-      <Button rightIcon={{name: 'REMOVE_CIRCLE'}} isLoading>
+      <Button rightIcon={{name: 'remove-circle'}} isLoading>
         {buttonText}
       </Button>
     )

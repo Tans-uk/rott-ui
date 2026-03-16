@@ -148,7 +148,7 @@ export const SelectInput: FC<SelectInputProps> = ({
         title: placeholder,
         marginBottom: searchable ? 0 : 16,
         leftIcon: {
-          name: 'CHEVRON_LEFT',
+          name: 'chevron-left',
           mode: 'stroke',
           width: 24,
           height: 24,
@@ -244,11 +244,11 @@ export const SelectInput: FC<SelectInputProps> = ({
                 : (placeholder ?? label))}
           </Label>
 
-          {!readOnly && <Icon name='CHEVRON_RIGHT' height={25} width={25} variant={textVariant} />}
+          {!readOnly && <Icon name='chevron-right' height={25} width={25} variant={textVariant} />}
 
           {readOnly && (
             <Icon
-              name='ID_CARD'
+              name='id-card'
               height={25}
               width={25}
               variant={theme === 'dark' ? 'white' : 'grey-200'}

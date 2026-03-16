@@ -16,13 +16,13 @@ describe('Common -> Common Item', () => {
     subTitle: formatMessage('TEST.WITH.PARAM', {testText: 'SUBTITLE'}),
     description: formatMessage('TEST.WITH.PARAM', {testText: 'DESCRIPTION'}),
     leftIcon: {
-      name: 'STAR',
+      name: 'star',
       width: 24,
       height: 24,
       color: themeConfig.colors.primary,
     },
     rightIcon: {
-      name: 'PLUS',
+      name: 'plus',
       width: 24,
       height: 24,
       color: themeConfig.colors.primary,

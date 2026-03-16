@@ -99,7 +99,7 @@ export const IbanInput: FC<IbanInputProps> = ({
           }}>
           <Icon
             testID='iban-icon-test-id'
-            name={clearIconVisible ? 'REMOVE_CIRCLE' : 'IBAN_QR'}
+            name={clearIconVisible ? 'remove-circle' : 'qr-iban'}
             variant='grey-200'
             noStroke={clearIconVisible}
             width={InputStyleNormalizer({size}).icon.width}

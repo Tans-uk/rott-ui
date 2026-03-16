@@ -9,7 +9,7 @@ const mockLessThanOrEqualTwoButtons: AlertDialogProps = {
   title: formatMessage('TEST.WITH.PARAM', {testText: 'Test Title'}),
   text: formatMessage('TEST.WITH.PARAM', {testText: 'Test Text'}),
   icon: {
-    name: 'QR_TRANSFER',
+    name: 'qr-transfer',
     width: 64,
     height: 64,
     variant: 'success',
@@ -35,7 +35,7 @@ const mockMoreThanTwoButtons: AlertDialogProps = {
   title: formatMessage('TEST.WITH.PARAM', {testText: 'Test Title'}),
   text: formatMessage('TEST.WITH.PARAM', {testText: 'Test Text'}),
   icon: {
-    name: 'QR_TRANSFER',
+    name: 'qr-transfer',
     width: 64,
     height: 64,
     variant: 'success',

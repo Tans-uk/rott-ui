@@ -308,11 +308,6 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                         >
                           <Image
                             height={24}
-                            source={
-                              {
-                                "testUri": "../../../src/assets/images/logo/pttbank-BlackColored.png",
-                              }
-                            }
                             style={
                               {
                                 "height": 46,
@@ -375,7 +370,7 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
                             height={56}
                             justifyContentCenter={true}
                             minWidth={56}
-                            name="REMOVE_BIG"
+                            name="remove-big"
                             onBlur={[Function]}
                             onClick={[Function]}
                             onFocus={[Function]}

@@ -106,7 +106,7 @@ export const Header: FC<HeaderProps> = ({
                 mode={(leftIcon as IconProps)?.mode}
                 noStroke={(leftIcon as IconProps)?.noStroke}
                 {...(typeof leftIcon === 'object' ? (leftIcon as IconProps) : {})}
-                name={back ? 'CHEVRON_LEFT' : ((leftIcon as IconProps)?.name ?? leftIcon)}
+                name={back ? 'chevron-left' : ((leftIcon as IconProps)?.name ?? leftIcon)}
               />
             </Pressable>
           )}

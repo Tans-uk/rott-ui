@@ -10,13 +10,13 @@ import type {IconKeys} from '../models'
 jest.mock('../../../theme', () => ({
   theme: {
     icons: {
-      ARROW_LEFT: {
+      'arrow-left': {
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
           return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
         }),
       },
-      CHECK_CIRCLE: {
+      'check-circle': {
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
           return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
@@ -74,18 +74,18 @@ describe('Icon -> Custom Component', () => {
   })
 
   it('icon bileşeninin snapshot ile eşleşmeli', () => {
-    const rendered = render(<Icon name='ARROW_LEFT' testID={testIds.iconTestId} />)
+    const rendered = render(<Icon name='arrow-left' testID={testIds.iconTestId} />)
 
     expect(rendered).toMatchSnapshot()
   })
 
   it('icon bileşeni verilen name prop ile doğru icon render etmeli', () => {
-    const {getByTestId} = render(<Icon name='ARROW_LEFT' testID={testIds.iconTestId} />)
+    const {getByTestId} = render(<Icon name='arrow-left' testID={testIds.iconTestId} />)
 
     const iconElement = getByTestId(testIds.iconTestId)
 
     expect(iconElement).toBeOnTheScreen()
-    expect(theme.icons.ARROW_LEFT.default).toHaveBeenCalled()
+    expect(theme.icons['arrow-left'].default).toHaveBeenCalled()
   })
 
   it('icon bulunamadığında null dönmeli', () => {
@@ -99,9 +99,9 @@ describe('Icon -> Custom Component', () => {
 
   describe('Icon -> Size Props', () => {
     it('default width ve height değerleri 16 olmalı', () => {
-      render(<Icon name='ARROW_LEFT' testID={testIds.iconTestId} />)
+      render(<Icon name='arrow-left' testID={testIds.iconTestId} />)
 
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.width).toBe(16)
       expect(lastCall.height).toBe(16)
     })
@@ -112,14 +112,14 @@ describe('Icon -> Custom Component', () => {
 
       render(
         <Icon
-          name='ARROW_LEFT'
+          name='arrow-left'
           width={customWidth}
           height={customHeight}
           testID={testIds.iconTestId}
         />
       )
 
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.width).toBe(customWidth)
       expect(lastCall.height).toBe(customHeight)
     })
@@ -127,17 +127,17 @@ describe('Icon -> Custom Component', () => {
 
   describe('Icon -> Mode Behavior', () => {
     it('fill mode ile variant color fill olarak uygulanmalı', () => {
-      render(<Icon name='ARROW_LEFT' mode='fill' variant='primary' testID={testIds.iconTestId} />)
+      render(<Icon name='arrow-left' mode='fill' variant='primary' testID={testIds.iconTestId} />)
       expect(colorFromVariant).toHaveBeenCalledWith('primary')
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.fill).toBe('#007AFF')
       expect(lastCall.strokeWidth).toBe(0)
     })
 
     it('stroke mode ile variant color stroke olarak uygulanmalı', () => {
-      render(<Icon name='ARROW_LEFT' mode='stroke' variant='danger' testID={testIds.iconTestId} />)
+      render(<Icon name='arrow-left' mode='stroke' variant='danger' testID={testIds.iconTestId} />)
       expect(colorFromVariant).toHaveBeenCalledWith('danger')
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.stroke).toBe('#FF3B30')
       expect(lastCall.strokeWidth).toBe(1)
     })
@@ -147,7 +147,7 @@ describe('Icon -> Custom Component', () => {
 
       render(
         <Icon
-          name='ARROW_LEFT'
+          name='arrow-left'
           mode='fill'
           variant='primary'
           color={customColor}
@@ -155,16 +155,16 @@ describe('Icon -> Custom Component', () => {
         />
       )
 
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.fill).toBe(customColor)
     })
   })
 
   describe('Icon -> Stroke Properties', () => {
     it('noStroke true olduğunda strokeWidth 0 olmalı', () => {
-      render(<Icon name='ARROW_LEFT' mode='stroke' noStroke testID={testIds.iconTestId} />)
+      render(<Icon name='arrow-left' mode='stroke' noStroke testID={testIds.iconTestId} />)
 
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.strokeWidth).toBe(0)
     })
 
@@ -173,28 +173,28 @@ describe('Icon -> Custom Component', () => {
 
       render(
         <Icon
-          name='ARROW_LEFT'
+          name='arrow-left'
           mode='stroke'
           strokeWidth={customStrokeWidth}
           testID={testIds.iconTestId}
         />
       )
 
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.strokeWidth).toBe(customStrokeWidth)
     })
 
     it('strokeLinecap ve strokeLinejoin doğru şekilde uygulanmalı', () => {
       render(
         <Icon
-          name='ARROW_LEFT'
+          name='arrow-left'
           strokeLinecap='round'
           strokeLinejoin='bevel'
           testID={testIds.iconTestId}
         />
       )
 
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.strokeLinecap).toBe('round')
       expect(lastCall.strokeLinejoin).toBe('bevel')
     })
@@ -204,26 +204,26 @@ describe('Icon -> Custom Component', () => {
     it('numeric opacity değeri Item componentine iletilmeli', () => {
       const numericOpacity = 0.5
 
-      render(<Icon name='ARROW_LEFT' opacity={numericOpacity} testID={testIds.iconTestId} />)
+      render(<Icon name='arrow-left' opacity={numericOpacity} testID={testIds.iconTestId} />)
 
       // Opacity is handled by commonUiStyleProperties in Item component
-      expect(theme.icons.ARROW_LEFT.default).toHaveBeenCalled()
+      expect(theme.icons['arrow-left'].default).toHaveBeenCalled()
     })
 
     it('string opacity değeri number tipine dönüştürülmeli', () => {
       const stringOpacity = '0.7'
 
-      render(<Icon name='ARROW_LEFT' opacity={stringOpacity} testID={testIds.iconTestId} />)
+      render(<Icon name='arrow-left' opacity={stringOpacity} testID={testIds.iconTestId} />)
 
       // String opacity should be converted to number by Icon component
-      expect(theme.icons.ARROW_LEFT.default).toHaveBeenCalled()
+      expect(theme.icons['arrow-left'].default).toHaveBeenCalled()
     })
 
     it('geçersiz string opacity değeri NaN olarak dönüştürülmeli', () => {
       const invalidOpacity = 'invalid'
 
       const {getByTestId} = render(
-        <Icon name='ARROW_LEFT' opacity={invalidOpacity} testID={testIds.iconTestId} />
+        <Icon name='arrow-left' opacity={invalidOpacity} testID={testIds.iconTestId} />
       )
 
       const iconElement = getByTestId(testIds.iconTestId)
@@ -239,7 +239,7 @@ describe('Icon -> Custom Component', () => {
 
       render(
         <Icon
-          name='ARROW_LEFT'
+          name='arrow-left'
           fill={customFill}
           stroke={customStroke}
           testID={testIds.iconTestId}
@@ -249,7 +249,7 @@ describe('Icon -> Custom Component', () => {
       // When custom fill is provided, it should be applied
       // However, the Icon component always calculates fill based on mode
       // So the test should check if the stroke is applied correctly
-      const lastCall = theme.icons.ARROW_LEFT.default.mock.calls[0][0]
+      const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.stroke).toBe(customStroke)
     })
   })
@@ -267,7 +267,7 @@ describe('Icon -> Custom Component', () => {
       }
 
       const {getByTestId} = render(
-        <Icon name='ARROW_LEFT' testID={testIds.iconTestId} {...additionalProps} />
+        <Icon name='arrow-left' testID={testIds.iconTestId} {...additionalProps} />
       )
 
       const iconElement = getByTestId(testIds.iconTestId)

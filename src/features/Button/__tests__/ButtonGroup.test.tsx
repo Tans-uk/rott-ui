@@ -17,7 +17,7 @@ describe('ButtonGroup -> Custom Component', () => {
           {text: 'Button 2', variant: 'secondary-outline'},
         ]}
         image={{
-          name: 'FAST_LOGO',
+          name: 'fast-tcmb',
           width: 60,
           height: 40,
         }}

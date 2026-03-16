@@ -1,3 +1,3 @@
-import {themeConfig} from '../../../providers'
+import type {ConsumerImageKeys} from '../../../models'
 
-export type ImageTypes = keyof typeof themeConfig.images
+export type ImageTypes = NoInfer<import('../../../theme').TThemeImages> | NoInfer<keyof ConsumerImageKeys>

@@ -174,7 +174,7 @@ export const Input: FC<InputProps> = memo((props) => {
                 alignItemsCenter
                 onPress={isLabelObject ? label?.icon?.onPress : null}>
                 <Icon
-                  name={isLabelObject ? (label?.icon?.name as any) : ('LOCK' as any)}
+                  name={isLabelObject ? (label?.icon?.name as any) : ('lock' as any)}
                   width={isLabelObject ? label?.icon?.width : 18}
                   height={isLabelObject ? label?.icon?.height : 18}
                   variant={variant}

@@ -69,7 +69,7 @@ const cardRenderItem = ({
     renderRightActions={<Item width={display.widthPixel(50)}>
         <Pressable alignItemsCenter justifyContentCenter backgroundColor={themeConfig.colors.secondary}>
           <Icon
-            name='STAR'
+            name='star'
             width={24}
             height={24}
             marginBottom={20}

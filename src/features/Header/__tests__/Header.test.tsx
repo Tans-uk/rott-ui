@@ -18,7 +18,7 @@ describe('Header -> Custom Component', () => {
 
   const IMG: {logo: ImageTypes; rightIcon: IconKeys} = {
     logo: 'PTTBANK_WHITE',
-    rightIcon: 'REMOVE_CIRCLE',
+    rightIcon: 'remove-circle',
   }
   const headerText = 'Test Başlık'
 
@@ -253,7 +253,7 @@ describe('Header -> Custom Component', () => {
     const {component} = testId
     const {queryByTestId} = render(
       <Header testID={component} title={headerText}>
-        <Icon testID='header-children-icon-test-id' name='HGS' />
+        <Icon testID='header-children-icon-test-id' name='hgs' />
       </Header>
     )
 

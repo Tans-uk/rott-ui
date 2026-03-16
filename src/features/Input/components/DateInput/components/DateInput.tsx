@@ -205,7 +205,7 @@ export const DateInput: FC<DateInputProps> = ({
         height: 40,
         leftIcon: {
           testID: 'cancel-button-test-id',
-          name: 'CHEVRON_LEFT',
+          name: 'chevron-left',
           mode: 'stroke',
           width: 24,
           height: 24,
@@ -373,7 +373,7 @@ export const DateInput: FC<DateInputProps> = ({
             }}>
             <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
               <Icon
-                name='CALENDAR'
+                name='calendar'
                 width={InputStyleNormalizer({size}).icon.width}
                 height={InputStyleNormalizer({size}).icon.height}
                 color={themeConfig.colors['grey-200']}
@@ -390,7 +390,7 @@ export const DateInput: FC<DateInputProps> = ({
           testID={testID ?? 'date-input-test-id'}
           size={{height: props?.height ?? 'md'}}
           leftIcon={{
-            name: props.icon?.name ?? 'CALENDAR',
+            name: props.icon?.name ?? 'calendar',
             width: 20,
             height: 20,
             strokeWidth: 1.5,

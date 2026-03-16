@@ -29,7 +29,7 @@ export const InputValidation: FC<InputValidationProps> = ({
       paddingHorizontal={16}
       alignItemsCenter
       {...props}>
-      <Icon name='WARNING_ERROR' width={24} height={24} variant='white' marginRight={8} />
+      <Icon name='warning-error' width={24} height={24} variant='white' marginRight={8} />
 
       <Label
         testID={`${name}-error-label-test-id`}
