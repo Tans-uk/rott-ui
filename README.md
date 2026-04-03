@@ -8,7 +8,7 @@ A comprehensive, property-based React Native UI Kit designed for rapid developme
 
 ## 📚 Documentation
 
-**[View Full Documentation →](https://docs.rott-ui.tansuk.dev)**
+**[View Full Documentation →](https://docs.rottui.tansuk.dev)**
 
 Comprehensive documentation with:
 
