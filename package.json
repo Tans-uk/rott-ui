@@ -10,6 +10,11 @@
       "types": "./lib/typescript/src/index.d.ts",
       "default": "./lib/module/index.js"
     },
+    "./config": {
+      "source": "./src/rott-config-entry.ts",
+      "types": "./lib/typescript/src/rott-config-entry.d.ts",
+      "default": "./lib/module/rott-config-entry.js"
+    },
     "./metro": "./src/metro/withRottAssets.js",
     "./package.json": "./package.json"
   },
@@ -71,7 +76,7 @@
     "type": "git",
     "url": "git+https://github.com/Tans-uk/rott-ui.git"
   },
-  "author": "Doğukan Tansuk <dogukantansuk@gmail.com> (https://github.com/Tans-uk/rott-ui)",
+  "author": "Do\u011fukan Tansuk <dogukantansuk@gmail.com> (https://github.com/Tans-uk/rott-ui)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Tans-uk/rott-ui/issues"
