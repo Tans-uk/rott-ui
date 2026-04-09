@@ -12,16 +12,16 @@ describe('CheckBox Input -> Custom Input', () => {
     checkboxCheckedTestId: 'checkbox-checked-test-id',
   }
 
-  it('checkbox input ilk render anında snapshot ile eşleşmeli', () => {
+  it('checkbox input ilk render anında snapshot ile eşleşmeli', async () => {
     const {checkboxInputTestId} = testId
-    const renderedCheckBoxInput = render(<CheckBoxInput name='test' testID={checkboxInputTestId} />)
+    const renderedCheckBoxInput = await render(<CheckBoxInput name='test' testID={checkboxInputTestId} />)
 
     expect(renderedCheckBoxInput).toMatchSnapshot()
   })
 
-  it('checkBox ilk renderlandığında unchecked olmalı', () => {
+  it('checkBox ilk renderlandığında unchecked olmalı', async () => {
     const {checkboxInputTestId, checkboxContainerTestId, checkboxCheckedTestId} = testId
-    const {getByTestId, queryByTestId} = render(
+    const {getByTestId, queryByTestId} = await render(
       <CheckBoxInput name='test' testID={checkboxInputTestId} />
     )
 
@@ -31,17 +31,17 @@ describe('CheckBox Input -> Custom Input', () => {
     expect(queryByTestId(checkboxCheckedTestId)).not.toBeOnTheScreen()
   })
 
-  it('checkbox render olduğunda description string olarak verilmişse ekranda default label ile renderlanmalı', () => {
+  it('checkbox render olduğunda description string olarak verilmişse ekranda default label ile renderlanmalı', async () => {
     const {checkboxDefaultLabelTestId} = testId
-    const {getByText} = render(<CheckBoxInput name='test' description={formatMessage('TEST')} />)
+    const {getByText} = await render(<CheckBoxInput name='test' description={formatMessage('TEST')} />)
 
     const checkboxLabel = getByText(formatMessage('TEST'))
     expect(checkboxLabel).toHaveProp('testID', checkboxDefaultLabelTestId)
   })
 
-  it('checkbox render olduğunda description React element olarak verilmişse default label ile renderlanmamalı', () => {
+  it('checkbox render olduğunda description React element olarak verilmişse default label ile renderlanmamalı', async () => {
     const {checkboxDefaultLabelTestId} = testId
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <CheckBoxInput name='test' description={<Label>{formatMessage('TEST')}</Label>} />
     )
 
@@ -49,11 +49,11 @@ describe('CheckBox Input -> Custom Input', () => {
     expect(checkboxLabel).not.toBeOnTheScreen()
   })
 
-  it('checkBox onPress methodu calismali', () => {
+  it('checkBox onPress methodu calismali', async () => {
     const {checkboxInputTestId} = testId
     const onPressMock = jest.fn()
 
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <CheckBoxInput name='test' testID={checkboxInputTestId} onCheckChange={onPressMock} />
     )
 

@@ -9,15 +9,15 @@ const testId = {
 }
 
 describe('Pressable -> Custom Component', () => {
-  it('pressable component render olmalı ve snapshot eşleşmeli', () => {
-    const rendered = render(<Pressable />)
+  it('pressable component render olmalı ve snapshot eşleşmeli', async () => {
+    const rendered = await render(<Pressable />)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('pressable componenti label ile render olmalı', () => {
+  it('pressable componenti label ile render olmalı', async () => {
     const {pressableTestId, pressableLabel} = testId
-    const {getByTestId, getByText} = render(
+    const {getByTestId, getByText} = await render(
       <Pressable text={pressableLabel} testID={pressableTestId} />
     )
 
@@ -28,10 +28,10 @@ describe('Pressable -> Custom Component', () => {
     expect(labelElement).toBeTruthy()
   })
 
-  it('pressable tıklanabilir olmalı', () => {
+  it('pressable tıklanabilir olmalı', async () => {
     const {pressableTestId, pressableLabel} = testId
     const onPressMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Pressable
         text={pressableLabel}
         textVariant='black'
@@ -48,10 +48,10 @@ describe('Pressable -> Custom Component', () => {
     expect(onPressMock).toHaveBeenCalled()
   })
 
-  it('pressable disableken tıklanmamalı', () => {
+  it('pressable disableken tıklanmamalı', async () => {
     const {pressableTestId, pressableLabel} = testId
     const onPressMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Pressable
         text={pressableLabel}
         textVariant='black'
@@ -70,10 +70,10 @@ describe('Pressable -> Custom Component', () => {
     expect(onPressMock).not.toHaveBeenCalled()
   })
 
-  it('pressable componenti style ile render olmalı', () => {
+  it('pressable componenti style ile render olmalı', async () => {
     const {pressableTestId, pressableLabel} = testId
     const onPressMock = jest.fn()
-    const {getByText} = render(
+    const {getByText} = await render(
       <Pressable
         text={pressableLabel}
         textVariant='black'

@@ -22,17 +22,17 @@ describe('Header -> Custom Component', () => {
   }
   const headerText = 'Test Başlık'
 
-  it('yalnızca başlık çalışmalı ve snapshot eşleşmeli', () => {
+  it('yalnızca başlık çalışmalı ve snapshot eşleşmeli', async () => {
     const {component} = testId
 
-    const rendered = render(<Header testID={component} title={headerText} />)
+    const rendered = await render(<Header testID={component} title={headerText} />)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('verilen testId ekranda olmalı', () => {
+  it('verilen testId ekranda olmalı', async () => {
     const {title, rightIcon, logo, component} = testId
-    const {queryByTestId} = render(<Header testID={component} title={headerText} />)
+    const {queryByTestId} = await render(<Header testID={component} title={headerText} />)
 
     //Title ekranda olmalı
     expect(queryByTestId(title)).toBeOnTheScreen()
@@ -44,9 +44,9 @@ describe('Header -> Custom Component', () => {
     expect(queryByTestId(logo)).not.toBeOnTheScreen()
   })
 
-  it('yalnızca logo çalışmalı ve snapshot eşleşmeli', () => {
+  it('yalnızca logo çalışmalı ve snapshot eşleşmeli', async () => {
     const {title, rightIcon, logo, component} = testId
-    const {queryByTestId} = render(<Header testID={component} logo={IMG.logo} />)
+    const {queryByTestId} = await render(<Header testID={component} logo={IMG.logo} />)
 
     const logoElement = queryByTestId(logo)
     const rightIconElement = queryByTestId(rightIcon)
@@ -57,9 +57,9 @@ describe('Header -> Custom Component', () => {
     expect(titleElement).not.toBeOnTheScreen()
   })
 
-  it('başlık ve icon var ise sadece icon gorunmeli', () => {
+  it('başlık ve icon var ise sadece icon gorunmeli', async () => {
     const {rightIcon, logo, component} = testId
-    const {queryByTestId, getByTestId} = render(
+    const {queryByTestId, getByTestId} = await render(
       <Header testID={component} title={headerText} logo={IMG.logo} />
     )
 
@@ -77,7 +77,7 @@ describe('Header -> Custom Component', () => {
     const {rightIcon} = IMG
 
     const mockOnPress = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Header
         testID={component}
         title={headerText}
@@ -101,20 +101,20 @@ describe('Header -> Custom Component', () => {
     expect(mockOnPress).toHaveBeenCalled()
   })
 
-  it('leftIcon verilmediğinde ekranda gözükmemeli', () => {
+  it('leftIcon verilmediğinde ekranda gözükmemeli', async () => {
     const {component, leftIcon: leftIconTestId} = testId
-    const {queryByTestId} = render(<Header testID={component} title={headerText} />)
+    const {queryByTestId} = await render(<Header testID={component} title={headerText} />)
 
     const leftIconElement = queryByTestId(leftIconTestId)
 
     expect(leftIconElement).not.toBeOnTheScreen()
   })
 
-  it('leftIcon rounded özelliği verildiğinde border radius height ile aynı olmalı', () => {
+  it('leftIcon rounded özelliği verildiğinde border radius height ile aynı olmalı', async () => {
     const {component, leftIconPressable} = testId
     const {rightIcon} = IMG
 
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Header
         height={40}
         testID={component}
@@ -131,11 +131,11 @@ describe('Header -> Custom Component', () => {
     expect(leftIconElement).toHaveProp('borderRadius', 40)
   })
 
-  it('leftElement görüntülenmeli', () => {
+  it('leftElement görüntülenmeli', async () => {
     const {component, rightIcon: rightIconTestId} = testId
     const {rightIcon} = IMG
 
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <Header
         testID={component}
         title={headerText}
@@ -153,7 +153,7 @@ describe('Header -> Custom Component', () => {
     const {rightIcon} = IMG
 
     const mockOnPress = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Header
         testID={component}
         title={headerText}
@@ -176,20 +176,20 @@ describe('Header -> Custom Component', () => {
     expect(mockOnPress).toHaveBeenCalled()
   })
 
-  it('rightIcon verilmediğinde ekranda gözükmemeli', () => {
+  it('rightIcon verilmediğinde ekranda gözükmemeli', async () => {
     const {component, rightIcon: rightIconTestId} = testId
-    const {queryByTestId} = render(<Header testID={component} title={headerText} />)
+    const {queryByTestId} = await render(<Header testID={component} title={headerText} />)
 
     const rightIconElement = queryByTestId(rightIconTestId)
 
     expect(rightIconElement).not.toBeOnTheScreen()
   })
 
-  it('right rounded özelliği verildiğinde border radius height ile aynı olmalı', () => {
+  it('right rounded özelliği verildiğinde border radius height ile aynı olmalı', async () => {
     const {component, rightIconPressable} = testId
     const {rightIcon} = IMG
 
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Header
         height={40}
         testID={component}
@@ -206,11 +206,11 @@ describe('Header -> Custom Component', () => {
     expect(rightIconElement).toHaveProp('borderRadius', 40)
   })
 
-  it('rightElement görüntülenmeli', () => {
+  it('rightElement görüntülenmeli', async () => {
     const {component, rightIcon: rightIconTestId} = testId
     const {rightIcon} = IMG
 
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <Header
         testID={component}
         title={headerText}
@@ -223,11 +223,11 @@ describe('Header -> Custom Component', () => {
     expect(rightIconElement).toBeOnTheScreen()
   })
 
-  it('rightIcon ve leftIcon verildiğinde, ekranda gözükmeli', () => {
+  it('rightIcon ve leftIcon verildiğinde, ekranda gözükmeli', async () => {
     const {component, rightIcon: rightIconTestId, leftIcon: leftIconTestId} = testId
     const {rightIcon} = IMG
 
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <Header
         testID={component}
         title={headerText}
@@ -249,9 +249,9 @@ describe('Header -> Custom Component', () => {
     expect(leftIconElement).toBeOnTheScreen()
   })
 
-  it('children verildiğinde, ekranda gözükmeli', () => {
+  it('children verildiğinde, ekranda gözükmeli', async () => {
     const {component} = testId
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <Header testID={component} title={headerText}>
         <Icon testID='header-children-icon-test-id' name='hgs' />
       </Header>

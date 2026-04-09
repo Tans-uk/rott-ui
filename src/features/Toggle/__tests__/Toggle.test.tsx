@@ -7,14 +7,14 @@ describe('Toggle -> Custom Component', () => {
   const toggleContainerTestId = 'toggle-container-test-id'
   const toggleTestId = 'toggle-test-id'
 
-  it('toggle ilk render anında snapshot ile eşleşmeli', () => {
-    const renderedToggle = render(<Toggle isOn={false} />)
+  it('toggle ilk render anında snapshot ile eşleşmeli', async () => {
+    const renderedToggle = await render(<Toggle isOn={false} />)
 
     expect(renderedToggle).toMatchSnapshot()
   })
 
-  it('toggle default propslar ile render olmalı', () => {
-    const {getByTestId} = render(<Toggle isOn={false} />)
+  it('toggle default propslar ile render olmalı', async () => {
+    const {getByTestId} = await render(<Toggle isOn={false} />)
 
     const toggleContainer = getByTestId(toggleContainerTestId)
     expect(toggleContainer).toBeDefined()
@@ -25,7 +25,7 @@ describe('Toggle -> Custom Component', () => {
 
   it('tıklandığında onToggleChange çağırılmalı', async () => {
     const onToggleMock = jest.fn()
-    const {getByTestId} = render(<Toggle onToggleChange={onToggleMock} isOn={false} />)
+    const {getByTestId} = await render(<Toggle onToggleChange={onToggleMock} isOn={false} />)
 
     const toggleContainer = getByTestId(toggleContainerTestId)
     fireEvent.press(toggleContainer)
@@ -36,8 +36,8 @@ describe('Toggle -> Custom Component', () => {
   describe('isOn özelliği değiştiğinde stil özellikleri değişmeli', () => {
     const onToggleMock = jest.fn()
 
-    it('pasif ise', () => {
-      const {getByTestId} = render(<Toggle onToggleChange={onToggleMock} isOn={false} />)
+    it('pasif ise', async () => {
+      const {getByTestId} = await render(<Toggle onToggleChange={onToggleMock} isOn={false} />)
 
       const toggleContainer = getByTestId(toggleTestId)
 
@@ -46,8 +46,8 @@ describe('Toggle -> Custom Component', () => {
       })
     })
 
-    it('aktif ise', () => {
-      const {getByTestId} = render(<Toggle onToggleChange={onToggleMock} isOn={true} />)
+    it('aktif ise', async () => {
+      const {getByTestId} = await render(<Toggle onToggleChange={onToggleMock} isOn={true} />)
 
       const toggleContainer = getByTestId(toggleTestId)
 

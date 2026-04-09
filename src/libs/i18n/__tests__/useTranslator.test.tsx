@@ -4,7 +4,7 @@ import en from '../en-US.json'
 import {useTranslator} from '../hooks'
 import {TranslationLanguageTypes} from '../utils'
 
-import {renderHook} from '@testing-library/react-hooks'
+import {renderHook} from '@testing-library/react-native'
 import {IntlProvider} from 'react-intl'
 
 describe('Hook -> useTranslator', () => {
@@ -14,21 +14,21 @@ describe('Hook -> useTranslator', () => {
     </IntlProvider>
   )
 
-  it('should return an object with translator function', () => {
+  it('should return an object with translator function', async () => {
     const {result} = renderHook(() => useTranslator(), {
       wrapper,
     })
     expect(result.current.translator).toBeInstanceOf(Function)
   })
 
-  it('should translate a key', () => {
+  it('should translate a key', async () => {
     const {result} = renderHook(() => useTranslator(), {
       wrapper,
     })
     expect(result.current.translator('COMMON.COPY')).toBe(en['COMMON.COPY'])
   })
 
-  it('should interpolate params in translation', () => {
+  it('should interpolate params in translation', async () => {
     const {result} = renderHook(() => useTranslator(), {
       wrapper,
     })
@@ -37,7 +37,7 @@ describe('Hook -> useTranslator', () => {
     )
   })
 
-  it('should return the key if translation is missing', () => {
+  it('should return the key if translation is missing', async () => {
     const {result} = renderHook(() => useTranslator(), {
       wrapper,
     })

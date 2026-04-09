@@ -17,16 +17,16 @@ const testId = {
 }
 
 describe('Button -> Custom Component', () => {
-  it('butonun snapshotı ile eşleşmeli', () => {
+  it('butonun snapshotı ile eşleşmeli', async () => {
     const {buttonTestId, buttonText} = testId
-    const rendered = render(<Button testID={buttonTestId}>{buttonText}</Button>)
+    const rendered = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('buton ekranda olmalı ancak loading iconu görünmemeli', () => {
+  it('buton ekranda olmalı ancak loading iconu görünmemeli', async () => {
     const {buttonTestId, buttonText, buttonLoadingIndicatiorTestId} = testId
-    const {getByTestId, queryByTestId} = render(<Button testID={buttonTestId}>{buttonText}</Button>)
+    const {getByTestId, queryByTestId} = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
 
     const buttonElement = getByTestId(buttonTestId)
     const loadingIndicator = queryByTestId(buttonLoadingIndicatiorTestId)
@@ -35,13 +35,13 @@ describe('Button -> Custom Component', () => {
     expect(loadingIndicator).not.toBeOnTheScreen()
   })
 
-  it('loading text ve loading icon ile buton render olmalı', () => {
+  it('loading text ve loading icon ile buton render olmalı', async () => {
     const {buttonTestId, buttonText, buttonLoadingTextTestId, buttonLoadingIndicatiorTestId} =
       testId
-    const renderedButton = render(<Button testID={buttonTestId}>{buttonText}</Button>)
+    const renderedButton = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
 
-    const {getByTestId, rerender} = renderedButton
-    rerender(
+    const {getByTestId, rerenderAsync} = renderedButton
+    await rerenderAsync(
       <Button testID={buttonTestId} isLoading loadingText='Loading'>
         {buttonText}
       </Button>
@@ -55,10 +55,10 @@ describe('Button -> Custom Component', () => {
     expect(loadingText).toBeOnTheScreen()
   })
 
-  it('buton disableken tıklanamamlı', () => {
+  it('buton disableken tıklanamamlı', async () => {
     const {buttonTestId, buttonText} = testId
     const onPressMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Button testID={buttonTestId} disabled onPress={onPressMock}>
         {buttonText}
       </Button>
@@ -70,9 +70,9 @@ describe('Button -> Custom Component', () => {
     expect(onPressMock).not.toHaveBeenCalled()
   })
 
-  it('left icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', () => {
+  it('left icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', async () => {
     const {buttonTestId, buttonText, buttonLeftIconTestId} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Button testID={buttonTestId} leftIcon={{name: 'remove-circle'}}>
         {buttonText}
       </Button>
@@ -83,9 +83,9 @@ describe('Button -> Custom Component', () => {
     expect(leftIconElement).toBeOnTheScreen()
   })
 
-  it('left image propertysi verildiğinde ekranda doğru image ile renderlanmalı', () => {
+  it('left image propertysi verildiğinde ekranda doğru image ile renderlanmalı', async () => {
     const {buttonTestId, buttonText, buttonLeftImageTestId} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Button testID={buttonTestId} leftImage={{name: 'left-arrow-icon', absolute: true}}>
         {buttonText}
       </Button>
@@ -97,9 +97,9 @@ describe('Button -> Custom Component', () => {
     expect(leftIconElement).toHaveProp('source')
   })
 
-  it('button loading durumundayken verilen left icon görünmemeli', () => {
+  it('button loading durumundayken verilen left icon görünmemeli', async () => {
     const {buttonText, buttonLeftIconTestId} = testId
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <Button leftIcon={{name: 'remove-circle'}} isLoading>
         {buttonText}
       </Button>
@@ -110,9 +110,9 @@ describe('Button -> Custom Component', () => {
     expect(leftIcon).not.toBeOnTheScreen()
   })
 
-  it('buton ekranda olmalı ve outline variantı ile renderlanmalı', () => {
+  it('buton ekranda olmalı ve outline variantı ile renderlanmalı', async () => {
     const {buttonTestId, buttonText} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Button variant='primary-outline' testID={buttonTestId}>
         {buttonText}
       </Button>
@@ -127,9 +127,9 @@ describe('Button -> Custom Component', () => {
     })
   })
 
-  it('right icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', () => {
+  it('right icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', async () => {
     const {buttonTestId, buttonText, buttonRightIconTestId} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Button testID={buttonTestId} rightIcon={{name: 'remove-circle'}}>
         {buttonText}
       </Button>
@@ -140,9 +140,9 @@ describe('Button -> Custom Component', () => {
     expect(rightIconElement).toBeOnTheScreen()
   })
 
-  it('right image propertysi verildiğinde ekranda doğru image ile renderlanmalı', () => {
+  it('right image propertysi verildiğinde ekranda doğru image ile renderlanmalı', async () => {
     const {buttonTestId, buttonText, buttonRightImageTestId} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Button testID={buttonTestId} rightImage={{name: 'right-arrow-icon', absolute: true}}>
         {buttonText}
       </Button>
@@ -154,9 +154,9 @@ describe('Button -> Custom Component', () => {
     expect(rightImageElement).toHaveProp('source')
   })
 
-  it('button loading durumundayken verilen right icon görünmemeli', () => {
+  it('button loading durumundayken verilen right icon görünmemeli', async () => {
     const {buttonText, buttonRightIconTestId} = testId
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <Button rightIcon={{name: 'remove-circle'}} isLoading>
         {buttonText}
       </Button>

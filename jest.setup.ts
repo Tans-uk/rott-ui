@@ -5,8 +5,12 @@ import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-
 
 import '@shopify/flash-list/jestSetup'
 import '@testing-library/jest-native/extend-expect'
+import { configure } from '@testing-library/react-native'
 
-import {act, render as rtlRender} from '@testing-library/react-native'
+/** RN test env: suppress react-test-renderer deprecation noise and legacy create() path */
+global.IS_REACT_NATIVE_TEST_ENVIRONMENT = true
+/** React 19 + RNTL: sync render must not use concurrent root or act() leaves a floating thenable */
+configure({ concurrentRoot: false })
 
 export const mockRNCNetInfo = require('@react-native-community/netinfo/jest/netinfo-mock')
 jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo)
@@ -218,38 +222,6 @@ jest.mock('react-intl', () => {
   }
 })
 
-// Mock RottUiContext for tests
-jest.mock('react', () => {
-  const React = jest.requireActual('react')
-  const originalUseContext = React.useContext
-
-  return {
-    ...React,
-    useContext: jest.fn((context) => {
-      // Check if it's RottUiContext being requested
-      if (
-        (context && context.displayName === 'RottUiContext') ||
-        (context && context._currentValue && context._currentValue.language)
-      ) {
-        return {
-          language: {
-            name: 'en-US',
-          },
-          hasDynamicIsland: false,
-          hasNotch: false,
-          deviceInfo: {
-            operatingSystemVersion: '17.0',
-            apiLevel: 33,
-            totalMemory: 8000000000,
-          },
-        }
-      }
-      // For other contexts, use the original useContext
-      return originalUseContext(context)
-    }),
-  }
-})
-
 beforeEach(() => {
   jest.clearAllTimers()
 })
@@ -277,24 +249,6 @@ jest.mock('react-native/Libraries/Interaction/InteractionManager', () => {
     createInteractionHandle: jest.fn(),
   }
 })
-
-// Tüm testleri act ile sarmalama
-declare global {
-  var render: (
-    ui: React.ReactElement<any>,
-    options?: Parameters<typeof rtlRender>[1]
-  ) => ReturnType<typeof rtlRender>
-}
-
-const originalRender = rtlRender
-global.render = (ui, options) => {
-  let result
-  act(() => {
-    result = originalRender(ui, options)
-  })
-
-  return result!
-}
 
 jest.mock('react-native-keyboard-controller', () =>
   require('react-native-keyboard-controller/jest')
@@ -367,4 +321,25 @@ jest.mock('./src/providers', () => {
       ),
     },
   }
+})
+
+/** formatMessage() uses useContext but is called from plain Jest tests; supply RottUiContext outside the tree. */
+const ReactRuntime = require('react') as typeof import('react')
+const {RottUiContext} = require('./src/contexts/rottUiContext')
+const reactActualUseContext = jest.requireActual<typeof import('react')>('react').useContext
+
+jest.spyOn(ReactRuntime, 'useContext').mockImplementation((context) => {
+  if (context === RottUiContext) {
+    return {
+      language: {name: 'en-US'},
+      hasDynamicIsland: false,
+      hasNotch: false,
+      deviceInfo: {
+        operatingSystemVersion: '17.0',
+        apiLevel: 33,
+        totalMemory: 8000000000,
+      },
+    }
+  }
+  return reactActualUseContext(context)
 })

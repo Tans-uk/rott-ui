@@ -20,8 +20,8 @@ describe('Notification -> Custom Component', () => {
     blurTestId: 'notification-blur-test-id',
   }
 
-  it('notification ilk render anında snapshot ile eşleşmeli', () => {
-    const renderedNotification = render(
+  it('notification ilk render anında snapshot ile eşleşmeli', async () => {
+    const renderedNotification = await render(
       <NotificationComponent
         variantColor={'info-notification'}
         iconElement={iconName}
@@ -32,18 +32,18 @@ describe('Notification -> Custom Component', () => {
     expect(renderedNotification).toMatchSnapshot()
   })
 
-  it('notification yokken ekranda blur gözükmemeli', () => {
+  it('notification yokken ekranda blur gözükmemeli', async () => {
     const {blurTestId} = testId
-    const {queryByTestId} = render(<NotificationProvider />)
+    const {queryByTestId} = await render(<NotificationProvider />)
 
     const blurElement = queryByTestId(blurTestId)
 
     expect(blurElement).not.toBeOnTheScreen()
   })
 
-  it('bildirime tıklandığında onPress fonksiyonları çağırılmalı', () => {
+  it('bildirime tıklandığında onPress fonksiyonları çağırılmalı', async () => {
     const {notificationPressableTestId} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <NotificationComponent
         variantColor={'info-notification'}
         iconElement={iconName}
@@ -59,9 +59,9 @@ describe('Notification -> Custom Component', () => {
     expect(mockProps.mockOnPress).toHaveBeenCalledTimes(1)
   })
 
-  it('title verilen değerler ile ekranda gözükmeli', () => {
+  it('title verilen değerler ile ekranda gözükmeli', async () => {
     const {title} = mockProps
-    const {getByText} = render(
+    const {getByText} = await render(
       <NotificationComponent
         variantColor={'info-notification'}
         iconElement={iconName}
@@ -75,9 +75,9 @@ describe('Notification -> Custom Component', () => {
     expect(titleElement).toBeOnTheScreen()
   })
 
-  it('description verilen değerler ile ekranda gözükmeli', () => {
+  it('description verilen değerler ile ekranda gözükmeli', async () => {
     const {description} = mockProps
-    const {getByText} = render(
+    const {getByText} = await render(
       <NotificationComponent
         variantColor={'info-notification'}
         iconElement={iconName}
@@ -91,9 +91,9 @@ describe('Notification -> Custom Component', () => {
     expect(descriptionElement).toBeOnTheScreen()
   })
 
-  it('description verilmediği zaman ekranda gözükmemeli', () => {
+  it('description verilmediği zaman ekranda gözükmemeli', async () => {
     const {descriptionTestId} = testId
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <NotificationComponent
         variantColor={'info-notification'}
         iconElement={iconName}

@@ -41,36 +41,36 @@ describe('Common -> Common Item', () => {
     jest.clearAllMocks()
   })
 
-  it('common item ilk renderlandığında snapshot ile eşleşmeli', () => {
-    const commonItem = render(<CommonItem title={dummyData.title} />)
+  it('common item ilk renderlandığında snapshot ile eşleşmeli', async () => {
+    const commonItem = await render(<CommonItem title={dummyData.title} />)
 
     expect(commonItem).toMatchSnapshot()
   })
 
-  it('common item ilk renderlandığında title ekranda renderlanmali', () => {
+  it('common item ilk renderlandığında title ekranda renderlanmali', async () => {
     const {titleTestId} = testId
     const {title} = dummyData
-    const {getByTestId} = render(<CommonItem title={title} />)
+    const {getByTestId} = await render(<CommonItem title={title} />)
 
     const titleElement = getByTestId(titleTestId)
 
     expect(titleElement).toBeOnTheScreen()
   })
 
-  it('common item ilk renderlandığında subTitle ekranda renderlanmali', () => {
+  it('common item ilk renderlandığında subTitle ekranda renderlanmali', async () => {
     const {subTitleTestId} = testId
     const {title, subTitle} = dummyData
-    const {getByTestId} = render(<CommonItem title={title} subTitle={subTitle} />)
+    const {getByTestId} = await render(<CommonItem title={title} subTitle={subTitle} />)
 
     const subTitleElement = getByTestId(subTitleTestId)
 
     expect(subTitleElement).toBeOnTheScreen()
   })
 
-  it('common item ilk renderlandığında description ekranda renderlanmali', () => {
+  it('common item ilk renderlandığında description ekranda renderlanmali', async () => {
     const {descriptionTestId} = testId
     const {title, subTitle, description} = dummyData
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <CommonItem title={title} subTitle={subTitle} description={description} />
     )
 
@@ -79,10 +79,10 @@ describe('Common -> Common Item', () => {
     expect(descriptionElement).toBeOnTheScreen()
   })
 
-  it('leftIcon ekranda renderlanmali', () => {
+  it('leftIcon ekranda renderlanmali', async () => {
     const {leftIconTestId} = testId
     const {title, subTitle, description, leftIcon} = dummyData
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <CommonItem title={title} subTitle={subTitle} description={description} leftIcon={leftIcon} />
     )
 
@@ -91,10 +91,10 @@ describe('Common -> Common Item', () => {
     expect(leftIconElement).toBeOnTheScreen()
   })
 
-  it('leftIcon verilmediğinde ekranda renderlanmamali', () => {
+  it('leftIcon verilmediğinde ekranda renderlanmamali', async () => {
     const {leftIconTestId} = testId
     const {title, subTitle, description} = dummyData
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <CommonItem title={title} subTitle={subTitle} description={description} />
     )
 
@@ -106,7 +106,7 @@ describe('Common -> Common Item', () => {
   it('leftIcon onPress özelliği verilmediğinde CommonItem onPress özelliğini tetiklemelidir.', async () => {
     const {leftIconTestId} = testId
     const {title, subTitle, description, leftIcon} = dummyData
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <CommonItem
         title={title}
         subTitle={subTitle}
@@ -125,7 +125,7 @@ describe('Common -> Common Item', () => {
   it('leftIcon onPress özelliği verildiğinde CommonItem onPress özelliğini tetiklenmemelidir.', async () => {
     const {leftIconTestId} = testId
     const {title, subTitle, description, leftIcon} = dummyData
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <CommonItem
         title={title}
         subTitle={subTitle}
@@ -142,10 +142,10 @@ describe('Common -> Common Item', () => {
     expect(onPressMock).not.toHaveBeenCalled()
   })
 
-  it('rightIcon ekranda renderlanmali', () => {
+  it('rightIcon ekranda renderlanmali', async () => {
     const {rightIconTestId} = testId
     const {title, subTitle, description, rightIcon} = dummyData
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <CommonItem
         title={title}
         subTitle={subTitle}
@@ -159,10 +159,10 @@ describe('Common -> Common Item', () => {
     expect(rightIconElement).toBeOnTheScreen()
   })
 
-  it('rightIcon verilmediğinde ekranda renderlanmamali', () => {
+  it('rightIcon verilmediğinde ekranda renderlanmamali', async () => {
     const {rightIconTestId} = testId
     const {title, subTitle, description} = dummyData
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <CommonItem title={title} subTitle={subTitle} description={description} />
     )
 
@@ -174,7 +174,7 @@ describe('Common -> Common Item', () => {
   it('rightIcon onPress özelliği verilmediğinde CommonItem onPress özelliğini tetiklemelidir.', async () => {
     const {rightIconTestId} = testId
     const {title, subTitle, description, rightIcon} = dummyData
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <CommonItem
         title={title}
         subTitle={subTitle}
@@ -193,7 +193,7 @@ describe('Common -> Common Item', () => {
   it('rightIcon onPress özelliği verildiğinde CommonItem onPress özelliğini tetiklenmemelidir.', async () => {
     const {rightIconTestId} = testId
     const {title, subTitle, description, rightIcon} = dummyData
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <CommonItem
         title={title}
         subTitle={subTitle}
@@ -210,10 +210,10 @@ describe('Common -> Common Item', () => {
     expect(onPressMock).not.toHaveBeenCalled()
   })
 
-  it('common item ilk renderlangidinga left ve right iconu ekranda renderlanmali', () => {
+  it('common item ilk renderlangidinga left ve right iconu ekranda renderlanmali', async () => {
     const {rightIconTestId, leftIconTestId} = testId
     const {title, subTitle, description, rightIcon, leftIcon} = dummyData
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <CommonItem
         title={title}
         subTitle={subTitle}
@@ -230,10 +230,10 @@ describe('Common -> Common Item', () => {
     expect(leftIconElement).toBeOnTheScreen()
   })
 
-  it('common item ilk renderlandiginda left ve right iconu ekranda renderlanmamali', () => {
+  it('common item ilk renderlandiginda left ve right iconu ekranda renderlanmamali', async () => {
     const {rightIconTestId, leftIconTestId} = testId
     const {title, subTitle, description} = dummyData
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <CommonItem title={title} subTitle={subTitle} description={description} />
     )
 

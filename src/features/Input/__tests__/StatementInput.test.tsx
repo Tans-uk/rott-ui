@@ -5,17 +5,17 @@ import {StatementInput} from '../components'
 describe('Statement Input -> Custom Input', () => {
   const testId = 'statement-input-test-id'
 
-  it('ilk render anında snapshot ile eşleşmeli', () => {
+  it('ilk render anında snapshot ile eşleşmeli', async () => {
     // Arrange
-    const renderedInput = render(<StatementInput name='test' />)
+    const renderedInput = await render(<StatementInput name='test' />)
 
     // Assert
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('verilen değeri olduğu gibi render etmeli', () => {
+  it('verilen değeri olduğu gibi render etmeli', async () => {
     // Arrange
-    const {getByTestId} = render(<StatementInput name='test' value={''} />)
+    const {getByTestId} = await render(<StatementInput name='test' value={''} />)
 
     // Act
     const inputElement = getByTestId(testId)
@@ -30,7 +30,7 @@ describe('Statement Input -> Custom Input', () => {
     const maxLengthLimit = 10
     const user = userEvent.setup()
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <StatementInput name='test' maxLength={maxLengthLimit} onChangeText={onChangeTextMock} />
     )
 
@@ -47,7 +47,7 @@ describe('Statement Input -> Custom Input', () => {
     const maxLengthLimit = 10
     const user = userEvent.setup()
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <StatementInput name='test' maxLength={maxLengthLimit} onChangeText={onChangeTextMock} />
     )
 
@@ -59,9 +59,9 @@ describe('Statement Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('a'.repeat(maxLengthLimit))
   })
 
-  it('disabled durumunu desteklemeli', () => {
+  it('disabled durumunu desteklemeli', async () => {
     // Arrange
-    const {getByTestId} = render(<StatementInput name='test' disabled />)
+    const {getByTestId} = await render(<StatementInput name='test' disabled />)
 
     // Act
     const inputElement = getByTestId(testId)
@@ -71,9 +71,9 @@ describe('Statement Input -> Custom Input', () => {
     expect(inputElement).toBeDisabled()
   })
 
-  it('readOnly durumunu desteklemeli', () => {
+  it('readOnly durumunu desteklemeli', async () => {
     // Arrange
-    const {getByTestId} = render(<StatementInput name='test' readOnly />)
+    const {getByTestId} = await render(<StatementInput name='test' readOnly />)
 
     // Act
     const inputElement = getByTestId(testId)
@@ -87,7 +87,7 @@ describe('Statement Input -> Custom Input', () => {
     const text = '<>[]*?_^`|%=&{}`'
     const user = userEvent.setup()
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(<StatementInput name='test' onChangeText={onChangeTextMock} />)
+    const {getByTestId} = await render(<StatementInput name='test' onChangeText={onChangeTextMock} />)
 
     // Act
     const inputElement = getByTestId(testId)

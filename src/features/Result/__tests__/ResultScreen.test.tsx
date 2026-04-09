@@ -25,12 +25,12 @@ describe('ResultScreen Test', () => {
     },
   }
 
-  it('ilk render anında snapshot ile eşleşmeli', () => {
+  it('ilk render anında snapshot ile eşleşmeli', async () => {
     const {
       texts: {header, state, title, description},
       actions: {defaultAction},
     } = mockDetailElement
-    const rendered = render(
+    const rendered = await render(
       <ResultScreen
         route={{
           params: {
@@ -47,13 +47,13 @@ describe('ResultScreen Test', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('ResultScreen renderlandığında container ekranda olmalı', () => {
+  it('ResultScreen renderlandığında container ekranda olmalı', async () => {
     const {
       texts: {header, state, title, description},
       testIds: {screenContainer},
       actions: {defaultAction},
     } = mockDetailElement
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <ResultScreen
         route={{
           params: {
@@ -72,11 +72,11 @@ describe('ResultScreen Test', () => {
     expect(resultScreenContainer).toBeOnTheScreen()
   })
 
-  it('title verildiğinde ekranda gözükmeli', () => {
+  it('title verildiğinde ekranda gözükmeli', async () => {
     const {
       texts: {header, state, title, actionText},
     } = mockDetailElement
-    const {getByText} = render(
+    const {getByText} = await render(
       <ResultScreen
         route={{
           params: {
@@ -99,11 +99,11 @@ describe('ResultScreen Test', () => {
     expect(titleElementByText).toBeOnTheScreen()
   })
 
-  it('description verildiğinde ekranda gözükmeli', () => {
+  it('description verildiğinde ekranda gözükmeli', async () => {
     const {
       texts: {header, state, description, actionText},
     } = mockDetailElement
-    const {getByText} = render(
+    const {getByText} = await render(
       <ResultScreen
         route={{
           params: {
@@ -126,13 +126,13 @@ describe('ResultScreen Test', () => {
     expect(descriptionElementByText).toBeOnTheScreen()
   })
 
-  it('actions verildiğinde actions listesi ekranda gözükmeli', () => {
+  it('actions verildiğinde actions listesi ekranda gözükmeli', async () => {
     const {
       texts: {header, state, title},
       testIds: {actionTestId},
       actions: {defaultAction},
     } = mockDetailElement
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <ResultScreen
         route={{
           params: {
@@ -150,12 +150,12 @@ describe('ResultScreen Test', () => {
     expect(actionsListByTestId).toBeOnTheScreen()
   })
 
-  it('action verildiğinde action testID ile ekranda olmalı', () => {
+  it('action verildiğinde action testID ile ekranda olmalı', async () => {
     const {
       texts: {header, state, title},
       actions: {defaultAction},
     } = mockDetailElement
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <ResultScreen
         route={{
           params: {

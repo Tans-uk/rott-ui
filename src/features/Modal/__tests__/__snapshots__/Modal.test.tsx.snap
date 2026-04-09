@@ -16,7 +16,6 @@ exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşle
   >
     <Modal
       animationType="fade"
-      hardwareAccelerated={false}
       navigationBarTranslucent={true}
       onRequestClose={[Function]}
       statusBarTranslucent={true}

@@ -5,15 +5,15 @@ import {PlateNumberInput} from '../components'
 describe('Plate Number Input -> Custom Input', () => {
   const plateNumberInputTestId = 'input-test-id'
 
-  it('plate number input ilk render anında snapshot ile eşleşmeli', () => {
-    const renderedInput = render(<PlateNumberInput name='test' testID={plateNumberInputTestId} />)
+  it('plate number input ilk render anında snapshot ile eşleşmeli', async () => {
+    const renderedInput = await render(<PlateNumberInput name='test' testID={plateNumberInputTestId} />)
 
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('plate number input numeric karakterleri ve buyuk karakterleri kabul etmeli', () => {
+  it('plate number input numeric karakterleri ve buyuk karakterleri kabul etmeli', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <PlateNumberInput
         name='test'
         testID={plateNumberInputTestId}
@@ -29,7 +29,7 @@ describe('Plate Number Input -> Custom Input', () => {
 
   it('plate number input küçük harf ve özel karakter kabul etmemeli', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <PlateNumberInput
         name='test'
         testID={plateNumberInputTestId}
@@ -45,8 +45,8 @@ describe('Plate Number Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('ABc*D123')
   })
 
-  it('plate number input render olduğu zaman klavye default olarak ekranda görülmeli', () => {
-    const {getByTestId} = render(<PlateNumberInput name='test' testID={plateNumberInputTestId} />)
+  it('plate number input render olduğu zaman klavye default olarak ekranda görülmeli', async () => {
+    const {getByTestId} = await render(<PlateNumberInput name='test' testID={plateNumberInputTestId} />)
     const plateNumberInputElement = getByTestId(plateNumberInputTestId)
 
     expect(plateNumberInputElement.props.keyboardType).toBe('default')
@@ -54,7 +54,7 @@ describe('Plate Number Input -> Custom Input', () => {
 
   it('kopyalanan plate number yapıştırıldığında bosluklar trimlenmeli ve buyuk harf kabul etmeli', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <PlateNumberInput
         name='test'
         testID={plateNumberInputTestId}

@@ -67,19 +67,19 @@ describe('AlertDialogComponent', () => {
     alertDialogTestId: 'alert-dialog-test-id',
   }
 
-  it('should match snapshot on first render', () => {
+  it('should match snapshot on first render', async () => {
     const {alertDialogTestId} = testId
 
-    const renderedAlertDialog = render(
+    const renderedAlertDialog = await render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockLessThanOrEqualTwoButtons} />
     )
 
     expect(renderedAlertDialog.toJSON()).toMatchSnapshot()
   })
 
-  it('title ve text ekranda düzgün şekilde renderlanmalı', () => {
+  it('title ve text ekranda düzgün şekilde renderlanmalı', async () => {
     const {alertDialogTestId} = testId
-    const {getByText} = render(
+    const {getByText} = await render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockLessThanOrEqualTwoButtons} />
     )
 
@@ -94,9 +94,9 @@ describe('AlertDialogComponent', () => {
     expect(text).toBeOnTheScreen()
   })
 
-  it('iki button tanımlı ise alert dialog doğru renderlanmalı', () => {
+  it('iki button tanımlı ise alert dialog doğru renderlanmalı', async () => {
     const {alertDialogTestId} = testId
-    const {getByText} = render(
+    const {getByText} = await render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockLessThanOrEqualTwoButtons} />
     )
 
@@ -107,9 +107,9 @@ describe('AlertDialogComponent', () => {
     expect(cancelButton).toBeOnTheScreen()
   })
 
-  it('iki veya daha fazla button tanımlı ise alert dialog doğru renderlanmalı', () => {
+  it('iki veya daha fazla button tanımlı ise alert dialog doğru renderlanmalı', async () => {
     const {alertDialogTestId} = testId
-    const {getByText} = render(
+    const {getByText} = await render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockMoreThanTwoButtons} />
     )
 

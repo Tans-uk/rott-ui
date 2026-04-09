@@ -9,9 +9,9 @@ const testId = {
 }
 
 describe('Tab -> Custom Component', () => {
-  it('Tab snapshotı ile eşleşmeli', () => {
+  it('Tab snapshotı ile eşleşmeli', async () => {
     const {tabTestId} = testId
-    const rendered = render(
+    const rendered = await render(
       <Tab testID={tabTestId('tab')} isSelected={false} onLayout={jest.fn()}>
         <Label>Test</Label>
       </Tab>
@@ -24,7 +24,7 @@ describe('Tab -> Custom Component', () => {
     const {tabTestId} = testId
     const onPressMock = jest.fn()
 
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Tab testID={tabTestId('tab')} onPress={onPressMock}>
         <Label>Test-1</Label>
       </Tab>
@@ -36,11 +36,11 @@ describe('Tab -> Custom Component', () => {
     expect(onPressMock).toHaveBeenCalled()
   })
 
-  it('Tab accessibility state degerlerinden selected olup olmadigi kontrol edilebilmeli', () => {
+  it('Tab accessibility state degerlerinden selected olup olmadigi kontrol edilebilmeli', async () => {
     const {tabTestId} = testId
     const returnsTrueMock = jest.fn(() => true)
 
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Tab testID={tabTestId('tab')} isSelected={returnsTrueMock()}>
         <Label>Test-1</Label>
       </Tab>
@@ -51,11 +51,11 @@ describe('Tab -> Custom Component', () => {
     expect(tabElement).toHaveAccessibilityState({selected: true})
   })
 
-  it('Tab selected degistigi zaman AccessibilityState degerlerinden selected degeri degismeli', () => {
+  it('Tab selected degistigi zaman AccessibilityState degerlerinden selected degeri degismeli', async () => {
     const {tabTestId} = testId
     let isSelectedMock = true
 
-    const {getByTestId, rerender} = render(
+    const {getByTestId, rerenderAsync} = await render(
       <Tab
         testID={tabTestId('tab')}
         isSelected={isSelectedMock}
@@ -71,7 +71,7 @@ describe('Tab -> Custom Component', () => {
 
     fireEvent.press(tabElement)
 
-    rerender(
+    await rerenderAsync(
       <Tab
         testID={tabTestId('tab')}
         isSelected={isSelectedMock}

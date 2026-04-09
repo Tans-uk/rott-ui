@@ -50,6 +50,7 @@ const jestConfiguration: JestConfigWithTsJest = {
       '))',
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  setupFiles: ['<rootDir>/jest.setup.env.js'],
   setupFilesAfterEnv: ['./jest.setup.ts'],
   moduleDirectories: [
     'node_modules',

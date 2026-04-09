@@ -7,24 +7,24 @@ describe('Content -> Custom Component', () => {
     keyboardAvoidingViewTestId: 'keyboard-avoiding-view-test-id',
   }
 
-  it('ilk render anında snapshot ile eşleşmeli', () => {
-    const rendered = render(<Content />)
+  it('ilk render anında snapshot ile eşleşmeli', async () => {
+    const rendered = await render(<Content />)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('keyboard avoiding view varsayilan ekranda olmamali', () => {
+  it('keyboard avoiding view varsayilan ekranda olmamali', async () => {
     const {keyboardAvoidingViewTestId} = testId
-    const {queryByTestId} = render(<Content />)
+    const {queryByTestId} = await render(<Content />)
 
     const keyboardAvoidingViewElement = queryByTestId(keyboardAvoidingViewTestId)
 
     expect(keyboardAvoidingViewElement).not.toBeTruthy()
   })
 
-  it('keyboardAvoidingView verildiginde renderlanmali', () => {
+  it('keyboardAvoidingView verildiginde renderlanmali', async () => {
     const {keyboardAvoidingViewTestId} = testId
-    const {getByTestId} = render(<Content keyboardAvoidingView />)
+    const {getByTestId} = await render(<Content keyboardAvoidingView />)
 
     const keyboardAvoidingViewElement = getByTestId(keyboardAvoidingViewTestId)
 

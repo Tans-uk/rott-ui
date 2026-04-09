@@ -7,15 +7,15 @@ describe('Password Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'
   const showPasswordIconTestId = 'show-password-icon-test-id'
 
-  it('password input ilk render anında snapshot ile eşleşmeli', () => {
-    const renderedInput = render(<PasswordInput name='test' testID={inputTestId} />)
+  it('password input ilk render anında snapshot ile eşleşmeli', async () => {
+    const renderedInput = await render(<PasswordInput name='test' testID={inputTestId} />)
 
     expect(renderedInput).toMatchSnapshot()
   })
 
   it('password input sadece numeric karakterleri kabul etmeli', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <PasswordInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
     )
 
@@ -27,9 +27,9 @@ describe('Password Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('123')
   })
 
-  it('password input harf ve özel karakter kabul etmemeli', () => {
+  it('password input harf ve özel karakter kabul etmemeli', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <PasswordInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
     )
 
@@ -39,24 +39,24 @@ describe('Password Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('aaA*a123')
   })
 
-  it('input ilk renderlandiginda text gorunur olmamali', () => {
-    const {getByTestId} = render(<PasswordInput name='test' testID={inputTestId} />)
+  it('input ilk renderlandiginda text gorunur olmamali', async () => {
+    const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
 
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('secureTextEntry', true)
   })
 
-  it('input ilk renderlandiginda sifre goster iconu gorunmeli', () => {
-    const {getByTestId} = render(<PasswordInput name='test' testID={inputTestId} />)
+  it('input ilk renderlandiginda sifre goster iconu gorunmeli', async () => {
+    const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
 
     const showPasswordIconElement = getByTestId(showPasswordIconTestId)
 
     expect(showPasswordIconElement).toBeTruthy()
   })
 
-  it('input ilk renderlandiginda sifre goster iconuna tiklandiginda sifre gorunur olmali', () => {
-    const {getByTestId} = render(<PasswordInput name='test' testID={inputTestId} />)
+  it('input ilk renderlandiginda sifre goster iconuna tiklandiginda sifre gorunur olmali', async () => {
+    const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
 
     const inputElement = getByTestId(inputTestId)
 
@@ -68,8 +68,8 @@ describe('Password Input -> Custom Input', () => {
     expect(inputElement).toHaveProp('secureTextEntry', false)
   })
 
-  it('input sifre gorunurken sifre gizle butonuna tiklandiginda sifre gizlenmeli', () => {
-    const {getByTestId} = render(
+  it('input sifre gorunurken sifre gizle butonuna tiklandiginda sifre gizlenmeli', async () => {
+    const {getByTestId} = await render(
       <PasswordInput name='test' testID={inputTestId} secureTextEntry={false} />
     )
 
@@ -81,22 +81,22 @@ describe('Password Input -> Custom Input', () => {
     expect(inputElement).toHaveProp('secureTextEntry', true)
   })
 
-  it('input render olduğu zaman klavye olarak number-pad ekranda görülmeli', () => {
-    const {getByTestId} = render(<PasswordInput name='test' testID={inputTestId} />)
+  it('input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
+    const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('keyboardType', 'number-pad')
   })
 
-  it('IOS icin yapıştırma özelliği kapatılmalı', () => {
-    const {getByTestId} = render(<PasswordInput name='test' testID={inputTestId} />)
+  it('IOS icin yapıştırma özelliği kapatılmalı', async () => {
+    const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('contextMenuHidden', true)
   })
 
-  it('Android icin yapıştırma özelliği kapatılmalı', () => {
-    const {getByTestId} = render(<PasswordInput name='test' testID={inputTestId} />)
+  it('Android icin yapıştırma özelliği kapatılmalı', async () => {
+    const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('onSelectionChange')

@@ -8,26 +8,26 @@ describe('Component -> BottomMenuItem', () => {
     bottomMenuItemTestId: 'bottom-menu-item-1-test-id',
   }
 
-  it('bottom menu item componenti snapshot ile eşleşmeli', () => {
-    const rendered = render(<BottomMenuItem {...bottomMenuListItemMock[0]} />)
+  it('bottom menu item componenti snapshot ile eşleşmeli', async () => {
+    const rendered = await render(<BottomMenuItem {...bottomMenuListItemMock[0]} />)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('bottom menu item componenti ekranda gözükmeli', () => {
+  it('bottom menu item componenti ekranda gözükmeli', async () => {
     const {bottomMenuItemTestId} = testIDs
 
-    const {getByTestId} = render(<BottomMenuItem {...bottomMenuListItemMock[0]} />)
+    const {getByTestId} = await render(<BottomMenuItem {...bottomMenuListItemMock[0]} />)
 
     const bottomMenuItem = getByTestId(bottomMenuItemTestId)
 
     expect(bottomMenuItem).toBeOnTheScreen()
   })
 
-  it('verilen icon ekranda gözükmeli', () => {
+  it('verilen icon ekranda gözükmeli', async () => {
     const {bottomMenuItemTestId} = testIDs
 
-    const {getByTestId} = render(<BottomMenuItem {...bottomMenuListItemMock[0]} />)
+    const {getByTestId} = await render(<BottomMenuItem {...bottomMenuListItemMock[0]} />)
 
     const bottomMenuItem = getByTestId(bottomMenuItemTestId)
 

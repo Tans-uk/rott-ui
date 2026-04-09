@@ -5,17 +5,17 @@ import {DefaultInput} from '../components'
 describe('Default Input -> Custom Input', () => {
   const testId = 'default-input-test-id'
 
-  it('ilk render anında snapshot ile eşleşmeli', () => {
+  it('ilk render anında snapshot ile eşleşmeli', async () => {
     // Arrange
-    const renderedInput = render(<DefaultInput name='test' testID={testId} />)
+    const renderedInput = await render(<DefaultInput name='test' testID={testId} />)
 
     // Assert
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('verilen değeri olduğu gibi render etmeli', () => {
+  it('verilen değeri olduğu gibi render etmeli', async () => {
     // Arrange
-    const {getByTestId} = render(<DefaultInput name='test' testID={testId} value={''} />)
+    const {getByTestId} = await render(<DefaultInput name='test' testID={testId} value={''} />)
 
     // Act
     const inputElement = getByTestId(testId)
@@ -30,7 +30,7 @@ describe('Default Input -> Custom Input', () => {
     const maxLengthLimit = 10
     const user = userEvent.setup()
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <DefaultInput
         name='test'
         testID={testId}
@@ -52,7 +52,7 @@ describe('Default Input -> Custom Input', () => {
     const maxLengthLimit = 10
     const user = userEvent.setup()
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <DefaultInput
         name='test'
         testID={testId}
@@ -74,7 +74,7 @@ describe('Default Input -> Custom Input', () => {
     const text = '<>[]*?_^`|%=&{}`,-'
     const user = userEvent.setup()
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <DefaultInput
         name='test'
         testID={testId}
@@ -92,9 +92,9 @@ describe('Default Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenLastCalledWith('')
   })
 
-  it('readOnly durumunu desteklemeli', () => {
+  it('readOnly durumunu desteklemeli', async () => {
     // Arrange
-    const {getByTestId} = render(<DefaultInput name='test' testID={testId} readOnly />)
+    const {getByTestId} = await render(<DefaultInput name='test' testID={testId} readOnly />)
 
     // Act
     const inputElement = getByTestId(testId)
