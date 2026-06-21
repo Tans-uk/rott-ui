@@ -172,6 +172,30 @@ module.exports = {
 You can skip this step if you are not using `rott.config.ts`. See the [rott.config.ts](/docs/theming/rott-config) page for full setup instructions.
 :::
 
+#### Expo (babel-preset-expo)
+
+Under Expo, `babel-preset-expo` does **not** apply project babel plugins (including `module-resolver`) to files inside `node_modules`. The `require('rott.config')` compiled into `@tansuk/rott-ui` is therefore never rewritten and fails to resolve at runtime — rott-ui silently falls back to the default theme.
+
+For Expo, resolve `rott.config` through Metro instead, in `metro.config.js`:
+
+```js title="metro.config.js"
+const path = require('path')
+
+// ...your existing config setup...
+
+const defaultResolveRequest = config.resolver.resolveRequest
+config.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (moduleName === 'rott.config') {
+    return {type: 'sourceFile', filePath: path.resolve(__dirname, 'rott.config.ts')}
+  }
+  return (defaultResolveRequest ?? context.resolveRequest)(context, moduleName, platform)
+}
+```
+
+:::warning
+If your custom theme is not being applied under Expo (colors render as the rott-ui defaults), this missing Metro `resolveRequest` is the usual cause. In development you will also see a `[rott-ui] 'rott.config' could not be resolved at runtime` warning.
+:::
+
 ## Verify Installation
 
 Create a simple test file to verify everything is installed correctly:

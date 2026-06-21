@@ -6,6 +6,8 @@ import type {ThemeConfig} from '../models/themeConfig.interface'
 import {defaultThemeConfig} from '../providers/defaultThemeConfig'
 import {consumerAssets} from '../utils/consumerAssets'
 
+declare const __DEV__: boolean
+
 type StringKeys<T> = Extract<keyof T, string>
 
 // When consumer provides a path alias to their rott.config.ts, TS will resolve
@@ -39,7 +41,15 @@ let userConfig: Partial<ThemeConfig> = {}
 try {
   userConfig = require('rott.config').config as Partial<ThemeConfig>
 } catch {
-  userConfig = defaultThemeConfig
+  if (typeof __DEV__ !== 'undefined' && __DEV__) {
+    console.warn(
+      "[rott-ui] 'rott.config' could not be resolved at runtime; using the default theme. " +
+        'If you use a custom rott.config.ts, ensure runtime resolution is configured ' +
+        '(Metro resolveRequest under Expo — see the rott.config docs). ' +
+        'If you are not using a custom config, you can ignore this warning.'
+    )
+  }
+  userConfig = {}
 }
 
 /** Base = defaults + user overrides (colors, goBack, etc.). */
