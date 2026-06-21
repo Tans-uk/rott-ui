@@ -11,7 +11,7 @@ Secure password input with show/hide toggle functionality.
 
 - 🔒 Secure text entry
 - 👁️ Show/hide toggle
-- ⌨️ Optimized keyboard
+- 🔤 Accepts text by default, numeric-only opt-in
 - 🔐 Auto-complete support
 
 ## Basic Usage
@@ -55,6 +55,38 @@ import {Input} from '@tansuk/rott-ui'
 />
 ```
 
+## Numeric-only (PIN style)
+
+By default the password field accepts any text — letters, numbers, and
+symbols. Pass `numericOnly` to restrict input to digits and use a numeric
+keyboard (PIN style):
+
+```tsx
+<Input
+  name='pin'
+  type='password'
+  numericOnly
+  placeholder='Enter PIN'
+  value={pin}
+  onChangeText={setPin}
+/>
+```
+
+## With a leading icon
+
+Pass an `icon` to render a leading icon inside the field:
+
+```tsx
+<Input
+  name='password'
+  type='password'
+  icon={{name: 'lock'}}
+  placeholder='Enter password'
+  value={password}
+  onChangeText={setPassword}
+/>
+```
+
 ## Props
 
 | Prop | Type | Description |
@@ -67,6 +99,8 @@ import {Input} from '@tansuk/rott-ui'
 | `label` | `string \| InputLabelProps` | Input label |
 | `errorMessage` | `string` | Error message |
 | `touched` | `boolean` | Validation touched state |
+| `numericOnly` | `boolean` | Restrict input to digits and use a numeric keyboard (default: `false`) |
+| `icon` | `IconProps` | Optional leading icon rendered inside the field |
 
 ## Features
 
