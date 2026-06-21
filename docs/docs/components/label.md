@@ -25,6 +25,16 @@ import { Label } from '@tansuk/rott-ui';
 <Label text="Hello World" />
 ```
 
+You can pass the content either through the `text` prop or as `children`:
+
+```tsx
+<Label text="Hello World" />
+<Label>Hello World</Label>
+```
+
+When both are provided, `children` takes precedence (`text` is used as a
+fallback when there are no children).
+
 ## Font Sizes
 
 ```tsx
@@ -76,7 +86,7 @@ import { Label } from '@tansuk/rott-ui';
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `text` | `string` | - | Text to display |
+| `text` | `string` | - | Text to display (fallback when no `children` are passed) |
 | `variant` | `Variant` | `'grey-900'` | Color variant |
 | `fontSize` | `FontSize` | `'md'` | Font size |
 | `fontWeight` | `FontWeight` | `'regular'` | Font weight |
