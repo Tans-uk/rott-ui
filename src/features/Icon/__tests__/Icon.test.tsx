@@ -26,6 +26,27 @@ jest.mock('../../../theme', () => ({
   },
 }))
 
+// Mock RottProvider runtime icon registry (themeConfig)
+jest.mock('../../../providers/RottProvider', () => ({
+  themeConfig: {
+    icons: {
+      'runtime-only-icon': {
+        default: jest.fn().mockImplementation((props) => {
+          const React = require('react')
+          return React.createElement('MockSvgIcon', {testID: 'mock-runtime-svg', ...props})
+        }),
+      },
+      // present in BOTH theme and themeConfig — theme (rott.config) must win
+      'arrow-left': {
+        default: jest.fn().mockImplementation((props) => {
+          const React = require('react')
+          return React.createElement('MockSvgIcon', {testID: 'mock-runtime-arrow', ...props})
+        }),
+      },
+    },
+  },
+}))
+
 // Mock hooks
 jest.mock('../../../hooks', () => ({
   useSafeArea: jest.fn(() => ({
@@ -95,6 +116,27 @@ describe('Icon -> Custom Component', () => {
 
     const iconElement = queryByTestId(testIds.iconTestId)
     expect(iconElement).not.toBeOnTheScreen()
+  })
+
+  describe('Icon -> RottProvider fallback (rott.config primary)', () => {
+    const {themeConfig} = require('../../../providers/RottProvider')
+
+    it('rott.config (theme.icons) içinde olmayan ad themeConfig.icons üzerinden render edilmeli', async () => {
+      const {getByTestId} = await render(
+        <Icon name={'runtime-only-icon' as IconKeys} testID={testIds.iconTestId} />
+      )
+
+      const iconElement = getByTestId(testIds.iconTestId)
+      expect(iconElement).toBeOnTheScreen()
+      expect(themeConfig.icons['runtime-only-icon'].default).toHaveBeenCalled()
+    })
+
+    it('ad hem theme hem themeConfig içindeyse theme (rott.config) önceliklidir', async () => {
+      await render(<Icon name='arrow-left' testID={testIds.iconTestId} />)
+
+      expect(theme.icons['arrow-left'].default).toHaveBeenCalled()
+      expect(themeConfig.icons['arrow-left'].default).not.toHaveBeenCalled()
+    })
   })
 
   describe('Icon -> Size Props', () => {
