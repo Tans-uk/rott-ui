@@ -8,4 +8,11 @@ export const PasswordInputStyles = () =>
       right: 10,
       bottom: 0,
     },
+    leadingIcon: {
+      position: 'absolute',
+      top: 0,
+      left: 10,
+      bottom: 0,
+      justifyContent: 'center',
+    },
   })

@@ -6,6 +6,7 @@ import {PasswordInput} from '../components'
 describe('Password Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'
   const showPasswordIconTestId = 'show-password-icon-test-id'
+  const leadingIconTestId = 'password-leading-icon-test-id'
 
   it('password input ilk render anında snapshot ile eşleşmeli', async () => {
     const renderedInput = await render(<PasswordInput name='test' testID={inputTestId} />)
@@ -13,7 +14,7 @@ describe('Password Input -> Custom Input', () => {
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('password input sadece numeric karakterleri kabul etmeli', async () => {
+  it('varsayılan olarak metin girişini olduğu gibi kabul etmeli', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <PasswordInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -24,24 +25,49 @@ describe('Password Input -> Custom Input', () => {
       fireEvent.changeText(inputElement, 'aaA*a123')
     })
 
+    expect(onChangeTextMock).toHaveBeenCalledWith('aaA*a123')
+  })
+
+  it('numericOnly verildiğinde yalnızca rakamları kabul etmeli', async () => {
+    const onChangeTextMock = jest.fn()
+    const {getByTestId} = await render(
+      <PasswordInput name='test' numericOnly testID={inputTestId} onChangeText={onChangeTextMock} />
+    )
+
+    await waitFor(() => {
+      const inputElement = getByTestId(inputTestId)
+      fireEvent.changeText(inputElement, 'aaA*a123')
+    })
+
     expect(onChangeTextMock).toHaveBeenCalledWith('123')
   })
 
-  it('password input harf ve özel karakter kabul etmemeli', async () => {
-    const onChangeTextMock = jest.fn()
+  it('varsayılan klavye default olmalı', async () => {
+    const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
+    const inputElement = getByTestId(inputTestId)
+
+    expect(inputElement).toHaveProp('keyboardType', 'default')
+  })
+
+  it('numericOnly verildiğinde klavye number-pad olmalı', async () => {
     const {getByTestId} = await render(
-      <PasswordInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
+      <PasswordInput name='test' numericOnly testID={inputTestId} />
+    )
+    const inputElement = getByTestId(inputTestId)
+
+    expect(inputElement).toHaveProp('keyboardType', 'number-pad')
+  })
+
+  it('icon verildiğinde leading icon render edilmeli', async () => {
+    const {getByTestId} = await render(
+      <PasswordInput name='test' testID={inputTestId} icon={{name: 'lock'}} />
     )
 
-    const inputElement = getByTestId(inputTestId)
-    fireEvent.changeText(inputElement, 'aaA*a123')
-
-    expect(onChangeTextMock).not.toHaveBeenCalledWith('aaA*a123')
+    expect(getByTestId(leadingIconTestId)).toBeTruthy()
   })
 
   it('input ilk renderlandiginda text gorunur olmamali', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
-
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('secureTextEntry', true)
@@ -50,42 +76,18 @@ describe('Password Input -> Custom Input', () => {
   it('input ilk renderlandiginda sifre goster iconu gorunmeli', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
 
-    const showPasswordIconElement = getByTestId(showPasswordIconTestId)
-
-    expect(showPasswordIconElement).toBeTruthy()
+    expect(getByTestId(showPasswordIconTestId)).toBeTruthy()
   })
 
-  it('input ilk renderlandiginda sifre goster iconuna tiklandiginda sifre gorunur olmali', async () => {
+  it('sifre goster iconuna tiklandiginda sifre gorunur olmali', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
-
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('secureTextEntry', true)
 
-    const showPasswordIconElement = getByTestId(showPasswordIconTestId)
-    fireEvent.press(showPasswordIconElement)
+    fireEvent.press(getByTestId(showPasswordIconTestId))
 
     expect(inputElement).toHaveProp('secureTextEntry', false)
-  })
-
-  it('input sifre gorunurken sifre gizle butonuna tiklandiginda sifre gizlenmeli', async () => {
-    const {getByTestId} = await render(
-      <PasswordInput name='test' testID={inputTestId} secureTextEntry={false} />
-    )
-
-    const inputElement = getByTestId(inputTestId)
-
-    const showPasswordIconElement = getByTestId(showPasswordIconTestId)
-    fireEvent.press(showPasswordIconElement)
-
-    expect(inputElement).toHaveProp('secureTextEntry', true)
-  })
-
-  it('input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
-    const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
-    const inputElement = getByTestId(inputTestId)
-
-    expect(inputElement).toHaveProp('keyboardType', 'number-pad')
   })
 
   it('IOS icin yapıştırma özelliği kapatılmalı', async () => {

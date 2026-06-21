@@ -4,6 +4,7 @@ import {
   Platform,
   StyleSheet,
   TextInput,
+  View,
   type NativeSyntheticEvent,
   type TextInputSelectionChangeEventData,
 } from 'react-native'
@@ -23,12 +24,14 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   disabled,
   size,
   value,
+  numericOnly = false,
+  icon,
   ...props
 }) => {
   const inputRef = useRef<any>(null)
   const [isSecure, setIsSecure] = useState(secureTextEntry)
   const handleTextChange = (inputText: string) => {
-    onChangeText!(inputText.replace(/[^0-9]/g, ''))
+    onChangeText!(numericOnly ? inputText.replace(/[^0-9]/g, '') : inputText)
   }
 
   const handleSelectionChange = ({
@@ -44,12 +47,30 @@ export const PasswordInput: FC<PasswordInputProps> = ({
 
   return (
     <Item row>
+      {icon && (
+        <View style={PasswordInputStyles().leadingIcon}>
+          <Icon
+            {...icon}
+            testID='password-leading-icon-test-id'
+            name={icon.name}
+            variant={icon.variant}
+            width={icon.width ?? 24}
+            height={icon.height ?? 24}
+          />
+        </View>
+      )}
+
       <TextInput
         ref={inputRef}
         editable={!disabled}
         placeholder='*******'
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
-        keyboardType='number-pad'
+        style={StyleSheet.flatten([
+          InputStyles({fontSize, theme, size}).defaultTextInputStyle,
+          icon ? {paddingLeft: 34} : undefined,
+        ])}
+        keyboardType={numericOnly ? 'number-pad' : 'default'}
+        autoCapitalize='none'
+        autoCorrect={false}
         secureTextEntry={isSecure}
         onChangeText={handleTextChange}
         value={value}
