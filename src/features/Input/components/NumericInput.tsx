@@ -1,10 +1,11 @@
-import React, {type FC} from 'react'
+import {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {Item} from '../../Item'
 import type {NumericInputProps} from '../models'
 import {InputStyles} from '../styles'
-import {InputContainer} from './InputContainer'
+import React from 'react'
 
 export const NumericInput: FC<NumericInputProps> = ({
   label,
@@ -21,7 +22,7 @@ export const NumericInput: FC<NumericInputProps> = ({
   }
 
   return (
-    <InputContainer {...props} size={size} theme={theme}>
+    <Item row>
       <TextInput
         editable={!disabled}
         placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
@@ -30,6 +31,6 @@ export const NumericInput: FC<NumericInputProps> = ({
         onChangeText={handleTextChange}
         {...props}
       />
-    </InputContainer>
+    </Item>
   )
 }

@@ -5,8 +5,12 @@ import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-
 
 import '@shopify/flash-list/jestSetup'
 import '@testing-library/jest-native/extend-expect'
+import { configure } from '@testing-library/react-native'
 
-import {act, render as rtlRender} from '@testing-library/react-native'
+/** RN test env: suppress react-test-renderer deprecation noise and legacy create() path */
+global.IS_REACT_NATIVE_TEST_ENVIRONMENT = true
+/** React 19 + RNTL: sync render must not use concurrent root or act() leaves a floating thenable */
+configure({ concurrentRoot: false })
 
 export const mockRNCNetInfo = require('@react-native-community/netinfo/jest/netinfo-mock')
 jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo)
@@ -181,11 +185,27 @@ jest.mock('react-native-reanimated', () => {
       if (callback) setTimeout(callback, 0)
       return value
     }),
+    withRepeat: jest.fn((value) => value),
     withSpring: jest.fn((value) => value),
     runOnJS: jest.fn((fn) => () => fn()),
+    interpolate: jest.fn((value) => value),
     runOnUI: jest.fn((fn) => fn),
+    createAnimatedComponent: jest.fn((Component) => Component),
+    Easing: {
+      linear: jest.fn(),
+      ease: jest.fn(),
+      quad: jest.fn(),
+      cubic: jest.fn(),
+      poly: jest.fn(),
+      sin: jest.fn(),
+      circle: jest.fn(),
+      exp: jest.fn(),
+      elastic: jest.fn(),
+    }
   }
 })
+
+jest.mock('react-native-worklets', () => require('react-native-worklets/src/mock'))
 
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
@@ -199,38 +219,6 @@ jest.mock('react-intl', () => {
   return {
     ...reactIntl,
     useIntl: () => intl,
-  }
-})
-
-// Mock RottUiContext for tests
-jest.mock('react', () => {
-  const React = jest.requireActual('react')
-  const originalUseContext = React.useContext
-
-  return {
-    ...React,
-    useContext: jest.fn((context) => {
-      // Check if it's RottUiContext being requested
-      if (
-        (context && context.displayName === 'RottUiContext') ||
-        (context && context._currentValue && context._currentValue.language)
-      ) {
-        return {
-          language: {
-            name: 'en-US',
-          },
-          hasDynamicIsland: false,
-          hasNotch: false,
-          deviceInfo: {
-            operatingSystemVersion: '17.0',
-            apiLevel: 33,
-            totalMemory: 8000000000,
-          },
-        }
-      }
-      // For other contexts, use the original useContext
-      return originalUseContext(context)
-    }),
   }
 })
 
@@ -262,24 +250,6 @@ jest.mock('react-native/Libraries/Interaction/InteractionManager', () => {
   }
 })
 
-// Tüm testleri act ile sarmalama
-declare global {
-  var render: (
-    ui: React.ReactElement<any>,
-    options?: Parameters<typeof rtlRender>[1]
-  ) => ReturnType<typeof rtlRender>
-}
-
-const originalRender = rtlRender
-global.render = (ui, options) => {
-  let result
-  act(() => {
-    result = originalRender(ui, options)
-  })
-
-  return result!
-}
-
 jest.mock('react-native-keyboard-controller', () =>
   require('react-native-keyboard-controller/jest')
 )
@@ -301,10 +271,11 @@ jest.mock('./src/hooks/useSafeArea', () => ({
   })),
 }))
 
-// Mock theme icons
+// Mock theme icons and images
 jest.mock('./src/theme', () => {
   const React = require('react')
   const {Text} = require('react-native')
+  const {defaultThemeConfig} = require('./src/providers/defaultThemeConfig')
 
   const MockIcon = React.forwardRef((props: any, ref: any) =>
     React.createElement(Text, {ref, testID: 'mock-icon', ...props}, 'MockIcon')
@@ -313,6 +284,7 @@ jest.mock('./src/theme', () => {
 
   return {
     theme: {
+      ...defaultThemeConfig,
       icons: new Proxy(
         {},
         {
@@ -321,58 +293,53 @@ jest.mock('./src/theme', () => {
           },
         }
       ),
-      colors: {
-        // PRIMARY
-        primary: 'rgba(0, 169, 206, 1)',
-        secondary: 'rgba(255, 199, 44, 1)',
-        'grey-900': 'rgba(34, 63, 70, 1)',
-        'grey-800': 'rgba(61, 88, 94, 1)',
-        'grey-200': 'rgba(161, 173, 175, 1)',
-        'grey-100': 'rgba(234, 239, 240, 1)',
-        white: 'rgba(255, 255, 255, 1)',
-        black: 'rgba(17, 17, 17, 1)',
-
-        // SEMANTIC
-        danger: 'rgba(246, 83, 83, 1)',
-        success: 'rgba(63, 182, 24, 1)',
-        info: 'rgba(63, 182, 210, 1)',
-        warning: 'rgba(255, 117, 24, 1)',
-        mint: 'rgba(32, 150, 110, 1)',
-
-        'success-notification': 'rgba(72, 193, 181, 1)',
-        'danger-notification': 'rgba(209, 94, 83, 1)',
-        'warning-notification': 'rgba(255, 173, 50, 1)',
-        'info-notification': 'rgba(77, 175, 234, 1)',
-
-        // NEUTRAL/ALPHA
-        'neutral-alpha-900': 'rgba(34, 63, 70, 0.9)',
-        'neutral-alpha-700': 'rgba(34, 63, 70, 0.75)',
-        'neutral-alpha-400': 'rgba(34, 63, 70, 0.40)',
-        'neutral-alpha-300': 'rgba(34, 63, 70, 0.30)',
-        'neutral-alpha-200': 'rgba(34, 63, 70, 0.15)',
-        'neutral-alpha-100': 'rgba(34, 63, 70, 0.10)',
-        'neutral-shadow-300': 'rgba(6, 14, 16, 0.30)',
-
-        'neutral-red-alpha-300': 'rgba(228, 65, 96, 0.30)',
-        'neutral-green-alpha-300': 'rgba(68, 238, 162, 0.30)',
-        'neutral-grey-alpha-200': 'rgba(234, 239, 240, 0.15)',
-        'neutral-blue-soft': 'rgba(130, 222, 243, 1)',
-        'neutral-blue-alpha': 'rgba(99, 115, 129, 1)',
-
-        // GRADIENT
-        'primary-outline': 'transparent',
-        'secondary-outline': 'transparent',
-        'success-outline': 'transparent',
-        'info-outline': 'transparent',
-        'warning-outline': 'transparent',
-        'danger-outline': 'transparent',
-        'white-outline': 'transparent',
-
-        // SEPERATOR COLOR
-        'seperator-grey-200': 'rgba(79, 100, 104, 1)',
-
-        transparent: 'rgba(0, 0, 0, 0)',
-      },
     },
   }
+})
+
+// Ensure themeConfig has full defaultThemeConfig for components that import it directly
+jest.mock('./src/providers', () => {
+  const actual = jest.requireActual('./src/providers')
+  const {defaultThemeConfig} = require('./src/providers/defaultThemeConfig')
+  const React = require('react')
+  const {Text} = require('react-native')
+  const MockIcon = React.forwardRef((props: any, ref: any) =>
+    React.createElement(Text, {ref, testID: 'mock-icon', ...props}, 'MockIcon')
+  )
+  MockIcon.default = MockIcon
+  return {
+    ...actual,
+    themeConfig: {
+      ...defaultThemeConfig,
+      icons: new Proxy(
+        {},
+        {
+          get() {
+            return MockIcon
+          },
+        }
+      ),
+    },
+  }
+})
+
+/** formatMessage() uses useContext but is called from plain Jest tests; supply RottUiContext outside the tree. */
+const ReactRuntime = require('react') as typeof import('react')
+const {RottUiContext} = require('./src/contexts/rottUiContext')
+const reactActualUseContext = jest.requireActual<typeof import('react')>('react').useContext
+
+jest.spyOn(ReactRuntime, 'useContext').mockImplementation((context) => {
+  if (context === RottUiContext) {
+    return {
+      language: {name: 'en-US'},
+      hasDynamicIsland: false,
+      hasNotch: false,
+      deviceInfo: {
+        operatingSystemVersion: '17.0',
+        apiLevel: 33,
+        totalMemory: 8000000000,
+      },
+    }
+  }
+  return reactActualUseContext(context)
 })

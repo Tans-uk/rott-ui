@@ -59,21 +59,18 @@ export const CommonItem: FC<CommonItemProps> = memo(
 
     onPress,
     value,
-    size,
-    gap,
     ...props
   }) => {
     return (
-      <CommonItemContainer width={width} height={height} size={size}>
+      <CommonItemContainer width={width} height={height}>
         <Pressable
           testID={testID}
           backgroundColor={colorFromVariant(backgroundColor)}
-          overflowHidden
           disabled={selectionDisabled}
           onPress={() => !!onPress && onPress(value)}
+          overflowHidden
           paddingVertical={paddingVertical ?? 16}
           paddingHorizontal={paddingHorizontal ?? 16}
-          size={size}
           width={width}
           height={height}
           {...props}>
@@ -237,7 +234,6 @@ export const CommonItem: FC<CommonItemProps> = memo(
                   )}
                 </>
               )}
-
               {description && (
                 <Item>
                   {isValidElement(description) && <>{description}</>}
@@ -263,10 +259,10 @@ export const CommonItem: FC<CommonItemProps> = memo(
             {/* Right Icon / Element */}
             {selectedPosition !== 'right' && rightIcon && (
               <Pressable
+                testID='right-icon-test-id'
                 flex={0}
                 marginLeft={(rightIcon as IconProps)?.marginLeft ?? 16}
                 {...(typeof rightIcon === 'object' ? {...rightIcon} : null)}
-                testID={'right-icon-test-id'}
                 key={undefined}
                 disabled={selectionDisabled}
                 onPress={(event) => {

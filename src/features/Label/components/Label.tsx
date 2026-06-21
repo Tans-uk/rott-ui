@@ -11,6 +11,7 @@ export const Label: FC<LabelProps> = forwardRef<Text, LabelProps>(
     {
       fontSize = 'md',
       variant = 'black',
+      text,
       textCenter,
       fontWeight,
       fontFamily,
@@ -42,7 +43,7 @@ export const Label: FC<LabelProps> = forwardRef<Text, LabelProps>(
           style,
         ])}
         {...props}>
-        {children}
+        {children ?? text}
       </Text>
     )
   }

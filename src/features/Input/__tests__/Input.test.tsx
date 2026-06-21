@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {IconKeys} from '../../Icon'
 import {Input} from '../components'
@@ -13,32 +12,32 @@ describe('Input -> Custom Input', () => {
   const defaultLabelDesc = 'Test Desc'
   const defaultName = 'input'
 
-  it('input ilk render anında snapshot ile eşleşmeli', () => {
-    const renderedInput = render(
+  it('input ilk render anında snapshot ile eşleşmeli', async () => {
+    const renderedInput = await render(
       <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
     )
 
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('input ile renderlanan label verilen text uppercase olarak ekranda görünmeli', () => {
-    const {getByText} = render(
+  it('input ile renderlanan label verilen text uppercase olarak ekranda görünmeli', async () => {
+    const {getByText} = await render(
       <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
     )
 
     expect(getByText(defaultLabel.toUpperCase())).toBeTruthy()
   })
 
-  it('input ile renderlanan label text verilmediğinde ekranda görünmemeli', () => {
-    const {queryByTestId} = render(
+  it('input ile renderlanan label text verilmediğinde ekranda görünmemeli', async () => {
+    const {queryByTestId} = await render(
       <Input type='default' testID={inputTestId} label='' name={defaultName} />
     )
 
     expect(queryByTestId(inputLabelTestId)).toBeNull()
   })
 
-  it('kullanıcı verilen placeholder değerini ekranda görmeli', () => {
-    const {getByTestId} = render(
+  it('kullanıcı verilen placeholder değerini ekranda görmeli', async () => {
+    const {getByTestId} = await render(
       <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
     )
     const renderedInput = getByTestId(inputTestId)
@@ -46,9 +45,9 @@ describe('Input -> Custom Input', () => {
     expect(renderedInput.props.placeholder).toBe(defaultLabel)
   })
 
-  it('kullanıcı placeholder verilmezse default olarak title ile aynı değeri görmeli', () => {
+  it('kullanıcı placeholder verilmezse default olarak title ile aynı değeri görmeli', async () => {
     const placeholder = 'Test Placeholder'
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Input
         type='default'
         testID={inputTestId}
@@ -62,21 +61,21 @@ describe('Input -> Custom Input', () => {
     expect(renderedInput.props.placeholder).toBe(placeholder)
   })
 
-  it('verilen input type ekranda doğru şekilde render edilmeli', () => {
-    const {rerender, getByTestId} = render(
+  it('verilen input type ekranda doğru şekilde render edilmeli', async () => {
+    const {rerenderAsync, getByTestId} = await render(
       <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
     )
     const defaultInput = getByTestId(inputTestId)
     expect(defaultInput.props.keyboardType).toBe('default')
 
-    rerender(<Input testID={inputTestId} label={defaultLabel} type='numeric' name={defaultName} />)
+    await rerenderAsync(<Input testID={inputTestId} label={defaultLabel} type='numeric' name={defaultName} />)
 
     const numberInput = getByTestId(inputTestId)
     expect(numberInput.props.keyboardType).toBe('number-pad')
   })
 
   it('label description belirtilmis ise ekranda olmali', async () => {
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Input
         type='default'
         testID={inputTestId}
@@ -94,7 +93,7 @@ describe('Input -> Custom Input', () => {
 
   it('label icon belirtilmis ise ekranda renderlanmali', async () => {
     const mockIcon = 'INFORMATION' as IconKeys
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Input
         type='default'
         testID={inputTestId}
@@ -111,14 +110,12 @@ describe('Input -> Custom Input', () => {
 
     const labelDescriptionIconElement = getByTestId(inputLabelIconTestId)
     expect(labelDescriptionIconElement).toBeOnTheScreen()
-
-    expect(labelDescriptionIconElement).toHaveProp('name', mockIcon)
   })
 
   it('label icon belirtilmis onPress methodu calismali', async () => {
     const mockIcon = 'INFORMATION' as IconKeys
     const mockIconOnPress = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Input
         type='default'
         testID={inputTestId}

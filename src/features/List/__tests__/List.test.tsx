@@ -13,8 +13,8 @@ describe('List -> Custom Component', () => {
     {id: 3, name: 'Item 3'},
   ]
 
-  it('list ilk render anında snapshot ile eşleşmeli', () => {
-    const renderedList = render(
+  it('list ilk render anında snapshot ile eşleşmeli', async () => {
+    const renderedList = await render(
       <List
         data={data}
         estimatedItemSize={100}
@@ -28,8 +28,8 @@ describe('List -> Custom Component', () => {
     expect(renderedList).toMatchSnapshot()
   })
 
-  it('separator item ekranda olmamalı', () => {
-    const {queryByTestId} = render(
+  it('separator item ekranda olmamalı', async () => {
+    const {queryByTestId} = await render(
       <List
         data={data}
         estimatedItemSize={100}
@@ -45,8 +45,8 @@ describe('List -> Custom Component', () => {
     expect(separator).toBeNull()
   })
 
-  it('list componenti elemanları doğru şekilde renderlamalı', () => {
-    const {getByText} = render(
+  it('list componenti elemanları doğru şekilde renderlamalı', async () => {
+    const {getByText} = await render(
       <List
         data={data}
         horizontal={false}
@@ -62,7 +62,7 @@ describe('List -> Custom Component', () => {
   })
 
   it('list componenti eleman geldiğinde doğru renderlanmalı', async () => {
-    const {getByText} = render(
+    const {getByText} = await render(
       <List data={data} renderSeparator={true} renderItem={({item}) => <Text>{item.name}</Text>} />
     )
 

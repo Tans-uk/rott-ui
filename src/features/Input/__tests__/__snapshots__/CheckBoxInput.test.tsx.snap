@@ -15,171 +15,83 @@ exports[`CheckBox Input -> Custom Input checkbox input ilk render anında snapsh
     }
   >
     <View
-      height={56}
-      style={
+      accessibilityState={
         {
-          "flex": undefined,
-          "flexDirection": "column",
-          "height": 108,
-          "maxHeight": 108,
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
         }
       }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      animated={false}
+      collapsable={false}
+      flex={0}
+      focusable={true}
+      name="test"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "flex": 0,
+          "flexDirection": "column",
+        }
+      }
+      testID="checkbox-input-test-id"
     >
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        animated={false}
-        backgroundColor="rgba(61, 88, 94, 1)"
-        collapsable={false}
-        focusable={true}
-        height={56}
-        justifyContentCenter={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        overflowHidden={true}
-        paddingHorizontal={16}
-        paddingVertical={16}
+        alignItemsCenter={true}
         style={
           {
-            "backgroundColor": "rgba(61, 88, 94, 1)",
-            "flex": 1,
-            "flexDirection": "column",
-            "height": 108,
-            "justifyContent": "center",
-            "maxHeight": 108,
-            "overflow": "hidden",
-            "paddingHorizontal": 31,
-            "paddingVertical": 31,
+            "alignItems": "center",
+            "color": "rgba(255, 255, 255, 1)",
+            "flex": undefined,
+            "flexDirection": "row",
+            "fontFamily": "Markpro-Medium",
+            "fontSize": 18,
+            "height": "auto",
+            "letterSpacing": 0.5,
+            "width": "100%",
           }
         }
+        testID="checkbox-container-test-id"
       >
         <View
           alignItemsCenter={true}
-          flex={1}
+          borderColor="rgba(161, 173, 175, 1)"
+          borderRadius={8}
+          borderWidth={2}
+          height={24}
           justifyContentCenter={true}
           style={
             {
               "alignItems": "center",
-              "flex": 1,
-              "flexDirection": "row",
+              "flex": undefined,
+              "flexDirection": "column",
+              "height": 46,
               "justifyContent": "center",
+              "maxHeight": 46,
+              "width": 46,
             }
           }
-        >
-          <View
-            flex={1}
-            style={
-              {
-                "flex": 1,
-                "flexDirection": "column",
-              }
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              animated={false}
-              collapsable={false}
-              flex={0}
-              focusable={true}
-              name="test"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "flex": 0,
-                  "flexDirection": "column",
-                }
-              }
-              testID="checkbox-input-test-id"
-            >
-              <View
-                alignItemsCenter={true}
-                style={
-                  {
-                    "alignItems": "center",
-                    "color": "rgba(255, 255, 255, 1)",
-                    "flex": undefined,
-                    "flexDirection": "row",
-                    "fontFamily": "Markpro-Medium",
-                    "fontSize": 18,
-                    "height": "auto",
-                    "letterSpacing": 0.5,
-                    "width": "100%",
-                  }
-                }
-                testID="checkbox-container-test-id"
-              >
-                <View
-                  alignItemsCenter={true}
-                  borderColor="rgba(161, 173, 175, 1)"
-                  borderRadius={8}
-                  borderWidth={2}
-                  height={24}
-                  justifyContentCenter={true}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flex": undefined,
-                      "flexDirection": "column",
-                      "height": 46,
-                      "justifyContent": "center",
-                      "maxHeight": 46,
-                      "width": 46,
-                    }
-                  }
-                  width={24}
-                />
-              </View>
-            </View>
-          </View>
-        </View>
+          width={24}
+        />
       </View>
     </View>
     <View

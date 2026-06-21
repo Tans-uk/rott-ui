@@ -8,15 +8,15 @@ const testId = {
 }
 
 describe('Separator -> Custom Component', () => {
-  it('separator component render olmalı ve snapshot eşleşmeli', () => {
-    const rendered = render(<Separator />)
+  it('separator component render olmalı ve snapshot eşleşmeli', async () => {
+    const rendered = await render(<Separator />)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('separator component default style ile render olmalı', () => {
+  it('separator component default style ile render olmalı', async () => {
     const {separatorTestId} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Separator testID={separatorTestId} size='full' orientation='horizontal' />
     )
 
@@ -30,9 +30,9 @@ describe('Separator -> Custom Component', () => {
     })
   })
 
-  it('separator component horizontal render olmalı', () => {
+  it('separator component horizontal render olmalı', async () => {
     const {separatorTestId} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Separator testID={separatorTestId} size='full' orientation='horizontal' height={'100%'} />
     )
 
@@ -41,18 +41,18 @@ describe('Separator -> Custom Component', () => {
     expect(separatorElement).toHaveStyle({width: '100%'})
   })
 
-  it('separator component vertical render olmalı', () => {
-    const {getByTestId} = render(<Separator orientation='vertical' testID='separator-test-id' />)
+  it('separator component vertical render olmalı', async () => {
+    const {getByTestId} = await render(<Separator orientation='vertical' testID='separator-test-id' />)
 
     const separator = getByTestId('separator-test-id')
 
     expect(separator).toHaveStyle({height: 2, width: 2})
   })
 
-  it('seperator verilen opacity ile render olmali', () => {
+  it('seperator verilen opacity ile render olmali', async () => {
     const {separatorTestId} = testId
     const opacityValue = 0.5
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Separator
         testID={separatorTestId}
         size='full'

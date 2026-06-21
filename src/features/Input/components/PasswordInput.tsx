@@ -1,16 +1,20 @@
-import React, {useRef, useState, type FC} from 'react'
+import {useRef, useState, type FC} from 'react'
 
 import {
   Platform,
   StyleSheet,
   TextInput,
+  View,
   type NativeSyntheticEvent,
   type TextInputSelectionChangeEventData,
 } from 'react-native'
 
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Pressable} from '../../Pressable'
 import type {PasswordInputProps} from '../models'
-import {InputStyles} from '../styles'
-import {InputContainer} from './InputContainer'
+import {InputStyles, PasswordInputStyles} from '../styles'
+import React from 'react'
 
 export const PasswordInput: FC<PasswordInputProps> = ({
   fontSize,
@@ -20,13 +24,14 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   disabled,
   size,
   value,
-  backgroundColor,
+  numericOnly = false,
+  icon,
   ...props
 }) => {
   const inputRef = useRef<any>(null)
   const [isSecure, setIsSecure] = useState(secureTextEntry)
   const handleTextChange = (inputText: string) => {
-    onChangeText!(inputText.replace(/[^0-9]/g, ''))
+    onChangeText!(numericOnly ? inputText.replace(/[^0-9]/g, '') : inputText)
   }
 
   const handleSelectionChange = ({
@@ -41,24 +46,31 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   }
 
   return (
-    <InputContainer
-      {...props}
-      size={size}
-      theme={theme}
-      rightIcon={{
-        testID: 'show-password-icon-test-id',
-        name: isSecure ? 'EYE_DISABLE' : 'EYE',
-        variant: theme === 'dark' ? 'white' : !value ? 'grey-200' : 'grey-900',
-        height: 24,
-        width: 24,
-        onPress: () => setIsSecure(!isSecure),
-      }}>
+    <Item row>
+      {icon && (
+        <View style={PasswordInputStyles().leadingIcon}>
+          <Icon
+            {...icon}
+            testID='password-leading-icon-test-id'
+            name={icon.name}
+            variant={icon.variant}
+            width={icon.width ?? 24}
+            height={icon.height ?? 24}
+          />
+        </View>
+      )}
+
       <TextInput
         ref={inputRef}
         editable={!disabled}
         placeholder='*******'
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
-        keyboardType='number-pad'
+        style={StyleSheet.flatten([
+          InputStyles({fontSize, theme, size}).defaultTextInputStyle,
+          icon ? {paddingLeft: 34} : undefined,
+        ])}
+        keyboardType={numericOnly ? 'number-pad' : 'default'}
+        autoCapitalize='none'
+        autoCorrect={false}
         secureTextEntry={isSecure}
         onChangeText={handleTextChange}
         value={value}
@@ -66,6 +78,22 @@ export const PasswordInput: FC<PasswordInputProps> = ({
         onSelectionChange={handleSelectionChange} // Android'de yapıştırma işlemini engelle
         {...props}
       />
-    </InputContainer>
+
+      <Pressable
+        testID='show-password-icon-test-id'
+        style={PasswordInputStyles().showPasswordIcon}
+        justifyContentCenter
+        alignItemsCenter
+        onPress={() => {
+          setIsSecure(!isSecure)
+        }}>
+        <Icon
+          variant={theme === 'dark' ? 'white' : !value ? 'grey-200' : 'grey-900'}
+          name={isSecure ? 'eye-disable' : 'eye'}
+          height={24}
+          width={24}
+        />
+      </Pressable>
+    </Item>
   )
 }

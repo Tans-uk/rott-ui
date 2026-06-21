@@ -8,8 +8,8 @@ describe('ButtonGroup -> Custom Component', () => {
     logoImageTestId: 'image-test-id',
   }
 
-  it('buton grubunun snapshotı ile eşleşmeli', () => {
-    const rendered = render(
+  it('buton grubunun snapshotı ile eşleşmeli', async () => {
+    const rendered = await render(
       <ButtonGroup
         sticky
         buttons={[
@@ -17,7 +17,7 @@ describe('ButtonGroup -> Custom Component', () => {
           {text: 'Button 2', variant: 'secondary-outline'},
         ]}
         image={{
-          name: 'FAST_LOGO',
+          name: 'fast-tcmb',
           width: 60,
           height: 40,
         }}
@@ -27,9 +27,9 @@ describe('ButtonGroup -> Custom Component', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('isFastTransfer true ise ekranda fast görseli görünür', () => {
+  it('isFastTransfer true ise ekranda fast görseli görünür', async () => {
     const {logoImageTestId} = testIDs
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <ButtonGroup
         isFastTransfer
         buttons={[

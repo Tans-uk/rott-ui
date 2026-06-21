@@ -18,7 +18,7 @@ exports[`Image -> Custom Component image elementi snapshot ile eşleşmeli 1`] =
       height={50}
       source={
         {
-          "testUri": "../../../src/assets/images/logo/pttbank-White.png",
+          "testUri": "../../../src/assets/images/logo/pttbank-white.png",
         }
       }
       style={

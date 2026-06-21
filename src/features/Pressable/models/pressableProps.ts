@@ -15,7 +15,7 @@ export interface PressableProps extends CommonUiProps, RNPressableProps {
   text?: string
   textStyle?: StyleProp<TextStyle>
   textVariant?: Variant
-  textSize?: Exclude<Size, 'full'>
+  textSize?: Size
   textWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 'bold' | 'normal'
   animated?: boolean
   children?: any

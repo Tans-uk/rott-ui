@@ -1,11 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {memo, type FC} from 'react'
+import {memo, type FC} from 'react'
 
+import {useRottContext} from '../../../hooks'
 import {themeConfig} from '../../../providers'
+import {colorFromVariant} from '../../../utils'
+import {Icon} from '../../Icon'
 import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
 import {Separator} from '../../Separator'
-import type {InputLabelProps, InputProps} from '../models'
-import {cvcInputLabelNormalizer} from '../utils/cvcInputLabelNormalizer'
+import type {InputProps} from '../models'
+import {InputStyles} from '../styles'
+import {InputStyleNormalizer} from '../utils'
 import {AmountInput} from './AmountInput/components/AmountInput'
 import {CheckBoxInput} from './CheckBoxInput'
 import {CreditCardInput} from './CreditCardInput'
@@ -15,7 +21,6 @@ import {DefaultInput} from './DefaultInput'
 import {EmailInput} from './EmailInput'
 import {ExpireDateInput} from './ExpireDateInput'
 import {IbanInput} from './IbanInput'
-import {InputLabel} from './InputLabel'
 import {InputValidation} from './InputValidation'
 import {NumericInput} from './NumericInput'
 import {PasswordInput} from './PasswordInput'
@@ -25,39 +30,29 @@ import {PlateNumberInput} from './PlateNumberInput'
 import {SelectInput} from './SelectInput'
 import {StatementInput} from './StatementInput'
 import {ToggleInput} from './ToggleInput'
+import React from 'react'
 
 export const Input: FC<InputProps> = memo((props) => {
   const {
     label,
     type,
     renderSeparator = true,
-    size = 'full',
+    size = 'md',
     errorMessage,
     disabled,
     theme = 'light',
+    border,
     touched = null,
     name,
     placeholderTextColor = theme === 'light'
       ? themeConfig.colors['grey-200']
       : themeConfig.colors.white,
-    maxFontSizeMultiplier = 1.2,
-    leftIcon,
-    rightIcon,
-    gap,
   } = props
+  const {language} = useRottContext()
   const hasError = !!props?.onBlur && !!touched && !!errorMessage
 
   const getInputElement = () => {
-    const initializedProps = {
-      renderSeparator,
-      size,
-      theme,
-      touched,
-      placeholderTextColor,
-      maxFontSizeMultiplier,
-      leftIcon,
-      rightIcon,
-    }
+    const initializedProps = {renderSeparator, size, theme, touched, placeholderTextColor}
 
     switch (type) {
       case 'default':
@@ -117,24 +112,91 @@ export const Input: FC<InputProps> = memo((props) => {
     }
   }
 
-  let labelProps: Partial<InputLabelProps> = {}
-  if (typeof label === 'string') {
-    labelProps = {text: label}
-  } else if (!!label) {
-    if (type === 'cvc') {
-      console.info('label - 1', label)
-      labelProps = cvcInputLabelNormalizer(label)
-    } else {
-      labelProps = label
-    }
+  const isLabelObject = typeof label === 'object'
+  const variantCalculation = () => {
+    if (isLabelObject && label?.icon?.variant) return label?.icon?.variant
+    else if (
+      (isLabelObject && label.theme && label.theme === 'dark') ||
+      (theme && theme === 'dark')
+    )
+      return 'grey-900'
+    else if (disabled) return 'grey-900'
+    else return 'grey-200'
   }
+  const variant = variantCalculation()
 
   return (
     <Item>
-      <Item paddingTop={label && type !== 'toggle' ? 16 : 0} opacity={disabled ? 0.3 : 1} gap={gap}>
-        {label && type !== 'toggle' && <InputLabel {...(labelProps as InputLabelProps)} />}
+      <Item
+        paddingTop={label && type !== 'toggle' ? 16 : 0}
+        style={InputStyles({disabled}).textInputContainer}>
+        {label && type !== 'toggle' && (
+          <Item
+            row
+            paddingHorizontal={InputStyleNormalizer({size: size}).paddingHorizontal}
+            alignItemsCenter>
+            <Label
+              testID='input-label-test-id'
+              fontSize={isLabelObject && label.size ? label.size : 'xs'}
+              fontFamily={isLabelObject && label.fontFamily ? label.fontFamily : 'Markpro-Bold'}
+              style={{letterSpacing: 0.5}}
+              variant={
+                isLabelObject
+                  ? (label.variant ?? (label.theme === 'dark' ? 'grey-900' : 'grey-200'))
+                  : theme === 'dark'
+                    ? 'grey-200'
+                    : 'grey-900'
+              }>
+              {typeof label === 'string'
+                ? label?.toLocaleUpperCase(language?.name)
+                : label.text?.toLocaleUpperCase(language?.name)}
+            </Label>
 
-        {getInputElement()}
+            {isLabelObject && label.description && (
+              <Label
+                testID='input-label-description-test-id'
+                fontSize={label.descriptionSize ?? 'xs'}
+                fontFamily={label.fontFamily ?? 'Markpro-Medium'}
+                variant={label.descriptionVariant ?? 'grey-200'}
+                marginLeft={4}>
+                {`(${label.description?.toLocaleUpperCase(language?.name)})`}
+              </Label>
+            )}
+
+            {((isLabelObject && label.icon) || disabled) && (
+              <Pressable
+                testID='input-label-description-icon-test-id'
+                flex={0}
+                disabled={disabled}
+                width={isLabelObject ? label?.icon?.width && label.icon.width + 4 : 22}
+                height={isLabelObject ? label?.icon?.height && label.icon.height + 4 : 22}
+                justifyContentCenter
+                alignItemsCenter
+                onPress={isLabelObject ? label?.icon?.onPress : null}>
+                <Icon
+                  name={isLabelObject ? (label?.icon?.name as any) : ('lock' as any)}
+                  width={isLabelObject ? label?.icon?.width : 18}
+                  height={isLabelObject ? label?.icon?.height : 18}
+                  variant={variant}
+                  mode={isLabelObject ? label?.icon?.mode : 'stroke'}
+                  strokeWidth={isLabelObject ? label?.icon?.strokeWidth : 2}
+                  noStroke={isLabelObject ? label?.icon?.noStroke : false}
+                />
+              </Pressable>
+            )}
+          </Item>
+        )}
+
+        <Item
+          paddingHorizontal={type !== 'toggle' ? 16 : 0}
+          borderWidth={border?.width}
+          borderRadius={border?.radius}
+          borderColor={colorFromVariant(border?.variant)}
+          backgroundColor={
+            theme === 'light' ? themeConfig.colors.white : themeConfig.colors['grey-800']
+          }>
+          {getInputElement()}
+        </Item>
       </Item>
 
       {hasError && !!errorMessage && <InputValidation name={name} message={errorMessage} />}

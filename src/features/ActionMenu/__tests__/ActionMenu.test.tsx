@@ -49,11 +49,11 @@ const mockExampleList = [
 ]
 
 describe('ActionMenu -> Custom Component', () => {
-  it('ilk render anında snapshot ile eşleşmeli', () => {
+  it('ilk render anında snapshot ile eşleşmeli', async () => {
     const {actionMenuTestId} = testId
     const {titleMock, subTitleMock} = mockDetailElement
 
-    const rendered = render(
+    const rendered = await render(
       <ActionMenuComponent
         testID={actionMenuTestId}
         title={titleMock}
@@ -69,7 +69,7 @@ describe('ActionMenu -> Custom Component', () => {
     const {actionMenuTestId, childrenTestId} = testId
     const {titleMock, subTitleMock} = mockDetailElement
 
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <ActionMenuComponent
         testID={actionMenuTestId}
         title={titleMock}
@@ -87,11 +87,11 @@ describe('ActionMenu -> Custom Component', () => {
     })
   })
 
-  it('verilen data actionlari calismali', () => {
+  it('verilen data actionlari calismali', async () => {
     const {actionMenuTestId, childrenTestId} = testId
     const {titleMock, subTitleMock} = mockDetailElement
 
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <ActionMenuComponent
         testID={actionMenuTestId}
         title={titleMock}
@@ -111,11 +111,11 @@ describe('ActionMenu -> Custom Component', () => {
 })
 
 describe('ActionMenuHeader -> Custom Component', () => {
-  it('title ve subtitle ekranda düzgün şekilde renderlanmalı', () => {
+  it('title ve subtitle ekranda düzgün şekilde renderlanmalı', async () => {
     const {actionMenuHeaderId} = testId
     const {titleMock, subTitleMock} = mockDetailElement
 
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <ActionMenuHeaderComponent title={titleMock} subTitle={subTitleMock} />
     )
 

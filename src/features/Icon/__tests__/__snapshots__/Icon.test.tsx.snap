@@ -21,13 +21,13 @@ exports[`Icon -> Custom Component icon bileşeninin snapshot ile eşleşmeli 1`]
           "flexDirection": "column",
         }
       }
+      testID="icon-test-id"
     >
       <MockSvgIcon
         fill="#FFFFFF"
         height={16}
-        name="ARROW_LEFT"
         strokeWidth={0}
-        testID="icon-test-id"
+        testID="mock-svg"
         width={16}
       />
     </View>

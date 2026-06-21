@@ -1,10 +1,12 @@
-import React, {useCallback, type FC} from 'react'
+import {useCallback, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
 import type {DefaultInputProps} from '../models'
 import {InputStyles} from '../styles'
-import {InputContainer} from './InputContainer'
+import React from 'react'
 
 export const DefaultInput: FC<DefaultInputProps> = ({
   label,
@@ -52,20 +54,46 @@ export const DefaultInput: FC<DefaultInputProps> = ({
     [props?.maxLength, onChangeText]
   )
 
-  return (
-    <InputContainer {...props} size={size} theme={theme}>
+  return icon ? (
+    <Item row alignItemsCenter {...props} testID='default-input-container-test-id'>
+      <Icon
+        width={icon.width ?? 24}
+        height={icon.height ?? 24}
+        name={icon.name}
+        mode={icon.mode}
+        noStroke={icon.noStroke}
+        strokeWidth={icon.strokeWidth}
+      />
       <TextInput
         editable={!disabled}
         keyboardType='default'
         autoCapitalize='none'
         placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
+        onChangeText={(text) => onChangeText!(text)}
         style={StyleSheet.flatten([
-          InputStyles({fontSize, theme, size, includeBorderRadius: true, ...props})
-            .defaultTextInputStyle,
+          InputStyles({
+            fontSize,
+            theme,
+            size,
+            includeBorderRadius: true,
+            ...props,
+          }).defaultTextInputStyle,
         ])}
-        onChangeText={handleChangeText}
         {...props}
       />
-    </InputContainer>
+    </Item>
+  ) : (
+    <TextInput
+      editable={!disabled}
+      keyboardType='default'
+      autoCapitalize='none'
+      placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
+      style={StyleSheet.flatten([
+        InputStyles({fontSize, theme, size, includeBorderRadius: true, ...props})
+          .defaultTextInputStyle,
+      ])}
+      onChangeText={handleChangeText}
+      {...props}
+    />
   )
 }

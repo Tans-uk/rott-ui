@@ -1,19 +1,20 @@
-import React, {type FC} from 'react'
+import {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
+import {formatMessage, useTranslator} from '../../../libs'
+import {AlertDialog} from '../../AlertDialog'
+import {Icon} from '../../Icon'
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Pressable} from '../../Pressable'
 import type {CVCInputProps} from '../models'
-import {InputStyles} from '../styles'
-import {InputContainer} from './InputContainer'
+import {CVCInputStyles, InputStyles} from '../styles'
+import React from 'react'
 
-export const CVCInput: FC<CVCInputProps> = ({
-  fontSize,
-  onChangeText,
-  theme,
-  size,
-  label,
-  ...props
-}) => {
+export const CVCInput: FC<CVCInputProps> = ({fontSize, onChangeText, theme, size, ...props}) => {
+  const {translator} = useTranslator()
+
   const handleTextChange = (inputText: string) => {
     let text = inputText.replace(/[^0-9]/g, '')
     text = text.length > 3 ? text.substring(0, 3) : text
@@ -21,7 +22,7 @@ export const CVCInput: FC<CVCInputProps> = ({
   }
 
   return (
-    <InputContainer {...props} size={size} theme={theme} label={label}>
+    <Item row>
       <TextInput
         editable={!props.disabled}
         placeholder='***'
@@ -31,6 +32,32 @@ export const CVCInput: FC<CVCInputProps> = ({
         onChangeText={handleTextChange}
         {...props}
       />
-    </InputContainer>
+
+      {/* TODO: CVC Info butonuna kart arkayüzü eklenmeli */}
+      <Pressable
+        testID='info-icon-test-id'
+        style={CVCInputStyles().infoIcon}
+        row
+        justifyContentCenter
+        alignItemsCenter
+        onPress={() => {
+          AlertDialog.show({
+            title: formatMessage('CVC.INFO.TITLE'),
+            text: formatMessage('CVC.INFO.DESCRIPTION'),
+            buttons: {
+              cancelButton: {
+                text: 'COMMON.OK',
+                variant: 'primary',
+                onPress: () => AlertDialog.hide(),
+              },
+            },
+          })
+        }}>
+        <Label variant='grey-200' fontSize='xs' fontWeight={700}>
+          {translator('CVC.LABEL.DESCRIPTION')}
+        </Label>
+        <Icon name='check-circle' height={18} width={18} variant='grey-200' marginLeft={4} />
+      </Pressable>
+    </Item>
   )
 }

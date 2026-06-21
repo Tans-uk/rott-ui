@@ -9,7 +9,6 @@ import {Label} from '../../../../Label'
 import {Modal, useModal} from '../../../../Modal'
 import {Pressable} from '../../../../Pressable'
 import {InputStyleNormalizer} from '../../../utils'
-import {InputContainer} from '../../InputContainer'
 import type {SelectInputProps, SelectProps} from '../models'
 import {SelectInputStyles} from '../styles'
 import {modalHeightPercentageNormalizer} from '../utils'
@@ -56,7 +55,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   showSelected = false,
   showDescription = false,
   emptyState = {
-    name: 'EMPTY_LIST_ERROR',
+    name: 'list-error-empty-state',
   },
   readOnly,
   onTouched,
@@ -67,7 +66,6 @@ export const SelectInput: FC<SelectInputProps> = ({
   isLoading,
   name,
   type = 'select',
-  ...props
 }) => {
   const {translator} = useTranslator()
 
@@ -150,7 +148,7 @@ export const SelectInput: FC<SelectInputProps> = ({
         title: placeholder,
         marginBottom: searchable ? 0 : 16,
         leftIcon: {
-          name: 'CHEVRON_LEFT',
+          name: 'chevron-left',
           mode: 'stroke',
           width: 24,
           height: 24,
@@ -215,7 +213,7 @@ export const SelectInput: FC<SelectInputProps> = ({
   }, [value, extraDisplayData])
 
   return (
-    <InputContainer testID={testID} size={size} theme={theme} name={name} {...props}>
+    <Item testID={testID}>
       <Pressable
         testID='select-input-selection-test-id'
         size='full'
@@ -246,11 +244,11 @@ export const SelectInput: FC<SelectInputProps> = ({
                 : (placeholder ?? label))}
           </Label>
 
-          {!readOnly && <Icon name='CHEVRON_RIGHT' height={25} width={25} variant={textVariant} />}
+          {!readOnly && <Icon name='chevron-right' height={25} width={25} variant={textVariant} />}
 
           {readOnly && (
             <Icon
-              name='ID_CARD'
+              name='id-card'
               height={25}
               width={25}
               variant={theme === 'dark' ? 'white' : 'grey-200'}
@@ -272,6 +270,6 @@ export const SelectInput: FC<SelectInputProps> = ({
           </Item>
         )}
       </Pressable>
-    </InputContainer>
+    </Item>
   )
 }

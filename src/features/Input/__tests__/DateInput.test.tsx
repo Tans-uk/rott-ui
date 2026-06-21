@@ -13,8 +13,8 @@ describe('Date Input -> Custom Input', () => {
   const dateInputModalTestId = 'date-input-modal'
   const currentDate = new Date()
 
-  it('ilk render anında snapshot ile eşleşmeli', () => {
-    const renderedDateInput = render(
+  it('ilk render anında snapshot ile eşleşmeli', async () => {
+    const renderedDateInput = await render(
       <DateInput name='test' testID={dateInputTestId} date={currentDate} />
     )
 
@@ -22,19 +22,17 @@ describe('Date Input -> Custom Input', () => {
   })
 
   it('date inputa tıklandığında input modal olarak açılmalı', async () => {
-    const {getByTestId} = render(<DateInput name='test' date={currentDate} />)
+    const {getByTestId} = await render(<DateInput name='test' date={currentDate} />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
     fireEvent.press(dateInputValueContainer)
 
-    await waitFor(() => {
-      const dateInputModal = getByTestId(dateInputModalTestId)
-      expect(dateInputModal).toBeVisible()
-    })
+    const dateInputModal = getByTestId(dateInputModalTestId)
+    expect(dateInputModal).toBeVisible()
   })
 
-  it('date input allowClear propertysi almadıysa değer temizleme butonu ekranda gözükmemeli.', () => {
-    const {getByTestId, queryByTestId} = render(<DateInput name='test' date={currentDate} />)
+  it('date input allowClear propertysi almadıysa değer temizleme butonu ekranda gözükmemeli.', async () => {
+    const {getByTestId, queryByTestId} = await render(<DateInput name='test' date={currentDate} />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
     fireEvent.press(dateInputValueContainer)
@@ -45,7 +43,7 @@ describe('Date Input -> Custom Input', () => {
 
   it('date input allowClear propertysi aldıysa Temizle butonuna tıklandığında değer temizlenmeli.', async () => {
     const onDateChangeMock = jest.fn()
-    const {getByTestId, queryByTestId} = render(
+    const {getByTestId, queryByTestId} = await render(
       <DateInput
         name='test'
         value={currentDate.toDateString()} // Fix: Pass a valid date value in the format 'YYYY-MM-DD'.
@@ -73,7 +71,7 @@ describe('Date Input -> Custom Input', () => {
   })
 
   it('date input mode date olarak renderlanmalı', async () => {
-    const {getByTestId} = render(<DateInput name='test' mode='date' />)
+    const {getByTestId} = await render(<DateInput name='test' mode='date' />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
     fireEvent.press(dateInputValueContainer)
@@ -86,7 +84,7 @@ describe('Date Input -> Custom Input', () => {
   })
 
   it('date input mode time olarak renderlanmalı', async () => {
-    const {getByTestId} = render(<DateInput name='test' mode='time' />)
+    const {getByTestId} = await render(<DateInput name='test' mode='time' />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
     fireEvent.press(dateInputValueContainer)
@@ -99,7 +97,7 @@ describe('Date Input -> Custom Input', () => {
   })
 
   it('date input mode datetime olarak renderlanmalı', async () => {
-    const {getByTestId} = render(<DateInput name='test' mode='datetime' />)
+    const {getByTestId} = await render(<DateInput name='test' mode='datetime' />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
     fireEvent.press(dateInputValueContainer)
@@ -113,7 +111,7 @@ describe('Date Input -> Custom Input', () => {
 
   it('minimum date verildikten sonra daha geçmiş bir gün seçilirse tanımlanan minimum date değer olarak atanmalı.', async () => {
     const onDateChangeMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <DateInput
         name='test'
         mode='date'
@@ -143,7 +141,7 @@ describe('Date Input -> Custom Input', () => {
   it('maximum date verildikten sonra daha ileri bir gün seçilirse tanımlanan maximum date değer olarak atanmalı.', async () => {
     const onDateChangeMock = jest.fn(() => currentDate)
     const maxDate = new Date(currentDate)
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <DateInput
         name='test'
         mode='date'

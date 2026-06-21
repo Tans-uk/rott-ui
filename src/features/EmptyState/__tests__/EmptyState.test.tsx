@@ -13,46 +13,46 @@ describe('EmptyState -> Custom Component', () => {
     description: formatMessage('TEST'),
   }
 
-  it('ilk render anında snapshot ile eşleşmeli', () => {
+  it('ilk render anında snapshot ile eşleşmeli', async () => {
     const {description} = testTexts
-    const renderedEmptyState = render(<EmptyState name='EMPTY_PHONE' description={description} />)
+    const renderedEmptyState = await render(<EmptyState name='phone' description={description} />)
 
     expect(renderedEmptyState).toMatchSnapshot()
   })
 
-  it('name propertysi EMPTY ile başlamalı', () => {
+  it('name propertysi EMPTY ile başlamalı', async () => {
     const {description} = testTexts
     const {emptyStateImageTestId} = testId
-    const {getByTestId} = render(<EmptyState name='EMPTY_PHONE' description={description} />)
+    const {getByTestId} = await render(<EmptyState name='phone' description={description} />)
 
     const imageElement = getByTestId(emptyStateImageTestId)
 
     expect(imageElement.props.source.testUri).toMatch(/empty-state/gim)
   })
 
-  it('description verilen değerler ile ekranda gözükmeli', () => {
+  it('description verilen değerler ile ekranda gözükmeli', async () => {
     const {description} = testTexts
-    const {getByText} = render(<EmptyState name='EMPTY_PHONE' description={description} />)
+    const {getByText} = await render(<EmptyState name='phone' description={description} />)
 
     const descriptionElement = getByText(description)
 
     expect(descriptionElement).toBeOnTheScreen()
   })
 
-  it('description verilmediği zaman ekranda gözükmemeli', () => {
+  it('description verilmediği zaman ekranda gözükmemeli', async () => {
     const {emptyStateDescTestId} = testId
-    const {queryByTestId} = render(<EmptyState name='EMPTY_PHONE' />)
+    const {queryByTestId} = await render(<EmptyState name='phone' />)
 
     const descriptionElement = queryByTestId(emptyStateDescTestId)
 
     expect(descriptionElement).not.toBeOnTheScreen()
   })
 
-  it('description yerine ReactNode olarak verildiğindede ekranda gösterilmeli', () => {
+  it('description yerine ReactNode olarak verildiğindede ekranda gösterilmeli', async () => {
     const {description} = testTexts
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <EmptyState
-        name='EMPTY_PHONE'
+        name='phone'
         description={<Label testID='custom-label-test-id'>{description}</Label>}
       />
     )

@@ -83,7 +83,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
             {...image}
             width={isFastTransfer ? 45 : image?.width}
             height={isFastTransfer ? 30 : image?.height}
-            name={isFastTransfer ? 'FAST_LOGO' : image?.name}
+            name={isFastTransfer ? 'fast-tcmb' : image?.name}
           />
         </Item>
       )}

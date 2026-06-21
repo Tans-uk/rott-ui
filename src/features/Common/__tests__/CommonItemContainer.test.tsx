@@ -4,8 +4,8 @@ import {Label} from '../../Label'
 import {CommonItemContainer} from '../components'
 
 describe('Common -> Common Item Container', () => {
-  it('common item container ilk renderlandığında snapshot ile eşleşmeli', () => {
-    const commonItemContainer = render(
+  it('common item container ilk renderlandığında snapshot ile eşleşmeli', async () => {
+    const commonItemContainer = await render(
       <CommonItemContainer>
         <Label>Test</Label>
       </CommonItemContainer>
@@ -14,8 +14,8 @@ describe('Common -> Common Item Container', () => {
     expect(commonItemContainer).toMatchSnapshot()
   })
 
-  it('common item container ilk renderlandığında children ekranda renderlanmali', () => {
-    const {getByText} = render(
+  it('common item container ilk renderlandığında children ekranda renderlanmali', async () => {
+    const {getByText} = await render(
       <CommonItemContainer>
         <Label>Test</Label>
       </CommonItemContainer>

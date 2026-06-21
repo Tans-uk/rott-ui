@@ -4,6 +4,20 @@ A comprehensive, property-based React Native UI Kit designed for rapid developme
 
 [![npm version](https://badge.fury.io/js/@tansuk%2Frott-ui.svg)](https://badge.fury.io/js/@tansuk%2Frott-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/docs-docusaurus-blue.svg)](./docs)
+
+## 📚 Documentation
+
+**[View Full Documentation →](https://docs-rottui.tansuk.dev)**
+
+Comprehensive documentation with:
+
+- 🚀 Getting Started guides
+- 📖 All 29 component pages
+- 🎨 Theming system
+- 📝 How-to guides
+- 💡 Complete examples
+- 🌍 Bilingual support (EN/TR)
 
 ## ✨ Features
 
@@ -49,6 +63,63 @@ npm install react react-native react-intl date-fns \
 | `react-native-linear-gradient`   | 2.8.3     | [GitHub](https://github.com/react-native-linear-gradient/react-native-linear-gradient) |
 | `react-intl`                     | >=7.1.0   | [GitHub](https://github.com/formatjs/formatjs)                                         |
 | `date-fns`                       | >=4.0.0   | [GitHub](https://github.com/date-fns/date-fns)                                         |
+
+### Configure SVG Support
+
+Rott UI uses SVG icons. Install the transformer so Metro can handle `.svg` files:
+
+```bash
+npm install --save-dev react-native-svg-transformer
+```
+
+Create or update `metro.config.js`:
+
+```js
+const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config')
+const defaultConfig = getDefaultConfig(__dirname)
+const {assetExts, sourceExts} = defaultConfig.resolver
+
+const config = {
+  transformer: {
+    babelTransformerPath: require.resolve('react-native-svg-transformer/react-native'),
+  },
+  resolver: {
+    assetExts: assetExts.filter((ext) => ext !== 'svg'),
+    sourceExts: [...sourceExts, 'svg'],
+  },
+}
+
+module.exports = mergeConfig(defaultConfig, config)
+```
+
+### Configure Babel for `rott.config.ts`
+
+Install the module resolver plugin:
+
+```bash
+npm install --save-dev babel-plugin-module-resolver
+```
+
+Update `babel.config.js` — **order matters**:
+
+```js
+module.exports = {
+  presets: ['module:@react-native/babel-preset'],
+  plugins: [
+    'react-native-worklets/plugin',
+    [
+      'module-resolver',
+      {
+        alias: {'rott.config': './rott.config.ts'},
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+      },
+    ],
+    'react-native-reanimated/plugin', // Must be last!
+  ],
+}
+```
+
+> **Note:** `tsconfig.json` paths are compile-time only. The Babel module resolver is required for runtime resolution of `rott.config`.
 
 ## 🚀 Quick Start
 
@@ -128,7 +199,7 @@ export const config = defineRottConfig({
 } as const)
 ```
 
-Add the path mapping to your `tsconfig.json`:
+Add the path mapping to your `tsconfig.json` for TypeScript autocomplete:
 
 ```json
 {
@@ -139,6 +210,8 @@ Add the path mapping to your `tsconfig.json`:
   }
 }
 ```
+
+> **Note:** `tsconfig.json` paths provide compile-time type resolution only. Make sure you have also configured the [Babel module resolver](#configure-babel-for-rottconfigts) for runtime support.
 
 Now your custom colors are available with full autocomplete:
 

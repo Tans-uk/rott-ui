@@ -7,8 +7,8 @@ describe('Numeric Input -> Custom Input', () => {
   const defaultLabel = 'Test Label'
   const placeHolder = 'Enter Number '
 
-  it('numeric input ilk render anında snapshot ile eşleşmeli', () => {
-    const renderedInput = render(
+  it('numeric input ilk render anında snapshot ile eşleşmeli', async () => {
+    const renderedInput = await render(
       <NumericInput name='test' testID={inputTestId} label={defaultLabel} />
     )
 
@@ -17,7 +17,7 @@ describe('Numeric Input -> Custom Input', () => {
 
   it('numeric input sadece numeric karakterleri kabul etmeli', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <NumericInput
         name='test'
         testID={inputTestId}
@@ -36,7 +36,7 @@ describe('Numeric Input -> Custom Input', () => {
 
   it('numeric input harf ve özel karakter kabul etmemeli', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <NumericInput
         name='test'
         testID={inputTestId}
@@ -55,8 +55,8 @@ describe('Numeric Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('aaA*a123')
   })
 
-  it('input render olduğu zaman klavye olarak number-pad ekranda görülmeli', () => {
-    const {getByTestId} = render(
+  it('input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
+    const {getByTestId} = await render(
       <NumericInput name='test' testID={inputTestId} label={defaultLabel} />
     )
     const numericInputElement = getByTestId(inputTestId)

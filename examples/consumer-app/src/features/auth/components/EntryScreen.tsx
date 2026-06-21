@@ -9,64 +9,28 @@ import {
   Separator,
   CommonItem,
   Label,
+  Button,
   Content,
   BottomMenu,
   Input,
+  AlertDialog,
   BottomMenuItemModel,
-  FormContainer,
+  Image,
 } from '@tansuk/rott-ui';
 import { useIntl } from 'react-intl';
-import { useLanguageState } from '../../../contexts';
+import { useLanguageState } from '../../../../contexts';
 import { languageMessages } from '../../../../I18nProvider';
-import { useState } from 'react';
 
 export default function EntryScreen() {
   const { selectedLanguage, setLanguage } = useLanguageState();
   const intl = useIntl();
-
-  const [
-    {
-      select,
-      numeric,
-      checkbox,
-      email,
-      cvc,
-      username,
-      password,
-      expireDate,
-      plateNumber,
-      iban,
-      amount,
-      creditCard,
-      date,
-      phone,
-      pinPassword,
-    },
-    setCredentials,
-  ] = useState({
-    select: '',
-    numeric: '',
-    checkbox: false,
-    email: '',
-    cvc: '',
-    username: '',
-    password: '',
-    expireDate: '',
-    plateNumber: '',
-    iban: '',
-    amount: '',
-    creditCard: '',
-    date: '',
-    phone: '',
-    pinPassword: '',
-  });
 
   // Bottom menu items
   const entryScreenItems: BottomMenuItemModel[] = [
     {
       testID: 'fast-menu-button-test-id',
       icon: {
-        name: 'FAST',
+        name: 'fast-icon',
         noStroke: true,
         mode: 'fill',
       },
@@ -75,14 +39,14 @@ export default function EntryScreen() {
     },
     {
       testID: 'near-ptt-atm-tab-screen-test-id',
-      icon: { name: 'LOCATION', noStroke: true },
+      icon: { name: 'location', noStroke: true },
       title: 'Near PTT ATM',
       onPress: () => {},
     },
     {
       testID: 'qr-code-scan-button-test-id',
       image: {
-        name: 'QR_BUTTON',
+        name: 'qr-button',
         width: 56,
         height: 56,
       },
@@ -94,7 +58,7 @@ export default function EntryScreen() {
     {
       testID: 'vehicle-operations-button-test-id',
       icon: {
-        name: 'MENU_CAR',
+        name: 'menu-car',
         noStroke: true,
       },
       title: 'Vehicle Operations',
@@ -103,7 +67,7 @@ export default function EntryScreen() {
     {
       testID: 'card-operations-button-test-id',
       icon: {
-        name: 'MENU_CARD_I',
+        name: 'menu-card-i',
         noStroke: true,
       },
       title: 'Card Operations',
@@ -112,10 +76,10 @@ export default function EntryScreen() {
   ];
 
   return (
-    <Container>
+    <Container noPadding>
       <Header
         height={40}
-        logo="PTTBANK_BLACK"
+        logo="pttbank-white"
         leftElement={
           <Item flex={1} row width={80}>
             <Pressable
@@ -124,7 +88,7 @@ export default function EntryScreen() {
               justifyContentCenter
               onPress={() => {}}
             >
-              <Icon name="CALLING" height={24} width={24} noStroke />
+              <Icon name="calling" height={24} width={24} noStroke />
             </Pressable>
 
             <Pressable
@@ -147,7 +111,7 @@ export default function EntryScreen() {
                     backgroundColor: 'grey-900',
                     rightIcon: {
                       testID: 'cancel-button-test-id',
-                      name: 'REMOVE',
+                      name: 'remove',
                       mode: 'stroke',
                       width: 24,
                       height: 24,
@@ -208,446 +172,103 @@ export default function EntryScreen() {
             </Pressable>
           </Item>
         }
-        rightElement={<Item width={80} alignItemsFlexEnd />}
+        rightElement={
+          <Item width={80} alignItemsFlexEnd>
+            {/* <NotificationIcon height={40} /> */}
+          </Item>
+        }
       />
 
       <Content
         flex={1}
         justifyContentCenter
         alignItemsCenter
-        scrollEnabled
         useBottomInset
+        marginBottom={88}
       >
-        <FormContainer>
+        <Item marginTop={24}>
           <Input
-            label="Select"
-            name="select"
-            type="select"
-            size="full"
-            list={[
-              { label: 'Select', value: 'select' },
-              { label: 'Select 2', value: 'select2', selected: true },
-            ]}
-            showSelected
-            value={select}
-            onSelectChange={text =>
-              setCredentials({
-                select: text,
-                numeric,
-                email,
-                checkbox,
-                cvc,
-                username,
-                password,
-                expireDate,
-                plateNumber,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="Numeric"
-            name="numeric"
-            type="numeric"
-            size="full"
-            value={numeric}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric: text,
-                email,
-                checkbox,
-                cvc,
-                username,
-                password,
-                expireDate,
-                plateNumber,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="Checkbox"
-            name="checkbox"
-            type="checkbox"
-            size="full"
-            checked={checkbox}
-            onCheckChange={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox: !!text,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate,
-                plateNumber,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="E-mail"
-            name="email"
-            type="email"
-            size="full"
-            value={email}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email: text,
-                cvc,
-                username,
-                password,
-                expireDate,
-                plateNumber,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label={{
-              text: 'CVC',
-              theme: 'dark',
-            }}
-            name="cvc"
-            type="cvc"
-            size="full"
-            value={cvc}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc: text,
-                username,
-                password,
-                expireDate,
-                plateNumber,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="Username"
-            name="username"
-            type="default"
-            size="full"
-            rightIcon={{
-              name: 'ARROW_RIGHT',
-              width: 24,
-              height: 24,
-              variant: 'grey-200',
-              noStroke: true,
-              onPress: () => {},
-            }}
-            value={username}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                username: text,
-                email,
-                cvc,
-                password,
-                expireDate,
-                plateNumber,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            leftIcon={{
-              name: 'LOCK',
-              width: 24,
-              height: 24,
-              variant: 'grey-200',
-              noStroke: true,
-              onPress: () => {},
-            }}
-            label="Password"
-            name="password"
-            type="password"
-            value={password}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password: text,
-                expireDate,
-                plateNumber,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="Expire Date"
-            name="expireDate"
-            type="expireDate"
-            value={expireDate}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate: text,
-                plateNumber,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="Plate Number"
-            name="plateNumber"
-            type="plateNumber"
-            value={plateNumber}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate,
-                plateNumber: text,
-                iban,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="IBAN"
-            name="iban"
-            type="iban"
-            value={iban}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate,
-                iban: text,
-                amount,
-                plateNumber,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="Amount"
-            name="amount"
-            type="amount"
-            value={amount}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate,
-                iban,
-                plateNumber,
-                amount: text,
-                creditCard,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="Credit Card"
-            name="creditCard"
-            type="creditCard"
-            value={creditCard}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate,
-                iban,
-                plateNumber,
-                amount,
-                creditCard: text,
-                date,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            label="Date"
             name="date"
             type="date"
-            mode="modal-date"
-            value={date}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate,
-                iban,
-                plateNumber,
-                amount,
-                creditCard,
-                date: text,
-                phone,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            type="phone"
-            label="Phone"
-            name="phone"
-            value={phone}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate,
-                iban,
-                plateNumber,
-                amount,
-                creditCard,
-                date,
-                phone: text,
-                pinPassword,
-              })
-            }
-          />
-
-          <Input
-            type="pinPassword"
-            label="Pin Password"
-            name="pinPassword"
-            value={pinPassword}
-            onChangeText={text =>
-              setCredentials({
-                select,
-                numeric,
-                checkbox,
-                email,
-                cvc,
-                username,
-                password,
-                expireDate,
-                iban,
-                plateNumber,
-                amount,
-                creditCard,
-                date,
-                phone,
-                pinPassword: text,
-              })
-            }
-            rightIcon={{
-              name: 'EYE',
-              width: 24,
-              height: 24,
-              variant: 'grey-200',
-              noStroke: true,
-              onPress: () => {},
+            mode="datetime"
+            value={new Date().toISOString()}
+            onDateChange={event => {
+              console.log(event);
             }}
           />
-        </FormContainer>
+
+          <Button
+            testID="login-button-test-id"
+            key="h4"
+            size="full"
+            variant="primary"
+            fontSize="xl"
+            onPress={() => AlertDialog.test()}
+            marginBottom={24}
+          >
+            {intl.formatMessage({ id: 'COMMON.LOGIN' })}
+          </Button>
+
+          <Button
+            testID="hgs-button-test-id"
+            size={{ width: 'full', height: 'md' }}
+            fontSize="lg"
+            variant="white"
+            leftImage={{
+              name: 'cindoruk',
+              absolute: true,
+              width: 48,
+              height: 48,
+            }}
+            rightIcon={{
+              name: 'cindoruk-2',
+              variant: 'primary',
+              mode: 'fill',
+              noStroke: true,
+              absolute: true,
+              width: 80,
+              height: 80,
+            }}
+            onPress={() => {}}
+          >
+            HGS
+          </Button>
+
+          <Button
+            testID="social-help-button-test-id"
+            size={{ width: 'full', height: 'md' }}
+            fontSize="lg"
+            variant="primary"
+            marginTop={8}
+            leftImage={{
+              name: 'social-help-icon',
+              tintColor: 'white',
+              absolute: true,
+            }}
+            rightIcon={{
+              name: 'arrow-left',
+              variant: 'danger',
+              absolute: true,
+              mode: 'fill',
+              noStroke: true,
+            }}
+            onPress={() =>
+              AlertDialog.show({
+                title: 'Test',
+                text: 'Test',
+                buttons: [
+                  {
+                    variant: 'primary',
+                    size: 'full',
+                    onPress: () => {},
+                  },
+                ],
+              })
+            }
+          >
+            {intl.formatMessage({ id: 'COMMON.SOCIAL_HELP' })}
+          </Button>
+        </Item>
       </Content>
 
       <BottomMenu menuItems={entryScreenItems} />

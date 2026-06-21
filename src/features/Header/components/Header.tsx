@@ -1,4 +1,4 @@
-import React, {isValidElement, type FC} from 'react'
+import {isValidElement, type FC} from 'react'
 
 import {themeConfig} from '../../../providers'
 import {Content} from '../../Content'
@@ -9,6 +9,7 @@ import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 import {useHeader} from '../hooks'
 import type {HeaderProps} from '../models'
+import React from 'react'
 
 /**
  *
@@ -80,7 +81,7 @@ export const Header: FC<HeaderProps> = ({
           minWidth={height}
           justifyContentCenter
           {...leftContainer}>
-          {!leftElement && !isLeftElement && (
+          {!leftElement && !isLeftElement && (leftIcon || back) && (
             <Pressable
               {...(typeof leftIcon === 'object' ? {...leftIcon} : null)}
               testID='header-left-pressable-test-id'
@@ -105,7 +106,7 @@ export const Header: FC<HeaderProps> = ({
                 mode={(leftIcon as IconProps)?.mode}
                 noStroke={(leftIcon as IconProps)?.noStroke}
                 {...(typeof leftIcon === 'object' ? (leftIcon as IconProps) : {})}
-                name={back ? 'CHEVRON_LEFT' : ((leftIcon as IconProps)?.name ?? leftIcon)}
+                name={back ? 'chevron-left' : ((leftIcon as IconProps)?.name ?? leftIcon)}
               />
             </Pressable>
           )}
@@ -163,20 +164,21 @@ export const Header: FC<HeaderProps> = ({
           justifyContentCenter
           alignItemsFlexEnd
           {...rightContainer}>
-          <Pressable
-            {...(typeof rightIcon === 'object' ? {...rightIcon} : null)}
-            testID='header-right-pressable-test-id'
-            height={height}
-            minWidth={height}
-            alignItemsFlexStart={!rightIcon?.alignItemsCenter}
-            alignItemsCenter={!!rightIcon?.alignItemsCenter}
-            backgroundColor={rightIcon?.backgroundColor}
-            borderRadius={rightIcon?.rounded ? height : rightIcon?.borderRadius}
-            justifyContentCenter
-            alignItemsFlexEnd
-            onPress={(event) => !!rightIcon?.onPress && rightIcon?.onPress(event)}>
-            {!rightElement && !isRightElement && (
-              <Icon
+          {rightIcon && (
+            <Pressable
+              {...(typeof rightIcon === 'object' ? {...rightIcon} : null)}
+              testID='header-right-pressable-test-id'
+              height={height}
+              minWidth={height}
+              alignItemsFlexStart={!rightIcon?.alignItemsCenter}
+              alignItemsCenter={!!rightIcon?.alignItemsCenter}
+              backgroundColor={rightIcon?.backgroundColor}
+              borderRadius={rightIcon?.rounded ? height : rightIcon?.borderRadius}
+              justifyContentCenter
+              alignItemsFlexEnd
+              onPress={(event) => !!rightIcon?.onPress && rightIcon?.onPress(event)}>
+              {!rightElement && !isRightElement && (
+                <Icon
                 testID='header-right-icon-test-id'
                 width={24}
                 height={24}
@@ -187,8 +189,9 @@ export const Header: FC<HeaderProps> = ({
                 {...(typeof rightIcon === 'object' ? (rightIcon as IconProps) : {})}
                 name={(rightIcon as IconProps)?.name ?? rightIcon}
               />
-            )}
-          </Pressable>
+              )}
+            </Pressable>
+          )}
 
           {rightElement && isRightElement && rightElement}
         </Item>

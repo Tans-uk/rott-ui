@@ -1,10 +1,11 @@
-import React, {useCallback, useState, type FC} from 'react'
+import {useCallback, useState, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
 import type {EmailInputProps} from '../models'
 import {InputStyles} from '../styles'
-import {InputContainer} from './InputContainer'
+import { Item } from '../../Item'
+import React from 'react'
 
 export const EmailInput: FC<EmailInputProps> = ({
   disabled,
@@ -26,7 +27,7 @@ export const EmailInput: FC<EmailInputProps> = ({
   )
 
   return (
-    <InputContainer {...props} size={size} theme={theme}>
+    <Item>
       <TextInput
         testID='email-input-test-id'
         editable={!disabled}
@@ -38,6 +39,6 @@ export const EmailInput: FC<EmailInputProps> = ({
         style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
         {...props}
       />
-    </InputContainer>
+    </Item>
   )
 }

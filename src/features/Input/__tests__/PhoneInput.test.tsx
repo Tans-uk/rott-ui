@@ -1,73 +1,70 @@
 import React from 'react'
-
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {PhoneInput} from '../components'
 
 describe('Phone Input -> Custom Input', () => {
   const testId = {
     inputTestId: 'phone-input-test-id',
+    iconTestId: 'phone-icon-test-id',
     contactPressableTestId: 'contact-pressable-test-id',
   }
 
-  it('phone input ilk render anında snapshot ile eşleşmeli', () => {
+  it('phone input ilk render anında snapshot ile eşleşmeli', async () => {
     const {inputTestId} = testId
-    const renderedPhoneInput = render(<PhoneInput name='test' testID={inputTestId} />)
+    const renderedPhoneInput = await render(<PhoneInput name='test' testID={inputTestId} />)
 
     expect(renderedPhoneInput).toMatchSnapshot()
   })
 
-  it('ilk renderlandiginda içerik boş olmalı', () => {
+  it('ilk renderlandiginda içerik boş olmalı', async () => {
     const {inputTestId} = testId
-    const {getByTestId} = render(<PhoneInput name='test' testID={inputTestId} />)
+    const {getByTestId} = await render(<PhoneInput name='test' testID={inputTestId} />)
 
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('value', '')
   })
 
-  it('phone input harf ve özel karakter kabul etmemeli', () => {
+  it('phone input harf ve özel karakter kabul etmemeli', async () => {
     const {inputTestId} = testId
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <PhoneInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
     )
-
     const inputElement = getByTestId(inputTestId)
     fireEvent.changeText(inputElement, 'aaA*a123')
 
     expect(onChangeTextMock).not.toHaveBeenCalledWith('aaA*a123')
   })
 
-  it('varsayilan olarak rehber iconu olmalı', () => {
-    const {inputTestId, contactPressableTestId} = testId
-    const {getByTestId} = render(<PhoneInput name='test' testID={inputTestId} />)
+  it('varsayilan olarak rehber iconu olmalı', async () => {
+    const {inputTestId, iconTestId} = testId
+    const {getByTestId} = await render(<PhoneInput name='test' testID={inputTestId} />)
 
-    const iconElement = getByTestId(contactPressableTestId)
+    const iconElement = getByTestId(iconTestId)
 
     expect(iconElement).toBeOnTheScreen()
   })
 
   describe('kopyalanan phone number yapıştırıldığında', () => {
-    it('Bosluklar trimlenmeli', () => {
+    it('Bosluklar trimlenmeli', async () => {
       const {inputTestId} = testId
       const onChangeTextMock = jest.fn()
-      const {getByTestId} = render(
+      const {getByTestId} = await render(
         <PhoneInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
       )
-
       const inputElement = getByTestId(inputTestId)
       fireEvent.changeText(inputElement, 'aaA*a 123')
 
       expect(onChangeTextMock).not.toHaveBeenCalledWith('aaA*a123')
     })
 
-    it('yapistirilan degerde +90 ile gelmisse dogru format saglanmali', () => {
+    it('yapistirilan degerde +90 ile gelmisse dogru format saglanmali', async () => {
       const {inputTestId} = testId
       const onChangeTextMock = jest.fn()
-      const {getByTestId} = render(
+      const {getByTestId} = await render(
         <PhoneInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
       )
-
       const inputElement = getByTestId(inputTestId)
       fireEvent.changeText(inputElement, '+90543')
 

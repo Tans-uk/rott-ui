@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {render} from '../../../__tests__/utils/testUtils'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
@@ -19,19 +18,18 @@ const skeletonStyle: SkeletonStyleProps = {
 const DummyText = 'Test Content Text'
 
 describe('Skeleton -> Custom Component', () => {
-  it('skeleton snapshotı ile eşleşmeli', () => {
+  it('skeleton snapshotı ile eşleşmeli', async () => {
     const {skeletonTestId} = testId
     const {width, height} = skeletonStyle
-
-    const rendered = render(
+    const rendered = await render(
       <Skeleton testID={skeletonTestId} show={true} width={width} height={height} />
     )
     expect(rendered).toMatchSnapshot()
   })
 
-  it('item icerisinde cagirilan skeleton icin snapshot eslesmeli', () => {
+  it('item icerisinde cagirilan skeleton icin snapshot eslesmeli', async () => {
     const {itemTestId, skeletonTestId} = testId
-    const rendered = render(
+    const rendered = await render(
       <Item
         testID={itemTestId}
         skeletonTestID={skeletonTestId}
@@ -43,9 +41,9 @@ describe('Skeleton -> Custom Component', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('skeleton skeletonShow true ise skeleton ekranda olmali', () => {
+  it('skeleton skeletonShow true ise skeleton ekranda olmali', async () => {
     const {itemTestId, skeletonTestId} = testId
-    const {getByTestId} = render(
+    const {getByTestId} = await render(
       <Item
         testID={itemTestId}
         skeletonTestID={skeletonTestId}
@@ -59,9 +57,9 @@ describe('Skeleton -> Custom Component', () => {
     expect(skeleton).toBeOnTheScreen()
   })
 
-  it('skeleton skeletonShow true ise content ekranda olmamali', () => {
+  it('skeleton skeletonShow true ise content ekranda olmamali', async () => {
     const {itemTestId, skeletonTestId} = testId
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <Item
         testID={itemTestId}
         skeletonTestID={skeletonTestId}
@@ -75,9 +73,9 @@ describe('Skeleton -> Custom Component', () => {
     expect(content).not.toBeOnTheScreen()
   })
 
-  it('skeleton skeletonShow false ise skeleton ekranda olmamali', () => {
+  it('skeleton skeletonShow false ise skeleton ekranda olmamali', async () => {
     const {itemTestId, skeletonTestId} = testId
-    const {queryByTestId} = render(
+    const {queryByTestId} = await render(
       <Item
         testID={itemTestId}
         skeletonTestID={skeletonTestId}
@@ -91,9 +89,9 @@ describe('Skeleton -> Custom Component', () => {
     expect(skeleton).not.toBeOnTheScreen()
   })
 
-  it('skeleton skeletonShow false ise content ekranda olmali', () => {
+  it('skeleton skeletonShow false ise content ekranda olmali', async () => {
     const {itemTestId, skeletonTestId} = testId
-    const {getByText} = render(
+    const {getByText} = await render(
       <Item
         testID={itemTestId}
         skeletonTestID={skeletonTestId}

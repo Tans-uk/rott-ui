@@ -100,7 +100,7 @@ label icin ozel theme, size, description ve icon tanimi yapilip ilgili icon icin
     description: 'Desc',
     theme='light'
     icon: {
-      name: 'SETTINGS',
+      name: 'settings',
       width: 18,
       height: 18,
       mode: 'fill',
@@ -135,7 +135,7 @@ label icin ozellestirme ekstralari asagidaki gibi artirilabilir
     fontFamily: 'Markpro-Light',
     description: 'hey',
     icon: {
-      name: 'SETTINGS',
+      name: 'settings',
       width: 18,
       height: 18,
       variant: 'grey-200',

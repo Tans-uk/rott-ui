@@ -19,7 +19,6 @@ export const Icon: FC<IconProps> = ({
   strokeLinecap,
   strokeLinejoin,
   opacity,
-  testID,
   ...props
 }) => {
   const IconComponent = theme?.icons?.[name]
@@ -34,9 +33,7 @@ export const Icon: FC<IconProps> = ({
   return (
     <Item {...props} opacity={itemOpacity}>
       <IconComponent.default
-        testID={testID}
         fill={fill}
-        name={name}
         stroke={stroke}
         strokeWidth={strokeWidth}
         width={display.px(width)}

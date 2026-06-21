@@ -1,6 +1,7 @@
-import {type FontFamily, type FontWeight} from '../features/Label/models'
 import {type Size} from './size.type'
 import {type Variant} from './variant.type'
+
+import {type FontFamily, type FontWeight} from '../features/Label/models'
 
 export interface CommonUiProps {
   heightNormalizeBased?: boolean
@@ -13,7 +14,7 @@ export interface CommonUiProps {
   minWidth?: number | string
   minHeight?: number | string
 
-  fontSize?: Exclude<Size, 'full'> | number
+  fontSize?: Omit<Size, 'full'> | 'xxxl' | number
   fontFamily?: FontFamily
   fontWeight?: FontWeight
   color?: string

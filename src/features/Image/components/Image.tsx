@@ -1,4 +1,4 @@
-import React, {type FC} from 'react'
+import type {FC} from 'react'
 
 import {
   Image as RNImage,
@@ -10,9 +10,10 @@ import {
 import {themeConfig} from '../../../providers'
 import type {ImageProps} from '../models'
 import {ImageStyles} from '../styles'
+import React from 'react'
 
 export const Image: FC<ImageProps> = ({variant, size, style, source, name, ...props}) => {
-  const imageSource = Object.entries(themeConfig.images).find(
+  const imageSource = Object.entries(themeConfig.images ?? {}).find(
     (image) => image[0]?.toLowerCase() === (name as string)?.toLowerCase()
   )
 
@@ -21,7 +22,7 @@ export const Image: FC<ImageProps> = ({variant, size, style, source, name, ...pr
   return (
     <RNImage
       style={StyleSheet.flatten([ImageStyles({variant, size, ...props}).defaultImageStyle, style])}
-      source={source ? uriImageSource : themeConfig.images[imageSource?.[0] as never]}
+      source={source ? uriImageSource : (themeConfig.images ?? {})[imageSource?.[0] as never]}
       {...props}
     />
   )

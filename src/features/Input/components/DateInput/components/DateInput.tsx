@@ -4,11 +4,12 @@ import React, {useEffect, useRef, type FC} from 'react'
 import {StyleSheet} from 'react-native'
 
 import {useRottContext} from '../../../../../hooks'
-import {useTranslator} from '../../../../../libs'
+import {formatMessage} from '../../../../../libs'
 import {ModalIdEnum} from '../../../../../models'
 import {themeConfig} from '../../../../../providers'
 import {display} from '../../../../../utils'
 import {Button} from '../../../../Button'
+import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
 import {List} from '../../../../List'
@@ -17,7 +18,6 @@ import {Pressable} from '../../../../Pressable'
 import {Separator} from '../../../../Separator'
 import {DateInputStyles, InputStyles} from '../../../styles'
 import {formatByDateMode, InputStyleNormalizer} from '../../../utils'
-import {InputContainer} from '../../InputContainer'
 import type {DataModel, DateInputProps} from '../models'
 
 import {startOfDay} from 'date-fns'
@@ -73,7 +73,6 @@ export const DateInput: FC<DateInputProps> = ({
   viewType = 'input',
   ...props
 }) => {
-  const {translator} = useTranslator()
   const {language} = useRottContext()
   const selectedItem = useRef<DataModel>(undefined)
 
@@ -149,7 +148,7 @@ export const DateInput: FC<DateInputProps> = ({
           <Pressable
             testID='date-input-confirm-button'
             onPress={() => handleConfirmPress()}
-            text={translator('COMMON.OK')}
+            text={formatMessage('COMMON.OK')}
             textVariant='white'
             textSize='xl'
             textWeight={700}
@@ -160,7 +159,7 @@ export const DateInput: FC<DateInputProps> = ({
             <Pressable
               testID='date-input-clear-button'
               onPress={handleClearPress}
-              text={translator('COMMON.CLEAR')}
+              text={formatMessage('COMMON.CLEAR')}
               textVariant='white'
               textSize='xl'
               textWeight={700}
@@ -206,7 +205,7 @@ export const DateInput: FC<DateInputProps> = ({
         height: 40,
         leftIcon: {
           testID: 'cancel-button-test-id',
-          name: 'CHEVRON_LEFT',
+          name: 'chevron-left',
           mode: 'stroke',
           width: 24,
           height: 24,
@@ -217,7 +216,7 @@ export const DateInput: FC<DateInputProps> = ({
           alignItemsCenter: true,
           onPress: () => hideModal(ModalIdEnum.DatePickerModal),
         },
-        title: translator('COMMON.TRANSACTION.DATE'),
+        title: formatMessage('COMMON.TRANSACTION.DATE'),
       },
       children: (
         <Item paddingTop={16} flex={1} backgroundColor={themeConfig.colors['grey-900']}>
@@ -234,7 +233,7 @@ export const DateInput: FC<DateInputProps> = ({
                     ...data,
                     {
                       hideRightIcon: true,
-                      label: translator('COMMON.SELECT.DATE'),
+                      label: formatMessage('COMMON.SELECT.DATE'),
                       action: () => {
                         hideModal(ModalIdEnum.DatePickerModal)
                         showNativeDatePicker()
@@ -302,7 +301,6 @@ export const DateInput: FC<DateInputProps> = ({
                       )}
                     </Item>
                   </Pressable>
-
                   <Separator
                     width='full'
                     height={1}
@@ -315,12 +313,6 @@ export const DateInput: FC<DateInputProps> = ({
         </Item>
       ),
     })
-
-  const handleOnPress = () => {
-    if (disabled) return
-
-    mode.includes('modal') ? showModalDatePicker() : showNativeDatePicker()
-  }
 
   useEffect(() => {
     externalDate = new Date(value ? new Date(value) : new Date())
@@ -336,49 +328,60 @@ export const DateInput: FC<DateInputProps> = ({
     <>
       {viewType === 'input' && (
         <Item row>
-          {/* Item row ile InputContainer'ın row olmasını sağladık */}
-          <InputContainer
-            {...props}
-            size={size}
-            theme={theme}
+          <Pressable
+            size='full'
             height={InputStyleNormalizer({size}).height}
+            testID={testID ?? 'date-input-value-container'}
             flex={0}
-            rightIcon={{
-              name: 'CALENDAR',
-              width: 24,
-              height: 24,
-              onPress: handleOnPress,
-              color: themeConfig.colors['grey-200'],
+            justifyContentCenter
+            textSize='lg'
+            text={
+              data && value
+                ? (data.find((item) => {
+                    return isSelected(item)
+                  })?.label ??
+                  formatByDateMode(
+                    mode.replace('modal-', '') as 'date' | 'time' | 'datetime',
+                    value
+                  ))
+                : value
+                  ? formatByDateMode(mode, value)
+                  : placeholder
+            }
+            textStyle={DateInputStyles().pressableTextStyle}
+            style={StyleSheet.flatten([
+              InputStyles({
+                theme,
+                size,
+                includeBorderRadius: true,
+                ...props,
+              }).defaultTextInputStyle,
+            ])}
+            textVariant={theme === 'dark' ? 'white' : value ? 'grey-900' : 'grey-200'}
+            onPress={() => {
+              if (disabled) return
+
+              mode.includes('modal') ? showModalDatePicker() : showNativeDatePicker()
+            }}
+          />
+
+          <Pressable
+            onPress={() => {
+              if (disabled) return
+
+              mode.includes('modal') ? showModalDatePicker() : showNativeDatePicker()
             }}>
-            <Pressable
-              testID={testID ?? 'date-input-value-container'}
-              textSize='lg'
-              text={
-                data && value
-                  ? (data.find((item) => {
-                      return isSelected(item)
-                    })?.label ??
-                    formatByDateMode(
-                      mode.replace('modal-', '') as 'date' | 'time' | 'datetime',
-                      value
-                    ))
-                  : value
-                    ? formatByDateMode(mode, value)
-                    : placeholder
-              }
-              textStyle={DateInputStyles().pressableTextStyle}
-              style={StyleSheet.flatten([
-                InputStyles({
-                  theme,
-                  size,
-                  includeBorderRadius: true,
-                  ...props,
-                }).defaultTextInputStyle,
-              ])}
-              textVariant={theme === 'dark' ? 'white' : value ? 'grey-900' : 'grey-200'}
-              onPress={handleOnPress}
-            />
-          </InputContainer>
+            <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
+              <Icon
+                name='calendar'
+                width={InputStyleNormalizer({size}).icon.width}
+                height={InputStyleNormalizer({size}).icon.height}
+                color={themeConfig.colors['grey-200']}
+                mode='stroke'
+                strokeWidth={2}
+              />
+            </Item>
+          </Pressable>
         </Item>
       )}
 
@@ -387,7 +390,7 @@ export const DateInput: FC<DateInputProps> = ({
           testID={testID ?? 'date-input-test-id'}
           size={{height: props?.height ?? 'md'}}
           leftIcon={{
-            name: props.icon?.name ?? 'CALENDAR',
+            name: props.icon?.name ?? 'calendar',
             width: 20,
             height: 20,
             strokeWidth: 1.5,

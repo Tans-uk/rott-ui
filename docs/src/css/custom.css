@@ -1,0 +1,264 @@
+/**
+ * Rott UI Documentation — Rottweiler Theme
+ *
+ * Color palette inspired by the Rottweiler breed:
+ *   Black coat  → deep blacks and near-blacks for primary surfaces
+ *   Tan markings → warm rust/amber (#92400E) as the accent / CTA color
+ */
+
+/* ─────────────────────────────────────────────────────────
+   Light mode
+   ───────────────────────────────────────────────────────── */
+:root {
+  /* Docusaurus primary scale — maps to the rust/tan accent */
+  --ifm-color-primary:          #92400E;
+  --ifm-color-primary-dark:     #7C3610;
+  --ifm-color-primary-darker:   #72300E;
+  --ifm-color-primary-darkest:  #5A250B;
+  --ifm-color-primary-light:    #A84D13;
+  --ifm-color-primary-lighter:  #B45309;
+  --ifm-color-primary-lightest: #C05A0A;
+
+  /* Brand surfaces */
+  --rott-bg:          #fafafa;
+  --rott-bg-secondary: #f5f4f3;
+  --rott-text:        #1a1a1a;
+  --rott-text-muted:  #78716c;
+  --rott-border:      #e7e5e4;
+  --rott-accent:      #92400E;
+  --rott-accent-hover:#7C3610;
+  --rott-black:       #1a1a1a;
+  --rott-card-bg:     #ffffff;
+  --rott-shadow:      0 1px 3px rgba(26, 26, 26, 0.08), 0 4px 12px rgba(26, 26, 26, 0.05);
+  --rott-shadow-hover: 0 4px 16px rgba(146, 64, 14, 0.18), 0 2px 6px rgba(26, 26, 26, 0.08);
+
+  /* Code highlighting */
+  --ifm-code-font-size: 90%;
+  --docusaurus-highlighted-code-line-bg: rgba(146, 64, 14, 0.08);
+
+  /* Navbar */
+  --ifm-navbar-background-color: #1a1a1a;
+  --ifm-navbar-link-color:       #e7e5e4;
+  --ifm-navbar-link-hover-color: #B45309;
+
+  /* Footer */
+  --ifm-footer-background-color: #0a0a0a;
+  --ifm-footer-color:            #a8a29e;
+  --ifm-footer-link-color:       #a8a29e;
+  --ifm-footer-link-hover-color: #B45309;
+
+  /* Sidebar */
+  --ifm-menu-link-sublist-icon-filter: none;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Dark mode
+   ───────────────────────────────────────────────────────── */
+[data-theme='dark'] {
+  --ifm-color-primary:          #B45309;
+  --ifm-color-primary-dark:     #A84D13;
+  --ifm-color-primary-darker:   #9E4611;
+  --ifm-color-primary-darkest:  #7C3610;
+  --ifm-color-primary-light:    #C05A0A;
+  --ifm-color-primary-lighter:  #CC6210;
+  --ifm-color-primary-lightest: #D97706;
+
+  --rott-bg:           #0a0a0a;
+  --rott-bg-secondary: #141414;
+  --rott-text:         #fafafa;
+  --rott-text-muted:   #a8a29e;
+  --rott-border:       #292524;
+  --rott-accent:       #B45309;
+  --rott-accent-hover: #C05A0A;
+  --rott-card-bg:      #1a1a1a;
+  --rott-shadow:       0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --rott-shadow-hover: 0 4px 16px rgba(180, 83, 9, 0.3), 0 2px 6px rgba(0, 0, 0, 0.3);
+
+  --docusaurus-highlighted-code-line-bg: rgba(180, 83, 9, 0.15);
+
+  --ifm-navbar-background-color: #0a0a0a;
+  --ifm-navbar-link-color:       #e7e5e4;
+  --ifm-navbar-link-hover-color: #D97706;
+
+  --ifm-footer-background-color: #000000;
+  --ifm-footer-color:            #78716c;
+  --ifm-footer-link-color:       #78716c;
+  --ifm-footer-link-hover-color: #D97706;
+
+  --ifm-background-color:        #0a0a0a;
+  --ifm-background-surface-color: #141414;
+  --ifm-toc-border-color:        #292524;
+  --ifm-color-content:           #fafafa;
+  --ifm-color-content-secondary: #a8a29e;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Navbar
+   ───────────────────────────────────────────────────────── */
+.navbar {
+  background-color: var(--ifm-navbar-background-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+
+.navbar__brand {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.navbar__title {
+  color: #fafafa !important;
+  font-weight: 700;
+}
+
+.navbar__logo {
+  height: 28px;
+}
+
+.navbar__link {
+  color: var(--ifm-navbar-link-color) !important;
+  font-weight: 500;
+  transition: color 200ms ease;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--ifm-navbar-link-hover-color) !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Sidebar
+   ───────────────────────────────────────────────────────── */
+.menu__link--active {
+  color: var(--rott-accent) !important;
+  font-weight: 600;
+}
+
+.menu__link:hover {
+  color: var(--rott-accent);
+  background: rgba(146, 64, 14, 0.06);
+}
+
+[data-theme='dark'] .menu__link:hover {
+  background: rgba(180, 83, 9, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Props table
+   ───────────────────────────────────────────────────────── */
+.props-table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.props-table th {
+  background-color: var(--ifm-color-emphasis-100);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+}
+
+.props-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  vertical-align: top;
+}
+
+.props-table tr:hover {
+  background-color: var(--ifm-color-emphasis-50);
+}
+
+.prop-name {
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 600;
+  color: var(--rott-accent);
+}
+
+.prop-type {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+}
+
+.prop-required {
+  color: var(--ifm-color-danger);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Admonitions (tip, info, warning, caution)
+   ───────────────────────────────────────────────────────── */
+.alert--info {
+  border-left-color: var(--rott-accent);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Inline code
+   ───────────────────────────────────────────────────────── */
+code {
+  color: var(--rott-accent);
+  background: rgba(146, 64, 14, 0.07);
+  border: 1px solid rgba(146, 64, 14, 0.12);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+[data-theme='dark'] code {
+  background: rgba(180, 83, 9, 0.12);
+  border-color: rgba(180, 83, 9, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Component demo (used in component docs)
+   ───────────────────────────────────────────────────────── */
+.component-demo {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 1px solid var(--rott-border);
+  border-radius: 8px;
+}
+
+.component-demo-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 2rem;
+  background-color: var(--rott-bg-secondary);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Footer
+   ───────────────────────────────────────────────────────── */
+.footer {
+  background-color: var(--ifm-footer-background-color) !important;
+}
+
+.footer__title {
+  color: #fafafa;
+}
+
+.footer__link-item {
+  transition: color 200ms ease;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Table of contents
+   ───────────────────────────────────────────────────────── */
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--rott-accent);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Pagination / prev-next links
+   ───────────────────────────────────────────────────────── */
+.pagination-nav__link:hover {
+  border-color: var(--rott-accent);
+}

@@ -86,7 +86,7 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
         alignItemsCenter>
         {emptyState && (
           <EmptyState
-            name={emptyState?.name ?? 'EMPTY_GENERAL_WARNING'}
+            name={emptyState?.name ?? 'general-warning'}
             width={emptyState?.width ?? 152}
             height={emptyState?.width ?? 152}
           />

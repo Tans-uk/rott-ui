@@ -1,0 +1,229 @@
+/* ─────────────────────────────────────────────────────────
+   Hero
+   ───────────────────────────────────────────────────────── */
+.hero {
+  background-color: #1a1a1a;
+  color: #fafafa;
+  padding: 7rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle noise texture overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(146, 64, 14, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+.heroEyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B45309;
+  margin-bottom: 1.25rem;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(146, 64, 14, 0.4);
+  border-radius: 999px;
+  background: rgba(146, 64, 14, 0.08);
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #fafafa;
+  margin: 0 0 1.25rem;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #a8a29e;
+  max-width: 520px;
+  line-height: 1.6;
+  margin: 0 0 2.5rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Hero CTA Buttons
+   ───────────────────────────────────────────────────────── */
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.btnPrimary {
+  background-color: #92400E !important;
+  color: #fafafa !important;
+  border: 2px solid #92400E !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background-color 200ms ease, border-color 200ms ease, transform 150ms ease !important;
+  text-decoration: none !important;
+}
+
+.btnPrimary:hover {
+  background-color: #7C3610 !important;
+  border-color: #7C3610 !important;
+  color: #fafafa !important;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+.btnSecondary {
+  background-color: transparent !important;
+  color: #fafafa !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: border-color 200ms ease, background-color 200ms ease, transform 150ms ease !important;
+  text-decoration: none !important;
+}
+
+.btnSecondary:hover {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #fafafa !important;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Hero Badges
+   ───────────────────────────────────────────────────────── */
+.heroBadges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badgeLink {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 200ms ease;
+  text-decoration: none !important;
+}
+
+.badgeLink:hover {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CTA Section
+   ───────────────────────────────────────────────────────── */
+.ctaSection {
+  padding: 6rem 0;
+  background-color: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 60% 80% at 50% 100%, rgba(146, 64, 14, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.ctaLabel {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B45309;
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(146, 64, 14, 0.4);
+  border-radius: 999px;
+  background: rgba(146, 64, 14, 0.08);
+}
+
+.ctaTitle {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fafafa;
+  margin: 0 0 1rem;
+}
+
+.ctaDescription {
+  font-size: 1rem;
+  color: #a8a29e;
+  line-height: 1.6;
+  margin: 0 0 2rem;
+}
+
+.ctaDescription code {
+  color: #B45309;
+  background: rgba(146, 64, 14, 0.12);
+  border: 1px solid rgba(146, 64, 14, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Responsive
+   ───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 5rem 0 4rem;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .heroActions a {
+    text-align: center;
+  }
+
+  .ctaSection {
+    padding: 4rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 0 3rem;
+  }
+}

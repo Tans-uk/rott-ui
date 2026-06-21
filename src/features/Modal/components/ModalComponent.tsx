@@ -206,7 +206,7 @@ export const ModalComponent: FC<ModalProps> = ({
                         variant='neutral-grey-alpha-200'
                         width={40}
                         height={40}
-                        name='LINE'
+                        name='line'
                       />
                     </Item>
                   )}
@@ -223,7 +223,7 @@ export const ModalComponent: FC<ModalProps> = ({
                       }
                       rightIcon={
                         closeButton
-                          ? {name: 'REMOVE_BIG', onPress: () => closeModalAnimation!()}
+                          ? {name: 'remove-big', onPress: () => closeModalAnimation!()}
                           : (header as HeaderProps)?.rightIcon
                             ? (header as HeaderProps)?.rightIcon
                             : undefined

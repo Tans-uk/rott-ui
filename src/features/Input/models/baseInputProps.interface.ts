@@ -1,7 +1,6 @@
 import type {TextInputProps} from 'react-native'
 
 import {type CommonUiProps, type Theme, type Variant} from '../../../models'
-import {IconProps} from '../../Icon'
 import {InputLabelProps} from './inputLabelProps.interface'
 import {InputType} from './inputType.type'
 
@@ -21,6 +20,4 @@ export interface BaseInputProps extends CommonUiProps, TextInputProps {
     radius?: number
   }
   touched?: Nullable<boolean>
-  leftIcon?: IconProps
-  rightIcon?: IconProps
 }

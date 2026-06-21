@@ -2,6 +2,7 @@
 /* eslint-disable quotes */
 const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config")
 const path = require('path')
+const { withRottAssets } = require('../../src/metro/withRottAssets')
 
 const defaultConfig = getDefaultConfig(__dirname)
 const { assetExts, sourceExts } = defaultConfig.resolver
@@ -48,4 +49,4 @@ const config = {
   }
 }
 
-module.exports = mergeConfig(defaultConfig, config)
+module.exports = withRottAssets(mergeConfig(defaultConfig, config), {projectRoot: __dirname})

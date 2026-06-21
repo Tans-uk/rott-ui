@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+  <!-- Badge background -->
+  <rect x="4" y="4" width="92" height="92" rx="20" ry="20" fill="#ffffff"/>
+  <rect x="4" y="4" width="92" height="92" rx="20" ry="20" fill="none" stroke="#e7e5e4" stroke-width="1.5"/>
+
+  <!-- Left ear (floppy) -->
+  <ellipse cx="27" cy="34" rx="11" ry="14" fill="#1a1a1a" transform="rotate(-15 27 34)"/>
+  <!-- Right ear (floppy) -->
+  <ellipse cx="73" cy="34" rx="11" ry="14" fill="#1a1a1a" transform="rotate(15 73 34)"/>
+
+  <!-- Head -->
+  <ellipse cx="50" cy="48" rx="28" ry="27" fill="#1a1a1a"/>
+
+  <!-- Muzzle (tan) -->
+  <ellipse cx="50" cy="61" rx="16" ry="11" fill="#92400E"/>
+
+  <!-- Tan eyebrow dots — clearly above eyes, inward position -->
+  <circle cx="40" cy="38" r="4" fill="#B45309"/>
+  <circle cx="60" cy="38" r="4" fill="#B45309"/>
+
+  <!-- Eyes — below the tan dots -->
+  <circle cx="38" cy="50" r="5" fill="#fff"/>
+  <circle cx="62" cy="50" r="5" fill="#fff"/>
+  <!-- Pupils -->
+  <circle cx="39" cy="51" r="3" fill="#1a1a1a"/>
+  <circle cx="63" cy="51" r="3" fill="#1a1a1a"/>
+  <!-- Eye shine -->
+  <circle cx="40.5" cy="49.5" r="1" fill="#fff"/>
+  <circle cx="64.5" cy="49.5" r="1" fill="#fff"/>
+
+  <!-- Nose -->
+  <ellipse cx="50" cy="56" rx="5" ry="3.5" fill="#0a0a0a"/>
+  <!-- Nose highlight -->
+  <ellipse cx="48.5" cy="55" rx="1.5" ry="1" fill="#3d3d3d"/>
+
+  <!-- Mouth -->
+  <path d="M44 62 Q50 67 56 62" stroke="#0a0a0a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Tongue -->
+  <ellipse cx="50" cy="67" rx="5" ry="4" fill="#e05c6a"/>
+  <line x1="50" y1="63.5" x2="50" y2="71" stroke="#c44a58" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Tan cheek marks -->
+  <ellipse cx="32" cy="57" rx="4" ry="3" fill="#92400E" opacity="0.65"/>
+  <ellipse cx="68" cy="57" rx="4" ry="3" fill="#92400E" opacity="0.65"/>
+
+  <!-- Body -->
+  <rect x="32" y="70" width="36" height="20" rx="8" fill="#1a1a1a"/>
+  <!-- Tan chest patch -->
+  <ellipse cx="50" cy="77" rx="9" ry="6" fill="#92400E"/>
+
+  <!-- Left front leg -->
+  <rect x="30" y="82" width="11" height="16" rx="5" fill="#1a1a1a"/>
+  <!-- Right front leg -->
+  <rect x="59" y="82" width="11" height="16" rx="5" fill="#1a1a1a"/>
+
+  <!-- Paw pads (tan) -->
+  <ellipse cx="35.5" cy="97" rx="5" ry="2.5" fill="#92400E"/>
+  <ellipse cx="64.5" cy="97" rx="5" ry="2.5" fill="#92400E"/>
+
+  <!-- Tail (wagging) -->
+  <path d="M68 74 Q82 64 78 56" stroke="#1a1a1a" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>
