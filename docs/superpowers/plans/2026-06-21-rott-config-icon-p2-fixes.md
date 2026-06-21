@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Target version: **0.6.1** (patch — bug fixes + docs, no breaking change).
+- Target version: **0.7.0** (minor — full RottProvider config merge broadens runtime behavior beyond a pure patch).
 - Commit messages in **English**, Conventional Commits / commitlint compliant (enforced by lefthook commit-msg hook; `.cursor/rules` requires English).
 - **`rott.config` is the primary source** of theming and icons everywhere. The RottProvider runtime config is only a fallback; docs keep recommending rott.config.
 - Test util import: `import {render} from '<relative>/__tests__/utils/testUtils'`.
@@ -363,33 +363,186 @@ to rott-config-entry."
 
 ---
 
-### Task 4: Bump version to 0.6.1
+### Task 4: RottProvider merges config into themeConfig (completes the Icon fix)
+
+**Why this task exists:** Code review of Task 1 found the `Icon` fallback
+(`?? themeConfig?.icons?.[name]`) is inert in production — `RottProvider` never
+writes its `config` prop into `themeConfig` (it only reads
+`config?.options?.language`). `themeConfig` stays frozen at `{...theme}` forever,
+so the fallback can never resolve a runtime-registered icon. This task supplies
+the missing half: merge `config` into `themeConfig` so the Task 1 fallback (and
+all `themeConfig.*` readers) actually see consumer config. `rott.config` (theme)
+overrides `config` on collisions.
+
+**Files:**
+- Modify: `src/providers/RottProvider.tsx` (the `RottProvider` render body, after the props destructure, before `return`)
+- Create: `src/providers/__tests__/RottProvider.test.tsx`
+
+**Interfaces:**
+- Consumes: `theme` (rott.config base, already imported); `themeConfig` (the exported mutable `let` declared at `RottProvider.tsx:24`); `config?: Partial<ThemeConfig>` (the prop); `Icon` from `../features` for the integration test.
+- Produces: `themeConfig` populated from `config`, with `theme` winning on key collisions.
+
+- [ ] **Step 1: Write the failing tests**
+
+Create `src/providers/__tests__/RottProvider.test.tsx`:
+
+```tsx
+import React from 'react'
+
+import {render} from '../../__tests__/utils/testUtils'
+import {Icon} from '../../features'
+import {RottProvider, themeConfig} from '../RottProvider'
+import type {IconKeys} from '../../features/Icon'
+
+const RuntimeIcon = {
+  default: (props: any) => {
+    const R = require('react')
+    return R.createElement('MockRuntimeSvg', {testID: 'runtime-svg', ...props})
+  },
+}
+
+describe('RottProvider -> config merge into themeConfig', () => {
+  it('config.icons are merged into themeConfig.icons', async () => {
+    await render(
+      <RottProvider config={{icons: {'runtime-logo': RuntimeIcon as any}}}>
+        {null}
+      </RottProvider>
+    )
+
+    expect(themeConfig.icons['runtime-logo']).toBeDefined()
+  })
+
+  it('config.colors are merged into themeConfig.colors', async () => {
+    await render(
+      <RottProvider config={{colors: {brandX: '#abcabc'}}}>{null}</RottProvider>
+    )
+
+    expect(themeConfig.colors.brandX).toBe('#abcabc')
+  })
+
+  it('rott.config (theme) overrides config on key collisions', async () => {
+    // 'white' exists in the default theme; a config override must NOT win
+    const themeWhite = themeConfig.colors.white
+    await render(
+      <RottProvider config={{colors: {white: '#000000'}}}>{null}</RottProvider>
+    )
+
+    expect(themeConfig.colors.white).toBe(themeWhite)
+    expect(themeConfig.colors.white).not.toBe('#000000')
+  })
+
+  it('an icon registered via RottProvider config renders through <Icon> end to end', async () => {
+    const {getByTestId} = await render(
+      <RottProvider config={{icons: {'e2e-logo': RuntimeIcon as any}}}>
+        <Icon name={'e2e-logo' as IconKeys} testID='e2e-icon' />
+      </RottProvider>
+    )
+
+    expect(getByTestId('e2e-icon')).toBeOnTheScreen()
+    expect(getByTestId('runtime-svg')).toBeTruthy()
+  })
+})
+```
+
+- [ ] **Step 2: Run the tests to verify they fail**
+
+Run: `yarn jest src/providers/__tests__/RottProvider.test.tsx`
+Expected: FAIL — `config.icons are merged`, `config.colors are merged`, and the
+end-to-end render all fail because `RottProvider` currently ignores everything in
+`config` except `options.language`, so `themeConfig` is never updated and `<Icon>`
+returns `null`. (The "theme overrides config" test may pass vacuously since config
+is ignored today — it becomes meaningful after Step 3.)
+
+- [ ] **Step 3: Implement the merge in RottProvider.tsx**
+
+In `src/providers/RottProvider.tsx`, inside the `RottProvider` component body,
+immediately after the destructure `({children, config}) => {` and BEFORE the
+`const defaultLanguage` line, insert:
+
+```tsx
+  if (config) {
+    themeConfig = {
+      ...themeConfig,
+      ...config,
+      // rott.config (theme) wins on collisions; config supplements per-record
+      options: {...config.options, ...theme.options},
+      colors: {...config.colors, ...theme.colors},
+      images: {...config.images, ...theme.images},
+      icons: {...config.icons, ...theme.icons},
+      fontSizes: {...config.fontSizes, ...theme.fontSizes},
+      fontFamilies: {...config.fontFamilies, ...theme.fontFamilies},
+      fontWeights: {...config.fontWeights, ...theme.fontWeights},
+    }
+  }
+```
+
+Rationale: the merge runs synchronously in render (not `useEffect`) so children
+see the updated `themeConfig` on first render. Each record spreads `config.X`
+first then `theme.X`, so `theme` (rott.config) wins on collisions. This reassigns
+the module-level `let themeConfig`; the export is a live binding, so `Icon`
+reading `themeConfig.icons` at render time sees the update. This completes the
+existing `themeConfig` global pattern rather than introducing it.
+
+- [ ] **Step 4: Run the tests to verify they pass**
+
+Run: `yarn jest src/providers/__tests__/RottProvider.test.tsx`
+Expected: PASS — all four tests green, including the end-to-end `<Icon>` render.
+
+- [ ] **Step 5: Run the full suite (no regression in themeConfig readers)**
+
+Run: `yarn jest`
+Expected: PASS — the ~20 components that read `themeConfig.colors.*` still resolve
+(theme-wins merge preserves all default keys). Also confirm Task 1's
+`Icon.test.tsx` still passes (it mocks themeConfig, so it is unaffected).
+
+- [ ] **Step 6: Typecheck**
+
+Run: `yarn typecheck`
+Expected: PASS — `config` is `Partial<ThemeConfig>`; each spread record is
+`Record<string, ...> | undefined`, and spreading `undefined` is a no-op, so the
+merged object still satisfies `ThemeConfig`.
+
+- [ ] **Step 7: Commit**
+
+```bash
+git add src/providers/RottProvider.tsx src/providers/__tests__/RottProvider.test.tsx
+git commit -m "fix(provider): merge RottProvider config into themeConfig
+
+RottProvider ignored every config field except options.language, so icons,
+images, colors and fonts passed via <RottProvider config={...}> were dropped
+and the Icon themeConfig fallback never resolved. Merge config into themeConfig
+in render (rott.config wins on collisions) so consumer config takes effect."
+```
+
+---
+
+### Task 5: Bump version to 0.7.0
 
 **Files:**
 - Modify: `package.json:3`
 
 **Interfaces:**
 - Consumes: nothing.
-- Produces: `version: "0.6.1"`.
+- Produces: `version: "0.7.0"`.
 
 - [ ] **Step 1: Run the full test suite**
 
 Run: `yarn jest`
-Expected: PASS — entire suite green (Icon fallback, configExport guard, and unchanged tests).
+Expected: PASS — entire suite green (Icon fallback, RottProvider merge, configExport guard, and unchanged tests).
 
 - [ ] **Step 2: Bump the version**
 
 In `package.json`, change line 3 from `"version": "0.6.0",` to:
 
 ```json
-  "version": "0.6.1",
+  "version": "0.7.0",
 ```
 
 - [ ] **Step 3: Commit**
 
 ```bash
 git add package.json
-git commit -m "chore: bump version to 0.6.1"
+git commit -m "chore: bump version to 0.7.0"
 ```
 
 ---
@@ -397,6 +550,6 @@ git commit -m "chore: bump version to 0.6.1"
 ## Post-plan (handled outside task execution)
 
 After all tasks pass and are committed, the release (build via `yarn prepare`,
-`npm publish --access public --otp=<code>`, push, tag `v0.6.1`, GitHub release)
+`npm publish --access public --otp=<code>`, push, tag `v0.7.0`, GitHub release)
 is performed separately — same flow as the 0.6.0 release. Note `npm publish`
 requires an OTP (2FA), so it is run interactively by the user.
