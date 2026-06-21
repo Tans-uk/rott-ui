@@ -22,7 +22,7 @@ description: Otomatik tamamlama ile tip güvenli tema yapılandırması
 Proje kök dizininizde bir `rott.config.ts` dosyası oluşturun:
 
 ```typescript title="rott.config.ts"
-import { defineRottConfig } from '@tansuk/rott-ui';
+import { defineRottConfig } from '@tansuk/rott-ui/config';
 
 export const config = defineRottConfig({
   colors: {
@@ -34,6 +34,13 @@ export const config = defineRottConfig({
   },
 } as const);
 ```
+
+:::note
+`defineRottConfig` fonksiyonunu paket kökünden değil `@tansuk/rott-ui/config`
+üzerinden import edin. Kök girişi başlatma sırasında tekrar girilebilir
+(require döngüsü `index → theme → require('rott.config') → index`); özel
+`/config` alt yolu bunu önler.
+:::
 
 ### Adım 2: TypeScript Path Mapping Ekleyin
 
@@ -258,7 +265,7 @@ Seçeneklerle geçersiz kılın: `withRottAssets(config, { imagesDir: 'assets/im
 Yalnızca tüketici tarafından taranan varlıkları (kütüphane varsayılanları olmadan) istediğinizde **boş yapılandırma** kullanabilirsiniz:
 
 ```typescript title="rott.config.ts"
-import { defineRottConfig } from '@tansuk/rott-ui';
+import { defineRottConfig } from '@tansuk/rott-ui/config';
 
 export const config = defineRottConfig({} as const);
 ```
@@ -272,7 +279,8 @@ Boş yapılandırma ile:
 Kütüphane varsayılanları artı özel varlıklarınızı istediğinizde `...defaultThemeConfig` kullanın:
 
 ```typescript
-import { defaultThemeConfig, defineRottConfig } from '@tansuk/rott-ui';
+import { defaultThemeConfig } from '@tansuk/rott-ui';
+import { defineRottConfig } from '@tansuk/rott-ui/config';
 
 export const config = defineRottConfig({
   ...defaultThemeConfig,
@@ -323,7 +331,7 @@ export const config = defineRottConfig({
 ## Tam Örnek
 
 ```typescript title="rott.config.ts"
-import { defineRottConfig } from '@tansuk/rott-ui';
+import { defineRottConfig } from '@tansuk/rott-ui/config';
 
 export const config = defineRottConfig({
   referenceDevice: {

@@ -22,7 +22,7 @@ The `rott.config.ts` file provides a Tailwind-style configuration system with fu
 Create a `rott.config.ts` file in your project root:
 
 ```typescript title="rott.config.ts"
-import { defineRottConfig } from '@tansuk/rott-ui';
+import { defineRottConfig } from '@tansuk/rott-ui/config';
 
 export const config = defineRottConfig({
   colors: {
@@ -34,6 +34,13 @@ export const config = defineRottConfig({
   },
 } as const);
 ```
+
+:::note
+Import `defineRottConfig` from `@tansuk/rott-ui/config`, not the package root.
+The root entry can re-enter mid-initialization (require cycle
+`index → theme → require('rott.config') → index`); the dedicated `/config`
+subpath avoids it.
+:::
 
 ### Step 2: Add TypeScript Path Mapping
 
@@ -258,7 +265,7 @@ Override via options: `withRottAssets(config, { imagesDir: 'assets/img', iconsDi
 You can use an **empty config** when you want only consumer-scanned assets (no library defaults):
 
 ```typescript title="rott.config.ts"
-import { defineRottConfig } from '@tansuk/rott-ui';
+import { defineRottConfig } from '@tansuk/rott-ui/config';
 
 export const config = defineRottConfig({} as const);
 ```
@@ -272,7 +279,8 @@ With empty config:
 Use `...defaultThemeConfig` when you want library defaults plus your custom assets:
 
 ```typescript
-import { defaultThemeConfig, defineRottConfig } from '@tansuk/rott-ui';
+import { defaultThemeConfig } from '@tansuk/rott-ui';
+import { defineRottConfig } from '@tansuk/rott-ui/config';
 
 export const config = defineRottConfig({
   ...defaultThemeConfig,
@@ -323,7 +331,7 @@ export const config = defineRottConfig({
 ## Complete Example
 
 ```typescript title="rott.config.ts"
-import { defineRottConfig } from '@tansuk/rott-ui';
+import { defineRottConfig } from '@tansuk/rott-ui/config';
 
 export const config = defineRottConfig({
   referenceDevice: {
