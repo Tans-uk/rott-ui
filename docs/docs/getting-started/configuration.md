@@ -84,6 +84,18 @@ import { defaultThemeConfig } from '@tansuk/rott-ui';
 </RottProvider>
 ```
 
+The `config` you pass to `RottProvider` (`colors`, `icons`, `images`, `fontSizes`,
+etc.) is merged into the active theme. If you also use [`rott.config.ts`](/docs/theming/rott-config),
+**`rott.config.ts` is the primary source and wins on any key collision** — values
+from `RottProvider config` supplement it but do not override keys already defined
+there.
+
+:::tip
+Pass a **stable** `config` reference — define it at module scope or memoize it
+with `useMemo`. A new inline object on every render (e.g. `config={{ ... }}`
+written directly in JSX) causes the theme to be recomputed on each render.
+:::
+
 ## Complete Configuration
 
 ```tsx
