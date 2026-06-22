@@ -26,6 +26,20 @@ export let themeConfig: ThemeConfig = {
 }
 
 export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
+  if (config) {
+    themeConfig = {
+      ...themeConfig,
+      ...config,
+      // rott.config (theme) wins on collisions; config supplements per-record
+      options: {...config.options, ...theme.options},
+      colors: {...config.colors, ...theme.colors},
+      images: {...config.images, ...theme.images},
+      icons: {...config.icons, ...theme.icons},
+      fontSizes: {...config.fontSizes, ...theme.fontSizes},
+      fontFamilies: {...config.fontFamilies, ...theme.fontFamilies},
+      fontWeights: {...config.fontWeights, ...theme.fontWeights},
+    }
+  }
   const defaultLanguage: Language = {name: 'en-US'}
   const language: Language = config?.options?.language ?? theme.options?.language
   const resolvedLanguage =
