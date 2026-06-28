@@ -28,13 +28,13 @@ Font sizes automatically adjust for small screens (< 380px width):
 
 | Size | Normal | Small Screen |
 |------|--------|--------------|
-| xs | 10px | 9px |
-| sm | 12px | 11px |
+| xs | 10px | 8px |
+| sm | 12px | 10px |
 | md | 14px | 12px |
 | lg | 16px | 14px |
 | xl | 18px | 16px |
-| xxl | 24px | 20px |
-| xxxl | 36px | 30px |
+| xxl | 24px | 22px |
+| xxxl | 36px | 34px |
 
 ### Configured font-size tokens
 
