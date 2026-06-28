@@ -36,6 +36,10 @@ Font sizes automatically adjust for small screens (< 380px width):
 | xxl | 24px | 20px |
 | xxxl | 36px | 30px |
 
+### Configured font-size tokens
+
+`fontSize` also accepts any token defined in your [`rott.config.ts`](/docs/theming/rott-config) `fontSizes` map (for example `2xl`, `3xl`, or your own custom keys), plus any numeric value. Tokens you define there resolve at runtime, and overriding a built-in key (e.g. `md`) in `fontSizes` updates it everywhere `Label` is used. Built-in keys keep their responsive small-screen sizing.
+
 ### Custom Font Sizes
 
 Override at component level:

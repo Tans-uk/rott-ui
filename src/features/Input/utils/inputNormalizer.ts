@@ -28,7 +28,7 @@ export function InputStyleNormalizer({
       return {
         height: display.normalize(40),
         paddingHorizontal: display.normalize(16, 'height'),
-        placeholderSize: fontSizeNormalizer(placeholderSize ?? 'md'),
+        placeholderSize: fontSizeNormalizer(placeholderSize ?? 'md') as number,
         bottomElementPadding: display.normalize(6, 'height'),
         icon: {
           height: 18,
@@ -43,7 +43,7 @@ export function InputStyleNormalizer({
       return {
         height: display.normalize(56, 'height'),
         paddingHorizontal: display.normalize(16, 'height'),
-        placeholderSize: fontSizeNormalizer(placeholderSize ?? 'xl'),
+        placeholderSize: fontSizeNormalizer(placeholderSize ?? 'xl') as number,
         bottomElementPadding: display.normalize(12, 'height'),
         icon: {
           height: 24,
@@ -57,7 +57,7 @@ export function InputStyleNormalizer({
       return {
         height: display.normalize(48, 'height'),
         paddingHorizontal: display.normalize(16, 'height'),
-        placeholderSize: fontSizeNormalizer(placeholderSize ?? 'lg'),
+        placeholderSize: fontSizeNormalizer(placeholderSize ?? 'lg') as number,
         bottomElementPadding: display.normalize(8, 'height'),
         icon: {
           height: 24,
