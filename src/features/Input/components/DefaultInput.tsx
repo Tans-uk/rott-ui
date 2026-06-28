@@ -57,12 +57,15 @@ export const DefaultInput: FC<DefaultInputProps> = ({
   return icon ? (
     <Item row alignItemsCenter {...props} testID='default-input-container-test-id'>
       <Icon
+        testID='default-input-icon-test-id'
         width={icon.width ?? 24}
         height={icon.height ?? 24}
         name={icon.name}
         mode={icon.mode}
         noStroke={icon.noStroke}
         strokeWidth={icon.strokeWidth}
+        variant={icon.variant}
+        color={icon.color}
       />
       <TextInput
         editable={!disabled}

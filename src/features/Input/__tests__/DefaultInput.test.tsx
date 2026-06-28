@@ -2,6 +2,17 @@ import React from 'react'
 import {render, userEvent} from '../../../__tests__/utils/testUtils'
 import {DefaultInput} from '../components'
 
+// Mock Icon to preserve variant/color for testing
+jest.mock('../../Icon', () => ({
+  Icon: React.forwardRef((props: any, ref: any) => {
+    const React = require('react')
+    const {View, Text} = require('react-native')
+    return React.createElement(View, {ref, ...props},
+      React.createElement(Text, {testID: 'icon-content'}, 'Icon')
+    )
+  }),
+}))
+
 describe('Default Input -> Custom Input', () => {
   const testId = 'default-input-test-id'
 
@@ -101,5 +112,23 @@ describe('Default Input -> Custom Input', () => {
 
     // Assert
     expect(inputElement).toHaveProp('readOnly', true)
+  })
+})
+
+describe('DefaultInput -> leading icon tint', () => {
+  it('forwards variant to the leading Icon', async () => {
+    const {getByTestId} = await render(
+      <DefaultInput name='i1' type='default' icon={{name: 'lock', variant: 'primary'}} />
+    )
+    const icon = getByTestId('default-input-icon-test-id')
+    expect(icon).toHaveProp('variant', 'primary')
+  })
+
+  it('forwards color to the leading Icon', async () => {
+    const {getByTestId} = await render(
+      <DefaultInput name='i2' type='default' icon={{name: 'lock', color: '#abcabc'}} />
+    )
+    const icon = getByTestId('default-input-icon-test-id')
+    expect(icon).toHaveProp('color', '#abcabc')
   })
 })

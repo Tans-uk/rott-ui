@@ -121,6 +121,16 @@ the underline as well, pass `renderSeparator` explicitly:
 <Input name='boxed-with-line' border={{width: 1}} renderSeparator />
 ```
 
+### Tinting a leading icon
+
+A leading `icon` accepts `variant` and `color` to tint it via props (no need to
+bake the color into the SVG). `color` takes precedence over `variant`:
+
+```tsx
+<Input name='email' icon={{name: 'mail', variant: 'primary'}} />
+<Input name='locked' icon={{name: 'lock', color: '#FF6B6B'}} />
+```
+
 ## Related
 
 - **[Forms Guide](/docs/guides/forms)** - Complete form examples with validation
