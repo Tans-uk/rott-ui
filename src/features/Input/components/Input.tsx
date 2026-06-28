@@ -36,7 +36,7 @@ export const Input: FC<InputProps> = memo((props) => {
   const {
     label,
     type,
-    renderSeparator = true,
+    renderSeparator,
     size = 'md',
     errorMessage,
     disabled,
@@ -48,11 +48,12 @@ export const Input: FC<InputProps> = memo((props) => {
       ? themeConfig.colors['grey-200']
       : themeConfig.colors.white,
   } = props
+  const resolvedRenderSeparator = renderSeparator ?? (border ? false : true)
   const {language} = useRottContext()
   const hasError = !!props?.onBlur && !!touched && !!errorMessage
 
   const getInputElement = () => {
-    const initializedProps = {renderSeparator, size, theme, touched, placeholderTextColor}
+    const initializedProps = {renderSeparator: resolvedRenderSeparator, size, theme, touched, placeholderTextColor}
 
     switch (type) {
       case 'default':
@@ -201,8 +202,8 @@ export const Input: FC<InputProps> = memo((props) => {
 
       {hasError && !!errorMessage && <InputValidation name={name} message={errorMessage} />}
 
-      {!hasError && renderSeparator && (
-        <Separator size='full' orientation='horizontal' variant='neutral-alpha-200' />
+      {!hasError && resolvedRenderSeparator && (
+        <Separator testID='input-separator-test-id' size='full' orientation='horizontal' variant='neutral-alpha-200' />
       )}
     </Item>
   )

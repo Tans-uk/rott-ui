@@ -110,6 +110,17 @@ import {Input} from '@tansuk/rott-ui'
 <Input name='phone' type='phone' mask='+1 ([000]) [000]-[0000]' />
 ```
 
+### Bordered inputs
+
+Passing a `border` draws a boxed border and automatically hides the bottom
+underline `Separator` (a box and an underline are mutually exclusive). To keep
+the underline as well, pass `renderSeparator` explicitly:
+
+```tsx
+<Input name='boxed' border={{width: 1, radius: 8, variant: 'grey-200'}} />
+<Input name='boxed-with-line' border={{width: 1}} renderSeparator />
+```
+
 ## Related
 
 - **[Forms Guide](/docs/guides/forms)** - Complete form examples with validation

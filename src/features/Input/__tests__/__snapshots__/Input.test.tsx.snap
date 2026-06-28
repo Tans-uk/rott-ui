@@ -109,6 +109,7 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
             "width": "100%",
           }
         }
+        testID="input-separator-test-id"
         variant="neutral-alpha-200"
       />
     </View>

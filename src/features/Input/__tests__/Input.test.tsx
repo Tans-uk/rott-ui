@@ -136,3 +136,26 @@ describe('Input -> Custom Input', () => {
     expect(mockIconOnPress).toHaveBeenCalled()
   })
 })
+
+describe('Input -> border suppresses Separator', () => {
+  const separatorTestId = 'input-separator-test-id'
+
+  it('hides the Separator when border is set and renderSeparator is omitted', async () => {
+    const {queryByTestId} = await render(
+      <Input type='default' name='b1' border={{width: 1, radius: 8, variant: 'grey-200'}} />
+    )
+    expect(queryByTestId(separatorTestId)).toBeNull()
+  })
+
+  it('keeps the Separator when border is set and renderSeparator is explicitly true', async () => {
+    const {getByTestId} = await render(
+      <Input type='default' name='b2' border={{width: 1}} renderSeparator />
+    )
+    expect(getByTestId(separatorTestId)).toBeTruthy()
+  })
+
+  it('keeps the Separator when no border is provided', async () => {
+    const {getByTestId} = await render(<Input type='default' name='b3' />)
+    expect(getByTestId(separatorTestId)).toBeTruthy()
+  })
+})
