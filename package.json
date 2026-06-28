@@ -50,7 +50,6 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli lib",
-    "postinstall": "patch-package",
     "generate:assets": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/generate-assets.ts",
     "prepare": "yarn generate:assets && bob build",
     "reload": "yarn clean && yarn prepare",
