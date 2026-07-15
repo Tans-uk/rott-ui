@@ -1,13 +1,10 @@
 import {type FC} from 'react'
 
-import {StyleSheet} from 'react-native'
+import {StyleSheet, type GestureResponderEvent} from 'react-native'
 
-import {Icon} from '../../Icon'
-import {Item} from '../../Item'
-import {Pressable} from '../../Pressable'
 import type {IbanInputProps} from '../models'
 import {InputStyles} from '../styles'
-import {InputStyleNormalizer} from '../utils'
+import {InputField} from './InputField'
 
 import MaskInput from 'react-native-mask-input'
 import React from 'react'
@@ -19,7 +16,13 @@ export const IbanInput: FC<IbanInputProps> = ({
   disabled,
   size,
   value,
+  leftIcon,
   rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const clearIconVisible = value !== 'TR' && !value?.isEmpty()
@@ -62,8 +65,23 @@ export const IbanInput: FC<IbanInputProps> = ({
     onChangeText!(isValue)
   }
 
+  const trailingIcon = {
+    name: (clearIconVisible ? 'remove-circle' : 'qr-iban') as any,
+    variant: 'grey-200' as any,
+    noStroke: clearIconVisible,
+    ...rightIcon,
+    onPress: (event: GestureResponderEvent) => {
+      if (clearIconVisible) {
+        if (disabled) return
+        handleTextChange('TR')
+      } else {
+        rightIcon?.onPress?.(event)
+      }
+    },
+  }
+
   return (
-    <Item row>
+    <InputField size={size} leftIcon={leftIcon} rightIcon={trailingIcon}>
       <MaskInput
         editable={!disabled}
         testID='iban-input-test-id'
@@ -74,39 +92,13 @@ export const IbanInput: FC<IbanInputProps> = ({
         onChangeText={(_masked, unmasked) => {
           if (unmasked.length === 0) handleTextChange('TR')
           else if (unmasked.length <= 32) handleTextChange(unmasked)
-          else return
         }}
         onFocus={() => value === '' && handleTextChange('TR')}
-        style={StyleSheet.flatten([
-          InputStyles({
-            fontSize,
-            theme,
-            size,
-          }).defaultTextInputStyle,
-        ])}
+        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
         numberOfLines={1}
         value={value}
         {...props}
       />
-
-      <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
-        <Pressable
-          testID={clearIconVisible ? 'clear-iban-icon-test-id' : 'qr-iban-icon-test-id'}
-          disabled={clearIconVisible && disabled}
-          onPress={(event) => {
-            if (clearIconVisible) handleTextChange('TR')
-            else !!rightIcon?.onPress && rightIcon?.onPress(event)
-          }}>
-          <Icon
-            testID='iban-icon-test-id'
-            name={clearIconVisible ? 'remove-circle' : 'qr-iban'}
-            variant='grey-200'
-            noStroke={clearIconVisible}
-            width={InputStyleNormalizer({size}).icon.width}
-            height={InputStyleNormalizer({size}).icon.height}
-          />
-        </Pressable>
-      </Item>
-    </Item>
+    </InputField>
   )
 }
