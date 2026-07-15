@@ -17,7 +17,7 @@ interface InputFieldProps extends PropsWithChildren {
   stopPropagation?: boolean
 }
 
-interface IconSlotProps {
+export interface IconSlotProps {
   icon: InputIconProps
   side: 'left' | 'right'
   gap: number
@@ -27,7 +27,7 @@ interface IconSlotProps {
 }
 
 export const IconSlot: FC<IconSlotProps> = ({icon, side, gap, size, stopPropagation, testID}) => {
-  const {onPress, width, height, ...iconProps} = icon
+  const {onPress, width, height, accessibilityLabel, ...iconProps} = icon
   const spacing = side === 'left' ? {marginRight: gap} : {marginLeft: gap}
   const fallback = InputStyleNormalizer({size}).icon
 
@@ -49,6 +49,8 @@ export const IconSlot: FC<IconSlotProps> = ({icon, side, gap, size, stopPropagat
       flex={0}
       alignItemsCenter
       justifyContentCenter
+      accessibilityRole='button'
+      accessibilityLabel={accessibilityLabel ?? `input-${side}-icon`}
       {...spacing}
       onPress={(event: GestureResponderEvent) => {
         if (stopPropagation) event?.stopPropagation?.()

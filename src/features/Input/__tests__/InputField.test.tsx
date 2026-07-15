@@ -36,4 +36,12 @@ describe('InputField', () => {
     fireEvent.press(getByTestId('input-field-right-icon'))
     expect(onPress).toHaveBeenCalledTimes(1)
   })
+
+  it('onPress verilen ikon slotu button erişilebilirlik rolüne sahip olur', async () => {
+    const onPress = jest.fn()
+    const {getByTestId} = await render(
+      <InputField size='md' rightIcon={{name: 'eye', onPress}}>{child}</InputField>
+    )
+    expect(getByTestId('input-field-right-icon')).toHaveProp('accessibilityRole', 'button')
+  })
 })
