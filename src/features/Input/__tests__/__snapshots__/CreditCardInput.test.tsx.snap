@@ -18,7 +18,6 @@ exports[`CreditCard Input -> Custom Input ilk render anında snapshot ile eşle�
       editable={true}
       keyboardType="number-pad"
       maxLength={19}
-      name="test"
       onChangeText={[Function]}
       placeholder="**** **** **** ****"
       style={

@@ -4,6 +4,7 @@ import {StyleSheet, TextInput} from 'react-native'
 
 import type {PlateNumberInputProps} from '../models'
 import {InputStyles} from '../styles'
+import {InputField} from './InputField'
 import React from 'react'
 
 export const PlateNumberInput: FC<PlateNumberInputProps> = ({
@@ -12,6 +13,13 @@ export const PlateNumberInput: FC<PlateNumberInputProps> = ({
   theme,
   disabled,
   size,
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const handleTextChange = (plateNumber: string) => {
@@ -21,7 +29,7 @@ export const PlateNumberInput: FC<PlateNumberInputProps> = ({
     onChangeText!(replacedPlateNumber)
   }
 
-  return (
+  const field = (
     <TextInput
       editable={!disabled}
       placeholder='_________'
@@ -32,5 +40,13 @@ export const PlateNumberInput: FC<PlateNumberInputProps> = ({
       onChangeText={handleTextChange}
       {...props}
     />
+  )
+
+  if (!leftIcon && !rightIcon) return field
+
+  return (
+    <InputField size={size} leftIcon={leftIcon} rightIcon={rightIcon}>
+      {field}
+    </InputField>
   )
 }

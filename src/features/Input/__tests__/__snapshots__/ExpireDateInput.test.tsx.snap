@@ -17,7 +17,6 @@ exports[`ExpireDate Input -> Custom Input ilk render anında snapshot ile eşle�
     <TextInput
       editable={true}
       keyboardType="number-pad"
-      name="test"
       onChangeText={[Function]}
       placeholder="Month / Year"
       style={
