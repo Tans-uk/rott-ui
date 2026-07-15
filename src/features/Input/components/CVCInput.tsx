@@ -33,7 +33,7 @@ export const CVCInput: FC<CVCInputProps> = ({
   const handleTextChange = (inputText: string) => {
     let text = inputText.replace(/[^0-9]/g, '')
     text = text.length > 3 ? text.substring(0, 3) : text
-    onChangeText!(text)
+    onChangeText?.(text)
   }
 
   const field = (

@@ -48,7 +48,7 @@ export const PhoneInput: FC<PhoneInputProps> = ({
 
   const handleTextChange = (inputText: string) => {
     const formattedText = inputText.replace(/^(\+90|90|0)/, '').replace(/[^0-9]/g, '')
-    onChangeText!('0' + formattedText)
+    onChangeText?.('0' + formattedText)
   }
 
   const getPhoneNumberPermissionRequest = async () => {

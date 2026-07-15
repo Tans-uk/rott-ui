@@ -25,7 +25,7 @@ export const NumericInput: FC<NumericInputProps> = ({
   ...props
 }) => {
   const handleTextChange = (inputText: string) => {
-    onChangeText!(inputText.replace(/[^0-9]/g, ''))
+    onChangeText?.(inputText.replace(/[^0-9]/g, ''))
   }
 
   const field = (

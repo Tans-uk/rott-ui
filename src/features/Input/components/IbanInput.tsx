@@ -62,7 +62,7 @@ export const IbanInput: FC<IbanInputProps> = ({
 
   const handleTextChange = (inputText: string) => {
     const isValue = inputText === '' ? '' : 'TR' + inputText.replace(/[^0-9]/g, '')
-    onChangeText!(isValue)
+    onChangeText?.(isValue)
   }
 
   const trailingIcon = {

@@ -38,7 +38,7 @@ export const AmountInput: FC<AmountInputProps> = ({
   const resetInternalStates = useCallback(() => {
     setAmount('')
     setCurrency('')
-    onChangeText!('0.00')
+    onChangeText?.('0.00')
   }, [])
 
   const replaceTextWithNumberOrEmpty = (text: string) => {
@@ -77,7 +77,7 @@ export const AmountInput: FC<AmountInputProps> = ({
 
     if (currencyFormat.length > 2) currencyFormat = currencyFormat.substring(0, 2)
 
-    onChangeText!(`${amountFormat}.${currencyFormat}`)
+    onChangeText?.(`${amountFormat}.${currencyFormat}`)
   }
 
   const placeholderColorNormalizer =

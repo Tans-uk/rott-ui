@@ -35,7 +35,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   const [isSecure, setIsSecure] = useState(secureTextEntry)
 
   const handleTextChange = (inputText: string) => {
-    onChangeText!(numericOnly ? inputText.replace(/[^0-9]/g, '') : inputText)
+    onChangeText?.(numericOnly ? inputText.replace(/[^0-9]/g, '') : inputText)
   }
 
   const handleSelectionChange = ({

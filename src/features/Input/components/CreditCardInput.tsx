@@ -49,7 +49,7 @@ export const CreditCardInput: FC<CreditCardInputProps> = ({
 
   const handleOnChangeText = (text: string) => {
     const replacedText = text.replace(/[^0-9]/g, '')
-    onChangeText!(replacedText)
+    onChangeText?.(replacedText)
   }
 
   const field = (
