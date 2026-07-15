@@ -31,5 +31,20 @@ target 'UIExample' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # Workaround for Xcode 26+ (newer Apple Clang): fmt 11.0.2 (bundled via
+    # RCT-Folly on RN 0.80) uses consteval format-string checks that the stricter
+    # Clang rejects as "not a constant expression". Compiling only the fmt pod as
+    # C++17 skips the consteval path and falls back to runtime checks; the rest of
+    # the project keeps C++20. A -DFMT_USE_CONSTEVAL=0 flag does NOT work in
+    # 11.0.2 (the macro isn't #ifdef-guarded until fmt 12.1.0, which RN hasn't
+    # adopted yet). See facebook/react-native#55601.
+    installer.pods_project.targets.each do |target|
+      if target.name == 'fmt'
+        target.build_configurations.each do |config|
+          config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+        end
+      end
+    end
   end
 end

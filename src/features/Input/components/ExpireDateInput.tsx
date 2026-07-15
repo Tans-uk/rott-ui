@@ -5,6 +5,7 @@ import {StyleSheet} from 'react-native'
 import {formatMessage} from '../../../libs'
 import type {ExpireDateInputProps} from '../models'
 import {InputStyles} from '../styles'
+import {InputField} from './InputField'
 
 import MaskInput from 'react-native-mask-input'
 import React from 'react'
@@ -15,6 +16,13 @@ export const ExpireDateInput: FC<ExpireDateInputProps> = ({
   theme,
   disabled,
   size,
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const MASK = [/\d/, /\d/, '/', /\d/, /\d/]
@@ -44,7 +52,7 @@ export const ExpireDateInput: FC<ExpireDateInputProps> = ({
     return `${formattedMonth}${formattedYear}`
   }
 
-  return (
+  const field = (
     <MaskInput
       editable={!disabled}
       mask={MASK}
@@ -54,5 +62,13 @@ export const ExpireDateInput: FC<ExpireDateInputProps> = ({
       style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
       {...props}
     />
+  )
+
+  if (!leftIcon && !rightIcon) return field
+
+  return (
+    <InputField size={size} leftIcon={leftIcon} rightIcon={rightIcon}>
+      {field}
+    </InputField>
   )
 }

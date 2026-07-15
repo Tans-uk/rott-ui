@@ -4,7 +4,7 @@ import {StyleSheet, TextInput} from 'react-native'
 
 import type {EmailInputProps} from '../models'
 import {InputStyles} from '../styles'
-import { Item } from '../../Item'
+import {InputField} from './InputField'
 import React from 'react'
 
 export const EmailInput: FC<EmailInputProps> = ({
@@ -14,6 +14,13 @@ export const EmailInput: FC<EmailInputProps> = ({
   size,
   onChangeText,
   value: propValue,
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const [value, setValue] = useState<string>(propValue || '')
@@ -26,19 +33,25 @@ export const EmailInput: FC<EmailInputProps> = ({
     [onChangeText]
   )
 
+  const field = (
+    <TextInput
+      testID='email-input-test-id'
+      editable={!disabled}
+      placeholder='example@email.com'
+      keyboardType='email-address'
+      autoCapitalize='none'
+      onChangeText={handleChangeText}
+      value={value}
+      style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+      {...props}
+    />
+  )
+
+  if (!leftIcon && !rightIcon) return field
+
   return (
-    <Item>
-      <TextInput
-        testID='email-input-test-id'
-        editable={!disabled}
-        placeholder='example@email.com'
-        keyboardType='email-address'
-        autoCapitalize='none'
-        onChangeText={handleChangeText}
-        value={value}
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
-        {...props}
-      />
-    </Item>
+    <InputField size={size} leftIcon={leftIcon} rightIcon={rightIcon}>
+      {field}
+    </InputField>
   )
 }

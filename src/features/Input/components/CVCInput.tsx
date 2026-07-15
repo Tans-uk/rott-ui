@@ -10,28 +10,53 @@ import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 import type {CVCInputProps} from '../models'
 import {CVCInputStyles, InputStyles} from '../styles'
+import {InputField} from './InputField'
 import React from 'react'
 
-export const CVCInput: FC<CVCInputProps> = ({fontSize, onChangeText, theme, size, ...props}) => {
+export const CVCInput: FC<CVCInputProps> = ({
+  fontSize,
+  onChangeText,
+  theme,
+  disabled,
+  size,
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
+  ...props
+}) => {
   const {translator} = useTranslator()
 
   const handleTextChange = (inputText: string) => {
     let text = inputText.replace(/[^0-9]/g, '')
     text = text.length > 3 ? text.substring(0, 3) : text
-    onChangeText!(text)
+    onChangeText?.(text)
   }
+
+  const field = (
+    <TextInput
+      editable={!disabled}
+      placeholder='***'
+      style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+      keyboardType='number-pad'
+      maxLength={3}
+      onChangeText={handleTextChange}
+      {...props}
+    />
+  )
 
   return (
     <Item row>
-      <TextInput
-        editable={!props.disabled}
-        placeholder='***'
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
-        keyboardType='number-pad'
-        maxLength={3}
-        onChangeText={handleTextChange}
-        {...props}
-      />
+      {!leftIcon && !rightIcon ? (
+        field
+      ) : (
+        <InputField size={size} leftIcon={leftIcon} rightIcon={rightIcon}>
+          {field}
+        </InputField>
+      )}
 
       {/* TODO: CVC Info butonuna kart arkayüzü eklenmeli */}
       <Pressable

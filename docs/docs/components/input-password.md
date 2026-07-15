@@ -74,13 +74,15 @@ keyboard (PIN style):
 
 ## With a leading icon
 
-Pass an `icon` to render a leading icon inside the field:
+Pass a `leftIcon` to render a leading icon inside the field. The built-in
+show/hide eye stays in the `rightIcon` slot; you can override its appearance
+(but not its toggle function) by passing your own `rightIcon`:
 
 ```tsx
 <Input
   name='password'
   type='password'
-  icon={{name: 'lock'}}
+  leftIcon={{name: 'lock'}}
   placeholder='Enter password'
   value={password}
   onChangeText={setPassword}
@@ -100,7 +102,8 @@ Pass an `icon` to render a leading icon inside the field:
 | `errorMessage` | `string` | Error message |
 | `touched` | `boolean` | Validation touched state |
 | `numericOnly` | `boolean` | Restrict input to digits and use a numeric keyboard (default: `false`) |
-| `icon` | `IconProps` | Optional leading icon rendered inside the field |
+| `leftIcon` | `InputIconProps` | Optional leading icon rendered inside the field |
+| `rightIcon` | `InputIconProps` | Overrides the built-in show/hide eye's appearance (toggle function stays) |
 
 ## Features
 

@@ -115,20 +115,19 @@ describe('Default Input -> Custom Input', () => {
   })
 })
 
-describe('DefaultInput -> leading icon tint', () => {
-  it('forwards variant to the leading Icon', async () => {
+describe('DefaultInput -> leftIcon/rightIcon', () => {
+  it('leftIcon verilince sol slot render edilir', async () => {
     const {getByTestId} = await render(
-      <DefaultInput name='i1' type='default' icon={{name: 'lock', variant: 'primary'}} />
+      <DefaultInput name='i1' type='default' leftIcon={{name: 'lock', variant: 'primary'}} />
     )
-    const icon = getByTestId('default-input-icon-test-id')
-    expect(icon).toHaveProp('variant', 'primary')
+    expect(getByTestId('input-field-left-icon')).toBeTruthy()
   })
 
-  it('forwards color to the leading Icon', async () => {
+  it('leftIcon ve rightIcon birlikte render edilir', async () => {
     const {getByTestId} = await render(
-      <DefaultInput name='i2' type='default' icon={{name: 'lock', color: '#abcabc'}} />
+      <DefaultInput name='i2' type='default' leftIcon={{name: 'lock'}} rightIcon={{name: 'eye'}} />
     )
-    const icon = getByTestId('default-input-icon-test-id')
-    expect(icon).toHaveProp('color', '#abcabc')
+    expect(getByTestId('input-field-left-icon')).toBeTruthy()
+    expect(getByTestId('input-field-right-icon')).toBeTruthy()
   })
 })

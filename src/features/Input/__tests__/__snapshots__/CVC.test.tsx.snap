@@ -26,7 +26,6 @@ exports[`CVC Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1
         editable={true}
         keyboardType="number-pad"
         maxLength={3}
-        name="test"
         onChangeText={[Function]}
         placeholder="***"
         style={

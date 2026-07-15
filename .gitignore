@@ -99,3 +99,4 @@ jest-test-reports/
 
 # Cursor
 .cursor/
+.superpowers/

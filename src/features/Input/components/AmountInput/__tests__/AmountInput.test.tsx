@@ -6,7 +6,8 @@ describe('Amount Input -> Custom Input', () => {
   const testId = {
     amountTestId: 'amount-test-id',
     currencyTestId: 'currency-test-id',
-    iconTestId: 'currency-icon-test-id',
+    iconTestId: 'input-field-right-icon',
+    leftIconTestId: 'input-field-left-icon',
   }
   it('amount input ilk render anında snapshot ile eşleşmeli', async () => {
     const onChangeTextMock = jest.fn()
@@ -27,6 +28,16 @@ describe('Amount Input -> Custom Input', () => {
     expect(amountInput).toBeOnTheScreen()
     expect(currencyInput).toBeOnTheScreen()
     expect(iconElement).toBeOnTheScreen()
+  })
+
+  it('amount inputa leftIcon verildiğinde sol slotta render edilmeli', async () => {
+    const {leftIconTestId} = testId
+    const onChangeTextMock = jest.fn()
+    const {getByTestId} = await render(
+      <AmountInput name='test' leftIcon={{name: 'arrow-left'}} onChangeText={onChangeTextMock} />
+    )
+
+    expect(getByTestId(leftIconTestId)).toBeOnTheScreen()
   })
 
   it('amount input sadece numeric karakterleri kabul etmeli', async () => {

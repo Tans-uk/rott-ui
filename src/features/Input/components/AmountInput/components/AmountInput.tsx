@@ -3,9 +3,10 @@ import {useCallback, useEffect, useRef, useState, type FC} from 'react'
 import {StyleSheet, TextInput} from 'react-native'
 
 import {themeConfig} from '../../../../../providers'
-import {Icon, type IconKeys} from '../../../../Icon'
+import {type IconKeys} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
+import {InputField} from '../../InputField'
 import {InputStyles} from '../../../styles'
 import {InputStyleNormalizer} from '../../../utils'
 import type {AmountInputProps} from '../models'
@@ -20,6 +21,13 @@ export const AmountInput: FC<AmountInputProps> = ({
   disabled,
   size,
   currencyType = 'TL',
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const amountRef = useRef<TextInput>(null)
@@ -30,7 +38,7 @@ export const AmountInput: FC<AmountInputProps> = ({
   const resetInternalStates = useCallback(() => {
     setAmount('')
     setCurrency('')
-    onChangeText!('0.00')
+    onChangeText?.('0.00')
   }, [])
 
   const replaceTextWithNumberOrEmpty = (text: string) => {
@@ -69,7 +77,7 @@ export const AmountInput: FC<AmountInputProps> = ({
 
     if (currencyFormat.length > 2) currencyFormat = currencyFormat.substring(0, 2)
 
-    onChangeText!(`${amountFormat}.${currencyFormat}`)
+    onChangeText?.(`${amountFormat}.${currencyFormat}`)
   }
 
   const placeholderColorNormalizer =
@@ -96,82 +104,80 @@ export const AmountInput: FC<AmountInputProps> = ({
     handleTextChange(amount, currency)
   }, [amount, currency])
 
+  const currencyIcon = {
+    name: currencyType as IconKeys,
+    color: themeConfig.colors['grey-200'],
+    ...rightIcon,
+  }
+
   return (
-    <Item relative onTouchStart={() => amountRef.current?.focus()}>
-      <Item row {...props}>
-        <TextInput
-          ref={amountRef}
-          nativeID='amount-native-id'
-          testID='amount-test-id'
-          editable={!disabled}
-          placeholder='0'
-          maxLength={11}
-          value={amount}
-          keyboardType='number-pad'
-          onChangeText={(text) => amountNormalizer(text)}
-          style={StyleSheet.flatten([
-            InputStyles({fontSize, theme, size}).defaultTextInputStyle,
-            AmountInputStyles().amountInputStyle,
-            {
-              color: placeholderColorNormalizer,
-            },
-          ])}
-          placeholderTextColor={placeholderColorNormalizer}
-        />
+    <Item relative onTouchStart={() => amountRef.current?.focus()} {...props}>
+      <InputField size={size} leftIcon={leftIcon} rightIcon={currencyIcon}>
+        <Item row>
+          <TextInput
+            ref={amountRef}
+            nativeID='amount-native-id'
+            testID='amount-test-id'
+            editable={!disabled}
+            placeholder='0'
+            maxLength={11}
+            value={amount}
+            keyboardType='number-pad'
+            onChangeText={(text) => amountNormalizer(text)}
+            style={StyleSheet.flatten([
+              InputStyles({fontSize, theme, size}).defaultTextInputStyle,
+              AmountInputStyles().amountInputStyle,
+              {
+                color: placeholderColorNormalizer,
+              },
+            ])}
+            placeholderTextColor={placeholderColorNormalizer}
+          />
 
-        <Item
-          justifyContentFlexEnd
-          paddingBottom={InputStyleNormalizer({size}).bottomElementPadding}>
-          <Label
-            fontSize={
-              fontSize ??
-              InputStyleNormalizer({
-                size,
-              }).placeholderSize
-            }
-            fontWeight='bold'
-            color={placeholderColorNormalizer as string}>
-            ,
-          </Label>
+          <Item
+            justifyContentFlexEnd
+            paddingBottom={InputStyleNormalizer({size}).bottomElementPadding}>
+            <Label
+              fontSize={
+                fontSize ??
+                InputStyleNormalizer({
+                  size,
+                }).placeholderSize
+              }
+              fontWeight='bold'
+              color={placeholderColorNormalizer as string}>
+              ,
+            </Label>
+          </Item>
+
+          <TextInput
+            ref={currencyRef}
+            testID='currency-test-id'
+            editable={!disabled}
+            maxLength={2}
+            placeholder='00'
+            value={currency}
+            keyboardType='number-pad'
+            onChangeText={(text) => {
+              if (text.isEmpty()) amountRef.current?.focus()
+              setCurrency(formatCurrency(text).substring(0, 2))
+            }}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace' && currency.isEmpty()) amountRef.current?.focus()
+            }}
+            onFocus={() => (currency === '00' ? setCurrency('') : undefined)}
+            onBlur={() => (currency.isEmpty() || currency === '0' ? setCurrency('00') : undefined)}
+            style={StyleSheet.flatten([
+              InputStyles({fontSize, theme, size}).defaultTextInputStyle,
+              AmountInputStyles().amountInputStyle,
+              {
+                color: placeholderColorNormalizer,
+              },
+            ])}
+            placeholderTextColor={placeholderColorNormalizer}
+          />
         </Item>
-
-        <TextInput
-          ref={currencyRef}
-          testID='currency-test-id'
-          editable={!disabled}
-          maxLength={2}
-          placeholder='00'
-          value={currency}
-          keyboardType='number-pad'
-          onChangeText={(text) => {
-            if (text.isEmpty()) amountRef.current?.focus()
-            setCurrency(formatCurrency(text).substring(0, 2))
-          }}
-          onKeyPress={({nativeEvent}) => {
-            if (nativeEvent.key === 'Backspace' && currency.isEmpty()) amountRef.current?.focus()
-          }}
-          onFocus={() => (currency === '00' ? setCurrency('') : undefined)}
-          onBlur={() => (currency.isEmpty() || currency === '0' ? setCurrency('00') : undefined)}
-          style={StyleSheet.flatten([
-            InputStyles({fontSize, theme, size}).defaultTextInputStyle,
-            AmountInputStyles().amountInputStyle,
-            {
-              color: placeholderColorNormalizer,
-            },
-          ])}
-          placeholderTextColor={placeholderColorNormalizer}
-        />
-      </Item>
-
-      <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
-        <Icon
-          testID='currency-icon-test-id'
-          name={currencyType as IconKeys}
-          width={InputStyleNormalizer({size}).icon.width}
-          height={InputStyleNormalizer({size}).icon.height}
-          color={themeConfig.colors['grey-200']}
-        />
-      </Item>
+      </InputField>
     </Item>
   )
 }

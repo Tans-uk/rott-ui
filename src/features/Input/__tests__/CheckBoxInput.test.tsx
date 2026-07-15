@@ -62,4 +62,23 @@ describe('CheckBox Input -> Custom Input', () => {
 
     expect(onPressMock).toHaveBeenCalledTimes(1)
   })
+
+  it('leftIcon ve rightIcon slotlarını render eder ve rightIcon onPress kutuya sızmaz', async () => {
+    const onCheckChange = jest.fn()
+    const onIconPress = jest.fn()
+    const {getByTestId} = await render(
+      <CheckBoxInput
+        name='test'
+        testID='checkbox-input-test-id'
+        checked={false}
+        onCheckChange={onCheckChange}
+        leftIcon={{name: 'lock'}}
+        rightIcon={{name: 'information', onPress: onIconPress}}
+      />
+    )
+    expect(getByTestId('input-field-left-icon')).toBeTruthy()
+    fireEvent.press(getByTestId('input-field-right-icon'))
+    expect(onIconPress).toHaveBeenCalledTimes(1)
+    expect(onCheckChange).not.toHaveBeenCalled()
+  })
 })

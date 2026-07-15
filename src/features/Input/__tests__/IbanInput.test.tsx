@@ -4,8 +4,7 @@ import {IbanInput} from '../components'
 
 describe('IBAN Input -> Custom Input', () => {
   const inputTestId = 'iban-input-test-id'
-  const clearIbanIconTestId = 'clear-iban-icon-test-id'
-  const ibanIconTestId = 'iban-icon-test-id'
+  const rightIconTestId = 'input-field-right-icon'
 
   it('ilk render anında snapshot ile eşleşmeli', async () => {
     const renderedInput = await render(<IbanInput name='test' testID={inputTestId} />)
@@ -21,65 +20,83 @@ describe('IBAN Input -> Custom Input', () => {
     expect(inputElement).toHaveProp('value', '')
   })
 
-  it('ilk renderlandiginda icerik temizleme iconu gorunmemeli', async () => {
-    const {queryByTestId} = await render(<IbanInput name='test' testID={inputTestId} value='' />)
-
-    const clearInputElement = queryByTestId(clearIbanIconTestId)
-
-    expect(clearInputElement).toBeNull()
-  })
-
-  // TODO: Varsayilan TR texti yazildigindan bu test gecersiz
-  it('içerik boş olduğunda temizleme iconu görünmemeli', async () => {
+  it('içerik boşken sağ ikona basıldığında temizleme yapılmamalı, qr fonksiyonu çalışmalı', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId, queryByTestId} = await render(
-      <IbanInput name='test' onChangeText={onChangeTextMock} value='TR' />
+    const rightIconOnPressMock = jest.fn()
+    const {getByTestId} = await render(
+      <IbanInput
+        name='test'
+        testID={inputTestId}
+        value=''
+        onChangeText={onChangeTextMock}
+        rightIcon={{name: 'qr-iban', onPress: rightIconOnPressMock}}
+      />
     )
 
-    const ibanInput = getByTestId('iban-input-test-id')
-    expect(ibanInput).toBeTruthy()
+    fireEvent.press(getByTestId(rightIconTestId))
 
-    const clearIcon = queryByTestId('clear-iban-icon-test-id')
-    expect(clearIcon).toBeNull()
-
-    fireEvent.changeText(ibanInput, '')
-
-    expect(queryByTestId('clear-iban-icon-test-id')).toBeNull()
+    expect(rightIconOnPressMock).toHaveBeenCalled()
+    expect(onChangeTextMock).not.toHaveBeenCalledWith('TR')
   })
 
-  it('içerik boş olduğunda temizleme iconu görünmeli', async () => {
+  it('değer sadece TR iken sağ ikona basıldığında qr fonksiyonu çalışmalı', async () => {
     const onChangeTextMock = jest.fn()
-    const {getByTestId, queryByTestId, rerenderAsync} = await render(
-      <IbanInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
+    const rightIconOnPressMock = jest.fn()
+    const {getByTestId} = await render(
+      <IbanInput
+        name='test'
+        testID={inputTestId}
+        value='TR'
+        onChangeText={onChangeTextMock}
+        rightIcon={{name: 'qr-iban', onPress: rightIconOnPressMock}}
+      />
     )
 
-    let inputElement = getByTestId(inputTestId)
-    await waitFor(() => {
-      fireEvent.changeText(inputElement, 'TR123')
-    })
+    fireEvent.press(getByTestId(rightIconTestId))
 
-    let clearInputElement = getByTestId(clearIbanIconTestId)
-    let iconElement = getByTestId(ibanIconTestId)
+    expect(rightIconOnPressMock).toHaveBeenCalled()
+    expect(onChangeTextMock).not.toHaveBeenCalledWith('TR')
+  })
 
-    expect(clearInputElement).toBeTruthy()
-    expect(iconElement).toBeOnTheScreen()
+  it('değer varken sağ ikona basıldığında içerik TR olarak temizlenmeli', async () => {
+    const onChangeTextMock = jest.fn()
+    const {getByTestId} = await render(
+      <IbanInput
+        name='test'
+        testID={inputTestId}
+        value='TR123'
+        onChangeText={onChangeTextMock}
+      />
+    )
 
-    expect(onChangeTextMock).toHaveBeenCalledWith('TR123')
-
-    await waitFor(() => {
-      inputElement = getByTestId(inputTestId)
-
-      fireEvent.changeText(inputElement, '')
-    })
+    fireEvent.press(getByTestId(rightIconTestId))
 
     expect(onChangeTextMock).toHaveBeenCalledWith('TR')
+  })
 
-    await rerenderAsync(
-      <IbanInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} value='TR' />
+  it('disabled iken değer varsa sağ ikona basıldığında temizleme yapılmamalı', async () => {
+    const onChangeTextMock = jest.fn()
+    const {getByTestId} = await render(
+      <IbanInput
+        name='test'
+        testID={inputTestId}
+        value='TR123'
+        disabled
+        onChangeText={onChangeTextMock}
+      />
     )
-    let clearInputElement2 = queryByTestId(clearIbanIconTestId)
 
-    expect(clearInputElement2).toBeNull()
+    fireEvent.press(getByTestId(rightIconTestId))
+
+    expect(onChangeTextMock).not.toHaveBeenCalledWith('TR')
+  })
+
+  it('leftIcon verildiğinde leading icon render edilmeli', async () => {
+    const {getByTestId} = await render(
+      <IbanInput name='test' testID={inputTestId} leftIcon={{name: 'qr-iban'}} />
+    )
+
+    expect(getByTestId('input-field-left-icon')).toBeTruthy()
   })
 
   it('TR digerlerinden sonraki degerler sadece numeric karakterleri kabul etmeli', async () => {

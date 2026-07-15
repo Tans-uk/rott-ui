@@ -4,6 +4,7 @@ import {StyleSheet, TextInput} from 'react-native'
 
 import type {StatementInputProps} from '../models'
 import {InputStyles} from '../styles'
+import {InputField} from './InputField'
 import React from 'react'
 
 export const StatementInput: React.FC<StatementInputProps> = ({
@@ -15,6 +16,13 @@ export const StatementInput: React.FC<StatementInputProps> = ({
   size,
   maxLength,
   onChangeText,
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const handleChangeText = useCallback(
@@ -34,12 +42,11 @@ export const StatementInput: React.FC<StatementInputProps> = ({
 
   const inputStyles = useMemo(
     () =>
-      InputStyles({fontSize, theme, size, includeBorderRadius: true, ...props})
-        .defaultTextInputStyle,
-    [fontSize, theme, size, props]
+      InputStyles({fontSize, theme, size, includeBorderRadius: true}).defaultTextInputStyle,
+    [fontSize, theme, size]
   )
 
-  return (
+  const field = (
     <TextInput
       testID='statement-input-test-id'
       keyboardType='default'
@@ -51,5 +58,13 @@ export const StatementInput: React.FC<StatementInputProps> = ({
       maxLength={maxLength}
       {...props}
     />
+  )
+
+  if (!leftIcon && !rightIcon) return field
+
+  return (
+    <InputField size={size} leftIcon={leftIcon} rightIcon={rightIcon}>
+      {field}
+    </InputField>
   )
 }

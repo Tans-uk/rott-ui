@@ -3,12 +3,12 @@ import React, {useEffect, useState, type FC} from 'react'
 import {formatMessage, useTranslator} from '../../../../../libs'
 import {ModalIdEnum} from '../../../../../models'
 import {themeConfig} from '../../../../../providers'
-import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
 import {Modal, useModal} from '../../../../Modal'
 import {Pressable} from '../../../../Pressable'
 import {InputStyleNormalizer} from '../../../utils'
+import {InputField} from '../../InputField'
 import type {SelectInputProps, SelectProps} from '../models'
 import {SelectInputStyles} from '../styles'
 import {modalHeightPercentageNormalizer} from '../utils'
@@ -66,6 +66,8 @@ export const SelectInput: FC<SelectInputProps> = ({
   isLoading,
   name,
   type = 'select',
+  leftIcon,
+  rightIcon,
 }) => {
   const {translator} = useTranslator()
 
@@ -80,6 +82,22 @@ export const SelectInput: FC<SelectInputProps> = ({
       : (!multiSelection && selectItem) || (multiSelection && selectItems.length > 0)
         ? 'grey-900'
         : 'grey-200'
+
+  const trailingIcon = readOnly
+    ? {
+        name: 'id-card' as any,
+        height: 25,
+        width: 25,
+        variant: (theme === 'dark' ? 'white' : 'grey-200') as any,
+        ...rightIcon,
+      }
+    : {
+        name: 'chevron-right' as any,
+        height: 25,
+        width: 25,
+        variant: textVariant as any,
+        ...rightIcon,
+      }
 
   const handleItem = (selectedValue: Nullable<string>) => {
     const predicate = ({value: filterValue}: SelectProps) => filterValue === selectedValue
@@ -103,7 +121,7 @@ export const SelectInput: FC<SelectInputProps> = ({
     if (!item) return
 
     if (!multiSelection) {
-      onSelectChange!(item as any)
+      onSelectChange?.(item as any)
       handleItem(item)
       Modal.hideModal(modalId ?? ModalIdEnum.SelectInput)
     } else {
@@ -117,7 +135,7 @@ export const SelectInput: FC<SelectInputProps> = ({
           isLoading: false,
         })
       } else tempSelectedList.splice(index, 1)
-      onSelectChange!(tempSelectedList.map((selectedItem) => selectedItem.value) as any)
+      onSelectChange?.(tempSelectedList.map((selectedItem) => selectedItem.value) as any)
       setSelectItems(tempSelectedList)
     }
   }
@@ -222,39 +240,31 @@ export const SelectInput: FC<SelectInputProps> = ({
         justifyContentCenter
         marginBottom={description || selectItem?.description ? 8 : undefined}
         onPress={handleSelectInputModal}>
-        <Item
-          row
-          alignItemsCenter
-          height={
-            InputStyleNormalizer({size}).height - (selectItem?.description || description ? 8 : 0)
-          }>
-          <Label
-            testID='select-input-selected-item-test-id'
-            fontSize={fontSize ?? InputStyleNormalizer({size}).placeholderSize}
-            fontFamily='Markpro-Medium'
-            variant={textVariant}
-            style={SelectInputStyles().pressableTextStyle}
-            numberOfLines={1}>
-            {!multiSelection && (selectItem ? selectItem?.label : (placeholder ?? label))}
-            {multiSelection &&
-              (selectItems.length > 0
-                ? translator('COMMON.SELECTED.ITEMS', {
-                    count: selectItems.length,
-                  })
-                : (placeholder ?? label))}
-          </Label>
-
-          {!readOnly && <Icon name='chevron-right' height={25} width={25} variant={textVariant} />}
-
-          {readOnly && (
-            <Icon
-              name='id-card'
-              height={25}
-              width={25}
-              variant={theme === 'dark' ? 'white' : 'grey-200'}
-            />
-          )}
-        </Item>
+        <InputField size={size} leftIcon={leftIcon} rightIcon={trailingIcon}>
+          <Item
+            row
+            alignItemsCenter
+            size='full'
+            height={
+              InputStyleNormalizer({size}).height - (selectItem?.description || description ? 8 : 0)
+            }>
+            <Label
+              testID='select-input-selected-item-test-id'
+              fontSize={fontSize ?? InputStyleNormalizer({size}).placeholderSize}
+              fontFamily='Markpro-Medium'
+              variant={textVariant}
+              style={SelectInputStyles().pressableTextStyle}
+              numberOfLines={1}>
+              {!multiSelection && (selectItem ? selectItem?.label : (placeholder ?? label))}
+              {multiSelection &&
+                (selectItems.length > 0
+                  ? translator('COMMON.SELECTED.ITEMS', {
+                      count: selectItems.length,
+                    })
+                  : (placeholder ?? label))}
+            </Label>
+          </Item>
+        </InputField>
 
         {(description || selectItem?.description) && (
           <Item size='full' justifyContentFlexStart>

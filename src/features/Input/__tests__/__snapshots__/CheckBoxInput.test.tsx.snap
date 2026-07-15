@@ -37,7 +37,6 @@ exports[`CheckBox Input -> Custom Input checkbox input ilk render anında snapsh
       collapsable={false}
       flex={0}
       focusable={true}
-      name="test"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -60,38 +59,60 @@ exports[`CheckBox Input -> Custom Input checkbox input ilk render anında snapsh
         style={
           {
             "alignItems": "center",
-            "color": "rgba(255, 255, 255, 1)",
             "flex": undefined,
             "flexDirection": "row",
-            "fontFamily": "Markpro-Medium",
-            "fontSize": 18,
-            "height": "auto",
-            "letterSpacing": 0.5,
-            "width": "100%",
           }
         }
-        testID="checkbox-container-test-id"
       >
         <View
-          alignItemsCenter={true}
-          borderColor="rgba(161, 173, 175, 1)"
-          borderRadius={8}
-          borderWidth={2}
-          height={24}
-          justifyContentCenter={true}
+          flex={1}
           style={
             {
-              "alignItems": "center",
-              "flex": undefined,
+              "flex": 1,
               "flexDirection": "column",
-              "height": 46,
-              "justifyContent": "center",
-              "maxHeight": 46,
-              "width": 46,
             }
           }
-          width={24}
-        />
+        >
+          <View
+            alignItemsCenter={true}
+            flex={1}
+            style={
+              {
+                "alignItems": "center",
+                "color": "rgba(255, 255, 255, 1)",
+                "flex": 1,
+                "flexDirection": "row",
+                "fontFamily": "Markpro-Medium",
+                "fontSize": 18,
+                "height": "auto",
+                "letterSpacing": 0.5,
+                "width": "100%",
+              }
+            }
+            testID="checkbox-container-test-id"
+          >
+            <View
+              alignItemsCenter={true}
+              borderColor="rgba(161, 173, 175, 1)"
+              borderRadius={8}
+              borderWidth={2}
+              height={24}
+              justifyContentCenter={true}
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": undefined,
+                  "flexDirection": "column",
+                  "height": 46,
+                  "justifyContent": "center",
+                  "maxHeight": 46,
+                  "width": 46,
+                }
+              }
+              width={24}
+            />
+          </View>
+        </View>
       </View>
     </View>
     <View

@@ -26,117 +26,134 @@ exports[`Amount Input -> Custom Input amount input ilk render anında snapshot i
       }
     >
       <View
-        name="test"
+        alignItemsCenter={true}
         style={
           {
+            "alignItems": "center",
             "flex": undefined,
             "flexDirection": "row",
           }
         }
       >
-        <TextInput
-          editable={true}
-          keyboardType="number-pad"
-          maxLength={11}
-          nativeID="amount-native-id"
-          onChangeText={[Function]}
-          placeholder="0"
-          placeholderTextColor="rgba(161, 173, 175, 1)"
-          style={
-            {
-              "color": "rgba(161, 173, 175, 1)",
-              "fontFamily": "Markpro-Medium",
-              "fontSize": 18,
-              "height": 89,
-              "letterSpacing": 0.5,
-              "width": "auto",
-            }
-          }
-          testID="amount-test-id"
-          value=""
-        />
         <View
-          justifyContentFlexEnd={true}
-          paddingBottom={19}
+          flex={1}
           style={
             {
-              "flex": undefined,
+              "flex": 1,
               "flexDirection": "column",
-              "justifyContent": "flex-end",
-              "paddingBottom": 37,
             }
           }
         >
-          <Text
+          <View
             style={
               {
-                "color": "rgba(161, 173, 175, 1)",
-                "fontFamily": "Markpro-Bold",
-                "fontSize": 18,
-                "fontWeight": "bold",
-                "textAlign": "auto",
+                "flex": undefined,
+                "flexDirection": "row",
               }
             }
           >
-            ,
-          </Text>
+            <TextInput
+              editable={true}
+              keyboardType="number-pad"
+              maxLength={11}
+              nativeID="amount-native-id"
+              onChangeText={[Function]}
+              placeholder="0"
+              placeholderTextColor="rgba(161, 173, 175, 1)"
+              style={
+                {
+                  "color": "rgba(161, 173, 175, 1)",
+                  "fontFamily": "Markpro-Medium",
+                  "fontSize": 18,
+                  "height": 89,
+                  "letterSpacing": 0.5,
+                  "width": "auto",
+                }
+              }
+              testID="amount-test-id"
+              value=""
+            />
+            <View
+              justifyContentFlexEnd={true}
+              paddingBottom={19}
+              style={
+                {
+                  "flex": undefined,
+                  "flexDirection": "column",
+                  "justifyContent": "flex-end",
+                  "paddingBottom": 37,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "rgba(161, 173, 175, 1)",
+                    "fontFamily": "Markpro-Bold",
+                    "fontSize": 18,
+                    "fontWeight": "bold",
+                    "textAlign": "auto",
+                  }
+                }
+              >
+                ,
+              </Text>
+            </View>
+            <TextInput
+              editable={true}
+              keyboardType="number-pad"
+              maxLength={2}
+              onBlur={[Function]}
+              onChangeText={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              placeholder="00"
+              placeholderTextColor="rgba(161, 173, 175, 1)"
+              style={
+                {
+                  "color": "rgba(161, 173, 175, 1)",
+                  "fontFamily": "Markpro-Medium",
+                  "fontSize": 18,
+                  "height": 89,
+                  "letterSpacing": 0.5,
+                  "width": "auto",
+                }
+              }
+              testID="currency-test-id"
+              value=""
+            />
+          </View>
         </View>
-        <TextInput
-          editable={true}
-          keyboardType="number-pad"
-          maxLength={2}
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          placeholder="00"
-          placeholderTextColor="rgba(161, 173, 175, 1)"
-          style={
-            {
-              "color": "rgba(161, 173, 175, 1)",
-              "fontFamily": "Markpro-Medium",
-              "fontSize": 18,
-              "height": 89,
-              "letterSpacing": 0.5,
-              "width": "auto",
-            }
-          }
-          testID="currency-test-id"
-          value=""
-        />
-      </View>
-      <View
-        absolute={true}
-        bottom={16}
-        right={0}
-        style={
-          {
-            "bottom": 31,
-            "flex": undefined,
-            "flexDirection": "column",
-            "position": "absolute",
-            "right": 0,
-          }
-        }
-      >
         <View
+          flex={0}
+          marginLeft={8}
           style={
             {
               "flex": undefined,
               "flexDirection": "column",
+              "marginLeft": 16,
             }
           }
-          testID="currency-icon-test-id"
+          testID="input-field-right-icon"
         >
-          <Text
-            fill="rgba(161, 173, 175, 1)"
-            height={46}
-            strokeWidth={0}
-            testID="mock-icon"
-            width={46}
+          <View
+            style={
+              {
+                "flex": undefined,
+                "flexDirection": "column",
+              }
+            }
           >
-            MockIcon
-          </Text>
+            <Text
+              fill="rgba(161, 173, 175, 1)"
+              height={46}
+              strokeWidth={0}
+              testID="mock-icon"
+              width={46}
+            >
+              MockIcon
+            </Text>
+          </View>
         </View>
       </View>
     </View>

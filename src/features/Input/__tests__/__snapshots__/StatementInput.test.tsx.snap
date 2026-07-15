@@ -18,7 +18,6 @@ exports[`Statement Input -> Custom Input ilk render anında snapshot ile eşleş
       autoCapitalize="none"
       editable={true}
       keyboardType="default"
-      name="test"
       onChangeText={[Function]}
       style={
         {

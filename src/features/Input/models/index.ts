@@ -1,3 +1,5 @@
+export * from './inputIconProps.interface'
+export * from './inputIconSlotsProps.interface'
 export * from './inputKeyboardType.type'
 export * from './inputProps.type'
 export * from './inputLabelIconProps.interface'

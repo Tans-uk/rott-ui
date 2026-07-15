@@ -2,9 +2,9 @@ import {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
-import {Item} from '../../Item'
 import type {PinPasswordInputProps} from '../models'
 import {InputStyles} from '../styles'
+import {InputField} from './InputField'
 import React from 'react'
 
 export const PinPasswordInput: FC<PinPasswordInputProps> = ({
@@ -13,24 +13,37 @@ export const PinPasswordInput: FC<PinPasswordInputProps> = ({
   theme,
   disabled,
   size,
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const handleTextChange = (inputText: string) => {
     if (onChangeText) onChangeText(inputText.replace(/[^0-9]/g, ''))
   }
 
+  const field = (
+    <TextInput
+      editable={!disabled}
+      placeholder='____'
+      style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
+      keyboardType='number-pad'
+      maxLength={4}
+      secureTextEntry={true}
+      onChangeText={handleTextChange}
+      {...props}
+    />
+  )
+
+  if (!leftIcon && !rightIcon) return field
+
   return (
-    <Item row>
-      <TextInput
-        editable={!disabled}
-        placeholder='____'
-        style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
-        keyboardType='number-pad'
-        maxLength={4}
-        secureTextEntry={true}
-        onChangeText={handleTextChange}
-        {...props}
-      />
-    </Item>
+    <InputField size={size} leftIcon={leftIcon} rightIcon={rightIcon}>
+      {field}
+    </InputField>
   )
 }

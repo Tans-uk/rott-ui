@@ -4,6 +4,7 @@ import {StyleSheet} from 'react-native'
 
 import type {CreditCardInputProps} from '../models'
 import {InputStyles} from '../styles'
+import {InputField} from './InputField'
 
 // Package Imports
 import MaskInput from 'react-native-mask-input'
@@ -15,6 +16,13 @@ export const CreditCardInput: FC<CreditCardInputProps> = ({
   theme,
   disabled,
   size,
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const MASK = [
@@ -41,10 +49,10 @@ export const CreditCardInput: FC<CreditCardInputProps> = ({
 
   const handleOnChangeText = (text: string) => {
     const replacedText = text.replace(/[^0-9]/g, '')
-    onChangeText!(replacedText)
+    onChangeText?.(replacedText)
   }
 
-  return (
+  const field = (
     <MaskInput
       editable={!disabled}
       mask={MASK}
@@ -55,5 +63,13 @@ export const CreditCardInput: FC<CreditCardInputProps> = ({
       style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
       {...props}
     />
+  )
+
+  if (!leftIcon && !rightIcon) return field
+
+  return (
+    <InputField size={size} leftIcon={leftIcon} rightIcon={rightIcon}>
+      {field}
+    </InputField>
   )
 }

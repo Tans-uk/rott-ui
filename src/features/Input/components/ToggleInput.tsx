@@ -6,6 +6,8 @@ import { Separator } from '../../Separator'
 import { Toggle } from '../../Toggle'
 import { Label } from '../../Label'
 import { Input } from './Input'
+import { IconSlot } from './InputField'
+import { inputIconGapNormalizer } from '../utils'
 import React from 'react'
 
 
@@ -28,9 +30,13 @@ export const ToggleInput: FC<ToggleInputProps> = ({
   touched,
   disabledInput = true,
   disabled,
+  leftIcon,
+  rightIcon,
+  size,
   ...props
 }) => {
   const isString = typeof label === 'string'
+  const gap = inputIconGapNormalizer(size)
 
   return (
     <Item size='full' testID={testID} width={342} justifyContentCenter {...props}>
@@ -50,23 +56,47 @@ export const ToggleInput: FC<ToggleInputProps> = ({
         paddingHorizontal={16}
         paddingVertical={16}>
         {/* TODO: Toggle animasyonu label'a tıklandığında çalışmıyor, bir çözüm üretilmeli. */}
-        {!!label && isString && (
-          <Label
-            maxWidth={236}
-            fontSize={fontSize || 'xl'}
-            onPress={() => !disabled && !!onToggle && onToggle!(!checked)}
-            variant='grey-900'>
-            {label}
-          </Label>
-        )}
-        {!!label && !isString && isValidElement(label) && <>{label}</>}
+        <Item row alignItemsCenter flex={1}>
+          {leftIcon && (
+            <IconSlot
+              testID='input-field-left-icon'
+              icon={leftIcon}
+              side='left'
+              gap={gap}
+              size={size}
+              stopPropagation
+            />
+          )}
+          {!!label && isString && (
+            <Label
+              maxWidth={236}
+              fontSize={fontSize || 'xl'}
+              onPress={() => !disabled && onToggle?.(!checked)}
+              variant='grey-900'>
+              {label}
+            </Label>
+          )}
+          {!!label && !isString && isValidElement(label) && <>{label}</>}
+        </Item>
 
-        <Toggle
-          testID={`${name}-toggle-test-id`}
-          isOn={checked}
-          disabled={disabled}
-          onToggleChange={(isChecked) => !!onToggle && onToggle!(isChecked)}
-        />
+        <Item row alignItemsCenter>
+          {rightIcon && (
+            <IconSlot
+              testID='input-field-right-icon'
+              icon={rightIcon}
+              side='left'
+              gap={gap}
+              size={size}
+              stopPropagation
+            />
+          )}
+          <Toggle
+            testID={`${name}-toggle-test-id`}
+            isOn={checked}
+            disabled={disabled}
+            onToggleChange={(isChecked) => onToggle?.(isChecked)}
+          />
+        </Item>
       </Item>
 
       {middleSeparator && disabledInput && (

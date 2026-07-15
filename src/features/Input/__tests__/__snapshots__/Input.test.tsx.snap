@@ -78,11 +78,9 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
             autoCapitalize="none"
             editable={true}
             keyboardType="default"
-            name="input"
             onChangeText={[Function]}
             placeholder="Test Label"
             placeholderTextColor="rgba(161, 173, 175, 1)"
-            renderSeparator={true}
             style={
               {
                 "color": "rgba(34, 63, 70, 1)",
@@ -94,7 +92,6 @@ exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli
               }
             }
             testID="input-test-id"
-            touched={null}
             type="default"
           />
         </View>

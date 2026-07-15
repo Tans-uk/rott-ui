@@ -19,7 +19,6 @@ exports[`Plate Number Input -> Custom Input plate number input ilk render anınd
       editable={true}
       keyboardType="default"
       maxLength={9}
-      name="test"
       onChangeText={[Function]}
       placeholder="_________"
       style={

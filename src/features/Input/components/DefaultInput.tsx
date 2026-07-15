@@ -2,10 +2,9 @@ import {useCallback, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
-import {Icon} from '../../Icon'
-import {Item} from '../../Item'
 import type {DefaultInputProps} from '../models'
 import {InputStyles} from '../styles'
+import {InputField} from './InputField'
 import React from 'react'
 
 export const DefaultInput: FC<DefaultInputProps> = ({
@@ -15,9 +14,15 @@ export const DefaultInput: FC<DefaultInputProps> = ({
   theme,
   disabled,
   size,
-  icon,
+  leftIcon,
+  rightIcon,
   keyboard = 'default',
   onChangeText,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const handleChangeText = useCallback(
@@ -51,52 +56,29 @@ export const DefaultInput: FC<DefaultInputProps> = ({
         )
       }
     },
-    [props?.maxLength, onChangeText]
+    [props?.maxLength, onChangeText, keyboard]
   )
 
-  return icon ? (
-    <Item row alignItemsCenter {...props} testID='default-input-container-test-id'>
-      <Icon
-        testID='default-input-icon-test-id'
-        width={icon.width ?? 24}
-        height={icon.height ?? 24}
-        name={icon.name}
-        mode={icon.mode}
-        noStroke={icon.noStroke}
-        strokeWidth={icon.strokeWidth}
-        variant={icon.variant}
-        color={icon.color}
-      />
-      <TextInput
-        editable={!disabled}
-        keyboardType='default'
-        autoCapitalize='none'
-        placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
-        onChangeText={(text) => onChangeText!(text)}
-        style={StyleSheet.flatten([
-          InputStyles({
-            fontSize,
-            theme,
-            size,
-            includeBorderRadius: true,
-            ...props,
-          }).defaultTextInputStyle,
-        ])}
-        {...props}
-      />
-    </Item>
-  ) : (
+  const textInput = (
     <TextInput
+      testID='default-input-test-id'
       editable={!disabled}
       keyboardType='default'
       autoCapitalize='none'
       placeholder={placeholder ?? (typeof label === 'string' ? label : undefined)}
       style={StyleSheet.flatten([
-        InputStyles({fontSize, theme, size, includeBorderRadius: true, ...props})
-          .defaultTextInputStyle,
+        InputStyles({fontSize, theme, size, includeBorderRadius: true}).defaultTextInputStyle,
       ])}
       onChangeText={handleChangeText}
       {...props}
     />
+  )
+
+  if (!leftIcon && !rightIcon) return textInput
+
+  return (
+    <InputField size={size} leftIcon={leftIcon} rightIcon={rightIcon}>
+      {textInput}
+    </InputField>
   )
 }
