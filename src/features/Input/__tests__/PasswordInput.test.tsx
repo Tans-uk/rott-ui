@@ -5,8 +5,8 @@ import {PasswordInput} from '../components'
 
 describe('Password Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'
-  const showPasswordIconTestId = 'show-password-icon-test-id'
-  const leadingIconTestId = 'password-leading-icon-test-id'
+  const showPasswordIconTestId = 'input-field-right-icon'
+  const leadingIconTestId = 'input-field-left-icon'
 
   it('password input ilk render anında snapshot ile eşleşmeli', async () => {
     const renderedInput = await render(<PasswordInput name='test' testID={inputTestId} />)
@@ -58,9 +58,9 @@ describe('Password Input -> Custom Input', () => {
     expect(inputElement).toHaveProp('keyboardType', 'number-pad')
   })
 
-  it('icon verildiğinde leading icon render edilmeli', async () => {
+  it('leftIcon verildiğinde leading icon render edilmeli', async () => {
     const {getByTestId} = await render(
-      <PasswordInput name='test' testID={inputTestId} icon={{name: 'lock'}} />
+      <PasswordInput name='test' testID={inputTestId} leftIcon={{name: 'lock'}} />
     )
 
     expect(getByTestId(leadingIconTestId)).toBeTruthy()
