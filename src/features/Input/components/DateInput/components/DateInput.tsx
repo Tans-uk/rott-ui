@@ -9,13 +9,13 @@ import {ModalIdEnum} from '../../../../../models'
 import {themeConfig} from '../../../../../providers'
 import {display} from '../../../../../utils'
 import {Button} from '../../../../Button'
-import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
 import {List} from '../../../../List'
 import {Modal, useModal} from '../../../../Modal'
 import {Pressable} from '../../../../Pressable'
 import {Separator} from '../../../../Separator'
+import {InputField} from '../../InputField'
 import {DateInputStyles, InputStyles} from '../../../styles'
 import {formatByDateMode, InputStyleNormalizer} from '../../../utils'
 import type {DataModel, DateInputProps} from '../models'
@@ -71,6 +71,13 @@ export const DateInput: FC<DateInputProps> = ({
   disabled,
   size,
   viewType = 'input',
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const {language} = useRottContext()
@@ -324,15 +331,29 @@ export const DateInput: FC<DateInputProps> = ({
     }
   }, [])
 
+  const openPicker = () => {
+    if (disabled) return
+
+    mode.includes('modal') ? showModalDatePicker() : showNativeDatePicker()
+  }
+
+  const calendarIcon = {
+    name: 'calendar' as any,
+    color: themeConfig.colors['grey-200'],
+    mode: 'stroke' as const,
+    strokeWidth: 2,
+    ...rightIcon,
+    onPress: openPicker,
+  }
+
   return (
     <>
       {viewType === 'input' && (
-        <Item row>
+        <InputField size={size} leftIcon={leftIcon} rightIcon={calendarIcon}>
           <Pressable
             size='full'
             height={InputStyleNormalizer({size}).height}
             testID={testID ?? 'date-input-value-container'}
-            flex={0}
             justifyContentCenter
             textSize='lg'
             text={
@@ -354,35 +375,12 @@ export const DateInput: FC<DateInputProps> = ({
                 theme,
                 size,
                 includeBorderRadius: true,
-                ...props,
               }).defaultTextInputStyle,
             ])}
             textVariant={theme === 'dark' ? 'white' : value ? 'grey-900' : 'grey-200'}
-            onPress={() => {
-              if (disabled) return
-
-              mode.includes('modal') ? showModalDatePicker() : showNativeDatePicker()
-            }}
+            onPress={openPicker}
           />
-
-          <Pressable
-            onPress={() => {
-              if (disabled) return
-
-              mode.includes('modal') ? showModalDatePicker() : showNativeDatePicker()
-            }}>
-            <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
-              <Icon
-                name='calendar'
-                width={InputStyleNormalizer({size}).icon.width}
-                height={InputStyleNormalizer({size}).icon.height}
-                color={themeConfig.colors['grey-200']}
-                mode='stroke'
-                strokeWidth={2}
-              />
-            </Item>
-          </Pressable>
-        </Item>
+        </InputField>
       )}
 
       {viewType === 'button' && (
