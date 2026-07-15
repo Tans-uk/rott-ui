@@ -63,7 +63,8 @@ export const IconSlot: FC<IconSlotProps> = ({icon, side, gap, size, stopPropagat
 
 /**
  * Metin-tabanlı input tipleri için ortak layout sarmalayıcı.
- * children'ın kök stili flex:1 taşımalıdır (yatay genişleme için).
+ * children flex:1 içerik hücresine sarılır; hücre ikon slotları arasındaki
+ * kalan yatay alanı doldurur (child'ın ayrıca flex:1 taşıması gerekmez).
  */
 export const InputField: FC<InputFieldProps> = ({
   size,
@@ -87,7 +88,7 @@ export const InputField: FC<InputFieldProps> = ({
         />
       )}
 
-      {children}
+      <Item flex={1}>{children}</Item>
 
       {rightIcon && (
         <IconSlot
