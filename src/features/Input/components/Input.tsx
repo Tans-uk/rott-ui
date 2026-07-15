@@ -52,61 +52,79 @@ export const Input: FC<InputProps> = memo((props) => {
   const {language} = useRottContext()
   const hasError = !!props?.onBlur && !!touched && !!errorMessage
 
+  const outerSpacing = {
+    marginTop: props.marginTop,
+    marginBottom: props.marginBottom,
+    marginLeft: props.marginLeft,
+    marginRight: props.marginRight,
+    marginVertical: props.marginVertical,
+    marginHorizontal: props.marginHorizontal,
+  }
+
+  const fieldSpacingReset = {
+    marginTop: undefined,
+    marginBottom: undefined,
+    marginLeft: undefined,
+    marginRight: undefined,
+    marginVertical: undefined,
+    marginHorizontal: undefined,
+  }
+
   const getInputElement = () => {
     const initializedProps = {renderSeparator: resolvedRenderSeparator, size, theme, touched, placeholderTextColor}
 
     switch (type) {
       case 'default':
-        return <DefaultInput {...initializedProps} {...props} />
+        return <DefaultInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'cvc':
-        return <CVCInput {...initializedProps} {...props} />
+        return <CVCInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'expireDate':
-        return <ExpireDateInput {...initializedProps} {...props} />
+        return <ExpireDateInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'numeric':
-        return <NumericInput {...initializedProps} {...props} />
+        return <NumericInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'password':
-        return <PasswordInput {...initializedProps} {...props} />
+        return <PasswordInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'iban':
-        return <IbanInput {...initializedProps} {...props} />
+        return <IbanInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'phone':
-        return <PhoneInput {...initializedProps} {...props} />
+        return <PhoneInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'email':
-        return <EmailInput {...initializedProps} {...props} />
+        return <EmailInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'creditCard':
-        return <CreditCardInput {...initializedProps} {...props} />
+        return <CreditCardInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'pinPassword':
-        return <PinPasswordInput {...initializedProps} {...props} />
+        return <PinPasswordInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'plateNumber':
-        return <PlateNumberInput {...initializedProps} {...props} />
+        return <PlateNumberInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'amount':
-        return <AmountInput {...initializedProps} {...props} />
+        return <AmountInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'date':
-        return <DateInput {...initializedProps} {...props} />
+        return <DateInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'checkbox':
-        return <CheckBoxInput {...initializedProps} {...props} />
+        return <CheckBoxInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'select':
       case 'multiSelect':
-        return <SelectInput {...initializedProps} {...props} />
+        return <SelectInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'toggle':
-        return <ToggleInput {...initializedProps} {...props} />
+        return <ToggleInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       case 'statement':
-        return <StatementInput {...initializedProps} {...props} />
+        return <StatementInput {...initializedProps} {...props} {...fieldSpacingReset} />
 
       default:
         return
@@ -127,7 +145,7 @@ export const Input: FC<InputProps> = memo((props) => {
   const variant = variantCalculation()
 
   return (
-    <Item>
+    <Item {...outerSpacing}>
       <Item
         paddingTop={label && type !== 'toggle' ? 16 : 0}
         style={InputStyles({disabled}).textInputContainer}>

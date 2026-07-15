@@ -159,3 +159,15 @@ describe('Input -> border suppresses Separator', () => {
     expect(getByTestId(separatorTestId)).toBeTruthy()
   })
 })
+
+describe('Input -> outer spacing does not leak into TextInput', () => {
+  it('marginBottom dış kök Item’a uygulanır, TextInput style’ına sızmaz', async () => {
+    const {getByTestId} = await render(
+      <Input type='default' name='email' size='md' marginBottom={16} testID='leak-check-input' />
+    )
+    const input = getByTestId('leak-check-input')
+    const {StyleSheet} = require('react-native')
+    const flat = StyleSheet.flatten(input.props.style) ?? {}
+    expect(flat.marginBottom).toBeUndefined()
+  })
+})
