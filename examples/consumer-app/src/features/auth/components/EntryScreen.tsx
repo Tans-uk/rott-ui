@@ -197,6 +197,43 @@ export default function EntryScreen() {
             }}
           />
 
+          {/* leftIcon / rightIcon örnekleri */}
+          <Input
+            name="left-icon-input"
+            type="password"
+            placeholder="Sadece sol ikon"
+            border={{ width: 1, radius: 8, variant: 'grey-200' }}
+            leftIcon={{ name: 'mail', variant: 'grey-900' }}
+            marginTop={16}
+          />
+
+          <Input
+            name="right-icon-input"
+            type="password"
+            placeholder="Sadece sağ ikon"
+            border={{ width: 1, radius: 8, variant: 'grey-200' }}
+            rightIcon={{
+              name: 'search',
+              variant: 'grey-900',
+              onPress: () => console.log('right icon pressed'),
+            }}
+            marginTop={16}
+          />
+
+          <Input
+            name="both-icon-input"
+            type="password"
+            placeholder="Her iki tarafta ikon"
+            border={{ width: 1, radius: 8, variant: 'grey-200' }}
+            leftIcon={{ name: 'lock', variant: 'primary' }}
+            rightIcon={{
+              name: 'information',
+              variant: 'grey-900',
+              onPress: () => console.log('info icon pressed'),
+            }}
+            marginTop={16}
+          />
+
           <Button
             testID="login-button-test-id"
             key="h4"
