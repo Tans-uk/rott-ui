@@ -3,12 +3,9 @@ import React, {type FC} from 'react'
 import {PermissionsAndroid, Platform, StyleSheet} from 'react-native'
 
 import {themeConfig} from '../../../providers'
-import {Icon} from '../../Icon'
-import {Item} from '../../Item'
-import {Pressable} from '../../Pressable'
 import type {PhoneInputProps} from '../models'
 import {InputStyles} from '../styles'
-import {InputStyleNormalizer} from '../utils'
+import {InputField} from './InputField'
 
 import MaskInput from 'react-native-mask-input'
 import {selectContactPhone} from 'react-native-select-contact'
@@ -21,6 +18,13 @@ export const PhoneInput: FC<PhoneInputProps> = ({
   size,
   selectContacts = true,
   maxLength = 16,
+  leftIcon,
+  rightIcon,
+  name: _name,
+  errorMessage: _errorMessage,
+  border: _border,
+  touched: _touched,
+  renderSeparator: _renderSeparator,
   ...props
 }) => {
   const MASK = [
@@ -68,8 +72,20 @@ export const PhoneInput: FC<PhoneInputProps> = ({
       .catch(() => handleTextChange(''))
   }
 
+  const contactIcon = selectContacts
+    ? {
+        name: 'phone-book' as any,
+        color: themeConfig.colors['grey-200'],
+        ...rightIcon,
+        onPress: () => {
+          if (Platform.OS === 'android') getPhoneNumberPermissionRequest()
+          else getPhoneNumberFromContact()
+        },
+      }
+    : rightIcon
+
   return (
-    <Item row>
+    <InputField size={size} leftIcon={leftIcon} rightIcon={contactIcon}>
       <MaskInput
         testID='phone-input-test-id'
         editable={!disabled}
@@ -81,29 +97,6 @@ export const PhoneInput: FC<PhoneInputProps> = ({
         style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
         {...props}
       />
-
-      {selectContacts && (
-        <Item absolute right={0} bottom={InputStyleNormalizer({size}).icon.paddingBottom}>
-          <Pressable
-            testID='contact-pressable-test-id'
-            width={40}
-            height={40}
-            justifyContentFlexEnd
-            alignItemsFlexEnd
-            onPress={() => {
-              if (Platform.OS === 'android') getPhoneNumberPermissionRequest()
-              else getPhoneNumberFromContact()
-            }}>
-            <Icon
-              testID='phone-icon-test-id'
-              name='phone-book'
-              width={InputStyleNormalizer({size}).icon.width}
-              height={InputStyleNormalizer({size}).icon.height}
-              color={themeConfig.colors['grey-200']}
-            />
-          </Pressable>
-        </Item>
-      )}
-    </Item>
+    </InputField>
   )
 }

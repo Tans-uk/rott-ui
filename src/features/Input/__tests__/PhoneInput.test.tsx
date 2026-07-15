@@ -5,8 +5,8 @@ import {PhoneInput} from '../components'
 describe('Phone Input -> Custom Input', () => {
   const testId = {
     inputTestId: 'phone-input-test-id',
-    iconTestId: 'phone-icon-test-id',
-    contactPressableTestId: 'contact-pressable-test-id',
+    iconTestId: 'input-field-right-icon',
+    contactPressableTestId: 'input-field-right-icon',
   }
 
   it('phone input ilk render anında snapshot ile eşleşmeli', async () => {
