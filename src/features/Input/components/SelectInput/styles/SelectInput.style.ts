@@ -11,6 +11,7 @@ export const SelectInputStyles = () =>
       // TODO: Android sorunu çözüldükten sonra bakılması gerekiyor.
       letterSpacing: 0.5,
       width: '90%',
+      flex: 1,
     },
     activityIndicator: {
       height: display.px(72),
