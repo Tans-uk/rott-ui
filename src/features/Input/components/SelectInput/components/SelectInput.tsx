@@ -121,7 +121,7 @@ export const SelectInput: FC<SelectInputProps> = ({
     if (!item) return
 
     if (!multiSelection) {
-      onSelectChange!(item as any)
+      onSelectChange?.(item as any)
       handleItem(item)
       Modal.hideModal(modalId ?? ModalIdEnum.SelectInput)
     } else {
@@ -135,7 +135,7 @@ export const SelectInput: FC<SelectInputProps> = ({
           isLoading: false,
         })
       } else tempSelectedList.splice(index, 1)
-      onSelectChange!(tempSelectedList.map((selectedItem) => selectedItem.value) as any)
+      onSelectChange?.(tempSelectedList.map((selectedItem) => selectedItem.value) as any)
       setSelectItems(tempSelectedList)
     }
   }

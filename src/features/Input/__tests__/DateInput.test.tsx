@@ -109,6 +109,15 @@ describe('Date Input -> Custom Input', () => {
     })
   })
 
+  it('onDateChange verilmeden onaylandığında çökmemeli', async () => {
+    const {getByTestId} = await render(<DateInput name='test' mode='date' date={currentDate} />)
+
+    fireEvent.press(getByTestId(dateInputValueContainerTestId))
+
+    const confirmButton = getByTestId(dateInputConfirmButtonTestId)
+    expect(() => fireEvent.press(confirmButton)).not.toThrow()
+  })
+
   it('minimum date verildikten sonra daha geçmiş bir gün seçilirse tanımlanan minimum date değer olarak atanmalı.', async () => {
     const onDateChangeMock = jest.fn()
     const {getByTestId} = await render(

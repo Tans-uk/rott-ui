@@ -55,7 +55,7 @@ describe('Input -> leftIcon/rightIcon slotları (tüm tipler)', () => {
   )
 
   it.each(cases)(
-    '$type tipi ikon verilmediğinde slot render etmez',
+    '$type tipi ikon verilmediğinde sol slotu render etmez',
     async ({type, extraProps}) => {
       const inputProps = {
         name: `${type}-no-icon-test`,

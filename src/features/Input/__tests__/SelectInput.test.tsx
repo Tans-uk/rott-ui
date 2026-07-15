@@ -102,6 +102,20 @@ describe('Select Input -> Custom Input', () => {
     expect(selectedItemElement.children[0]).toBe('Apple')
   })
 
+  it('onSelectChange verilmeden secim yapildiginda cokmemeli', async () => {
+    const {
+      select: {selectTestId, selectSelectionTestId},
+    } = testId
+    const {getByTestId, getByText} = await render(
+      <SelectInput name='test' testID={selectTestId} list={mockData} label={defaultLabel} />
+    )
+
+    fireEvent.press(getByTestId(selectSelectionTestId))
+
+    const item = getByText('Apple')
+    expect(() => fireEvent.press(item)).not.toThrow()
+  })
+
   it('secim yapildiginda deger dogru sekilde atanmali', async () => {
     const onSelectChangeMock = jest.fn()
     const {

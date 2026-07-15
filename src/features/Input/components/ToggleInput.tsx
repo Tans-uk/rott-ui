@@ -71,7 +71,7 @@ export const ToggleInput: FC<ToggleInputProps> = ({
             <Label
               maxWidth={236}
               fontSize={fontSize || 'xl'}
-              onPress={() => !disabled && !!onToggle && onToggle!(!checked)}
+              onPress={() => !disabled && onToggle?.(!checked)}
               variant='grey-900'>
               {label}
             </Label>
@@ -94,7 +94,7 @@ export const ToggleInput: FC<ToggleInputProps> = ({
             testID={`${name}-toggle-test-id`}
             isOn={checked}
             disabled={disabled}
-            onToggleChange={(isChecked) => !!onToggle && onToggle!(isChecked)}
+            onToggleChange={(isChecked) => onToggle?.(isChecked)}
           />
         </Item>
       </Item>

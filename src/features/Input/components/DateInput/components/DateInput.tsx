@@ -103,7 +103,7 @@ export const DateInput: FC<DateInputProps> = ({
 
     validDate = mode.includes('time') ? validDate : startOfDay(validDate)
 
-    onDateChange!(validDate)
+    onDateChange?.(validDate)
     selectedItem.current = isDataModel ? {...date, value: validDate} : {label: '', value: validDate}
     Modal.hideModal(ModalIdEnum.NativeDatePicker)
   }
@@ -111,7 +111,7 @@ export const DateInput: FC<DateInputProps> = ({
   const handleClearPress = () => {
     Modal.hideModal()
     externalDate = new Date()
-    onDateChange!(null as any)
+    onDateChange?.(null as any)
   }
 
   const isSameDay = (date1: Date, date2: Date) =>
