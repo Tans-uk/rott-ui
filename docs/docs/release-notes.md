@@ -13,8 +13,6 @@ in `0.x`, a **minor** bump may carry breaking changes; a **patch** bump never
 does. Breaking changes are always listed first, with the migration step next to
 them.
 
----
-
 ## 0.9.0
 
 **Button prop contract.** Two props that the public surface declared but the
@@ -133,8 +131,6 @@ Both issues expose wider gaps that are **not** closed by this release:
   still have no path to a style on components other than Button.
 - The fixed `342` reference-device width remains hardcoded in `Notification`,
   `ActionMenu`, `ActionMenuHeader`, and `ToggleInput`.
-
----
 
 ## Earlier releases
 

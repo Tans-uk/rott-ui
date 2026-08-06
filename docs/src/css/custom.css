@@ -1,114 +1,246 @@
 /**
- * Rott UI Documentation — Rottweiler Theme
+ * Rott UI Documentation — "Working Dog"
  *
- * Color palette inspired by the Rottweiler breed:
- *   Black coat  → deep blacks and near-blacks for primary surfaces
- *   Tan markings → warm rust/amber (#92400E) as the accent / CTA color
+ * Industrial-editorial. The palette comes from the breed the library is named
+ * after: a warm near-black coat with rust markings. Deliberately not the blue or
+ * purple that most developer documentation defaults to.
+ *
+ * Two colour families, with a rule about which is which:
+ *   rust  (--rott-accent) — the SITE. Links, active states, chrome.
+ *   cyan  (--rott-signal) — the PRODUCT. Only ever used for rendered Rott UI
+ *                           components, so a demo always reads as the library's
+ *                           own output rather than as page decoration. This is
+ *                           the library's real primary, rgba(0, 169, 206, 1).
+ *
+ * Type: Bricolage Grotesque (display) / Public Sans (body) / JetBrains Mono (code).
  */
+
+/* ─────────────────────────────────────────────────────────
+   Typography tokens
+   ───────────────────────────────────────────────────────── */
+:root {
+  --rott-font-display: 'Bricolage Grotesque', 'Public Sans', ui-sans-serif, system-ui, sans-serif;
+  --rott-font-body: 'Public Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --rott-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --ifm-font-family-base: var(--rott-font-body);
+  --ifm-font-family-monospace: var(--rott-font-mono);
+  --ifm-heading-font-family: var(--rott-font-display);
+
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.65;
+  --ifm-heading-font-weight: 700;
+
+  /* Vertical rhythm — 4/8px scale */
+  --rott-space-1: 0.25rem;
+  --rott-space-2: 0.5rem;
+  --rott-space-3: 1rem;
+  --rott-space-4: 1.5rem;
+  --rott-space-5: 2rem;
+  --rott-space-6: 3rem;
+  --rott-space-7: 4.5rem;
+
+  --rott-radius: 10px;
+  --rott-radius-sm: 6px;
+
+  --rott-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --rott-duration: 220ms;
+}
 
 /* ─────────────────────────────────────────────────────────
    Light mode
    ───────────────────────────────────────────────────────── */
 :root {
-  /* Docusaurus primary scale — maps to the rust/tan accent */
-  --ifm-color-primary:          #92400E;
-  --ifm-color-primary-dark:     #7C3610;
-  --ifm-color-primary-darker:   #72300E;
-  --ifm-color-primary-darkest:  #5A250B;
-  --ifm-color-primary-light:    #A84D13;
-  --ifm-color-primary-lighter:  #B45309;
-  --ifm-color-primary-lightest: #C05A0A;
+  /* Docusaurus primary scale — maps to the rust/tan accent.
+     #A33C08 on the paper background is ~6.3:1, comfortably past WCAG AA. */
+  --ifm-color-primary:          #A33C08;
+  --ifm-color-primary-dark:     #8E3407;
+  --ifm-color-primary-darker:   #802F06;
+  --ifm-color-primary-darkest:  #642404;
+  --ifm-color-primary-light:    #BC470B;
+  --ifm-color-primary-lighter:  #CC4E0C;
+  --ifm-color-primary-lightest: #E0590F;
 
-  /* Brand surfaces */
-  --rott-bg:          #fafafa;
-  --rott-bg-secondary: #f5f4f3;
-  --rott-text:        #1a1a1a;
-  --rott-text-muted:  #78716c;
-  --rott-border:      #e7e5e4;
-  --rott-accent:      #92400E;
-  --rott-accent-hover:#7C3610;
-  --rott-black:       #1a1a1a;
-  --rott-card-bg:     #ffffff;
-  --rott-shadow:      0 1px 3px rgba(26, 26, 26, 0.08), 0 4px 12px rgba(26, 26, 26, 0.05);
-  --rott-shadow-hover: 0 4px 16px rgba(146, 64, 14, 0.18), 0 2px 6px rgba(26, 26, 26, 0.08);
+  /* Brand surfaces — warm paper, not clinical white */
+  --rott-bg:           #FBF9F6;
+  --rott-bg-secondary: #F3EFE9;
+  --rott-text:         #17130F;
+  --rott-text-muted:   #6E635A;
+  --rott-border:       #E6DFD6;
+  --rott-border-strong:#D6CCBF;
+  --rott-accent:       #A33C08;
+  --rott-accent-hover: #862F04;
+  --rott-accent-soft:  rgba(163, 60, 8, 0.08);
+  --rott-black:        #17130F;
+  --rott-card-bg:      #FFFFFF;
 
-  /* Code highlighting */
-  --ifm-code-font-size: 90%;
-  --docusaurus-highlighted-code-line-bg: rgba(146, 64, 14, 0.08);
+  /* The product's own colour. Components only. */
+  --rott-signal:       #00A9CE;
+  --rott-signal-soft:  rgba(0, 169, 206, 0.1);
 
-  /* Navbar */
-  --ifm-navbar-background-color: #1a1a1a;
-  --ifm-navbar-link-color:       #e7e5e4;
-  --ifm-navbar-link-hover-color: #B45309;
+  --rott-shadow: 0 1px 2px rgba(23, 19, 15, 0.05), 0 8px 24px -12px rgba(23, 19, 15, 0.14);
+  --rott-shadow-hover: 0 2px 4px rgba(23, 19, 15, 0.06), 0 16px 40px -16px rgba(163, 60, 8, 0.28);
 
-  /* Footer */
-  --ifm-footer-background-color: #0a0a0a;
-  --ifm-footer-color:            #a8a29e;
-  --ifm-footer-link-color:       #a8a29e;
-  --ifm-footer-link-hover-color: #B45309;
+  --ifm-background-color: var(--rott-bg);
+  --ifm-background-surface-color: var(--rott-card-bg);
+  --ifm-font-color-base: var(--rott-text);
 
-  /* Sidebar */
+  --ifm-code-font-size: 87.5%;
+  --docusaurus-highlighted-code-line-bg: rgba(163, 60, 8, 0.09);
+
+  --ifm-navbar-background-color: rgba(251, 249, 246, 0.82);
+  --ifm-navbar-link-color:       #3D342C;
+  --ifm-navbar-link-hover-color: var(--rott-accent);
+
+  --ifm-footer-background-color: #17130F;
+  --ifm-footer-color:            #A2968A;
+  --ifm-footer-link-color:       #C9BFB3;
+  --ifm-footer-link-hover-color: #F0873A;
+
   --ifm-menu-link-sublist-icon-filter: none;
+  --ifm-toc-border-color: var(--rott-border);
 }
 
 /* ─────────────────────────────────────────────────────────
-   Dark mode
+   Dark mode — the coat. Warm black, never blue-black.
    ───────────────────────────────────────────────────────── */
 [data-theme='dark'] {
-  --ifm-color-primary:          #B45309;
-  --ifm-color-primary-dark:     #A84D13;
-  --ifm-color-primary-darker:   #9E4611;
-  --ifm-color-primary-darkest:  #7C3610;
-  --ifm-color-primary-light:    #C05A0A;
-  --ifm-color-primary-lighter:  #CC6210;
-  --ifm-color-primary-lightest: #D97706;
+  --ifm-color-primary:          #F0873A;
+  --ifm-color-primary-dark:     #E87522;
+  --ifm-color-primary-darker:   #DB6B1C;
+  --ifm-color-primary-darkest:  #B45309;
+  --ifm-color-primary-light:    #F49A57;
+  --ifm-color-primary-lighter:  #F7AC73;
+  --ifm-color-primary-lightest: #FAC99A;
 
-  --rott-bg:           #0a0a0a;
-  --rott-bg-secondary: #141414;
-  --rott-text:         #fafafa;
-  --rott-text-muted:   #a8a29e;
-  --rott-border:       #292524;
-  --rott-accent:       #B45309;
-  --rott-accent-hover: #C05A0A;
-  --rott-card-bg:      #1a1a1a;
-  --rott-shadow:       0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
-  --rott-shadow-hover: 0 4px 16px rgba(180, 83, 9, 0.3), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --rott-bg:           #100E0C;
+  --rott-bg-secondary: #191512;
+  --rott-text:         #F7F2EA;
+  --rott-text-muted:   #A2968A;
+  --rott-border:       #2A231D;
+  --rott-border-strong:#3A3128;
+  --rott-accent:       #F0873A;
+  --rott-accent-hover: #F9A868;
+  --rott-accent-soft:  rgba(240, 135, 58, 0.12);
+  --rott-black:        #0A0908;
+  --rott-card-bg:      #17130F;
 
-  --docusaurus-highlighted-code-line-bg: rgba(180, 83, 9, 0.15);
+  --rott-signal:       #35C6E4;
+  --rott-signal-soft:  rgba(53, 198, 228, 0.14);
 
-  --ifm-navbar-background-color: #0a0a0a;
-  --ifm-navbar-link-color:       #e7e5e4;
-  --ifm-navbar-link-hover-color: #D97706;
+  --rott-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 32px -16px rgba(0, 0, 0, 0.7);
+  --rott-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.5), 0 20px 48px -20px rgba(240, 135, 58, 0.3);
 
-  --ifm-footer-background-color: #000000;
-  --ifm-footer-color:            #78716c;
-  --ifm-footer-link-color:       #78716c;
-  --ifm-footer-link-hover-color: #D97706;
+  --ifm-background-color: var(--rott-bg);
+  --ifm-background-surface-color: var(--rott-card-bg);
+  --ifm-font-color-base: var(--rott-text);
 
-  --ifm-background-color:        #0a0a0a;
-  --ifm-background-surface-color: #141414;
-  --ifm-toc-border-color:        #292524;
-  --ifm-color-content:           #fafafa;
-  --ifm-color-content-secondary: #a8a29e;
+  --docusaurus-highlighted-code-line-bg: rgba(240, 135, 58, 0.14);
+
+  --ifm-navbar-background-color: rgba(16, 14, 12, 0.8);
+  --ifm-navbar-link-color:       #C9BFB3;
+  --ifm-navbar-link-hover-color: var(--rott-accent);
+
+  --ifm-footer-background-color: #0A0908;
+  --ifm-toc-border-color: var(--rott-border);
 }
 
 /* ─────────────────────────────────────────────────────────
-   Navbar
+   Base
+   ───────────────────────────────────────────────────────── */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--rott-bg);
+  color: var(--rott-text);
+  font-feature-settings: 'kern' 1, 'liga' 1, 'cv11' 1;
+}
+
+/* Paper grain. Sits above the background, below everything else, and is faint
+   enough to read as texture rather than noise. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+[data-theme='dark'] body::before {
+  opacity: 0.05;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Headings — tight, confident, optically sized
+   ───────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+.markdown h1, .markdown h2, .markdown h3 {
+  font-family: var(--rott-font-display);
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.markdown h1 {
+  font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.032em;
+  line-height: 1.08;
+  margin-bottom: var(--rott-space-4);
+}
+
+.markdown h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1.1vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.18;
+  margin-top: var(--rott-space-6);
+  padding-top: var(--rott-space-3);
+  border-top: 1px solid var(--rott-border);
+}
+
+.markdown h3 {
+  font-size: 1.22rem;
+  font-weight: 700;
+  margin-top: var(--rott-space-5);
+}
+
+/* Comfortable measure. Long-form prose past ~78 characters is hard to track. */
+.markdown > p,
+.markdown > ul,
+.markdown > ol {
+  max-width: 78ch;
+}
+
+.markdown a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color var(--rott-duration) var(--rott-ease);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Navbar — translucent, hairline, no heavy chrome
    ───────────────────────────────────────────────────────── */
 .navbar {
-  background-color: var(--ifm-navbar-background-color);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--rott-border);
   box-shadow: none;
 }
 
 .navbar__brand {
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-family: var(--rott-font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 .navbar__title {
-  color: #fafafa !important;
-  font-weight: 700;
+  color: var(--rott-text) !important;
+  font-weight: 800;
+  font-size: 1.12rem;
 }
 
 .navbar__logo {
@@ -118,7 +250,8 @@
 .navbar__link {
   color: var(--ifm-navbar-link-color) !important;
   font-weight: 500;
-  transition: color 200ms ease;
+  font-size: 0.94rem;
+  transition: color var(--rott-duration) var(--rott-ease);
 }
 
 .navbar__link:hover,
@@ -126,100 +259,248 @@
   color: var(--ifm-navbar-link-hover-color) !important;
 }
 
+/* Active nav item gets a rust underline rather than only a colour change —
+   colour alone is not a sufficient indicator. */
+.navbar__link--active {
+  position: relative;
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--rott-accent);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Algolia DocSearch — ships indigo by default, which fights the warm palette
+   ───────────────────────────────────────────────────────── */
+/* DocSearch sets these on :root with its own dark-theme block, so the element-level
+   variable alone does not always win — the background is forced here too. */
+.DocSearch-Button {
+  --docsearch-searchbox-background: var(--rott-bg-secondary);
+  --docsearch-searchbox-focus-background: var(--rott-card-bg);
+  --docsearch-text-color: var(--rott-text-muted);
+  --docsearch-muted-color: var(--rott-text-muted);
+  --docsearch-searchbox-shadow: 0 0 0 2px var(--rott-accent);
+  background: var(--rott-bg-secondary) !important;
+  color: var(--rott-text-muted);
+  border: 1px solid var(--rott-border);
+  border-radius: var(--rott-radius-sm);
+  font-family: var(--rott-font-body);
+  transition: border-color var(--rott-duration) var(--rott-ease);
+}
+
+.DocSearch-Button .DocSearch-Search-Icon {
+  color: var(--rott-text-muted);
+}
+
+.DocSearch-Button:hover {
+  border-color: var(--rott-accent);
+  box-shadow: none;
+}
+
+.DocSearch-Button-Key {
+  background: var(--rott-card-bg);
+  border: 1px solid var(--rott-border);
+  box-shadow: none;
+  color: var(--rott-text-muted);
+  font-family: var(--rott-font-mono);
+}
+
+[data-theme='dark'] .DocSearch-Button {
+  --docsearch-searchbox-background: var(--rott-bg-secondary);
+  --docsearch-searchbox-focus-background: var(--rott-card-bg);
+}
+
+/* Non-Algolia fallback search input */
+.navbar__search-input {
+  background-color: var(--rott-bg-secondary);
+  border: 1px solid var(--rott-border);
+  border-radius: var(--rott-radius-sm);
+  font-family: var(--rott-font-body);
+}
+
 /* ─────────────────────────────────────────────────────────
    Sidebar
    ───────────────────────────────────────────────────────── */
+.menu {
+  font-size: 0.9rem;
+  padding: var(--rott-space-3) !important;
+}
+
+.menu__list-item-collapsible,
+.menu__link {
+  border-radius: var(--rott-radius-sm);
+  transition: background var(--rott-duration) var(--rott-ease),
+              color var(--rott-duration) var(--rott-ease);
+}
+
 .menu__link--active {
   color: var(--rott-accent) !important;
   font-weight: 600;
+  background: var(--rott-accent-soft);
 }
 
 .menu__link:hover {
   color: var(--rott-accent);
-  background: rgba(146, 64, 14, 0.06);
+  background: var(--rott-accent-soft);
 }
 
 [data-theme='dark'] .menu__link:hover {
-  background: rgba(180, 83, 9, 0.1);
+  background: var(--rott-accent-soft);
 }
 
 /* ─────────────────────────────────────────────────────────
-   Props table
+   Props table — tabular figures so columns do not shuffle
    ───────────────────────────────────────────────────────── */
 .props-table {
   width: 100%;
-  margin: 1.5rem 0;
+  margin: var(--rott-space-4) 0;
   border-collapse: collapse;
   font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid var(--rott-border);
+  border-radius: var(--rott-radius);
+  overflow: hidden;
 }
 
 .props-table th {
-  background-color: var(--ifm-color-emphasis-100);
-  padding: 0.75rem 1rem;
+  background-color: var(--rott-bg-secondary);
+  padding: 0.7rem 1rem;
   text-align: left;
-  font-weight: 600;
-  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  font-family: var(--rott-font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rott-text-muted);
+  border-bottom: 1px solid var(--rott-border);
 }
 
 .props-table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--rott-border);
   vertical-align: top;
 }
 
+.props-table tr:last-child td {
+  border-bottom: none;
+}
+
 .props-table tr:hover {
-  background-color: var(--ifm-color-emphasis-50);
+  background-color: var(--rott-accent-soft);
 }
 
 .prop-name {
-  font-family: var(--ifm-font-family-monospace);
+  font-family: var(--rott-font-mono);
   font-weight: 600;
   color: var(--rott-accent);
 }
 
 .prop-type {
-  font-family: var(--ifm-font-family-monospace);
-  font-size: 0.85rem;
+  font-family: var(--rott-font-mono);
+  font-size: 0.83rem;
+  color: var(--rott-text-muted);
 }
 
 .prop-required {
   color: var(--ifm-color-danger);
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-left: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-left: 0.4rem;
+}
+
+/* Markdown tables inherit the same treatment */
+.markdown table {
+  display: table;
+  width: 100%;
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+  border-collapse: collapse;
+}
+
+.markdown table thead tr {
+  background: var(--rott-bg-secondary);
+  border-bottom: 1px solid var(--rott-border);
+}
+
+.markdown table th {
+  font-family: var(--rott-font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rott-text-muted);
+}
+
+.markdown table td,
+.markdown table th {
+  border: none;
+  border-bottom: 1px solid var(--rott-border);
+  padding: 0.65rem 0.9rem;
 }
 
 /* ─────────────────────────────────────────────────────────
-   Admonitions (tip, info, warning, caution)
+   Admonitions
    ───────────────────────────────────────────────────────── */
+.alert {
+  border-radius: var(--rott-radius);
+  border-width: 1px;
+  border-left-width: 3px;
+  box-shadow: none;
+}
+
 .alert--info {
   border-left-color: var(--rott-accent);
 }
 
 /* ─────────────────────────────────────────────────────────
-   Inline code
+   Code
    ───────────────────────────────────────────────────────── */
 code {
+  font-family: var(--rott-font-mono);
   color: var(--rott-accent);
-  background: rgba(146, 64, 14, 0.07);
-  border: 1px solid rgba(146, 64, 14, 0.12);
-  border-radius: 4px;
-  padding: 0.1em 0.35em;
+  background: var(--rott-accent-soft);
+  border: 1px solid rgba(163, 60, 8, 0.14);
+  border-radius: var(--rott-radius-sm);
+  padding: 0.12em 0.36em;
+  font-size: 0.87em;
 }
 
 [data-theme='dark'] code {
-  background: rgba(180, 83, 9, 0.12);
-  border-color: rgba(180, 83, 9, 0.2);
+  border-color: rgba(240, 135, 58, 0.2);
+}
+
+/* Code blocks own their own colour — the inline treatment must not leak in. */
+.theme-code-block code,
+pre code {
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.theme-code-block {
+  border-radius: var(--rott-radius) !important;
+  border: 1px solid var(--rott-border);
+  box-shadow: var(--rott-shadow) !important;
 }
 
 /* ─────────────────────────────────────────────────────────
-   Component demo (used in component docs)
+   Component demo — the product's own colour lives here
    ───────────────────────────────────────────────────────── */
 .component-demo {
-  margin: 2rem 0;
-  padding: 2rem;
+  margin: var(--rott-space-5) 0;
   border: 1px solid var(--rott-border);
-  border-radius: 8px;
+  border-radius: var(--rott-radius);
+  overflow: hidden;
+  background: var(--rott-card-bg);
 }
 
 .component-demo-preview {
@@ -227,38 +508,134 @@ code {
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  padding: 2rem;
+  padding: var(--rott-space-5);
   background-color: var(--rott-bg-secondary);
-  border-radius: 6px;
-  margin-bottom: 1rem;
+  background-image: radial-gradient(var(--rott-border-strong) 1px, transparent 1px);
+  background-size: 16px 16px;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--rott-border);
 }
 
 /* ─────────────────────────────────────────────────────────
    Footer
    ───────────────────────────────────────────────────────── */
-.footer {
-  background-color: var(--ifm-footer-background-color) !important;
+/* Infima's .footer--dark redefines --ifm-footer-background-color on the element
+   itself, which beats the :root value. Override it where it is actually set,
+   otherwise the footer renders in the default slate blue and fights the palette. */
+.footer,
+.footer--dark {
+  --ifm-footer-background-color: #17130F;
+  background-color: #17130F !important;
+  border-top: 1px solid var(--rott-border);
 }
 
-.footer__title {
-  color: #fafafa;
+[data-theme='dark'] .footer,
+[data-theme='dark'] .footer--dark {
+  --ifm-footer-background-color: #0A0908;
+  background-color: #0A0908 !important;
 }
 
 .footer__link-item {
-  transition: color 200ms ease;
+  color: #C9BFB3;
+}
+
+.footer__link-item:hover {
+  color: #F0873A;
+}
+
+.footer__copyright {
+  color: #8A7E72;
+  font-size: 0.85rem;
+}
+
+.footer__title {
+  font-family: var(--rott-font-display);
+  color: #FBF9F6;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.footer__link-item {
+  transition: color var(--rott-duration) var(--rott-ease);
 }
 
 /* ─────────────────────────────────────────────────────────
    Table of contents
    ───────────────────────────────────────────────────────── */
+.table-of-contents {
+  font-size: 0.84rem;
+  border-left: 1px solid var(--rott-border);
+}
+
 .table-of-contents__link:hover,
 .table-of-contents__link--active {
   color: var(--rott-accent);
 }
 
+.table-of-contents__link--active {
+  font-weight: 600;
+}
+
 /* ─────────────────────────────────────────────────────────
-   Pagination / prev-next links
+   Pagination
    ───────────────────────────────────────────────────────── */
+.pagination-nav__link {
+  border-radius: var(--rott-radius);
+  border-color: var(--rott-border);
+  transition: border-color var(--rott-duration) var(--rott-ease),
+              transform var(--rott-duration) var(--rott-ease);
+}
+
 .pagination-nav__link:hover {
   border-color: var(--rott-accent);
+  transform: translateY(-2px);
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rott-text-muted);
+}
+
+.pagination-nav__label {
+  font-family: var(--rott-font-display);
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Focus — never remove the ring, only restyle it
+   ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--rott-accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Release notes page
+   ───────────────────────────────────────────────────────── */
+.markdown h2 code {
+  font-size: 0.9em;
+}
+
+/* Version headings read as records, so they get a monospace, tabular treatment */
+.release-version {
+  font-family: var(--rott-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Motion preferences
+   ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
