@@ -129,6 +129,7 @@ const sidebars: SidebarsConfig = {
         'tutorial-extras/translate-your-site',
       ],
     },
+    'release-notes',
   ],
 };
 

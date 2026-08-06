@@ -90,6 +90,11 @@ const config: Config = {
           label: 'Docs',
         },
         {
+          to: '/docs/release-notes',
+          label: 'Release Notes',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/Tans-uk/rott-ui',
           label: 'GitHub',
           position: 'right',
