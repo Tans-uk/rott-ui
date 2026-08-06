@@ -214,7 +214,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
             {
               "alignItems": "center",
               "backgroundColor": "rgba(0, 0, 0, 0)",
-              "borderColor": "white",
+              "borderColor": undefined,
               "borderRadius": 16,
               "borderWidth": undefined,
               "color": "danger",
@@ -292,7 +292,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
             {
               "alignItems": "center",
               "backgroundColor": "rgba(0, 0, 0, 0)",
-              "borderColor": "white",
+              "borderColor": undefined,
               "borderRadius": 16,
               "borderWidth": undefined,
               "color": "primary",

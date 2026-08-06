@@ -844,7 +844,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
           {
             "alignItems": "center",
             "backgroundColor": "rgba(0, 169, 206, 1)",
-            "borderColor": "white",
+            "borderColor": undefined,
             "borderRadius": 16,
             "borderWidth": undefined,
             "color": undefined,

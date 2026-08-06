@@ -9,6 +9,8 @@ import {
 import {buttonSizeNormalizer} from '../utils'
 
 export const ButtonStyles = (props?: any) => {
+  const isOutline = props?.variant?.includes('outline')
+
   return StyleSheet.create({
     defaultButtonStyle: {
       ...(commonUiStyleProperties(props) as any),
@@ -21,10 +23,10 @@ export const ButtonStyles = (props?: any) => {
       color: props?.color,
 
       borderRadius: props.borderRadius ? display.px(props.borderRadius) : display.px(8),
-      borderWidth: props?.variant?.includes('outline') ? 2 : undefined,
-      borderColor: props?.variant?.includes('outline')
-        ? colorFromVariant(props?.variant?.replace('-outline', ''))
-        : 'white',
+      borderWidth: props?.borderWidth ?? (isOutline ? 2 : undefined),
+      borderColor:
+        props?.borderColor ??
+        (isOutline ? colorFromVariant(props?.variant?.replace('-outline', '')) : undefined),
 
       height:
         typeof props?.height === 'number' ||
