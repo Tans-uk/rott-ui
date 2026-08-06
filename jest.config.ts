@@ -72,6 +72,9 @@ const jestConfiguration: JestConfigWithTsJest = {
     'examples/',
     'lib/',
     '.jest-cache/',
+    // Anchored to rootDir: an unanchored '.claude/' also matches the absolute path of
+    // a worktree's own tests, silently filtering every test when Jest runs inside one.
+    '<rootDir>/.claude/',
     'src/__tests__/utils',
   ],
 }
