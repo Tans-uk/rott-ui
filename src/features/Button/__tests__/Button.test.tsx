@@ -2,7 +2,7 @@ import React from 'react'
 
 import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
-import {colorFromVariant} from '../../../utils'
+import {colorFromVariant, display} from '../../../utils'
 import {Button} from '../components'
 
 const testId = {
@@ -220,6 +220,52 @@ describe('Button -> Custom Component', () => {
     expect(getByTestId(buttonTestId)).toHaveStyle({
       borderWidth: undefined,
       borderColor: undefined,
+    })
+  })
+
+  it('size full verildiğinde genişlik sabit piksel değil kapsayıcıya göreli olmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} size='full'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({width: '100%'})
+  })
+
+  it('size verilmediğinde varsayılan buton genişliği kapsayıcıya göreli olmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({width: '100%'})
+  })
+
+  it('xl size kendi genişlik ve yüksekliğine sahip olmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} size='xl'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      width: '85%',
+      height: display.px(64),
+    })
+  })
+
+  it('xxl size kendi genişlik ve yüksekliğine sahip olmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} size='xxl'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      width: '92.5%',
+      height: display.px(72),
     })
   })
 })

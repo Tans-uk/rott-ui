@@ -857,7 +857,7 @@ exports[`ActionMenu -> Custom Component ilk render anında snapshot ile eşleşm
             "overflow": "hidden",
             "pointerEvents": "box-only",
             "position": "relative",
-            "width": 658,
+            "width": "100%",
           }
         }
         testID="action-menu-cancel-test-id"

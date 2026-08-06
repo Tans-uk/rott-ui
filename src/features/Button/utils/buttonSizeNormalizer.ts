@@ -1,5 +1,5 @@
 import type {Size} from '../../../models'
-import {display} from '../../../utils'
+import {display, sizeToPercentage} from '../../../utils'
 
 export const buttonSizeNormalizer = (buttonSize: Size | {width: string; height: string}) => {
   switch (buttonSize) {
@@ -31,12 +31,26 @@ export const buttonSizeNormalizer = (buttonSize: Size | {width: string; height: 
         fontSize: display.fontPixel(16),
         icon: display.px(24),
       }
+    // Relative widths come from sizeToPercentage so Button cannot drift from the
+    // percentages every other component resolves for the same size token.
     case 'xl':
+      return {
+        width: sizeToPercentage('xl'),
+        height: display.px(64),
+        fontSize: display.fontPixel(18),
+        icon: display.px(28),
+      }
     case 'xxl':
+      return {
+        width: sizeToPercentage('xxl'),
+        height: display.px(72),
+        fontSize: display.fontPixel(20),
+        icon: display.px(32),
+      }
     case 'full':
     default:
       return {
-        width: display.px(342),
+        width: sizeToPercentage('full'),
         height: display.px(56),
         fontSize: display.fontPixel(16),
         icon: display.px(24),

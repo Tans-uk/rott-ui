@@ -226,7 +226,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
               "overflow": "hidden",
               "pointerEvents": "box-only",
               "position": "relative",
-              "width": 658,
+              "width": "100%",
             }
           }
           testID="alert-dialog-cancel-button-test-id"
@@ -304,7 +304,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
               "overflow": "hidden",
               "pointerEvents": "box-only",
               "position": "relative",
-              "width": 658,
+              "width": "100%",
             }
           }
           testID="alert-dialog-confirm-button-test-id"
