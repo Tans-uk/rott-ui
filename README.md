@@ -1,35 +1,32 @@
 # @tansuk/rott-ui
 
-A comprehensive, property-based React Native UI Kit designed for rapid development with type-safe theming and extensive customization options.
+A property-based React Native UI kit: 29 components, type-safe theming from a single
+config file, and 113 built-in SVG icons.
 
-[![npm version](https://badge.fury.io/js/@tansuk%2Frott-ui.svg)](https://badge.fury.io/js/@tansuk%2Frott-ui)
+[![npm version](https://badge.fury.io/js/@tansuk%2Frott-ui.svg)](https://www.npmjs.com/package/@tansuk/rott-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Documentation](https://img.shields.io/badge/docs-docusaurus-blue.svg)](./docs)
+[![Documentation](https://img.shields.io/badge/docs-docusaurus-blue.svg)](https://docs-rottui.tansuk.dev)
 
-## 📚 Documentation
+**[Full documentation →](https://docs-rottui.tansuk.dev)** · [Release notes](https://docs-rottui.tansuk.dev/docs/release-notes)
 
-**[View Full Documentation →](https://docs-rottui.tansuk.dev)**
+---
 
-Comprehensive documentation with:
+## Facts an assistant should not guess
 
-- 🚀 Getting Started guides
-- 📖 All 29 component pages
-- 🎨 Theming system
-- 📝 How-to guides
-- 💡 Complete examples
-- 🌍 Bilingual support (EN/TR)
+Getting these wrong produces code that compiles, runs, and silently misbehaves.
 
-## ✨ Features
+| Thing | Correct value | Common mistake |
+|---|---|---|
+| Icon / image names | lowercase kebab-case: `arrow-right`, `remove-circle`, `money-add` | `ARROW_RIGHT`, `arrowRight` — will not resolve |
+| `language` in provider config | an object: `{name: 'en'}` | `'en'` — silently falls back to the default locale |
+| Runtime config resolution | Babel `module-resolver` alias is **required** | `tsconfig.json` `paths` alone — compile-time only, fails at runtime |
+| Reanimated Babel plugin | must be **last** in the plugin list | placing it earlier breaks worklets |
+| `size="full"` | `100%` of the parent (since 0.9.0) | assuming a fixed pixel width |
+| Available locales | `en`, `tr` | anything else falls back to default |
 
-- 🎨 **29 Production-Ready Components** - From basic buttons to complex modals and input fields
-- 🎯 **Type-Safe Theming** - Configure colors, fonts, and styles with full TypeScript support
-- 📱 **React Native First** - Optimized for mobile development with platform-specific adaptations
-- 🔧 **Highly Customizable** - Every component accepts extensive styling and behavior props
-- 🌍 **Internationalization Ready** - Built-in i18n support with React Intl integration
-- ♿ **Accessibility Focused** - Comprehensive accessibility features and testing
-- 🚀 **Performance Optimized** - Leverages FlashList, Reanimated, and other performance libraries
+Everything below is verified against the source of this repository.
 
-## 📦 Installation
+## Installation
 
 ```bash
 npm install @tansuk/rott-ui
@@ -37,44 +34,49 @@ npm install @tansuk/rott-ui
 yarn add @tansuk/rott-ui
 ```
 
-### Peer Dependencies
+### Peer dependencies
 
-Install the required peer dependencies for full functionality:
+All 19 are required for full functionality.
 
 ```bash
 npm install react react-native react-intl date-fns \
   @shopify/flash-list react-native-reanimated \
   react-native-safe-area-context react-native-svg \
-  react-native-linear-gradient react-native-mask-input \
-  react-native-device-info react-native-tab-view \
-  react-native-toast-notifications react-native-keyboard-controller \
-  react-native-edge-to-edge react-native-worklets \
-  react-native-select-contact @react-native-community/netinfo
+  react-native-svg-transformer react-native-linear-gradient \
+  react-native-mask-input react-native-device-info \
+  react-native-tab-view react-native-toast-notifications \
+  react-native-keyboard-controller react-native-edge-to-edge \
+  react-native-worklets react-native-select-contact \
+  @react-native-community/netinfo
 ```
 
-#### Key Dependencies & Links
+| Package | Required version |
+|---|---|
+| `react`, `react-native` | any |
+| `@react-native-community/netinfo` | `>=11.0.0` |
+| `@shopify/flash-list` | `>=1.8.0` |
+| `date-fns` | `>=4.0.0` |
+| `react-intl` | `>=7.1.0` |
+| `react-native-device-info` | `>=14.0.0` |
+| `react-native-edge-to-edge` | `>=1.6.0` |
+| `react-native-keyboard-controller` | `>=1.17.3` |
+| `react-native-linear-gradient` | `2.8.3` (exact) |
+| `react-native-mask-input` | `>=1.2.3` |
+| `react-native-reanimated` | `>=4.0.0` |
+| `react-native-safe-area-context` | `>=5.4.1` |
+| `react-native-select-contact` | `>=1.6.3` |
+| `react-native-svg` | `>=15.12.0` |
+| `react-native-svg-transformer` | `>=1.5.1` |
+| `react-native-tab-view` | `>=4.0.2` |
+| `react-native-toast-notifications` | `>=3.4.0` |
+| `react-native-worklets` | `>=0.4.0` |
 
-| Package                          | Version   | Repository                                                                             |
-| -------------------------------- | --------- | -------------------------------------------------------------------------------------- |
-| `@shopify/flash-list`            | >=1.8.0   | [GitHub](https://github.com/Shopify/flash-list)                                        |
-| `react-native-reanimated`        | 4.0.1     | [GitHub](https://github.com/software-mansion/react-native-reanimated)                  |
-| `react-native-safe-area-context` | >=5.4.1   | [GitHub](https://github.com/th3rdwave/react-native-safe-area-context)                  |
-| `react-native-svg`               | >=15.12.0 | [GitHub](https://github.com/software-mansion/react-native-svg)                         |
-| `react-native-linear-gradient`   | 2.8.3     | [GitHub](https://github.com/react-native-linear-gradient/react-native-linear-gradient) |
-| `react-intl`                     | >=7.1.0   | [GitHub](https://github.com/formatjs/formatjs)                                         |
-| `date-fns`                       | >=4.0.0   | [GitHub](https://github.com/date-fns/date-fns)                                         |
+### Metro — SVG support
 
-### Configure SVG Support
-
-Rott UI uses SVG icons. Install the transformer so Metro can handle `.svg` files:
-
-```bash
-npm install --save-dev react-native-svg-transformer
-```
-
-Create or update `metro.config.js`:
+Icons ship as SVG, so Metro needs the transformer.
 
 ```js
+// metro.config.js
 const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config')
 const defaultConfig = getDefaultConfig(__dirname)
 const {assetExts, sourceExts} = defaultConfig.resolver
@@ -92,17 +94,12 @@ const config = {
 module.exports = mergeConfig(defaultConfig, config)
 ```
 
-### Configure Babel for `rott.config.ts`
+### Babel — `rott.config` resolution
 
-Install the module resolver plugin:
-
-```bash
-npm install --save-dev babel-plugin-module-resolver
-```
-
-Update `babel.config.js` — **order matters**:
+**Order matters.** `react-native-reanimated/plugin` must be last.
 
 ```js
+// babel.config.js
 module.exports = {
   presets: ['module:@react-native/babel-preset'],
   plugins: [
@@ -114,67 +111,69 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.json'],
       },
     ],
-    'react-native-reanimated/plugin', // Must be last!
+    'react-native-reanimated/plugin', // must be last
   ],
 }
 ```
 
-> **Note:** `tsconfig.json` paths are compile-time only. The Babel module resolver is required for runtime resolution of `rott.config`.
+> `tsconfig.json` `paths` gives compile-time types only. Without the Babel alias above,
+> `rott.config` fails to resolve at runtime. Both are needed.
 
-## 🚀 Quick Start
+## Quick start
 
-### 1. Wrap your app with RottProvider
+### 1. Wrap the app
 
 ```tsx
 import React from 'react'
 
 import {RottProvider} from '@tansuk/rott-ui'
 
-function App() {
+export default function App() {
   return (
     <RottProvider
       config={{
         options: {
-          language: 'en',
+          // `language` is an object, not a string. A bare 'en' leaves
+          // language.name undefined and the provider falls back silently.
+          language: {name: 'en'},
           hasNotch: false,
           hasDynamicIsland: false,
         },
       }}>
-      {/* Your app content */}
+      {/* app content */}
     </RottProvider>
   )
 }
 ```
 
-### 2. Use components in your screens
+### 2. Compose a screen
 
 ```tsx
 import React from 'react'
 
-import {Button, Container, Content, Header, Icon, Input, Label, Modal} from '@tansuk/rott-ui'
+import {Button, Container, Content, Input, Label} from '@tansuk/rott-ui'
 
 export default function MyScreen() {
   return (
-    <Container noPadding>
-      <Header
-        height={40}
-        logo='MY_LOGO'
-        leftElement={<Icon name='MENU' height={24} width={24} />}
-      />
-
-      <Content flex={1} justifyContentCenter alignItemsCenter>
-        <Input name='email' type='email' placeholder='Enter your email' />
+    <Container>
+      <Content flex={1} justifyContentCenter>
+        <Input
+          name='email'
+          type='email'
+          placeholder='Enter your email'
+          leftIcon={{name: 'mail', variant: 'grey-900'}}
+        />
 
         <Button
           size='full'
           variant='primary'
-          fontSize='xl'
           marginTop={16}
-          onPress={() => console.log('Button pressed!')}>
-          Get Started
+          rightIcon={{name: 'arrow-right'}}
+          onPress={() => {}}>
+          Get started
         </Button>
 
-        <Label fontSize='lg' variant='secondary' marginTop={8}>
+        <Label fontSize='lg' variant='grey-900' marginTop={8}>
           Welcome to Rott UI
         </Label>
       </Content>
@@ -183,240 +182,150 @@ export default function MyScreen() {
 }
 ```
 
-## 🎨 Type-Safe Theming
+## Type-safe theming
 
-Create a `rott.config.ts` file in your project root for type-safe theming:
+Create `rott.config.ts` in the project root. Colors declared here become valid
+`variant` values across every component, with autocomplete.
 
-```typescript
+```ts
 import {defineRottConfig} from '@tansuk/rott-ui'
 
 export const config = defineRottConfig({
   colors: {
     brandPrimary: '#123456',
     brandAccent: '#ff00aa',
-    customButton: '#00ff00',
   },
 } as const)
 ```
 
-Add the path mapping to your `tsconfig.json` for TypeScript autocomplete:
-
 ```json
+// tsconfig.json — compile-time types
 {
   "compilerOptions": {
-    "paths": {
-      "rott.config": ["./rott.config.ts"]
-    }
+    "paths": {"rott.config": ["./rott.config.ts"]}
   }
 }
 ```
 
-> **Note:** `tsconfig.json` paths provide compile-time type resolution only. Make sure you have also configured the [Babel module resolver](#configure-babel-for-rottconfigts) for runtime support.
-
-Now your custom colors are available with full autocomplete:
-
 ```tsx
-<Button variant="brandPrimary">Primary Button</Button>
-<Button variant="customButton">Custom Button</Button>
+<Button variant='brandPrimary'>Primary</Button>
+<Button variant='brandAccent'>Accent</Button>
 ```
 
-## 🧩 Available Components
+## Sizing
 
-### Layout & Structure
+`Button` accepts `size` as a token or as `{width, height}`. Since **0.9.0** the three
+largest sizes are relative to the parent container, not fixed pixels.
 
-- **Container** - Main wrapper with safe area handling
-- **Content** - Scrollable content areas with keyboard handling
-- **Header** - Navigation headers with logo and action buttons
-- **Item** - Flexible layout container
-- **Separator** - Visual dividers and spacers
+| Token | Width | Height |
+|---|---|---|
+| `xs` | 85.5 | 36 |
+| `sm` | 114 | 40 |
+| `md` | 171 | 48 |
+| `lg` | 228 | 56 |
+| `xl` | 85% of parent | 64 |
+| `xxl` | 92.5% of parent | 72 |
+| `full` | 100% of parent | 56 |
 
-### Navigation & Actions
+Fixed widths are expressed against a 390pt reference device and scale to the actual
+screen width. With no `size` prop the default is `{height: 'lg'}` — full width, 56 tall.
 
-- **Button** - Primary action buttons with icons and images
-- **Pressable** - Custom touchable areas
-- **Tab** - Tab navigation items
-- **TabWidget** - Complete tab navigation system
-- **BottomMenu** - Bottom navigation with custom items
+> Percentage widths need a parent with a resolved width. Inside a parent that sizes to
+> its own content, the percentage resolves against that shrunken box.
 
-### Data Display
+## Borders
 
-- **Label** - Text display with theming support
-- **Icon** - SVG icon system with 117+ icons
-- **Image** - Optimized image component
-- **ImageBackground** - Background image containers
-- **List** - High-performance lists with FlashList
-- **EmptyState** - Empty state illustrations
-- **Skeleton** - Loading state placeholders
-
-### Input & Forms
-
-- **Input** - Comprehensive input system supporting:
-  - Text, Email, Password, Number inputs
-  - Date/DateTime pickers
-  - Masked inputs (phone, credit card, etc.)
-  - Search with autocomplete
-  - Textarea with auto-resize
-- **Toggle** - Switch/toggle components
-- **FormContainer** - Form layout wrapper
-
-### Feedback & Overlays
-
-- **Modal** - Full-screen and partial modals
-- **Alert** - Simple alert messages
-- **AlertDialog** - Confirmation dialogs with actions
-- **ActionMenu** - Context menus and action sheets
-- **Notification** - Toast notifications
-- **Result** - Success/error result pages
-- **Timer** - Countdown and timer components
-
-### Utilities
-
-- **Common** - Shared UI patterns (CommonItem, CommonItemContainer)
-
-## 📱 Real-World Example
-
-Here's a complete example from our consumer app:
+`borderWidth` and `borderColor` are honored on **every** variant. Explicit values win;
+the `*-outline` border is the fallback when neither is passed.
 
 ```tsx
-import {
-  BottomMenu,
-  BottomMenuItemModel,
-  Button,
-  Container,
-  Content,
-  Header,
-  Input,
-  Modal,
-} from '@tansuk/rott-ui'
-
-export default function EntryScreen() {
-  const menuItems: BottomMenuItemModel[] = [
-    {
-      icon: {name: 'FAST', noStroke: true, mode: 'fill'},
-      title: 'Fast',
-      onPress: () => {},
-    },
-    {
-      icon: {name: 'LOCATION', noStroke: true},
-      title: 'Near ATM',
-      onPress: () => {},
-    },
-    {
-      image: {name: 'QR_BUTTON', width: 56, height: 56},
-      containerStyle: {top: -24},
-      onPress: () => {},
-    },
-  ]
-
-  return (
-    <Container noPadding>
-      <Header height={40} logo='COMPANY_LOGO' rightElement={<NotificationIcon />} />
-
-      <Content flex={1} useBottomInset marginBottom={88}>
-        <Input
-          name='date'
-          type='date'
-          mode='datetime'
-          value={new Date().toISOString()}
-          onDateChange={(date) => console.log(date)}
-        />
-
-        <Button
-          size='full'
-          variant='primary'
-          fontSize='xl'
-          leftImage={{
-            name: 'LOGO',
-            absolute: true,
-            width: 48,
-            height: 48,
-          }}
-          rightIcon={{
-            name: 'ARROW_RIGHT',
-            variant: 'primary',
-            mode: 'fill',
-            absolute: true,
-          }}
-          onPress={() => {}}>
-          Get Started
-        </Button>
-      </Content>
-
-      <BottomMenu menuItems={menuItems} />
-    </Container>
-  )
-}
+// Brand-fixed fill where the border is the only affordance
+<Button backgroundColor='#FFFFFF' color='#1F1F1F' borderWidth={1} borderColor='#747775'>
+  Sign in with Google
+</Button>
 ```
 
-## 🔧 Advanced Features
+## Components
 
-### Modal System
+29 components. Full props for each are in the [documentation](https://docs-rottui.tansuk.dev/docs/components/overview).
+
+| Group | Components |
+|---|---|
+| Layout | `Container`, `Content`, `Header`, `Item`, `Separator`, `FormContainer` |
+| Actions | `Button`, `ButtonGroup`, `Pressable`, `Tab`, `TabWidget`, `BottomMenu` |
+| Display | `Label`, `Icon`, `Image`, `ImageBackground`, `List`, `EmptyState`, `Skeleton` |
+| Input | `Input` (text, email, password, number, date, phone, search, textarea), `Toggle` |
+| Feedback | `Modal`, `Alert`, `AlertDialog`, `ActionMenu`, `Notification`, `Result`, `Timer` |
+| Utility | `Common` (`CommonItem`, `CommonItemContainer`) |
+
+### Icons
+
+113 built-in SVG icons, referenced by **lowercase kebab-case** name:
+
+```tsx
+<Icon name='arrow-right' width={24} height={24} />
+<Icon name='search' variant='primary' />
+<Icon name='remove-circle' mode='fill' noStroke />
+```
+
+Icons resolve through the `withRottAssets` Metro plugin. Names are the SVG filenames
+without extension — `arrow-right.svg` → `name='arrow-right'`.
+
+## Imperative APIs
+
+`Modal`, `AlertDialog` and `Notification` are called imperatively rather than rendered.
 
 ```tsx
 Modal.showModal({
   id: 'settings',
   height: 70,
   slideToClose: true,
-  backgroundColor: 'grey-900',
   header: {
     title: 'Settings',
-    rightIcon: {
-      name: 'CLOSE',
-      onPress: () => Modal.hideModal('settings'),
-    },
+    rightIcon: {name: 'remove', onPress: () => Modal.hideModal('settings')},
   },
   children: <SettingsContent />,
 })
-```
 
-### Alert Dialogs
-
-```tsx
 AlertDialog.show({
-  title: 'Confirm Action',
+  title: 'Confirm action',
   text: 'Are you sure you want to continue?',
   buttons: [
-    {
-      variant: 'primary',
-      size: 'full',
-      onPress: () => console.log('Confirmed'),
-    },
-    {
-      variant: 'secondary',
-      size: 'full',
-      onPress: () => AlertDialog.hide(),
-    },
+    {variant: 'primary', size: 'full', onPress: () => {}},
+    {variant: 'secondary', size: 'full', onPress: () => AlertDialog.hide()},
   ],
 })
 ```
 
-### Input Variants
+## Input types
 
 ```tsx
-{
-  /* Date Input */
-}
-;<Input type='date' mode='datetime' onDateChange={(date) => console.log(date)} />
-
-{
-  /* Masked Phone Input */
-}
-;<Input type='phone' mask='+1 ([000]) [000]-[0000]' onChangeText={(text) => console.log(text)} />
-
-{
-  /* Search with Autocomplete */
-}
-;<Input type='search' placeholder='Search...' onSearch={(query) => console.log(query)} />
+<Input name='when' type='date' mode='datetime' onDateChange={(date) => {}} />
+<Input name='phone' type='phone' mask='+1 ([000]) [000]-[0000]' onChangeText={(t) => {}} />
+<Input name='q' type='search' placeholder='Search…' onSearch={(query) => {}} />
+<Input name='pw' type='password' leftIcon={{name: 'lock', variant: 'primary'}} />
 ```
 
-## 🤝 Contributing
+Optional callbacks are guarded — omitting `onDateChange` or `onSelectChange` will not
+throw.
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+## Internationalization
 
-## 📄 License
+Built on React Intl. `en` and `tr` ship with the library; the locale is set through
+provider config and any unknown locale falls back to the default.
 
-MIT
+## Requirements
 
----
+- **React Native** — the peer range is unrestricted; the library is developed and
+  tested against `0.81`
+- **TypeScript** recommended: theming is typed end to end, and the config-driven
+  variants only autocomplete under TS
+- iOS and Android
 
-Made with ❤️ by [Doğukan Tansuk](https://github.com/Tans-uk/rott-ui)
+## Contributing
+
+See the [contributing guide](CONTRIBUTING.md).
+
+## License
+
+MIT © [Doğukan Tansuk](https://tansuk.dev)
