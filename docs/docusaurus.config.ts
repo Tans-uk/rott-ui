@@ -184,7 +184,9 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://tansuk.dev" target="_blank" rel="noopener noreferrer">Tansuk.dev</a> — MIT License`,
+      // noopener only: tansuk.dev is ours, so the Referer header is kept and the
+      // traffic the docs send there stays attributable in analytics.
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://tansuk.dev" target="_blank" rel="noopener">Tansuk.dev</a> — MIT License`,
     },
     prism: {
       theme: prismThemes.github,
