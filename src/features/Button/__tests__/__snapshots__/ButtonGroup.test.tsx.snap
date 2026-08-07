@@ -81,7 +81,7 @@ exports[`ButtonGroup -> Custom Component buton grubunun snapshotı ile eşleşme
             {
               "alignItems": "center",
               "backgroundColor": "rgba(0, 169, 206, 1)",
-              "borderColor": "white",
+              "borderColor": undefined,
               "borderRadius": 16,
               "borderWidth": undefined,
               "color": undefined,
@@ -93,7 +93,7 @@ exports[`ButtonGroup -> Custom Component buton grubunun snapshotı ile eşleşme
               "overflow": "hidden",
               "pointerEvents": "box-only",
               "position": "relative",
-              "width": 658,
+              "width": "100%",
             }
           }
         >
@@ -158,7 +158,7 @@ exports[`ButtonGroup -> Custom Component buton grubunun snapshotı ile eşleşme
               "overflow": "hidden",
               "pointerEvents": "box-only",
               "position": "relative",
-              "width": 658,
+              "width": "100%",
             }
           }
         >

@@ -2,7 +2,7 @@ import React from 'react'
 
 import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
-import {colorFromVariant} from '../../../utils'
+import {colorFromVariant, display} from '../../../utils'
 import {Button} from '../components'
 
 const testId = {
@@ -165,6 +165,108 @@ describe('Button -> Custom Component', () => {
     const rightIcon = queryByTestId(buttonRightIconTestId)
 
     expect(rightIcon).not.toBeOnTheScreen()
+  })
+
+  it('outline olmayan variantta verilen borderWidth ve borderColor stile uygulanmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} variant='primary' borderWidth={1} borderColor='#747775'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      borderWidth: 1,
+      borderColor: '#747775',
+    })
+  })
+
+  it('border propertyleri verilmediğinde outline variantı kendi border davranışını korumalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} variant='primary-outline'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      borderWidth: 2,
+      borderColor: colorFromVariant('primary'),
+    })
+  })
+
+  it('outline variantında açıkça verilen borderColor variant renginin önüne geçmeli', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} variant='primary-outline' borderColor='#747775'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      borderWidth: 2,
+      borderColor: '#747775',
+    })
+  })
+
+  it('outline olmayan variant border propertysi almadığında borderColor taşımamalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} variant='primary'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      borderWidth: undefined,
+      borderColor: undefined,
+    })
+  })
+
+  it('size full verildiğinde genişlik sabit piksel değil kapsayıcıya göreli olmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} size='full'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({width: '100%'})
+  })
+
+  it('size verilmediğinde varsayılan buton genişliği kapsayıcıya göreli olmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({width: '100%'})
+  })
+
+  it('xl size kendi genişlik ve yüksekliğine sahip olmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} size='xl'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      width: '85%',
+      height: display.px(64),
+    })
+  })
+
+  it('xxl size kendi genişlik ve yüksekliğine sahip olmalı', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} size='xxl'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      width: '92.5%',
+      height: display.px(72),
+    })
   })
 })
 

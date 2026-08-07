@@ -8,55 +8,107 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import clsx from 'clsx'
 
+/**
+ * A static reproduction of what Rott UI actually renders — the library's own
+ * primary (rgba(0, 169, 206, 1)), its 8px radius, its size ladder. A component
+ * library's homepage should show components; this is the cheapest honest way to
+ * do that without booting a React Native runtime in the browser.
+ */
+function DeviceShowcase() {
+  return (
+    <div className={styles.device} aria-hidden='true'>
+      <div className={styles.deviceNotch} />
+      <div className={styles.deviceScreen}>
+        <div className={styles.demoLabel}>Buttons</div>
+
+        <div className={clsx(styles.demoButton, styles.demoPrimary)}>Continue</div>
+        <div className={clsx(styles.demoButton, styles.demoOutline)}>Learn more</div>
+        <div className={clsx(styles.demoButton, styles.demoBordered)}>Sign in with Google</div>
+
+        <div className={styles.demoLabel}>Sizes</div>
+
+        {/* The percentages are close by design, so each chip states its own value —
+            otherwise three near-identical boxes read as a rendering mistake. */}
+        <div className={styles.demoSizes}>
+          <div className={styles.demoChip} style={{ width: '85%' }}>
+            xl <span className={styles.demoChipValue}>85%</span>
+          </div>
+          <div className={styles.demoChip} style={{ width: '92.5%' }}>
+            xxl <span className={styles.demoChipValue}>92.5%</span>
+          </div>
+          <div className={styles.demoChip} style={{ width: '100%' }}>
+            full <span className={styles.demoChipValue}>100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function HomepageHero() {
-  const { siteConfig } = useDocusaurusContext()
   return (
     <header className={styles.hero}>
-      <div className={clsx('container', styles.heroInner)}>
-        <div className={styles.heroEyebrow}>React Native UI Kit</div>
-        <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-        <p className={styles.heroSubtitle}>
-          29 production-ready components. Type-safe theming. Built for React Native.
-        </p>
+      <div className={styles.heroGlow} aria-hidden='true' />
 
-        <div className={styles.heroActions}>
-          <Link
-            className={clsx(styles.btnPrimary, 'button button--lg')}
-            to='/docs/getting-started/installation'>
-            Get Started
-          </Link>
-          <Link
-            className={clsx(styles.btnSecondary, 'button button--lg')}
-            to='/docs/components/overview'>
-            View Components
-          </Link>
+      <div className={clsx('container', styles.heroInner)}>
+        <div className={styles.heroCopy}>
+          <p className={styles.heroEyebrow}>
+            <span className={styles.heroDot} aria-hidden='true' />
+            React Native UI Kit
+          </p>
+
+          <h1 className={styles.heroTitle}>
+            Components that
+            <br />
+            <span className={styles.heroTitleAccent}>hold their shape.</span>
+          </h1>
+
+          <p className={styles.heroSubtitle}>
+            29 production-ready React Native components with type-safe theming. Declare your
+            brand once in <code>rott.config.ts</code> — every component follows.
+          </p>
+
+          <div className={styles.heroActions}>
+            <Link className={styles.btnPrimary} to='/docs/getting-started/installation'>
+              Get started
+            </Link>
+            <Link className={styles.btnSecondary} to='/docs/components/overview'>
+              Browse components
+            </Link>
+          </div>
+
+          <dl className={styles.heroStats}>
+            <div className={styles.heroStat}>
+              <dt>Components</dt>
+              <dd>29</dd>
+            </div>
+            <div className={styles.heroStat}>
+              <dt>Runtime deps</dt>
+              <dd>0</dd>
+            </div>
+            <div className={styles.heroStat}>
+              <dt>Typed</dt>
+              <dd>100%</dd>
+            </div>
+          </dl>
         </div>
 
-        <div className={styles.heroBadges}>
-          <a
-            href='https://www.npmjs.com/package/@tansuk/rott-ui'
-            target='_blank'
-            rel='noopener noreferrer'
-            className={styles.badgeLink}>
-            <img src='https://img.shields.io/npm/v/@tansuk/rott-ui.svg?style=flat-square&labelColor=1a1a1a&color=92400e' alt='npm version' />
-          </a>
-          <a
-            href='https://github.com/Tans-uk/rott-ui'
-            target='_blank'
-            rel='noopener noreferrer'
-            className={styles.badgeLink}>
-            <img src='https://img.shields.io/github/stars/Tans-uk/rott-ui.svg?style=flat-square&labelColor=1a1a1a&color=92400e' alt='GitHub stars' />
-          </a>
-          <a
-            href='https://github.com/Tans-uk/rott-ui/blob/main/LICENSE'
-            target='_blank'
-            rel='noopener noreferrer'
-            className={styles.badgeLink}>
-            <img src='https://img.shields.io/badge/license-MIT-flat-square?style=flat-square&labelColor=1a1a1a&color=92400e' alt='MIT License' />
-          </a>
+        <div className={styles.heroVisual}>
+          <DeviceShowcase />
         </div>
       </div>
     </header>
+  )
+}
+
+function InstallStrip() {
+  return (
+    <section className={styles.installStrip}>
+      <div className={clsx('container', styles.installInner)}>
+        <span className={styles.installLabel}>Install</span>
+        <code className={styles.installCommand}>yarn add @tansuk/rott-ui</code>
+      </div>
+    </section>
   )
 }
 
@@ -66,15 +118,13 @@ function HomepageCTA() {
       <div className='container'>
         <div className={styles.ctaInner}>
           <p className={styles.ctaLabel}>Ready to build?</p>
-          <h2 className={styles.ctaTitle}>Start in under 5 minutes</h2>
+          <h2 className={styles.ctaTitle}>Start in under five minutes</h2>
           <p className={styles.ctaDescription}>
             Install Rott UI, wrap your app with <code>RottProvider</code>, and start using
             components immediately.
           </p>
-          <Link
-            className={clsx(styles.btnPrimary, 'button button--lg')}
-            to='/docs/getting-started/installation'>
-            Installation Guide
+          <Link className={styles.btnPrimary} to='/docs/getting-started/installation'>
+            Installation guide
           </Link>
         </div>
       </div>
@@ -90,6 +140,7 @@ export default function Home(): ReactNode {
       description='29 production-ready React Native components with type-safe theming. Build beautiful mobile apps faster.'>
       <HomepageHero />
       <main>
+        <InstallStrip />
         <HomepageFeatures />
         <HomepageCTA />
       </main>

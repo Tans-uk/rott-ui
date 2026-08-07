@@ -79,7 +79,17 @@ function Feature({ title, icon, description }: FeatureItem) {
     <div className={clsx('col col--4', styles.featureCol)}>
       <div className={styles.featureCard}>
         <div className={styles.featureIconWrap}>
-          <img src={icon} alt='' aria-hidden='true' className={styles.featureIcon} />
+          {/* Masked rather than <img>+hue-rotate: the glyph is painted with the
+              accent token directly, so it stays correct in both themes instead of
+              relying on a filter chain hand-tuned to one specific hex. */}
+          <span
+            className={styles.featureIcon}
+            aria-hidden='true'
+            style={{
+              maskImage: `url(${icon})`,
+              WebkitMaskImage: `url(${icon})`,
+            }}
+          />
         </div>
         <Heading as='h3' className={styles.featureTitle}>
           {title}

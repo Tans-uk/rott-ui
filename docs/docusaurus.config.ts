@@ -31,6 +31,27 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
+  // Typeface stack. Bricolage Grotesque carries the display voice, Public Sans does
+  // the reading, JetBrains Mono handles code. Loaded with display=swap so text is
+  // never invisible while the fonts fetch.
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {rel: 'preconnect', href: 'https://fonts.googleapis.com'},
+    },
+    {
+      tagName: 'link',
+      attributes: {rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous'},
+    },
+  ],
+
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:ital,wght@0,300..700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap',
+      type: 'text/css',
+    },
+  ],
+
   // Internationalization configuration
   i18n: {
     defaultLocale: 'en',
@@ -88,6 +109,11 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Docs',
+        },
+        {
+          to: '/docs/release-notes',
+          label: 'Release Notes',
+          position: 'left',
         },
         {
           href: 'https://github.com/Tans-uk/rott-ui',
@@ -158,7 +184,9 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Doğukan Tansuk — MIT License`,
+      // noopener only: tansuk.dev is ours, so the Referer header is kept and the
+      // traffic the docs send there stays attributable in analytics.
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://tansuk.dev" target="_blank" rel="noopener">Tansuk.dev</a> — MIT License`,
     },
     prism: {
       theme: prismThemes.github,
