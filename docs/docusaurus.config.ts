@@ -184,7 +184,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Doğukan Tansuk — MIT License`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://tansuk.dev" target="_blank" rel="noopener noreferrer">Tansuk.dev</a> — MIT License`,
     },
     prism: {
       theme: prismThemes.github,

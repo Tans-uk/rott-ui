@@ -110,27 +110,14 @@ const sidebars: SidebarsConfig = {
         'examples/product-list',
       ],
     },
-    {
-      type: 'category',
-      label: 'Tutorial',
-      items: [
-        'tutorial-basics/create-a-document',
-        'tutorial-basics/create-a-blog-post',
-        'tutorial-basics/markdown-features',
-        'tutorial-basics/deploy-your-site',
-        'tutorial-basics/congratulations',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Advanced',
-      items: [
-        'tutorial-extras/manage-docs-versions',
-        'tutorial-extras/translate-your-site',
-      ],
-    },
-    'release-notes',
   ],
+
+  /**
+   * Release notes deliberately sit outside tutorialSidebar. Inside it, visiting
+   * the page marks the navbar's "Docs" item active as well as "Release Notes",
+   * so two destinations highlight at once. It is also not part of the docs
+   * hierarchy — it reads better full width.
+   */
 };
 
 export default sidebars;
