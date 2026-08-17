@@ -1,7 +1,7 @@
 import {type ReactNode} from 'react'
 
 import {type CommonUiProps, type Variant} from '../../../models'
-import {type IconProps, type IconKeys} from '../../Icon'
+import {type IconKeys, type IconProps} from '../../Icon'
 import {type LabelProps} from '../../Label'
 
 export interface CommonItemProps extends CommonUiProps {

@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useRef, useState, type FC} from 'react'
+import React, {useCallback, useEffect, useRef, useState, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
@@ -6,12 +6,11 @@ import {themeConfig} from '../../../../../providers'
 import {type IconKeys} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
-import {InputField} from '../../InputField'
 import {InputStyles} from '../../../styles'
 import {InputStyleNormalizer} from '../../../utils'
+import {InputField} from '../../InputField'
 import type {AmountInputProps} from '../models'
 import {AmountInputStyles} from '../styles'
-import React from 'react'
 
 export const AmountInput: FC<AmountInputProps> = ({
   fontSize,

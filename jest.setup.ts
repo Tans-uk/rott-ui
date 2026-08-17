@@ -4,12 +4,13 @@ import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-
 
 import '@shopify/flash-list/jestSetup'
 import '@testing-library/jest-native/extend-expect'
-import { configure } from '@testing-library/react-native'
+
+import {configure} from '@testing-library/react-native'
 
 /** RN test env: suppress react-test-renderer deprecation noise and legacy create() path */
 global.IS_REACT_NATIVE_TEST_ENVIRONMENT = true
 /** React 19 + RNTL: sync render must not use concurrent root or act() leaves a floating thenable */
-configure({ concurrentRoot: false })
+configure({concurrentRoot: false})
 
 export const mockRNCNetInfo = require('@react-native-community/netinfo/jest/netinfo-mock')
 jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo)
@@ -137,7 +138,7 @@ jest.mock('react-native-reanimated', () => {
       withTiming: jest.fn((value, _config, callback) => {
         if (callback) setTimeout(callback, 0)
 
-return value
+        return value
       }),
       withSpring: jest.fn((value) => value),
       withDecay: jest.fn((value) => value),
@@ -184,7 +185,7 @@ return value
     withTiming: jest.fn((value, _config, callback) => {
       if (callback) setTimeout(callback, 0)
 
-return value
+      return value
     }),
     withRepeat: jest.fn((value) => value),
     withSpring: jest.fn((value) => value),
@@ -202,7 +203,7 @@ return value
       circle: jest.fn(),
       exp: jest.fn(),
       elastic: jest.fn(),
-    }
+    },
   }
 })
 
@@ -309,7 +310,7 @@ jest.mock('./src/providers', () => {
   )
   MockIcon.default = MockIcon
 
-return {
+  return {
     ...actual,
     themeConfig: {
       ...defaultThemeConfig,
@@ -344,5 +345,5 @@ jest.spyOn(ReactRuntime, 'useContext').mockImplementation((context) => {
     }
   }
 
-return reactActualUseContext(context)
+  return reactActualUseContext(context)
 })

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {render} from '../../../__tests__/utils/testUtils'
 import {ImageTypes} from '../../Image'
 import {ResultScreen} from '../components'

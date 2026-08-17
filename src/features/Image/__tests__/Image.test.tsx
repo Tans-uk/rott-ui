@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {render} from '../../../__tests__/utils/testUtils'
 import {Image} from '../components'
 import type {ImageTypes} from '../models'
@@ -20,7 +21,9 @@ describe('Image -> Custom Component', () => {
 
   it('image elementi renderlandığında gerçekten ekranda olmalı', async () => {
     const {imageTestId} = testId
-    const {getByTestId} = await render(<Image testID={imageTestId} name={testIconName} width={50} />)
+    const {getByTestId} = await render(
+      <Image testID={imageTestId} name={testIconName} width={50} />
+    )
 
     const imageElement = getByTestId(imageTestId)
 
@@ -29,7 +32,9 @@ describe('Image -> Custom Component', () => {
 
   it('image elementi verilen width ile renderlanmalı', async () => {
     const {imageTestId} = testId
-    const {getByTestId} = await render(<Image testID={imageTestId} name={testIconName} width={50} />)
+    const {getByTestId} = await render(
+      <Image testID={imageTestId} name={testIconName} width={50} />
+    )
 
     const imageElement = getByTestId(imageTestId)
 
@@ -38,7 +43,9 @@ describe('Image -> Custom Component', () => {
 
   it('image elementi verilen height ile renderlanmalı', async () => {
     const {imageTestId} = testId
-    const {getByTestId} = await render(<Image testID={imageTestId} name={testIconName} height={50} />)
+    const {getByTestId} = await render(
+      <Image testID={imageTestId} name={testIconName} height={50} />
+    )
 
     const imageElement = getByTestId(imageTestId)
 

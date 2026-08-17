@@ -17,7 +17,7 @@ export function deriveKey(filePath: string): string {
 export function isRetinaVariant(filePath: string): boolean {
   const stem = path.basename(filePath, path.extname(filePath))
 
-return DENSITY_SUFFIX_PATTERN.test(stem)
+  return DENSITY_SUFFIX_PATTERN.test(stem)
 }
 
 export function scanDirectory(dir: string, extensions: string[]): string[] {
@@ -62,7 +62,11 @@ export function detectCollisions(entries: AssetEntry[]): void {
   }
 }
 
-export function buildEntries(dir: string, extensions: string[], relativeFrom: string): AssetEntry[] {
+export function buildEntries(
+  dir: string,
+  extensions: string[],
+  relativeFrom: string
+): AssetEntry[] {
   const files = scanDirectory(dir, extensions)
 
   const entries: AssetEntry[] = files.map((filePath) => ({
@@ -72,7 +76,7 @@ export function buildEntries(dir: string, extensions: string[], relativeFrom: st
 
   entries.sort((a, b) => a.key.localeCompare(b.key))
 
-return entries
+  return entries
 }
 
 export function generateRequireBlock(entries: AssetEntry[]): string {
@@ -88,7 +92,11 @@ export function generateRequireBlock(entries: AssetEntry[]): string {
 const MARKER_START_PREFIX = '// @generated-start:'
 const MARKER_END_PREFIX = '// @generated-end:'
 
-export function replaceMarkerSection(content: string, markerName: string, newContent: string): string {
+export function replaceMarkerSection(
+  content: string,
+  markerName: string,
+  newContent: string
+): string {
   const startMarker = `${MARKER_START_PREFIX}${markerName}`
   const endMarker = `${MARKER_END_PREFIX}${markerName}`
 
@@ -110,7 +118,7 @@ export function replaceMarkerSection(content: string, markerName: string, newCon
 
   const replacement = newContent ? `${newContent}\n` : ''
 
-return `${before}${replacement}${after}`
+  return `${before}${replacement}${after}`
 }
 
 export function main(): void {

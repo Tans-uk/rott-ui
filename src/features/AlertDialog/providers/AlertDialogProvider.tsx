@@ -1,4 +1,4 @@
-import {useMemo, type FC, type PropsWithChildren} from 'react'
+import React, {useMemo, type FC, type PropsWithChildren} from 'react'
 
 import {alertDialogRef} from '..'
 import {ModalIdEnum} from '../../../models'
@@ -7,7 +7,6 @@ import {AlertDialogComponent} from '../components'
 import {AlertDialogContext} from '../contexts'
 import {useAlertDialog} from '../hooks'
 import type {AlertDialogModel} from '../models'
-import React from 'react'
 
 export const AlertDialogProvider: FC<PropsWithChildren> = ({children}) => {
   const {showModal} = useModal({}, [])

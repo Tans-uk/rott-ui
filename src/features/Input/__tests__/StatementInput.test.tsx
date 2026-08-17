@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {render, userEvent} from '../../../__tests__/utils/testUtils'
 import {StatementInput} from '../components'
 
@@ -87,7 +88,9 @@ describe('Statement Input -> Custom Input', () => {
     const text = '<>[]*?_^`|%=&{}`'
     const user = userEvent.setup()
     const onChangeTextMock = jest.fn()
-    const {getByTestId} = await render(<StatementInput name='test' onChangeText={onChangeTextMock} />)
+    const {getByTestId} = await render(
+      <StatementInput name='test' onChangeText={onChangeTextMock} />
+    )
 
     // Act
     const inputElement = getByTestId(testId)

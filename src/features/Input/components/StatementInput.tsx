@@ -1,11 +1,10 @@
-import {useCallback, useMemo} from 'react'
+import React, {useCallback, useMemo} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
 import type {StatementInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputField} from './InputField'
-import React from 'react'
 
 export const StatementInput: React.FC<StatementInputProps> = ({
   disabled,
@@ -41,8 +40,7 @@ export const StatementInput: React.FC<StatementInputProps> = ({
   )
 
   const inputStyles = useMemo(
-    () =>
-      InputStyles({fontSize, theme, size, includeBorderRadius: true}).defaultTextInputStyle,
+    () => InputStyles({fontSize, theme, size, includeBorderRadius: true}).defaultTextInputStyle,
     [fontSize, theme, size]
   )
 

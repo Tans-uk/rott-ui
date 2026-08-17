@@ -5,10 +5,14 @@
 const mockConsumerImages = {'consumer-logo': {uri: 'file://consumer.png'} as any}
 const mockConsumerIcons = {'consumer-arrow': {uri: 'file://consumer.svg'} as any}
 
-jest.mock('@rott-consumer-assets', () => ({
-  images: mockConsumerImages,
-  icons: mockConsumerIcons,
-}), {virtual: true})
+jest.mock(
+  '@rott-consumer-assets',
+  () => ({
+    images: mockConsumerImages,
+    icons: mockConsumerIcons,
+  }),
+  {virtual: true}
+)
 
 jest.mock('rott.config', () => ({config: {}}), {virtual: true})
 
@@ -43,16 +47,24 @@ describe('theme merge (config with images/icons)', () => {
   const userIcons = {'user-arrow': {uri: 'file://user.svg'} as any}
 
   beforeAll(() => {
-    jest.doMock('rott.config', () => ({
-      config: {images: userImages, icons: userIcons},
-    }), {virtual: true})
+    jest.doMock(
+      'rott.config',
+      () => ({
+        config: {images: userImages, icons: userIcons},
+      }),
+      {virtual: true}
+    )
   })
 
   it('merges user images/icons with consumer assets', () => {
     jest.isolateModules(() => {
-      jest.doMock('rott.config', () => ({
-        config: {images: userImages, icons: userIcons},
-      }), {virtual: true})
+      jest.doMock(
+        'rott.config',
+        () => ({
+          config: {images: userImages, icons: userIcons},
+        }),
+        {virtual: true}
+      )
 
       const {theme} = require('../theme')
 

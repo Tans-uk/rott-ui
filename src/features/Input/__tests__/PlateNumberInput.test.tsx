@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {PlateNumberInput} from '../components'
 
@@ -6,7 +7,9 @@ describe('Plate Number Input -> Custom Input', () => {
   const plateNumberInputTestId = 'input-test-id'
 
   it('plate number input ilk render anında snapshot ile eşleşmeli', async () => {
-    const renderedInput = await render(<PlateNumberInput name='test' testID={plateNumberInputTestId} />)
+    const renderedInput = await render(
+      <PlateNumberInput name='test' testID={plateNumberInputTestId} />
+    )
 
     expect(renderedInput).toMatchSnapshot()
   })
@@ -46,7 +49,9 @@ describe('Plate Number Input -> Custom Input', () => {
   })
 
   it('plate number input render olduğu zaman klavye default olarak ekranda görülmeli', async () => {
-    const {getByTestId} = await render(<PlateNumberInput name='test' testID={plateNumberInputTestId} />)
+    const {getByTestId} = await render(
+      <PlateNumberInput name='test' testID={plateNumberInputTestId} />
+    )
     const plateNumberInputElement = getByTestId(plateNumberInputTestId)
 
     expect(plateNumberInputElement.props.keyboardType).toBe('default')

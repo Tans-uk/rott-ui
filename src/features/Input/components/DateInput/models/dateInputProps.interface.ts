@@ -5,8 +5,7 @@ import type {DataModel} from './dataModel.interface'
 import type {DatePickerOptions} from '@react-native-community/datetimepicker'
 
 export interface DateInputProps
-  extends BaseInputProps,
-    Omit<DatePickerOptions, 'value' | 'onChange'> {
+  extends BaseInputProps, Omit<DatePickerOptions, 'value' | 'onChange'> {
   type?: 'date'
   onDateChange?: (date: Date) => void
   mode?: 'date' | 'time' | 'datetime' | 'modal-date' | 'modal-time' | 'modal-datetime'

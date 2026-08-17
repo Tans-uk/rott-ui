@@ -1,7 +1,6 @@
-import {memo, type FC, type PropsWithChildren} from 'react'
+import React, {memo, type FC, type PropsWithChildren} from 'react'
 
 import {Item} from '../../Item'
-import React from 'react'
 
 interface CommonItemContainerProps extends PropsWithChildren {
   width?: number

@@ -1,4 +1,4 @@
-import {useRef, useState, type FC} from 'react'
+import React, {useRef, useState, type FC} from 'react'
 
 import {
   Platform,
@@ -11,7 +11,6 @@ import {
 import type {PasswordInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputField} from './InputField'
-import React from 'react'
 
 export const PasswordInput: FC<PasswordInputProps> = ({
   fontSize,

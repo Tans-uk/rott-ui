@@ -1,4 +1,4 @@
-import type {FC, PropsWithChildren} from 'react'
+import React, {type FC, type PropsWithChildren} from 'react'
 
 import {ScrollView, StyleSheet, View, type ViewProps} from 'react-native'
 
@@ -9,7 +9,6 @@ import {Pressable} from '../../Pressable'
 import {ContainerStyles} from '../styles'
 
 import {SystemBars} from 'react-native-edge-to-edge'
-import React from 'react'
 
 interface ContainerProps extends ViewProps, CommonUiProps, PropsWithChildren {
   center?: boolean

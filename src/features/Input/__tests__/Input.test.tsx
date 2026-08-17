@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {IconKeys} from '../../Icon'
 import {Input} from '../components'
@@ -68,7 +69,9 @@ describe('Input -> Custom Input', () => {
     const defaultInput = getByTestId(inputTestId)
     expect(defaultInput.props.keyboardType).toBe('default')
 
-    await rerenderAsync(<Input testID={inputTestId} label={defaultLabel} type='numeric' name={defaultName} />)
+    await rerenderAsync(
+      <Input testID={inputTestId} label={defaultLabel} type='numeric' name={defaultName} />
+    )
 
     const numberInput = getByTestId(inputTestId)
     expect(numberInput.props.keyboardType).toBe('number-pad')

@@ -1,10 +1,9 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {Image} from '../../Image'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import type {EmptyStateProps} from '../models'
-import React from 'react'
 
 /**
  * Result - Islem Sonucu Ekrani

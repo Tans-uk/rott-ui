@@ -1,13 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
+import {type CommonUiProps, type Variant} from '../../../../../models'
+import {colorFromVariant} from '../../../../../utils'
 import {Icon} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
-import {type CommonUiProps, type Variant} from '../../../../../models'
-import {colorFromVariant} from '../../../../../utils'
-import React from 'react'
 
 export interface InputValidationProps extends CommonUiProps {
   name: string

@@ -68,7 +68,7 @@ export const PhoneInput: FC<PhoneInputProps> = ({
 
         let {selectedPhone} = selection
 
-return handleTextChange(selectedPhone?.number?.replace(/^(\+90|90|0)/, ''))
+        return handleTextChange(selectedPhone?.number?.replace(/^(\+90|90|0)/, ''))
       })
       .catch(() => handleTextChange(''))
   }

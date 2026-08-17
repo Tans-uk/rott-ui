@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {formatMessage} from '../../../libs'
 import {themeConfig} from '../../../providers'
@@ -6,7 +6,6 @@ import {Icon} from '../../Icon'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
-import React from 'react'
 
 interface FavoriteSwipeComponentProps {
   index: number

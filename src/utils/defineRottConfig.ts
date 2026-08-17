@@ -8,5 +8,5 @@ export function defineRottConfig<T extends Partial<ThemeConfig>>(config: T): T {
     /** Empty config is allowed; theme loader uses defaults + consumer asset scan */
   }
 
-return config
+  return config
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, userEvent, waitFor} from '../../../__tests__/utils/testUtils'
 import {CreditCardInput} from '../components'
 
@@ -6,7 +7,9 @@ describe('CreditCard Input -> Custom Input', () => {
   const creditCartInputTestId = 'input-test-id'
 
   it('ilk render anında snapshot ile eşleşmeli', async () => {
-    const renderedInput = await render(<CreditCardInput name='test' testID={creditCartInputTestId} />)
+    const renderedInput = await render(
+      <CreditCardInput name='test' testID={creditCartInputTestId} />
+    )
 
     expect(renderedInput).toMatchSnapshot()
   })
@@ -68,7 +71,9 @@ describe('CreditCard Input -> Custom Input', () => {
   })
 
   it('credit card input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
-    const {getByTestId} = await render(<CreditCardInput name='test' testID={creditCartInputTestId} />)
+    const {getByTestId} = await render(
+      <CreditCardInput name='test' testID={creditCartInputTestId} />
+    )
     const creditCardInputElement = getByTestId(creditCartInputTestId)
 
     expect(creditCardInputElement.props.keyboardType).toBe('number-pad')

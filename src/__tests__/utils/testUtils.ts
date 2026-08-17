@@ -1,6 +1,6 @@
-import {renderAsync, type RenderOptions} from '@testing-library/react-native'
-
 import {RottProvider} from '../../providers'
+
+import {renderAsync, type RenderOptions} from '@testing-library/react-native'
 
 /**
  * Async render (React 19 + RNTL): sync `render` leaves React `act()` thenables floating.

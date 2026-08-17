@@ -7,9 +7,7 @@ import {type ButtonIconProps} from './buttonIconProps.interface'
 import {type ButtonImageProps} from './buttonImageProps.interface'
 
 export interface ButtonProps
-  extends TouchableOpacityProps,
-    Omit<CommonUiProps, 'size'>,
-    PropsWithChildren {
+  extends TouchableOpacityProps, Omit<CommonUiProps, 'size'>, PropsWithChildren {
   color?: Variant
   isLoading?: boolean
   loadingText?: string

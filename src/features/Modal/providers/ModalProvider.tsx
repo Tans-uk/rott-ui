@@ -1,11 +1,10 @@
-import {useCallback, useMemo, useState, type FC, type PropsWithChildren} from 'react'
+import React, {useCallback, useMemo, useState, type FC, type PropsWithChildren} from 'react'
 
 import {modalRef} from '..'
 import {ModalComponent} from '../components'
 import {ModalContext} from '../contexts'
 import {useModal} from '../hooks'
 import type {ModalProps} from '../models'
-import React from 'react'
 
 export const ModalProvider: FC<PropsWithChildren> = ({children}) => {
   const [modals, setModals] = useState<ModalProps[]>([])

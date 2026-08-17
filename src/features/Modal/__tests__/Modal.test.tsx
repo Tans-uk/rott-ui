@@ -1,12 +1,12 @@
 import React from 'react'
 
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
+import {formatMessage} from '../../../libs'
 import {Content} from '../../Content'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {ModalComponent} from '../components'
 import type {ModalProps} from '../models'
-import { formatMessage } from '../../../libs'
 
 describe('Modal -> Custom Component', () => {
   const onCloseMock = jest.fn()
@@ -134,7 +134,9 @@ describe('Modal -> Custom Component', () => {
   it('modal kapatma butonuna tıklandığında modal kapanmalı', async () => {
     const onClosePressableMock = jest.fn()
     const {headerCloseButtonTestId} = testId
-    const {getByTestId} = await render(<ModalComponent {...dummyData} onClose={onClosePressableMock} />)
+    const {getByTestId} = await render(
+      <ModalComponent {...dummyData} onClose={onClosePressableMock} />
+    )
 
     const headerCloseButton = getByTestId(headerCloseButtonTestId)
     fireEvent.press(headerCloseButton)
@@ -145,7 +147,9 @@ describe('Modal -> Custom Component', () => {
   it('modal tam ekran değilken container dışına tıklanırsa modal kapanmalı', async () => {
     const onClosePressableMock = jest.fn()
     const {outsideTapAreaTestId} = testId
-    const {getByTestId} = await render(<ModalComponent {...dummyData} onClose={onClosePressableMock} />)
+    const {getByTestId} = await render(
+      <ModalComponent {...dummyData} onClose={onClosePressableMock} />
+    )
 
     const outsideContainer = getByTestId(outsideTapAreaTestId)
     fireEvent.press(outsideContainer)

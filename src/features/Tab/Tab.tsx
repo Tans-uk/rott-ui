@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {
   StyleSheet,
@@ -9,10 +9,8 @@ import {
   type TouchableOpacityProps,
 } from 'react-native'
 
-import {TabStyle} from './styles'
-
 import {type CommonUiProps} from '../../models'
-import React from 'react'
+import {TabStyle} from './styles'
 
 interface TabProps extends TouchableOpacityProps, CommonUiProps {
   title?: string

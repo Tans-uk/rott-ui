@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {ScrollView, type GestureResponderEvent} from 'react-native'
 
@@ -7,7 +7,6 @@ import {useSafeArea} from '../../../hooks'
 import {Content} from '../../Content'
 import {Pressable} from '../../Pressable'
 import {type ModalProps} from '../models'
-import React from 'react'
 
 interface ModalContainerProps extends ModalProps {
   onPress?: (event: GestureResponderEvent) => void

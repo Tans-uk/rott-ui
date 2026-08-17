@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {memo, type FC} from 'react'
+import React, {memo, type FC} from 'react'
 
 import {useRottContext} from '../../../hooks'
 import {themeConfig} from '../../../providers'
@@ -30,7 +30,6 @@ import {PlateNumberInput} from './PlateNumberInput'
 import {SelectInput} from './SelectInput'
 import {StatementInput} from './StatementInput'
 import {ToggleInput} from './ToggleInput'
-import React from 'react'
 
 export const Input: FC<InputProps> = memo((props) => {
   const {
@@ -71,7 +70,13 @@ export const Input: FC<InputProps> = memo((props) => {
   }
 
   const getInputElement = () => {
-    const initializedProps = {renderSeparator: resolvedRenderSeparator, size, theme, touched, placeholderTextColor}
+    const initializedProps = {
+      renderSeparator: resolvedRenderSeparator,
+      size,
+      theme,
+      touched,
+      placeholderTextColor,
+    }
 
     switch (type) {
       case 'default':
@@ -221,7 +226,12 @@ export const Input: FC<InputProps> = memo((props) => {
       {hasError && !!errorMessage && <InputValidation name={name} message={errorMessage} />}
 
       {!hasError && resolvedRenderSeparator && (
-        <Separator testID='input-separator-test-id' size='full' orientation='horizontal' variant='neutral-alpha-200' />
+        <Separator
+          testID='input-separator-test-id'
+          size='full'
+          orientation='horizontal'
+          variant='neutral-alpha-200'
+        />
       )}
     </Item>
   )

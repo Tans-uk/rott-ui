@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {ButtonGroup} from '../../Button'
 import {Container} from '../../Container'
@@ -7,7 +7,6 @@ import {EmptyState} from '../../EmptyState'
 import {Header} from '../../Header'
 import {Item} from '../../Item'
 import type {ResultScreenParamModel} from '../models'
-import React from 'react'
 
 /**
  * Result - Islem Sonucu Ekrani

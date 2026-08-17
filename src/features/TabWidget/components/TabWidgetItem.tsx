@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {themeConfig} from '../../../providers'
 import {display} from '../../../utils'
@@ -8,7 +8,6 @@ import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 
 import {TabBar, type NavigationState, type SceneRendererProps} from 'react-native-tab-view'
-import React from 'react'
 
 interface TabWidgetItemProps {
   testID?: string

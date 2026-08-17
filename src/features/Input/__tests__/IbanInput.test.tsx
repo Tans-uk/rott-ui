@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {IbanInput} from '../components'
 
@@ -61,12 +62,7 @@ describe('IBAN Input -> Custom Input', () => {
   it('değer varken sağ ikona basıldığında içerik TR olarak temizlenmeli', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
-      <IbanInput
-        name='test'
-        testID={inputTestId}
-        value='TR123'
-        onChangeText={onChangeTextMock}
-      />
+      <IbanInput name='test' testID={inputTestId} value='TR123' onChangeText={onChangeTextMock} />
     )
 
     fireEvent.press(getByTestId(rightIconTestId))

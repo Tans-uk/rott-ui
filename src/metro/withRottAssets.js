@@ -21,7 +21,7 @@ function scanDirectory(dir, extensions) {
   const results = []
   if (!fs.existsSync(dir)) return results
 
-  const entries = fs.readdirSync(dir, { withFileTypes: true })
+  const entries = fs.readdirSync(dir, {withFileTypes: true})
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name)
     if (entry.isDirectory()) {
@@ -39,15 +39,24 @@ function scanDirectory(dir, extensions) {
 
 function detectCollisions(entries, type) {
   const seen = new Map()
-  for (const { key, filePath } of entries) {
+  for (const {key, filePath} of entries) {
     const existing = seen.get(key)
-    if (existing)
-    {throw new Error(
-      '[rott-ui] Asset name collision in ' + type + ': "' + key + '" is produced by both:\n' +
-        '  - ' + existing + '\n' +
-        '  - ' + filePath + '\n' +
-        'Rename one of the files to resolve this.'
-    )}
+    if (existing) {
+      throw new Error(
+        '[rott-ui] Asset name collision in ' +
+          type +
+          ': "' +
+          key +
+          '" is produced by both:\n' +
+          '  - ' +
+          existing +
+          '\n' +
+          '  - ' +
+          filePath +
+          '\n' +
+          'Rename one of the files to resolve this.'
+      )
+    }
     seen.set(key, filePath)
   }
 }
@@ -55,30 +64,32 @@ function detectCollisions(entries, type) {
 function buildEntries(dir, extensions) {
   const files = scanDirectory(dir, extensions)
   const entries = files.map(function (filePath) {
-    return { key: deriveKey(filePath), filePath: filePath }
+    return {key: deriveKey(filePath), filePath: filePath}
   })
-  entries.sort(function (a, b) { return a.key.localeCompare(b.key) })
+  entries.sort(function (a, b) {
+    return a.key.localeCompare(b.key)
+  })
 
   return entries
 }
 
 function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   const outputDir = path.join(projectRoot, '.rott')
-  fs.mkdirSync(outputDir, { recursive: true })
+  fs.mkdirSync(outputDir, {recursive: true})
 
   const lines = ['module.exports = {']
 
   lines.push('  images: {')
   for (const entry of imageEntries) {
     const relPath = path.relative(outputDir, entry.filePath).replace(/\\/g, '/')
-    lines.push('    \'' + entry.key + '\': require(\'./' + relPath + '\'),')
+    lines.push("    '" + entry.key + "': require('./" + relPath + "'),")
   }
   lines.push('  },')
 
   lines.push('  icons: {')
   for (const entry of iconEntries) {
     const relPath = path.relative(outputDir, entry.filePath).replace(/\\/g, '/')
-    lines.push('    \'' + entry.key + '\': require(\'./' + relPath + '\'),')
+    lines.push("    '" + entry.key + "': require('./" + relPath + "'),")
   }
   lines.push('  },')
 
@@ -93,20 +104,20 @@ function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   }
 
   // Generate module augmentation for TypeScript autocomplete
-  var dtsLines = ['import \'@tansuk/rott-ui\';']
+  var dtsLines = ["import '@tansuk/rott-ui';"]
   dtsLines.push('')
-  dtsLines.push('declare module \'@tansuk/rott-ui\' {')
+  dtsLines.push("declare module '@tansuk/rott-ui' {")
   if (imageEntries.length > 0) {
     dtsLines.push('  interface ConsumerImageKeys {')
     for (var i = 0; i < imageEntries.length; i++) {
-      dtsLines.push('    \'' + imageEntries[i].key + '\': true;')
+      dtsLines.push("    '" + imageEntries[i].key + "': true;")
     }
     dtsLines.push('  }')
   }
   if (iconEntries.length > 0) {
     dtsLines.push('  interface ConsumerIconKeys {')
     for (var j = 0; j < iconEntries.length; j++) {
-      dtsLines.push('    \'' + iconEntries[j].key + '\': true;')
+      dtsLines.push("    '" + iconEntries[j].key + "': true;")
     }
     dtsLines.push('  }')
   }
@@ -151,21 +162,27 @@ function withRottAssets(metroConfig, options) {
 
   const imageCount = imageEntries.length
   const iconCount = iconEntries.length
-  if (imageCount > 0 || iconCount > 0)
-  {console.log(
-    '[rott-ui] Auto-discovered ' + imageCount + ' image(s) and ' + iconCount + ' icon(s) from consumer project.'
-  )}
+  if (imageCount > 0 || iconCount > 0) {
+    console.log(
+      '[rott-ui] Auto-discovered ' +
+        imageCount +
+        ' image(s) and ' +
+        iconCount +
+        ' icon(s) from consumer project.'
+    )
+  }
 
   const originalResolver = metroConfig.resolver && metroConfig.resolver.resolveRequest
 
   return Object.assign({}, metroConfig, {
     resolver: Object.assign({}, metroConfig.resolver, {
       resolveRequest: function (context, moduleName, platform) {
-        if (moduleName === CONSUMER_ASSETS_MODULE)
-        {return {
-          type: 'sourceFile',
-          filePath: generatedFilePath,
-        }}
+        if (moduleName === CONSUMER_ASSETS_MODULE) {
+          return {
+            type: 'sourceFile',
+            filePath: generatedFilePath,
+          }
+        }
 
         if (originalResolver) {
           return originalResolver(context, moduleName, platform)
@@ -177,4 +194,4 @@ function withRottAssets(metroConfig, options) {
   })
 }
 
-module.exports = { withRottAssets: withRottAssets }
+module.exports = {withRottAssets: withRottAssets}

@@ -36,8 +36,8 @@ describe('withRottAssets', () => {
       expect(fs.existsSync(jsPath)).toBe(true)
 
       const content = fs.readFileSync(jsPath, 'utf-8')
-      expect(content).toContain('\'logo\':')
-      expect(content).toContain('\'arrow\':')
+      expect(content).toContain("'logo':")
+      expect(content).toContain("'arrow':")
     })
 
     it('uses metroConfig.projectRoot when options.projectRoot is not passed', () => {
@@ -48,7 +48,7 @@ describe('withRottAssets', () => {
 
       const jsPath = path.join(tmpDir, '.rott/consumer-assets.js')
       expect(fs.existsSync(jsPath)).toBe(true)
-      expect(fs.readFileSync(jsPath, 'utf-8')).toContain('\'only\':')
+      expect(fs.readFileSync(jsPath, 'utf-8')).toContain("'only':")
     })
 
     it('generates empty images/icons when no assets exist', () => {
@@ -73,9 +73,9 @@ describe('withRottAssets', () => {
       expect(fs.existsSync(dtsPath)).toBe(true)
 
       const content = fs.readFileSync(dtsPath, 'utf-8')
-      expect(content).toContain('declare module \'@tansuk/rott-ui\'')
-      expect(content).toContain('\'my-logo\': true')
-      expect(content).toContain('\'my-icon\': true')
+      expect(content).toContain("declare module '@tansuk/rott-ui'")
+      expect(content).toContain("'my-logo': true")
+      expect(content).toContain("'my-icon': true")
     })
 
     it('does not add ConsumerImageKeys/ConsumerIconKeys when no assets', () => {
@@ -83,7 +83,7 @@ describe('withRottAssets', () => {
 
       const dtsPath = path.join(tmpDir, '.rott/consumer-assets.d.ts')
       const content = fs.readFileSync(dtsPath, 'utf-8')
-      expect(content).toContain('declare module \'@tansuk/rott-ui\'')
+      expect(content).toContain("declare module '@tansuk/rott-ui'")
       expect(content).not.toContain('ConsumerImageKeys {')
       expect(content).not.toContain('ConsumerIconKeys {')
     })
@@ -95,11 +95,7 @@ describe('withRottAssets', () => {
       const config = withRottAssets({resolver: {}}, {projectRoot: tmpDir})
 
       const mockContext = {resolveRequest: () => ({type: 'empty'})}
-      const resolved = config.resolver.resolveRequest(
-        mockContext,
-        '@rott-consumer-assets',
-        'ios',
-      )
+      const resolved = config.resolver.resolveRequest(mockContext, '@rott-consumer-assets', 'ios')
 
       expect(resolved.type).toBe('sourceFile')
       expect(resolved.filePath).toBe(path.join(tmpDir, '.rott/consumer-assets.js'))
@@ -109,17 +105,13 @@ describe('withRottAssets', () => {
       const originalResolver = jest.fn(() => ({type: 'original'}))
       const config = withRottAssets(
         {resolver: {resolveRequest: originalResolver}},
-        {projectRoot: tmpDir},
+        {projectRoot: tmpDir}
       )
 
       const mockContext = {}
       config.resolver.resolveRequest(mockContext, 'some-other-module', 'ios')
 
-      expect(originalResolver).toHaveBeenCalledWith(
-        mockContext,
-        'some-other-module',
-        'ios',
-      )
+      expect(originalResolver).toHaveBeenCalledWith(mockContext, 'some-other-module', 'ios')
     })
   })
 
@@ -128,18 +120,18 @@ describe('withRottAssets', () => {
       writeFile(tmpDir, 'src/assets/images/a/dup.png')
       writeFile(tmpDir, 'src/assets/images/b/dup.jpg')
 
-      expect(() =>
-        withRottAssets({resolver: {}}, {projectRoot: tmpDir}),
-      ).toThrow(/Asset name collision in images/)
+      expect(() => withRottAssets({resolver: {}}, {projectRoot: tmpDir})).toThrow(
+        /Asset name collision in images/
+      )
     })
 
     it('throws when two icons produce the same key', () => {
       writeFile(tmpDir, 'src/assets/icons/svg/x/dup.svg')
       writeFile(tmpDir, 'src/assets/icons/svg/y/dup.svg')
 
-      expect(() =>
-        withRottAssets({resolver: {}}, {projectRoot: tmpDir}),
-      ).toThrow(/Asset name collision in icons/)
+      expect(() => withRottAssets({resolver: {}}, {projectRoot: tmpDir})).toThrow(
+        /Asset name collision in icons/
+      )
     })
   })
 
@@ -151,11 +143,8 @@ describe('withRottAssets', () => {
 
       withRottAssets({resolver: {}}, {projectRoot: tmpDir})
 
-      const content = fs.readFileSync(
-        path.join(tmpDir, '.rott/consumer-assets.js'),
-        'utf-8',
-      )
-      expect(content).toContain('\'logo\':')
+      const content = fs.readFileSync(path.join(tmpDir, '.rott/consumer-assets.js'), 'utf-8')
+      expect(content).toContain("'logo':")
       expect(content).not.toContain('logo@2x')
       expect(content).not.toContain('logo@3x')
     })

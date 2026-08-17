@@ -1,4 +1,4 @@
-import {isValidElement, type FC} from 'react'
+import React, {isValidElement, type FC} from 'react'
 
 import {themeConfig} from '../../../providers'
 import {Content} from '../../Content'
@@ -9,7 +9,6 @@ import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
 import {useHeader} from '../hooks'
 import type {HeaderProps} from '../models'
-import React from 'react'
 
 /**
  *
@@ -179,16 +178,16 @@ export const Header: FC<HeaderProps> = ({
               onPress={(event) => !!rightIcon?.onPress && rightIcon?.onPress(event)}>
               {!rightElement && !isRightElement && (
                 <Icon
-                testID='header-right-icon-test-id'
-                width={24}
-                height={24}
-                strokeWidth={back ? 2 : rightIcon?.strokeWidth}
-                variant={(rightIcon as IconProps)?.variant}
-                mode={(rightIcon as IconProps)?.mode}
-                noStroke={(rightIcon as IconProps)?.noStroke}
-                {...(typeof rightIcon === 'object' ? (rightIcon as IconProps) : {})}
-                name={(rightIcon as IconProps)?.name ?? rightIcon}
-              />
+                  testID='header-right-icon-test-id'
+                  width={24}
+                  height={24}
+                  strokeWidth={back ? 2 : rightIcon?.strokeWidth}
+                  variant={(rightIcon as IconProps)?.variant}
+                  mode={(rightIcon as IconProps)?.mode}
+                  noStroke={(rightIcon as IconProps)?.noStroke}
+                  {...(typeof rightIcon === 'object' ? (rightIcon as IconProps) : {})}
+                  name={(rightIcon as IconProps)?.name ?? rightIcon}
+                />
               )}
             </Pressable>
           )}

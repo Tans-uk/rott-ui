@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
 import {PinPasswordInput} from '../components'
 
@@ -6,7 +7,9 @@ describe('Pin Password Input -> Custom Input', () => {
   const pinPasswordInputTestId = 'input-test-id'
 
   it('pin password input ilk render anında snapshot ile eşleşmeli', async () => {
-    const renderedInput = await render(<PinPasswordInput name='test' testID={pinPasswordInputTestId} />)
+    const renderedInput = await render(
+      <PinPasswordInput name='test' testID={pinPasswordInputTestId} />
+    )
 
     expect(renderedInput).toMatchSnapshot()
   })
@@ -45,7 +48,9 @@ describe('Pin Password Input -> Custom Input', () => {
   })
 
   it('pin password input ilk renderlandiginda text gorunur olmamali', async () => {
-    const {getByTestId} = await render(<PinPasswordInput name='test' testID={pinPasswordInputTestId} />)
+    const {getByTestId} = await render(
+      <PinPasswordInput name='test' testID={pinPasswordInputTestId} />
+    )
 
     const pinPasswordInputElement = getByTestId(pinPasswordInputTestId)
 
@@ -53,7 +58,9 @@ describe('Pin Password Input -> Custom Input', () => {
   })
 
   it('pin password input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
-    const {getByTestId} = await render(<PinPasswordInput name='test' testID={pinPasswordInputTestId} />)
+    const {getByTestId} = await render(
+      <PinPasswordInput name='test' testID={pinPasswordInputTestId} />
+    )
 
     const pinPasswordInputElement = getByTestId(pinPasswordInputTestId)
 

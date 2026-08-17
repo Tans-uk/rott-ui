@@ -1,5 +1,7 @@
 import {Dimensions} from 'react-native'
 
+import {fontSizeNormalizer} from '../fontSizeNormalizer'
+
 // Local mocks override the global jest.setup theme/providers mocks so the
 // fontSizes map is fully controlled for this unit.
 jest.mock('../../theme', () => ({
@@ -13,8 +15,6 @@ jest.mock('../../providers/RottProvider', () => ({
     fontSizes: {providerOnly: 99},
   },
 }))
-
-import {fontSizeNormalizer} from '../fontSizeNormalizer'
 
 describe('fontSizeNormalizer', () => {
   afterEach(() => jest.restoreAllMocks())

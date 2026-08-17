@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {formatMessage} from '../../../libs'
 import {Label} from '../../Label'
@@ -14,7 +15,9 @@ describe('CheckBox Input -> Custom Input', () => {
 
   it('checkbox input ilk render anında snapshot ile eşleşmeli', async () => {
     const {checkboxInputTestId} = testId
-    const renderedCheckBoxInput = await render(<CheckBoxInput name='test' testID={checkboxInputTestId} />)
+    const renderedCheckBoxInput = await render(
+      <CheckBoxInput name='test' testID={checkboxInputTestId} />
+    )
 
     expect(renderedCheckBoxInput).toMatchSnapshot()
   })
@@ -33,7 +36,9 @@ describe('CheckBox Input -> Custom Input', () => {
 
   it('checkbox render olduğunda description string olarak verilmişse ekranda default label ile renderlanmalı', async () => {
     const {checkboxDefaultLabelTestId} = testId
-    const {getByText} = await render(<CheckBoxInput name='test' description={formatMessage('TEST')} />)
+    const {getByText} = await render(
+      <CheckBoxInput name='test' description={formatMessage('TEST')} />
+    )
 
     const checkboxLabel = getByText(formatMessage('TEST'))
     expect(checkboxLabel).toHaveProp('testID', checkboxDefaultLabelTestId)

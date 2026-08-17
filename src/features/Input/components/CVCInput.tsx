@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
@@ -11,7 +11,6 @@ import {Pressable} from '../../Pressable'
 import type {CVCInputProps} from '../models'
 import {CVCInputStyles, InputStyles} from '../styles'
 import {InputField} from './InputField'
-import React from 'react'
 
 export const CVCInput: FC<CVCInputProps> = ({
   fontSize,

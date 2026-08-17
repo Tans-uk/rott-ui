@@ -1,11 +1,10 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
 import type {NumericInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputField} from './InputField'
-import React from 'react'
 
 export const NumericInput: FC<NumericInputProps> = ({
   label,
