@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - main
+      - development
   pull_request:
     branches:
       - main
+      - development
   merge_group:
     types:
       - checks_requested
@@ -39,6 +41,9 @@ jobs:
         run: yarn test --maxWorkers=2 --coverage
 
   build-library:
+    # The packaging check belongs to the release path; development gets lint and
+    # test only. Nothing here publishes — `yarn prepare` just builds into lib/.
+    if: github.ref == 'refs/heads/main' || github.base_ref == 'main' || github.event_name == 'merge_group'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
