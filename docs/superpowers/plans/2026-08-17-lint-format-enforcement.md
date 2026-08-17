@@ -133,7 +133,7 @@ The config extends `eslint-config-prettier`, whose only purpose is switching off
 
 `eslint-plugin-prettier` is a declared dependency, registered as a plugin, whose `prettier/prettier` rule is never enabled — it does no work and is removed.
 
-`curly` moves from `multi-or-nest` to `multi-line`. `multi-or-nest` forbids braces on single-statement bodies; all 421 TypeScript files are written with them. `multi-line` permits both, so it describes the code as written and stops the rule from rewriting it.
+`curly` moves from `multi-or-nest` to `multi-line`. No `curly` value leaves the code untouched: the codebase mixes braced bodies, unbraced bodies on the same line as the `if`, and unbraced bodies on the line below it. Measured violation counts are `off` 0, `multi-or-nest` 9 across 4 files, `multi-line` 25 across 12, `all` 158 across 48. `multi-line` was chosen and its 25 sites get braces, alongside the 9 the old setting had stripped — 34 in total across 15 files.
 
 **Files:**
 - Modify: `eslint.config.mjs` (imports, plugins block, rules block, TypeScript block)
@@ -237,6 +237,16 @@ export const useRottContext = () => {
 }
 ```
 
+- [ ] **Step 6b: Brace the 25 pre-existing sites `multi-line` flags**
+
+These are not the sites `90fd72f` stripped. They are older code in the third style — `if (cond)` with an unbraced body on the line *below* — which `multi-or-nest` tolerated and `multi-line` rejects. Enumerate them:
+
+```bash
+yarn lint 2>&1 | grep -B20 curly
+```
+
+They span roughly `src/features/`, `src/metro/withRottAssets.js` and `src/utils/commonUiStyleProperties.ts`. Add braces only — do not reflow, rename, or otherwise touch those lines. Repeat until `yarn lint` reports zero `curly` errors.
+
 - [ ] **Step 7: Verify lint is clean**
 
 Run: `yarn lint`
@@ -250,7 +260,7 @@ Expected: typecheck exit 0; 58 suites, 481 tests, 43 snapshots passing.
 - [ ] **Step 9: Commit**
 
 ```bash
-git add package.json yarn.lock eslint.config.mjs scripts/generate-assets.ts src/hooks/useRottContext.ts src/utils/defineRottConfig.ts src/utils/fontSizeNormalizer.ts
+git add -A
 git commit -m "refactor(lint): let Prettier own formatting and ESLint own quality
 
 The config extended eslint-config-prettier, whose whole purpose is switching off
@@ -260,9 +270,9 @@ linebreak-style in a later block that overrode it. That conflict is what produce
 
 - remove the formatting rules; eslint-config-prettier already handles them
 - drop eslint-plugin-prettier, a dependency whose rule was never enabled
-- curly moves from multi-or-nest to multi-line, which describes how all 421
-  TypeScript files are actually written, and restore the nine braces the old
-  setting stripped"
+- curly moves from multi-or-nest to multi-line, which requires braces whenever an
+  if body sits on its own line, and brace the 34 sites that violated it: the 9 the
+  old multi-or-nest setting had stripped, plus 25 that predate it"
 ```
 
 ---

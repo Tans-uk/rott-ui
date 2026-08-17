@@ -56,9 +56,15 @@ registered as a plugin, but its `prettier/prettier` rule is never enabled, so it
 does no work.
 
 **The written config and the lived convention disagree on `curly`.** The config
-says `multi-or-nest` (braces forbidden on single-statement bodies); the 421
-TypeScript files are written with braces. The rule never ran on TypeScript, so
-the contradiction stayed invisible until it stripped braces at 9 sites.
+says `multi-or-nest`, which forbids braces on single-statement bodies. The rule
+never ran on TypeScript, so the contradiction stayed invisible until it stripped
+braces at 9 sites.
+
+There is no `curly` setting that leaves the code untouched, because the codebase
+uses three styles at once: braced bodies, unbraced bodies on the same line as the
+`if`, and unbraced bodies on the line below it. Measured violation counts:
+`off` 0, `multi-or-nest` 9 across 4 files, `multi-line` 25 across 12,
+`all` 158 across 48.
 
 ## Design
 
@@ -154,11 +160,20 @@ reference setup they already work with, which uses `lint-staged` to run
 **Prettier scope equals ESLint scope.** One boundary to remember instead of two,
 and it keeps both tools out of the projects that own their own tooling.
 
-**`curly: multi-line` over `all`.** `multi-line` describes the code as written,
-so it costs one reversion of the 9 stripped braces. `all` is the stricter and
-more common industry default, but adopting it means a second reformatting wave
-across every single-statement body in the codebase. That is a reasonable future
-change; it is not this change.
+**`curly: multi-line`, and brace the 34 sites it flags.** This decision was taken
+twice. The first time rested on a false claim of mine — that `multi-line`
+described the code as written and would cost only the reversion of the 9 stripped
+braces. It does not: the style where an unbraced body sits on the line below the
+`if` appears 25 more times, and `multi-line` rejects it. Corrected counts went
+back to the user, who kept `multi-line` and accepted bracing all 34 sites across
+15 files.
+
+`all` remains the stricter and more common industry default, and it is now a
+smaller step than it looks — 158 sites rather than 25. It is still a separate
+change from this one.
+
+The lesson worth keeping: "matches the existing style" is a measurable claim, and
+this spec asserted it without measuring.
 
 **typescript-eslint 8.x.** Not cosmetic. 7.18.0 officially supports TypeScript
 `<5.6` and this project is on 5.9.3, which the parser warns about on every run.
