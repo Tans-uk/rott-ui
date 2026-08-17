@@ -1,4 +1,4 @@
-import {isValidElement, useEffect, useMemo, useRef, type FC} from 'react'
+import React, {isValidElement, useEffect, useMemo, useRef, type FC} from 'react'
 
 import {InteractionManager, Platform, Modal as RNModal} from 'react-native'
 
@@ -22,7 +22,6 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import React from 'react'
 
 export const ModalComponent: FC<ModalProps> = ({
   id,

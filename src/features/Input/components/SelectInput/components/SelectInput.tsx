@@ -111,9 +111,9 @@ export const SelectInput: FC<SelectInputProps> = ({
       if (
         selectItems?.isEmpty() ||
         selectItems?.findIndex((item) => item.value === selectedValue) === -1
-      )
+      ) {
         setSelectItems([...selectItems, filteredItem])
-      else setSelectItems(selectItems.filter((item) => item.value !== selectedValue))
+      } else setSelectItems(selectItems.filter((item) => item.value !== selectedValue))
     }
   }
 
@@ -226,8 +226,9 @@ export const SelectInput: FC<SelectInputProps> = ({
 
   useEffect(() => {
     if (!value) handleItem(null)
-    else if (value && value !== selectItem?.value && !multiSelection && typeof value === 'string')
+    else if (value && value !== selectItem?.value && !multiSelection && typeof value === 'string') {
       handleItem(value)
+    }
   }, [value, extraDisplayData])
 
   return (

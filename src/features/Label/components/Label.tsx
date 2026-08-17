@@ -1,10 +1,9 @@
-import {forwardRef, type FC} from 'react'
+import React, {forwardRef, type FC} from 'react'
 
 import {StyleSheet, Text} from 'react-native'
 
 import type {LabelProps} from '../models'
 import {LabelStyles} from '../styles'
-import React from 'react'
 
 export const Label: FC<LabelProps> = forwardRef<Text, LabelProps>(
   (

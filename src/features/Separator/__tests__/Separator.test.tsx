@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {commonUiTestExtension} from '../../../__tests__/utils/commonUiTestExtension'
 import {render} from '../../../__tests__/utils/testUtils'
 import {Separator} from '../components'
@@ -42,7 +43,9 @@ describe('Separator -> Custom Component', () => {
   })
 
   it('separator component vertical render olmalı', async () => {
-    const {getByTestId} = await render(<Separator orientation='vertical' testID='separator-test-id' />)
+    const {getByTestId} = await render(
+      <Separator orientation='vertical' testID='separator-test-id' />
+    )
 
     const separator = getByTestId('separator-test-id')
 

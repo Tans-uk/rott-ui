@@ -21,15 +21,16 @@ function scanDirectory(dir, extensions) {
   const results = []
   if (!fs.existsSync(dir)) return results
 
-  const entries = fs.readdirSync(dir, { withFileTypes: true })
+  const entries = fs.readdirSync(dir, {withFileTypes: true})
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name)
-    if (entry.isDirectory())
+    if (entry.isDirectory()) {
       results.push(...scanDirectory(fullPath, extensions))
-    else if (entry.isFile()) {
+    } else if (entry.isFile()) {
       const ext = path.extname(entry.name).toLowerCase()
-      if (extensions.includes(ext) && !isRetinaVariant(entry.name))
+      if (extensions.includes(ext) && !isRetinaVariant(entry.name)) {
         results.push(fullPath)
+      }
     }
   }
 
@@ -38,15 +39,24 @@ function scanDirectory(dir, extensions) {
 
 function detectCollisions(entries, type) {
   const seen = new Map()
-  for (const { key, filePath } of entries) {
+  for (const {key, filePath} of entries) {
     const existing = seen.get(key)
-    if (existing)
-    {throw new Error(
-      '[rott-ui] Asset name collision in ' + type + ': "' + key + '" is produced by both:\n' +
-        '  - ' + existing + '\n' +
-        '  - ' + filePath + '\n' +
-        'Rename one of the files to resolve this.'
-    )}
+    if (existing) {
+      throw new Error(
+        '[rott-ui] Asset name collision in ' +
+          type +
+          ': "' +
+          key +
+          '" is produced by both:\n' +
+          '  - ' +
+          existing +
+          '\n' +
+          '  - ' +
+          filePath +
+          '\n' +
+          'Rename one of the files to resolve this.'
+      )
+    }
     seen.set(key, filePath)
   }
 }
@@ -54,30 +64,32 @@ function detectCollisions(entries, type) {
 function buildEntries(dir, extensions) {
   const files = scanDirectory(dir, extensions)
   const entries = files.map(function (filePath) {
-    return { key: deriveKey(filePath), filePath: filePath }
+    return {key: deriveKey(filePath), filePath: filePath}
   })
-  entries.sort(function (a, b) { return a.key.localeCompare(b.key) })
+  entries.sort(function (a, b) {
+    return a.key.localeCompare(b.key)
+  })
 
   return entries
 }
 
 function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   const outputDir = path.join(projectRoot, '.rott')
-  fs.mkdirSync(outputDir, { recursive: true })
+  fs.mkdirSync(outputDir, {recursive: true})
 
   const lines = ['module.exports = {']
 
   lines.push('  images: {')
   for (const entry of imageEntries) {
     const relPath = path.relative(outputDir, entry.filePath).replace(/\\/g, '/')
-    lines.push('    \'' + entry.key + '\': require(\'./' + relPath + '\'),')
+    lines.push("    '" + entry.key + "': require('./" + relPath + "'),")
   }
   lines.push('  },')
 
   lines.push('  icons: {')
   for (const entry of iconEntries) {
     const relPath = path.relative(outputDir, entry.filePath).replace(/\\/g, '/')
-    lines.push('    \'' + entry.key + '\': require(\'./' + relPath + '\'),')
+    lines.push("    '" + entry.key + "': require('./" + relPath + "'),")
   }
   lines.push('  },')
 
@@ -87,23 +99,26 @@ function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   const content = lines.join('\n') + '\n'
 
   const existing = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf-8') : ''
-  if (existing !== content)
+  if (existing !== content) {
     fs.writeFileSync(outputPath, content, 'utf-8')
+  }
 
   // Generate module augmentation for TypeScript autocomplete
-  var dtsLines = ['import \'@tansuk/rott-ui\';']
+  var dtsLines = ["import '@tansuk/rott-ui';"]
   dtsLines.push('')
-  dtsLines.push('declare module \'@tansuk/rott-ui\' {')
+  dtsLines.push("declare module '@tansuk/rott-ui' {")
   if (imageEntries.length > 0) {
     dtsLines.push('  interface ConsumerImageKeys {')
-    for (var i = 0; i < imageEntries.length; i++)
-      dtsLines.push('    \'' + imageEntries[i].key + '\': true;')
+    for (var i = 0; i < imageEntries.length; i++) {
+      dtsLines.push("    '" + imageEntries[i].key + "': true;")
+    }
     dtsLines.push('  }')
   }
   if (iconEntries.length > 0) {
     dtsLines.push('  interface ConsumerIconKeys {')
-    for (var j = 0; j < iconEntries.length; j++)
-      dtsLines.push('    \'' + iconEntries[j].key + '\': true;')
+    for (var j = 0; j < iconEntries.length; j++) {
+      dtsLines.push("    '" + iconEntries[j].key + "': true;")
+    }
     dtsLines.push('  }')
   }
   dtsLines.push('}')
@@ -111,8 +126,9 @@ function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   const dtsPath = path.join(outputDir, 'consumer-assets.d.ts')
   const dtsContent = dtsLines.join('\n') + '\n'
   const existingDts = fs.existsSync(dtsPath) ? fs.readFileSync(dtsPath, 'utf-8') : ''
-  if (existingDts !== dtsContent)
+  if (existingDts !== dtsContent) {
     fs.writeFileSync(dtsPath, dtsContent, 'utf-8')
+  }
 
   return outputPath
 }
@@ -146,24 +162,31 @@ function withRottAssets(metroConfig, options) {
 
   const imageCount = imageEntries.length
   const iconCount = iconEntries.length
-  if (imageCount > 0 || iconCount > 0)
-  {console.log(
-    '[rott-ui] Auto-discovered ' + imageCount + ' image(s) and ' + iconCount + ' icon(s) from consumer project.'
-  )}
+  if (imageCount > 0 || iconCount > 0) {
+    console.log(
+      '[rott-ui] Auto-discovered ' +
+        imageCount +
+        ' image(s) and ' +
+        iconCount +
+        ' icon(s) from consumer project.'
+    )
+  }
 
   const originalResolver = metroConfig.resolver && metroConfig.resolver.resolveRequest
 
   return Object.assign({}, metroConfig, {
     resolver: Object.assign({}, metroConfig.resolver, {
       resolveRequest: function (context, moduleName, platform) {
-        if (moduleName === CONSUMER_ASSETS_MODULE)
-        {return {
-          type: 'sourceFile',
-          filePath: generatedFilePath,
-        }}
+        if (moduleName === CONSUMER_ASSETS_MODULE) {
+          return {
+            type: 'sourceFile',
+            filePath: generatedFilePath,
+          }
+        }
 
-        if (originalResolver)
+        if (originalResolver) {
           return originalResolver(context, moduleName, platform)
+        }
 
         return context.resolveRequest(context, moduleName, platform)
       },
@@ -171,4 +194,4 @@ function withRottAssets(metroConfig, options) {
   })
 }
 
-module.exports = { withRottAssets: withRottAssets }
+module.exports = {withRottAssets: withRottAssets}

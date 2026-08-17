@@ -69,8 +69,9 @@ export const useModal = (modalToRender?: ModalProps, modalDependencies?: any[]) 
 
   useEffect(() => {
     // console.log('useEffect', 'prevDeps: ', prevDeps.current, 'modalDeps: ', modalDependencies)
-    if (!isShallowEqual(prevDeps.current, modalDependencies))
+    if (!isShallowEqual(prevDeps.current, modalDependencies)) {
       updateModal(modalToRender!, modalToRender?.id)
+    }
 
     prevDeps.current = modalDependencies
   }, [modalDependencies])

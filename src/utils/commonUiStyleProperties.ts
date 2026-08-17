@@ -41,8 +41,9 @@ export const commonUiStyleProperties = (props?: any) => {
   }
 
   // Background color
-  if (props?.backgroundColor !== undefined)
+  if (props?.backgroundColor !== undefined) {
     styles.backgroundColor = colorFromVariant(props.backgroundColor)
+  }
 
   // Margins
   if (props?.marginTop !== undefined) {
@@ -164,17 +165,21 @@ export const commonUiStyleProperties = (props?: any) => {
   if (props?.includeBorderRadius) {
     if (props?.borderRadius !== undefined) styles.borderRadius = props.borderRadius
 
-    if (props?.borderTopEndRadius !== undefined)
+    if (props?.borderTopEndRadius !== undefined) {
       styles.borderTopEndRadius = props.borderTopEndRadius
+    }
 
-    if (props?.borderTopStartRadius !== undefined)
+    if (props?.borderTopStartRadius !== undefined) {
       styles.borderTopStartRadius = props.borderTopStartRadius
+    }
 
-    if (props?.borderBottomStartRadius !== undefined)
+    if (props?.borderBottomStartRadius !== undefined) {
       styles.borderBottomStartRadius = props.borderBottomStartRadius
+    }
 
-    if (props?.borderBottomEndRadius !== undefined)
+    if (props?.borderBottomEndRadius !== undefined) {
       styles.borderBottomEndRadius = props.borderBottomEndRadius
+    }
   }
 
   // Align items
@@ -205,8 +210,9 @@ export const commonUiStyleProperties = (props?: any) => {
   }
 
   // Letter spacing
-  if (props?.includeLatterSpacing && props?.letterSpacing !== undefined)
+  if (props?.includeLatterSpacing && props?.letterSpacing !== undefined) {
     styles.letterSpacing = props.letterSpacing
+  }
 
   // Overflow
   if (props?.overflowHidden) styles.overflow = 'hidden'

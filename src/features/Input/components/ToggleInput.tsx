@@ -1,16 +1,13 @@
-import {isValidElement, type FC} from 'react'
+import React, {isValidElement, type FC} from 'react'
 
+import {Item} from '../../Item'
+import {Label} from '../../Label'
+import {Separator} from '../../Separator'
+import {Toggle} from '../../Toggle'
 import type {ToggleInputProps} from '../models'
-import { Item } from '../../Item'
-import { Separator } from '../../Separator'
-import { Toggle } from '../../Toggle'
-import { Label } from '../../Label'
-import { Input } from './Input'
-import { IconSlot } from './InputField'
-import { inputIconGapNormalizer } from '../utils'
-import React from 'react'
-
-
+import {inputIconGapNormalizer} from '../utils'
+import {Input} from './Input'
+import {IconSlot} from './InputField'
 
 export const ToggleInput: FC<ToggleInputProps> = ({
   testID,

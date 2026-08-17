@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {render, userEvent} from '../../../__tests__/utils/testUtils'
 import {DefaultInput} from '../components'
 
@@ -8,7 +9,9 @@ jest.mock('../../Icon', () => ({
     const React = require('react')
     const {View, Text} = require('react-native')
 
-return React.createElement(View, {ref, ...props},
+    return React.createElement(
+      View,
+      {ref, ...props},
       React.createElement(Text, {testID: 'icon-content'}, 'Icon')
     )
   }),

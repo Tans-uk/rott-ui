@@ -37,9 +37,7 @@ describe('Input -> onChangeText verilmeden çökmemeli (regresyon)', () => {
 
       const {getByPlaceholderText} = await render(<Input {...inputProps} />)
 
-      expect(() =>
-        fireEvent.changeText(getByPlaceholderText(placeholder), '12345')
-      ).not.toThrow()
+      expect(() => fireEvent.changeText(getByPlaceholderText(placeholder), '12345')).not.toThrow()
     }
   )
 

@@ -1,8 +1,5 @@
-import * as fs from 'fs'
-import * as os from 'os'
-import * as path from 'path'
-
 import {
+  assertEmittable,
   buildEntries,
   deriveKey,
   detectCollisions,
@@ -11,6 +8,10 @@ import {
   replaceMarkerSection,
   scanDirectory,
 } from '../generate-assets'
+
+import * as fs from 'fs'
+import * as os from 'os'
+import * as path from 'path'
 
 function createTempDir(): string {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'gen-assets-'))
@@ -117,6 +118,32 @@ describe('detectCollisions', () => {
   })
 })
 
+describe('assertEmittable', () => {
+  it('accepts ordinary and non-ASCII names', () => {
+    const entries = [
+      {key: 'logo', requirePath: '../assets/images/logo.png'},
+      {key: 'card-check', requirePath: '../assets/images/card-check.png'},
+      {key: 'ödeme', requirePath: '../assets/images/ödeme.png'},
+    ]
+    expect(() => assertEmittable(entries)).not.toThrow()
+  })
+
+  it('rejects __proto__, which would set the prototype instead of a key', () => {
+    const entries = [{key: '__proto__', requirePath: '../assets/images/__proto__.png'}]
+    expect(() => assertEmittable(entries)).toThrow(/Unusable asset name: "__proto__"/)
+  })
+
+  it('rejects a name containing a quote, which would break the generated module', () => {
+    const entries = [{key: "it's-a-logo", requirePath: "../assets/images/it's-a-logo.png"}]
+    expect(() => assertEmittable(entries)).toThrow(/Unusable asset name/)
+  })
+
+  it('rejects a backslash, which would otherwise be read as an escape sequence', () => {
+    const entries = [{key: 'logo\\new', requirePath: '../assets/images/logo.png'}]
+    expect(() => assertEmittable(entries)).toThrow(/Unusable asset name/)
+  })
+})
+
 describe('buildEntries', () => {
   let tmpDir: string
 
@@ -154,8 +181,8 @@ describe('generateRequireBlock', () => {
       {key: 'euro', requirePath: '../assets/icons/svg/currency/euro.svg'},
     ]
     const block = generateRequireBlock(entries)
-    expect(block).toContain('\'arrow-left\': require(\'../assets/icons/svg/interface/arrow-left.svg\')')
-    expect(block).toContain('\'euro\': require(\'../assets/icons/svg/currency/euro.svg\')')
+    expect(block).toContain("'arrow-left': require('../assets/icons/svg/interface/arrow-left.svg')")
+    expect(block).toContain("euro: require('../assets/icons/svg/currency/euro.svg')")
   })
 
   it('returns empty string for empty entries', () => {
@@ -168,24 +195,24 @@ describe('replaceMarkerSection', () => {
     'before content',
     '  images: {',
     '    // @generated-start:images',
-    '    \'old\': require(\'old.png\'),',
+    "    'old': require('old.png'),",
     '    // @generated-end:images',
     '  },',
     'after content',
   ].join('\n')
 
   it('replaces content between markers', () => {
-    const newContent = '    \'new\': require(\'new.png\'),'
+    const newContent = "    'new': require('new.png'),"
     const result = replaceMarkerSection(template, 'images', newContent)
 
     expect(result).toContain('// @generated-start:images')
-    expect(result).toContain('\'new\': require(\'new.png\')')
+    expect(result).toContain("'new': require('new.png')")
     expect(result).toContain('// @generated-end:images')
-    expect(result).not.toContain('\'old\': require(\'old.png\')')
+    expect(result).not.toContain("'old': require('old.png')")
   })
 
   it('preserves content outside markers', () => {
-    const result = replaceMarkerSection(template, 'images', '    \'x\': require(\'x.png\'),')
+    const result = replaceMarkerSection(template, 'images', "    'x': require('x.png'),")
     expect(result).toContain('before content')
     expect(result).toContain('after content')
   })
@@ -207,6 +234,6 @@ describe('replaceMarkerSection', () => {
     const result = replaceMarkerSection(template, 'images', '')
     expect(result).toContain('// @generated-start:images')
     expect(result).toContain('// @generated-end:images')
-    expect(result).not.toContain('\'old\'')
+    expect(result).not.toContain("'old'")
   })
 })

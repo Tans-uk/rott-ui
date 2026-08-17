@@ -10,8 +10,8 @@
  * }
  */
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface -- declaration-merging target
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type -- declaration-merging target
 export interface ConsumerImageKeys {}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface -- declaration-merging target
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type -- declaration-merging target
 export interface ConsumerIconKeys {}

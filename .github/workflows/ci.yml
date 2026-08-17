@@ -22,6 +22,9 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Check formatting
+        run: yarn format:check
+
       - name: Lint files
         run: yarn lint
 

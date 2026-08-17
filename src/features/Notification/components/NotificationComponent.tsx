@@ -1,10 +1,9 @@
-import {type FC, type JSX} from 'react'
+import React, {type FC, type JSX} from 'react'
 
 import {themeConfig} from '../../../providers'
 import {Item} from '../../Item'
 import {Label} from '../../Label'
 import {Pressable} from '../../Pressable'
-import React from 'react'
 
 interface NotificationMessageProps {
   title?: string

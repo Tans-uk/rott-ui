@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet, type GestureResponderEvent} from 'react-native'
 
@@ -7,7 +7,6 @@ import {InputStyles} from '../styles'
 import {InputField} from './InputField'
 
 import MaskInput from 'react-native-mask-input'
-import React from 'react'
 
 export const IbanInput: FC<IbanInputProps> = ({
   fontSize = 'md',
@@ -74,9 +73,9 @@ export const IbanInput: FC<IbanInputProps> = ({
       if (clearIconVisible) {
         if (disabled) return
         handleTextChange('TR')
-      } else 
+      } else {
         rightIcon?.onPress?.(event)
-
+      }
     },
   }
 

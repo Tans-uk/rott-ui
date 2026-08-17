@@ -14,14 +14,14 @@ jest.mock('../../../theme', () => ({
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
 
-return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
+          return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
         }),
       },
       'check-circle': {
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
 
-return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
+          return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
         }),
       },
     },
@@ -36,7 +36,7 @@ jest.mock('../../../providers/RottProvider', () => ({
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
 
-return React.createElement('MockSvgIcon', {testID: 'mock-runtime-svg', ...props})
+          return React.createElement('MockSvgIcon', {testID: 'mock-runtime-svg', ...props})
         }),
       },
       // present in BOTH theme and themeConfig — theme (rott.config) must win
@@ -44,7 +44,7 @@ return React.createElement('MockSvgIcon', {testID: 'mock-runtime-svg', ...props}
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
 
-return React.createElement('MockSvgIcon', {testID: 'mock-runtime-arrow', ...props})
+          return React.createElement('MockSvgIcon', {testID: 'mock-runtime-arrow', ...props})
         }),
       },
     },
@@ -77,7 +77,7 @@ jest.mock('../../../utils', () => ({
       black: '#000000',
     }
 
-return colors[variant] || '#000000'
+    return colors[variant] || '#000000'
   }),
   display: {
     px: jest.fn((value) => value),
@@ -174,7 +174,9 @@ describe('Icon -> Custom Component', () => {
 
   describe('Icon -> Mode Behavior', () => {
     it('fill mode ile variant color fill olarak uygulanmalı', async () => {
-      await render(<Icon name='arrow-left' mode='fill' variant='primary' testID={testIds.iconTestId} />)
+      await render(
+        <Icon name='arrow-left' mode='fill' variant='primary' testID={testIds.iconTestId} />
+      )
       expect(colorFromVariant).toHaveBeenCalledWith('primary')
       const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.fill).toBe('#007AFF')
@@ -182,7 +184,9 @@ describe('Icon -> Custom Component', () => {
     })
 
     it('stroke mode ile variant color stroke olarak uygulanmalı', async () => {
-      await render(<Icon name='arrow-left' mode='stroke' variant='danger' testID={testIds.iconTestId} />)
+      await render(
+        <Icon name='arrow-left' mode='stroke' variant='danger' testID={testIds.iconTestId} />
+      )
       expect(colorFromVariant).toHaveBeenCalledWith('danger')
       const lastCall = theme.icons['arrow-left'].default.mock.calls[0][0]
       expect(lastCall.stroke).toBe('#FF3B30')

@@ -1,7 +1,6 @@
-import type {FC, PropsWithChildren} from 'react'
+import React, {type FC, type PropsWithChildren} from 'react'
 
 import {Content} from '../../Content'
-import React from 'react'
 
 export const Footer: FC<PropsWithChildren> = ({children}) => {
   return (

@@ -7,7 +7,11 @@ module.exports = {
   semi: false,
   singleQuote: true,
   arrowParens: 'always',
-  endOfLine: 'auto',
+  // 'lf', not 'auto': 'auto' preserves whatever a file already has, so nothing
+  // caught CRLF once the eslint linebreak-style rule was removed. This makes
+  // format:check the gate for it. The only CRLF files in the repo are
+  // examples/*/android/gradlew.bat, which must stay CRLF and are out of scope.
+  endOfLine: 'lf',
   jsxSingleQuote: true,
   proseWrap: 'preserve',
   quoteProps: 'as-needed',

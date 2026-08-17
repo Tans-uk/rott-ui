@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
@@ -11,7 +11,6 @@ import {type CheckBoxInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputStyleNormalizer} from '../utils'
 import {InputField} from './InputField'
-import React from 'react'
 
 export const CheckBoxInput: FC<CheckBoxInputProps> = ({
   description,
@@ -45,7 +44,10 @@ export const CheckBoxInput: FC<CheckBoxInputProps> = ({
           alignItemsCenter
           flex={1}
           style={[
-            StyleSheet.flatten([InputStyles({theme, size}).defaultTextInputStyle, {height: 'auto'}]),
+            StyleSheet.flatten([
+              InputStyles({theme, size}).defaultTextInputStyle,
+              {height: 'auto'},
+            ]),
           ]}
           testID='checkbox-container-test-id'>
           <Item

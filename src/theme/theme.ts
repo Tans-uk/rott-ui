@@ -1,7 +1,4 @@
-import type {
-  ConsumerImageKeys,
-  ConsumerIconKeys,
-} from '../models/consumerKeys.interface'
+import type {ConsumerIconKeys, ConsumerImageKeys} from '../models/consumerKeys.interface'
 import type {ThemeConfig} from '../models/themeConfig.interface'
 import {defaultThemeConfig} from '../providers/defaultThemeConfig'
 import {consumerAssets} from '../utils/consumerAssets'
@@ -44,7 +41,7 @@ try {
 } catch {
   if (typeof __DEV__ !== 'undefined' && __DEV__) {
     console.warn(
-      '[rott-ui] \'rott.config\' could not be resolved at runtime; using the default theme. ' +
+      "[rott-ui] 'rott.config' could not be resolved at runtime; using the default theme. " +
         'If you use a custom rott.config.ts, ensure runtime resolution is configured ' +
         '(Metro resolveRequest under Expo — see the rott.config docs). ' +
         'If you are not using a custom config, you can ignore this warning.'
@@ -62,10 +59,7 @@ const userProvidedIcons = userConfig && 'icons' in userConfig && userConfig.icon
 const imagesBase = userProvidedImages ? baseConfig.images : undefined
 const iconsBase = userProvidedIcons ? baseConfig.icons : undefined
 
-function mergeAssets<T extends Record<string, unknown>>(
-  base: T | undefined,
-  consumer: T,
-): T {
+function mergeAssets<T extends Record<string, unknown>>(base: T | undefined, consumer: T): T {
   return {...(base || ({} as T)), ...consumer} as T
 }
 

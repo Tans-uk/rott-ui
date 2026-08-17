@@ -1,4 +1,4 @@
-import {useCallback, useMemo, useState, type FC, type PropsWithChildren} from 'react'
+import React, {useCallback, useMemo, useState, type FC, type PropsWithChildren} from 'react'
 
 import {
   NotificationContext,
@@ -10,7 +10,6 @@ import {Item} from '../../Item'
 import {useNotification} from '../hooks'
 
 import {Toast} from 'react-native-toast-notifications'
-import React from 'react'
 
 let notifications = 0
 

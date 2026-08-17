@@ -26,7 +26,9 @@ describe('Button -> Custom Component', () => {
 
   it('buton ekranda olmalı ancak loading iconu görünmemeli', async () => {
     const {buttonTestId, buttonText, buttonLoadingIndicatiorTestId} = testId
-    const {getByTestId, queryByTestId} = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
+    const {getByTestId, queryByTestId} = await render(
+      <Button testID={buttonTestId}>{buttonText}</Button>
+    )
 
     const buttonElement = getByTestId(buttonTestId)
     const loadingIndicator = queryByTestId(buttonLoadingIndicatiorTestId)

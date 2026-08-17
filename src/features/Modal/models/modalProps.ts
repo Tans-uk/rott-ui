@@ -6,8 +6,7 @@ import type {Variant} from '../../../models'
 import type {HeaderProps} from '../../Header'
 
 export interface ModalProps
-  extends PropsWithChildren,
-    Omit<RNModalProps, 'transparent' | 'animated' | 'id'> {
+  extends PropsWithChildren, Omit<RNModalProps, 'transparent' | 'animated' | 'id'> {
   id?: number
   fullScreen?: boolean
 

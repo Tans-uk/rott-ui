@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {AmountInput} from '../..'
 import {fireEvent, render, waitFor} from '../../../../../__tests__/utils/testUtils'
 
@@ -126,7 +127,9 @@ describe('Amount Input -> Custom Input', () => {
     const currencyType = 'USD'
     const onChangeTextMock = jest.fn()
 
-    await render(<AmountInput name='test' currencyType={currencyType} onChangeText={onChangeTextMock} />)
+    await render(
+      <AmountInput name='test' currencyType={currencyType} onChangeText={onChangeTextMock} />
+    )
 
     expect(onChangeTextMock).toHaveBeenCalled()
   })

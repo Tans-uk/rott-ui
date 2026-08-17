@@ -1,13 +1,11 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
-import {type TimerProps} from '../models'
-import {TimerStyles} from '../style'
-
 import {Item} from '../../Item'
 import {Label} from '../../Label'
-import React from 'react'
+import {type TimerProps} from '../models'
+import {TimerStyles} from '../style'
 
 export const TimerComponent: FC<TimerProps> = ({color, time, style, ...props}) => {
   const renderTime = () => {

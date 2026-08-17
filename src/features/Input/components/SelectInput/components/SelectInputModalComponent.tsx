@@ -1,4 +1,4 @@
-import {useState, type FC} from 'react'
+import React, {useState, type FC} from 'react'
 
 import {ActivityIndicator} from 'react-native'
 
@@ -17,7 +17,6 @@ import {SelectInputStyles} from '../styles'
 import {listHeightNormalizer, sortListBySearchPriority} from '../utils'
 
 import {ListRenderItem} from '@shopify/flash-list'
-import React from 'react'
 
 export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
   searchable,
@@ -49,8 +48,9 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
     )
   })
 
-  if (sortByName && filteredListData)
+  if (sortByName && filteredListData) {
     filteredListData = sortListBySearchPriority(filteredListData, searchText)
+  }
 
   const handleClearSearch = () => setSearchText('')
 

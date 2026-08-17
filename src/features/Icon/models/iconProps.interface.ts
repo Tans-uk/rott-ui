@@ -4,7 +4,8 @@ import type {IconKeys} from './iconKeys.type'
 import type {SvgProps} from 'react-native-svg'
 
 export interface IconProps
-  extends Omit<
+  extends
+    Omit<
       SvgProps,
       | 'color'
       | 'fontFamily'

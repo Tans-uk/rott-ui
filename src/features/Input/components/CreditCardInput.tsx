@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
@@ -8,7 +8,6 @@ import {InputField} from './InputField'
 
 // Package Imports
 import MaskInput from 'react-native-mask-input'
-import React from 'react'
 
 export const CreditCardInput: FC<CreditCardInputProps> = ({
   fontSize,

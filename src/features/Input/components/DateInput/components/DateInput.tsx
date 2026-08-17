@@ -15,9 +15,9 @@ import {List} from '../../../../List'
 import {Modal, useModal} from '../../../../Modal'
 import {Pressable} from '../../../../Pressable'
 import {Separator} from '../../../../Separator'
-import {InputField} from '../../InputField'
 import {DateInputStyles, InputStyles} from '../../../styles'
 import {formatByDateMode, InputStyleNormalizer} from '../../../utils'
+import {InputField} from '../../InputField'
 import type {DataModel, DateInputProps} from '../models'
 
 import {startOfDay} from 'date-fns'
@@ -92,14 +92,14 @@ export const DateInput: FC<DateInputProps> = ({
     if (
       minimumDate &&
       (selectedDate ? selectedDate.getTime() : externalDate.getTime()) < minimumDate?.getTime()
-    )
+    ) {
       validDate = minimumDate
-    else if (
+    } else if (
       maximumDate &&
       (selectedDate ? selectedDate.getTime() : externalDate.getTime()) > maximumDate?.getTime()
-    )
+    ) {
       validDate = maximumDate
-    else validDate = selectedDate ?? externalDate
+    } else validDate = selectedDate ?? externalDate
 
     validDate = mode.includes('time') ? validDate : startOfDay(validDate)
 

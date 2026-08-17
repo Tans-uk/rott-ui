@@ -1,4 +1,4 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {
   ImageBackground as RNImageBackground,
@@ -7,7 +7,6 @@ import {
 } from 'react-native'
 
 import {ImageBackgroundStyles} from '../styles'
-import React from 'react'
 
 interface ImageBackgroundProps extends RNImageBackgroundProps {
   disableSafeAreaView?: boolean

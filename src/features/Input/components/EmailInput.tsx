@@ -1,11 +1,10 @@
-import {useCallback, useState, type FC} from 'react'
+import React, {useCallback, useState, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
 import type {EmailInputProps} from '../models'
 import {InputStyles} from '../styles'
 import {InputField} from './InputField'
-import React from 'react'
 
 export const EmailInput: FC<EmailInputProps> = ({
   disabled,

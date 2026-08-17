@@ -1,4 +1,4 @@
-import {useEffect, useMemo, type FC} from 'react'
+import React, {useEffect, useMemo, type FC} from 'react'
 
 import {themeConfig} from '../../../providers'
 import {display} from '../../../utils'
@@ -14,7 +14,6 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import React from 'react'
 
 interface ToggleProps {
   testID?: string

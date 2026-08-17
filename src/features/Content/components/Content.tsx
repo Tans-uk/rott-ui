@@ -1,14 +1,13 @@
-import {type FC} from 'react'
+import React, {type FC} from 'react'
 
 import {StyleSheet, View} from 'react-native'
 
+import {useSafeArea} from '../../../hooks'
 import {themeConfig} from '../../../providers'
 import {type ContentProps} from '../models'
 import {ContentStyles} from '../styles'
 
 import {KeyboardAwareScrollView} from 'react-native-keyboard-controller'
-import {useSafeArea} from '../../../hooks'
-import React from 'react'
 
 export const Content: FC<ContentProps> = ({
   row,
@@ -44,8 +43,9 @@ export const Content: FC<ContentProps> = ({
   if (useBottomInset) unusablePaddingBottom += bottom
 
   // Scrollable ekranlarda bottom inset uygulandi ise scroll alanina ekleme yapilir (Orn: Profil > Erisim Bilgileri UserAccessInfoScreen)
-  if (useBottomInset && !hasBottomMenu && scrollEnabled)
+  if (useBottomInset && !hasBottomMenu && scrollEnabled) {
     keyboardAvoidingViewContainerPaddingBottom += 24
+  }
 
   const contentStyles = ContentStyles({
     size,
