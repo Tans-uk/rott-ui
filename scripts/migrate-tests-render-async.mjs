@@ -10,6 +10,7 @@ function walk(dir, out = []) {
     if (st.isDirectory()) walk(p, out)
     else if (/\.test\.(tsx|ts)$/.test(name)) out.push(p)
   }
+
   return out
 }
 
@@ -20,7 +21,7 @@ for (const file of walk(root)) {
   const orig = s
 
   s = s.replace(/it\((['"])((?:\\.|(?!\1).)*)\1,\s*\(\)\s*=>/g, 'it($1$2$1, async () =>')
-  s = s.replace(/it\(\`([^\`]*)\`,\s*\(\)\s*=>/g, 'it(`$1`, async () =>')
+  s = s.replace(/it\(`([^`]*)`,\s*\(\)\s*=>/g, 'it(`$1`, async () =>')
   // Word boundary: avoid matching `rerender(` -> `reawait render(`.
   s = s.replace(/(?<!await )\brender\s*\(/g, 'await render(')
 
