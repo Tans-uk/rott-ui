@@ -452,7 +452,25 @@ The array form of `exclude`, plus `priority` and `stage_fixed`, were verified ag
 Run: `npx lefthook dump`
 Expected: the three commands appear under `pre-commit` in priority order, each with `stage_fixed: true` on `lint` and `format`, and `exclude` rendered as a two-item list. If a key is silently missing from the dump, lefthook did not understand it — fix before continuing.
 
-- [ ] **Step 2: Create a deliberately unformatted file to test the hook**
+- [ ] **Step 2: Commit the hook change — before running any probe**
+
+Order matters here. Step 5 ends in `git reset --hard`, which discards unstaged
+working-tree changes. If `lefthook.yml` were still unstaged at that point, the reset
+would destroy the very edit this task exists to make.
+
+```bash
+git add lefthook.yml
+git commit -m "ci(hooks): format and fix staged files on commit
+
+The pre-commit hook checked with ESLint but never fixed, and never ran Prettier at
+all, which is why 121 files drifted out of format unnoticed.
+
+Run eslint --fix then prettier --write over staged files and re-stage the result, in
+that order so Prettier has the last word on formatting and the two cannot undo each
+other."
+```
+
+- [ ] **Step 3: Create a deliberately unformatted file to probe the hook**
 
 ```bash
 cat > src/utils/__hooktest.ts <<'EOF'
@@ -463,38 +481,36 @@ EOF
 git add src/utils/__hooktest.ts
 ```
 
-- [ ] **Step 3: Commit it and confirm the hook reformatted the staged content**
+- [ ] **Step 4: Commit it and confirm the hook reformatted the staged content**
 
 ```bash
 git commit -m "test: temporary hook probe"
-git show --stat HEAD
 git show HEAD:src/utils/__hooktest.ts
 ```
 
-Expected: the committed file is formatted — two-space indent, no stray spaces inside the parameter list. If the committed content is still unformatted, `stage_fixed` is not working; fix before continuing.
+Expected: the committed content is formatted — two-space indent, no stray spaces inside the parameter list, single quotes, no semicolons. This is the acceptance criterion the spec calls criterion 3: staging an unformatted file yields a formatted commit.
 
-- [ ] **Step 4: Remove the probe**
+If the committed content is still unformatted, `stage_fixed` is not taking effect. Fix it and repeat from Step 3 before continuing.
+
+- [ ] **Step 5: Remove the probe**
+
+Safe now: the only thing this discards is the probe commit, because `lefthook.yml` was committed in Step 2.
 
 ```bash
 git reset --hard HEAD~1
 git status --short
+ls src/utils/__hooktest.ts 2>&1
 ```
 
-Expected: empty output, and `src/utils/__hooktest.ts` gone.
+Expected: empty status, and `ls` reports the file does not exist.
 
-- [ ] **Step 5: Commit the hook change**
+- [ ] **Step 6: Confirm the branch is back to the hook commit**
 
 ```bash
-git add lefthook.yml
-git commit -m "ci(hooks): format and fix staged files on commit
-
-The pre-commit hook checked with ESLint but never fixed, and never ran Prettier
-at all, which is why 121 files drifted.
-
-Run eslint --fix then prettier --write over staged files and re-stage the result,
-in that order so Prettier has the last word on formatting. Verified with a
-deliberately unformatted probe file: the committed content came out formatted."
+git log --oneline -1
 ```
+
+Expected: the `ci(hooks): format and fix staged files on commit` commit is HEAD, and no probe commit remains in the history.
 
 ---
 
