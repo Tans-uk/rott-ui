@@ -1,13 +1,28 @@
 pre-commit:
-  parallel: true
+  parallel: false
   commands:
     lint:
-      glob: "*.{js,ts,jsx,tsx}"
-      exclude: "docs/**/*"
-      run: npx eslint {staged_files}
+      priority: 1
+      glob: "*.{js,mjs,ts,tsx}"
+      exclude:
+        - "docs/**/*"
+        - "examples/**/*"
+      run: npx eslint --fix {staged_files}
+      stage_fixed: true
+    format:
+      priority: 2
+      glob: "*.{js,mjs,ts,tsx,json}"
+      exclude:
+        - "docs/**/*"
+        - "examples/**/*"
+      run: npx prettier --write {staged_files}
+      stage_fixed: true
     types:
-      glob: "*.{js,ts, jsx, tsx}"
-      exclude: "docs/**/*"
+      priority: 3
+      glob: "*.{js,ts,tsx}"
+      exclude:
+        - "docs/**/*"
+        - "examples/**/*"
       run: npx tsc
 commit-msg:
   parallel: true
