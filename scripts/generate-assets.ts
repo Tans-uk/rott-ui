@@ -79,11 +79,16 @@ export function buildEntries(
   return entries
 }
 
+// Mirrors Prettier's quoteProps: 'as-needed' — quote only if the key is not a valid identifier
+function quoteKeyIfNeeded(key: string): string {
+  return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key) ? key : `'${key}'`
+}
+
 export function generateRequireBlock(entries: AssetEntry[]): string {
   if (entries.length === 0) return ''
 
   const lines = entries.map(
-    (e) => `    '${e.key}': require('${e.requirePath.replace(/\\/g, '/')}'),`
+    (e) => `    ${quoteKeyIfNeeded(e.key)}: require('${e.requirePath.replace(/\\/g, '/')}'),`
   )
 
   return lines.join('\n')

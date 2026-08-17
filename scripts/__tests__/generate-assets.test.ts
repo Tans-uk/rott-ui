@@ -155,7 +155,7 @@ describe('generateRequireBlock', () => {
     ]
     const block = generateRequireBlock(entries)
     expect(block).toContain("'arrow-left': require('../assets/icons/svg/interface/arrow-left.svg')")
-    expect(block).toContain("'euro': require('../assets/icons/svg/currency/euro.svg')")
+    expect(block).toContain("euro: require('../assets/icons/svg/currency/euro.svg')")
   })
 
   it('returns empty string for empty entries', () => {
