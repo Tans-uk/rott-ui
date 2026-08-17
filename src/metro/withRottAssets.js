@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-console */
 const fs = require('fs')
 const path = require('path')
@@ -42,12 +41,12 @@ function detectCollisions(entries, type) {
   for (const { key, filePath } of entries) {
     const existing = seen.get(key)
     if (existing)
-      throw new Error(
-        '[rott-ui] Asset name collision in ' + type + ': "' + key + '" is produced by both:\n' +
+    {throw new Error(
+      '[rott-ui] Asset name collision in ' + type + ': "' + key + '" is produced by both:\n' +
         '  - ' + existing + '\n' +
         '  - ' + filePath + '\n' +
         'Rename one of the files to resolve this.'
-      )
+    )}
     seen.set(key, filePath)
   }
 }
@@ -71,14 +70,14 @@ function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   lines.push('  images: {')
   for (const entry of imageEntries) {
     const relPath = path.relative(outputDir, entry.filePath).replace(/\\/g, '/')
-    lines.push("    '" + entry.key + "': require('./" + relPath + "'),")
+    lines.push('    \'' + entry.key + '\': require(\'./' + relPath + '\'),')
   }
   lines.push('  },')
 
   lines.push('  icons: {')
   for (const entry of iconEntries) {
     const relPath = path.relative(outputDir, entry.filePath).replace(/\\/g, '/')
-    lines.push("    '" + entry.key + "': require('./" + relPath + "'),")
+    lines.push('    \'' + entry.key + '\': require(\'./' + relPath + '\'),')
   }
   lines.push('  },')
 
@@ -92,19 +91,19 @@ function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
     fs.writeFileSync(outputPath, content, 'utf-8')
 
   // Generate module augmentation for TypeScript autocomplete
-  var dtsLines = ["import '@tansuk/rott-ui';"]
+  var dtsLines = ['import \'@tansuk/rott-ui\';']
   dtsLines.push('')
-  dtsLines.push("declare module '@tansuk/rott-ui' {")
+  dtsLines.push('declare module \'@tansuk/rott-ui\' {')
   if (imageEntries.length > 0) {
     dtsLines.push('  interface ConsumerImageKeys {')
     for (var i = 0; i < imageEntries.length; i++)
-      dtsLines.push("    '" + imageEntries[i].key + "': true;")
+      dtsLines.push('    \'' + imageEntries[i].key + '\': true;')
     dtsLines.push('  }')
   }
   if (iconEntries.length > 0) {
     dtsLines.push('  interface ConsumerIconKeys {')
     for (var j = 0; j < iconEntries.length; j++)
-      dtsLines.push("    '" + iconEntries[j].key + "': true;")
+      dtsLines.push('    \'' + iconEntries[j].key + '\': true;')
     dtsLines.push('  }')
   }
   dtsLines.push('}')
@@ -148,9 +147,9 @@ function withRottAssets(metroConfig, options) {
   const imageCount = imageEntries.length
   const iconCount = iconEntries.length
   if (imageCount > 0 || iconCount > 0)
-    console.log(
-      '[rott-ui] Auto-discovered ' + imageCount + ' image(s) and ' + iconCount + ' icon(s) from consumer project.'
-    )
+  {console.log(
+    '[rott-ui] Auto-discovered ' + imageCount + ' image(s) and ' + iconCount + ' icon(s) from consumer project.'
+  )}
 
   const originalResolver = metroConfig.resolver && metroConfig.resolver.resolveRequest
 
@@ -158,10 +157,10 @@ function withRottAssets(metroConfig, options) {
     resolver: Object.assign({}, metroConfig.resolver, {
       resolveRequest: function (context, moduleName, platform) {
         if (moduleName === CONSUMER_ASSETS_MODULE)
-          return {
-            type: 'sourceFile',
-            filePath: generatedFilePath,
-          }
+        {return {
+          type: 'sourceFile',
+          filePath: generatedFilePath,
+        }}
 
         if (originalResolver)
           return originalResolver(context, moduleName, platform)

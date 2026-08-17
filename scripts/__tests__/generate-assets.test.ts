@@ -154,8 +154,8 @@ describe('generateRequireBlock', () => {
       {key: 'euro', requirePath: '../assets/icons/svg/currency/euro.svg'},
     ]
     const block = generateRequireBlock(entries)
-    expect(block).toContain("'arrow-left': require('../assets/icons/svg/interface/arrow-left.svg')")
-    expect(block).toContain("'euro': require('../assets/icons/svg/currency/euro.svg')")
+    expect(block).toContain('\'arrow-left\': require(\'../assets/icons/svg/interface/arrow-left.svg\')')
+    expect(block).toContain('\'euro\': require(\'../assets/icons/svg/currency/euro.svg\')')
   })
 
   it('returns empty string for empty entries', () => {
@@ -168,24 +168,24 @@ describe('replaceMarkerSection', () => {
     'before content',
     '  images: {',
     '    // @generated-start:images',
-    "    'old': require('old.png'),",
+    '    \'old\': require(\'old.png\'),',
     '    // @generated-end:images',
     '  },',
     'after content',
   ].join('\n')
 
   it('replaces content between markers', () => {
-    const newContent = "    'new': require('new.png'),"
+    const newContent = '    \'new\': require(\'new.png\'),'
     const result = replaceMarkerSection(template, 'images', newContent)
 
     expect(result).toContain('// @generated-start:images')
-    expect(result).toContain("'new': require('new.png')")
+    expect(result).toContain('\'new\': require(\'new.png\')')
     expect(result).toContain('// @generated-end:images')
-    expect(result).not.toContain("'old': require('old.png')")
+    expect(result).not.toContain('\'old\': require(\'old.png\')')
   })
 
   it('preserves content outside markers', () => {
-    const result = replaceMarkerSection(template, 'images', "    'x': require('x.png'),")
+    const result = replaceMarkerSection(template, 'images', '    \'x\': require(\'x.png\'),')
     expect(result).toContain('before content')
     expect(result).toContain('after content')
   })
@@ -207,6 +207,6 @@ describe('replaceMarkerSection', () => {
     const result = replaceMarkerSection(template, 'images', '')
     expect(result).toContain('// @generated-start:images')
     expect(result).toContain('// @generated-end:images')
-    expect(result).not.toContain("'old'")
+    expect(result).not.toContain('\'old\'')
   })
 })

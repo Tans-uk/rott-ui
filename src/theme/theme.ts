@@ -12,6 +12,7 @@ type StringKeys<T> = Extract<keyof T, string>
 
 // When consumer provides a path alias to their rott.config.ts, TS will resolve
 // literal keys here. Otherwise, our ambient fallback keeps types permissive.
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore - this module may not exist in this repository, it's provided by consumers
 type UserConfig = typeof import('rott.config').config
@@ -43,7 +44,7 @@ try {
 } catch {
   if (typeof __DEV__ !== 'undefined' && __DEV__) {
     console.warn(
-      "[rott-ui] 'rott.config' could not be resolved at runtime; using the default theme. " +
+      '[rott-ui] \'rott.config\' could not be resolved at runtime; using the default theme. ' +
         'If you use a custom rott.config.ts, ensure runtime resolution is configured ' +
         '(Metro resolveRequest under Expo — see the rott.config docs). ' +
         'If you are not using a custom config, you can ignore this warning.'

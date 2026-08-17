@@ -9,7 +9,9 @@
  *   interface ConsumerIconKeys { 'my-icon': true }
  * }
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface -- declaration-merging target
 export interface ConsumerImageKeys {}
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface -- declaration-merging target
 export interface ConsumerIconKeys {}

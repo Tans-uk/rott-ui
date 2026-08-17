@@ -13,13 +13,15 @@ jest.mock('../../../theme', () => ({
       'arrow-left': {
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
-          return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
+
+return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
         }),
       },
       'check-circle': {
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
-          return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
+
+return React.createElement('MockSvgIcon', {testID: 'mock-svg', ...props})
         }),
       },
     },
@@ -33,14 +35,16 @@ jest.mock('../../../providers/RottProvider', () => ({
       'runtime-only-icon': {
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
-          return React.createElement('MockSvgIcon', {testID: 'mock-runtime-svg', ...props})
+
+return React.createElement('MockSvgIcon', {testID: 'mock-runtime-svg', ...props})
         }),
       },
       // present in BOTH theme and themeConfig — theme (rott.config) must win
       'arrow-left': {
         default: jest.fn().mockImplementation((props) => {
           const React = require('react')
-          return React.createElement('MockSvgIcon', {testID: 'mock-runtime-arrow', ...props})
+
+return React.createElement('MockSvgIcon', {testID: 'mock-runtime-arrow', ...props})
         }),
       },
     },
@@ -72,7 +76,8 @@ jest.mock('../../../utils', () => ({
       white: '#FFFFFF',
       black: '#000000',
     }
-    return colors[variant] || '#000000'
+
+return colors[variant] || '#000000'
   }),
   display: {
     px: jest.fn((value) => value),

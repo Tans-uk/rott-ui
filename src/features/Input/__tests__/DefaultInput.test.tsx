@@ -7,7 +7,8 @@ jest.mock('../../Icon', () => ({
   Icon: React.forwardRef((props: any, ref: any) => {
     const React = require('react')
     const {View, Text} = require('react-native')
-    return React.createElement(View, {ref, ...props},
+
+return React.createElement(View, {ref, ...props},
       React.createElement(Text, {testID: 'icon-content'}, 'Icon')
     )
   }),

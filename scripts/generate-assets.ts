@@ -16,28 +16,29 @@ export function deriveKey(filePath: string): string {
 
 export function isRetinaVariant(filePath: string): boolean {
   const stem = path.basename(filePath, path.extname(filePath))
-  return DENSITY_SUFFIX_PATTERN.test(stem)
+
+return DENSITY_SUFFIX_PATTERN.test(stem)
 }
 
 export function scanDirectory(dir: string, extensions: string[]): string[] {
   const results: string[] = []
 
-  if (!fs.existsSync(dir)) {
+  if (!fs.existsSync(dir)) 
     return results
-  }
+
 
   const entries = fs.readdirSync(dir, {withFileTypes: true})
 
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name)
 
-    if (entry.isDirectory()) {
+    if (entry.isDirectory()) 
       results.push(...scanDirectory(fullPath, extensions))
-    } else if (entry.isFile()) {
+     else if (entry.isFile()) {
       const ext = path.extname(entry.name).toLowerCase()
-      if (extensions.includes(ext) && !isRetinaVariant(entry.name)) {
+      if (extensions.includes(ext) && !isRetinaVariant(entry.name)) 
         results.push(fullPath)
-      }
+
     }
   }
 
@@ -54,7 +55,7 @@ export function detectCollisions(entries: AssetEntry[]): void {
         `[generate-assets] Name collision: "${entry.key}" is produced by both:\n` +
           `  - ${existing}\n` +
           `  - ${entry.requirePath}\n` +
-          `Rename one of the files to resolve this.`
+          'Rename one of the files to resolve this.'
       )
     }
     seen.set(entry.key, entry.requirePath)
@@ -70,7 +71,8 @@ export function buildEntries(dir: string, extensions: string[], relativeFrom: st
   }))
 
   entries.sort((a, b) => a.key.localeCompare(b.key))
-  return entries
+
+return entries
 }
 
 export function generateRequireBlock(entries: AssetEntry[]): string {
@@ -91,14 +93,14 @@ export function replaceMarkerSection(content: string, markerName: string, newCon
   const endMarker = `${MARKER_END_PREFIX}${markerName}`
 
   const startIdx = content.indexOf(startMarker)
-  if (startIdx === -1) {
+  if (startIdx === -1) 
     throw new Error(`[generate-assets] Missing marker: "${startMarker}" in target file.`)
-  }
+
 
   const endIdx = content.indexOf(endMarker)
-  if (endIdx === -1) {
+  if (endIdx === -1) 
     throw new Error(`[generate-assets] Missing marker: "${endMarker}" in target file.`)
-  }
+
 
   const startLineEnd = content.indexOf('\n', startIdx)
   const endLineStart = content.lastIndexOf('\n', endIdx)
@@ -107,7 +109,8 @@ export function replaceMarkerSection(content: string, markerName: string, newCon
   const after = content.slice(endLineStart)
 
   const replacement = newContent ? `${newContent}\n` : ''
-  return `${before}${replacement}${after}`
+
+return `${before}${replacement}${after}`
 }
 
 export function main(): void {
@@ -139,6 +142,6 @@ export function main(): void {
   )
 }
 
-if (require.main === module) {
+if (require.main === module) 
   main()
-}
+

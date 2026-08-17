@@ -159,6 +159,10 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
                 const {text: buttonText, variant: buttonVariant, onPress: buttonOnPress} = button
 
                 return (
+                  // The button list is fixed for the lifetime of a dialog and never
+                  // reorders, and button labels may repeat, so the index is the only
+                  // key guaranteed to stay unique.
+                  // eslint-disable-next-line react/no-array-index-key
                   <Item key={`button-${text?.toSeoFriendly()}-${index}`}>
                     <Item row height={56}>
                       <Button

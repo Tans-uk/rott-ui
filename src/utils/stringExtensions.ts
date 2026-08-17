@@ -1,4 +1,4 @@
-/* eslint-disable no-extend-native */
+/* eslint-disable no-extend-native -- these files deliberately augment String and Array prototypes */
 
 String.prototype.isEmpty = function () {
   const isUndefined = this === undefined
@@ -25,7 +25,7 @@ String.prototype.toSeoFriendly = function () {
     .replace(/\s+/g, '-') // Change whitespace to dashes
     .toLowerCase() // Change to lowercase
     .replace(/&/g, '-and-') // Replace ampersand
-    .replace(/[^a-z0-9\-]/g, '') // Remove anything that is not a letter, number or dash
+    .replace(/[^a-z0-9-]/g, '') // Remove anything that is not a letter, number or dash
     .replace(/-+/g, '-') // Remove duplicate dashes
     .replace(/^-*/, '') // Remove starting dashes
     .replace(/-*$/, '')

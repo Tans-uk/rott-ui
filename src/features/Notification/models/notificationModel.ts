@@ -1,4 +1,4 @@
-import { Variant } from "../../../models"
+import { Variant } from '../../../models'
 
 
 export interface NotificationModel {

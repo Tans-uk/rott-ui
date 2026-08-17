@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {createContext} from 'react'
 
 import type {NotificationContextModel, NotificationModel} from '../models'

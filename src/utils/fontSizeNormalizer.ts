@@ -12,9 +12,9 @@ export const fontSizeNormalizer = (fontSize: string | number): number | string =
 
   // rott.config primary, RottProvider config fallback
   const configured = theme?.fontSizes?.[fontSize] ?? themeConfig?.fontSizes?.[fontSize]
-  if (typeof configured === 'number') {
+  if (typeof configured === 'number') 
     return isSmallScreen ? configured - SMALL_SCREEN_FONT_DELTA : configured
-  }
+
 
   // legacy keys absent from the fontSizes map keep their original responsive values
   switch (fontSize) {

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import en from './src/libs/i18n/en-US.json'
 
 import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
@@ -137,7 +136,8 @@ jest.mock('react-native-reanimated', () => {
       // Animation functions for new API
       withTiming: jest.fn((value, _config, callback) => {
         if (callback) setTimeout(callback, 0)
-        return value
+
+return value
       }),
       withSpring: jest.fn((value) => value),
       withDecay: jest.fn((value) => value),
@@ -183,7 +183,8 @@ jest.mock('react-native-reanimated', () => {
     useAnimatedStyle: jest.fn((fn) => fn()),
     withTiming: jest.fn((value, _config, callback) => {
       if (callback) setTimeout(callback, 0)
-      return value
+
+return value
     }),
     withRepeat: jest.fn((value) => value),
     withSpring: jest.fn((value) => value),
@@ -307,7 +308,8 @@ jest.mock('./src/providers', () => {
     React.createElement(Text, {ref, testID: 'mock-icon', ...props}, 'MockIcon')
   )
   MockIcon.default = MockIcon
-  return {
+
+return {
     ...actual,
     themeConfig: {
       ...defaultThemeConfig,
@@ -341,5 +343,6 @@ jest.spyOn(ReactRuntime, 'useContext').mockImplementation((context) => {
       },
     }
   }
-  return reactActualUseContext(context)
+
+return reactActualUseContext(context)
 })

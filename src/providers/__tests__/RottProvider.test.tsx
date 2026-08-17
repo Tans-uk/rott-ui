@@ -10,7 +10,8 @@ import type {IconKeys} from '../../features/Icon'
 // themeConfig fallback in Icon.tsx actually resolve them.
 jest.mock('../../theme', () => {
   const {defaultThemeConfig} = require('../defaultThemeConfig')
-  return {
+
+return {
     theme: {
       ...defaultThemeConfig,
       // Plain object — only known keys exist; unknown keys return undefined
@@ -22,7 +23,8 @@ jest.mock('../../theme', () => {
 const RuntimeIcon = {
   default: (props: any) => {
     const R = require('react')
-    return R.createElement('MockRuntimeSvg', {testID: 'runtime-svg', ...props})
+
+return R.createElement('MockRuntimeSvg', {testID: 'runtime-svg', ...props})
   },
 }
 

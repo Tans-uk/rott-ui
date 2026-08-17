@@ -31,7 +31,7 @@ import {SelectInputModalComponent} from './SelectInputModalComponent'
  * @param {SelectProps[]} extraDisplayData - Seçeneklerde olmayan ancak yukarıdan value olarak dikte edilebilen itemlar. (Infinite scroll gibi durumlarda kullanılır)
 
  * @param {LegacyRef<any>} listRef - Seçenekler listesi için ref
- * @param {FlashListProps<any>["onViewableItemsChanged"] | undefined} onViewableItemsChanged - Listedeki görünür elemanlar değiştiğinde çağırılan callback
+ * @param {FlashListProps<any>["onViewableItemsChanged"] | undefined} onViewableItemsChanged - Listedeki görünür elemanlar değiştiğinde çağırılan callback
 
  * @param {boolean} searchable - Arama özelliğini etkinleştirme/engelleme ayarı.
  * @returns {object} Secilebilir liste renderlanir

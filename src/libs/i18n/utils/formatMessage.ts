@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+
 import {useContext} from 'react'
 
 import {createIntl, createIntlCache, type MessageDescriptor, type PrimitiveType} from 'react-intl'

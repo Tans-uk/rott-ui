@@ -84,7 +84,8 @@ export const Skeleton: FC<SkeletonProps> = ({
   }, [show])
 
   if (!show) return null
-  return (
+
+return (
     <Item
       testID={testID}
       width={width}

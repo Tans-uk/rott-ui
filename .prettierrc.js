@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 module.exports = {
   bracketSameLine: true,
   bracketSpacing: false,

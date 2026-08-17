@@ -36,8 +36,8 @@ describe('withRottAssets', () => {
       expect(fs.existsSync(jsPath)).toBe(true)
 
       const content = fs.readFileSync(jsPath, 'utf-8')
-      expect(content).toContain("'logo':")
-      expect(content).toContain("'arrow':")
+      expect(content).toContain('\'logo\':')
+      expect(content).toContain('\'arrow\':')
     })
 
     it('uses metroConfig.projectRoot when options.projectRoot is not passed', () => {
@@ -48,7 +48,7 @@ describe('withRottAssets', () => {
 
       const jsPath = path.join(tmpDir, '.rott/consumer-assets.js')
       expect(fs.existsSync(jsPath)).toBe(true)
-      expect(fs.readFileSync(jsPath, 'utf-8')).toContain("'only':")
+      expect(fs.readFileSync(jsPath, 'utf-8')).toContain('\'only\':')
     })
 
     it('generates empty images/icons when no assets exist', () => {
@@ -73,9 +73,9 @@ describe('withRottAssets', () => {
       expect(fs.existsSync(dtsPath)).toBe(true)
 
       const content = fs.readFileSync(dtsPath, 'utf-8')
-      expect(content).toContain("declare module '@tansuk/rott-ui'")
-      expect(content).toContain("'my-logo': true")
-      expect(content).toContain("'my-icon': true")
+      expect(content).toContain('declare module \'@tansuk/rott-ui\'')
+      expect(content).toContain('\'my-logo\': true')
+      expect(content).toContain('\'my-icon\': true')
     })
 
     it('does not add ConsumerImageKeys/ConsumerIconKeys when no assets', () => {
@@ -83,7 +83,7 @@ describe('withRottAssets', () => {
 
       const dtsPath = path.join(tmpDir, '.rott/consumer-assets.d.ts')
       const content = fs.readFileSync(dtsPath, 'utf-8')
-      expect(content).toContain("declare module '@tansuk/rott-ui'")
+      expect(content).toContain('declare module \'@tansuk/rott-ui\'')
       expect(content).not.toContain('ConsumerImageKeys {')
       expect(content).not.toContain('ConsumerIconKeys {')
     })
@@ -155,7 +155,7 @@ describe('withRottAssets', () => {
         path.join(tmpDir, '.rott/consumer-assets.js'),
         'utf-8',
       )
-      expect(content).toContain("'logo':")
+      expect(content).toContain('\'logo\':')
       expect(content).not.toContain('logo@2x')
       expect(content).not.toContain('logo@3x')
     })

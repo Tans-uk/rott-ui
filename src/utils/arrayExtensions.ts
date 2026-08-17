@@ -1,4 +1,4 @@
-/* eslint-disable no-extend-native */
+/* eslint-disable no-extend-native -- these files deliberately augment String and Array prototypes */
 
 const alphabet = 'AaBbCcÇçDdEeFfGgĞğHhIıİiJjKkLlMmNnOoÖöPpQqRrSsŞşTtUuÜüVvWwXxYyZz0123456789'
 
