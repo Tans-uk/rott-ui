@@ -22,8 +22,9 @@ export const ModalProvider: FC<PropsWithChildren> = ({children}) => {
           modalToUpdate = modalToRender
 
           return [...prevState]
-        } else
+        } else {
           return [...prevState, {...modalToRender, id: modalToRender?.id ?? prevState?.length + 1}]
+        }
       }),
     [modals, setModals]
   )

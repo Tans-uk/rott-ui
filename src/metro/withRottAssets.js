@@ -24,12 +24,13 @@ function scanDirectory(dir, extensions) {
   const entries = fs.readdirSync(dir, { withFileTypes: true })
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name)
-    if (entry.isDirectory())
+    if (entry.isDirectory()) {
       results.push(...scanDirectory(fullPath, extensions))
-    else if (entry.isFile()) {
+    } else if (entry.isFile()) {
       const ext = path.extname(entry.name).toLowerCase()
-      if (extensions.includes(ext) && !isRetinaVariant(entry.name))
+      if (extensions.includes(ext) && !isRetinaVariant(entry.name)) {
         results.push(fullPath)
+      }
     }
   }
 
@@ -87,8 +88,9 @@ function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   const content = lines.join('\n') + '\n'
 
   const existing = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf-8') : ''
-  if (existing !== content)
+  if (existing !== content) {
     fs.writeFileSync(outputPath, content, 'utf-8')
+  }
 
   // Generate module augmentation for TypeScript autocomplete
   var dtsLines = ['import \'@tansuk/rott-ui\';']
@@ -96,14 +98,16 @@ function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   dtsLines.push('declare module \'@tansuk/rott-ui\' {')
   if (imageEntries.length > 0) {
     dtsLines.push('  interface ConsumerImageKeys {')
-    for (var i = 0; i < imageEntries.length; i++)
+    for (var i = 0; i < imageEntries.length; i++) {
       dtsLines.push('    \'' + imageEntries[i].key + '\': true;')
+    }
     dtsLines.push('  }')
   }
   if (iconEntries.length > 0) {
     dtsLines.push('  interface ConsumerIconKeys {')
-    for (var j = 0; j < iconEntries.length; j++)
+    for (var j = 0; j < iconEntries.length; j++) {
       dtsLines.push('    \'' + iconEntries[j].key + '\': true;')
+    }
     dtsLines.push('  }')
   }
   dtsLines.push('}')
@@ -111,8 +115,9 @@ function generateConsumerAssetsFile(projectRoot, imageEntries, iconEntries) {
   const dtsPath = path.join(outputDir, 'consumer-assets.d.ts')
   const dtsContent = dtsLines.join('\n') + '\n'
   const existingDts = fs.existsSync(dtsPath) ? fs.readFileSync(dtsPath, 'utf-8') : ''
-  if (existingDts !== dtsContent)
+  if (existingDts !== dtsContent) {
     fs.writeFileSync(dtsPath, dtsContent, 'utf-8')
+  }
 
   return outputPath
 }
@@ -162,8 +167,9 @@ function withRottAssets(metroConfig, options) {
           filePath: generatedFilePath,
         }}
 
-        if (originalResolver)
+        if (originalResolver) {
           return originalResolver(context, moduleName, platform)
+        }
 
         return context.resolveRequest(context, moduleName, platform)
       },

@@ -92,14 +92,14 @@ export const DateInput: FC<DateInputProps> = ({
     if (
       minimumDate &&
       (selectedDate ? selectedDate.getTime() : externalDate.getTime()) < minimumDate?.getTime()
-    )
+    ) {
       validDate = minimumDate
-    else if (
+    } else if (
       maximumDate &&
       (selectedDate ? selectedDate.getTime() : externalDate.getTime()) > maximumDate?.getTime()
-    )
+    ) {
       validDate = maximumDate
-    else validDate = selectedDate ?? externalDate
+    } else validDate = selectedDate ?? externalDate
 
     validDate = mode.includes('time') ? validDate : startOfDay(validDate)
 

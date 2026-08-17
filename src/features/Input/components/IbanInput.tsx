@@ -74,9 +74,9 @@ export const IbanInput: FC<IbanInputProps> = ({
       if (clearIconVisible) {
         if (disabled) return
         handleTextChange('TR')
-      } else 
+      } else {
         rightIcon?.onPress?.(event)
-
+      }
     },
   }
 

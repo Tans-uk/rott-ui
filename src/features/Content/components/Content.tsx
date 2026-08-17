@@ -44,8 +44,9 @@ export const Content: FC<ContentProps> = ({
   if (useBottomInset) unusablePaddingBottom += bottom
 
   // Scrollable ekranlarda bottom inset uygulandi ise scroll alanina ekleme yapilir (Orn: Profil > Erisim Bilgileri UserAccessInfoScreen)
-  if (useBottomInset && !hasBottomMenu && scrollEnabled)
+  if (useBottomInset && !hasBottomMenu && scrollEnabled) {
     keyboardAvoidingViewContainerPaddingBottom += 24
+  }
 
   const contentStyles = ContentStyles({
     size,

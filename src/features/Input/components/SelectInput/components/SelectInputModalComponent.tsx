@@ -49,8 +49,9 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
     )
   })
 
-  if (sortByName && filteredListData)
+  if (sortByName && filteredListData) {
     filteredListData = sortListBySearchPriority(filteredListData, searchText)
+  }
 
   const handleClearSearch = () => setSearchText('')
 

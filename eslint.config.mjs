@@ -2,7 +2,6 @@ import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import globals from 'globals';
-import prettier from 'eslint-plugin-prettier';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactNative from 'eslint-plugin-react-native';
@@ -24,8 +23,7 @@ export default defineConfig([
   js.configs.recommended,
   ...fixupConfigRules(compat.extends('prettier')),
   {
-    plugins: { 
-      prettier, 
+    plugins: {
       react,
       'react-hooks': reactHooks,
       // components carry `eslint-disable react-native/no-inline-styles` comments;
@@ -44,11 +42,6 @@ export default defineConfig([
       // theme-config warning, a contact-picker failure). `log` stays banned so
       // debug leftovers are still caught.
       'no-console': ['error', {allow: ['warn', 'error']}],
-      'jsx-quotes': ['error', 'prefer-single'],
-      'indent': ['error', 2],
-      'linebreak-style': 1,
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'never'],
       'newline-before-return': 'error',
       'react/no-array-index-key': 'error',
       'react-native/no-inline-styles': 'error',
@@ -62,8 +55,7 @@ export default defineConfig([
       '@typescript-eslint/no-empty-object-type': 'error',
       'no-dupe-keys': 'error',
       'no-empty': 'error',
-      'comma-dangle': ['off', 'never'],
-      'curly': ['error', 'multi-or-nest']
+      'curly': ['error', 'multi-line']
     },
   },
   {
@@ -91,8 +83,6 @@ export default defineConfig([
           caughtErrorsIgnorePattern: '^_',
         },
       ],
-      // prettier owns indentation (tabWidth 2) and disagrees with this rule on JSX.
-      'indent': 'off',
     },
   },
   {

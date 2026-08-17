@@ -43,8 +43,9 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   }: NativeSyntheticEvent<TextInputSelectionChangeEventData>) => {
     if (Platform.OS === 'android') {
       const {start, end} = selection
-      if (start !== end && inputRef.current)
+      if (start !== end && inputRef.current) {
         inputRef.current.setNativeProps({selection: {start: 0, end: 0}})
+      }
     }
   }
 

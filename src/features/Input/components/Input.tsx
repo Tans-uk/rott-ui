@@ -137,9 +137,9 @@ export const Input: FC<InputProps> = memo((props) => {
     else if (
       (isLabelObject && label.theme && label.theme === 'dark') ||
       (theme && theme === 'dark')
-    )
+    ) {
       return 'grey-900'
-    else if (disabled) return 'grey-900'
+    } else if (disabled) return 'grey-900'
     else return 'grey-200'
   }
   const variant = variantCalculation()

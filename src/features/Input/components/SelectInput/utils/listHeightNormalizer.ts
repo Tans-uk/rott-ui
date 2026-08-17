@@ -20,6 +20,7 @@ export const listHeightNormalizer = (
       ITEM_HEIGHT(showDescription, itemHeight) * LIST_MAX_ITEM_COUNT +
       SEPARATOR_HEIGHT * (LIST_MAX_ITEM_COUNT + 1)
     )
-  } else
+  } else {
     return ITEM_HEIGHT(showDescription, itemHeight) * itemCount + SEPARATOR_HEIGHT * (itemCount + 1)
+  }
 }
