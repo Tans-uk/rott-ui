@@ -59,7 +59,7 @@ export default defineConfig([
       'react-hooks/rules-of-hooks': 'error',
       'no-extend-native': 'error',
       '@typescript-eslint/ban-ts-comment': 'error',
-      '@typescript-eslint/no-empty-interface': 'error',
+      '@typescript-eslint/no-empty-object-type': 'error',
       'no-dupe-keys': 'error',
       'no-empty': 'error',
       'comma-dangle': ['off', 'never'],
