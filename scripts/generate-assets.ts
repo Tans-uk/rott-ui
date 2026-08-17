@@ -74,14 +74,61 @@ export function buildEntries(
     requirePath: path.relative(relativeFrom, filePath),
   }))
 
-  entries.sort((a, b) => a.key.localeCompare(b.key))
+  // Pinned locale: the default collator follows LANG/LC_ALL, which would make the
+  // committed generated file depend on the machine that ran `yarn generate:assets`.
+  // Note this only fixes the emitted line order. At runtime JavaScript still
+  // enumerates integer-like keys ('2') before all others, whatever order they
+  // appear in here, so callers must not rely on iteration order.
+  entries.sort((a, b) => a.key.localeCompare(b.key, 'en-US'))
 
   return entries
 }
 
-// Mirrors Prettier's quoteProps: 'as-needed' — quote only if the key is not a valid identifier
+// `__proto__` is special in an object literal: quoted or not, it assigns the
+// prototype instead of defining a property, so the asset would silently vanish.
+// The other names below would need escaping, and getting that byte-identical to
+// Prettier's own quoting means predicting Prettier — the thing this generator
+// must not do, since CI now format-checks its output. Reject instead of guess.
+export function assertEmittable(entries: AssetEntry[]): void {
+  for (const entry of entries) {
+    if (entry.key === '__proto__') {
+      throw new Error(
+        `[generate-assets] Unusable asset name: "${entry.key}" (${entry.requirePath}).\n` +
+          "`__proto__` sets an object's prototype rather than becoming a key, so the " +
+          'asset would be silently unreachable. Rename the file.'
+      )
+    }
+
+    for (const [label, value] of [
+      ['name', entry.key],
+      ['path', entry.requirePath],
+    ] as const) {
+      const offender = /['"\\\r\n\t]/.exec(value)
+      if (offender) {
+        throw new Error(
+          `[generate-assets] Unusable asset ${label}: ${JSON.stringify(value)}.\n` +
+            `It contains ${JSON.stringify(offender[0])}, which cannot be emitted into the ` +
+            'generated module without escaping. Rename the file.'
+        )
+      }
+    }
+  }
+}
+
+// ECMAScript's own IdentifierName grammar, spelled with the Unicode property
+// escapes it is defined in terms of (plus ZWNJ/ZWJ, which the grammar allows in
+// continuations). An ASCII-only `[a-zA-Z_$]` version quotes names Prettier leaves
+// bare — `ödeme`, `işlem`, `café`, `日本語` — and CI now format-checks this file, so
+// the mismatch would break the build. Verified against the repo's real Prettier
+// across those cases plus `2`, `2x`, `card-check`, `class` and `064-check`.
+// TypeScript's ts.isIdentifierText does the same job but is not in its public
+// typings, so it cannot be called without casting away the API contract.
+const IDENTIFIER_NAME = /^[\p{ID_Start}$_][\p{ID_Continue}$‌‍]*$/u
+
+// Mirrors Prettier's quoteProps: 'as-needed' — quote only if the key is not a
+// valid identifier.
 function quoteKeyIfNeeded(key: string): string {
-  return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key) ? key : `'${key}'`
+  return IDENTIFIER_NAME.test(key) ? key : `'${key}'`
 }
 
 export function generateRequireBlock(entries: AssetEntry[]): string {
@@ -140,6 +187,9 @@ export function main(): void {
 
   detectCollisions(imageEntries)
   detectCollisions(iconEntries)
+
+  assertEmittable(imageEntries)
+  assertEmittable(iconEntries)
 
   const imagesBlock = generateRequireBlock(imageEntries)
   const iconsBlock = generateRequireBlock(iconEntries)

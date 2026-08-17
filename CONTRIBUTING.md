@@ -57,18 +57,22 @@ To run the example app on Web:
 yarn example web
 ```
 
-Make sure your code passes TypeScript and ESLint. Run the following to verify:
+Make sure your code passes TypeScript, ESLint and Prettier. Run the following to verify:
 
 ```sh
 yarn typecheck
 yarn lint
+yarn format:check
 ```
 
-To fix formatting errors, run the following:
+Prettier owns formatting and ESLint owns code quality, so each has its own fix command:
 
 ```sh
-yarn lint --fix
+yarn format
+yarn lint:fix
 ```
+
+`yarn lint --fix` will not fix formatting — ESLint no longer carries any formatting rules.
 
 Remember to add tests for your change if possible. Run the unit tests by:
 
@@ -93,9 +97,14 @@ Our pre-commit hooks verify that your commit message matches this format when co
 
 [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [TypeScript](https://www.typescriptlang.org/)
 
-We use [TypeScript](https://www.typescriptlang.org/) for type checking, [ESLint](https://eslint.org/) with [Prettier](https://prettier.io/) for linting and formatting the code, and [Jest](https://jestjs.io/) for testing.
+We use [TypeScript](https://www.typescriptlang.org/) for type checking, [ESLint](https://eslint.org/) for code quality, [Prettier](https://prettier.io/) for formatting, and [Jest](https://jestjs.io/) for testing. The two linters have disjoint jobs: no formatting rule lives in ESLint.
 
-Our pre-commit hooks verify that the linter and tests pass when committing.
+The pre-commit hook does not merely check your staged files — it **rewrites** them, running Prettier, then `eslint --fix`, then Prettier again, and re-staging the result before type checking. Two consequences worth knowing:
+
+- Your commit can contain changes you did not write, because the tools reformatted the file.
+- Prettier and ESLint act on the whole file on disk, not just the staged hunks. If you staged part of a file with `git add -p` and left other edits unstaged, those edits get swept into the commit too. Commit whole files, or check `git show HEAD` afterwards.
+
+CI re-runs the same checks and never rewrites anything, so anything the hook missed — or that was bypassed with `--no-verify` — fails the build instead.
 
 ### Publishing to npm
 

@@ -1,4 +1,5 @@
 import {
+  assertEmittable,
   buildEntries,
   deriveKey,
   detectCollisions,
@@ -114,6 +115,32 @@ describe('detectCollisions', () => {
       {key: 'close', requirePath: '../assets/images/commonIcon/close.png'},
     ]
     expect(() => detectCollisions(entries)).toThrow(/Name collision: "close"/)
+  })
+})
+
+describe('assertEmittable', () => {
+  it('accepts ordinary and non-ASCII names', () => {
+    const entries = [
+      {key: 'logo', requirePath: '../assets/images/logo.png'},
+      {key: 'card-check', requirePath: '../assets/images/card-check.png'},
+      {key: 'ödeme', requirePath: '../assets/images/ödeme.png'},
+    ]
+    expect(() => assertEmittable(entries)).not.toThrow()
+  })
+
+  it('rejects __proto__, which would set the prototype instead of a key', () => {
+    const entries = [{key: '__proto__', requirePath: '../assets/images/__proto__.png'}]
+    expect(() => assertEmittable(entries)).toThrow(/Unusable asset name: "__proto__"/)
+  })
+
+  it('rejects a name containing a quote, which would break the generated module', () => {
+    const entries = [{key: "it's-a-logo", requirePath: "../assets/images/it's-a-logo.png"}]
+    expect(() => assertEmittable(entries)).toThrow(/Unusable asset name/)
+  })
+
+  it('rejects a backslash, which would otherwise be read as an escape sequence', () => {
+    const entries = [{key: 'logo\\new', requirePath: '../assets/images/logo.png'}]
+    expect(() => assertEmittable(entries)).toThrow(/Unusable asset name/)
   })
 })
 

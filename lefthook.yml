@@ -1,3 +1,11 @@
+# These commands REWRITE your staged files rather than only checking them, and
+# `stage_fixed` re-stages the result. Prettier and ESLint operate on the whole file
+# on disk, so if you staged part of a file with `git add -p` and left other edits
+# unstaged, those edits are formatted and swept into the commit too — lefthook does
+# not stash unstaged work first. Commit whole files, or check `git show HEAD`.
+#
+# `parallel: false` is required, not a default: the priorities below encode
+# prettier -> eslint --fix -> prettier, and eslint must see Prettier's output.
 pre-commit:
   parallel: false
   commands:
@@ -5,16 +13,16 @@ pre-commit:
       priority: 1
       glob: "*.{js,mjs,ts,tsx,json}"
       exclude:
-        - "docs/**/*"
-        - "examples/**/*"
+        - "docs/**"
+        - "examples/**"
       run: npx prettier --write {staged_files}
       stage_fixed: true
     lint:
       priority: 2
       glob: "*.{js,mjs,ts,tsx}"
       exclude:
-        - "docs/**/*"
-        - "examples/**/*"
+        - "docs/**"
+        - "examples/**"
       run: npx eslint --fix {staged_files}
       stage_fixed: true
     format-recheck:
@@ -23,16 +31,16 @@ pre-commit:
       priority: 3
       glob: "*.{js,mjs,ts,tsx,json}"
       exclude:
-        - "docs/**/*"
-        - "examples/**/*"
+        - "docs/**"
+        - "examples/**"
       run: npx prettier --write {staged_files}
       stage_fixed: true
     types:
       priority: 4
-      glob: "*.{js,ts,tsx}"
+      glob: "*.{js,mjs,ts,tsx}"
       exclude:
-        - "docs/**/*"
-        - "examples/**/*"
+        - "docs/**"
+        - "examples/**"
       run: npx tsc
 commit-msg:
   parallel: true

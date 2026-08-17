@@ -101,7 +101,9 @@ export default defineConfig([
     },
   },
   {
-    files: ['**/__tests__/**', '**/*.test.{js,ts,tsx}', 'jest.setup*.js'],
+    // jest.setup*.{js,ts}: the real setup file is jest.setup.ts, which the .js-only
+    // pattern silently missed — it matches none of the other two patterns either.
+    files: ['**/__tests__/**', '**/*.test.{js,ts,tsx}', 'jest.setup*.{js,ts}'],
     languageOptions: {
       globals: globals.jest,
     },
