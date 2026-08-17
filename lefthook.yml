@@ -1,16 +1,26 @@
 pre-commit:
   parallel: false
   commands:
-    lint:
+    format:
       priority: 1
+      glob: "*.{js,mjs,ts,tsx,json}"
+      exclude:
+        - "docs/**/*"
+        - "examples/**/*"
+      run: npx prettier --write {staged_files}
+      stage_fixed: true
+    lint:
+      priority: 2
       glob: "*.{js,mjs,ts,tsx}"
       exclude:
         - "docs/**/*"
         - "examples/**/*"
       run: npx eslint --fix {staged_files}
       stage_fixed: true
-    format:
-      priority: 2
+    format-recheck:
+      # eslint --fix (e.g. curly's brace insertion) can re-break formatting
+      # Prettier already applied, so run Prettier again to have the final word.
+      priority: 3
       glob: "*.{js,mjs,ts,tsx,json}"
       exclude:
         - "docs/**/*"
@@ -18,7 +28,7 @@ pre-commit:
       run: npx prettier --write {staged_files}
       stage_fixed: true
     types:
-      priority: 3
+      priority: 4
       glob: "*.{js,ts,tsx}"
       exclude:
         - "docs/**/*"
