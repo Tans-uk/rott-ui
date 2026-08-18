@@ -13,19 +13,19 @@ interface String {
 
 interface Array<T> {
   /**
-   * Diziyi belirtilen anahtar değere göre sıralar.
-   * @param key Sıralama yapılacak anahtar
-   * @param orderBy Sıralama türü (asc | desc) - Varsayilan `asc` (Alfabetik Siralama)
+   * Sorts the array by the given key.
+   * @param key The key to sort on
+   * @param orderBy Sort direction (asc | desc). Defaults to `asc`, alphabetical
    */
   sortByKey(key: string, orderBy?: 'asc' | 'desc'): T[]
   /**
    *
-   * @returns Dizi boş ise `true` dolu ise `false` döner.
+   * @returns `true` when the array is empty, `false` otherwise.
    */
   isEmpty: () => boolean
   /**
    *
-   * @returns Dizi boş ise `false` dolu ise `true` döner.
+   * @returns `false` when the array is empty, `true` otherwise.
    */
   hasItems: () => boolean
 }

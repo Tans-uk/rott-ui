@@ -1,6 +1,6 @@
 /**
  * DefaultInput icindir.
- * @type keyboard: Default Input'ta Klavye Türünü Belirler
- * @type alphanumeric: Özel Karakterleri Kısıtlar
+ * @type keyboard: keyboard type for the default input
+ * @type alphanumeric: restricts special characters
  */
 export type InputKeyboardType = 'default' | 'alphanumeric'

@@ -19,7 +19,7 @@ export const InputStyles = (props?: any) =>
         : fontSizeNormalizer(InputStyleNormalizer({size: props?.size}).placeholderSize),
       color: props?.theme === 'light' ? themeConfig.colors['grey-900'] : themeConfig.colors.white,
 
-      // TODO: Android sorunu çözüldükten sonra bakılması gerekiyor.
+      // TODO: revisit once the Android issue is fixed.
       letterSpacing: props?.letterSpacing ?? 0.5,
       fontFamily: 'Markpro-Medium',
     } as any,

@@ -11,16 +11,16 @@ import type {ResultScreenParamModel} from '../models'
 /**
  * Result - Islem Sonucu Ekrani
  *
- * @param title Başlık alanı
- * @param screensToRemove Sonuç ekranı açıldığında kapatılacak ekranlar
- * @param subTitle Alt başlık alanı
- * @param actions ResultDataProps[] formatında veri listesi
- * @param isShow Result komponentin bulunduğu yerdeki Show state i
- * @param onClose Modal kapatıldığında tetiklenen fonksiyondur. Komponentin kullanıldığu yerdeki state ini bu fonksiyon ile güncelleyebilirsiniz
+ * @param title Heading text
+ * @param screensToRemove Screens to close when the result screen opens
+ * @param subTitle Subheading text
+ * @param actions Data list in ResultDataProps[] form
+ * @param isShow The caller's show state for the Result component
+ * @param onClose Called when the modal closes; use it to update the caller's state
  * @param header Custom Header Content
  * @param headerTitle Sayfa Basligi
  * @param headerLogo Sayfa Basliginda Yer Alacak Logo Name
- * @returns Sonuc Ekrani Renderlanır
+ * @returns The rendered result screen
  *
  */
 

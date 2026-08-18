@@ -1,6 +1,6 @@
 import type {Size} from '../../../models'
 
-/** Leading/trailing ikon ile içerik arası yatay boşluk (4'ün katları, size-based). */
+/** Horizontal gap between a leading/trailing icon and the content. Multiples of 4, size-based. */
 export const inputIconGapNormalizer = (size?: Size): number => {
   switch (size) {
     case 'xs':

@@ -9,29 +9,29 @@ export const sortListBySearchPriority = (list: SelectProps[], searchText: string
     const normalizedLabelA = searchTextWithTRNormalizer(a?.label || '')
     const normalizedLabelB = searchTextWithTRNormalizer(b?.label || '')
 
-    // getMatchPriority fonksiyonu, bir metnin arama metniyle olan ilişkisini belirler ve öncelik puanı döndürür.
+    // Scores how closely a text matches the search term; higher is a better match.
     const getMatchPriority = (text: string) => {
       const textSearchWithoutTR = searchTextNormalizer(text)
 
-      // Metni normalize ederek tekrar eden işlemleri önler
+      // Normalise once, so the work is not repeated per comparison
       const isExactMatchWithTR = text === normalizedSearchTextWithTR
       const isExactMatch = textSearchWithoutTR === normalizedSearchText
       const isStartsWithTR = text.startsWith(normalizedSearchTextWithTR)
       const isStartsWith = textSearchWithoutTR.startsWith(normalizedSearchText)
       const isIncludes = text.includes(normalizedSearchText)
 
-      // Koşullara göre öncelik puanı döndürür
-      // Başlangıç eşleşmesi için en yüksek öncelik
+      // Score by match kind, strongest first
+      // Prefix match scores highest
       if (isStartsWithTR) return 5
-      // Tam eşleşme
+      // Exact match
       else if (isExactMatch) return 4
-      // Tam eşleşme (TR)
+      // Exact match, Turkish-normalised
       else if (isExactMatchWithTR) return 3
-      // Başlangıç eşleşmesi
+      // Prefix match
       else if (isStartsWith) return 2
-      // İçerik eşleşmesi
+      // Substring match
       else if (isIncludes) return 1
-      // Eşleşme yoksa öncelik sıfır
+      // No match scores zero
       else return 0
     }
 

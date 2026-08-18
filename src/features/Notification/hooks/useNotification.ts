@@ -15,33 +15,33 @@ export const useNotification = () => {
 
       /**
        *
-       * @param title Başlık
-       * @param description Açıklama
-       * @param onPress Tıklanınca çalışacak fonksiyon
+       * @param title Notification title
+       * @param description Notification body text
+       * @param onPress Called when the notification is tapped
        * @returns Success Bildirimini Renderlar
        */
       success,
       /**
        *
-       * @param title Başlık
-       * @param description Açıklama
-       * @param onPress Tıklanınca çalışacak fonksiyon
+       * @param title Notification title
+       * @param description Notification body text
+       * @param onPress Called when the notification is tapped
        * @returns Warning Bildirimini Renderlar
        */
       warning,
       /**
        *
-       * @param title Başlık
-       * @param description Açıklama
-       * @param onPress Tıklanınca çalışacak fonksiyon
+       * @param title Notification title
+       * @param description Notification body text
+       * @param onPress Called when the notification is tapped
        * @returns Danger Bildirimini Renderlar
        */
       danger,
       /**
        *
-       * @param title Başlık
-       * @param description Açıklama
-       * @param onPress Tıklanınca çalışacak fonksiyon
+       * @param title Notification title
+       * @param description Notification body text
+       * @param onPress Called when the notification is tapped
        * @returns Info Bildirimini Renderlar
        */
       info,

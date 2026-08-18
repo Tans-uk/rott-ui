@@ -8,11 +8,11 @@ import type {EmptyStateProps} from '../models'
 /**
  * Result - Islem Sonucu Ekrani
  *
- * @param name Image alanı
- * @param description Açıklama  alanı
- * @param title Başlık alanı
+ * @param name Image to show
+ * @param description Description text
+ * @param title Heading text
 
- * @returns Sonuc Ekrani Renderlanır
+ * @returns The rendered empty state
  *
  */
 

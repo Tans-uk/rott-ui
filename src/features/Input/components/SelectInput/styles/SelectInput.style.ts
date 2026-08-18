@@ -8,7 +8,7 @@ export const SelectInputStyles = () =>
       height: display.setHeight(65),
     },
     pressableTextStyle: {
-      // TODO: Android sorunu çözüldükten sonra bakılması gerekiyor.
+      // TODO: revisit once the Android issue is fixed.
       letterSpacing: 0.5,
       width: '90%',
       flex: 1,

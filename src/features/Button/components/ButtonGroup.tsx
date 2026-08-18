@@ -21,7 +21,7 @@ interface ButtonGroupProps extends ContentProps {
 
 /**
  *
- * @param hideButtons - Butonları gizler, !!! TODO: Daha sonra daha iyi bir çözüm bulunabilir mi bakılmalı!
+ * @param hideButtons - Hides the buttons. TODO: look for a better approach.
  * @returns
  */
 export const ButtonGroup: FC<ButtonGroupProps> = ({
@@ -35,8 +35,9 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   ...props
 }) => {
   /**
-   * Ekranın altındaki NavBar ile çakışan Content'lerde (Örn:ButtonGroup) otomatik olarak 24 birim padding ekler.
-   * IOS'te navbar transparan olduğu için eğer Navbar var ise 24 birim eklenmez. Çünkü kendisi boşluk gibi görünür.
+   * Adds 24 units of padding to Content that would collide with the NavBar at the bottom
+   * of the screen, ButtonGroup for instance. Not added on iOS when a NavBar is present,
+   * since a transparent navbar there already reads as space.
    *
    * Etkilenen Ekranlar: LoginScreen, TransferToMobileScreen
    */

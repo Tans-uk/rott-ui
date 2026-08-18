@@ -13,24 +13,24 @@ import {CommonItemContainer} from './CommonItemContainer'
 
 /**
  *  Common Item Component
- * @param width - Item Genişliği
- * @param height - Item Yüksekliği
+ * @param width - Item width
+ * @param height - Item height
  * @param backgroundColor - Item Arka Plan Rengi varsayilan degeri `green-vogue`
  *
  * @param leftIcon - Solda renderlanacak icon, iconProps objesi alabilir, string olabilir veya react elementi alabilir
- * @param rightIcon - Sağda renderlanacak icon, iconProps objesi alabilir, string olabilir veya react elementi alabilir
+ * @param rightIcon - Icon rendered on the right; accepts an iconProps object, a string, or a React element
  *
- * @param title - Başlık **Zorunlu**
- * @param subTitle - Alt Başlık
- * @param description - Açıklama
+ * @param title - Title **Required**
+ * @param subTitle - Subtitle
+ * @param description - Description
  *
- * @param showSelected - Seçili Gösterilsin mi
- * @param selectedPosition - Seçili Gösterim Pozisyonu
- * @param selected - Seçili mi
+ * @param showSelected - Whether the selected state is shown
+ * @param selectedPosition - Where the selected indicator sits
+ * @param selected - Whether the item is selected
  * @param swipeable - Kaydirma Efekti
  * @param renderRightActions - Kaydirma Efektinde Sag Tarafta Renderlanacak Item Degerleri
  * @param renderLeftActions - Kaydirma Efektinde Sol Tarafta Renderlanacak Item Degerleri
- * @param onPress - Tıklandığında Alacağı Fonksiyon
+ * @param onPress - Called when the item is pressed
  *
  * @returns Standart List Item Renderlar
  */

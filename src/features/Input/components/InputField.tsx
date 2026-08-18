@@ -13,7 +13,7 @@ interface InputFieldProps extends PropsWithChildren {
   size?: Size
   leftIcon?: InputIconProps
   rightIcon?: InputIconProps
-  /** checkbox/toggle gibi kök Pressable'ı olan tiplerde ikon tıklamasının köke sızmasını engeller. */
+  /** Stops an icon press bubbling to the root for types with a root Pressable, such as checkbox and toggle. */
   stopPropagation?: boolean
 }
 
@@ -62,9 +62,9 @@ export const IconSlot: FC<IconSlotProps> = ({icon, side, gap, size, stopPropagat
 }
 
 /**
- * Metin-tabanlı input tipleri için ortak layout sarmalayıcı.
- * children flex:1 içerik hücresine sarılır; hücre ikon slotları arasındaki
- * kalan yatay alanı doldurur (child'ın ayrıca flex:1 taşıması gerekmez).
+ * Shared layout wrapper for the text-based input types.
+ * Children are wrapped in a flex:1 content cell, which fills the horizontal space
+ * left between the icon slots — the child does not need its own flex:1.
  */
 export const InputField: FC<InputFieldProps> = ({
   size,

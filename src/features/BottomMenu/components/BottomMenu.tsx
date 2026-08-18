@@ -15,8 +15,8 @@ interface BottomMenuProps {
 export const BottomMenu: FC<BottomMenuProps> = ({menuItems}) => {
   const {bottom} = useSafeArea()
 
-  let absoluteHeight = 72 + bottom // 56 dip yükseklik + 10 dip boşluk + bottom inset
-  if (Platform.OS === 'ios' && bottom > 0) absoluteHeight -= 16 // ios'te navigation bar şeffaf ve boşluklu olduğu için 16 dip boşluğa gerek yoktur
+  let absoluteHeight = 72 + bottom // 56dp height + 10dp spacing + bottom inset
+  if (Platform.OS === 'ios' && bottom > 0) absoluteHeight -= 16 // The iOS navigation bar is transparent and already spaced, so the 16dp is not needed
 
   return (
     <Content

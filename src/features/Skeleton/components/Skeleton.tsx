@@ -76,7 +76,7 @@ export const Skeleton: FC<SkeletonProps> = ({
           duration: 1400,
           easing: Easing.ease,
         }),
-        // -1 Verilme değerinin sebebi sonsuz bir animasyon yapmak için. Eğer değer 0 verilirse animasyon tek sefer çalışır. Birden fazla verilirse animasyon birden fazla kere çalışır. Örnek 5 verilirse animasyon 5 kere çalışır.
+        // -1 repeats the animation forever. 0 runs it once, and any n runs it n times.
         -1,
         false
       )

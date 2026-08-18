@@ -48,7 +48,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
     }
   }
 
-  // Yerleşik göz toggle: fonksiyon sabit; görünüm rightIcon ile override edilebilir.
+  // Built-in eye toggle: the behaviour is fixed, the appearance can be overridden via rightIcon.
   const eyeIcon = {
     name: (isSecure ? 'eye-disable' : 'eye') as any,
     variant: (theme === 'dark' ? 'white' : !value ? 'grey-200' : 'grey-900') as any,
