@@ -12,17 +12,17 @@ import type {HeaderProps} from '../models'
 
 /**
  *
- * @param title - Eğer Icon yerine bir title gözükmesi isteniyorsa bu property kullanılabilir.
+ * @param title - Shows a title in place of the icon.
  * @param subTitle - Alt Baslik.
- * @param back - Bir önceki sayfaya dönülmek istendiğinde bu property'nin verilmesi yeterli olacaktır. Historyde kayıtlı geridönülebilir sayfa varsa otomatikman o sayfaya gidecektir.
- * @param logo - Verilen logo header'ın ortasında renderlanacaktır.
- * @param rightElement - Sağ tarafta render olacak elementi verebilirsiniz
- * @param rightIcon - Icon setlerinden herhangi birini verirseniz ekranda renderlanır
- * @param rightIconOnPress - Sağ tarafta renderlanan icon'a basıldığından gerçekleşmesi gereken bir işlem varsa bu prop kullanılabilir.
+ * @param back - Renders a back control. If the navigation history holds a page to return to, it goes there automatically.
+ * @param logo - Rendered in the centre of the header.
+ * @param rightElement - Element rendered on the right.
+ * @param rightIcon - Any icon from the icon sets, rendered on the right.
+ * @param rightIconOnPress - Called when the right icon is pressed.
  * @param leftElement - Sol tarafta render olacak elementi verebilirsiniz
- * @param leftIcon - Icon setlerinden herhangi birini verirseniz ekranda renderlanır
- * @param leftIconOnPress - Sol tarafta renderlanan icon'a basıldığından gerçekleşmesi gereken bir işlem varsa bu prop kullanılabilir.
- * @param casal - Arka planın casal renkte olmasını istediğinizde kullanabilirsiniz.
+ * @param leftIcon - Any icon from the icon sets, rendered on the left.
+ * @param leftIconOnPress - Called when the left icon is pressed.
+ * @param casal - Renders the background in the casal colour.
  * @param paddingHorizontal - Yatayda kisisellestirilebilir bosluk
  * @param paddingVertical - Dikeyde kisisellestirilebilir bosluk
  *
@@ -58,7 +58,7 @@ export const Header: FC<HeaderProps> = ({
   })
 
   /**
-   * @TODO: Header left ve right iconlarını hem tek hemde array olarak alabilmesi için bir yapı oluşturulacak.
+   * @TODO: allow the left and right icons to be given either singly or as an array.
    */
   return (
     <Content

@@ -1,1 +1,1 @@
-// TODO: Icon size converter implementasyonu yapılması gerekmektedir.
+// TODO: implement the icon size converter.

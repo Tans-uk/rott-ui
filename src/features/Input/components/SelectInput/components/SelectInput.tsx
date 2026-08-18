@@ -17,23 +17,23 @@ import {SelectInputModalComponent} from './SelectInputModalComponent'
 /**
  *
  * @typedef {Object} SelectProps - Secenek tipi
- * @property {string} label - Ekranda görünen etiket. ZORUNLU
- * @property {string} value - Değer. ZORUNLU
+ * @property {string} label - Label shown on screen. REQUIRED
+ * @property {string} value - Option value. REQUIRED
  *
  *
- * @param {SelectProps[]} selectListExample - Örnek bir seçenek listesi.
+ * @param {SelectProps[]} selectListExample - An example option list.
 
  *
  * Input prop lari
- * @param {string} defaultValue - Varsayılan olarak seçilen değerin değeri.
- * @param {function} onSelectChange - Değer değiştiğinde çağrılacak işlev.
- * @param {SelectProps[]} list - Seçenekler listesi.
- * @param {SelectProps[]} extraDisplayData - Seçeneklerde olmayan ancak yukarıdan value olarak dikte edilebilen itemlar. (Infinite scroll gibi durumlarda kullanılır)
+ * @param {string} defaultValue - Value selected by default.
+ * @param {function} onSelectChange - Called when the selected value changes.
+ * @param {SelectProps[]} list - The list of options.
+ * @param {SelectProps[]} extraDisplayData - Items absent from `list` but still assignable as a value from above, for cases such as infinite scroll.
 
- * @param {LegacyRef<any>} listRef - Seçenekler listesi için ref
- * @param {FlashListProps<any>["onViewableItemsChanged"] | undefined} onViewableItemsChanged - Listedeki görünür elemanlar değiştiğinde çağırılan callback
+ * @param {LegacyRef<any>} listRef - Ref for the option list
+ * @param {FlashListProps<any>["onViewableItemsChanged"] | undefined} onViewableItemsChanged - Called when the set of visible list items changes
 
- * @param {boolean} searchable - Arama özelliğini etkinleştirme/engelleme ayarı.
+ * @param {boolean} searchable - Enables or disables search.
  * @returns {object} Secilebilir liste renderlanir
  */
 export const SelectInput: FC<SelectInputProps> = ({
@@ -103,7 +103,7 @@ export const SelectInput: FC<SelectInputProps> = ({
     const predicate = ({value: filterValue}: SelectProps) => filterValue === selectedValue
     const filteredItem = list?.find(predicate) ?? extraDisplayData?.find(predicate)
 
-    // Seçilen item disabled ise çık
+    // Bail out if the selected item is disabled
     if (filteredItem?.disabled) return
 
     if (!multiSelection) setSelectItem(filteredItem ?? null)

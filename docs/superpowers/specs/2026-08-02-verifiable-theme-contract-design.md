@@ -2,8 +2,14 @@
 
 **Date:** 2026-08-02
 **Status:** Approved (design), pending implementation plan
-**Target release:** 0.9.0
+**Target release:** unscheduled
 **Supersedes:** nothing
+
+> **0.9.0 shipped without this.** The original target was 0.9.0, but only the
+> Phase 1 docs-correctness work got a plan
+> (`docs/superpowers/plans/2026-08-02-phase1-docs-correctness-net.md`); the theme
+> contract itself was never implemented. Naming a version here before the work is
+> planned is what made this line go stale, so it stays unscheduled until it is.
 
 ---
 

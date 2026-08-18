@@ -4,14 +4,13 @@ import {useSafeAreaFrame, useSafeAreaInsets, type EdgeInsets} from 'react-native
 
 /**
  * useSafeArea
- * react-native-safe-area-context paketinin sunduğu useSafeAreaInsets hook'unun ilk render'da
- * döndürdüğü değerlerin hatalı olmasından kaynaklı yaşanan flicker sorununu ortadan kaldırmak
- * amacıyla geliştirilmiştir.
+ * Removes the flicker caused by useSafeAreaInsets from react-native-safe-area-context
+ * returning wrong values on the first render.
  *
- * Örneğin: const insets = useSafeAreaContext() insetler sıfırdan farklı olsa dahi ilk renderda
- * {top: 0, bottom: 0, left: 0, right: 0} döndürür. Dolayısıyla ilk render anındaki insetler
- * useSafeAreaFrame ve cihaz boyutları kullanılarak hesaplanır. Takip eden renderlarda useSafeAreaInsets'in
- * döndürdüğü değere geçilir.
+ * For example, `const insets = useSafeAreaContext()` returns {top: 0, bottom: 0, left: 0,
+ * right: 0} on the first render even when the real insets are non-zero. So the first
+ * render's insets are computed from useSafeAreaFrame and the device dimensions, and
+ * every render after that uses what useSafeAreaInsets returns.
  */
 export const useSafeArea = (): EdgeInsets => {
   const {

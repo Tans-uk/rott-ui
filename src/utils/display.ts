@@ -41,8 +41,8 @@ export const normalize = (size: number, based: 'width' | 'height' = 'width') => 
   const newSize = based === 'height' ? size * heightBaseScale : size * widthBaseScale
   const roundedSize = PixelRatio.roundToNearestPixel(newSize)
 
-  // TODO: react-native-keyboard-controller ios'te küsüratlı değerler ile çalışmıyor.
-  // Konu ile ilgili issue açıp takip edilecektir.
+  // TODO: react-native-keyboard-controller does not handle fractional values on iOS.
+  // An issue will be opened to track it.
   return Platform.OS === 'ios' ? Math.round(roundedSize) : roundedSize
 }
 

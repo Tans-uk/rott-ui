@@ -1,11 +1,11 @@
 /**
  * Action Menu Data Tipi
  *
- * @property {string} title - Başlık
- * @property {string} name - actionName - Testler için gerekli. *Örnek Kullanım:* ```action-name```
- * @property {void} action - onPress olduğunda çalışması istenen fonksiyon
+ * @property {string} title - Heading text
+ * @property {string} name - actionName, required by tests. *Example:* ```action-name```
+ * @property {void} action - Called when the action is pressed
  *
- * Örnek:
+ * Example:
  *```
  * const actionMenuData: ActionModel[] = [
  *   {

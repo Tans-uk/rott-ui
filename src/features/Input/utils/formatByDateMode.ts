@@ -65,13 +65,13 @@ export const dateYearConfirmationFormatter = (date: string) => {
 }
 
 /**
- * YYYYMMDD formatında gelen tarihi GG MMM YYYY DayName formatına çevirir.
- * @param date YYYYMMDD formatında tarih
- * @returns GG MMM YYYY DayName formatında tarih
+ * Converts a YYYYMMDD date into DD MMM YYYY DayName form.
+ * @param date A date in YYYYMMDD form
+ * @returns The date in DD MMM YYYY DayName form
  */
 export const dateFormatWithDayName = (date: string): string => {
   const year = parseInt(date.substring(0, 4), 10)
-  const month = parseInt(date.substring(4, 6), 10) - 1 // Aylar 0-11 arası olduğu için 1 çıkarıyoruz
+  const month = parseInt(date.substring(4, 6), 10) - 1 // Months are 0-11, so subtract one
   const day = parseInt(date.substring(6, 8), 10)
 
   const dateObj = new Date(year, month, day)

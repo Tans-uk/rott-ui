@@ -16,7 +16,7 @@ export interface ModalProps
   disableOutsideClick?: boolean
 
   /**
-   * Değer 0 ila 100 arasında olmalıdır.
+   * Must be between 0 and 100.
    */
   height?: number
   backgroundColor?: string
@@ -28,10 +28,10 @@ export interface ModalProps
   justifyContentCenter?: boolean
 
   /**
-   * transparent özelliği aktif edildiğinde item istendiği gibi sağa sola kaydırılabilir hale gelmektedir.
+   * With transparent enabled the item can be swiped left and right freely.
    *
-   * InformationModal bu senaryoya ihtiyaç duymuş ve onun için geliştirilmiştir.
-   * Bu özellik aktif edilmezse backgroundColor='transparent' verilse dahi arka plana tıklandığında modal kapanmamaktadır.
+   * Added for InformationModal, which needed exactly this.
+   * Without it, tapping the backdrop does not close the modal even when backgroundColor='transparent'.
    * */
   transparent?: boolean
   modals?: ModalProps[]
@@ -39,8 +39,8 @@ export interface ModalProps
   modalContainerMarginBottom?: number
   children?: any
 
-  /** Modal açıkken soft klavye aktive edildiğinde modalın klavyeye yapışık halde sürüklenmesini sağlar.
-   * Eğer modal belli bir uzunluktan yüksek ise bu prop dikkate alınmaz.
+  /** Keeps the modal attached to the soft keyboard as it opens.
+   * Ignored when the modal is taller than a set height.
    */
   sticksToKeyboard?: boolean
 }

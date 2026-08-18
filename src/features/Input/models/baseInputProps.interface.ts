@@ -5,7 +5,7 @@ import {InputIconSlotsProps} from './inputIconSlotsProps.interface'
 import {InputLabelProps} from './inputLabelProps.interface'
 import {InputType} from './inputType.type'
 
-/** Tüm input tiplerinde ortak olarak kullanılan propertylerdir. */
+/** Properties shared by every input type. */
 export interface BaseInputProps extends CommonUiProps, TextInputProps, InputIconSlotsProps {
   name: string
   type?: InputType

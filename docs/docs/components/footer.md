@@ -6,7 +6,7 @@ description: Footer container component
 
 # Footer
 
-Footer provides a fixed footer container at the bottom of the screen.
+Footer is a bottom-anchored container for screen-level actions. It wraps [`Content`](./content.md) with footer layout defaults and respects the device's bottom safe-area inset.
 
 ## Basic Usage
 
@@ -22,9 +22,18 @@ import { Footer } from '@tansuk/rott-ui';
 
 ## Props
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `children` | `ReactNode` | Footer content |
+Footer accepts every [`Content`](./content.md) prop. Passing one overrides the
+matching footer default below.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | — | Footer content |
+| `minHeight` | `number \| string` | `128` | Minimum height of the footer |
+| `paddingTop` | `number \| string` | `24` | Space above the content |
+| `gap` | `number` | `16` | Space between children |
+| `useBottomInset` | `boolean` | `true` | Reserve room for the device's bottom safe area |
+| `backgroundColor` | `string` | — | Unset by default, so the footer inherits the surface behind it |
+| `testID` | `string` | `'footer-test-id'` | Test identifier |
 
 ## Examples
 

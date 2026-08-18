@@ -50,9 +50,9 @@ String.prototype.toPascalCase = function () {
 
 String.prototype.toMaskName = function (maskCharacter: string = '*'): string {
   return this.trim()
-    .split(/\s+/) // Birden fazla boşluğu temizler
+    .split(/\s+/) // Collapse runs of whitespace
     .map((word) => {
-      if (word.length <= 2) return word // Kelime 2 karakterden kısa ise olduğu gibi bırak
+      if (word.length <= 2) return word // Leave words of two characters or fewer as they are
 
       return word[0]! + word[1]! + maskCharacter.repeat(word.length - 2)
     })
@@ -60,16 +60,16 @@ String.prototype.toMaskName = function (maskCharacter: string = '*'): string {
 }
 
 String.prototype.toMaskIban = function (maskCharacter: string = '*'): string {
-  const iban = this.trim().replace(/\s+/g, '') // Boşlukları temizle
+  const iban = this.trim().replace(/\s+/g, '') // Strip whitespace
 
-  const start = iban.slice(0, 4) // İlk 4 karakter
-  const end = iban.slice(-4) // Son 4 karakter
-  const maskedSection = iban.slice(4, -4).replace(/./g, maskCharacter) // Ortadaki kısmı maskele
+  const start = iban.slice(0, 4) // First four characters
+  const end = iban.slice(-4) // Last four characters
+  const maskedSection = iban.slice(4, -4).replace(/./g, maskCharacter) // Mask the middle
 
-  // Maskelenmiş IBAN'ı birleştir
+  // Join the masked IBAN back together
   const maskedIban = start + maskedSection + end
 
-  // Her 4 karakterde bir boşluk ekleyerek formatla
+  // Format with a space every four characters
   return maskedIban.replace(/(.{4})(?=.)/g, '$1 ')
 }
 

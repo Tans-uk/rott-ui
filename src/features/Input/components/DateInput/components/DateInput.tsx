@@ -26,11 +26,11 @@ import DatePicker from '@react-native-community/datetimepicker'
 
 /**
  *
- * DateInput'un kullanımı diğer inputlara göre biraz daha farklı.
- * Yapısı gereği diğer inputlarda kullandığımız "onChangeText" event'i ile değişen değeri almamız mümkün olmadığı için
- * formik'in içinde yer alan "setFieldValue" metodunu kullanmamız gerek.
+ * DateInput is used a little differently from the other inputs.
+ * Its structure means the changed value cannot be read through the "onChangeText"
+ * event the other inputs use, so formik's "setFieldValue" is required instead.
  *
- * ### **Örnek**:
+ * ### **Example**:
  *   <Input
       label='Date Deneme'
       name='order-date'
@@ -50,11 +50,11 @@ import DatePicker from '@react-native-community/datetimepicker'
       ]}
     />
  *
- * @property {(date: Date) => void)} onDateChange: seçilen tarih değerini almak içim bu property'nin kullanılması gerekmektedir.
- * @property {'date' | 'time' | 'datetime'} mode: İstenilen mod neyse ona göre belirtilmelidir. Default değer datetime olarak ayarlanmıştır.
- * @property {boolean} dontAllowClearing: Eğer date input'un değerinin temizlenmesine izin verilmemesi gerekiyorsa bu propert kullanılmalıdır.
- * dontAllowClearing={true} yerine sadece downAllowClearing olarak verirseniz değer otomatik olarak true kabul edilir. False olmadığı durumlarda
- * lütfen ={true} şeklinde tanımlama yapmayınız.
+ * @property {(date: Date) => void)} onDateChange: receives the selected date.
+ * @property {'date' | 'time' | 'datetime'} mode: picker mode. Defaults to datetime.
+ * @property {boolean} dontAllowClearing: prevents the date input's value from being cleared.
+ * Writing it bare, as `dontAllowClearing`, is already treated as true — do not write
+ * `={true}` unless you also pass `={false}` somewhere.
  */
 let externalDate = new Date()
 export const DateInput: FC<DateInputProps> = ({

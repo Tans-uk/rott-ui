@@ -40,7 +40,7 @@ export const ModalComponent: FC<ModalProps> = ({
     : themeConfig.colors['neutral-alpha-100'],
   panResponderBackgroundColor = 'grey-800',
   /**
-   * Custom Header element verildiği zaman tasarımda renk bozulması yaşamamak için bu değerin tanımlanması gerekir.
+   * Set this when passing a custom Header element, so the design keeps its colours.
    *
    */
   headerBackgroundColor = 'grey-800',
@@ -72,11 +72,11 @@ export const ModalComponent: FC<ModalProps> = ({
 
   const maxHeight = display.setHeightDevice(100)
 
-  /** Height 100 verildiyse veya fullScreen ise kullanılan cihazı baz alır.
-   * Eğer 0 ile 100 arası bir height verildiyse bu değer referans cihaza göre hesaplanır.
-   * Örn, height: 50 -> referans cihaz yüksekliği 844 olduğundan 422 olarak hesaplanır.
-   * Hesaplanan değer kullanılan cihazın yüksekliğinden fazla çıkarsa maksimum değer (%100) alınır.
-   * Android'e özel olarak bottom inset eklenir.
+  /** With height 100, or fullScreen, the device's own height is used.
+   * A height between 0 and 100 is resolved against the reference device instead:
+   * height 50 becomes 422, the reference device being 844 tall.
+   * If the result exceeds the actual device height, it is capped at 100%.
+   * On Android the bottom inset is added on top.
    */
   const modalHeightByPercentage =
     fullScreen || height === 100
@@ -84,7 +84,7 @@ export const ModalComponent: FC<ModalProps> = ({
       : Math.min(
           maxHeight,
           display.setHeight(height > 100 || height < 0 ? 100 : height) +
-            (Platform.OS === 'android' ? bottom : 0) // ios'te sistem navigasyonu şeffaf ve boşluklu olduğu için bu düzeltmeye ihtiyaç duyulmaz
+            (Platform.OS === 'android' ? bottom : 0) // iOS system navigation is transparent and already spaced, so no correction is needed
         )
 
   const canStickToKeyboard = !fullScreen && height < 50
@@ -142,8 +142,8 @@ export const ModalComponent: FC<ModalProps> = ({
 
   return (
     <RNModal
-      statusBarTranslucent // önemli (eski tip android cihazlarda edge-to-edge açık olsa dahi RNModal'a özel belirtmek gerekiyor)
-      navigationBarTranslucent // önemli (eski tip android cihazlarda edge-to-edge açık olsa dahi RNModal'a özel belirtmek gerekiyor)
+      statusBarTranslucent // Required: on older Android devices RNModal needs this even when edge-to-edge is on
+      navigationBarTranslucent // Required: on older Android devices RNModal needs this even when edge-to-edge is on
       transparent={!fullScreen}
       animationType={animationType}
       style={{height: modalHeightByPercentage}}

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-// TODO: FontFamily'i kaldırıp, @features/Label'den import et.
+// TODO: drop FontFamily here and import it from @features/Label instead.
 export const DateInputStyles = () =>
   StyleSheet.create({
     pressableTextStyle: {

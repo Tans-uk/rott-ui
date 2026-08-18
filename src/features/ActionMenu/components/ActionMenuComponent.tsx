@@ -13,11 +13,11 @@ import {Pressable} from '../../Pressable'
 import type {ActionMenuProps, ActionModel} from '../models'
 import {ActionMenuStyles} from '../styles'
 
-/* @param title Başlık alanı
- * @param subTitle Alt başlık alanı
- * @param data ActionModel[] formatında veri listesi
- * @param visible ActionMenu komponentin bulunduğu yerdeki Show state i
- * @returns Action Menu Renderlanır
+/* @param title Heading text
+ * @param subTitle Subheading text
+ * @param data Data list in ActionModel[] form
+ * @param visible The caller's show state for the ActionMenu component
+ * @returns The rendered action menu
  *
  */
 export const ActionMenuComponent: FC<ActionMenuProps> = ({

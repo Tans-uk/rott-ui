@@ -9,11 +9,11 @@ import type {ResultActionModel} from './resultActionModel'
 /**
  * Result Data Tipi
  *
- * @property {string} title - Başlık
- * @property {string} name - actionName - Testler için gerekli. *Örnek Kullanım:* ```action-name```
- * @property {void} action - onPress olduğunda çalışması istenen fonksiyon
+ * @property {string} title - Heading text
+ * @property {string} name - actionName, required by tests. *Example:* ```action-name```
+ * @property {void} action - Called when the action is pressed
  *
- * Örnek:
+ * Example:
  *```
  * const resultData: ResultDataProps[] = [
  *   {
@@ -40,12 +40,12 @@ export interface ResultProps extends Omit<ModalProps, 'fullScreen'> {
   description?: string | ReactNode
 
   /*
-   * ResultVariant, işlemin sonucunu temsil eden bir türdür.
-   * Bu tür, aşağıdaki değerleri alabilir:
-   * - 'success': İşlem başarıyla tamamlandı.
-   * - 'warning': İşlem sırasında uyarılar meydana geldi.
-   * - 'error': İşlem başarısız oldu.
-   * - 'info': İşlem hakkında bilgilendirici bilgiler sağlandı.
+   * ResultVariant describes the outcome of an operation.
+   * It can be one of:
+   * - 'success': the operation completed successfully.
+   * - 'warning': the operation raised warnings.
+   * - 'error': the operation failed.
+   * - 'info': informational detail about the operation.
    */
   variant: Variant
   iconName: IconKeys

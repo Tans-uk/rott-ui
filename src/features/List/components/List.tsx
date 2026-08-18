@@ -117,9 +117,9 @@ export const List: FC<ListProps<any>> = forwardRef(
                   }
                   alignItemsCenter
                   justifyContentCenter
-                  style={ListStyles({containerHeight}).emptyStateContainer} // containerHeight onLayout ile okunduğu için display util'leri kullanılmadan direkt stil ile verilmiştir
-                  /** TODO: opacity yerine containerHeight belirlenene kadar display: 'none' kullanılmalı.
-                   * Testlerde sorun çıkardığı için şimdilik bu şekilde bırakıldı.
+                  style={ListStyles({containerHeight}).emptyStateContainer} // containerHeight is read via onLayout, so this is styled directly rather than through the display utils
+                  /** TODO: use display: 'none' instead of opacity until containerHeight is known.
+                   * Left as is for now because it broke the tests.
                    */
                   opacity={containerHeight ? 1 : 0}
                   {...emptyStateContainerProps}>

@@ -8,9 +8,9 @@ import type {SelectProps} from './selectProps.interface'
 import type {FlashListProps} from '@shopify/flash-list'
 
 /** TODO: BasInputProps'tan herhangi bir property omit edilmemelidir.
- * Burası istisnai bir durumdur. value RN core componenti olan TextInput'tan gelmektedir.
- * Select bileşeni anatomik olarak kullanıcı girdisi alan bir TexTInput'tan oluşmaz.
- * Projede çok fazla yeri etkilediğinden şimdilik BaseInputProps kullanılmış ve value değeri omit edilmiştir.
+ * An exception. `value` comes from TextInput, a React Native core component, but a
+ * Select is not anatomically a TextInput taking user input. Changing that would touch
+ * too much of the project, so BaseInputProps is kept for now with `value` omitted.
  */
 export interface CommonSelectInputProps extends Omit<BaseInputProps, 'value' | 'defaultValue'> {
   emptyState?: EmptyStateProps

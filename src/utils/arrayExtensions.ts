@@ -7,7 +7,7 @@ const customCompare = (a: string, b: string): number => {
   const indexB = alphabet.indexOf(b)
 
   if (indexA === -1 || indexB === -1) {
-    // Özel alfabede herhangi bir karakter bulunamazsa, varsayılan karşılaştırmayı kullanın
+    // Fall back to the default comparison when a character is absent from the custom alphabet
     return a.localeCompare(b, 'tr', {sensitivity: 'base'})
   }
 
@@ -22,7 +22,7 @@ const sortAlphabetical = (a: string, b: string): number => {
     if (comparison !== 0) return comparison
   }
 
-  // Daha kısa dizenin uzunluğuna kadar tüm karakterler eşitse, uzunlukları karşılaştırın
+  // All characters equal up to the shorter string, so compare lengths
   return a.length - b.length
 }
 
