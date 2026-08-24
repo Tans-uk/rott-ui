@@ -10,7 +10,7 @@ const testId = {
 }
 
 describe('Tab -> Custom Component', () => {
-  it('Tab snapshotı ile eşleşmeli', async () => {
+  it('matches the Tab snapshot', async () => {
     const {tabTestId} = testId
     const rendered = await render(
       <Tab testID={tabTestId('tab')} isSelected={false} onLayout={jest.fn()}>
@@ -21,7 +21,7 @@ describe('Tab -> Custom Component', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('Tab onPress calismali', async () => {
+  it('calls the Tab onPress', async () => {
     const {tabTestId} = testId
     const onPressMock = jest.fn()
 
@@ -37,7 +37,7 @@ describe('Tab -> Custom Component', () => {
     expect(onPressMock).toHaveBeenCalled()
   })
 
-  it('Tab accessibility state degerlerinden selected olup olmadigi kontrol edilebilmeli', async () => {
+  it('exposes whether the Tab is selected through its accessibility state', async () => {
     const {tabTestId} = testId
     const returnsTrueMock = jest.fn(() => true)
 
@@ -52,7 +52,7 @@ describe('Tab -> Custom Component', () => {
     expect(tabElement).toHaveAccessibilityState({selected: true})
   })
 
-  it('Tab selected degistigi zaman AccessibilityState degerlerinden selected degeri degismeli', async () => {
+  it('updates the selected value in AccessibilityState when the Tab selection changes', async () => {
     const {tabTestId} = testId
     let isSelectedMock = true
 

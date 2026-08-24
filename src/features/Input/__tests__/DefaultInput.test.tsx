@@ -20,7 +20,7 @@ jest.mock('../../Icon', () => ({
 describe('Default Input -> Custom Input', () => {
   const testId = 'default-input-test-id'
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     // Arrange
     const renderedInput = await render(<DefaultInput name='test' testID={testId} />)
 
@@ -28,7 +28,7 @@ describe('Default Input -> Custom Input', () => {
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('verilen değeri olduğu gibi render etmeli', async () => {
+  it('renders the given value as-is', async () => {
     // Arrange
     const {getByTestId} = await render(<DefaultInput name='test' testID={testId} value={''} />)
 
@@ -36,11 +36,11 @@ describe('Default Input -> Custom Input', () => {
     const inputElement = getByTestId(testId)
 
     // Assert
-    // TODO: toHaveProp yerine yeni matcher'lar yüklenip toHaveDisplayValue kullanılmalı
+    // TODO: install the newer matchers and use toHaveDisplayValue instead of toHaveProp
     expect(inputElement).toHaveProp('value', '')
   })
 
-  it('belirlenen maksimum uzunluktan fazla girdi almamalı', async () => {
+  it('does not accept input beyond the given maximum length', async () => {
     // Arrange
     const maxLengthLimit = 10
     const user = userEvent.setup()
@@ -62,7 +62,7 @@ describe('Default Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledTimes(maxLengthLimit)
   })
 
-  it('kopyala/yapıştır yapıldığında maksimum uzunluğu geçmemeli', async () => {
+  it('does not exceed the maximum length when text is pasted', async () => {
     // Arrange
     const maxLengthLimit = 10
     const user = userEvent.setup()
@@ -84,7 +84,7 @@ describe('Default Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('a'.repeat(maxLengthLimit))
   })
 
-  it('sadece harf, nümerik karakter, boşluk, nokta, virgül, tire, eğik çizgi kabul etmeli', async () => {
+  it('accepts only letters, digits, spaces, full stops, commas, hyphens and slashes', async () => {
     // Arrange
     const text = '<>[]*?_^`|%=&{}`,-'
     const user = userEvent.setup()
@@ -107,7 +107,7 @@ describe('Default Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenLastCalledWith('')
   })
 
-  it('readOnly durumunu desteklemeli', async () => {
+  it('supports the readOnly state', async () => {
     // Arrange
     const {getByTestId} = await render(<DefaultInput name='test' testID={testId} readOnly />)
 
@@ -120,14 +120,14 @@ describe('Default Input -> Custom Input', () => {
 })
 
 describe('DefaultInput -> leftIcon/rightIcon', () => {
-  it('leftIcon verilince sol slot render edilir', async () => {
+  it('renders the left slot when leftIcon is given', async () => {
     const {getByTestId} = await render(
       <DefaultInput name='i1' type='default' leftIcon={{name: 'lock', variant: 'primary'}} />
     )
     expect(getByTestId('input-field-left-icon')).toBeTruthy()
   })
 
-  it('leftIcon ve rightIcon birlikte render edilir', async () => {
+  it('renders leftIcon and rightIcon together', async () => {
     const {getByTestId} = await render(
       <DefaultInput name='i2' type='default' leftIcon={{name: 'lock'}} rightIcon={{name: 'eye'}} />
     )

@@ -37,7 +37,7 @@ describe('Select Input -> Custom Input', () => {
     {label: 'Lenovo', value: 'lenovo', description: 'Lenovo Desc'},
   ]
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const {
       select: {selectTestId},
     } = testId
@@ -48,7 +48,7 @@ describe('Select Input -> Custom Input', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('select inputa tıklandığında input modal olarak açılmalı', async () => {
+  it('opens the select input as a modal when tapped', async () => {
     const {
       select: {selectTestId, selectSelectionTestId, modalTestId},
     } = testId
@@ -64,7 +64,7 @@ describe('Select Input -> Custom Input', () => {
     expect(selectInputModal).toBeVisible()
   })
 
-  it('select input secildigi zaman listenin ekranda gorunur olmali', async () => {
+  it('shows the list when the select input is chosen', async () => {
     const {
       select: {selectTestId, selectSelectionTestId, listTestId},
     } = testId
@@ -82,7 +82,7 @@ describe('Select Input -> Custom Input', () => {
     })
   })
 
-  it('default value verildiginde varsayilan deger duzgun sekilde almali', async () => {
+  it('picks up the default value when one is given', async () => {
     const {
       select: {selectedTestId},
     } = testId
@@ -103,7 +103,7 @@ describe('Select Input -> Custom Input', () => {
     expect(selectedItemElement.children[0]).toBe('Apple')
   })
 
-  it('onSelectChange verilmeden secim yapildiginda cokmemeli', async () => {
+  it('does not crash when a selection is made without onSelectChange', async () => {
     const {
       select: {selectTestId, selectSelectionTestId},
     } = testId
@@ -117,7 +117,7 @@ describe('Select Input -> Custom Input', () => {
     expect(() => fireEvent.press(item)).not.toThrow()
   })
 
-  it('secim yapildiginda deger dogru sekilde atanmali', async () => {
+  it('assigns the value correctly on selection', async () => {
     const onSelectChangeMock = jest.fn()
     const {
       select: {selectTestId, selectSelectionTestId, selectedTestId},
@@ -149,7 +149,7 @@ describe('Select Input -> Custom Input', () => {
     expect(selectedElement.children[0]).toBe('Apple')
   })
 
-  it('searchable ozelligi aktif ise search inputu ekranda olmali', async () => {
+  it('shows the search input when searchable is enabled', async () => {
     const onSelectChangeMock = jest.fn()
     const {
       select: {selectTestId, selectSelectionTestId},
@@ -177,7 +177,7 @@ describe('Select Input -> Custom Input', () => {
     expect(searchInputElement).toBeOnTheScreen()
   })
 
-  it('arama islemi aktif degil ise arama inputu ekranda olmamali', async () => {
+  it('hides the search input while search is disabled', async () => {
     const onSelectChangeMock = jest.fn()
     const {
       select: {selectTestId, selectSelectionTestId},
@@ -204,7 +204,7 @@ describe('Select Input -> Custom Input', () => {
     expect(searchInputElement).not.toBeOnTheScreen()
   })
 
-  it('arama islemi aktif ise arama inputu ekranda olmali', async () => {
+  it('shows the search input while search is enabled', async () => {
     const onSelectChangeMock = jest.fn()
     const {
       select: {selectTestId, selectSelectionTestId},
@@ -233,7 +233,7 @@ describe('Select Input -> Custom Input', () => {
     expect(searchInputElement).toBeOnTheScreen()
   })
 
-  it('arama islemi duzgun filtrelemeli', async () => {
+  it('filters correctly on search', async () => {
     const onSelectChangeMock = jest.fn()
     const {
       select: {selectTestId, selectSelectionTestId, listTestId},
@@ -259,7 +259,7 @@ describe('Select Input -> Custom Input', () => {
     const searchInputElement = getByTestId(searchInputTestId)
     fireEvent.changeText(searchInputElement, 'App')
 
-    // List elementi çağırılır
+    // Grab the list element
     const listElement = getByTestId(listTestId)
 
     //Aranan kelimeye ait veri ekranda olmali
@@ -268,7 +268,7 @@ describe('Select Input -> Custom Input', () => {
     expect(listElement).not.toHaveTextContent('Oppo')
   })
 
-  it('arama islemi sonrasi secim yapildiysa secim duzgun islemeli', async () => {
+  it('applies the selection correctly when one is made after a search', async () => {
     const onSelectChangeMock = jest.fn()
     const {
       select: {selectTestId, selectSelectionTestId, listTestId, selectedTestId},
@@ -306,7 +306,7 @@ describe('Select Input -> Custom Input', () => {
     expect(selectedItem.children[0]).toBe('Apple')
   })
 
-  it('arama icin herhangi bir text yazildi ise Clear Iconu ekranda olmali', async () => {
+  it('shows the clear icon once search text is typed', async () => {
     const {
       select: {selectTestId, selectSelectionTestId},
       search: {searchInputTestId, searchClearTestId},
@@ -337,7 +337,7 @@ describe('Select Input -> Custom Input', () => {
     expect((clearInputElement?.children[0] as any).props.name).toMatch(/remove-circle/i)
   })
 
-  it('clear iconuna tiklandiginda searchText icerigi temizlenmeli', async () => {
+  it('clears the search text when the clear icon is tapped', async () => {
     const {
       select: {selectTestId, selectSelectionTestId},
       search: {searchInputTestId, searchClearTestId},
@@ -369,7 +369,7 @@ describe('Select Input -> Custom Input', () => {
     expect(searchInputElementAfterRender).toHaveProp('value', '')
   })
 
-  it('clear iconu ile icerik temizlendiginde liste orjinal haline donmeli', async () => {
+  it('restores the original list when the clear icon empties the search', async () => {
     const {
       select: {selectTestId, selectSelectionTestId, listTestId},
       search: {searchInputTestId, searchClearTestId},
@@ -404,7 +404,7 @@ describe('Select Input -> Custom Input', () => {
     })
   })
 
-  it('secim yapildiginda description parametresi var ise ekranda renderlanmali', async () => {
+  it('renders the description on selection when one is given', async () => {
     const onSelectChangeMock = jest.fn()
     const {
       select: {selectTestId, selectSelectionTestId, selectedDescriptionTestId},
@@ -431,7 +431,7 @@ describe('Select Input -> Custom Input', () => {
     expect(selectedDescElement.children[0]).toBe('Apple Desc')
   })
 
-  it('description propstan string deger aldiysa ekranda renderlanmali', async () => {
+  it('renders the description when the prop is a string', async () => {
     const {
       select: {selectTestId, selectedDescriptionTestId},
     } = testId
@@ -453,7 +453,7 @@ describe('Select Input -> Custom Input', () => {
     expect(selectedDescElement.children[0]).toBe(mockDesc)
   })
 
-  it('select input propstan ve list ten es zamanli description almis ise secim yokken props degeri secim var ise data degeri description olarak atanmali', async () => {
+  it('uses the props description while nothing is selected and the item description once a selection is made, when both are given', async () => {
     const onSelectChangeMock = jest.fn()
     const {
       select: {selectTestId, selectedTestId, selectSelectionTestId, selectedDescriptionTestId},

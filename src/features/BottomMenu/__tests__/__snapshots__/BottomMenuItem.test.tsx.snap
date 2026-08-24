@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component -> BottomMenuItem bottom menu item componenti snapshot ile eşleşmeli 1`] = `
+exports[`Component -> BottomMenuItem matches the bottom menu item component snapshot 1`] = `
 <KeyboardProvider
   enabled={true}
 >

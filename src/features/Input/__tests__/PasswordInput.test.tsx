@@ -8,13 +8,13 @@ describe('Password Input -> Custom Input', () => {
   const showPasswordIconTestId = 'input-field-right-icon'
   const leadingIconTestId = 'input-field-left-icon'
 
-  it('password input ilk render anında snapshot ile eşleşmeli', async () => {
+  it('password input matches the snapshot on first render', async () => {
     const renderedInput = await render(<PasswordInput name='test' testID={inputTestId} />)
 
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('varsayılan olarak metin girişini olduğu gibi kabul etmeli', async () => {
+  it('accepts typed text as-is by default', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <PasswordInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -28,7 +28,7 @@ describe('Password Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('aaA*a123')
   })
 
-  it('numericOnly verildiğinde yalnızca rakamları kabul etmeli', async () => {
+  it('accepts only digits when numericOnly is given', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <PasswordInput name='test' numericOnly testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -42,14 +42,14 @@ describe('Password Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('123')
   })
 
-  it('varsayılan klavye default olmalı', async () => {
+  it('uses the default keyboard', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('keyboardType', 'default')
   })
 
-  it('numericOnly verildiğinde klavye number-pad olmalı', async () => {
+  it('uses the number-pad keyboard when numericOnly is given', async () => {
     const {getByTestId} = await render(
       <PasswordInput name='test' numericOnly testID={inputTestId} />
     )
@@ -58,7 +58,7 @@ describe('Password Input -> Custom Input', () => {
     expect(inputElement).toHaveProp('keyboardType', 'number-pad')
   })
 
-  it('leftIcon verildiğinde leading icon render edilmeli', async () => {
+  it('renders the leading icon when leftIcon is given', async () => {
     const {getByTestId} = await render(
       <PasswordInput name='test' testID={inputTestId} leftIcon={{name: 'lock'}} />
     )
@@ -66,20 +66,20 @@ describe('Password Input -> Custom Input', () => {
     expect(getByTestId(leadingIconTestId)).toBeTruthy()
   })
 
-  it('input ilk renderlandiginda text gorunur olmamali', async () => {
+  it('hides the text on the input first render', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('secureTextEntry', true)
   })
 
-  it('input ilk renderlandiginda sifre goster iconu gorunmeli', async () => {
+  it('shows the reveal-password icon on first render', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
 
     expect(getByTestId(showPasswordIconTestId)).toBeTruthy()
   })
 
-  it('sifre goster iconuna tiklandiginda sifre gorunur olmali', async () => {
+  it('reveals the password when the reveal icon is tapped', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 
@@ -90,14 +90,14 @@ describe('Password Input -> Custom Input', () => {
     expect(inputElement).toHaveProp('secureTextEntry', false)
   })
 
-  it('IOS icin yapıştırma özelliği kapatılmalı', async () => {
+  it('disables paste on iOS', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 
     expect(inputElement).toHaveProp('contextMenuHidden', true)
   })
 
-  it('Android icin yapıştırma özelliği kapatılmalı', async () => {
+  it('disables paste on Android', async () => {
     const {getByTestId} = await render(<PasswordInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 

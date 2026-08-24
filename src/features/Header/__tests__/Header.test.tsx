@@ -23,7 +23,7 @@ describe('Header -> Custom Component', () => {
   }
   const headerText = 'Test Başlık'
 
-  it('yalnızca başlık çalışmalı ve snapshot eşleşmeli', async () => {
+  it('works with a title alone and matches the snapshot', async () => {
     const {component} = testId
 
     const rendered = await render(<Header testID={component} title={headerText} />)
@@ -31,21 +31,21 @@ describe('Header -> Custom Component', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('verilen testId ekranda olmalı', async () => {
+  it('shows the given testId', async () => {
     const {title, rightIcon, logo, component} = testId
     const {queryByTestId} = await render(<Header testID={component} title={headerText} />)
 
-    //Title ekranda olmalı
+    // the title should be shown
     expect(queryByTestId(title)).toBeOnTheScreen()
 
-    //RightIcon ekranda olmamalı
+    // the right icon should not be shown
     expect(queryByTestId(rightIcon)).not.toBeOnTheScreen()
 
-    //Logo ekranda olmamalı
+    // the logo should not be shown
     expect(queryByTestId(logo)).not.toBeOnTheScreen()
   })
 
-  it('yalnızca logo çalışmalı ve snapshot eşleşmeli', async () => {
+  it('works with a logo alone and matches the snapshot', async () => {
     const {title, rightIcon, logo, component} = testId
     const {queryByTestId} = await render(<Header testID={component} logo={IMG.logo} />)
 
@@ -58,7 +58,7 @@ describe('Header -> Custom Component', () => {
     expect(titleElement).not.toBeOnTheScreen()
   })
 
-  it('başlık ve icon var ise sadece icon gorunmeli', async () => {
+  it('shows only the icon when both a title and an icon are given', async () => {
     const {rightIcon, logo, component} = testId
     const {queryByTestId, getByTestId} = await render(
       <Header testID={component} title={headerText} logo={IMG.logo} />
@@ -73,7 +73,7 @@ describe('Header -> Custom Component', () => {
     expect(headerElement).not.toHaveTextContent(headerText)
   })
 
-  it('leftIcon görüntülenmeli ve onPress Methodu Çalışmalı', async () => {
+  it('shows the leftIcon and calls its onPress', async () => {
     const {component, leftIcon: leftIconTestId, leftIconPressable} = testId
     const {rightIcon} = IMG
 
@@ -102,7 +102,7 @@ describe('Header -> Custom Component', () => {
     expect(mockOnPress).toHaveBeenCalled()
   })
 
-  it('leftIcon verilmediğinde ekranda gözükmemeli', async () => {
+  it('hides the leftIcon when it is not given', async () => {
     const {component, leftIcon: leftIconTestId} = testId
     const {queryByTestId} = await render(<Header testID={component} title={headerText} />)
 
@@ -111,7 +111,7 @@ describe('Header -> Custom Component', () => {
     expect(leftIconElement).not.toBeOnTheScreen()
   })
 
-  it('leftIcon rounded özelliği verildiğinde border radius height ile aynı olmalı', async () => {
+  it('matches the border radius to the height when the leftIcon is rounded', async () => {
     const {component, leftIconPressable} = testId
     const {rightIcon} = IMG
 
@@ -132,7 +132,7 @@ describe('Header -> Custom Component', () => {
     expect(leftIconElement).toHaveProp('borderRadius', 40)
   })
 
-  it('leftElement görüntülenmeli', async () => {
+  it('shows the leftElement', async () => {
     const {component, rightIcon: rightIconTestId} = testId
     const {rightIcon} = IMG
 
@@ -149,7 +149,7 @@ describe('Header -> Custom Component', () => {
     expect(rightIconElement).toBeOnTheScreen()
   })
 
-  it('rightIcon görüntülenmeli ve onPress Methodu Çalışmalı', async () => {
+  it('shows the rightIcon and calls its onPress', async () => {
     const {component, rightIcon: rightIconTestId, rightIconPressable} = testId
     const {rightIcon} = IMG
 
@@ -177,7 +177,7 @@ describe('Header -> Custom Component', () => {
     expect(mockOnPress).toHaveBeenCalled()
   })
 
-  it('rightIcon verilmediğinde ekranda gözükmemeli', async () => {
+  it('hides the rightIcon when it is not given', async () => {
     const {component, rightIcon: rightIconTestId} = testId
     const {queryByTestId} = await render(<Header testID={component} title={headerText} />)
 
@@ -186,7 +186,7 @@ describe('Header -> Custom Component', () => {
     expect(rightIconElement).not.toBeOnTheScreen()
   })
 
-  it('right rounded özelliği verildiğinde border radius height ile aynı olmalı', async () => {
+  it('matches the border radius to the height when the right icon is rounded', async () => {
     const {component, rightIconPressable} = testId
     const {rightIcon} = IMG
 
@@ -207,7 +207,7 @@ describe('Header -> Custom Component', () => {
     expect(rightIconElement).toHaveProp('borderRadius', 40)
   })
 
-  it('rightElement görüntülenmeli', async () => {
+  it('shows the rightElement', async () => {
     const {component, rightIcon: rightIconTestId} = testId
     const {rightIcon} = IMG
 
@@ -224,7 +224,7 @@ describe('Header -> Custom Component', () => {
     expect(rightIconElement).toBeOnTheScreen()
   })
 
-  it('rightIcon ve leftIcon verildiğinde, ekranda gözükmeli', async () => {
+  it('shows both the rightIcon and the leftIcon when they are given', async () => {
     const {component, rightIcon: rightIconTestId, leftIcon: leftIconTestId} = testId
     const {rightIcon} = IMG
 
@@ -250,7 +250,7 @@ describe('Header -> Custom Component', () => {
     expect(leftIconElement).toBeOnTheScreen()
   })
 
-  it('children verildiğinde, ekranda gözükmeli', async () => {
+  it('shows the children when they are given', async () => {
     const {component} = testId
     const {queryByTestId} = await render(
       <Header testID={component} title={headerText}>

@@ -5,10 +5,9 @@ import {Input} from '../components'
 import type {InputProps, InputType} from '../models'
 
 /**
- * Bu test, TÜM input tiplerinin `<Input>` orkestratörü üzerinden
- * `leftIcon`/`rightIcon` slotlarını doğru şekilde render ettiğini garanti eder.
- * Yeni bir tip eklendiğinde veya bir tipin InputField sarımı bozulduğunda
- * bu test kırılır.
+ * Guarantees that EVERY input type renders its `leftIcon`/`rightIcon` slots
+ * correctly through the `<Input>` orchestrator. Adding a new type, or breaking
+ * a type's InputField wrapping, breaks this test.
  */
 type IconSlotCase = {type: InputType; extraProps?: Record<string, unknown>}
 
@@ -33,11 +32,11 @@ const cases: IconSlotCase[] = [
   {type: 'toggle', extraProps: {onToggle: jest.fn()}},
 ]
 
-describe('Input -> leftIcon/rightIcon slotları (tüm tipler)', () => {
+describe('Input -> leftIcon/rightIcon slots (all types)', () => {
   it.each(cases)(
-    '$type tipi hem leftIcon hem rightIcon slotunu render eder',
+    'renders both the leftIcon and rightIcon slots for type $type',
     async ({type, extraProps}) => {
-      // InputProps ayrımlı birleşim olduğu için dinamik `type` ile daraltılamaz;
+      // InputProps is a discriminated union, so a dynamic `type` cannot narrow it;
       // testte prop nesnesini cast ediyoruz.
       const inputProps = {
         name: `${type}-icon-slot-test`,
@@ -55,7 +54,7 @@ describe('Input -> leftIcon/rightIcon slotları (tüm tipler)', () => {
   )
 
   it.each(cases)(
-    '$type tipi ikon verilmediğinde sol slotu render etmez',
+    'does not render the left slot for type $type when no icon is given',
     async ({type, extraProps}) => {
       const inputProps = {
         name: `${type}-no-icon-test`,

@@ -14,13 +14,13 @@ describe('Timer -> Custom Component', () => {
     jest.useRealTimers()
   })
 
-  it('timer ilk render anında snapshot ile eşleşmeli', async () => {
+  it('timer matches the snapshot on first render', async () => {
     const renderedTimer = await render(<TimerComponent time={timerInitialTime} />)
 
     expect(renderedTimer).toMatchSnapshot()
   })
 
-  it('verilen time doğru renderlanmalı', async () => {
+  it('renders the given time correctly', async () => {
     const {getByTestId} = await render(<TimerComponent time={timerInitialTime} />)
 
     const label = getByTestId('timerTestId')

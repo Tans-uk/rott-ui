@@ -17,14 +17,14 @@ const testId = {
 }
 
 describe('Button -> Custom Component', () => {
-  it('butonun snapshotı ile eşleşmeli', async () => {
+  it('matches the button snapshot', async () => {
     const {buttonTestId, buttonText} = testId
     const rendered = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('buton ekranda olmalı ancak loading iconu görünmemeli', async () => {
+  it('shows the button but not the loading icon', async () => {
     const {buttonTestId, buttonText, buttonLoadingIndicatiorTestId} = testId
     const {getByTestId, queryByTestId} = await render(
       <Button testID={buttonTestId}>{buttonText}</Button>
@@ -37,7 +37,7 @@ describe('Button -> Custom Component', () => {
     expect(loadingIndicator).not.toBeOnTheScreen()
   })
 
-  it('loading text ve loading icon ile buton render olmalı', async () => {
+  it('renders the button with loading text and a loading icon', async () => {
     const {buttonTestId, buttonText, buttonLoadingTextTestId, buttonLoadingIndicatiorTestId} =
       testId
     const renderedButton = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
@@ -57,7 +57,7 @@ describe('Button -> Custom Component', () => {
     expect(loadingText).toBeOnTheScreen()
   })
 
-  it('buton disableken tıklanamamlı', async () => {
+  it('cannot be pressed while the button is disabled', async () => {
     const {buttonTestId, buttonText} = testId
     const onPressMock = jest.fn()
     const {getByTestId} = await render(
@@ -72,7 +72,7 @@ describe('Button -> Custom Component', () => {
     expect(onPressMock).not.toHaveBeenCalled()
   })
 
-  it('left icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', async () => {
+  it('renders the correct icon when the left icon prop is given', async () => {
     const {buttonTestId, buttonText, buttonLeftIconTestId} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} leftIcon={{name: 'remove-circle'}}>
@@ -85,7 +85,7 @@ describe('Button -> Custom Component', () => {
     expect(leftIconElement).toBeOnTheScreen()
   })
 
-  it('left image propertysi verildiğinde ekranda doğru image ile renderlanmalı', async () => {
+  it('renders the correct image when the left image prop is given', async () => {
     const {buttonTestId, buttonText, buttonLeftImageTestId} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} leftImage={{name: 'left-arrow-icon', absolute: true}}>
@@ -99,7 +99,7 @@ describe('Button -> Custom Component', () => {
     expect(leftIconElement).toHaveProp('source')
   })
 
-  it('button loading durumundayken verilen left icon görünmemeli', async () => {
+  it('hides the given left icon while the button is loading', async () => {
     const {buttonText, buttonLeftIconTestId} = testId
     const {queryByTestId} = await render(
       <Button leftIcon={{name: 'remove-circle'}} isLoading>
@@ -112,7 +112,7 @@ describe('Button -> Custom Component', () => {
     expect(leftIcon).not.toBeOnTheScreen()
   })
 
-  it('buton ekranda olmalı ve outline variantı ile renderlanmalı', async () => {
+  it('shows the button rendered with the outline variant', async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(
       <Button variant='primary-outline' testID={buttonTestId}>
@@ -129,7 +129,7 @@ describe('Button -> Custom Component', () => {
     })
   })
 
-  it('right icon propertysi verildiğinde ekranda doğru icon ile renderlanmalı', async () => {
+  it('renders the correct icon when the right icon prop is given', async () => {
     const {buttonTestId, buttonText, buttonRightIconTestId} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} rightIcon={{name: 'remove-circle'}}>
@@ -142,7 +142,7 @@ describe('Button -> Custom Component', () => {
     expect(rightIconElement).toBeOnTheScreen()
   })
 
-  it('right image propertysi verildiğinde ekranda doğru image ile renderlanmalı', async () => {
+  it('renders the correct image when the right image prop is given', async () => {
     const {buttonTestId, buttonText, buttonRightImageTestId} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} rightImage={{name: 'right-arrow-icon', absolute: true}}>
@@ -156,7 +156,7 @@ describe('Button -> Custom Component', () => {
     expect(rightImageElement).toHaveProp('source')
   })
 
-  it('button loading durumundayken verilen right icon görünmemeli', async () => {
+  it('hides the given right icon while the button is loading', async () => {
     const {buttonText, buttonRightIconTestId} = testId
     const {queryByTestId} = await render(
       <Button rightIcon={{name: 'remove-circle'}} isLoading>
@@ -169,7 +169,7 @@ describe('Button -> Custom Component', () => {
     expect(rightIcon).not.toBeOnTheScreen()
   })
 
-  it('outline olmayan variantta verilen borderWidth ve borderColor stile uygulanmalı', async () => {
+  it('applies the given borderWidth and borderColor on a non-outline variant', async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} variant='primary' borderWidth={1} borderColor='#747775'>
@@ -183,7 +183,7 @@ describe('Button -> Custom Component', () => {
     })
   })
 
-  it('border propertyleri verilmediğinde outline variantı kendi border davranışını korumalı', async () => {
+  it("keeps the outline variant's own border behaviour when no border props are given", async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} variant='primary-outline'>
@@ -197,7 +197,7 @@ describe('Button -> Custom Component', () => {
     })
   })
 
-  it('outline variantında açıkça verilen borderColor variant renginin önüne geçmeli', async () => {
+  it('prefers an explicit borderColor over the variant colour on the outline variant', async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} variant='primary-outline' borderColor='#747775'>
@@ -211,7 +211,7 @@ describe('Button -> Custom Component', () => {
     })
   })
 
-  it('outline olmayan variant border propertysi almadığında borderColor taşımamalı', async () => {
+  it('leaves borderColor unset on a non-outline variant with no border props', async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} variant='primary'>
@@ -225,7 +225,7 @@ describe('Button -> Custom Component', () => {
     })
   })
 
-  it('size full verildiğinde genişlik sabit piksel değil kapsayıcıya göreli olmalı', async () => {
+  it('makes the width relative to the container rather than a fixed pixel value when size is full', async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} size='full'>
@@ -236,14 +236,14 @@ describe('Button -> Custom Component', () => {
     expect(getByTestId(buttonTestId)).toHaveStyle({width: '100%'})
   })
 
-  it('size verilmediğinde varsayılan buton genişliği kapsayıcıya göreli olmalı', async () => {
+  it('makes the default button width relative to the container when no size is given', async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
 
     expect(getByTestId(buttonTestId)).toHaveStyle({width: '100%'})
   })
 
-  it('xl size kendi genişlik ve yüksekliğine sahip olmalı', async () => {
+  it('gives the xl size its own width and height', async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} size='xl'>
@@ -257,7 +257,7 @@ describe('Button -> Custom Component', () => {
     })
   })
 
-  it('xxl size kendi genişlik ve yüksekliğine sahip olmalı', async () => {
+  it('gives the xxl size its own width and height', async () => {
     const {buttonTestId, buttonText} = testId
     const {getByTestId} = await render(
       <Button testID={buttonTestId} size='xxl'>

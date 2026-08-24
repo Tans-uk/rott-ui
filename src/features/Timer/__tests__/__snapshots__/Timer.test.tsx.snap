@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Timer -> Custom Component timer ilk render anında snapshot ile eşleşmeli 1`] = `
+exports[`Timer -> Custom Component timer matches the snapshot on first render 1`] = `
 <KeyboardProvider
   enabled={true}
 >

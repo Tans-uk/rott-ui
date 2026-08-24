@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Alert component renderlandığında snapshot ile eşleşmeli 1`] = `
+exports[`Alert component matches the snapshot once rendered 1`] = `
 <KeyboardProvider
   enabled={true}
 >

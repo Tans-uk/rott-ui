@@ -77,7 +77,7 @@ describe('AlertDialogComponent', () => {
     expect(renderedAlertDialog.toJSON()).toMatchSnapshot()
   })
 
-  it('title ve text ekranda düzgün şekilde renderlanmalı', async () => {
+  it('renders the title and text correctly', async () => {
     const {alertDialogTestId} = testId
     const {getByText} = await render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockLessThanOrEqualTwoButtons} />
@@ -94,7 +94,7 @@ describe('AlertDialogComponent', () => {
     expect(text).toBeOnTheScreen()
   })
 
-  it('iki button tanımlı ise alert dialog doğru renderlanmalı', async () => {
+  it('renders the alert dialog correctly with two buttons', async () => {
     const {alertDialogTestId} = testId
     const {getByText} = await render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockLessThanOrEqualTwoButtons} />
@@ -107,7 +107,7 @@ describe('AlertDialogComponent', () => {
     expect(cancelButton).toBeOnTheScreen()
   })
 
-  it('iki veya daha fazla button tanımlı ise alert dialog doğru renderlanmalı', async () => {
+  it('renders the alert dialog correctly with two or more buttons', async () => {
     const {alertDialogTestId} = testId
     const {getByText} = await render(
       <AlertDialogComponent visible testID={alertDialogTestId} {...mockMoreThanTwoButtons} />

@@ -37,7 +37,7 @@ describe('Hooks -> useTimer', () => {
 
   beforeEach(() => jest.useFakeTimers())
   afterEach(() => jest.useRealTimers())
-  it('countdown timer azalan sekilde calismali', async () => {
+  it('counts down', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'countdown'))
     act(result.current.start)
@@ -50,7 +50,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(177)
   })
 
-  it('countdown timer tamamlandığında 0 olmalı', async () => {
+  it('reaches 0 when the countdown timer completes', async () => {
     // Arrange
     jest.runAllTicks()
     const {result} = renderHook(() => useTimer(timerInitialTime, 'countdown'))
@@ -63,7 +63,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(0)
   })
 
-  it('countdown timer calisirken stop olabilmeli', async () => {
+  it('can stop the countdown timer while it runs', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'countdown'))
     act(result.current.start)
@@ -77,7 +77,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(170)
   })
 
-  it('countdown timer calisirken reset olabilmeli', async () => {
+  it('can reset the countdown timer while it runs', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'countdown'))
     act(result.current.start)
@@ -90,7 +90,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(0)
   })
 
-  it('countdown timer calisirken restart olabilmeli', async () => {
+  it('can restart the countdown timer while it runs', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'countdown'))
     act(result.current.start)
@@ -103,7 +103,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(timerInitialTime)
   })
 
-  it('circle timer 0 olabilmeli', async () => {
+  it('can reach 0 on the circle timer', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'circle'))
     act(result.current.start)
@@ -115,7 +115,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(0)
   })
 
-  it('circle timer 0 oldugunda yeniden baslamali', async () => {
+  it('restarts the circle timer when it reaches 0', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'circle'))
     act(result.current.start)
@@ -129,7 +129,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(timerInitialTime - 3)
   })
 
-  it('circle timer calisirken stop olabilmeli', async () => {
+  it('can stop the circle timer while it runs', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'circle'))
     act(result.current.start)
@@ -143,7 +143,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(170)
   })
 
-  it('circle timer calisirken stop olmuşken tekrar start olabilmeli', async () => {
+  it('can start the circle timer again after it has been stopped', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'circle'))
     act(result.current.start)
@@ -159,7 +159,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(timerInitialTime - 20)
   })
 
-  it('circle timer calisirken stop olmuşken tekrar restart olabilmeli', async () => {
+  it('can restart the circle timer after it has been stopped', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'circle'))
     act(result.current.start)
@@ -175,7 +175,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(timerInitialTime - 10)
   })
 
-  it('circle timer calisirken reset olabilmeli', async () => {
+  it('can reset the circle timer while it runs', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'circle'))
     act(result.current.start)
@@ -188,7 +188,7 @@ describe('Hooks -> useTimer', () => {
     expect(result.current.time).toEqual(0)
   })
 
-  it('timer çalışırken app arka plana atıldığında doğru devam etmeli', async () => {
+  it('keeps counting correctly when the app is backgrounded while the timer runs', async () => {
     // Arrange
     const {result} = renderHook(() => useTimer(timerInitialTime, 'countdown'))
     act(result.current.start)
@@ -201,7 +201,7 @@ describe('Hooks -> useTimer', () => {
     act(() => addEventListenerMock.mock.calls.at(-1)[1]('inactive'))
     advanceTicks(20)
 
-    // önplana al 8 saniye bekle
+    // bring to the foreground and wait 8 seconds
     act(() => addEventListenerMock.mock.calls.at(-1)[1]('active'))
     advanceTicks(8)
 
@@ -209,7 +209,7 @@ describe('Hooks -> useTimer', () => {
     act(() => addEventListenerMock.mock.calls.at(-1)[1]('background'))
     advanceTicks(20)
 
-    // önplana al 12 saniye bekle
+    // bring to the foreground and wait 12 seconds
     act(() => addEventListenerMock.mock.calls.at(-1)[1]('active'))
     advanceTicks(12)
 

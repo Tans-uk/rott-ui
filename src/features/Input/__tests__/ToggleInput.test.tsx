@@ -4,7 +4,7 @@ import {fireEvent, render} from '../../../__tests__/utils/testUtils'
 import {ToggleInput} from '../components'
 
 describe('Toggle Input -> icon slots', () => {
-  it('rightIcon switchten önce render edilir ve onPress toggle a sızmaz', async () => {
+  it('renders the rightIcon before the switch without its onPress leaking to the toggle', async () => {
     const onToggle = jest.fn()
     const onIconPress = jest.fn()
     const {getByTestId} = await render(

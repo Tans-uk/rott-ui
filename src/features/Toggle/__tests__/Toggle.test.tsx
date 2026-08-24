@@ -8,13 +8,13 @@ describe('Toggle -> Custom Component', () => {
   const toggleContainerTestId = 'toggle-container-test-id'
   const toggleTestId = 'toggle-test-id'
 
-  it('toggle ilk render anında snapshot ile eşleşmeli', async () => {
+  it('toggle matches the snapshot on first render', async () => {
     const renderedToggle = await render(<Toggle isOn={false} />)
 
     expect(renderedToggle).toMatchSnapshot()
   })
 
-  it('toggle default propslar ile render olmalı', async () => {
+  it('renders the toggle with its default props', async () => {
     const {getByTestId} = await render(<Toggle isOn={false} />)
 
     const toggleContainer = getByTestId(toggleContainerTestId)
@@ -24,7 +24,7 @@ describe('Toggle -> Custom Component', () => {
     expect(toggleWheel).toBeDefined()
   })
 
-  it('tıklandığında onToggleChange çağırılmalı', async () => {
+  it('calls onToggleChange when tapped', async () => {
     const onToggleMock = jest.fn()
     const {getByTestId} = await render(<Toggle onToggleChange={onToggleMock} isOn={false} />)
 
@@ -34,10 +34,10 @@ describe('Toggle -> Custom Component', () => {
     await waitFor(() => expect(onToggleMock).toHaveBeenCalled())
   })
 
-  describe('isOn özelliği değiştiğinde stil özellikleri değişmeli', () => {
+  describe('changes the style when the isOn prop changes', () => {
     const onToggleMock = jest.fn()
 
-    it('pasif ise', async () => {
+    it('when inactive', async () => {
       const {getByTestId} = await render(<Toggle onToggleChange={onToggleMock} isOn={false} />)
 
       const toggleContainer = getByTestId(toggleTestId)
@@ -47,7 +47,7 @@ describe('Toggle -> Custom Component', () => {
       })
     })
 
-    it('aktif ise', async () => {
+    it('when active', async () => {
       const {getByTestId} = await render(<Toggle onToggleChange={onToggleMock} isOn={true} />)
 
       const toggleContainer = getByTestId(toggleTestId)

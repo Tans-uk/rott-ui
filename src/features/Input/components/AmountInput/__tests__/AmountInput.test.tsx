@@ -10,14 +10,14 @@ describe('Amount Input -> Custom Input', () => {
     iconTestId: 'input-field-right-icon',
     leftIconTestId: 'input-field-left-icon',
   }
-  it('amount input ilk render anında snapshot ile eşleşmeli', async () => {
+  it("matches the snapshot on the amount input's first render", async () => {
     const onChangeTextMock = jest.fn()
     const renderedInput = await render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
 
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('amount input amount ve currency inputlari ve icon var olmali', async () => {
+  it('shows the amount input, the currency input and the icon', async () => {
     const {amountTestId, currencyTestId, iconTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
@@ -31,7 +31,7 @@ describe('Amount Input -> Custom Input', () => {
     expect(iconElement).toBeOnTheScreen()
   })
 
-  it('amount inputa leftIcon verildiğinde sol slotta render edilmeli', async () => {
+  it('renders leftIcon in the left slot of the amount input', async () => {
     const {leftIconTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
@@ -41,7 +41,7 @@ describe('Amount Input -> Custom Input', () => {
     expect(getByTestId(leftIconTestId)).toBeOnTheScreen()
   })
 
-  it('amount input sadece numeric karakterleri kabul etmeli', async () => {
+  it('accepts only digits in the amount input', async () => {
     const {amountTestId, currencyTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId, rerenderAsync} = await render(
@@ -60,7 +60,7 @@ describe('Amount Input -> Custom Input', () => {
     expect(currencyInput).toHaveProp('value', '11')
   })
 
-  it('amount input formata uygun olmalı', async () => {
+  it('formats the amount input correctly', async () => {
     const {amountTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
@@ -71,7 +71,7 @@ describe('Amount Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('12.00')
   })
 
-  it('amount inputun küsüratlı tarafı değiştiği zaman boş bir değer bırakılırsa küsürat 00 olmalı', async () => {
+  it('sets the decimal part to 00 when it is left empty after editing', async () => {
     const {currencyTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
@@ -85,7 +85,7 @@ describe('Amount Input -> Custom Input', () => {
     expect(currencyElement).toHaveProp('value', '00')
   })
 
-  it('amount inputta küsürat 0 iken tıklandığı zaman değer 00 dan boşa çekilmeli', async () => {
+  it('clears the decimal part from 00 on tap when it is 0', async () => {
     const {currencyTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
@@ -97,7 +97,7 @@ describe('Amount Input -> Custom Input', () => {
     expect(currencyElement).toHaveProp('value', '')
   })
 
-  it('amount inputta küsürat 0 dan büyükken tıklandığı zaman değer ne ise kalmalı', async () => {
+  it('keeps the amount value on tap when the decimal part is greater than 0', async () => {
     const {currencyTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
@@ -111,7 +111,7 @@ describe('Amount Input -> Custom Input', () => {
     expect(currencyElement).toHaveProp('value', '50')
   })
 
-  it('input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
+  it('shows the number-pad keyboard when the input renders', async () => {
     const {amountTestId, currencyTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
@@ -123,7 +123,7 @@ describe('Amount Input -> Custom Input', () => {
     expect(currencyInput).toHaveProp('keyboardType', 'number-pad')
   })
 
-  it('amount inputa verilen currencyType a göre icon görülmeli', async () => {
+  it("shows the icon matching the amount input's currencyType", async () => {
     const currencyType = 'USD'
     const onChangeTextMock = jest.fn()
 
@@ -134,27 +134,27 @@ describe('Amount Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalled()
   })
 
-  it('kullanıcı 0.01 değeri girdiğinde doğru bir şekilde formatlanmalı', async () => {
-    // Arrange - Hazırlık
+  it('formats 0.01 correctly when the user types it', async () => {
+    // Arrange
     const {amountTestId, currencyTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(<AmountInput name='test' onChangeText={onChangeTextMock} />)
     const amountInput = getByTestId(amountTestId)
     const currencyInput = getByTestId(currencyTestId)
 
-    // Act 1 - Eylem 1: Amount alanına "0" girişi
+    // Act 1: type "0" into the amount field
     fireEvent.changeText(amountInput, '0')
 
-    // Assert 1 - Doğrulama 1: "0.00" değeri kontrol edilir
+    // Assert 1: the value should be "0.00"
     expect(onChangeTextMock).toHaveBeenCalledWith('0.00')
 
-    // Arrange 2 - Hazırlık 2: Yeni değişikliği test etmek için mock temizlenir
+    // Arrange 2: clear the mock so the next change is measured on its own
     onChangeTextMock.mockClear()
 
-    // Act 2 - Eylem 2: Currency alanına "01" girişi
+    // Act 2: type "01" into the currency field
     fireEvent.changeText(currencyInput, '01')
 
-    // Assert 2 - Doğrulama 2: Leading zero korunarak "0.01" değeri doğru oluşturulmalı
+    // Assert 2: the leading zero is kept, producing "0.01"
     expect(onChangeTextMock).toHaveBeenCalledWith('0.01')
   })
 })

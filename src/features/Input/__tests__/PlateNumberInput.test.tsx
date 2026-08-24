@@ -6,7 +6,7 @@ import {PlateNumberInput} from '../components'
 describe('Plate Number Input -> Custom Input', () => {
   const plateNumberInputTestId = 'input-test-id'
 
-  it('plate number input ilk render anında snapshot ile eşleşmeli', async () => {
+  it('plate number input matches the snapshot on first render', async () => {
     const renderedInput = await render(
       <PlateNumberInput name='test' testID={plateNumberInputTestId} />
     )
@@ -14,7 +14,7 @@ describe('Plate Number Input -> Custom Input', () => {
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('plate number input numeric karakterleri ve buyuk karakterleri kabul etmeli', async () => {
+  it('accepts digits and uppercase letters in the plate number input', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <PlateNumberInput
@@ -30,7 +30,7 @@ describe('Plate Number Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('ABCD123')
   })
 
-  it('plate number input küçük harf ve özel karakter kabul etmemeli', async () => {
+  it('rejects lowercase letters and special characters in the plate number input', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <PlateNumberInput
@@ -48,7 +48,7 @@ describe('Plate Number Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('ABc*D123')
   })
 
-  it('plate number input render olduğu zaman klavye default olarak ekranda görülmeli', async () => {
+  it('shows the default keyboard when the plate number input renders', async () => {
     const {getByTestId} = await render(
       <PlateNumberInput name='test' testID={plateNumberInputTestId} />
     )
@@ -57,7 +57,7 @@ describe('Plate Number Input -> Custom Input', () => {
     expect(plateNumberInputElement.props.keyboardType).toBe('default')
   })
 
-  it('kopyalanan plate number yapıştırıldığında bosluklar trimlenmeli ve buyuk harf kabul etmeli', async () => {
+  it('trims spaces and accepts uppercase when a copied plate number is pasted', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <PlateNumberInput

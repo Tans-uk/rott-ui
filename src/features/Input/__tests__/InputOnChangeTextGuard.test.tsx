@@ -5,9 +5,9 @@ import {Input} from '../components'
 import type {InputProps, InputType} from '../models'
 
 /**
- * Regresyon: `onChangeText` verilmeden metin girildiğinde input tipleri
- * çökmemelidir. Daha önce bileşenler `onChangeText!(...)` (non-null assertion)
- * kullandığı için prop verilmediğinde runtime'da patlıyordu.
+ * Regression: typing into an input without `onChangeText` must not crash.
+ * The components previously used `onChangeText!(...)` with a non-null assertion,
+ * so leaving the prop out blew up at runtime.
  */
 const placeholderTypes: InputType[] = [
   'default',
@@ -24,9 +24,9 @@ const placeholderTypes: InputType[] = [
   'password',
 ]
 
-describe('Input -> onChangeText verilmeden çökmemeli (regresyon)', () => {
+describe('Input -> does not crash without onChangeText (regression)', () => {
   it.each(placeholderTypes)(
-    '%s tipinde onChangeText yokken metin girişi hata fırlatmaz',
+    'typing into a %s input without onChangeText does not throw',
     async (type) => {
       const placeholder = `${type}-guard-ph`
       const inputProps = {
@@ -41,7 +41,7 @@ describe('Input -> onChangeText verilmeden çökmemeli (regresyon)', () => {
     }
   )
 
-  it('amount tipinde onChangeText yokken mount ve giriş çökmez', async () => {
+  it('mounting and typing into an amount input without onChangeText does not crash', async () => {
     const inputProps = {name: 'amount-guard', type: 'amount'} as unknown as InputProps
 
     const {getByTestId} = await render(<Input {...inputProps} />)

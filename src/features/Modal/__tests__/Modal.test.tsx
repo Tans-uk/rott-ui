@@ -54,7 +54,7 @@ describe('Modal -> Custom Component', () => {
     jest.spyOn(React, 'useState').mockImplementation(useStateMock)
   })
 
-  it('modal ilk renderlandiginda snapshot ile eşleşmeli', async () => {
+  it("matches the snapshot on the modal's first render", async () => {
     const renderedModal = await render(
       <ModalComponent {...dummyData}>
         <Item>
@@ -66,7 +66,7 @@ describe('Modal -> Custom Component', () => {
     expect(renderedModal).toMatchSnapshot()
   })
 
-  it('modal visible değilken ekranda gözükmemeli', async () => {
+  it('hides the modal while it is not visible', async () => {
     const {queryByText} = await render(
       <ModalComponent {...dummyData} visible={false}>
         <Item>
@@ -80,7 +80,7 @@ describe('Modal -> Custom Component', () => {
     expect(testLabelByText).not.toBeOnTheScreen()
   })
 
-  it('custom header verildiğinde ekranda custom header olmalı', async () => {
+  it('shows the custom header when one is given', async () => {
     const {headerTestId} = testId
 
     const {getByTestId} = await render(
@@ -102,7 +102,7 @@ describe('Modal -> Custom Component', () => {
     expect(modalHeader).toBeOnTheScreen()
   })
 
-  it('modal kapatma butonu headerda olmalı', async () => {
+  it('shows the close button in the modal header', async () => {
     const {headerCloseIconTestId} = testId
     const {getByTestId} = await render(<ModalComponent {...dummyData} />)
 
@@ -111,7 +111,7 @@ describe('Modal -> Custom Component', () => {
     expect(headerCloseButton).toBeOnTheScreen()
   })
 
-  it('modal header child elementi ekranda olmalı', async () => {
+  it("shows the modal header's child element", async () => {
     const {getByTestId} = await render(
       <ModalComponent
         {...dummyData}
@@ -131,7 +131,7 @@ describe('Modal -> Custom Component', () => {
     expect(headerChildren).toBeOnTheScreen()
   })
 
-  it('modal kapatma butonuna tıklandığında modal kapanmalı', async () => {
+  it('closes the modal when the close button is tapped', async () => {
     const onClosePressableMock = jest.fn()
     const {headerCloseButtonTestId} = testId
     const {getByTestId} = await render(
@@ -144,7 +144,7 @@ describe('Modal -> Custom Component', () => {
     await waitFor(() => expect(onClosePressableMock).toHaveBeenCalledTimes(1))
   })
 
-  it('modal tam ekran değilken container dışına tıklanırsa modal kapanmalı', async () => {
+  it('closes the modal when tapping outside the container while it is not fullscreen', async () => {
     const onClosePressableMock = jest.fn()
     const {outsideTapAreaTestId} = testId
     const {getByTestId} = await render(
@@ -157,7 +157,7 @@ describe('Modal -> Custom Component', () => {
     await waitFor(() => expect(onClosePressableMock).toHaveBeenCalledTimes(1))
   })
 
-  it('panResponder headerda olmalı', async () => {
+  it('shows the panResponder in the header', async () => {
     const {slideToCloseTestId} = testId
     const {getByTestId} = await render(<ModalComponent {...dummyData} />)
 
@@ -166,7 +166,7 @@ describe('Modal -> Custom Component', () => {
     expect(panResponder).toBeOnTheScreen()
   })
 
-  it('panResponder headerda olmamalı', async () => {
+  it('hides the panResponder in the header', async () => {
     const {slideToCloseTestId} = testId
     const {queryByTestId} = await render(<ModalComponent {...dummyData} slideToClose={false} />)
 
@@ -175,7 +175,7 @@ describe('Modal -> Custom Component', () => {
     expect(panResponder).toBeNull()
   })
 
-  it('modal fullscreen modunda panResponder ekranda olmamalı', async () => {
+  it('hides the panResponder while the modal is fullscreen', async () => {
     const {slideToCloseTestId} = testId
     const {queryByTestId} = await render(<ModalComponent {...dummyDataFullScreen} />)
 
@@ -184,7 +184,7 @@ describe('Modal -> Custom Component', () => {
     expect(panResponder).not.toBeOnTheScreen()
   })
 
-  it('modal verilen children elementi ekranda göstermeli', async () => {
+  it('shows the children given to the modal', async () => {
     const {getByText} = await render(
       <ModalComponent fullScreen visible>
         <Label>{formatMessage('TEST')}</Label>

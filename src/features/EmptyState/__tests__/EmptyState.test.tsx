@@ -14,14 +14,14 @@ describe('EmptyState -> Custom Component', () => {
     description: formatMessage('TEST'),
   }
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const {description} = testTexts
     const renderedEmptyState = await render(<EmptyState name='phone' description={description} />)
 
     expect(renderedEmptyState).toMatchSnapshot()
   })
 
-  it('name propertysi EMPTY ile başlamalı', async () => {
+  it('starts the name prop with EMPTY', async () => {
     const {description} = testTexts
     const {emptyStateImageTestId} = testId
     const {getByTestId} = await render(<EmptyState name='phone' description={description} />)
@@ -31,7 +31,7 @@ describe('EmptyState -> Custom Component', () => {
     expect(imageElement.props.source.testUri).toMatch(/empty-state/gim)
   })
 
-  it('description verilen değerler ile ekranda gözükmeli', async () => {
+  it('shows the description with the given values', async () => {
     const {description} = testTexts
     const {getByText} = await render(<EmptyState name='phone' description={description} />)
 
@@ -40,7 +40,7 @@ describe('EmptyState -> Custom Component', () => {
     expect(descriptionElement).toBeOnTheScreen()
   })
 
-  it('description verilmediği zaman ekranda gözükmemeli', async () => {
+  it('hides the description when it is not given', async () => {
     const {emptyStateDescTestId} = testId
     const {queryByTestId} = await render(<EmptyState name='phone' />)
 
@@ -49,7 +49,7 @@ describe('EmptyState -> Custom Component', () => {
     expect(descriptionElement).not.toBeOnTheScreen()
   })
 
-  it('description yerine ReactNode olarak verildiğindede ekranda gösterilmeli', async () => {
+  it('shows the description when it is given as a ReactNode instead', async () => {
     const {description} = testTexts
     const {getByTestId} = await render(
       <EmptyState

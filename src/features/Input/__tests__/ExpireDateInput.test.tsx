@@ -6,13 +6,13 @@ import {ExpireDateInput} from '../components'
 describe('ExpireDate Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const renderedInput = await render(<ExpireDateInput name='test' testID={inputTestId} />)
 
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('ilk renderlandiginda ilk renderlandiginda içerik boş olmalı', async () => {
+  it('leaves the content empty on first render', async () => {
     const {getByTestId} = await render(<ExpireDateInput name='test' testID={inputTestId} />)
 
     const expireDateInputElement = getByTestId(inputTestId)
@@ -20,7 +20,7 @@ describe('ExpireDate Input -> Custom Input', () => {
     expect(expireDateInputElement).toHaveProp('value', '')
   })
 
-  it('sadece numeric karakterleri kabul etmeli', async () => {
+  it('accepts only digits', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <ExpireDateInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -32,7 +32,7 @@ describe('ExpireDate Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('12/A*a134')
   })
 
-  it('MMYY formatinda MM 12 den buyuk geldi is 12 ye MM yi 12 ye cevir', async () => {
+  it('clamps MM to 12 when an MMYY value carries a month above 12', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <ExpireDateInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -44,7 +44,7 @@ describe('ExpireDate Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('12')
   })
 
-  it('MMYY formatinda YY suanki tarihten kucuk geldi ise YY yi suanki tarihe cevir', async () => {
+  it('bumps YY to the current year when the MMYY value is in the past', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <ExpireDateInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -57,7 +57,7 @@ describe('ExpireDate Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith(`10${currentYY}`)
   })
 
-  it('donen cevap MMYY seklinde olmali', async () => {
+  it('returns the answer in MMYY form', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <ExpireDateInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -69,7 +69,7 @@ describe('ExpireDate Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('0928')
   })
 
-  it('expire date input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
+  it('shows the number-pad keyboard when the expiry date input renders', async () => {
     const {getByTestId} = await render(<ExpireDateInput name='test' testID={inputTestId} />)
 
     const expireDateInputElement = getByTestId(inputTestId)

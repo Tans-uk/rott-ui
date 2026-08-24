@@ -13,7 +13,7 @@ describe('CheckBox Input -> Custom Input', () => {
     checkboxCheckedTestId: 'checkbox-checked-test-id',
   }
 
-  it('checkbox input ilk render anında snapshot ile eşleşmeli', async () => {
+  it("matches the snapshot on the checkbox input's first render", async () => {
     const {checkboxInputTestId} = testId
     const renderedCheckBoxInput = await render(
       <CheckBoxInput name='test' testID={checkboxInputTestId} />
@@ -22,7 +22,7 @@ describe('CheckBox Input -> Custom Input', () => {
     expect(renderedCheckBoxInput).toMatchSnapshot()
   })
 
-  it('checkBox ilk renderlandığında unchecked olmalı', async () => {
+  it('renders the checkbox unchecked at first', async () => {
     const {checkboxInputTestId, checkboxContainerTestId, checkboxCheckedTestId} = testId
     const {getByTestId, queryByTestId} = await render(
       <CheckBoxInput name='test' testID={checkboxInputTestId} />
@@ -34,7 +34,7 @@ describe('CheckBox Input -> Custom Input', () => {
     expect(queryByTestId(checkboxCheckedTestId)).not.toBeOnTheScreen()
   })
 
-  it('checkbox render olduğunda description string olarak verilmişse ekranda default label ile renderlanmalı', async () => {
+  it('renders the default label when the checkbox description is a string', async () => {
     const {checkboxDefaultLabelTestId} = testId
     const {getByText} = await render(
       <CheckBoxInput name='test' description={formatMessage('TEST')} />
@@ -44,7 +44,7 @@ describe('CheckBox Input -> Custom Input', () => {
     expect(checkboxLabel).toHaveProp('testID', checkboxDefaultLabelTestId)
   })
 
-  it('checkbox render olduğunda description React element olarak verilmişse default label ile renderlanmamalı', async () => {
+  it('does not render the default label when the checkbox description is a React element', async () => {
     const {checkboxDefaultLabelTestId} = testId
     const {queryByTestId} = await render(
       <CheckBoxInput name='test' description={<Label>{formatMessage('TEST')}</Label>} />
@@ -54,7 +54,7 @@ describe('CheckBox Input -> Custom Input', () => {
     expect(checkboxLabel).not.toBeOnTheScreen()
   })
 
-  it('checkBox onPress methodu calismali', async () => {
+  it('calls the checkbox onPress', async () => {
     const {checkboxInputTestId} = testId
     const onPressMock = jest.fn()
 
@@ -68,7 +68,7 @@ describe('CheckBox Input -> Custom Input', () => {
     expect(onPressMock).toHaveBeenCalledTimes(1)
   })
 
-  it('leftIcon ve rightIcon slotlarını render eder ve rightIcon onPress kutuya sızmaz', async () => {
+  it("renders the leftIcon and rightIcon slots without the rightIcon's onPress leaking to the box", async () => {
     const onCheckChange = jest.fn()
     const onIconPress = jest.fn()
     const {getByTestId} = await render(

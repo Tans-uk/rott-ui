@@ -14,7 +14,7 @@ describe('List -> Custom Component', () => {
     {id: 3, name: 'Item 3'},
   ]
 
-  it('list ilk render anında snapshot ile eşleşmeli', async () => {
+  it('list matches the snapshot on first render', async () => {
     const renderedList = await render(
       <List
         data={data}
@@ -29,7 +29,7 @@ describe('List -> Custom Component', () => {
     expect(renderedList).toMatchSnapshot()
   })
 
-  it('separator item ekranda olmamalı', async () => {
+  it('does not show the separator item', async () => {
     const {queryByTestId} = await render(
       <List
         data={data}
@@ -46,7 +46,7 @@ describe('List -> Custom Component', () => {
     expect(separator).toBeNull()
   })
 
-  it('list componenti elemanları doğru şekilde renderlamalı', async () => {
+  it('renders the list items correctly', async () => {
     const {getByText} = await render(
       <List
         data={data}
@@ -62,7 +62,7 @@ describe('List -> Custom Component', () => {
     })
   })
 
-  it('list componenti eleman geldiğinde doğru renderlanmalı', async () => {
+  it('renders the list correctly once items arrive', async () => {
     const {getByText} = await render(
       <List data={data} renderSeparator={true} renderItem={({item}) => <Text>{item.name}</Text>} />
     )

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Skeleton -> Custom Component item icerisinde cagirilan skeleton icin snapshot eslesmeli 1`] = `
+exports[`Skeleton -> Custom Component matches the snapshot for a skeleton rendered inside an item 1`] = `
 <KeyboardProvider
   enabled={true}
 >
@@ -158,7 +158,7 @@ exports[`Skeleton -> Custom Component item icerisinde cagirilan skeleton icin sn
 </KeyboardProvider>
 `;
 
-exports[`Skeleton -> Custom Component skeleton snapshotı ile eşleşmeli 1`] = `
+exports[`Skeleton -> Custom Component matches the skeleton snapshot 1`] = `
 <KeyboardProvider
   enabled={true}
 >

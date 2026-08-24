@@ -21,7 +21,7 @@ describe('Notification -> Custom Component', () => {
     blurTestId: 'notification-blur-test-id',
   }
 
-  it('notification ilk render anında snapshot ile eşleşmeli', async () => {
+  it('notification matches the snapshot on first render', async () => {
     const renderedNotification = await render(
       <NotificationComponent
         variantColor={'info-notification'}
@@ -33,7 +33,7 @@ describe('Notification -> Custom Component', () => {
     expect(renderedNotification).toMatchSnapshot()
   })
 
-  it('notification yokken ekranda blur gözükmemeli', async () => {
+  it('hides the blur while there is no notification', async () => {
     const {blurTestId} = testId
     const {queryByTestId} = await render(<NotificationProvider />)
 
@@ -42,7 +42,7 @@ describe('Notification -> Custom Component', () => {
     expect(blurElement).not.toBeOnTheScreen()
   })
 
-  it('bildirime tıklandığında onPress fonksiyonları çağırılmalı', async () => {
+  it('calls the onPress handlers when the notification is tapped', async () => {
     const {notificationPressableTestId} = testId
     const {getByTestId} = await render(
       <NotificationComponent
@@ -60,7 +60,7 @@ describe('Notification -> Custom Component', () => {
     expect(mockProps.mockOnPress).toHaveBeenCalledTimes(1)
   })
 
-  it('title verilen değerler ile ekranda gözükmeli', async () => {
+  it('shows the title with the given values', async () => {
     const {title} = mockProps
     const {getByText} = await render(
       <NotificationComponent
@@ -76,7 +76,7 @@ describe('Notification -> Custom Component', () => {
     expect(titleElement).toBeOnTheScreen()
   })
 
-  it('description verilen değerler ile ekranda gözükmeli', async () => {
+  it('shows the description with the given values', async () => {
     const {description} = mockProps
     const {getByText} = await render(
       <NotificationComponent
@@ -92,7 +92,7 @@ describe('Notification -> Custom Component', () => {
     expect(descriptionElement).toBeOnTheScreen()
   })
 
-  it('description verilmediği zaman ekranda gözükmemeli', async () => {
+  it('hides the description when it is not given', async () => {
     const {descriptionTestId} = testId
     const {queryByTestId} = await render(
       <NotificationComponent

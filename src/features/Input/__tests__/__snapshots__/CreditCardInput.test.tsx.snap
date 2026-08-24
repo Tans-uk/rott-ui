@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreditCard Input -> Custom Input ilk render anında snapshot ile eşleşmeli 1`] = `
+exports[`CreditCard Input -> Custom Input matches the snapshot on first render 1`] = `
 <KeyboardProvider
   enabled={true}
 >

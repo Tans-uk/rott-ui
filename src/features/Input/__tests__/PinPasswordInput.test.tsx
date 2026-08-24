@@ -6,7 +6,7 @@ import {PinPasswordInput} from '../components'
 describe('Pin Password Input -> Custom Input', () => {
   const pinPasswordInputTestId = 'input-test-id'
 
-  it('pin password input ilk render anında snapshot ile eşleşmeli', async () => {
+  it('pin password input matches the snapshot on first render', async () => {
     const renderedInput = await render(
       <PinPasswordInput name='test' testID={pinPasswordInputTestId} />
     )
@@ -14,7 +14,7 @@ describe('Pin Password Input -> Custom Input', () => {
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('pin password input sadece numeric karakterleri kabul etmeli', async () => {
+  it('accepts only digits in the PIN password input', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <PinPasswordInput
@@ -29,7 +29,7 @@ describe('Pin Password Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('123')
   })
 
-  it('pin password input harf ve özel karakter kabul etmemeli', async () => {
+  it('rejects letters and special characters in the PIN password input', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <PinPasswordInput
@@ -47,7 +47,7 @@ describe('Pin Password Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('123')
   })
 
-  it('pin password input ilk renderlandiginda text gorunur olmamali', async () => {
+  it('hides the text on the PIN password input first render', async () => {
     const {getByTestId} = await render(
       <PinPasswordInput name='test' testID={pinPasswordInputTestId} />
     )
@@ -57,7 +57,7 @@ describe('Pin Password Input -> Custom Input', () => {
     expect(pinPasswordInputElement).toHaveProp('secureTextEntry', true)
   })
 
-  it('pin password input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
+  it('shows the number-pad keyboard when the PIN password input renders', async () => {
     const {getByTestId} = await render(
       <PinPasswordInput name='test' testID={pinPasswordInputTestId} />
     )

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Common -> Common Item common item ilk renderlandığında snapshot ile eşleşmeli 1`] = `
+exports[`Common -> Common Item matches the snapshot on the common item's first render 1`] = `
 <KeyboardProvider
   enabled={true}
 >

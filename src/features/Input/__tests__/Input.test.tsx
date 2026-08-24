@@ -13,7 +13,7 @@ describe('Input -> Custom Input', () => {
   const defaultLabelDesc = 'Test Desc'
   const defaultName = 'input'
 
-  it('input ilk render anında snapshot ile eşleşmeli', async () => {
+  it('input matches the snapshot on first render', async () => {
     const renderedInput = await render(
       <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
     )
@@ -21,7 +21,7 @@ describe('Input -> Custom Input', () => {
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('input ile renderlanan label verilen text uppercase olarak ekranda görünmeli', async () => {
+  it("shows the input's label uppercased", async () => {
     const {getByText} = await render(
       <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
     )
@@ -29,7 +29,7 @@ describe('Input -> Custom Input', () => {
     expect(getByText(defaultLabel.toUpperCase())).toBeTruthy()
   })
 
-  it('input ile renderlanan label text verilmediğinde ekranda görünmemeli', async () => {
+  it("hides the input's label when no text is given", async () => {
     const {queryByTestId} = await render(
       <Input type='default' testID={inputTestId} label='' name={defaultName} />
     )
@@ -37,7 +37,7 @@ describe('Input -> Custom Input', () => {
     expect(queryByTestId(inputLabelTestId)).toBeNull()
   })
 
-  it('kullanıcı verilen placeholder değerini ekranda görmeli', async () => {
+  it('shows the given placeholder', async () => {
     const {getByTestId} = await render(
       <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
     )
@@ -46,7 +46,7 @@ describe('Input -> Custom Input', () => {
     expect(renderedInput.props.placeholder).toBe(defaultLabel)
   })
 
-  it('kullanıcı placeholder verilmezse default olarak title ile aynı değeri görmeli', async () => {
+  it('falls back to the title as the placeholder when none is given', async () => {
     const placeholder = 'Test Placeholder'
     const {getByTestId} = await render(
       <Input
@@ -62,7 +62,7 @@ describe('Input -> Custom Input', () => {
     expect(renderedInput.props.placeholder).toBe(placeholder)
   })
 
-  it('verilen input type ekranda doğru şekilde render edilmeli', async () => {
+  it('renders the given input type correctly', async () => {
     const {rerenderAsync, getByTestId} = await render(
       <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
     )
@@ -77,7 +77,7 @@ describe('Input -> Custom Input', () => {
     expect(numberInput.props.keyboardType).toBe('number-pad')
   })
 
-  it('label description belirtilmis ise ekranda olmali', async () => {
+  it('shows the label description when it is given', async () => {
     const {getByTestId} = await render(
       <Input
         type='default'
@@ -94,7 +94,7 @@ describe('Input -> Custom Input', () => {
     expect(labelDescriptionElement).toHaveTextContent(`(${defaultLabelDesc.toUpperCase()})`)
   })
 
-  it('label icon belirtilmis ise ekranda renderlanmali', async () => {
+  it('renders the label icon when it is given', async () => {
     const mockIcon = 'INFORMATION' as IconKeys
     const {getByTestId} = await render(
       <Input
@@ -115,7 +115,7 @@ describe('Input -> Custom Input', () => {
     expect(labelDescriptionIconElement).toBeOnTheScreen()
   })
 
-  it('label icon belirtilmis onPress methodu calismali', async () => {
+  it('calls onPress when the label icon is given', async () => {
     const mockIcon = 'INFORMATION' as IconKeys
     const mockIconOnPress = jest.fn()
     const {getByTestId} = await render(
@@ -164,7 +164,7 @@ describe('Input -> border suppresses Separator', () => {
 })
 
 describe('Input -> outer spacing does not leak into TextInput', () => {
-  it('marginBottom dış kök Item’a uygulanır, TextInput style’ına sızmaz', async () => {
+  it('applies marginBottom to the outer root Item without leaking into the TextInput style', async () => {
     const {getByTestId} = await render(
       <Input type='default' name='email' size='md' marginBottom={16} testID='leak-check-input' />
     )
