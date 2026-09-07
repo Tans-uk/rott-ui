@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pressable -> Custom Component pressable component render olmalı ve snapshot eşleşmeli 1`] = `
+exports[`Pressable -> Custom Component renders the pressable component and matches its snapshot 1`] = `
 <KeyboardProvider
   enabled={true}
 >

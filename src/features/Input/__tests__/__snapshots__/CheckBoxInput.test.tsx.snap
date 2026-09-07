@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckBox Input -> Custom Input checkbox input ilk render anında snapshot ile eşleşmeli 1`] = `
+exports[`CheckBox Input -> Custom Input matches the snapshot on the checkbox input's first render 1`] = `
 <KeyboardProvider
   enabled={true}
 >

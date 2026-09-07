@@ -49,7 +49,7 @@ const mockExampleList = [
 ]
 
 describe('ActionMenu -> Custom Component', () => {
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const {actionMenuTestId} = testId
     const {titleMock, subTitleMock} = mockDetailElement
 
@@ -65,7 +65,7 @@ describe('ActionMenu -> Custom Component', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('verilen data renderlanmali', async () => {
+  it('renders the given data', async () => {
     const {actionMenuTestId, childrenTestId} = testId
     const {titleMock, subTitleMock} = mockDetailElement
 
@@ -87,7 +87,7 @@ describe('ActionMenu -> Custom Component', () => {
     })
   })
 
-  it('verilen data actionlari calismali', async () => {
+  it('runs the actions for the given data', async () => {
     const {actionMenuTestId, childrenTestId} = testId
     const {titleMock, subTitleMock} = mockDetailElement
 
@@ -111,7 +111,7 @@ describe('ActionMenu -> Custom Component', () => {
 })
 
 describe('ActionMenuHeader -> Custom Component', () => {
-  it('title ve subtitle ekranda düzgün şekilde renderlanmalı', async () => {
+  it('renders the title and subtitle correctly', async () => {
     const {actionMenuHeaderId} = testId
     const {titleMock, subTitleMock} = mockDetailElement
 

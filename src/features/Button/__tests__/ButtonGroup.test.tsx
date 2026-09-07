@@ -8,7 +8,7 @@ describe('ButtonGroup -> Custom Component', () => {
     logoImageTestId: 'image-test-id',
   }
 
-  it('buton grubunun snapshotı ile eşleşmeli', async () => {
+  it('matches the button group snapshot', async () => {
     const rendered = await render(
       <ButtonGroup
         sticky
@@ -27,7 +27,7 @@ describe('ButtonGroup -> Custom Component', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('isFastTransfer true ise ekranda fast görseli görünür', async () => {
+  it('shows the fast image when isFastTransfer is true', async () => {
     const {logoImageTestId} = testIDs
     const {getByTestId} = await render(
       <ButtonGroup

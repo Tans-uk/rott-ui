@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input -> Custom Input input ilk render anında snapshot ile eşleşmeli 1`] = `
+exports[`Input -> Custom Input input matches the snapshot on first render 1`] = `
 <KeyboardProvider
   enabled={true}
 >

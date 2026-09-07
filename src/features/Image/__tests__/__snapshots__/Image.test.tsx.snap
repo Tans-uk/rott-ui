@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Image -> Custom Component image elementi snapshot ile eşleşmeli 1`] = `
+exports[`Image -> Custom Component matches the image element snapshot 1`] = `
 <KeyboardProvider
   enabled={true}
 >

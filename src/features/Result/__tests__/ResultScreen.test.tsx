@@ -26,7 +26,7 @@ describe('ResultScreen Test', () => {
     },
   }
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const {
       texts: {header, state, title, description},
       actions: {defaultAction},
@@ -48,7 +48,7 @@ describe('ResultScreen Test', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('ResultScreen renderlandığında container ekranda olmalı', async () => {
+  it('shows the container when ResultScreen renders', async () => {
     const {
       texts: {header, state, title, description},
       testIds: {screenContainer},
@@ -73,7 +73,7 @@ describe('ResultScreen Test', () => {
     expect(resultScreenContainer).toBeOnTheScreen()
   })
 
-  it('title verildiğinde ekranda gözükmeli', async () => {
+  it('shows the title when it is given', async () => {
     const {
       texts: {header, state, title, actionText},
     } = mockDetailElement
@@ -100,7 +100,7 @@ describe('ResultScreen Test', () => {
     expect(titleElementByText).toBeOnTheScreen()
   })
 
-  it('description verildiğinde ekranda gözükmeli', async () => {
+  it('shows the description when it is given', async () => {
     const {
       texts: {header, state, description, actionText},
     } = mockDetailElement
@@ -127,7 +127,7 @@ describe('ResultScreen Test', () => {
     expect(descriptionElementByText).toBeOnTheScreen()
   })
 
-  it('actions verildiğinde actions listesi ekranda gözükmeli', async () => {
+  it('shows the action list when actions are given', async () => {
     const {
       texts: {header, state, title},
       testIds: {actionTestId},
@@ -151,7 +151,7 @@ describe('ResultScreen Test', () => {
     expect(actionsListByTestId).toBeOnTheScreen()
   })
 
-  it('action verildiğinde action testID ile ekranda olmalı', async () => {
+  it('shows the action by its testID when an action is given', async () => {
     const {
       texts: {header, state, title},
       actions: {defaultAction},

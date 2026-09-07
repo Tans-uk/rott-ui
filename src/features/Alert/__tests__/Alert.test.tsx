@@ -10,13 +10,13 @@ describe('Alert component', () => {
     rightIconTestId: 'alert-right-icon',
   }
 
-  it('renderlandığında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot once rendered', async () => {
     const alert = await render(<Alert text='Test Alert' size='full' variant='warning' />)
 
     expect(alert).toMatchSnapshot()
   })
 
-  it('renderlandığında ekranda olmalı', async () => {
+  it('is shown once rendered', async () => {
     const {alertTestId} = testId
     const {getByTestId} = await render(<Alert text='Test Alert' size='full' variant='warning' />)
 
@@ -25,7 +25,7 @@ describe('Alert component', () => {
     expect(alertComponent).toBeOnTheScreen()
   })
 
-  it('left icon ve text alanı olmalı', async () => {
+  it('has a left icon and a text area', async () => {
     const {alertTestId, leftIconTestId} = testId
     const {getByTestId} = await render(
       <Alert text='Test Alert' size='full' variant='warning' leftIcon={{name: 'warning-error'}} />
@@ -38,7 +38,7 @@ describe('Alert component', () => {
     expect(leftIconComponent).toBeOnTheScreen()
   })
 
-  it('left icon ekranda olmamalı', async () => {
+  it('does not show the left icon', async () => {
     const {alertTestId, leftIconTestId} = testId
     const {queryByTestId, getByTestId} = await render(
       <Alert text='Test Alert' size='full' variant='warning' />
@@ -51,7 +51,7 @@ describe('Alert component', () => {
     expect(leftIconComponent).not.toBeOnTheScreen()
   })
 
-  it('right icon ve text alanı olmalı', async () => {
+  it('has a right icon and a text area', async () => {
     const {alertTestId, rightIconTestId} = testId
     const {getByTestId} = await render(
       <Alert text='Test Alert' size='full' variant='warning' rightIcon={{name: 'warning-error'}} />
@@ -64,7 +64,7 @@ describe('Alert component', () => {
     expect(rightIconComponent).toBeOnTheScreen()
   })
 
-  it('right icon ekranda olmamalı', async () => {
+  it('does not show the right icon', async () => {
     const {alertTestId, rightIconTestId} = testId
     const {queryByTestId, getByTestId} = await render(
       <Alert text='Test Alert' size='full' variant='warning' />
@@ -77,7 +77,7 @@ describe('Alert component', () => {
     expect(rightIconComponent).not.toBeOnTheScreen()
   })
 
-  it('left ve right icon alanları olmalı', async () => {
+  it('has both left and right icon areas', async () => {
     const {alertTestId, leftIconTestId, rightIconTestId} = testId
     const {getByTestId} = await render(
       <Alert

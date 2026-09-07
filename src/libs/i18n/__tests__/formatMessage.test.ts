@@ -3,28 +3,28 @@ import tr from '../tr-TR.json'
 import {formatMessage} from '../utils'
 
 describe('Util -> FormatMessage', () => {
-  it('english dil snapshotı eşleşmeli', () => {
+  it('matches the English locale snapshot', () => {
     expect(en).toMatchSnapshot()
   })
 
-  it('türkçe dil snapshotı eşleşmeli', () => {
+  it('matches the Turkish locale snapshot', () => {
     expect(tr).toMatchSnapshot()
   })
 
-  it('türkçe dil keyleri english dil keyleri ile eşleşmeli', () => {
+  it('keeps the Turkish locale keys in step with the English ones', () => {
     const turkishLanguageKeys = Object.keys(tr)
     const englishLanguageKeys = Object.keys(en)
 
     expect(turkishLanguageKeys).toStrictEqual(englishLanguageKeys)
   })
 
-  it('formatMessage metoduna verilen geçerli değeri ekranda göstermeli', () => {
+  it('shows the valid value passed to formatMessage', () => {
     const translatedString = formatMessage('TEST')
 
     expect(translatedString).toBe(en.TEST)
   })
 
-  it('formatMessage verilen key ile birlikte ekstra mesaj yazılması gerekiyorsa onu birleştirip dönmelidir.', () => {
+  it('appends an extra message to the given key and returns the joined result.', () => {
     const translatedString = formatMessage('TEST.WITH.PARAM', {testText: 'test'})
 
     expect(translatedString).toBe(en['TEST.WITH.PARAM'].replace('{testText}', 'test'))

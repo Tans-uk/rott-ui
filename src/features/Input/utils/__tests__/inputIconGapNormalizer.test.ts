@@ -1,15 +1,15 @@
 import {inputIconGapNormalizer} from '../inputIconGapNormalizer'
 
 describe('inputIconGapNormalizer', () => {
-  it('xs/sm için 4 döner', () => {
+  it('returns 4 for xs/sm', () => {
     expect(inputIconGapNormalizer('xs')).toBe(4)
     expect(inputIconGapNormalizer('sm')).toBe(4)
   })
-  it('md ve tanımsız için 8 döner', () => {
+  it('returns 8 for md and for undefined', () => {
     expect(inputIconGapNormalizer('md')).toBe(8)
     expect(inputIconGapNormalizer(undefined)).toBe(8)
   })
-  it('lg/xl/xxl/full için 12 döner', () => {
+  it('returns 12 for lg/xl/xxl/full', () => {
     expect(inputIconGapNormalizer('lg')).toBe(12)
     expect(inputIconGapNormalizer('xl')).toBe(12)
     expect(inputIconGapNormalizer('xxl')).toBe(12)

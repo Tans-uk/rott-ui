@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tab -> Custom Component Tab snapshotı ile eşleşmeli 1`] = `
+exports[`Tab -> Custom Component matches the Tab snapshot 1`] = `
 <KeyboardProvider
   enabled={true}
 >

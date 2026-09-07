@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header -> Custom Component yalnızca başlık çalışmalı ve snapshot eşleşmeli 1`] = `
+exports[`Header -> Custom Component works with a title alone and matches the snapshot 1`] = `
 <KeyboardProvider
   enabled={true}
 >

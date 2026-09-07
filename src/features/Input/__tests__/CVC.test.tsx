@@ -7,13 +7,13 @@ describe('CVC Input -> Custom Input', () => {
   const inputTestId = 'input-test-id'
   const cvcIconTestId = 'info-icon-test-id'
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const renderedInput = await render(<CVCInput name='test' testID={inputTestId} />)
 
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('ilk renderlandiginda info iconu gorunmeli', async () => {
+  it('shows the info icon on first render', async () => {
     const {queryByTestId} = await render(<CVCInput name='test' testID={inputTestId} />)
 
     const cvcInputElement = queryByTestId(cvcIconTestId)
@@ -21,7 +21,7 @@ describe('CVC Input -> Custom Input', () => {
     expect(cvcInputElement).not.toBeNull()
   })
 
-  it('ilk renderlandiginda ilk renderlandiginda içerik boş olmalı', async () => {
+  it('leaves the content empty on first render', async () => {
     const {getByTestId} = await render(<CVCInput name='test' testID={inputTestId} />)
 
     const cvcInputElement = getByTestId(inputTestId)
@@ -29,7 +29,7 @@ describe('CVC Input -> Custom Input', () => {
     expect(cvcInputElement.props.value).toBeUndefined()
   })
 
-  it('max karakter 3 olmali', async () => {
+  it('caps the length at 3 characters', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <CVCInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -40,7 +40,7 @@ describe('CVC Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('125')
   })
 
-  it('numerik olmalı', async () => {
+  it('is numeric', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <CVCInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -53,7 +53,7 @@ describe('CVC Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('12')
   })
 
-  it('cvc input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
+  it('shows the number-pad keyboard when the CVC input renders', async () => {
     const {getByTestId} = await render(<CVCInput name='test' testID={inputTestId} />)
     const cvcInputElement = getByTestId(inputTestId)
 

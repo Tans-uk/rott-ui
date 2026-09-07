@@ -10,14 +10,14 @@ describe('Phone Input -> Custom Input', () => {
     contactPressableTestId: 'input-field-right-icon',
   }
 
-  it('phone input ilk render anında snapshot ile eşleşmeli', async () => {
+  it('phone input matches the snapshot on first render', async () => {
     const {inputTestId} = testId
     const renderedPhoneInput = await render(<PhoneInput name='test' testID={inputTestId} />)
 
     expect(renderedPhoneInput).toMatchSnapshot()
   })
 
-  it('ilk renderlandiginda içerik boş olmalı', async () => {
+  it('leaves the content empty on first render', async () => {
     const {inputTestId} = testId
     const {getByTestId} = await render(<PhoneInput name='test' testID={inputTestId} />)
 
@@ -26,7 +26,7 @@ describe('Phone Input -> Custom Input', () => {
     expect(inputElement).toHaveProp('value', '')
   })
 
-  it('phone input harf ve özel karakter kabul etmemeli', async () => {
+  it('rejects letters and special characters in the phone input', async () => {
     const {inputTestId} = testId
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
@@ -38,7 +38,7 @@ describe('Phone Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('aaA*a123')
   })
 
-  it('varsayilan olarak rehber iconu olmalı', async () => {
+  it('shows the contacts icon by default', async () => {
     const {inputTestId, iconTestId} = testId
     const {getByTestId} = await render(<PhoneInput name='test' testID={inputTestId} />)
 
@@ -47,8 +47,8 @@ describe('Phone Input -> Custom Input', () => {
     expect(iconElement).toBeOnTheScreen()
   })
 
-  describe('kopyalanan phone number yapıştırıldığında', () => {
-    it('Bosluklar trimlenmeli', async () => {
+  describe('when a copied phone number is pasted', () => {
+    it('trims whitespace', async () => {
       const {inputTestId} = testId
       const onChangeTextMock = jest.fn()
       const {getByTestId} = await render(
@@ -60,7 +60,7 @@ describe('Phone Input -> Custom Input', () => {
       expect(onChangeTextMock).not.toHaveBeenCalledWith('aaA*a123')
     })
 
-    it('yapistirilan degerde +90 ile gelmisse dogru format saglanmali', async () => {
+    it('reaches the correct format when the pasted value starts with +90', async () => {
       const {inputTestId} = testId
       const onChangeTextMock = jest.fn()
       const {getByTestId} = await render(

@@ -13,7 +13,7 @@ describe('Date Input -> Custom Input', () => {
   const dateInputModalTestId = 'date-input-modal'
   const currentDate = new Date()
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const renderedDateInput = await render(
       <DateInput name='test' testID={dateInputTestId} date={currentDate} />
     )
@@ -21,7 +21,7 @@ describe('Date Input -> Custom Input', () => {
     expect(renderedDateInput).toMatchSnapshot()
   })
 
-  it('date inputa tıklandığında input modal olarak açılmalı', async () => {
+  it('opens the date input as a modal when tapped', async () => {
     const {getByTestId} = await render(<DateInput name='test' date={currentDate} />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
@@ -31,7 +31,7 @@ describe('Date Input -> Custom Input', () => {
     expect(dateInputModal).toBeVisible()
   })
 
-  it('date input allowClear propertysi almadıysa değer temizleme butonu ekranda gözükmemeli.', async () => {
+  it('hides the clear button when the date input does not have allowClear.', async () => {
     const {getByTestId, queryByTestId} = await render(<DateInput name='test' date={currentDate} />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
@@ -41,7 +41,7 @@ describe('Date Input -> Custom Input', () => {
     expect(clearButton).toBeNull()
   })
 
-  it('date input allowClear propertysi aldıysa Temizle butonuna tıklandığında değer temizlenmeli.', async () => {
+  it('clears the value when the Clear button is tapped and the date input has allowClear.', async () => {
     const onDateChangeMock = jest.fn()
     const {getByTestId, queryByTestId} = await render(
       <DateInput
@@ -70,7 +70,7 @@ describe('Date Input -> Custom Input', () => {
     expect(modalShouldNotVisible).not.toBeOnTheScreen()
   })
 
-  it('date input mode date olarak renderlanmalı', async () => {
+  it('renders the date input in date mode', async () => {
     const {getByTestId} = await render(<DateInput name='test' mode='date' />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
@@ -83,7 +83,7 @@ describe('Date Input -> Custom Input', () => {
     })
   })
 
-  it('date input mode time olarak renderlanmalı', async () => {
+  it('renders the date input in time mode', async () => {
     const {getByTestId} = await render(<DateInput name='test' mode='time' />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
@@ -96,7 +96,7 @@ describe('Date Input -> Custom Input', () => {
     })
   })
 
-  it('date input mode datetime olarak renderlanmalı', async () => {
+  it('renders the date input in datetime mode', async () => {
     const {getByTestId} = await render(<DateInput name='test' mode='datetime' />)
 
     const dateInputValueContainer = getByTestId(dateInputValueContainerTestId)
@@ -109,7 +109,7 @@ describe('Date Input -> Custom Input', () => {
     })
   })
 
-  it('onDateChange verilmeden onaylandığında çökmemeli', async () => {
+  it('does not crash when confirming without onDateChange', async () => {
     const {getByTestId} = await render(<DateInput name='test' mode='date' date={currentDate} />)
 
     fireEvent.press(getByTestId(dateInputValueContainerTestId))
@@ -118,7 +118,7 @@ describe('Date Input -> Custom Input', () => {
     expect(() => fireEvent.press(confirmButton)).not.toThrow()
   })
 
-  it('minimum date verildikten sonra daha geçmiş bir gün seçilirse tanımlanan minimum date değer olarak atanmalı.', async () => {
+  it('clamps to the minimum date when an earlier day is selected.', async () => {
     const onDateChangeMock = jest.fn()
     const {getByTestId} = await render(
       <DateInput
@@ -147,7 +147,7 @@ describe('Date Input -> Custom Input', () => {
     expect(onDateChangeMock).toHaveBeenCalledWith(startOfDay(currentDate))
   })
 
-  it('maximum date verildikten sonra daha ileri bir gün seçilirse tanımlanan maximum date değer olarak atanmalı.', async () => {
+  it('clamps to the maximum date when a later day is selected.', async () => {
     const onDateChangeMock = jest.fn(() => currentDate)
     const maxDate = new Date(currentDate)
     const {getByTestId} = await render(

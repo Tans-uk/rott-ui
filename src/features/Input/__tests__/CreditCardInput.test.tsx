@@ -6,7 +6,7 @@ import {CreditCardInput} from '../components'
 describe('CreditCard Input -> Custom Input', () => {
   const creditCartInputTestId = 'input-test-id'
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const renderedInput = await render(
       <CreditCardInput name='test' testID={creditCartInputTestId} />
     )
@@ -14,7 +14,7 @@ describe('CreditCard Input -> Custom Input', () => {
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('girilen değer sadece numeric olarak kabul edilmeli', async () => {
+  it('accepts only numeric input', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <CreditCardInput name='test' testID={creditCartInputTestId} onChangeText={onChangeTextMock} />
@@ -44,7 +44,7 @@ describe('CreditCard Input -> Custom Input', () => {
   //   expect(creditCardInputElement.props.value).toBe('4444-3333-2222-1111')
   // })
 
-  it('credit card inputu girilen degeri maskesiz geri donmeli', async () => {
+  it('returns the credit card value unmasked', async () => {
     const onChangeTextMock = jest.fn()
     const user = userEvent.setup()
     const {getByTestId} = await render(
@@ -57,7 +57,7 @@ describe('CreditCard Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('4444333322221111')
   })
 
-  it('girilen değer numaradan başka bir karakter içeriyorsa değer değişmemeli.', async () => {
+  it('leaves the value unchanged when the input contains a non-numeric character.', async () => {
     const onChangeTextMock = jest.fn()
     const user = userEvent.setup()
     const {getByTestId} = await render(
@@ -70,7 +70,7 @@ describe('CreditCard Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('q*_!`~d$r4444333322221111')
   })
 
-  it('credit card input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
+  it('shows the number-pad keyboard when the credit card input renders', async () => {
     const {getByTestId} = await render(
       <CreditCardInput name='test' testID={creditCartInputTestId} />
     )

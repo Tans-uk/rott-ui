@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Modal -> Custom Component modal ilk renderlandiginda snapshot ile eşleşmeli 1`] = `
+exports[`Modal -> Custom Component matches the snapshot on the modal's first render 1`] = `
 <KeyboardProvider
   enabled={true}
 >

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button -> Custom Component butonun snapshotı ile eşleşmeli 1`] = `
+exports[`Button -> Custom Component matches the button snapshot 1`] = `
 <KeyboardProvider
   enabled={true}
 >

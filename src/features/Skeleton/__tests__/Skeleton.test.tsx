@@ -19,7 +19,7 @@ const skeletonStyle: SkeletonStyleProps = {
 const DummyText = 'Test Content Text'
 
 describe('Skeleton -> Custom Component', () => {
-  it('skeleton snapshotı ile eşleşmeli', async () => {
+  it('matches the skeleton snapshot', async () => {
     const {skeletonTestId} = testId
     const {width, height} = skeletonStyle
     const rendered = await render(
@@ -28,7 +28,7 @@ describe('Skeleton -> Custom Component', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('item icerisinde cagirilan skeleton icin snapshot eslesmeli', async () => {
+  it('matches the snapshot for a skeleton rendered inside an item', async () => {
     const {itemTestId, skeletonTestId} = testId
     const rendered = await render(
       <Item
@@ -42,7 +42,7 @@ describe('Skeleton -> Custom Component', () => {
     expect(rendered).toMatchSnapshot()
   })
 
-  it('skeleton skeletonShow true ise skeleton ekranda olmali', async () => {
+  it('shows the skeleton while skeletonShow is true', async () => {
     const {itemTestId, skeletonTestId} = testId
     const {getByTestId} = await render(
       <Item
@@ -58,7 +58,7 @@ describe('Skeleton -> Custom Component', () => {
     expect(skeleton).toBeOnTheScreen()
   })
 
-  it('skeleton skeletonShow true ise content ekranda olmamali', async () => {
+  it('hides the content while skeletonShow is true', async () => {
     const {itemTestId, skeletonTestId} = testId
     const {queryByTestId} = await render(
       <Item
@@ -74,7 +74,7 @@ describe('Skeleton -> Custom Component', () => {
     expect(content).not.toBeOnTheScreen()
   })
 
-  it('skeleton skeletonShow false ise skeleton ekranda olmamali', async () => {
+  it('hides the skeleton while skeletonShow is false', async () => {
     const {itemTestId, skeletonTestId} = testId
     const {queryByTestId} = await render(
       <Item
@@ -90,7 +90,7 @@ describe('Skeleton -> Custom Component', () => {
     expect(skeleton).not.toBeOnTheScreen()
   })
 
-  it('skeleton skeletonShow false ise content ekranda olmali', async () => {
+  it('shows the content while skeletonShow is false', async () => {
     const {itemTestId, skeletonTestId} = testId
     const {getByText} = await render(
       <Item

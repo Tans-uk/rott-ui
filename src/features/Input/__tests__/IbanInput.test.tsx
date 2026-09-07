@@ -7,13 +7,13 @@ describe('IBAN Input -> Custom Input', () => {
   const inputTestId = 'iban-input-test-id'
   const rightIconTestId = 'input-field-right-icon'
 
-  it('ilk render anında snapshot ile eşleşmeli', async () => {
+  it('matches the snapshot on first render', async () => {
     const renderedInput = await render(<IbanInput name='test' testID={inputTestId} />)
 
     expect(renderedInput).toMatchSnapshot()
   })
 
-  it('ilk renderlandiginda ilk renderlandiginda içerik boş olmalı', async () => {
+  it('leaves the content empty on first render', async () => {
     const {getByTestId} = await render(<IbanInput name='test' testID={inputTestId} />)
 
     const inputElement = getByTestId(inputTestId)
@@ -21,7 +21,7 @@ describe('IBAN Input -> Custom Input', () => {
     expect(inputElement).toHaveProp('value', '')
   })
 
-  it('içerik boşken sağ ikona basıldığında temizleme yapılmamalı, qr fonksiyonu çalışmalı', async () => {
+  it('runs the QR handler instead of clearing when the right icon is pressed with empty content', async () => {
     const onChangeTextMock = jest.fn()
     const rightIconOnPressMock = jest.fn()
     const {getByTestId} = await render(
@@ -40,7 +40,7 @@ describe('IBAN Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('TR')
   })
 
-  it('değer sadece TR iken sağ ikona basıldığında qr fonksiyonu çalışmalı', async () => {
+  it('runs the QR handler when the right icon is pressed and the value is only TR', async () => {
     const onChangeTextMock = jest.fn()
     const rightIconOnPressMock = jest.fn()
     const {getByTestId} = await render(
@@ -59,7 +59,7 @@ describe('IBAN Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('TR')
   })
 
-  it('değer varken sağ ikona basıldığında içerik TR olarak temizlenmeli', async () => {
+  it('resets the content to TR when the right icon is pressed with a value present', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <IbanInput name='test' testID={inputTestId} value='TR123' onChangeText={onChangeTextMock} />
@@ -70,7 +70,7 @@ describe('IBAN Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('TR')
   })
 
-  it('disabled iken değer varsa sağ ikona basıldığında temizleme yapılmamalı', async () => {
+  it('does not clear on right icon press while disabled, even with a value present', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <IbanInput
@@ -87,7 +87,7 @@ describe('IBAN Input -> Custom Input', () => {
     expect(onChangeTextMock).not.toHaveBeenCalledWith('TR')
   })
 
-  it('leftIcon verildiğinde leading icon render edilmeli', async () => {
+  it('renders the leading icon when leftIcon is given', async () => {
     const {getByTestId} = await render(
       <IbanInput name='test' testID={inputTestId} leftIcon={{name: 'qr-iban'}} />
     )
@@ -95,7 +95,7 @@ describe('IBAN Input -> Custom Input', () => {
     expect(getByTestId('input-field-left-icon')).toBeTruthy()
   })
 
-  it('TR digerlerinden sonraki degerler sadece numeric karakterleri kabul etmeli', async () => {
+  it('accepts only digits after the leading TR', async () => {
     const onChangeTextMock = jest.fn()
     const {getByTestId} = await render(
       <IbanInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -109,8 +109,8 @@ describe('IBAN Input -> Custom Input', () => {
     expect(onChangeTextMock).toHaveBeenCalledWith('TR12333434')
   })
 
-  describe('kopyalanan IBAN yapıştırıldığında', () => {
-    it('Bosluklar trimlenmeli', async () => {
+  describe('when a copied IBAN is pasted', () => {
+    it('trims whitespace', async () => {
       const onChangeTextMock = jest.fn()
       const {getByTestId} = await render(
         <IbanInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -124,7 +124,7 @@ describe('IBAN Input -> Custom Input', () => {
       expect(onChangeTextMock).toHaveBeenCalledWith('TR123')
     })
 
-    it('Sadece Sayi gelmisse basina TR getirerek dogru format saglanmali', async () => {
+    it('prefixes TR to a digits-only value to reach the correct format', async () => {
       const onChangeTextMock = jest.fn()
       const {getByTestId} = await render(
         <IbanInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -138,7 +138,7 @@ describe('IBAN Input -> Custom Input', () => {
       expect(onChangeTextMock).toHaveBeenCalledWith('TR123')
     })
 
-    it('yapistirilan degerde TR ile gelmisse dogru format saglanmali', async () => {
+    it('reaches the correct format when the pasted value starts with TR', async () => {
       const onChangeTextMock = jest.fn()
       const {getByTestId} = await render(
         <IbanInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -152,7 +152,7 @@ describe('IBAN Input -> Custom Input', () => {
       expect(onChangeTextMock).toHaveBeenCalledWith('TR998888777766665555444433')
     })
 
-    it('yapistirilan degerde TR yok ise dogru format saglanmali', async () => {
+    it('reaches the correct format when the pasted value has no TR', async () => {
       const onChangeTextMock = jest.fn()
       const {getByTestId} = await render(
         <IbanInput name='test' testID={inputTestId} onChangeText={onChangeTextMock} />
@@ -167,7 +167,7 @@ describe('IBAN Input -> Custom Input', () => {
     })
   })
 
-  it('Iban input render olduğu zaman klavye olarak number-pad ekranda görülmeli', async () => {
+  it('shows the number-pad keyboard when the IBAN input renders', async () => {
     const {getByTestId} = await render(<IbanInput name='test' testID={inputTestId} />)
     const inputElement = getByTestId(inputTestId)
 

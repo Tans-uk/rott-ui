@@ -10,13 +10,13 @@ const testId = {
 }
 
 describe('Pressable -> Custom Component', () => {
-  it('pressable component render olmalı ve snapshot eşleşmeli', async () => {
+  it('renders the pressable component and matches its snapshot', async () => {
     const rendered = await render(<Pressable />)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('pressable componenti label ile render olmalı', async () => {
+  it('renders the pressable component with a label', async () => {
     const {pressableTestId, pressableLabel} = testId
     const {getByTestId, getByText} = await render(
       <Pressable text={pressableLabel} testID={pressableTestId} />
@@ -29,7 +29,7 @@ describe('Pressable -> Custom Component', () => {
     expect(labelElement).toBeTruthy()
   })
 
-  it('pressable tıklanabilir olmalı', async () => {
+  it('is pressable', async () => {
     const {pressableTestId, pressableLabel} = testId
     const onPressMock = jest.fn()
     const {getByTestId} = await render(
@@ -49,7 +49,7 @@ describe('Pressable -> Custom Component', () => {
     expect(onPressMock).toHaveBeenCalled()
   })
 
-  it('pressable disableken tıklanmamalı', async () => {
+  it('cannot be pressed while the pressable is disabled', async () => {
     const {pressableTestId, pressableLabel} = testId
     const onPressMock = jest.fn()
     const {getByTestId} = await render(
@@ -71,7 +71,7 @@ describe('Pressable -> Custom Component', () => {
     expect(onPressMock).not.toHaveBeenCalled()
   })
 
-  it('pressable componenti style ile render olmalı', async () => {
+  it('renders the pressable component with a style', async () => {
     const {pressableTestId, pressableLabel} = testId
     const onPressMock = jest.fn()
     const {getByText} = await render(

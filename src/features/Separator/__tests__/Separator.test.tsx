@@ -9,13 +9,13 @@ const testId = {
 }
 
 describe('Separator -> Custom Component', () => {
-  it('separator component render olmalı ve snapshot eşleşmeli', async () => {
+  it('renders the separator component and matches its snapshot', async () => {
     const rendered = await render(<Separator />)
 
     expect(rendered).toMatchSnapshot()
   })
 
-  it('separator component default style ile render olmalı', async () => {
+  it('renders the separator component with its default style', async () => {
     const {separatorTestId} = testId
     const {getByTestId} = await render(
       <Separator testID={separatorTestId} size='full' orientation='horizontal' />
@@ -31,7 +31,7 @@ describe('Separator -> Custom Component', () => {
     })
   })
 
-  it('separator component horizontal render olmalı', async () => {
+  it('renders the separator component horizontally', async () => {
     const {separatorTestId} = testId
     const {getByTestId} = await render(
       <Separator testID={separatorTestId} size='full' orientation='horizontal' height={'100%'} />
@@ -42,7 +42,7 @@ describe('Separator -> Custom Component', () => {
     expect(separatorElement).toHaveStyle({width: '100%'})
   })
 
-  it('separator component vertical render olmalı', async () => {
+  it('renders the separator component vertically', async () => {
     const {getByTestId} = await render(
       <Separator orientation='vertical' testID='separator-test-id' />
     )
@@ -52,7 +52,7 @@ describe('Separator -> Custom Component', () => {
     expect(separator).toHaveStyle({height: 2, width: 2})
   })
 
-  it('seperator verilen opacity ile render olmali', async () => {
+  it('renders the separator with the given opacity', async () => {
     const {separatorTestId} = testId
     const opacityValue = 0.5
     const {getByTestId} = await render(

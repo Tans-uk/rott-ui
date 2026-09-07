@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Icon -> Custom Component icon bileşeninin snapshot ile eşleşmeli 1`] = `
+exports[`Icon -> Custom Component matches the icon component snapshot 1`] = `
 <View
   style={
     {

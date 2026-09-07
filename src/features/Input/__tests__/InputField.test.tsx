@@ -8,14 +8,14 @@ import {InputField} from '../components/InputField'
 describe('InputField', () => {
   const child = <Text testID='field-child'>child</Text>
 
-  it('sadece children verilince ikon render etmez', async () => {
+  it('renders no icon when only children are given', async () => {
     const {queryByTestId, getByTestId} = await render(<InputField size='md'>{child}</InputField>)
     expect(getByTestId('field-child')).toBeTruthy()
     expect(queryByTestId('input-field-left-icon')).toBeNull()
     expect(queryByTestId('input-field-right-icon')).toBeNull()
   })
 
-  it('leftIcon verilince sol ikon render eder', async () => {
+  it('renders the left icon when leftIcon is given', async () => {
     const {getByTestId} = await render(
       <InputField size='md' leftIcon={{name: 'lock'}}>
         {child}
@@ -24,7 +24,7 @@ describe('InputField', () => {
     expect(getByTestId('input-field-left-icon')).toBeTruthy()
   })
 
-  it('rightIcon verilince sağ ikon render eder', async () => {
+  it('renders the right icon when rightIcon is given', async () => {
     const {getByTestId} = await render(
       <InputField size='md' rightIcon={{name: 'eye'}}>
         {child}
@@ -33,7 +33,7 @@ describe('InputField', () => {
     expect(getByTestId('input-field-right-icon')).toBeTruthy()
   })
 
-  it('onPress verilince ikon tıklanabilir olur ve çağrılır', async () => {
+  it('makes the icon pressable and calls onPress when it is given', async () => {
     const onPress = jest.fn()
     const {getByTestId} = await render(
       <InputField size='md' rightIcon={{name: 'eye', onPress}}>
@@ -44,7 +44,7 @@ describe('InputField', () => {
     expect(onPress).toHaveBeenCalledTimes(1)
   })
 
-  it('onPress verilen ikon slotu button erişilebilirlik rolüne sahip olur', async () => {
+  it('gives an icon slot with onPress the button accessibility role', async () => {
     const onPress = jest.fn()
     const {getByTestId} = await render(
       <InputField size='md' rightIcon={{name: 'eye', onPress}}>

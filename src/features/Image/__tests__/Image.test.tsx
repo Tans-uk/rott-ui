@@ -10,7 +10,7 @@ describe('Image -> Custom Component', () => {
   }
   const testIconName: ImageTypes = 'pttbank-white'
 
-  it('image elementi snapshot ile eşleşmeli', async () => {
+  it('matches the image element snapshot', async () => {
     const {imageTestId} = testId
     const renderedIcon = await render(
       <Image testID={imageTestId} name={testIconName} width={50} height={50} />
@@ -19,7 +19,7 @@ describe('Image -> Custom Component', () => {
     expect(renderedIcon).toMatchSnapshot()
   })
 
-  it('image elementi renderlandığında gerçekten ekranda olmalı', async () => {
+  it('shows the image element once rendered', async () => {
     const {imageTestId} = testId
     const {getByTestId} = await render(
       <Image testID={imageTestId} name={testIconName} width={50} />
@@ -30,7 +30,7 @@ describe('Image -> Custom Component', () => {
     expect(imageElement).toBeOnTheScreen()
   })
 
-  it('image elementi verilen width ile renderlanmalı', async () => {
+  it('renders the image element with the given width', async () => {
     const {imageTestId} = testId
     const {getByTestId} = await render(
       <Image testID={imageTestId} name={testIconName} width={50} />
@@ -41,7 +41,7 @@ describe('Image -> Custom Component', () => {
     expect(imageElement).toHaveProp('width', 50)
   })
 
-  it('image elementi verilen height ile renderlanmalı', async () => {
+  it('renders the image element with the given height', async () => {
     const {imageTestId} = testId
     const {getByTestId} = await render(
       <Image testID={imageTestId} name={testIconName} height={50} />
