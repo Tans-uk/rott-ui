@@ -96,6 +96,19 @@ with `useMemo`. A new inline object on every render (e.g. `config={{ ... }}`
 written directly in JSX) causes the theme to be recomputed on each render.
 :::
 
+### Notifications
+
+`RottProvider` also sets up the toast system. The app stays interactive while a toast
+is visible. To ignore touches until the last toast closes, opt in:
+
+```tsx
+<RottProvider blockTouchesWhileNotificationVisible>
+  <App />
+</RottProvider>
+```
+
+See [Notification](/docs/components/notification) for the API.
+
 ## Complete Configuration
 
 ```tsx

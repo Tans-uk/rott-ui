@@ -6,58 +6,62 @@ description: Toast notification system
 
 # Notification
 
-Notification provides a toast notification system for displaying temporary messages.
+Notification shows short toast messages at the top of the screen. `RottProvider` sets
+it up; call the static methods from anywhere in your app.
 
 ## Features
 
-- 🎨 Multiple types (success, error, warning, info)
-- ⏱️ Auto-dismiss
-- 🎯 Custom content
-- 📍 Position control
-- 🔧 Customizable styling
+- 🎨 Four variants: success, warning, danger and info
+- ⏱️ Auto-dismiss after three seconds
+- 👆 Tap to act: pass an `onPress` callback
+- 🖐️ Optional touch blocking while a toast is visible
 
 ## Basic Usage
 
 ```tsx
 import { Notification } from '@tansuk/rott-ui';
 
-// Success notification
-Notification.success('Changes saved successfully');
-
-// Error notification
-Notification.error('Something went wrong');
-
-// Warning notification
+Notification.success('Changes saved');
 Notification.warning('Please verify your email');
-
-// Info notification
+Notification.danger('Something went wrong');
 Notification.info('New update available');
 ```
 
-## Custom Notification
+## With a Description and an Action
 
 ```tsx
-Notification.custom({
-  title: 'Custom Title',
-  message: 'Custom message content',
-  icon: { name: 'STAR', variant: 'warning' },
-  duration: 5000,
-});
+Notification.info('New message', 'You have a new message from John', () =>
+  navigation.navigate('Inbox')
+);
 ```
 
-## Props
+The toast runs `onPress` when the user taps it, then closes.
 
-The Notification component uses `react-native-toast-notifications` under the hood.
-
-### Static Methods
+## Static Methods
 
 | Method | Parameters | Description |
 |--------|------------|-------------|
-| `success` | `(message: string)` | Show success toast |
-| `error` | `(message: string)` | Show error toast |
-| `warning` | `(message: string)` | Show warning toast |
-| `info` | `(message: string)` | Show info toast |
-| `custom` | `(options)` | Show custom toast |
+| `success` | `(title: string, description?: string, onPress?: () => void)` | Show a success toast |
+| `warning` | `(title: string, description?: string, onPress?: () => void)` | Show a warning toast |
+| `danger` | `(title: string, description?: string, onPress?: () => void)` | Show an error toast |
+| `info` | `(title: string, description?: string, onPress?: () => void)` | Show an info toast |
+| `show` | `({ title, description?, variant, onPress? })` | Show a toast with any variant |
+| `hide` | `(id: string)` | Hide one toast; the methods above return its id |
+| `hideAll` | `()` | Hide every visible toast |
+
+The toasts are rendered with `react-native-toast-notifications`.
+
+## Blocking Touches While Visible
+
+By default the app stays interactive while a toast is on screen. To make the whole app
+ignore touches until the last toast closes — the behavior before 0.9.1 — opt in on the
+provider:
+
+```tsx
+<RottProvider blockTouchesWhileNotificationVisible>
+  <App />
+</RottProvider>
+```
 
 ## Examples
 
@@ -70,7 +74,7 @@ const handleSubmit = async (values) => {
     Notification.success('Form submitted successfully');
     navigation.goBack();
   } catch (error) {
-    Notification.error('Failed to submit form');
+    Notification.danger('Failed to submit form');
   }
 };
 ```
@@ -83,7 +87,7 @@ const handleDelete = async (id) => {
     await deleteItem(id);
     Notification.success('Item deleted');
   } catch (error) {
-    Notification.error('Failed to delete item');
+    Notification.danger('Failed to delete item');
   }
 };
 ```
@@ -99,16 +103,5 @@ NetInfo.addEventListener(state => {
   } else {
     Notification.success('Connected to internet');
   }
-});
-```
-
-### Custom with Icon
-
-```tsx
-Notification.custom({
-  title: 'New Message',
-  message: 'You have a new message from John',
-  icon: { name: 'MAIL', variant: 'primary' },
-  duration: 4000,
 });
 ```

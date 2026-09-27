@@ -22,39 +22,43 @@ export const ToasterNotificationProvider: FC<PropsWithChildren> = ({children}) =
       offsetBottom={40}
       swipeEnabled={true}
       renderType={{
-        success: ({onHide, data: {title, description}}) => (
+        success: ({onHide, data: {title, description, onPress}}) => (
           <NotificationComponent
             title={title}
             description={description}
             variantColor='rgba(72, 193, 181, 1)'
             iconElement={notificationIcon('check-fill', 'success-notification')}
+            onPress={onPress}
             onClose={onHide}
           />
         ),
-        danger: ({onHide, data: {title, description}}) => (
+        danger: ({onHide, data: {title, description, onPress}}) => (
           <NotificationComponent
             title={title}
             description={description}
             variantColor='rgba(209, 94, 83, 1)'
             iconElement={notificationIcon('information-circle', 'danger-notification')}
+            onPress={onPress}
             onClose={onHide}
           />
         ),
-        warning: ({onHide, data: {title, description}}) => (
+        warning: ({onHide, data: {title, description, onPress}}) => (
           <NotificationComponent
             title={title}
             description={description}
             variantColor='rgba(255, 173, 50, 1)'
             iconElement={notificationIcon('information-circle', 'warning-notification')}
+            onPress={onPress}
             onClose={onHide}
           />
         ),
-        info: ({onHide, data: {title, description}}) => (
+        info: ({onHide, data: {title, description, onPress}}) => (
           <NotificationComponent
             title={title}
             description={description}
             variantColor='rgba(77, 175, 234, 1)'
             iconElement={notificationIcon('information-circle', 'info-notification')}
+            onPress={onPress}
             onClose={onHide}
           />
         ),

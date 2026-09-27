@@ -11,107 +11,90 @@ import {useNotification} from '../hooks'
 
 import {Toast} from 'react-native-toast-notifications'
 
-let notifications = 0
-
-const InitializeModalRef = () => {
+const InitializeNotificationRef = () => {
   const notificationHook = useNotification()
   notificationRef.current = notificationHook
 
   return null
 }
 
-export const NotificationProvider: FC<PropsWithChildren> = ({children}) => {
-  const [hasAnyNotification, setHasAnyNotification] = useState<boolean>(false)
-  const increment = () => {
-    notifications = notifications + 1
+export interface NotificationProviderProps extends PropsWithChildren {
+  /**
+   * When true, the whole tree ignores touches while a notification is visible — the
+   * behavior before 0.9.1. Off by default, so the app and the toast stay pressable.
+   */
+  blockTouchesWhileVisible?: boolean
+}
 
-    if (notifications > 0) setHasAnyNotification(true)
-  }
+export const NotificationProvider: FC<NotificationProviderProps> = ({
+  children,
+  blockTouchesWhileVisible = false,
+}) => {
+  // Toasts on screen. The toast library calls onClose once per toast — hidden by id, by
+  // hideAll or by its timer — so onClose is the only place that counts down.
+  const [visibleNotifications, setVisibleNotifications] = useState(0)
 
-  const decrement = () => {
-    if (notifications > 0) notifications = notifications - 1
-
-    if (notifications === 0) setHasAnyNotification(false)
-  }
-
-  const baseNotification = ({title, description, variant}: NotificationModel) =>
-    Toast.show(title, {
-      type: variant,
-      data: {title, description, variant},
-      onClose: () => decrement(),
-    })
-
-  const show = useCallback(
-    (notification: NotificationModel) => {
-      increment()
-
-      return baseNotification(notification)
-    },
-    [notifications]
-  )
-  const hide = useCallback(
-    (id: string) => {
-      decrement()
-
-      return Toast.hide(id)
-    },
-    [notifications]
-  )
-  const hideAll = useCallback(() => {
-    return Toast.hideAll()
+  const handleClose = useCallback(() => {
+    setVisibleNotifications((count) => Math.max(0, count - 1))
   }, [])
 
-  const success = useCallback(
-    (title: string, description?: string) => {
-      increment()
+  const show = useCallback(
+    ({title, description, variant, onPress}: NotificationModel) => {
+      setVisibleNotifications((count) => count + 1)
 
-      return baseNotification({title, description, variant: 'success'})
+      return Toast.show(title, {
+        type: variant,
+        data: {title, description, variant, onPress},
+        onClose: handleClose,
+      })
     },
-    [notifications]
+    [handleClose]
+  )
+
+  const hide = useCallback((id: string) => Toast.hide(id), [])
+  const hideAll = useCallback(() => Toast.hideAll(), [])
+
+  const success = useCallback(
+    (title: string, description?: string, onPress?: () => void) =>
+      show({title, description, variant: 'success', onPress}),
+    [show]
   )
   const warning = useCallback(
-    (title: string, description?: string) => {
-      increment()
-
-      return baseNotification({title, description, variant: 'warning'})
-    },
-    [notifications]
+    (title: string, description?: string, onPress?: () => void) =>
+      show({title, description, variant: 'warning', onPress}),
+    [show]
   )
   const danger = useCallback(
-    (title: string, description?: string) => {
-      increment()
-
-      return baseNotification({title, description, variant: 'danger'})
-    },
-    [notifications]
+    (title: string, description?: string, onPress?: () => void) =>
+      show({title, description, variant: 'danger', onPress}),
+    [show]
   )
   const info = useCallback(
-    (title: string, description?: string) => {
-      increment()
-
-      return baseNotification({title, description, variant: 'info'})
-    },
-    [notifications]
+    (title: string, description?: string, onPress?: () => void) =>
+      show({title, description, variant: 'info', onPress}),
+    [show]
   )
 
-  const contextValues = useMemo(() => {
-    return {
-      notifications,
+  const contextValues = useMemo(
+    () => ({
+      notifications: visibleNotifications,
       show,
       hide,
       hideAll,
-
       success,
       warning,
       danger,
       info,
-    }
-  }, [notifications, show, hide, hideAll, success, warning, danger, info, increment, decrement])
+    }),
+    [visibleNotifications, show, hide, hideAll, success, warning, danger, info]
+  )
+
+  const blockTouches = blockTouchesWhileVisible && visibleNotifications > 0
 
   return (
     <NotificationContext.Provider value={contextValues}>
-      <InitializeModalRef />
-      <Item flex={1} pointerEvents={hasAnyNotification ? 'box-only' : 'box-none'}>
+      <InitializeNotificationRef />
+      <Item flex={1} pointerEvents={blockTouches ? 'box-only' : 'box-none'}>
         <ToasterNotificationProvider>{children}</ToasterNotificationProvider>
       </Item>
     </NotificationContext.Provider>

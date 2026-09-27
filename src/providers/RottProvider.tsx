@@ -19,6 +19,11 @@ import {SafeAreaProvider} from 'react-native-safe-area-context'
 
 interface RottProviderProps extends PropsWithChildren {
   config?: Partial<ThemeConfig>
+  /**
+   * When true, the app ignores touches while a notification is visible — the behavior
+   * before 0.9.1. Off by default.
+   */
+  blockTouchesWhileNotificationVisible?: boolean
 }
 
 /** Use theme (respects rott.config; empty config = only consumer assets) */
@@ -26,7 +31,11 @@ export let themeConfig: ThemeConfig = {
   ...theme,
 }
 
-export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
+export const RottProvider: FC<RottProviderProps> = ({
+  children,
+  config,
+  blockTouchesWhileNotificationVisible,
+}) => {
   if (config) {
     themeConfig = {
       ...themeConfig,
@@ -61,7 +70,7 @@ export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
           locale={resolvedLanguage.name}
           messages={languageMessages[resolvedLanguage.name as keyof typeof languageMessages]}>
           <KeyboardProvider enabled={true}>
-            <NotificationProvider>
+            <NotificationProvider blockTouchesWhileVisible={blockTouchesWhileNotificationVisible}>
               <ModalProvider>
                 <ActionMenuProvider>
                   <AlertDialogProvider>{children}</AlertDialogProvider>
