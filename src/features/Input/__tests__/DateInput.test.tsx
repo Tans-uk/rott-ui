@@ -190,4 +190,37 @@ describe('Date Input -> Custom Input', () => {
 
     expect(getByTestId('date-input-modal-picker-test-id')).toBeVisible()
   })
+
+  it('keeps each date input on its own date', async () => {
+    const onFirstDateChange = jest.fn()
+    const {getAllByTestId, getByTestId} = await render(
+      <>
+        <DateInput
+          name='first'
+          mode='date'
+          value='2026-01-10T12:00:00'
+          onDateChange={onFirstDateChange}
+        />
+        <DateInput name='second' mode='date' value='2026-02-20T12:00:00' />
+      </>
+    )
+    onFirstDateChange.mockClear()
+
+    fireEvent.press(getAllByTestId(dateInputValueContainerTestId)[0]!)
+    fireEvent.press(getByTestId(dateInputConfirmButtonTestId))
+
+    const confirmed = onFirstDateChange.mock.calls[0]?.[0] as Date
+    expect(confirmed.getMonth()).toBe(0)
+    expect(confirmed.getDate()).toBe(10)
+  })
+
+  it('does not open the picker from the button view while disabled', async () => {
+    const {getByTestId, queryByTestId} = await render(
+      <DateInput name='test' mode='date' viewType='button' disabled testID='date-input-button' />
+    )
+
+    fireEvent.press(getByTestId('date-input-button'))
+
+    expect(queryByTestId(dateInputModalTestId)).toBeNull()
+  })
 })
