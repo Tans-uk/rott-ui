@@ -22,14 +22,17 @@ export const EmailInput: FC<EmailInputProps> = ({
   renderSeparator: _renderSeparator,
   ...props
 }) => {
-  const [value, setValue] = useState<string>(propValue || '')
+  // Controlled when the caller passes a value, so resets and programmatic updates show up;
+  // otherwise the input keeps its own text, as before.
+  const isControlled = propValue !== undefined
+  const [internalValue, setInternalValue] = useState<string>(propValue ?? '')
 
   const handleChangeText = useCallback(
     (text: string) => {
-      setValue(text)
-      !!onChangeText && onChangeText(text)
+      if (!isControlled) setInternalValue(text)
+      onChangeText?.(text)
     },
-    [onChangeText]
+    [isControlled, onChangeText]
   )
 
   const field = (
@@ -40,7 +43,7 @@ export const EmailInput: FC<EmailInputProps> = ({
       keyboardType='email-address'
       autoCapitalize='none'
       onChangeText={handleChangeText}
-      value={value}
+      value={isControlled ? propValue : internalValue}
       style={StyleSheet.flatten([InputStyles({fontSize, theme, size}).defaultTextInputStyle])}
       {...props}
     />
