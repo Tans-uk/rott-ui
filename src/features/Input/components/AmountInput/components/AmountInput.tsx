@@ -9,8 +9,12 @@ import {Label} from '../../../../Label'
 import {InputStyles} from '../../../styles'
 import {InputStyleNormalizer} from '../../../utils'
 import {InputField} from '../../InputField'
-import type {AmountInputProps} from '../models'
+import type {AmountInputProps, CurrencyType} from '../models'
 import {AmountInputStyles} from '../styles'
+import {parseAmountValue} from '../utils'
+
+/** Icon keys of the currency glyphs; the currency types themselves are upper-case codes. */
+const CURRENCY_ICONS: Record<CurrencyType, string> = {TL: 'tl', USD: 'usd', EUR: 'euro'}
 
 export const AmountInput: FC<AmountInputProps> = ({
   fontSize,
@@ -88,11 +92,10 @@ export const AmountInput: FC<AmountInputProps> = ({
         : themeConfig.colors['grey-900']
 
   useEffect(() => {
-    const initialAmount = value?.split(',')[0]
-    const initialCurrency = value?.split(',')[1]
+    const initial = parseAmountValue(value)
 
-    setAmount(initialAmount ?? '')
-    setCurrency(initialCurrency ?? '')
+    setAmount(initial.amount)
+    setCurrency(initial.currency)
   }, [])
 
   useEffect(() => {
@@ -104,7 +107,7 @@ export const AmountInput: FC<AmountInputProps> = ({
   }, [amount, currency])
 
   const currencyIcon = {
-    name: currencyType as IconKeys,
+    name: (currencyType ? CURRENCY_ICONS[currencyType] : currencyType) as IconKeys,
     color: themeConfig.colors['grey-200'],
     ...rightIcon,
   }
