@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
+import en from '../../../libs/i18n/en-US.json'
 import {CVCInput} from '../components'
 
 describe('CVC Input -> Custom Input', () => {
@@ -58,5 +59,13 @@ describe('CVC Input -> Custom Input', () => {
     const cvcInputElement = getByTestId(inputTestId)
 
     expect(cvcInputElement.props.keyboardType).toBe('number-pad')
+  })
+
+  it('opens the CVC info dialog when the info icon is tapped', async () => {
+    const {getByTestId, findByText} = await render(<CVCInput name='test' testID={inputTestId} />)
+
+    fireEvent.press(getByTestId(cvcIconTestId))
+
+    expect(await findByText(en['CVC.INFO.TITLE'])).toBeOnTheScreen()
   })
 })

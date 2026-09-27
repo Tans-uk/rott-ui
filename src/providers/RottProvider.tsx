@@ -8,6 +8,7 @@ import {
   NotificationProvider,
 } from '../features'
 import {languageMessages} from '../libs'
+import {setActiveLanguage} from '../libs/i18n/utils/activeLanguage'
 import {Language, ThemeConfig} from '../models'
 import {theme} from '../theme'
 
@@ -44,6 +45,9 @@ export const RottProvider: FC<RottProviderProps> = ({children, config}) => {
   const language: Language = config?.options?.language ?? theme.options?.language
   const resolvedLanguage =
     language && Object.keys(languageMessages).includes(language.name) ? language : defaultLanguage
+
+  // formatMessage is not a hook, so it reads the language from here instead of context.
+  setActiveLanguage(resolvedLanguage.name)
 
   return (
     <SafeAreaProvider>

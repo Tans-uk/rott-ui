@@ -3,6 +3,9 @@ import React from 'react'
 import {render} from '../../__tests__/utils/testUtils'
 import {Icon} from '../../features'
 import type {IconKeys} from '../../features/Icon'
+import {formatMessage} from '../../libs'
+import tr from '../../libs/i18n/tr-TR.json'
+import {setActiveLanguage} from '../../libs/i18n/utils/activeLanguage'
 import {RottProvider, themeConfig} from '../RottProvider'
 
 // Override the global jest.setup.ts theme mock so that unknown icon keys
@@ -61,5 +64,22 @@ describe('RottProvider -> config merge into themeConfig', () => {
 
     expect(getByTestId('e2e-icon')).toBeOnTheScreen()
     expect(getByTestId('runtime-svg')).toBeTruthy()
+  })
+})
+
+describe('RottProvider -> active language', () => {
+  afterEach(() => {
+    setActiveLanguage('en-US')
+  })
+
+  it('makes formatMessage translate into the provider language, even outside render', async () => {
+    // A single provider, passed as the wrapper, so no outer provider resets the language.
+    await render(<></>, {
+      wrapper: ({children}: {children: React.ReactNode}) => (
+        <RottProvider config={{options: {language: {name: 'tr-TR'}}}}>{children}</RottProvider>
+      ),
+    })
+
+    expect(formatMessage('COMMON.OK')).toBe(tr['COMMON.OK'])
   })
 })

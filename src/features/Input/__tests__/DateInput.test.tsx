@@ -180,4 +180,14 @@ describe('Date Input -> Custom Input', () => {
 
     expect(onDateChangeMock).toHaveBeenCalledWith(startOfDay(maxDate))
   })
+
+  it('opens the modal date picker', async () => {
+    const {getByTestId} = await render(
+      <DateInput name='test' mode='modal-date' data={[{label: 'Today', value: new Date()}]} />
+    )
+
+    fireEvent.press(getByTestId(dateInputValueContainerTestId))
+
+    expect(getByTestId('date-input-modal-picker-test-id')).toBeVisible()
+  })
 })
