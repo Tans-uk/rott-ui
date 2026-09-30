@@ -7,7 +7,7 @@ description: Toast notification system
 # Notification
 
 Notification shows short toast messages at the top of the screen. `RottProvider` sets
-it up; call the static methods from anywhere in your app.
+it up; once the app has mounted, call the static methods from anywhere in your app.
 
 ## Features
 
@@ -27,6 +27,14 @@ Notification.danger('Something went wrong');
 Notification.info('New update available');
 ```
 
+:::warning
+Call the static methods after the app has mounted. From a `useEffect` that runs when the
+app first mounts, in a component rendered under `RottProvider`, the call throws a
+`TypeError`, because the toast system is ready only once that first mount has finished.
+Before `RottProvider` has rendered, a call does nothing. A component that mounts later,
+such as a screen you navigate to, can call them from its own mount effect.
+:::
+
 ## With a Description and an Action
 
 ```tsx
@@ -45,9 +53,13 @@ The toast runs `onPress` when the user taps it, then closes.
 | `warning` | `(title: string, description?: string, onPress?: () => void)` | Show a warning toast |
 | `danger` | `(title: string, description?: string, onPress?: () => void)` | Show an error toast |
 | `info` | `(title: string, description?: string, onPress?: () => void)` | Show an info toast |
-| `show` | `({ title, description?, variant, onPress? })` | Show a toast with any variant |
+| `show` | `({ title, description?, variant, onPress? })` | Show a toast; `variant` is `'success'`, `'warning'`, `'danger'` or `'info'` |
 | `hide` | `(id: string)` | Hide one toast; the methods above return its id |
 | `hideAll` | `()` | Hide every visible toast |
+
+`show` styles the `success`, `warning`, `danger` and `info` variants. Any other `variant`
+falls back to the library's plain toast, which shows only the title and ignores
+`description` and `onPress`.
 
 The toasts are rendered with `react-native-toast-notifications`.
 
@@ -62,6 +74,9 @@ provider:
   <App />
 </RottProvider>
 ```
+
+With blocking on, the toast itself cannot be tapped or swiped, and `onPress` does not
+run. It closes on its timer, or through `Notification.hide` or `Notification.hideAll`.
 
 ## Examples
 
