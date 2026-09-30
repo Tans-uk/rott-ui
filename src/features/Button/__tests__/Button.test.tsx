@@ -270,6 +270,34 @@ describe('Button -> Custom Component', () => {
       height: display.px(72),
     })
   })
+
+  it('uses the fontFamily it is given', async () => {
+    const {buttonText} = testId
+    const {getByText} = await render(<Button fontFamily='Markpro-Light'>{buttonText}</Button>)
+
+    expect(getByText(buttonText)).toHaveStyle({fontFamily: 'Markpro-Light'})
+  })
+
+  it('keeps Markpro-Bold when neither fontFamily nor fontWeight is given', async () => {
+    const {buttonText} = testId
+    const {getByText} = await render(<Button>{buttonText}</Button>)
+
+    expect(getByText(buttonText)).toHaveStyle({fontFamily: 'Markpro-Bold'})
+  })
+
+  it('ignores presses while loading', async () => {
+    const {buttonTestId, buttonText} = testId
+    const onPressMock = jest.fn()
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} isLoading onPress={onPressMock}>
+        {buttonText}
+      </Button>
+    )
+
+    fireEvent.press(getByTestId(buttonTestId))
+
+    expect(onPressMock).not.toHaveBeenCalled()
+  })
 })
 
 commonUiTestExtension(<Button testID={testId.buttonTestId} />, testId.buttonTestId)

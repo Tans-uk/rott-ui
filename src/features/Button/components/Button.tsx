@@ -84,7 +84,8 @@ export const Button: FC<ButtonProps> = ({
         rippleContainerStyles,
         style,
       ])}
-      {...props}>
+      {...props}
+      disabled={props.disabled || isLoading}>
       {ripple && rippleElement}
 
       {leftIcon && !isLoading && (
@@ -131,7 +132,7 @@ export const Button: FC<ButtonProps> = ({
         <Label
           numberOfLines={1}
           textCenter
-          fontFamily={(fontFamily ?? !fontWeight) ? 'Markpro-Bold' : undefined}
+          fontFamily={fontFamily ?? (fontWeight ? undefined : 'Markpro-Bold')}
           fontSize={
             typeof size === 'object'
               ? buttonSizeNormalizer(size.height as Size).fontSize
