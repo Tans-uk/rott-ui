@@ -193,7 +193,7 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
 ```
 
 :::warning
-If your custom theme is not being applied under Expo (colors render as the rott-ui defaults), this missing Metro `resolveRequest` is the usual cause. In development you will also see a `[rott-ui] 'rott.config' could not be resolved at runtime` warning.
+If your custom theme is not being applied under Expo (colors render as the rott-ui defaults), this missing Metro `resolveRequest` is the usual cause. In development you will also see a `[rott-ui] 'rott.config' could not be resolved at runtime` warning. Built-in icons and images still render in that case; only your `rott.config` values are missing.
 :::
 
 ## Verify Installation

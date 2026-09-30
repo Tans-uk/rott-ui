@@ -276,6 +276,10 @@ With empty config:
 - **Colors, fonts, etc.**: Default theme values are still used
 - **Autocomplete**: Only your consumer asset names appear for `Image` and `Icon`
 
+An empty config is not the same as a missing one. If `rott.config` cannot be resolved at
+runtime — the optional Metro or Babel step was skipped — the library falls back to its
+defaults: the default images and icons plus your scanned assets.
+
 Use `...defaultThemeConfig` when you want library defaults plus your custom assets:
 
 ```typescript

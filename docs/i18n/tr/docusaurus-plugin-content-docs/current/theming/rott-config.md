@@ -276,6 +276,8 @@ Boş yapılandırma ile:
 - **Renkler, fontlar vb.**: Varsayılan tema değerleri yine kullanılır
 - **Otomatik tamamlama**: Yalnızca tüketici varlık adlarınız `Image` ve `Icon` için görünür
 
+Boş yapılandırma, yapılandırmanın hiç olmamasıyla aynı şey değildir. `rott.config` çalışma zamanında çözümlenemezse (isteğe bağlı Metro veya Babel adımı atlandıysa) kütüphane varsayılanlarına döner: varsayılan görseller ve ikonlar, taranan varlıklarınızla birlikte kullanılır.
+
 Kütüphane varsayılanları artı özel varlıklarınızı istediğinizde `...defaultThemeConfig` kullanın:
 
 ```typescript
