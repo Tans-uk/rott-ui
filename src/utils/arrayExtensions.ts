@@ -1,4 +1,4 @@
-/* eslint-disable no-extend-native -- these files deliberately augment String and Array prototypes */
+import {defineHiddenMethod} from './defineHiddenMethod'
 
 const alphabet = 'AaBbCcÇçDdEeFfGgĞğHhIıİiJjKkLlMmNnOoÖöPpQqRrSsŞşTtUuÜüVvWwXxYyZz0123456789'
 
@@ -26,18 +26,20 @@ const sortAlphabetical = (a: string, b: string): number => {
   return a.length - b.length
 }
 
-Array.prototype.sortByKey = function (key: string, orderBy: 'asc' | 'desc' = 'asc') {
-  const sortedArray = this.sort((a: any, b: any) => sortAlphabetical(a[key], b[key]))
+defineHiddenMethod(
+  Array.prototype,
+  'sortByKey',
+  function (this: any[], key: string, orderBy: 'asc' | 'desc' = 'asc') {
+    const sortedArray = this.sort((a: any, b: any) => sortAlphabetical(a[key], b[key]))
 
-  return orderBy === 'desc' ? sortedArray.reverse() : sortedArray
-}
+    return orderBy === 'desc' ? sortedArray.reverse() : sortedArray
+  }
+)
 
-Array.prototype.isEmpty = function () {
+defineHiddenMethod(Array.prototype, 'isEmpty', function (this: unknown[]) {
   return this?.length === 0
-}
+})
 
-Array.prototype.hasItems = function () {
+defineHiddenMethod(Array.prototype, 'hasItems', function (this: unknown[]) {
   return this?.length > 0
-}
-
-export {}
+})

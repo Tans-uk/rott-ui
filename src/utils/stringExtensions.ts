@@ -1,13 +1,13 @@
-/* eslint-disable no-extend-native -- these files deliberately augment String and Array prototypes */
+import {defineHiddenMethod} from './defineHiddenMethod'
 
-String.prototype.isEmpty = function () {
+defineHiddenMethod(String.prototype, 'isEmpty', function (this: string) {
   const isUndefined = this === undefined
   if (isUndefined) return true
 
   return this?.length === 0 || !this?.trim()
-}
+})
 
-String.prototype.toSeoFriendly = function () {
+defineHiddenMethod(String.prototype, 'toSeoFriendly', function (this: string) {
   return this.toString() // Convert to string
     .normalize('NFD') // Change diacritics
     .replace(/Ğ/g, 'g') // Change TR Character
@@ -29,48 +29,55 @@ String.prototype.toSeoFriendly = function () {
     .replace(/-+/g, '-') // Remove duplicate dashes
     .replace(/^-*/, '') // Remove starting dashes
     .replace(/-*$/, '')
-}
+})
 
-String.prototype.toBalance = function () {
+defineHiddenMethod(String.prototype, 'toBalance', function (this: string) {
   const balance = this.replace(/\b(TL|USD|GBP|EURO)\b/g, '')
     .trim()
     .replaceAll('.', '')
     .replace(',', '.')
 
   return parseFloat(balance)
-}
-String.prototype.toPascalCase = function () {
+})
+
+defineHiddenMethod(String.prototype, 'toPascalCase', function (this: string) {
   return this.trim()
     .replace(/\s+/g, ' ')
     .toLocaleLowerCase('tr')
     .split(' ')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ')
-}
+})
 
-String.prototype.toMaskName = function (maskCharacter: string = '*'): string {
-  return this.trim()
-    .split(/\s+/) // Collapse runs of whitespace
-    .map((word) => {
-      if (word.length <= 2) return word // Leave words of two characters or fewer as they are
+defineHiddenMethod(
+  String.prototype,
+  'toMaskName',
+  function (this: string, maskCharacter: string = '*'): string {
+    return this.trim()
+      .split(/\s+/) // Collapse runs of whitespace
+      .map((word) => {
+        if (word.length <= 2) return word // Leave words of two characters or fewer as they are
 
-      return word[0]! + word[1]! + maskCharacter.repeat(word.length - 2)
-    })
-    .join(' ')
-}
+        return word[0]! + word[1]! + maskCharacter.repeat(word.length - 2)
+      })
+      .join(' ')
+  }
+)
 
-String.prototype.toMaskIban = function (maskCharacter: string = '*'): string {
-  const iban = this.trim().replace(/\s+/g, '') // Strip whitespace
+defineHiddenMethod(
+  String.prototype,
+  'toMaskIban',
+  function (this: string, maskCharacter: string = '*'): string {
+    const iban = this.trim().replace(/\s+/g, '') // Strip whitespace
 
-  const start = iban.slice(0, 4) // First four characters
-  const end = iban.slice(-4) // Last four characters
-  const maskedSection = iban.slice(4, -4).replace(/./g, maskCharacter) // Mask the middle
+    const start = iban.slice(0, 4) // First four characters
+    const end = iban.slice(-4) // Last four characters
+    const maskedSection = iban.slice(4, -4).replace(/./g, maskCharacter) // Mask the middle
 
-  // Join the masked IBAN back together
-  const maskedIban = start + maskedSection + end
+    // Join the masked IBAN back together
+    const maskedIban = start + maskedSection + end
 
-  // Format with a space every four characters
-  return maskedIban.replace(/(.{4})(?=.)/g, '$1 ')
-}
-
-export {}
+    // Format with a space every four characters
+    return maskedIban.replace(/(.{4})(?=.)/g, '$1 ')
+  }
+)
