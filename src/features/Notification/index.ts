@@ -15,7 +15,7 @@ export const notificationRef = createRef<NotificationService>()
 export const Notification = {
   show: (notification: NotificationModel) => notificationRef.current?.show(notification),
   hide: (id: string) => notificationRef.current?.hide(id),
-  hideAll: () => notificationRef.current?.hideAll,
+  hideAll: () => notificationRef.current?.hideAll(),
 
   success: (title: string, description?: string, onPress?: () => void) =>
     notificationRef.current?.success(title, description, onPress),
