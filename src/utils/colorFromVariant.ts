@@ -1,10 +1,16 @@
 import {type Variant} from '../models'
 import {themeConfig} from '../providers'
-import {theme} from '../theme'
 
+/**
+ * Resolves a variant name to its color. The lookup uses the effective theme colors —
+ * rott.config merged with RottProvider config, rott.config winning on collisions — and
+ * returns the input unchanged when it is not a known name, so literal colors pass through.
+ */
 export const colorFromVariant = (variant: Variant = 'primary') => {
-  return Object.keys(theme.colors).includes(variant as string)
-    ? theme.colors[variant as keyof typeof theme.colors]
+  const colors = themeConfig.colors
+
+  return Object.prototype.hasOwnProperty.call(colors, variant)
+    ? (colors[variant as string] as string)
     : variant
 }
 
