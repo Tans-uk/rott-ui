@@ -40,10 +40,8 @@ describe('Button -> Custom Component', () => {
   it('renders the button with loading text and a loading icon', async () => {
     const {buttonTestId, buttonText, buttonLoadingTextTestId, buttonLoadingIndicatiorTestId} =
       testId
-    const renderedButton = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
-
-    const {getByTestId, rerenderAsync} = renderedButton
-    await rerenderAsync(
+    // Render the loading state directly instead of re-rendering: flipping disabled on a mounted TouchableOpacity starts an opacity animation that loads React Native's legacy renderer, which rejects react 19.2.4 in this Jest setup.
+    const {getByTestId} = await render(
       <Button testID={buttonTestId} isLoading loadingText='Loading'>
         {buttonText}
       </Button>
