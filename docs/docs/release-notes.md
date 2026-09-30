@@ -13,6 +13,63 @@ in `0.x`, a **minor** bump may carry breaking changes; a **patch** bump never
 does. Breaking changes are always listed first, with the migration step next to
 them.
 
+## 0.9.1
+
+**Correctness fixes.** Crashes, a money bug and several silent failures found in a
+review of 0.9.0. Every fix comes with a regression test, and the test setup no longer
+mocks `React.useContext`, which had been hiding the crashes.
+
+### Behavior changes
+
+- **Notifications no longer block the app.** While a toast was visible, every touch in
+  the app was ignored. The app now stays interactive by default. To keep the old
+  behavior, pass `blockTouchesWhileNotificationVisible` to `RottProvider`.
+- **A loading `Button` ignores presses.** Pressing a button while `isLoading` no longer
+  calls `onPress`, so a slow request cannot be submitted twice. It looks the same.
+- **`EmailInput` follows its `value` prop.** When you pass `value`, the field shows it,
+  so form resets work. A `value` without `onChangeText` now makes the field read-only,
+  as with any controlled React input.
+- **A missing `rott.config` keeps the default assets.** When `rott.config` cannot be
+  resolved at runtime, the built-in icons and images are used instead of disappearing.
+  An explicitly empty config still means consumer-scanned assets only.
+
+### Fixed
+
+- The CVC info button and every `modal-*` mode of `DateInput` crashed with "Invalid hook
+  call". `formatMessage` is no longer a hook and works anywhere.
+- `AmountInput` multiplied its value by 100 when it mounted with a value it had emitted
+  (`"1234.50"` became `"123450.00"`). It now accepts both `"1234.50"` and `"1.234,50"`.
+- `AmountInput` shows its currency icon.
+- Two `DateInput`s on one screen no longer overwrite each other's date.
+- A disabled `DateInput` with `viewType="button"` no longer opens the picker.
+- `Notification.hideAll()` hides the toasts; it did nothing before.
+- The `onPress` passed to `Notification.success`, `warning`, `danger`, `info` and `show`
+  runs when the toast is tapped.
+- `Button` applies its `fontFamily` prop.
+- `Image` renders local `require()` sources and source arrays.
+- `List` no longer throws a `RangeError` when `isLoading` is set with a fractional
+  `estimatedItemSize`.
+- `TabWidget` keeps tab content mounted across re-renders.
+- Colors added through `RottProvider config` resolve as variants.
+- `Header` calls `goBackFunction`, instead of the theme's `goBack`, when the back control is pressed.
+- The library's `Array` and `String` helpers are no longer enumerable, so `for...in` over
+  your arrays and strings stops listing them.
+
+### Documentation
+
+- The Notification page documented `Notification.error` and `Notification.custom`, which
+  do not exist; it now lists the real methods.
+- The Container page listed `showStatusBar` as defaulting to `true`; the status bar is
+  hidden unless you set it.
+- The Button, Amount input, Email input, Image, Header, Configuration and rott.config
+  pages describe the behavior above.
+
+### Tooling
+
+- The `publish` script is now `release:npm`. npm runs a package's `publish` script after
+  every `npm publish`, even `--dry-run`, so the old name started a second, nested
+  publish.
+
 ## 0.9.0
 
 **Button prop contract.** Two props that the public surface declared but the
