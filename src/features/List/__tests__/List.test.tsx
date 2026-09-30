@@ -74,4 +74,10 @@ describe('List -> Custom Component', () => {
       })
     }
   })
+
+  it('renders the loading skeleton for a fractional estimatedItemSize', async () => {
+    await expect(
+      render(<List isLoading estimatedItemSize={55.5} data={[]} renderItem={() => null} />)
+    ).resolves.toBeTruthy()
+  })
 })

@@ -76,7 +76,11 @@ export const List: FC<ListProps<any>> = forwardRef(
       ? Math.round(estimatedItemSize)
       : defaultItemSize
 
-    const dataType = isLoading ? Array.from(Array(estimatedItemSize).keys()) : data
+    // The skeleton row count still comes from estimatedItemSize, as before. Rounding keeps a
+    // fractional size (display.px() returns one on Android) from throwing a RangeError.
+    const skeletonCount =
+      estimatedItemSize === undefined ? 1 : Math.max(0, Math.round(estimatedItemSize))
+    const dataType = isLoading ? Array.from({length: skeletonCount}, (_, index) => index) : data
 
     return (
       <Item
