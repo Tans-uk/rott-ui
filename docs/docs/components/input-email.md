@@ -58,8 +58,12 @@ import {Input} from '@tansuk/rott-ui'
 ## Controlled and Uncontrolled
 
 Pass `value` to control the input: it always shows `value`, so clearing or resetting
-your form state clears the field too. Without `value`, the input keeps its own text and
-still reports every change through `onChangeText`.
+your form state clears the field too. Feed the typed text back into `value` from
+`onChangeText`. If you do not, typing is reverted and the field is effectively
+read-only. To start with a text, use it as the initial state of the value you pass.
+
+Leave `value` unset for an uncontrolled field: the input keeps its own text and still
+reports every change through `onChangeText`.
 
 ## Props
 
@@ -67,7 +71,7 @@ still reports every change through `onChangeText`.
 |------|------|-------------|
 | `name` | `string` | **Required** - Input identifier |
 | `type` | `'email'` | **Required** - Must be 'email' |
-| `value` | `string` | Current value; when given, the input is controlled |
+| `value` | `string` | Current value; when given, the input is controlled and typing is reverted unless `onChangeText` feeds it back |
 | `onChangeText` | `(text: string) => void` | Change handler |
 | `placeholder` | `string` | Placeholder text |
 | `label` | `string \| InputLabelProps` | Input label |
