@@ -1,41 +1,41 @@
 ---
 sidebar_position: 1
 title: Giriş
-description: Rott UI'ya hoş geldiniz
+description: Rott UI'a hoş geldiniz - kapsamlı bir React Native UI Kit
 ---
 
-# Rott UI'ya Hoş Geldiniz
+# Rott UI'a Hoş Geldiniz
 
-Rott UI, tip güvenli temalandırma ve kapsamlı özelleştirme seçenekleriyle hızlı geliştirme için tasarlanmış, kapsamlı ve özellik tabanlı bir React Native UI Kit'tir.
+Rott UI; type-safe theming ve geniş özelleştirme seçenekleriyle hızlı geliştirme için tasarlanmış, kapsamlı ve property tabanlı bir React Native UI Kit'tir.
 
-## Rott UI Nedir?
+## Rott UI Nedir? {#what-is-rott-ui}
 
-Rott UI, temel UI öğelerinden karmaşık etkileşimli bileşenlere kadar her şeyi kapsayan **29 üretim için hazır bileşen** sunar. TypeScript ile geliştirilmiş ve en iyi uygulamaları takip eden bu kütüphane, güzel React Native uygulamaları daha hızlı oluşturmanıza yardımcı olmak için tasarlanmıştır.
+Rott UI, temel UI öğelerinden karmaşık etkileşimli component'lere kadar her şeyi kapsayan **29 production'a hazır component** sunar. TypeScript ile geliştirilen ve en iyi uygulamaları takip eden Rott UI, güzel React Native uygulamalarını daha hızlı geliştirmenize yardımcı olmak için tasarlandı.
 
-## Temel Özellikler
+## Temel Özellikler {#key-features}
 
-### 🎨 29 Üretim İçin Hazır Bileşen
-Temel butonlardan karmaşık modal ve girdi alanlarına kadar - her bileşen savaşta test edilmiş ve üretim için hazırdır.
+### 🎨 29 Production'a Hazır Component {#-29-production-ready-components}
+Temel butonlardan karmaşık modal'lara ve input alanlarına kadar - her component sahada denenmiş ve production'a hazırdır.
 
-### 🎯 Tip Güvenli Temalandırma
-Renkleri, fontları ve stilleri tam TypeScript desteğiyle yapılandırın. Özel temanız her yerde otomatik tamamlama alır.
+### 🎯 Type-Safe Theming {#-type-safe-theming}
+Renkleri, fontları ve style'ları tam TypeScript desteğiyle tanımlayın. Özel theme'iniz her yerde autocomplete desteği alır.
 
-### 📱 React Native Öncelikli
-Platforma özel uyarlamalar ve performans optimizasyonlarıyla mobil geliştirme için optimize edilmiştir.
+### 📱 React Native Öncelikli {#-react-native-first}
+Platform'a özel uyarlamalar ve performans optimizasyonlarıyla mobil geliştirme için optimize edilmiştir.
 
-### 🔧 Yüksek Düzeyde Özelleştirilebilir
-Her bileşen kapsamlı stil ve davranış prop'ları kabul eder. Kaynak koda dokunmadan özelleştirin.
+### 🔧 Yüksek Derecede Özelleştirilebilir {#-highly-customizable}
+Her component kapsamlı style ve davranış prop'ları kabul eder. Kaynak koda dokunmadan özelleştirin.
 
-### 🌍 Uluslararasılaştırmaya Hazır
-React Intl entegrasyonuyla yerleşik i18n desteği. Türkçe ve İngilizce kutudan çıkar çıkmaz dahildir.
+### 🌍 Internationalization'a Hazır {#-internationalization-ready}
+React Intl entegrasyonuyla built-in i18n desteği. Türkçe ve İngilizce hazır olarak gelir.
 
-### ♿ Erişilebilirlik Odaklı
-Her bileşende kapsamlı erişilebilirlik özellikleri ve test desteği yerleşiktir.
+### ♿ Erişilebilirlik Odaklı {#-accessibility-focused}
+Her component'e entegre, kapsamlı erişilebilirlik özellikleri ve test desteği.
 
-### 🚀 Performans Optimize Edilmiş
+### 🚀 Performans için Optimize Edildi {#-performance-optimized}
 Akıcı deneyimler için FlashList, Reanimated ve diğer performans kütüphanelerinden yararlanır.
 
-## Hızlı Örnek
+## Hızlı Örnek {#quick-example}
 
 ```tsx
 import React from 'react';
@@ -73,29 +73,29 @@ export default function MyScreen() {
 }
 ```
 
-## Bileşen Kategorileri
+## Component Kategorileri {#component-categories}
 
-- **Yerleşim** (5): Container, Content, Header, Footer, Item
-- **Gezinme** (5): Button, Pressable, Tab, TabWidget, BottomMenu
-- **Girdi** (2): Input (14+ varyant), Toggle
+- **Layout** (5): Container, Content, Header, Footer, Item
+- **Navigation** (5): Button, Pressable, Tab, TabWidget, BottomMenu
+- **Input** (2): Input (14+ variant), Toggle
 - **Görüntüleme** (5): Label, Icon, Image, EmptyState, Skeleton
 - **Geri Bildirim** (7): Modal, Alert, AlertDialog, ActionMenu, Notification, Result, Timer
 - **Veri** (1): List (FlashList ile)
 - **Yardımcı** (4): Separator, FormContainer, ImageBackground, Common
 
-## Başlarken
+## Başlarken {#getting-started}
 
-Rott UI ile geliştirmeye hazır mısınız? Hemen kuruluma geçelim:
+Rott UI ile geliştirmeye hazır mısınız? Hadi kurulumu yapalım:
 
-1. **[Kurulum](/docs/getting-started/installation)** - Rott UI ve bağımlılıklarını yükleyin
-2. **[Hızlı Başlangıç](/docs/getting-started/quick-start)** - 5 dakikada ilk ekranınızı oluşturun
+1. **[Kurulum](/docs/getting-started/installation)** - Rott UI'ı ve peer dependency'lerini kurun
+2. **[Hızlı Başlangıç](/docs/getting-started/quick-start)** - İlk ekranınızı 5 dakikada oluşturun
 
-## Topluluk ve Destek
+## Topluluk ve Destek {#community--support}
 
 - **GitHub**: [github.com/Tans-uk/rott-ui](https://github.com/Tans-uk/rott-ui)
 - **npm**: [@tansuk/rott-ui](https://www.npmjs.com/package/@tansuk/rott-ui)
-- **Sorunlar**: [Hata bildirin veya özellik isteyin](https://github.com/Tans-uk/rott-ui/issues)
+- **Issues**: [Hata bildirin veya özellik isteyin](https://github.com/Tans-uk/rott-ui/issues)
 
-## Lisans
+## Lisans {#license}
 
-Rott UI [MIT lisanslıdır](https://github.com/Tans-uk/rott-ui/blob/main/LICENSE).
+Rott UI, [MIT lisansı](https://github.com/Tans-uk/rott-ui/blob/main/LICENSE) ile lisanslanmıştır.

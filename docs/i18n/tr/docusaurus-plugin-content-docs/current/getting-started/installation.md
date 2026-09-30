@@ -1,33 +1,33 @@
 ---
 sidebar_position: 1
 title: Kurulum
-description: Rott UI ve bağımlılıklarını yükleyin
+description: Rott UI'ı ve peer dependency'lerini kurun
 ---
 
 # Kurulum
 
-Bu rehber, React Native projenize Rott UI ve gerekli tüm bağımlılıkları kurmanıza yardımcı olacaktır.
+Bu rehber, Rott UI'ı ve gerekli tüm dependency'leri React Native projenize kurmanıza yardımcı olacak.
 
-## Ön Koşullar
+## Ön Koşullar {#prerequisites}
 
-Rott UI kurmadan önce şunların yüklü olduğundan emin olun:
+Rott UI'ı kurmadan önce şunlara sahip olduğunuzdan emin olun:
 
 - **Node.js** 18.0 veya üzeri
 - **React Native** 0.70 veya üzeri
 - **React** 18.0 veya üzeri
-- Bir React Native projesi (Expo veya React Native CLI ile)
+- Bir React Native projesi (Expo ya da React Native CLI ile)
 
-## Rott UI Kurulumu
+## Rott UI'ı Kurun {#install-rott-ui}
 
-Tercih ettiğiniz paket yöneticisi ile Rott UI paketini yükleyin:
+Rott UI package'ını tercih ettiğiniz package manager ile kurun:
 
 ```bash npm2yarn
 npm install @tansuk/rott-ui
 ```
 
-## Peer Bağımlılıkları
+## Peer Dependency'leri Kurun {#install-peer-dependencies}
 
-Rott UI tam işlevsellik için birçok peer bağımlılığı gerektirir. Hepsini tek seferde yükleyin:
+Rott UI'ın tüm işlevleriyle çalışması için birkaç peer dependency gerekir. Hepsini tek seferde kurun:
 
 ```bash npm2yarn
 npm install react react-native react-intl date-fns \
@@ -40,32 +40,32 @@ npm install react react-native react-intl date-fns \
   react-native-select-contact @react-native-community/netinfo
 ```
 
-### Temel Bağımlılıklar
+### Temel Dependency'ler {#key-dependencies}
 
-| Paket                          | Amaç                             | Sürüm   | Tip                     |
-| ------------------------------ | -------------------------------- | ------- | ----------------------- |
-| `@shopify/flash-list`          | Yüksek performanslı listeler     | ≥1.8.0  | peer                    |
-| `react-native-reanimated`      | Akıcı animasyonlar               | 4.0.1   | peer                    |
-| `react-native-safe-area-context` | Güvenli alan desteği           | ≥5.4.1  | peer                    |
-| `react-native-svg`             | SVG ikon desteği                 | ≥15.12.0| peer                    |
-| `react-intl`                   | Uluslararasılaştırma             | ≥7.1.0  | peer                    |
-| `date-fns`                     | Tarih biçimlendirme              | ≥4.0.0  | peer                    |
-| `react-native-svg-transformer`  | SVG → React bileşeni dönüşümü    | ≥5.0.0  | devDependency           |
-| `babel-plugin-module-resolver` | rott.config.ts runtime alias     | ≥5.0.0  | devDependency (isteğe bağlı) |
+| Package                          | Amaç                            | Sürüm    | Tip                      |
+| -------------------------------- | ------------------------------- | -------- | ------------------------ |
+| `@shopify/flash-list`            | Yüksek performanslı listeler    | ≥1.8.0   | peer                     |
+| `react-native-reanimated`        | Akıcı animasyonlar              | 4.0.1    | peer                     |
+| `react-native-safe-area-context` | Safe area yönetimi              | ≥5.4.1   | peer                     |
+| `react-native-svg`               | SVG ikon desteği                | ≥15.12.0 | peer                     |
+| `react-intl`                     | Internationalization            | ≥7.1.0   | peer                     |
+| `date-fns`                       | Tarih biçimlendirme             | ≥4.0.0   | peer                     |
+| `react-native-svg-transformer`   | SVG → React component dönüşümü  | ≥5.0.0   | devDependency            |
+| `babel-plugin-module-resolver`   | rott.config.ts runtime alias'ı  | ≥5.0.0   | devDependency (isteğe bağlı) |
 
-## Platform Kurulumu
+## Platform'a Özel Kurulum {#platform-specific-setup}
 
-### iOS
+### iOS {#ios}
 
-Bağımlılıkları yükledikten sonra iOS pod'larını kurun:
+Dependency'leri kurduktan sonra iOS pod'larını kurun:
 
 ```bash
 cd ios && pod install && cd ..
 ```
 
-### Android
+### Android {#android}
 
-`android/build.gradle` dosyanızda minimum SDK sürümünün şu değerlerde olduğundan emin olun:
+`android/build.gradle` dosyanızda aşağıdaki minimum SDK sürümlerinin tanımlı olduğundan emin olun:
 
 ```gradle
 buildscript {
@@ -77,19 +77,19 @@ buildscript {
 }
 ```
 
-## SVG İkon Desteğini Yapılandırın
+## SVG İkon Desteğini Ayarlayın {#configure-svg-icon-support}
 
-Rott UI'nin yerleşik ikonları ve özel SVG ikonları React bileşenleri olarak yüklenir. React Native varsayılan olarak SVG importlarını desteklemez; bu yüzden `react-native-svg-transformer` kurup Metro yapılandırmasını güncellemeniz gerekir.
+Rott UI'ın built-in ikonları ve özel SVG ikonlarınız React component'i olarak yüklenir. React Native, SVG import'larını kendiliğinden desteklemez; bu yüzden `react-native-svg-transformer` package'ını kurmanız ve Metro config'inizi güncellemeniz gerekir.
 
-### react-native-svg-transformer Kurulumu
+### react-native-svg-transformer'ı Kurun {#install-react-native-svg-transformer}
 
 ```bash npm2yarn
 npm install react-native-svg-transformer --save-dev
 ```
 
-### Metro Yapılandırmasını Güncelleyin
+### Metro Config'ini Güncelleyin {#update-metro-configuration}
 
-SVG transformer kullanmak için `metro.config.js` oluşturun veya güncelleyin:
+SVG transformer'ı kullanmak için `metro.config.js` dosyanızı oluşturun ya da güncelleyin:
 
 ```js title="metro.config.js"
 const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config')
@@ -113,17 +113,17 @@ module.exports = withRottAssets(mergeConfig(defaultConfig, config), {
 })
 ```
 
-:::tip Varlık Otomatik Keşfi
-`withRottAssets()` sarmalayıcısı **Varlık Otomatik Keşfi**ni etkinleştirir: `src/assets/images/` içindeki görseller ve `src/assets/icons/svg/` içindeki ikonlar otomatik taranır ve dosya adıyla kullanılabilir. Bkz. [rott.config.ts - Varlık Otomatik Keşfi](/docs/theming/rott-config#asset-auto-discovery).
+:::tip Asset Auto-Discovery
+`withRottAssets()` wrapper'ı **Asset Auto-Discovery** özelliğini etkinleştirir: `src/assets/images/` içindeki görseller ve `src/assets/icons/svg/` içindeki ikonlar otomatik olarak taranır ve dosya adlarıyla kullanılabilir hale gelir. Bkz. [rott.config.ts - Asset Auto-Discovery](/docs/theming/rott-config#asset-auto-discovery).
 :::
 
 :::info SVG transformer neden gerekli?
-Varsayılan olarak Metro `.svg` dosyalarını statik varlık (görsel gibi) olarak işler. `svg`'yi `assetExts`'ten `sourceExts`'e taşımak, SVG transformer'ın `.svg` dosyalarını bundle sırasında React bileşenlerine dönüştürmesini sağlar. Bu kurulum olmadan, SVG ikon render eden herhangi bir bileşen (Icon, Header, Input, ikonlu Button vb.) render hatası verir.
+Metro, default olarak `.svg` dosyalarını (görseller gibi) statik asset olarak ele alır. `svg` uzantısını `assetExts` listesinden çıkarıp `sourceExts` listesine taşımak, SVG transformer'ın `.svg` dosyalarını bundle sırasında React component'lerine dönüştürmesini sağlar. Bu ayar yapılmazsa SVG ikon render eden her component (Icon, Header, Input, ikonlu Button vb.) render hatası fırlatır.
 :::
 
-## Babel Eklentilerini Yapılandırın
+## Babel Plugin'lerini Ayarlayın {#configure-babel-plugins}
 
-`babel.config.js` dosyanıza gerekli Babel eklentilerini ekleyin:
+Gerekli Babel plugin'lerini `babel.config.js` dosyanıza ekleyin:
 
 ```js title="babel.config.js"
 module.exports = {
@@ -135,13 +135,13 @@ module.exports = {
 }
 ```
 
-:::warning Eklenti Sırası
-`react-native-reanimated/plugin` **her zaman** plugins dizisinin **son öğesi** olmalıdır. Diğer tüm eklentiler (worklets, module-resolver vb.) ondan önce gelmelidir.
+:::warning Plugin Sırası
+`react-native-reanimated/plugin`, plugins array'inin **her zaman** **son öğesi** olmalıdır. Diğer tüm plugin'ler (worklets, module-resolver vb.) ondan önce gelmelidir.
 :::
 
 ### İsteğe Bağlı: rott.config.ts Runtime Çözümlemesi {#babel-module-resolver}
 
-[`rott.config.ts`](/docs/theming/rott-config) ile tip güvenli temalandırma kullanıyorsanız, `tsconfig.json` path eşlemesi yalnızca derleme zamanında çalışır. Metro/Babel'in modülü **runtime**'da çözümlemesi için `babel-plugin-module-resolver` da gerekir:
+Type-safe theming için [`rott.config.ts`](/docs/theming/rott-config) kullanıyorsanız, `tsconfig.json` path mapping'i yalnızca derleme zamanında çalışır. Metro/Babel'ın modülü **runtime**'da çözümleyebilmesi için `babel-plugin-module-resolver` package'ına da ihtiyacınız var:
 
 ```bash npm2yarn
 npm install babel-plugin-module-resolver --save-dev
@@ -169,12 +169,36 @@ module.exports = {
 ```
 
 :::tip
-`rott.config.ts` kullanmıyorsanız bu adımı atlayabilirsiniz. Tam kurulum için [rott.config.ts](/docs/theming/rott-config) sayfasına bakın.
+`rott.config.ts` kullanmıyorsanız bu adımı atlayabilirsiniz. Kurulum talimatlarının tamamı için [rott.config.ts](/docs/theming/rott-config) sayfasına bakın.
 :::
 
-## Kurulumu Doğrulayın
+#### Expo (babel-preset-expo) {#expo-babel-preset-expo}
 
-Her şeyin doğru kurulduğunu test etmek için basit bir dosya oluşturun:
+Expo altında `babel-preset-expo`, projenin babel plugin'lerini (`module-resolver` dahil) `node_modules` içindeki dosyalara **uygulamaz**. Bu yüzden `@tansuk/rott-ui` içine derlenmiş olan `require('rott.config')` hiçbir zaman yeniden yazılmaz ve runtime'da çözümlenemez — rott-ui sessizce default theme'e fallback yapar.
+
+Expo için `rott.config` modülünü bunun yerine Metro üzerinden, `metro.config.js` içinde çözümleyin:
+
+```js title="metro.config.js"
+const path = require('path')
+
+// ...mevcut config kurulumunuz...
+
+const defaultResolveRequest = config.resolver.resolveRequest
+config.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (moduleName === 'rott.config') {
+    return {type: 'sourceFile', filePath: path.resolve(__dirname, 'rott.config.ts')}
+  }
+  return (defaultResolveRequest ?? context.resolveRequest)(context, moduleName, platform)
+}
+```
+
+:::warning
+Özel theme'iniz Expo altında uygulanmıyorsa (renkler rott-ui default'larıyla render ediliyorsa), bunun olağan nedeni bu eksik Metro `resolveRequest` ayarıdır. Development sırasında ayrıca `[rott-ui] 'rott.config' could not be resolved at runtime` uyarısını da görürsünüz.
+:::
+
+## Kurulumu Doğrulayın {#verify-installation}
+
+Her şeyin doğru kurulduğunu doğrulamak için basit bir test dosyası oluşturun:
 
 ```tsx title="App.tsx"
 import React from 'react'
@@ -184,22 +208,22 @@ import {Button, RottProvider} from '@tansuk/rott-ui'
 export default function App() {
   return (
     <RottProvider>
-      <Button variant='primary' onPress={() => console.log('Çalışıyor!')}>
-        Test Butonu
+      <Button variant='primary' onPress={() => console.log('Works!')}>
+        Test Button
       </Button>
     </RottProvider>
   )
 }
 ```
 
-## Sonraki Adımlar
+## Sonraki Adımlar {#next-steps}
 
-Rott UI kuruldu. Şimdi:
+Rott UI kurulduğuna göre artık şunlara hazırsınız:
 
 1. **[Hızlı Başlangıç](/docs/getting-started/quick-start)** - İlk ekranınızı oluşturun
-2. **[Bileşenler](/docs/components/overview)** - Tüm bileşenleri keşfedin
+2. **[Component'ler](/docs/components/overview)** - Tüm component'leri keşfedin
 
-## Yardım
+## Yardıma mı İhtiyacınız Var? {#need-help}
 
-- [GitHub Issues](https://github.com/Tans-uk/rott-ui/issues)
-- [Discussions](https://github.com/Tans-uk/rott-ui/discussions)
+- [GitHub Issues](https://github.com/Tans-uk/rott-ui/issues) sayfasına göz atın
+- [Discussions](https://github.com/Tans-uk/rott-ui/discussions) bölümüne katılın
