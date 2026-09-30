@@ -262,4 +262,28 @@ describe('Header -> Custom Component', () => {
 
     expect(childrenElement).toBeOnTheScreen()
   })
+
+  it('calls goBackFunction when the back control is pressed', async () => {
+    const {component, leftIconPressable} = testId
+    const goBackFunction = jest.fn()
+    const {getByTestId} = await render(
+      <Header testID={component} back goBackFunction={goBackFunction} />
+    )
+
+    fireEvent.press(getByTestId(leftIconPressable))
+
+    expect(goBackFunction).toHaveBeenCalledTimes(1)
+  })
+
+  it('does not go back while preventGoBack is set', async () => {
+    const {component, leftIconPressable} = testId
+    const goBackFunction = jest.fn()
+    const {getByTestId} = await render(
+      <Header testID={component} back preventGoBack goBackFunction={goBackFunction} />
+    )
+
+    fireEvent.press(getByTestId(leftIconPressable))
+
+    expect(goBackFunction).not.toHaveBeenCalled()
+  })
 })
