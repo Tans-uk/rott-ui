@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Getting Started": {
+    "message": "Başlarken",
+    "description": "The label for category 'Getting Started' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Theming": {
+    "message": "Theming",
+    "description": "The label for category 'Theming' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Components": {
+    "message": "Components",
+    "description": "The label for category 'Components' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Guides": {
+    "message": "Rehberler",
+    "description": "The label for category 'Guides' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Examples": {
+    "message": "Örnekler",
+    "description": "The label for category 'Examples' in sidebar 'tutorialSidebar'"
+  }
+}

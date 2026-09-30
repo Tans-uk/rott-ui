@@ -1,21 +1,21 @@
 ---
 sidebar_position: 5
 title: Item
-description: Flexible layout container
+description: Esnek layout container'ı
 ---
 
 # Item
 
-Item is a flexible layout container component with built-in skeleton support and common UI props.
+Item; built-in skeleton desteği ve ortak UI prop'larıyla gelen esnek bir layout container component'idir.
 
-## Features
+## Özellikler {#features}
 
 - 📏 Flex layout
-- 🎨 Styling support
+- 🎨 Style desteği
 - 💀 Built-in skeleton
-- 🎯 Common UI props
+- 🎯 Ortak UI prop'ları
 
-## Basic Usage
+## Temel Kullanım {#basic-usage}
 
 ```tsx
 import { Item } from '@tansuk/rott-ui';
@@ -25,7 +25,7 @@ import { Item } from '@tansuk/rott-ui';
 </Item>
 ```
 
-## Row Layout
+## Yatay Layout {#row-layout}
 
 ```tsx
 <Item row alignItemsCenter>
@@ -34,7 +34,7 @@ import { Item } from '@tansuk/rott-ui';
 </Item>
 ```
 
-## With Flex
+## Flex ile {#with-flex}
 
 ```tsx
 <Item flex={1} justifyContentCenter alignItemsCenter>
@@ -42,7 +42,7 @@ import { Item } from '@tansuk/rott-ui';
 </Item>
 ```
 
-## With Skeleton
+## Skeleton ile {#with-skeleton}
 
 ```tsx
 <Item 
@@ -53,21 +53,21 @@ import { Item } from '@tansuk/rott-ui';
 </Item>
 ```
 
-## Props
+## Props {#props}
 
-| Prop | Type | Default | Description |
+| Prop | Tip | Default | Açıklama |
 |------|------|---------|-------------|
-| `children` | `ReactNode` | - | Content |
-| `row` | `boolean` | `false` | Row layout |
+| `children` | `ReactNode` | - | İçerik |
+| `row` | `boolean` | `false` | Yatay layout |
 | `flexWrap` | `'wrap' \| 'nowrap'` | - | Flex wrap |
-| `skeletonShow` | `boolean` | `false` | Show skeleton |
-| `skeletonStyle` | `SkeletonStyleProps` | - | Skeleton style |
+| `skeletonShow` | `boolean` | `false` | Skeleton'ı gösterir |
+| `skeletonStyle` | `SkeletonStyleProps` | - | Skeleton style'ı |
 
-Plus all `CommonUiProps`.
+Bunlara ek olarak tüm `CommonUiProps` desteklenir.
 
-## Examples
+## Örnekler {#examples}
 
-### Card
+### Kart {#card}
 
 ```tsx
 <Item 
@@ -81,7 +81,7 @@ Plus all `CommonUiProps`.
 </Item>
 ```
 
-### List Item
+### Liste Öğesi {#list-item}
 
 ```tsx
 <Item 
@@ -99,7 +99,7 @@ Plus all `CommonUiProps`.
 </Item>
 ```
 
-### Grid Item
+### Grid Öğesi {#grid-item}
 
 ```tsx
 <Item row flexWrap="wrap">

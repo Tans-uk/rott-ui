@@ -1,14 +1,14 @@
 ---
 sidebar_position: 2
 title: Hızlı Başlangıç
-description: Rott UI ile 5 dakikada ilk ekranınızı oluşturun
+description: Rott UI ile ilk ekranınızı 5 dakikada oluşturun
 ---
 
 # Hızlı Başlangıç
 
-Bu rehber, Rott UI ile 5 dakikada ilk ekranınızı oluşturmanıza yardımcı olacaktır.
+Bu rehber, Rott UI ile ilk ekranınızı yalnızca 5 dakikada oluşturmanıza yardımcı olacak.
 
-## Adım 1: Uygulamanızı RottProvider ile Sarın
+## Adım 1: Uygulamanızı RottProvider ile Sarmalayın {#step-1-wrap-your-app-with-rottprovider}
 
 ```tsx title="App.tsx"
 import React from 'react';
@@ -20,7 +20,7 @@ export default function App() {
     <RottProvider
       config={{
         options: {
-          language: 'tr',
+          language: 'en',
         },
       }}
     >
@@ -30,7 +30,7 @@ export default function App() {
 }
 ```
 
-## Adım 2: İlk Ekranınızı Oluşturun
+## Adım 2: İlk Ekranınızı Oluşturun {#step-2-create-your-first-screen}
 
 ```tsx title="screens/LoginScreen.tsx"
 import React, { useState } from 'react';
@@ -58,7 +58,7 @@ export default function LoginScreen() {
       
       <Content flex={1} paddingHorizontal={24} paddingTop={40}>
         <Label 
-          text="Tekrar Hoş Geldiniz" 
+          text="Welcome Back" 
           fontSize="3xl" 
           fontWeight="bold"
           marginBottom={32}
@@ -67,7 +67,7 @@ export default function LoginScreen() {
         <Input
           name="email"
           type="email"
-          placeholder="E-posta adresi"
+          placeholder="Email address"
           value={email}
           onChangeText={setEmail}
           marginBottom={16}
@@ -76,7 +76,7 @@ export default function LoginScreen() {
         <Input
           name="password"
           type="password"
-          placeholder="Şifre"
+          placeholder="Password"
           value={password}
           onChangeText={setPassword}
           marginBottom={24}
@@ -86,9 +86,9 @@ export default function LoginScreen() {
           size="full"
           variant="primary"
           fontSize="lg"
-          onPress={() => console.log('Giriş')}
+          onPress={() => console.log('Login')}
         >
-          Giriş Yap
+          Sign In
         </Button>
       </Content>
     </Container>
@@ -96,7 +96,7 @@ export default function LoginScreen() {
 }
 ```
 
-## Adım 3: Uygulamanızı Çalıştırın
+## Adım 3: Uygulamanızı Çalıştırın {#step-3-run-your-app}
 
 ```bash
 # iOS
@@ -106,26 +106,26 @@ npm run ios
 npm run android
 ```
 
-## Öğrendikleriniz
+## Neler Öğrendiniz {#what-youve-learned}
 
-- ✅ `RottProvider` kurulumu
-- ✅ Layout bileşenleri (`Container`, `Header`, `Content`)
-- ✅ `Label` ile metin gösterme
-- ✅ `Input` ile form oluşturma
-- ✅ `Button` ekleme
+- ✅ `RottProvider` kurulumunu yapmak
+- ✅ Layout component'lerini kullanmak (`Container`, `Header`, `Content`)
+- ✅ `Label` ile metin göstermek
+- ✅ `Input` ile form oluşturmak
+- ✅ `Button` ile buton eklemek
 
-## Sorun Giderme
+## Sorun Giderme {#troubleshooting}
 
-İkonlar görünmüyorsa veya bileşen hatası alıyorsanız şunları kontrol edin:
+İkonlar render edilmiyorsa ya da bir component hatası görüyorsanız şunları kontrol edin:
 
-- [ ] `react-native-svg` peer bağımlılığı yüklü
-- [ ] `react-native-svg-transformer` dev bağımlılığı yüklü
-- [ ] Metro config'de `svg` `assetExts`'ten `sourceExts`'e taşınmış (bkz. [Kurulum - SVG İkon Desteği](/docs/getting-started/installation#configure-svg-icon-support))
-- [ ] Babel eklentileri doğru sırada, `reanimated/plugin` en sonda (bkz. [Kurulum - Babel Eklentileri](/docs/getting-started/installation#configure-babel-plugins))
-- [ ] `rott.config.ts` kullanıyorsanız: `babel-plugin-module-resolver` kurulu ve yapılandırılmış (bkz. [Kurulum - Module Resolver](/docs/getting-started/installation#babel-module-resolver))
-- [ ] Config değişikliklerinden sonra Metro önbelleği temizlendi: `npx react-native start --reset-cache`
+- [ ] `react-native-svg` peer dependency olarak kurulu
+- [ ] `react-native-svg-transformer` dev dependency olarak kurulu
+- [ ] Metro config'i `svg` uzantısını `assetExts` listesinden `sourceExts` listesine taşıyor (bkz. [Kurulum - SVG İkon Desteği](/docs/getting-started/installation#configure-svg-icon-support))
+- [ ] Babel plugin'leri doğru sırada ve `reanimated/plugin` en sonda (bkz. [Kurulum - Babel Plugin'leri](/docs/getting-started/installation#configure-babel-plugins))
+- [ ] `rott.config.ts` kullanıyorsanız: `babel-plugin-module-resolver` kurulu ve ayarlanmış (bkz. [Kurulum - Module Resolver](/docs/getting-started/installation#babel-module-resolver))
+- [ ] Config değişikliklerinden sonra Metro cache'i temizlenmiş: `npx react-native start --reset-cache`
 
-## Sonraki Adımlar
+## Sonraki Adımlar {#next-steps}
 
-- **[Bileşenler](/docs/components/overview)** - 29 bileşeni keşfedin
-- **[Temalandırma](/docs/theming/overview)** - Renkleri ve stilleri özelleştirin
+- **[Component'ler](/docs/components/overview)** - 29 component'in tamamını keşfedin
+- **[Theming](/docs/theming/overview)** - Renkleri ve style'ları özelleştirin

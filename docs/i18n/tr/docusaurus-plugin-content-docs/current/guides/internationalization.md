@@ -1,18 +1,18 @@
 ---
 sidebar_position: 4
 title: Internationalization
-description: Multi-language support with React Intl
+description: React Intl ile çoklu dil desteği
 ---
 
 # Internationalization
 
-Rott UI includes built-in support for internationalization using React Intl.
+Rott UI, React Intl tabanlı built-in internationalization desteğiyle gelir.
 
-## Setup
+## Kurulum {#setup}
 
-Rott UI automatically sets up React Intl through `RottProvider`.
+Rott UI, React Intl kurulumunu `RottProvider` üzerinden otomatik olarak yapar.
 
-### Set Language
+### Dili Ayarlama {#set-language}
 
 ```tsx
 import { RottProvider } from '@tansuk/rott-ui';
@@ -20,7 +20,7 @@ import { RottProvider } from '@tansuk/rott-ui';
 <RottProvider
   config={{
     options: {
-      language: 'en', // or 'tr'
+      language: 'en', // veya 'tr'
     },
   }}
 >
@@ -28,9 +28,9 @@ import { RottProvider } from '@tansuk/rott-ui';
 </RottProvider>
 ```
 
-## Using Translations
+## Çevirileri Kullanma {#using-translations}
 
-### useTranslator Hook
+### useTranslator Hook'u {#usetranslator-hook}
 
 ```tsx
 import { useTranslator } from '@tansuk/rott-ui';
@@ -47,7 +47,7 @@ function MyComponent() {
 }
 ```
 
-### Direct useIntl
+### Doğrudan useIntl {#direct-useintl}
 
 ```tsx
 import { useIntl } from 'react-intl';
@@ -61,9 +61,9 @@ function MyComponent() {
 }
 ```
 
-## Adding Custom Messages
+## Özel Mesajlar Ekleme {#adding-custom-messages}
 
-### Create Message Files
+### Mesaj Dosyalarını Oluşturma {#create-message-files}
 
 ```json title="i18n/en-US.json"
 {
@@ -89,7 +89,7 @@ function MyComponent() {
 }
 ```
 
-### Load Messages
+### Mesajları Yükleme {#load-messages}
 
 ```tsx
 import { IntlProvider } from 'react-intl';
@@ -114,9 +114,9 @@ function App() {
 }
 ```
 
-## Formatting
+## Biçimlendirme {#formatting}
 
-### Dates
+### Tarihler {#dates}
 
 ```tsx
 const intl = useIntl();
@@ -128,7 +128,7 @@ const formattedDate = intl.formatDate(new Date(), {
 });
 ```
 
-### Numbers
+### Sayılar {#numbers}
 
 ```tsx
 const formattedNumber = intl.formatNumber(1234.56, {
@@ -137,7 +137,7 @@ const formattedNumber = intl.formatNumber(1234.56, {
 });
 ```
 
-### Pluralization
+### Pluralization {#pluralization}
 
 ```tsx
 const message = intl.formatMessage(
@@ -146,7 +146,7 @@ const message = intl.formatMessage(
 );
 ```
 
-## Language Switcher
+## Dil Değiştirici {#language-switcher}
 
 ```tsx
 function LanguageSwitcher() {
@@ -172,24 +172,24 @@ function LanguageSwitcher() {
 }
 ```
 
-## Best Practices
+## En İyi Uygulamalar {#best-practices}
 
-### Do's ✅
+### Yapılması Gerekenler ✅ {#dos-}
 
-- Use message keys instead of hardcoded strings
-- Organize messages by feature/screen
-- Test all supported languages
-- Handle pluralization properly
-- Format dates and numbers correctly
+- Hardcoded string'ler yerine mesaj key'leri kullanın
+- Mesajları özelliğe/ekrana göre düzenleyin
+- Desteklenen tüm dilleri test edin
+- Pluralization'ı doğru şekilde ele alın
+- Tarihleri ve sayıları doğru biçimlendirin
 
-### Don'ts ❌
+### Yapılmaması Gerekenler ❌ {#donts-}
 
-- Don't concatenate translated strings
-- Don't assume text length (design for expansion)
-- Don't forget RTL support if needed
-- Don't hardcode date/number formats
+- Çevrilmiş string'leri birleştirmeyin
+- Metin uzunluğu hakkında varsayımda bulunmayın (metnin uzayabileceğini hesaba katarak tasarlayın)
+- Gerekiyorsa RTL desteğini unutmayın
+- Tarih/sayı formatlarını hardcode etmeyin
 
-## Related
+## İlgili Sayfalar {#related}
 
 - [Configuration](/docs/getting-started/configuration)
-- [useTranslator Hook](#usetranslator-hook)
+- [useTranslator Hook'u](#usetranslator-hook)
