@@ -214,6 +214,35 @@ describe('Date Input -> Custom Input', () => {
     expect(confirmed.getDate()).toBe(10)
   })
 
+  it('confirms the value it received after mounting', async () => {
+    const onDateChange = jest.fn()
+    const {getByTestId, rerenderAsync} = await render(
+      <DateInput name='test' mode='date' onDateChange={onDateChange} />
+    )
+    await rerenderAsync(
+      <DateInput name='test' mode='date' value='1990-05-17T12:00:00' onDateChange={onDateChange} />
+    )
+
+    fireEvent.press(getByTestId(dateInputValueContainerTestId))
+    fireEvent.press(getByTestId(dateInputConfirmButtonTestId))
+
+    const confirmed = onDateChange.mock.calls.at(-1)?.[0] as Date
+    expect([confirmed.getFullYear(), confirmed.getMonth(), confirmed.getDate()]).toEqual([
+      1990, 4, 17,
+    ])
+  })
+
+  // Fails on a UTC parse only in time zones behind UTC: run with TZ=America/New_York to see it.
+  it('reads a date-only value as that calendar day', async () => {
+    const onDateChange = jest.fn()
+    await render(
+      <DateInput name='test' mode='date' value='2026-01-10' onDateChange={onDateChange} />
+    )
+
+    const mounted = onDateChange.mock.calls[0]?.[0] as Date
+    expect([mounted.getFullYear(), mounted.getMonth(), mounted.getDate()]).toEqual([2026, 0, 10])
+  })
+
   it('does not open the picker from the button view while disabled', async () => {
     const {getByTestId, queryByTestId} = await render(
       <DateInput name='test' mode='date' viewType='button' disabled testID='date-input-button' />

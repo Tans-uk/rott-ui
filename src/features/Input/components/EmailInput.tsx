@@ -26,6 +26,14 @@ export const EmailInput: FC<EmailInputProps> = ({
   // otherwise the input keeps its own text, as before.
   const isControlled = propValue !== undefined
   const [internalValue, setInternalValue] = useState<string>(propValue ?? '')
+  const [wasControlled, setWasControlled] = useState(isControlled)
+
+  // A value that goes back to undefined is a reset: clear the field instead of showing the
+  // text it held before it became controlled.
+  if (wasControlled !== isControlled) {
+    setWasControlled(isControlled)
+    if (!isControlled) setInternalValue('')
+  }
 
   const handleChangeText = useCallback(
     (text: string) => {
