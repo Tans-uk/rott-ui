@@ -64,6 +64,27 @@ Each input type has its own dedicated page with specific props, examples, and be
 />
 ```
 
+A string label is shown in upper case, with 16 above it and nothing between it and the
+field. Pass an object to change that:
+
+```tsx
+<Input
+  name="email"
+  type="email"
+  label={{text: 'Email address', uppercase: false, gap: 8, marginTop: 24}}
+/>
+```
+
+| Label option | Type | Default | Description |
+|--------------|------|---------|-------------|
+| `text` | `string` | - | Label text |
+| `uppercase` | `boolean` | `true` | Shows the text and `description` in upper case |
+| `gap` | `number` | `0` | Space between the label and its field |
+| `marginTop` | `number` | `16` | Space above the label |
+| `description` | `string` | - | Shown next to the label in parentheses |
+
+In a stacked form, a `gap` smaller than `marginTop` keeps each label with its own field.
+
 ## Validation
 
 ```tsx
