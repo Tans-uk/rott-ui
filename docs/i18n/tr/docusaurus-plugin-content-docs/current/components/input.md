@@ -64,6 +64,28 @@ Her input tipinin kendine özgü prop'ları, örnekleri ve en iyi uygulamaları 
 />
 ```
 
+String bir label büyük harfle gösterilir; üstünde 16 boşluk olur, alanla arasında boşluk
+olmaz. Bunu değiştirmek için bir nesne verin:
+
+```tsx
+<Input
+  name="email"
+  type="email"
+  label={{text: 'E-posta adresi', uppercase: false, gap: 8, marginTop: 24}}
+/>
+```
+
+| Label seçeneği | Tip | Default | Açıklama |
+|----------------|-----|---------|----------|
+| `text` | `string` | - | Label metni |
+| `uppercase` | `boolean` | `true` | Metni ve `description`'ı büyük harfle gösterir |
+| `gap` | `number` | `0` | Label ile alanı arasındaki boşluk |
+| `marginTop` | `number` | `16` | Label'ın üstündeki boşluk |
+| `description` | `string` | - | Label'ın yanında parantez içinde gösterilir |
+
+Alt alta dizilen bir formda `gap`'i `marginTop`'tan küçük tutmak, her label'ı kendi alanıyla
+gruplar.
+
 ## Validation {#validation}
 
 ```tsx

@@ -12,4 +12,10 @@ export interface InputLabelProps {
   theme?: Theme
   fontFamily?: FontFamily
   icon?: InputLabelIconProps
+  /** Shows the text and description in upper case. Defaults to `true`. */
+  uppercase?: boolean
+  /** Space between the label and its field. Defaults to `0`. */
+  gap?: number
+  /** Space above the label. Defaults to `16`. */
+  marginTop?: number
 }
