@@ -41,7 +41,7 @@ pre-commit:
       exclude:
         - "docs/**"
         - "examples/**"
-      run: npx tsc
+      run: npx tsc && npx tsc -p tsconfig.flashlist-v1.json
 commit-msg:
   parallel: true
   commands:

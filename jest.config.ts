@@ -67,6 +67,7 @@ const jestConfiguration: JestConfigWithTsJest = {
   },
   silent: true,
   snapshotResolver: '<rootDir>/scripts/snapshotResolver.js',
+  snapshotSerializers: ['<rootDir>/scripts/react19ElementSerializer.js'],
   cacheDirectory: '<rootDir>/.jest-cache',
   testPathIgnorePatterns: [
     'node_modules/',
