@@ -36,7 +36,7 @@ import { Image } from '@tansuk/rott-ui';
 | Prop | Tip | Açıklama |
 |------|------|-------------|
 | `name` | `ImageTypes` | Theme'deki görsel adı |
-| `source` | `ImageSourcePropType` | Görsel kaynağı |
+| `source` | `ImageSourcePropType` | Bir `require()` sonucu, bir `{ uri }` objesi ya da source dizisi; `name`'i override eder. Kendi `cache` değeri olmayan bir http(s) `{ uri }` source'u `cache: 'reload'` ile yüklenir |
 | `width` | `number` | Görsel genişliği |
 | `height` | `number` | Görsel yüksekliği |
 | `resizeMode` | `'cover' \| 'contain' \| 'stretch'` | Yeniden boyutlandırma modu |

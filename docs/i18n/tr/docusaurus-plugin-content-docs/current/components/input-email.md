@@ -55,13 +55,24 @@ import {Input} from '@tansuk/rott-ui'
 />
 ```
 
+## Controlled ve Uncontrolled {#controlled-and-uncontrolled}
+
+Input'u controlled yapmak için `value` verin: input her zaman `value`'yu gösterir; bu
+yüzden form state'inizi temizlemek ya da sıfırlamak alanı da temizler. Yazılan metni
+`onChangeText` üzerinden `value`'ya geri besleyin. Beslemezseniz yazma geri alınır ve
+alan fiilen read-only olur. Bir metinle başlamak için, verdiğiniz değerin initial
+state'inde o metni kullanın.
+
+Uncontrolled bir alan için `value`'yu set etmeyin: input kendi metnini tutar ve her
+değişikliği yine `onChangeText` üzerinden bildirir.
+
 ## Props {#props}
 
 | Prop | Tip | Açıklama |
 |------|------|-------------|
 | `name` | `string` | **Zorunlu** - Input tanımlayıcısı |
 | `type` | `'email'` | **Zorunlu** - 'email' olmalıdır |
-| `value` | `string` | Mevcut değer |
+| `value` | `string` | Mevcut değer; verildiğinde input controlled olur ve `onChangeText` geri beslemedikçe yazma geri alınır |
 | `onChangeText` | `(text: string) => void` | Değişiklik handler'ı |
 | `placeholder` | `string` | Placeholder metni |
 | `label` | `string \| InputLabelProps` | Input label'ı |

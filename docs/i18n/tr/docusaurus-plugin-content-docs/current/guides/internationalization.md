@@ -36,16 +36,21 @@ import { RottProvider } from '@tansuk/rott-ui';
 import { useTranslator } from '@tansuk/rott-ui';
 
 function MyComponent() {
-  const { t } = useTranslator();
+  const { translator } = useTranslator();
 
   return (
     <>
-      <Label text={t('welcome')} />
-      <Button>{t('submit')}</Button>
+      <Label text={translator('COMMON.OK')} />
+      <Button>{translator('COMMON.CLEAR')}</Button>
     </>
   );
 }
 ```
+
+`useTranslator` key'leri en yakın `IntlProvider` üzerinden çözümler. Uygulamanız
+`RottProvider`'ın içinde kendi `IntlProvider`'ını render ediyorsa, kütüphanenin key'leri
+onun altında sizin mesajlarınıza karşı çözümlenir; kütüphanenin mesajlarını kendi
+provider'ınıza dahil edin ya da orada `formatMessage` çağırın.
 
 ### Doğrudan useIntl {#direct-useintl}
 

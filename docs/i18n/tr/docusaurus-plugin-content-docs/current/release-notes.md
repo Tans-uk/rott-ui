@@ -13,6 +13,121 @@ Sürümler [semantic versioning](https://semver.org) kurallarına uyar. Kütüph
 artışı ise asla içermez. Breaking change'ler her zaman en başta, yanlarında
 migration adımıyla birlikte listelenir.
 
+## 0.10.0 {#0100}
+
+**Correctness fix'leri.** 0.9.0'ın bir review'unda bulunan crash'ler, para ile ilgili
+bug'lar ve birkaç sessiz hata. Her fix bir regression test ile gelir ve test setup'ı
+artık crash'leri gizleyen `React.useContext` mock'unu yapmıyor. Bazı fix'ler bir
+uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release'tir.
+
+### Breaking change'ler {#breaking-changes}
+
+- **Bildirimler artık uygulamayı bloklamıyor.** Bir toast görünürken uygulamadaki her
+  touch yok sayılıyordu. Uygulama artık default olarak etkileşimli kalıyor. Eski
+  davranışı korumak için `RottProvider`'a `blockTouchesWhileNotificationVisible` verin.
+  Default modda toast artık touch'a tepki verir: dokunmak onu kapatır ve `onPress`'ini
+  çalıştırır, yana kaydırmak kapatır. Önceden ona dokunulamıyordu.
+- **Loading durumundaki `Button` basmaları yok sayar.** `isLoading` iken bir butona
+  basmak artık `onPress`'i çağırmıyor; böylece yavaş bir request iki kez gönderilemez.
+  Görünüşü aynı. Loading durumundaki bir buton aynı zamanda iptal kontrolü olarak
+  kullanılıyorsa, bunun için ayrı bir kontrol render edin.
+- **`EmailInput` `value` prop'unu takip eder.** `value` verdiğinizde alan onu gösterir,
+  dolayısıyla form reset'leri çalışır. `onChangeText` olmadan verilen bir `value`, her
+  controlled React input'unda olduğu gibi alanı artık read-only yapar. `value`'yu yalnızca
+  initial value olarak verip `onChangeText` ile başka bir state'i güncelleyen bir
+  uygulamada alan artık yazmayı kabul etmez. Yazılan metni `value` üzerinden geri
+  besleyin ya da `value`'yu set etmeyin. `value`'yu tekrar `undefined` yapmak alanı
+  temizler.
+- **Eksik bir `rott.config` default asset'leri korur.** `rott.config` runtime'da
+  çözümlenemediğinde built-in ikonlar ve görseller kaybolmak yerine kullanılır.
+  Açıkça boş bırakılmış bir config ise hâlâ yalnızca consumer'ın taranan asset'leri
+  anlamına gelir.
+- **`AmountInput` artık para birimi ikonunu gösteriyor.** 0.9.0'da ikon, büyük harfli
+  para birimi koduyla (`'TL'`) aranıyordu; bu hiçbir built-in ikonla eşleşmediği için
+  glif çizilmiyordu. Artık built-in `tl`, `usd` ve `euro` key'leriyle aranıyor; böylece
+  bir `AmountInput` glifini gösterir: default olarak `TL`, ya da `currencyType` ile `USD`
+  veya `EUR`. Uygulamanızın para birimi koduyla (`TL`) kaydettiği bir ikon hâlâ öncelikli.
+  `rott.config`'i built-in ikonları dışarıda bırakan ve böyle bir ikon kaydetmeyen bir
+  uygulamada glif gösterilmez. Glifi gizlemek için `currencyType={null}` verin.
+- **`AmountInput` değersiz mount olduğunda hiçbir şey bildirmez.** Kullanıcı bir şey
+  yazmadan önce `onChangeText` üzerinden `"0.00"` bildiriyordu. Form'unuz bu bildirime
+  güveniyorsa, initial tutarı kendiniz set edin.
+- **`Header` geri basıldığında `goBackFunction`'ı çağırır.** Önceden `goBackFunction`
+  yok sayılıyor ve her zaman theme'in `goBack`'i çalışıyordu. Artık `goBackFunction`
+  verildiğinde theme'in `goBack`'i yerine o çalışır. Theme navigasyonunu korumak için
+  prop'u kaldırın ya da fonksiyonun içinden navigate edin.
+- **`formatMessage` dil değiştiğinde çağıranını artık yeniden render etmez.** Aktif dili
+  çağrıldığı anda okur. Kütüphanenin kendi component'leri runtime dil değişikliğini
+  hâlâ takip eder, ancak component'lerinizde `formatMessage` ile render ettiğiniz metin,
+  o component başka bir nedenle yeniden render edilene kadar eski dilde kalır. Runtime
+  dil değişikliğini takip etmesi gereken component'ler `useTranslator` kullanmalı.
+
+### Eklenenler {#added}
+
+- **`Footer` paket root'undan export ediliyor.** Bir ekranın alt aksiyonları için, bir
+  `Content` render eden container'dır; bu yüzden her `Content` prop'unu alır.
+  Hepsi override edilebilen default'ları `minHeight` 128, `paddingTop` 24, `gap` 16 ve
+  cihazın alt safe-area inset'ini ayıran `useBottomInset` açık. Kendi arka planı yoktur.
+  Bkz. [Footer](./components/footer.md) sayfası.
+
+### Düzeltmeler {#fixed}
+
+- CVC bilgi butonu ve `DateInput`'un her `modal-*` modu "Invalid hook call" ile
+  crash oluyordu. `formatMessage` artık bir hook değil ve her yerde çalışır.
+- `AmountInput`, kendi ürettiği bir değerle mount olduğunda değerini 100 ile çarpıyordu
+  (`"1234.50"` `"123450.00"` oluyordu). Artık herhangi sayıda ondalığa sahip nokta
+  ondalığı (`"1234.5000"` 1234.50'dir; ikinci ondalıktan sonrası kesilir), Türkçe formatı
+  (`"1.234,50"`), virgülle gruplanmış binlikleri (`"1,234.50"`) ve etrafında boşluk olan
+  değerleri okuyor. Okuyamadığı bir değer başka bir tutara dönüşmek yerine alanı boş
+  bırakır.
+- Bir `AmountInput`'u temizlemek `"0.00"`'ı güncel `onChangeText` üzerinden bildirir;
+  önceden ilk render'daki handler'ı kullanıyordu.
+- Bir ekrandaki iki `DateInput` artık birbirinin tarihini ezmiyor.
+- Mount olduktan sonra `value`'su değişen bir `DateInput` yeni değeri onaylar; kaydırmadan
+  onaylamak mount anındaki tarihi commit ediyordu.
+- `"2026-01-10"` gibi yalnızca tarih içeren bir `DateInput` değeri her saat diliminde
+  o takvim günüdür. UTC'nin gerisinde bir önceki güne dönüşüyordu ve input mount'ta o
+  günü bildiriyordu.
+- `viewType="button"` olan disabled bir `DateInput` artık picker'ı açmıyor.
+- `value`'su tekrar `undefined` olan bir `EmailInput` temizlenir; eski metni
+  gösteriyordu.
+- `Notification.hideAll()` toast'ları gizler; önceden hiçbir şey yapmıyordu.
+- `Notification` çağrıları bir component'in ilk mount effect'inden çalışır; önceden
+  `TypeError` fırlatıyordu. `blockTouchesWhileNotificationVisible` ile engelleme ekrandaki
+  toast'ları takip eder; böylece hiç görünmeyen ya da iki kez kapanan bir toast artık
+  uygulamayı bloklu bırakmaz ya da başka bir toast görünürken blokajı kaldırmaz.
+- `Notification.success`, `warning`, `danger` ve `info`'ya, ya da bu variant'lardan
+  biriyle `Notification.show`'a verilen `onPress`, toast'a dokunulduğunda çalışır.
+- `Button` `fontFamily` prop'unu uygular.
+- `Image` local `require()` source'larını ve source dizilerini render eder. Remote bir
+  source'un set ettiği `cache` policy'sini korur ve `file://` ya da `data:` uri'lerine
+  artık `cache: 'reload'` eklemez.
+- `List`, `isLoading` kesirli bir `estimatedItemSize` ile set edildiğinde artık
+  `RangeError` fırlatmıyor.
+- `TabWidget` tab içeriğini yeniden render'lar boyunca mount'lu tutar.
+- `RottProvider config` ile eklenen renkler variant olarak çözümlenir. `config`'i
+  değiştirmek ya da kaldırmak artık önceki config'in değerlerini geçerli bırakmaz.
+- Kütüphanenin `Array` ve `String` helper'ları artık enumerable değil; böylece
+  array'leriniz ve string'leriniz üzerindeki `for...in` onları listelemeyi bırakır.
+
+### Dokümantasyon {#documentation}
+
+- Notification sayfası var olmayan `Notification.error` ve `Notification.custom`'ı
+  belgeliyordu; artık gerçek method'ları listeliyor. Pakette gelen Notification
+  README'si de `error` ve `custom`'ı listeliyordu ve düzeltildi.
+- Container sayfası `showStatusBar`'ın default'unu `true` olarak listeliyordu; status
+  bar, siz set etmedikçe gizlidir.
+- Internationalization guide'ı `const { t } = useTranslator()` gösteriyordu; hook
+  `translator` döndürür.
+- Button, Amount input, Email input, Image, Header, Configuration, Installation,
+  Notification ve rott.config sayfaları yukarıdaki davranışı anlatıyor.
+
+### Tooling {#tooling}
+
+- `publish` script'i artık `release:npm`. npm, bir paketin `publish` script'ini her
+  `npm publish`'ten sonra, `--dry-run` dahil, çalıştırır; bu yüzden eski ad ikinci,
+  iç içe bir publish başlatıyordu.
+
 ## 0.9.0 {#090}
 
 **Button prop sözleşmesi.** Public yüzeyde tanımlı olduğu halde renderer'ın yok
@@ -20,7 +135,7 @@ saydığı iki prop ve iddia ettiği boyutta olmayan bir boyut token'ı. Her iki
 da sessizdi: kod type-check'ten geçiyor, render ediliyor ve hiçbir uyarı
 vermiyordu, ama yanlış style üretiyordu.
 
-### Breaking change'ler {#breaking-changes}
+### Breaking change'ler {#breaking-changes-1}
 
 **`size="full"` artık sabit bir genişlik değil, container'ına göre belirleniyor.**
 
@@ -81,7 +196,7 @@ Default değer `{height: 'lg'}` olup daha önce aynı sabit `342px` değerine
 düşüyordu. Artık parent genişliğinin `100%` değerine çözümleniyor; yükseklik ise
 değişmeden `56` olarak kalıyor.
 
-### Düzeltmeler {#fixed}
+### Düzeltmeler {#fixed-1}
 
 - **`borderWidth` ve `borderColor` her variant'ta dikkate alınır.**
   ([#8](https://github.com/Tans-uk/rott-ui/issues/8))
@@ -116,7 +231,7 @@ değişmeden `56` olarak kalıyor.
   ([#9](https://github.com/Tans-uk/rott-ui/issues/9))
   Yukarıdaki breaking change notuna bakın.
 
-### Dokümantasyon {#documentation}
+### Dokümantasyon {#documentation-1}
 
 - Button sayfası border prop'larını, eksiksiz boyut tablosunu ve hangi
   genişliklerin sabit, hangilerinin parent'a göreli olduğunu belgeliyor.
