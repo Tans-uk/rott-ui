@@ -3,6 +3,7 @@ import React from 'react'
 import {Text} from 'react-native'
 
 import {render, waitFor} from '../../../__tests__/utils/testUtils'
+import {Separator} from '../../Separator'
 import {List} from '../components'
 
 describe('List -> Custom Component', () => {
@@ -79,5 +80,132 @@ describe('List -> Custom Component', () => {
     await expect(
       render(<List isLoading estimatedItemSize={55.5} data={[]} renderItem={() => null} />)
     ).resolves.toBeTruthy()
+  })
+})
+
+describe('List -> loading skeleton', () => {
+  const skeleton = <Text testID='skeleton-row'>loading</Text>
+
+  it('renders skeletonCount rows', async () => {
+    const {getAllByTestId} = await render(
+      <List isLoading skeletonCount={3} listSkeletonItem={skeleton} data={[]} renderItem={null} />
+    )
+
+    expect(getAllByTestId('skeleton-row')).toHaveLength(3)
+  })
+
+  it('takes skeletonCount over estimatedItemSize', async () => {
+    const {getAllByTestId} = await render(
+      <List
+        isLoading
+        skeletonCount={2}
+        estimatedItemSize={5}
+        listSkeletonItem={skeleton}
+        data={[]}
+        renderItem={null}
+      />
+    )
+
+    expect(getAllByTestId('skeleton-row')).toHaveLength(2)
+  })
+
+  it('falls back to estimatedItemSize when skeletonCount is not set', async () => {
+    const {getAllByTestId} = await render(
+      <List
+        isLoading
+        estimatedItemSize={4}
+        listSkeletonItem={skeleton}
+        data={[]}
+        renderItem={null}
+      />
+    )
+
+    expect(getAllByTestId('skeleton-row')).toHaveLength(4)
+  })
+
+  it('renders one row when neither is set', async () => {
+    const {getAllByTestId} = await render(
+      <List isLoading listSkeletonItem={skeleton} data={[]} renderItem={null} />
+    )
+
+    expect(getAllByTestId('skeleton-row')).toHaveLength(1)
+  })
+})
+
+// The render result's tree nodes are untyped (react-test-renderer ships no types).
+type RenderedNode = {type: unknown; props: {children?: unknown}}
+
+describe('List -> header and footer', () => {
+  const data = [{id: 1, name: 'Item 1'}]
+  const renderItem = ({item}: {item: {name: string}}) => <Text>{item.name}</Text>
+
+  it('renders the consumer header and footer next to the separators', async () => {
+    const {getByText, UNSAFE_getAllByType} = await render(
+      <List
+        data={data}
+        renderItem={renderItem}
+        headerSeparator
+        footerSeparator
+        ListHeaderComponent={<Text>Header</Text>}
+        ListFooterComponent={() => <Text>Footer</Text>}
+      />
+    )
+
+    expect(getByText('Header')).toBeTruthy()
+    expect(getByText('Footer')).toBeTruthy()
+    expect(UNSAFE_getAllByType(Separator)).toHaveLength(2)
+  })
+
+  it('puts the header separator between the header and the items', async () => {
+    const {UNSAFE_root} = await render(
+      <List
+        data={data}
+        renderItem={renderItem}
+        headerSeparator
+        ListHeaderComponent={<Text>Header</Text>}
+      />
+    )
+
+    // findAll walks the tree depth-first, so the result follows render order.
+    const order = UNSAFE_root.findAll(
+      (node: RenderedNode) => node.type === Separator || node.type === Text
+    ).map((node: RenderedNode) => (node.type === Separator ? 'separator' : node.props.children))
+
+    expect(order).toEqual(['Header', 'separator', 'Item 1'])
+  })
+
+  it('renders the consumer header alone when headerSeparator is off', async () => {
+    const {getByText, UNSAFE_queryAllByType} = await render(
+      <List data={data} renderItem={renderItem} ListHeaderComponent={<Text>Header</Text>} />
+    )
+
+    expect(getByText('Header')).toBeTruthy()
+    expect(UNSAFE_queryAllByType(Separator)).toHaveLength(0)
+  })
+
+  it('keeps a consumer header mounted across re-renders when headerSeparator is on', async () => {
+    const mounts = jest.fn()
+    const Header = () => {
+      React.useEffect(() => {
+        mounts()
+      }, [])
+
+      return <Text>Header</Text>
+    }
+
+    const {getByText, rerenderAsync} = await render(
+      <List data={data} renderItem={renderItem} headerSeparator ListHeaderComponent={<Header />} />
+    )
+    await rerenderAsync(
+      <List
+        data={[...data, {id: 2, name: 'Item 2'}]}
+        renderItem={renderItem}
+        headerSeparator
+        ListHeaderComponent={<Header />}
+      />
+    )
+
+    expect(getByText('Item 2')).toBeTruthy()
+    expect(mounts).toHaveBeenCalledTimes(1)
   })
 })
