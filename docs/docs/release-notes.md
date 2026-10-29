@@ -13,6 +13,49 @@ in `0.x`, a **minor** bump may carry breaking changes; a **patch** bump never
 does. Breaking changes are always listed first, with the migration step next to
 them.
 
+## 0.11.0
+
+**FlashList 2.x support.** `List` works with `@shopify/flash-list` 1.x (from 1.8.0) and
+2.x, and both are type-checked and tested on every change. FlashList 2.x runs only on the
+New Architecture, so apps on the old architecture stay on 1.x. The peer range is
+unchanged (`>=1.8.0`).
+
+### Breaking changes
+
+- **`headerSeparator` and `footerSeparator` draw next to your own header and footer.**
+  When you passed `ListHeaderComponent` together with `headerSeparator`, your header
+  replaced the separator. Now both render, in the order header, separator, items,
+  separator, footer; the same goes for `ListFooterComponent` and `footerSeparator`. Your
+  header keeps its state across renders. To keep only your header, drop
+  `headerSeparator`.
+
+### Added
+
+- Support for FlashList 2.x in `List`, next to 1.x.
+- `skeletonCount` on `List` sets how many skeleton rows render while `isLoading`. When
+  unset, the count still falls back to `estimatedItemSize`, then to 1, so existing
+  screens render the same. Set it wherever you pass `estimatedItemSize`.
+
+### Fixed
+
+- `estimatedItemSize` on `List` type-checks with FlashList 2.x. It failed with TS2322
+  because FlashList 2.x removed it from its props. FlashList 1.x uses it for layout;
+  2.x measures items itself and ignores it.
+
+### Documentation
+
+- The List page no longer marks `estimatedItemSize` as required, and describes
+  `itemsToShow` as the list height it sets rather than a skeleton count. Its loading
+  examples rendered one skeleton row per pixel of `estimatedItemSize`; they now use
+  `skeletonCount`. New sections cover header and footer separators and FlashList 1.x
+  and 2.x.
+
+### Tooling
+
+- Development uses FlashList 2.3.3; 1.8.3 stays installed as `@shopify/flash-list-v1`.
+  `yarn typecheck` checks both versions, and `yarn test:flashlist-v1` runs the suites
+  that render a list against 1.x with their own snapshots, also in CI.
+
 ## 0.10.0
 
 **Correctness fixes.** Crashes, money bugs and several silent failures found in a

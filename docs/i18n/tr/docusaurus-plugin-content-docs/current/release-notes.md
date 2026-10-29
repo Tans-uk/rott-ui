@@ -13,6 +13,49 @@ Sürümler [semantic versioning](https://semver.org) kurallarına uyar. Kütüph
 artışı ise asla içermez. Breaking change'ler her zaman en başta, yanlarında
 migration adımıyla birlikte listelenir.
 
+## 0.11.0 {#0110}
+
+**FlashList 2.x desteği.** `List`, `@shopify/flash-list` 1.x (1.8.0'dan itibaren) ve 2.x ile
+çalışır; ikisi de her değişiklikte tip kontrolünden ve testlerden geçer. FlashList 2.x
+yalnızca New Architecture'da çalışır; eski mimarideki uygulamalar 1.x'te kalır. Peer
+aralığı değişmedi (`>=1.8.0`).
+
+### Breaking change'ler {#breaking-changes}
+
+- **`headerSeparator` ve `footerSeparator` kendi header ve footer'ınızın yanında çizilir.**
+  `ListHeaderComponent`'i `headerSeparator` ile birlikte verdiğinizde header'ınız
+  ayırıcının yerini alıyordu. Artık ikisi de render edilir; sıra header, ayırıcı, öğeler,
+  ayırıcı, footer olur. Aynısı `ListFooterComponent` ve `footerSeparator` için de geçerli.
+  Header'ınız render'lar arasında state'ini korur. Yalnızca header'ınızı istiyorsanız
+  `headerSeparator`'ı kaldırın.
+
+### Eklenenler {#added}
+
+- `List`'te 1.x'in yanında FlashList 2.x desteği.
+- `List`'teki `skeletonCount`, `isLoading` iken kaç skeleton satırı render edileceğini
+  belirler. Verilmezse sayı yine `estimatedItemSize`'a, o da yoksa 1'e düşer; mevcut
+  ekranlar aynı görünür. `estimatedItemSize` verdiğiniz her yerde bunu da verin.
+
+### Düzeltmeler {#fixed}
+
+- `List`'teki `estimatedItemSize` FlashList 2.x ile tip kontrolünden geçer. FlashList 2.x
+  onu prop'larından kaldırdığı için TS2322 veriyordu. FlashList 1.x onu layout için
+  kullanır; 2.x öğeleri kendisi ölçer ve onu yok sayar.
+
+### Dokümantasyon {#documentation}
+
+- List sayfası `estimatedItemSize`'ı artık zorunlu olarak göstermiyor ve `itemsToShow`'u
+  skeleton sayısı olarak değil, belirlediği liste yüksekliği olarak anlatıyor. Yükleme
+  örnekleri `estimatedItemSize`'ın her pikseli için bir skeleton satırı çiziyordu; artık
+  `skeletonCount` kullanıyorlar. Header ve footer ayırıcıları ile FlashList 1.x ve 2.x
+  için yeni bölümler eklendi.
+
+### Tooling {#tooling}
+
+- Geliştirme FlashList 2.3.3 ile yapılıyor; 1.8.3 `@shopify/flash-list-v1` olarak kurulu
+  kalıyor. `yarn typecheck` iki sürümü de kontrol ediyor; `yarn test:flashlist-v1`,
+  liste render eden suite'leri kendi snapshot'larıyla 1.x'e karşı koşuyor, CI'da da.
+
 ## 0.10.0 {#0100}
 
 **Correctness fix'leri.** 0.9.0'ın bir review'unda bulunan crash'ler, para ile ilgili
@@ -20,7 +63,7 @@ bug'lar ve birkaç sessiz hata. Her fix bir regression test ile gelir ve test se
 artık crash'leri gizleyen `React.useContext` mock'unu yapmıyor. Bazı fix'ler bir
 uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release'tir.
 
-### Breaking change'ler {#breaking-changes}
+### Breaking change'ler {#breaking-changes-1}
 
 - **Bildirimler artık uygulamayı bloklamıyor.** Bir toast görünürken uygulamadaki her
   touch yok sayılıyordu. Uygulama artık default olarak etkileşimli kalıyor. Eski
@@ -62,7 +105,7 @@ uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release
   o component başka bir nedenle yeniden render edilene kadar eski dilde kalır. Runtime
   dil değişikliğini takip etmesi gereken component'ler `useTranslator` kullanmalı.
 
-### Eklenenler {#added}
+### Eklenenler {#added-1}
 
 - **`Footer` paket root'undan export ediliyor.** Bir ekranın alt aksiyonları için, bir
   `Content` render eden container'dır; bu yüzden her `Content` prop'unu alır.
@@ -70,7 +113,7 @@ uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release
   cihazın alt safe-area inset'ini ayıran `useBottomInset` açık. Kendi arka planı yoktur.
   Bkz. [Footer](./components/footer.md) sayfası.
 
-### Düzeltmeler {#fixed}
+### Düzeltmeler {#fixed-1}
 
 - CVC bilgi butonu ve `DateInput`'un her `modal-*` modu "Invalid hook call" ile
   crash oluyordu. `formatMessage` artık bir hook değil ve her yerde çalışır.
@@ -110,7 +153,7 @@ uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release
 - Kütüphanenin `Array` ve `String` helper'ları artık enumerable değil; böylece
   array'leriniz ve string'leriniz üzerindeki `for...in` onları listelemeyi bırakır.
 
-### Dokümantasyon {#documentation}
+### Dokümantasyon {#documentation-1}
 
 - Notification sayfası var olmayan `Notification.error` ve `Notification.custom`'ı
   belgeliyordu; artık gerçek method'ları listeliyor. Pakette gelen Notification
@@ -122,7 +165,7 @@ uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release
 - Button, Amount input, Email input, Image, Header, Configuration, Installation,
   Notification ve rott.config sayfaları yukarıdaki davranışı anlatıyor.
 
-### Tooling {#tooling}
+### Tooling {#tooling-1}
 
 - `publish` script'i artık `release:npm`. npm, bir paketin `publish` script'ini her
   `npm publish`'ten sonra, `--dry-run` dahil, çalıştırır; bu yüzden eski ad ikinci,
@@ -135,7 +178,7 @@ saydığı iki prop ve iddia ettiği boyutta olmayan bir boyut token'ı. Her iki
 da sessizdi: kod type-check'ten geçiyor, render ediliyor ve hiçbir uyarı
 vermiyordu, ama yanlış style üretiyordu.
 
-### Breaking change'ler {#breaking-changes-1}
+### Breaking change'ler {#breaking-changes-2}
 
 **`size="full"` artık sabit bir genişlik değil, container'ına göre belirleniyor.**
 
@@ -196,7 +239,7 @@ Default değer `{height: 'lg'}` olup daha önce aynı sabit `342px` değerine
 düşüyordu. Artık parent genişliğinin `100%` değerine çözümleniyor; yükseklik ise
 değişmeden `56` olarak kalıyor.
 
-### Düzeltmeler {#fixed-1}
+### Düzeltmeler {#fixed-2}
 
 - **`borderWidth` ve `borderColor` her variant'ta dikkate alınır.**
   ([#8](https://github.com/Tans-uk/rott-ui/issues/8))
@@ -231,7 +274,7 @@ değişmeden `56` olarak kalıyor.
   ([#9](https://github.com/Tans-uk/rott-ui/issues/9))
   Yukarıdaki breaking change notuna bakın.
 
-### Dokümantasyon {#documentation-1}
+### Dokümantasyon {#documentation-2}
 
 - Button sayfası border prop'larını, eksiksiz boyut tablosunu ve hangi
   genişliklerin sabit, hangilerinin parent'a göreli olduğunu belgeliyor.
