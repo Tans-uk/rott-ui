@@ -43,6 +43,9 @@ jobs:
       - name: Run unit tests
         run: yarn test --maxWorkers=2 --coverage
 
+      - name: Run the FlashList 1.x suites
+        run: yarn test:flashlist-v1 --maxWorkers=2
+
   build-library:
     # The packaging check belongs to the release path; development gets lint and
     # test only. Nothing here publishes — `yarn prepare` just builds into lib/.
