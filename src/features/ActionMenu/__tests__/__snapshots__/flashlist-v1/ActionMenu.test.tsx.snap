@@ -70,8 +70,29 @@ exports[`ActionMenu -> Custom Component matches the snapshot on first render 1`]
             <RCTScrollView
               ItemSeparatorComponent={[Function]}
               ListEmptyComponent={[Function]}
-              ListFooterComponent={[Function]}
-              ListHeaderComponent={[Function]}
+              ListFooterComponent={
+                <SlotWithSeparator
+                  separator={
+                    <Separator
+                      orientation="horizontal"
+                      size="full"
+                      variant="neutral-alpha-200"
+                    />
+                  }
+                  separatorFirst={true}
+                />
+              }
+              ListHeaderComponent={
+                <SlotWithSeparator
+                  separator={
+                    <Separator
+                      orientation="horizontal"
+                      size="full"
+                      variant="neutral-alpha-200"
+                    />
+                  }
+                />
+              }
               applyWindowCorrection={[Function]}
               canChangeSize={true}
               contentContainerStyle={
@@ -268,8 +289,25 @@ exports[`ActionMenu -> Custom Component matches the snapshot on first render 1`]
                   "props": {
                     "ItemSeparatorComponent": [Function],
                     "ListEmptyComponent": [Function],
-                    "ListFooterComponent": [Function],
-                    "ListHeaderComponent": [Function],
+                    "ListFooterComponent": <SlotWithSeparator
+                      separator={
+                        <Separator
+                          orientation="horizontal"
+                          size="full"
+                          variant="neutral-alpha-200"
+                        />
+                      }
+                      separatorFirst={true}
+                    />,
+                    "ListHeaderComponent": <SlotWithSeparator
+                      separator={
+                        <Separator
+                          orientation="horizontal"
+                          size="full"
+                          variant="neutral-alpha-200"
+                        />
+                      }
+                    />,
                     "data": [
                       {
                         "action": [Function],

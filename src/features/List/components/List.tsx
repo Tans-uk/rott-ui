@@ -1,15 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 
-import React, {
-  forwardRef,
-  isValidElement,
-  useCallback,
-  useRef,
-  useState,
-  type FC,
-  type ReactNode,
-  type Ref,
-} from 'react'
+import React, {forwardRef, isValidElement, useState, type FC, type ReactNode, type Ref} from 'react'
 
 import {StyleSheet} from 'react-native'
 
@@ -48,8 +39,8 @@ interface ListProps<T> extends CommonUiProps, FlashListProps<T> {
    */
   estimatedItemSize?: number
   /**
-   * Number of skeleton rows rendered while `isLoading`. When unset, the count falls back to
-   * `estimatedItemSize` (the behavior before this prop existed), then to 1.
+   * Number of skeleton rows rendered while `isLoading`, at least 1. When unset, the count
+   * falls back to `estimatedItemSize` (the behavior before this prop existed), then to 1.
    */
   skeletonCount?: number
 }
@@ -62,6 +53,23 @@ const renderSlot = (slot: ListSlot) => {
 
   return React.createElement(slot as React.ComponentType)
 }
+
+interface SlotWithSeparatorProps {
+  slot: ListSlot
+  separator: ReactNode
+  separatorFirst?: boolean
+}
+
+// Declared at module level so its element keeps one type across List renders: React updates
+// the consumer's header or footer in place instead of remounting it. The slot stays the
+// second child whichever side the separator is on.
+const SlotWithSeparator: FC<SlotWithSeparatorProps> = ({slot, separator, separatorFirst}) => (
+  <>
+    {separatorFirst ? separator : null}
+    {renderSlot(slot)}
+    {separatorFirst ? null : separator}
+  </>
+)
 
 export const List: FC<ListProps<any>> = forwardRef(
   (
@@ -115,46 +123,33 @@ export const List: FC<ListProps<any>> = forwardRef(
 
     // Without skeletonCount the row count comes from estimatedItemSize, as before. Rounding
     // keeps a fractional value (display.px() returns one on Android) from throwing a RangeError.
-    const skeletonRows = Math.max(0, Math.round(skeletonCount ?? estimatedItemSize ?? 1))
+    // At least one row, so a loading list never falls through to the empty state.
+    const skeletonRows = Math.max(1, Math.round(skeletonCount ?? estimatedItemSize ?? 1) || 0)
     const dataType = isLoading ? Array.from({length: skeletonRows}, (_, index) => index) : data
 
-    // The separators sit between the consumer's header/footer and the items. The wrappers are
-    // stable component types that read the latest header, footer and separator from refs, so
-    // a consumer header keeps its state across renders. FlashList renders them on every List
-    // render. Components rather than elements: an element prop ends up in snapshots of the
-    // scroll view, and React 19 elements serialize with their whole owner tree.
-    const headerSlotRef = useRef(ListHeaderComponent)
-    const footerSlotRef = useRef(ListFooterComponent)
-    const separatorRef = useRef(customRenderSeparator)
-    headerSlotRef.current = ListHeaderComponent
-    footerSlotRef.current = ListFooterComponent
-    separatorRef.current = customRenderSeparator
-
-    const HeaderWithSeparator = useCallback(
-      () => (
-        <>
-          {renderSlot(headerSlotRef.current)}
-          {separatorRef.current()}
-        </>
-      ),
-      []
+    // The separators sit between the consumer's header/footer and the items. A new element on
+    // every render: FlashList memoizes the header and footer on this prop's identity, so a
+    // stable value would freeze them.
+    const listHeader = headerSeparator ? (
+      <SlotWithSeparator slot={ListHeaderComponent} separator={customRenderSeparator()} />
+    ) : (
+      ListHeaderComponent
     )
-    const FooterWithSeparator = useCallback(
-      () => (
-        <>
-          {separatorRef.current()}
-          {renderSlot(footerSlotRef.current)}
-        </>
-      ),
-      []
+    const listFooter = footerSeparator ? (
+      <SlotWithSeparator
+        slot={ListFooterComponent}
+        separator={customRenderSeparator()}
+        separatorFirst
+      />
+    ) : (
+      ListFooterComponent
     )
-
-    const listHeader = headerSeparator ? HeaderWithSeparator : ListHeaderComponent
-    const listFooter = footerSeparator ? FooterWithSeparator : ListFooterComponent
 
     // FlashList 2.x has no estimatedItemSize prop and never reads it, so passing it is safe
     // there; the spread keeps the call valid against both versions' types.
-    const flashListV1Props: object = {estimatedItemSize: calculatedEstimatedItemSize}
+    const flashListV1Props: Partial<Record<'estimatedItemSize', number>> = {
+      estimatedItemSize: calculatedEstimatedItemSize,
+    }
 
     return (
       <Item

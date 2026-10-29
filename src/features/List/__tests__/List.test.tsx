@@ -123,6 +123,15 @@ describe('List -> loading skeleton', () => {
     expect(getAllByTestId('skeleton-row')).toHaveLength(4)
   })
 
+  it('renders at least one row, not the empty state, for a zero skeletonCount', async () => {
+    const {getAllByTestId, queryByTestId} = await render(
+      <List isLoading skeletonCount={0} listSkeletonItem={skeleton} data={[]} renderItem={null} />
+    )
+
+    expect(getAllByTestId('skeleton-row')).toHaveLength(1)
+    expect(queryByTestId('list-empty-test-id')).toBeNull()
+  })
+
   it('renders one row when neither is set', async () => {
     const {getAllByTestId} = await render(
       <List isLoading listSkeletonItem={skeleton} data={[]} renderItem={null} />
@@ -183,29 +192,53 @@ describe('List -> header and footer', () => {
     expect(UNSAFE_queryAllByType(Separator)).toHaveLength(0)
   })
 
-  it('keeps a consumer header mounted across re-renders when headerSeparator is on', async () => {
+  it('updates a consumer header and footer in place when the separators are on', async () => {
     const mounts = jest.fn()
-    const Header = () => {
+    const Header = ({count}: {count: number}) => {
       React.useEffect(() => {
         mounts()
       }, [])
 
-      return <Text>Header</Text>
+      return <Text>{`${count} results`}</Text>
     }
-
-    const {getByText, rerenderAsync} = await render(
-      <List data={data} renderItem={renderItem} headerSeparator ListHeaderComponent={<Header />} />
-    )
-    await rerenderAsync(
+    const renderList = (items: typeof data) => (
       <List
-        data={[...data, {id: 2, name: 'Item 2'}]}
+        data={items}
         renderItem={renderItem}
         headerSeparator
-        ListHeaderComponent={<Header />}
+        footerSeparator
+        ListHeaderComponent={<Header count={items.length} />}
+        ListFooterComponent={<Text>{`Footer ${items.length}`}</Text>}
       />
     )
 
-    expect(getByText('Item 2')).toBeTruthy()
+    const {getByText, queryByText, rerenderAsync} = await render(renderList(data))
+    await rerenderAsync(renderList([...data, {id: 2, name: 'Item 2'}]))
+
+    expect(getByText('2 results')).toBeTruthy()
+    expect(queryByText('1 results')).toBeNull()
+    expect(getByText('Footer 2')).toBeTruthy()
     expect(mounts).toHaveBeenCalledTimes(1)
+  })
+
+  it('passes separator prop changes to the header and footer separators', async () => {
+    const renderList = (separatorVariant: 'neutral-alpha-200' | 'danger') => (
+      <List
+        data={data}
+        renderItem={renderItem}
+        headerSeparator
+        footerSeparator
+        separatorVariant={separatorVariant}
+      />
+    )
+
+    const {UNSAFE_getAllByType, rerenderAsync} = await render(renderList('neutral-alpha-200'))
+    await rerenderAsync(renderList('danger'))
+
+    const variants = UNSAFE_getAllByType(Separator).map(
+      (separator: RenderedNode) => (separator.props as {variant?: string}).variant
+    )
+
+    expect(variants).toEqual(['danger', 'danger'])
   })
 })
