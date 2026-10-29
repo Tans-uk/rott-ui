@@ -95,6 +95,7 @@ Ardından autocomplete ile kullanın:
 <Button variant="brandPrimary">Brand Button</Button>
 <Label variant="accentPurple">Purple Text</Label>
 <Item backgroundColor="darkBackground">Dark Item</Item>
+<Item borderWidth={1} borderColor="inputBorder">Bordered Item</Item>
 ```
 
 ## Component'lerde Renk Kullanımı {#color-usage-in-components}

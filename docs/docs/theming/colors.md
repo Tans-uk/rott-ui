@@ -95,6 +95,7 @@ Then use with autocomplete:
 <Button variant="brandPrimary">Brand Button</Button>
 <Label variant="accentPurple">Purple Text</Label>
 <Item backgroundColor="darkBackground">Dark Item</Item>
+<Item borderWidth={1} borderColor="inputBorder">Bordered Item</Item>
 ```
 
 ## Color Usage in Components
