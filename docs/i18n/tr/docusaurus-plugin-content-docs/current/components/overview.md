@@ -1,111 +1,111 @@
 ---
 sidebar_position: 1
-title: Bileşenlere Genel Bakış
-description: 29 Rott UI bileşenini keşfedin
+title: Component'lere Genel Bakış
+description: Rott UI'daki 29 component'in tamamını keşfedin
 ---
 
-# Bileşenlere Genel Bakış
+# Component'lere Genel Bakış
 
-Rott UI, mantıksal kategorilere ayrılmış 29 üretim için hazır bileşen sunar.
+Rott UI, mantıksal kategorilere ayrılmış, production'a hazır 29 component sunar.
 
-## Tüm Bileşenler (Alfabetik)
+## Tüm Component'ler (Alfabetik) {#all-components-alphabetical}
 
-Tüm bileşenlere yan çubuktan alfabetik olarak göz atın veya aşağıdaki kategorilere göre keşfedin:
+Tüm component'lere sidebar'da alfabetik sırayla göz atın ya da aşağıda kategoriye göre keşfedin:
 
-## Yerleşim Bileşenleri
+## Layout Component'leri {#layout-components}
 
-Ekranlarınızı yapılandırmak için temel bileşenler.
+Ekranlarınızın yapısını kurmak için temel component'ler.
 
-- **[Container](/docs/components/container)** - Root wrapper with safe area handling
-- **[Content](/docs/components/content)** - Scrollable content container with keyboard handling
-- **[Header](/docs/components/header)** - Navigation header with logo and actions
-- **[Footer](/docs/components/footer)** - Footer container
-- **[Item](/docs/components/item)** - Flexible layout container
+- **[Container](/docs/components/container)** - Safe area'yı yöneten root wrapper
+- **[Content](/docs/components/content)** - Klavyeyi yöneten, kaydırılabilir içerik container'ı
+- **[Header](/docs/components/header)** - Logo ve aksiyonlar içeren navigation header'ı
+- **[Footer](/docs/components/footer)** - Footer container'ı
+- **[Item](/docs/components/item)** - Esnek layout container'ı
 
-## Gezinme Bileşenleri
+## Navigation Component'leri {#navigation-components}
 
-Kullanıcı gezinmesi ve eylemleri için etkileşimli bileşenler.
+Kullanıcı navigation'ı ve aksiyonları için etkileşimli component'ler.
 
-- **[Button](/docs/components/button)** - Interactive button with variants, sizes, icons
-- **[Pressable](/docs/components/pressable)** - Custom touchable areas
-- **[Tab](/docs/components/tab)** - Tab navigation items
-- **[TabWidget](/docs/components/tab-widget)** - Complete tab navigation system
-- **[BottomMenu](/docs/components/bottom-menu)** - Bottom navigation bar
+- **[Button](/docs/components/button)** - Variant, boyut ve ikon destekli etkileşimli buton
+- **[Pressable](/docs/components/pressable)** - Özel dokunulabilir alanlar
+- **[Tab](/docs/components/tab)** - Tab navigation öğeleri
+- **[TabWidget](/docs/components/tab-widget)** - Eksiksiz tab navigation sistemi
+- **[BottomMenu](/docs/components/bottom-menu)** - Alt navigation bar'ı
 
-## Girdi Bileşenleri
+## Input Component'leri {#input-components}
 
-Doğrulama ve maskeleme ile form girdileri.
+Validation ve maskeleme destekli form input'ları.
 
-- **[Input](/docs/components/input)** - Base input component (overview)
-  - **[Amount](/docs/components/input-amount)** - Currency input
+- **[Input](/docs/components/input)** - Temel input component'i (genel bakış)
+  - **[Amount](/docs/components/input-amount)** - Para birimi input'u
   - **[Checkbox](/docs/components/input-checkbox)** - Checkbox
-  - **[Credit Card](/docs/components/input-credit-card)** - Card number
-  - **[CVC](/docs/components/input-cvc)** - Card security code
-  - **[Date](/docs/components/input-date)** - Date picker
-  - **[Email](/docs/components/input-email)** - Email validation
-  - **[Expire Date](/docs/components/input-expire-date)** - Card expiry
-  - **[IBAN](/docs/components/input-iban)** - IBAN formatting
-  - **[Numeric](/docs/components/input-numeric)** - Numbers only
-  - **[Password](/docs/components/input-password)** - Password with show/hide
-  - **[Phone](/docs/components/input-phone)** - Phone masking
+  - **[Credit Card](/docs/components/input-credit-card)** - Kart numarası
+  - **[CVC](/docs/components/input-cvc)** - Kart güvenlik kodu
+  - **[Date](/docs/components/input-date)** - Tarih seçici
+  - **[Email](/docs/components/input-email)** - E-posta validation'ı
+  - **[Expire Date](/docs/components/input-expire-date)** - Kart son kullanma tarihi
+  - **[IBAN](/docs/components/input-iban)** - IBAN formatlama
+  - **[Numeric](/docs/components/input-numeric)** - Yalnızca sayı
+  - **[Password](/docs/components/input-password)** - Göster/gizle destekli şifre
+  - **[Phone](/docs/components/input-phone)** - Telefon maskeleme
   - **[PIN](/docs/components/input-pin)** - PIN/OTP
-  - **[Search](/docs/components/input-search)** - Search input
+  - **[Search](/docs/components/input-search)** - Arama input'u
   - **[Select](/docs/components/input-select)** - Dropdown
-- **[Toggle](/docs/components/toggle)** - Toggle switch component
+- **[Toggle](/docs/components/toggle)** - Toggle switch component'i
 
-## Görüntüleme Bileşenleri
+## Görüntüleme Component'leri {#display-components}
 
-İçerik görüntülemek için bileşenler.
+İçerik görüntülemek için component'ler.
 
-- **[Label](/docs/components/label)** - Text display with theming
-- **[Icon](/docs/components/icon)** - SVG icons (117+ built-in)
-- **[Image](/docs/components/image)** - Image display component
-- **[EmptyState](/docs/components/empty-state)** - Empty state illustrations
-- **[Skeleton](/docs/components/skeleton)** - Loading placeholders
+- **[Label](/docs/components/label)** - Theming destekli metin görüntüleme
+- **[Icon](/docs/components/icon)** - SVG ikonlar (117+ built-in)
+- **[Image](/docs/components/image)** - Görsel görüntüleme component'i
+- **[EmptyState](/docs/components/empty-state)** - Empty state illüstrasyonları
+- **[Skeleton](/docs/components/skeleton)** - Yükleme placeholder'ları
 
-## Geri Bildirim Bileşenleri
+## Geri Bildirim Component'leri {#feedback-components}
 
-Kullanıcı geri bildirimi ve katmanlar için bileşenler.
+Kullanıcıya geri bildirim ve overlay'ler için component'ler.
 
-- **[Modal](/docs/components/modal)** - Full-screen and partial modals
-- **[Alert](/docs/components/alert)** - Alert banners
-- **[AlertDialog](/docs/components/alert-dialog)** - Confirmation dialogs
-- **[ActionMenu](/docs/components/action-menu)** - Action sheet menus
-- **[Notification](/docs/components/notification)** - Toast notifications
-- **[Result](/docs/components/result)** - Result/confirmation screens
-- **[Timer](/docs/components/timer)** - Timer and countdown components
+- **[Modal](/docs/components/modal)** - Tam ekran ve kısmi modal'lar
+- **[Alert](/docs/components/alert)** - Uyarı banner'ları
+- **[AlertDialog](/docs/components/alert-dialog)** - Onay dialog'ları
+- **[ActionMenu](/docs/components/action-menu)** - Action sheet menüleri
+- **[Notification](/docs/components/notification)** - Toast bildirimleri
+- **[Result](/docs/components/result)** - Sonuç/onay ekranları
+- **[Timer](/docs/components/timer)** - Zamanlayıcı ve geri sayım component'leri
 
-## Veri Bileşenleri
+## Veri Component'leri {#data-components}
 
-Liste ve veri görüntülemek için bileşenler.
+Liste ve veri görüntülemek için component'ler.
 
-- **[List](/docs/components/list)** - High-performance lists with FlashList
+- **[List](/docs/components/list)** - FlashList ile yüksek performanslı listeler
 
-## Yardımcı Bileşenler
+## Yardımcı Component'ler {#utility-components}
 
-Yaygın desenler için yardımcı bileşenler.
+Sık kullanılan pattern'ler için yardımcı component'ler.
 
-- **[Separator](/docs/components/separator)** - Visual dividers
-- **[FormContainer](/docs/components/form-container)** - Form wrapper
-- **[ImageBackground](/docs/components/image-background)** - Background image container
-- **[Common](/docs/components/common)** - Common UI patterns (CommonItem, CommonItemContainer)
+- **[Separator](/docs/components/separator)** - Görsel ayırıcılar
+- **[FormContainer](/docs/components/form-container)** - Form wrapper'ı
+- **[ImageBackground](/docs/components/image-background)** - Arka plan görseli container'ı
+- **[Common](/docs/components/common)** - Yaygın UI pattern'leri (CommonItem, CommonItemContainer)
 
-## Başlarken
+## Başlarken {#getting-started}
 
-Öncelikli bileşenlerle başlayın:
+Yüksek öncelikli component'lerle başlayın:
 
 1. **[Button](/docs/components/button)** - En sık kullanılan
 2. **[Input](/docs/components/input)** - Karmaşık formlar (14+ tip)
 3. **[Container & Content](/docs/components/container)** - Uygulama yapısı
-4. **[Modal](/docs/components/modal)** - Katmanlar ve diyaloglar
+4. **[Modal](/docs/components/modal)** - Overlay'ler ve dialog'lar
 
-## Bileşen Özellikleri
+## Component Özellikleri {#component-features}
 
-Tüm Rott UI bileşenleri şu özellikleri paylaşır:
+Tüm Rott UI component'leri şu özellikleri paylaşır:
 
 - ✅ Tam TypeScript desteği
-- ✅ Tema renk varyantları
+- ✅ Theme renk variant'ları
 - ✅ Ortak UI prop'ları (margin, padding, flex vb.)
 - ✅ Erişilebilirlik desteği
 - ✅ Kapsamlı test
-- ✅ Detaylı dokümantasyon
+- ✅ Ayrıntılı dokümantasyon

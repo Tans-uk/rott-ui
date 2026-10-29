@@ -1,0 +1,101 @@
+{
+  "homepage.showcase.buttons": {
+    "message": "Buttons"
+  },
+  "homepage.showcase.continue": {
+    "message": "Devam et"
+  },
+  "homepage.showcase.learnMore": {
+    "message": "Daha fazla bilgi"
+  },
+  "homepage.showcase.signInWithGoogle": {
+    "message": "Google ile giriş yap"
+  },
+  "homepage.showcase.sizes": {
+    "message": "Boyutlar"
+  },
+  "homepage.hero.titleLead": {
+    "message": "Şeklini koruyan"
+  },
+  "homepage.hero.titleAccent": {
+    "message": "component'ler."
+  },
+  "homepage.hero.subtitle": {
+    "message": "Type-safe theming ile 29 production'a hazır React Native component'i. Markanızı {config} içinde bir kez tanımlayın — her component ona uyar."
+  },
+  "homepage.hero.getStarted": {
+    "message": "Başlayın"
+  },
+  "homepage.hero.browseComponents": {
+    "message": "Component'lere göz atın"
+  },
+  "homepage.stats.components": {
+    "message": "Component"
+  },
+  "homepage.stats.runtimeDeps": {
+    "message": "Runtime dependency"
+  },
+  "homepage.stats.typed": {
+    "message": "Typed"
+  },
+  "homepage.install.label": {
+    "message": "Kurulum"
+  },
+  "homepage.cta.label": {
+    "message": "Geliştirmeye hazır mısınız?"
+  },
+  "homepage.cta.title": {
+    "message": "Beş dakikadan kısa sürede başlayın"
+  },
+  "homepage.cta.description": {
+    "message": "Rott UI'ı kurun, uygulamanızı {provider} ile sarın ve component'leri hemen kullanmaya başlayın."
+  },
+  "homepage.cta.installationGuide": {
+    "message": "Kurulum rehberi"
+  },
+  "homepage.meta.description": {
+    "message": "Type-safe theming ile 29 production'a hazır React Native component'i. Güzel mobil uygulamaları daha hızlı geliştirin."
+  },
+  "homepage.features.components.title": {
+    "message": "29 Production'a Hazır Component"
+  },
+  "homepage.features.components.description": {
+    "message": "Button'lar, modal'lar, input'lar, listeler, alert'ler ve daha fazlası — her component sahada denenmiş, tamamen typed ve production'a hazır."
+  },
+  "homepage.features.theming.title": {
+    "message": "Type-Safe Theming"
+  },
+  "homepage.features.theming.description": {
+    "message": "Marka renklerinizi {config} içinde tanımlayın, uygulamanızdaki her component'te tam TypeScript autocomplete desteği alın."
+  },
+  "homepage.features.reactNative.title": {
+    "message": "Önce React Native"
+  },
+  "homepage.features.reactNative.description": {
+    "message": "Platforma özgü uyarlamalar, safe area desteği ve performans odaklı render ile mobil için optimize edildi."
+  },
+  "homepage.features.customizable.title": {
+    "message": "Kolayca Özelleştirilebilir"
+  },
+  "homepage.features.customizable.description": {
+    "message": "Her component kapsamlı style ve davranış prop'ları alır. Kaynak koda dokunmadan özelleştirin."
+  },
+  "homepage.features.i18n.title": {
+    "message": "Internationalization'a Hazır"
+  },
+  "homepage.features.i18n.description": {
+    "message": "React Intl ile built-in i18n. Türkçe ve İngilizce dahil. Component'lerinizi yeniden build etmeden istediğiniz locale'i ekleyin."
+  },
+  "homepage.features.performance.title": {
+    "message": "Performans Odaklı"
+  },
+  "homepage.features.performance.description": {
+    "message": "FlashList, Reanimated ve Worklets üzerine kurulu. Kutudan çıktığı gibi akıcı animasyonlar ve verimli liste render'ı."
+  },
+  "homepage.features.eyebrow": {
+    "message": "İhtiyacınız olan her şey"
+  },
+  "homepage.features.title": {
+    "message": "İlk günden production için tasarlandı"
+  }
+}

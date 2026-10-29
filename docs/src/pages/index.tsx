@@ -4,6 +4,7 @@ import HomepageFeatures from '../components/HomepageFeatures'
 import styles from './index.module.css'
 
 import Link from '@docusaurus/Link'
+import Translate, { translate } from '@docusaurus/Translate'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import clsx from 'clsx'
@@ -19,13 +20,23 @@ function DeviceShowcase() {
     <div className={styles.device} aria-hidden='true'>
       <div className={styles.deviceNotch} />
       <div className={styles.deviceScreen}>
-        <div className={styles.demoLabel}>Buttons</div>
+        <div className={styles.demoLabel}>
+          <Translate id='homepage.showcase.buttons'>Buttons</Translate>
+        </div>
 
-        <div className={clsx(styles.demoButton, styles.demoPrimary)}>Continue</div>
-        <div className={clsx(styles.demoButton, styles.demoOutline)}>Learn more</div>
-        <div className={clsx(styles.demoButton, styles.demoBordered)}>Sign in with Google</div>
+        <div className={clsx(styles.demoButton, styles.demoPrimary)}>
+          <Translate id='homepage.showcase.continue'>Continue</Translate>
+        </div>
+        <div className={clsx(styles.demoButton, styles.demoOutline)}>
+          <Translate id='homepage.showcase.learnMore'>Learn more</Translate>
+        </div>
+        <div className={clsx(styles.demoButton, styles.demoBordered)}>
+          <Translate id='homepage.showcase.signInWithGoogle'>Sign in with Google</Translate>
+        </div>
 
-        <div className={styles.demoLabel}>Sizes</div>
+        <div className={styles.demoLabel}>
+          <Translate id='homepage.showcase.sizes'>Sizes</Translate>
+        </div>
 
         {/* The percentages are close by design, so each chip states its own value —
             otherwise three near-identical boxes read as a rendering mistake. */}
@@ -58,36 +69,49 @@ function HomepageHero() {
           </p>
 
           <h1 className={styles.heroTitle}>
-            Components that
+            <Translate id='homepage.hero.titleLead'>Components that</Translate>
             <br />
-            <span className={styles.heroTitleAccent}>hold their shape.</span>
+            <span className={styles.heroTitleAccent}>
+              <Translate id='homepage.hero.titleAccent'>hold their shape.</Translate>
+            </span>
           </h1>
 
           <p className={styles.heroSubtitle}>
-            29 production-ready React Native components with type-safe theming. Declare your
-            brand once in <code>rott.config.ts</code> — every component follows.
+            <Translate
+              id='homepage.hero.subtitle'
+              values={{ config: <code>rott.config.ts</code> }}>
+              {
+                '29 production-ready React Native components with type-safe theming. Declare your brand once in {config} — every component follows.'
+              }
+            </Translate>
           </p>
 
           <div className={styles.heroActions}>
             <Link className={styles.btnPrimary} to='/docs/getting-started/installation'>
-              Get started
+              <Translate id='homepage.hero.getStarted'>Get started</Translate>
             </Link>
             <Link className={styles.btnSecondary} to='/docs/components/overview'>
-              Browse components
+              <Translate id='homepage.hero.browseComponents'>Browse components</Translate>
             </Link>
           </div>
 
           <dl className={styles.heroStats}>
             <div className={styles.heroStat}>
-              <dt>Components</dt>
+              <dt>
+                <Translate id='homepage.stats.components'>Components</Translate>
+              </dt>
               <dd>29</dd>
             </div>
             <div className={styles.heroStat}>
-              <dt>Runtime deps</dt>
+              <dt>
+                <Translate id='homepage.stats.runtimeDeps'>Runtime deps</Translate>
+              </dt>
               <dd>0</dd>
             </div>
             <div className={styles.heroStat}>
-              <dt>Typed</dt>
+              <dt>
+                <Translate id='homepage.stats.typed'>Typed</Translate>
+              </dt>
               <dd>100%</dd>
             </div>
           </dl>
@@ -105,7 +129,9 @@ function InstallStrip() {
   return (
     <section className={styles.installStrip}>
       <div className={clsx('container', styles.installInner)}>
-        <span className={styles.installLabel}>Install</span>
+        <span className={styles.installLabel}>
+          <Translate id='homepage.install.label'>Install</Translate>
+        </span>
         <code className={styles.installCommand}>yarn add @tansuk/rott-ui</code>
       </div>
     </section>
@@ -117,14 +143,23 @@ function HomepageCTA() {
     <section className={styles.ctaSection}>
       <div className='container'>
         <div className={styles.ctaInner}>
-          <p className={styles.ctaLabel}>Ready to build?</p>
-          <h2 className={styles.ctaTitle}>Start in under five minutes</h2>
+          <p className={styles.ctaLabel}>
+            <Translate id='homepage.cta.label'>Ready to build?</Translate>
+          </p>
+          <h2 className={styles.ctaTitle}>
+            <Translate id='homepage.cta.title'>Start in under five minutes</Translate>
+          </h2>
           <p className={styles.ctaDescription}>
-            Install Rott UI, wrap your app with <code>RottProvider</code>, and start using
-            components immediately.
+            <Translate
+              id='homepage.cta.description'
+              values={{ provider: <code>RottProvider</code> }}>
+              {
+                'Install Rott UI, wrap your app with {provider}, and start using components immediately.'
+              }
+            </Translate>
           </p>
           <Link className={styles.btnPrimary} to='/docs/getting-started/installation'>
-            Installation guide
+            <Translate id='homepage.cta.installationGuide'>Installation guide</Translate>
           </Link>
         </div>
       </div>
@@ -137,7 +172,11 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`${siteConfig.title} — React Native UI Kit`}
-      description='29 production-ready React Native components with type-safe theming. Build beautiful mobile apps faster.'>
+      description={translate({
+        id: 'homepage.meta.description',
+        message:
+          '29 production-ready React Native components with type-safe theming. Build beautiful mobile apps faster.',
+      })}>
       <HomepageHero />
       <main>
         <InstallStrip />
