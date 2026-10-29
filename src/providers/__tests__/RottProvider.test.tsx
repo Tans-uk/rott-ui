@@ -83,3 +83,24 @@ describe('RottProvider -> active language', () => {
     expect(formatMessage('COMMON.OK')).toBe(tr['COMMON.OK'])
   })
 })
+
+describe('RottProvider -> config changes', () => {
+  it('drops the values of a config it no longer receives', async () => {
+    const brandBack = jest.fn()
+    const {rerenderAsync} = await render(
+      <RottProvider config={{colors: {brand: '#123456'}, goBack: brandBack}}>
+        <></>
+      </RottProvider>
+    )
+    expect(themeConfig.colors.brand).toBe('#123456')
+
+    await rerenderAsync(
+      <RottProvider>
+        <></>
+      </RottProvider>
+    )
+
+    expect(themeConfig.colors.brand).toBeUndefined()
+    expect(themeConfig.goBack).not.toBe(brandBack)
+  })
+})
