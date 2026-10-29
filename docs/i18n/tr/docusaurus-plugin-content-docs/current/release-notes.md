@@ -34,7 +34,8 @@ aralığı değişmedi (`>=1.8.0`).
 - `List`'te 1.x'in yanında FlashList 2.x desteği.
 - `List`'teki `skeletonCount`, `isLoading` iken kaç skeleton satırı render edileceğini
   belirler. Verilmezse sayı yine `estimatedItemSize`'a, o da yoksa 1'e düşer; mevcut
-  ekranlar aynı görünür. `estimatedItemSize` verdiğiniz her yerde bunu da verin.
+  ekranlar aynı görünür. `estimatedItemSize` verdiğiniz her yerde bunu da verin. Yüklenen
+  bir liste her zaman en az bir satır çizer; bu yüzden 0 değeri artık empty state göstermez.
 
 ### Düzeltmeler {#fixed}
 

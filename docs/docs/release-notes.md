@@ -34,7 +34,8 @@ unchanged (`>=1.8.0`).
 - Support for FlashList 2.x in `List`, next to 1.x.
 - `skeletonCount` on `List` sets how many skeleton rows render while `isLoading`. When
   unset, the count still falls back to `estimatedItemSize`, then to 1, so existing
-  screens render the same. Set it wherever you pass `estimatedItemSize`.
+  screens render the same. Set it wherever you pass `estimatedItemSize`. A loading list
+  always renders at least one row, so a count of 0 no longer shows the empty state.
 
 ### Fixed
 

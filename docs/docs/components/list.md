@@ -79,7 +79,8 @@ import { List } from '@tansuk/rott-ui';
 
 `skeletonCount` sets how many skeleton rows render while `isLoading`. Without it the
 count falls back to `estimatedItemSize` (76 rows here), then to 1, so set it whenever
-you pass `estimatedItemSize`.
+you pass `estimatedItemSize`. A loading list always renders at least one row, so it never
+shows the empty state while loading.
 
 ## With Header and Footer
 
@@ -124,7 +125,7 @@ only on the New Architecture, so an app on the old architecture stays on 1.x.
 | `emptyState` | `EmptyStateProps \| ReactNode` | Empty state |
 | `isLoading` | `boolean` | Loading state |
 | `listSkeletonItem` | `ReactNode` | Skeleton item |
-| `skeletonCount` | `number` | Skeleton rows while `isLoading`. Falls back to `estimatedItemSize`, then `1` |
+| `skeletonCount` | `number` | Skeleton rows while `isLoading`, at least `1`. Falls back to `estimatedItemSize`, then `1` |
 | `itemsToShow` | `number` | Fixes the list height to this many items (`itemsToShow × estimatedItemSize`) |
 
 Plus all FlashList props.
