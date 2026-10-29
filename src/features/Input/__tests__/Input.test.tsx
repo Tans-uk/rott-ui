@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {fireEvent, render} from '../../../__tests__/utils/testUtils'
+import {display} from '../../../utils'
 import {IconKeys} from '../../Icon'
 import {Input} from '../components'
 
@@ -27,6 +28,58 @@ describe('Input -> Custom Input', () => {
     )
 
     expect(getByText(defaultLabel.toUpperCase())).toBeTruthy()
+  })
+
+  it('keeps the label and description as written when uppercase is false', async () => {
+    const {getByTestId} = await render(
+      <Input
+        type='default'
+        testID={inputTestId}
+        label={{text: 'E-posta adresi', description: 'iş', uppercase: false}}
+        name={defaultName}
+      />
+    )
+
+    expect(getByTestId(inputLabelTestId)).toHaveTextContent('E-posta adresi')
+    expect(getByTestId(inputLabelDescriptionTestId)).toHaveTextContent('(iş)')
+  })
+
+  it('puts gap below the label and marginTop above it', async () => {
+    const {getByTestId} = await render(
+      <Input
+        type='default'
+        testID={inputTestId}
+        label={{text: defaultLabel, gap: 8, marginTop: 24}}
+        name={defaultName}
+      />
+    )
+
+    const row = getByTestId('input-label-row-test-id')
+    const {StyleSheet} = require('react-native')
+    // The row's parent View is the wrapper that holds the label and the field.
+    let wrapper = row.parent
+    while (wrapper && wrapper.type !== 'View') wrapper = wrapper.parent
+
+    expect(row).toHaveStyle({marginBottom: display.normalize(8, 'width')})
+    expect(StyleSheet.flatten(wrapper?.props.style)?.paddingTop).toBe(
+      display.normalize(24, 'width')
+    )
+  })
+
+  it('keeps 16 above the label and nothing below it by default', async () => {
+    const {getByTestId} = await render(
+      <Input type='default' testID={inputTestId} label={defaultLabel} name={defaultName} />
+    )
+
+    const row = getByTestId('input-label-row-test-id')
+    const {StyleSheet} = require('react-native')
+    let wrapper = row.parent
+    while (wrapper && wrapper.type !== 'View') wrapper = wrapper.parent
+
+    expect(StyleSheet.flatten(row.props.style)?.marginBottom).toBeUndefined()
+    expect(StyleSheet.flatten(wrapper?.props.style)?.paddingTop).toBe(
+      display.normalize(16, 'width')
+    )
   })
 
   it("hides the input's label when no text is given", async () => {

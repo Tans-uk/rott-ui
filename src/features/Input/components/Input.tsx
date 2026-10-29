@@ -149,15 +149,23 @@ export const Input: FC<InputProps> = memo((props) => {
   }
   const variant = variantCalculation()
 
+  const labelUppercase = !isLabelObject || label.uppercase !== false
+  const labelCase = (text?: string) =>
+    labelUppercase ? text?.toLocaleUpperCase(language?.name) : text
+
   return (
     <Item {...outerSpacing}>
       <Item
-        paddingTop={label && type !== 'toggle' ? 16 : 0}
+        paddingTop={
+          label && type !== 'toggle' ? ((isLabelObject ? label.marginTop : undefined) ?? 16) : 0
+        }
         style={InputStyles({disabled}).textInputContainer}>
         {label && type !== 'toggle' && (
           <Item
+            testID='input-label-row-test-id'
             row
             paddingHorizontal={InputStyleNormalizer({size: size}).paddingHorizontal}
+            marginBottom={isLabelObject ? label.gap : undefined}
             alignItemsCenter>
             <Label
               testID='input-label-test-id'
@@ -171,9 +179,7 @@ export const Input: FC<InputProps> = memo((props) => {
                     ? 'grey-200'
                     : 'grey-900'
               }>
-              {typeof label === 'string'
-                ? label?.toLocaleUpperCase(language?.name)
-                : label.text?.toLocaleUpperCase(language?.name)}
+              {labelCase(typeof label === 'string' ? label : label.text)}
             </Label>
 
             {isLabelObject && label.description && (
@@ -183,7 +189,7 @@ export const Input: FC<InputProps> = memo((props) => {
                 fontFamily={label.fontFamily ?? 'Markpro-Medium'}
                 variant={label.descriptionVariant ?? 'grey-200'}
                 marginLeft={4}>
-                {`(${label.description?.toLocaleUpperCase(language?.name)})`}
+                {`(${labelCase(label.description)})`}
               </Label>
             )}
 
