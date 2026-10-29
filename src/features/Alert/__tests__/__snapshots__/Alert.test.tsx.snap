@@ -25,6 +25,7 @@ exports[`Alert component matches the snapshot once rendered 1`] = `
         {
           "alignItems": "center",
           "backgroundColor": "rgba(255, 117, 24, 1)",
+          "borderRadius": 0,
           "flex": undefined,
           "flexDirection": "row",
           "justifyContent": "center",

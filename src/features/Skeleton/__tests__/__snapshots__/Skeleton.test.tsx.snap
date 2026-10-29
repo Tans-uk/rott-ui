@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Skeleton -> Custom Component matches the snapshot for a skeleton rendered inside an item 1`] = `
+exports[`Skeleton -> Custom Component matches the skeleton snapshot 1`] = `
 <KeyboardProvider
   enabled={true}
 >
@@ -15,79 +15,70 @@ exports[`Skeleton -> Custom Component matches the snapshot for a skeleton render
     }
   >
     <View
+      backgroundColor="rgba(234, 239, 240, 1)"
+      borderRadius={4}
+      height={16}
+      overflowHidden={true}
       style={
         {
+          "backgroundColor": "rgba(234, 239, 240, 1)",
+          "borderRadius": 4,
           "flex": undefined,
           "flexDirection": "column",
+          "height": 31,
+          "maxHeight": 31,
+          "overflow": "hidden",
+          "width": 154,
         }
       }
-      testID="item-test-id"
+      testID="skeleton-test-id"
+      width={80}
     >
       <View
-        backgroundColor="rgba(234, 239, 240, 1)"
-        borderRadius={4}
-        height={16}
-        overflowHidden={true}
         style={
           {
-            "backgroundColor": "rgba(234, 239, 240, 1)",
-            "flex": undefined,
-            "flexDirection": "column",
-            "height": 31,
-            "maxHeight": 31,
-            "overflow": "hidden",
-            "width": 154,
+            "bottom": 0,
+            "flexDirection": "row",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "transform": [
+              {
+                "translateX": -154,
+              },
+            ],
           }
         }
-        testID="skeleton-test-id"
-        width={80}
       >
-        <View
-          style={
+        <BVLinearGradient
+          colors={
+            [
+              4293586928,
+              4294967295,
+              4293586928,
+            ]
+          }
+          endPoint={
             {
-              "bottom": 0,
-              "flexDirection": "row",
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-              "transform": [
-                {
-                  "translateX": -154,
-                },
-              ],
+              "x": 1,
+              "y": 0,
             }
           }
-        >
-          <BVLinearGradient
-            colors={
-              [
-                4293586928,
-                4294967295,
-                4293586928,
-              ]
+          locations={null}
+          startPoint={
+            {
+              "x": 0,
+              "y": 0,
             }
-            endPoint={
-              {
-                "x": 1,
-                "y": 0,
-              }
+          }
+          style={
+            {
+              "height": 31,
+              "width": 154,
             }
-            locations={null}
-            startPoint={
-              {
-                "x": 0,
-                "y": 0,
-              }
-            }
-            style={
-              {
-                "height": 31,
-                "width": 154,
-              }
-            }
-          />
-        </View>
+          }
+        />
       </View>
     </View>
     <View
@@ -158,7 +149,7 @@ exports[`Skeleton -> Custom Component matches the snapshot for a skeleton render
 </KeyboardProvider>
 `;
 
-exports[`Skeleton -> Custom Component matches the skeleton snapshot 1`] = `
+exports[`Skeleton -> Custom Component matches the snapshot for a skeleton rendered inside an item 1`] = `
 <KeyboardProvider
   enabled={true}
 >
@@ -173,69 +164,80 @@ exports[`Skeleton -> Custom Component matches the skeleton snapshot 1`] = `
     }
   >
     <View
-      backgroundColor="rgba(234, 239, 240, 1)"
-      borderRadius={4}
-      height={16}
-      overflowHidden={true}
       style={
         {
-          "backgroundColor": "rgba(234, 239, 240, 1)",
           "flex": undefined,
           "flexDirection": "column",
-          "height": 31,
-          "maxHeight": 31,
-          "overflow": "hidden",
-          "width": 154,
         }
       }
-      testID="skeleton-test-id"
-      width={80}
+      testID="item-test-id"
     >
       <View
+        backgroundColor="rgba(234, 239, 240, 1)"
+        borderRadius={4}
+        height={16}
+        overflowHidden={true}
         style={
           {
-            "bottom": 0,
-            "flexDirection": "row",
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "transform": [
-              {
-                "translateX": -154,
-              },
-            ],
+            "backgroundColor": "rgba(234, 239, 240, 1)",
+            "borderRadius": 4,
+            "flex": undefined,
+            "flexDirection": "column",
+            "height": 31,
+            "maxHeight": 31,
+            "overflow": "hidden",
+            "width": 154,
           }
         }
+        testID="skeleton-test-id"
+        width={80}
       >
-        <BVLinearGradient
-          colors={
-            [
-              4293586928,
-              4294967295,
-              4293586928,
-            ]
-          }
-          endPoint={
-            {
-              "x": 1,
-              "y": 0,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0,
-              "y": 0,
-            }
-          }
+        <View
           style={
             {
-              "height": 31,
-              "width": 154,
+              "bottom": 0,
+              "flexDirection": "row",
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "transform": [
+                {
+                  "translateX": -154,
+                },
+              ],
             }
           }
-        />
+        >
+          <BVLinearGradient
+            colors={
+              [
+                4293586928,
+                4294967295,
+                4293586928,
+              ]
+            }
+            endPoint={
+              {
+                "x": 1,
+                "y": 0,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0,
+                "y": 0,
+              }
+            }
+            style={
+              {
+                "height": 31,
+                "width": 154,
+              }
+            }
+          />
+        </View>
       </View>
     </View>
     <View

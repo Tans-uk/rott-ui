@@ -23,6 +23,7 @@ exports[`AlertDialogComponent should match snapshot on first render 1`] = `
         {
           "alignItems": "center",
           "backgroundColor": "rgba(234, 239, 240, 1)",
+          "borderRadius": 16,
           "flex": undefined,
           "flexDirection": "column",
           "justifyContent": "center",

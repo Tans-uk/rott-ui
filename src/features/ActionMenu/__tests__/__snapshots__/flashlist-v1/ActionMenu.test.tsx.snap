@@ -36,6 +36,10 @@ exports[`ActionMenu -> Custom Component matches the snapshot on first render 1`]
         style={
           {
             "backgroundColor": "rgba(234, 239, 240, 1)",
+            "borderBottomEndRadius": 12,
+            "borderBottomStartRadius": 12,
+            "borderTopEndRadius": 0,
+            "borderTopStartRadius": 0,
             "flex": undefined,
             "flexDirection": "column",
             "marginBottom": 31,

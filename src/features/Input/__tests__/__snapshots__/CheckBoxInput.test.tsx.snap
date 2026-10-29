@@ -101,6 +101,9 @@ exports[`CheckBox Input -> Custom Input matches the snapshot on the checkbox inp
               style={
                 {
                   "alignItems": "center",
+                  "borderColor": "rgba(161, 173, 175, 1)",
+                  "borderRadius": 8,
+                  "borderWidth": 2,
                   "flex": undefined,
                   "flexDirection": "column",
                   "height": 46,
