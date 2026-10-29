@@ -11,9 +11,12 @@ import {themeConfig} from '../../../providers'
 import type {ImageProps} from '../models'
 import {ImageStyles} from '../styles'
 
-/** A single {uri} object — the only source shape that takes a cache policy. */
-const isUriSource = (source: ImageSourcePropType): source is ImageURISource =>
-  typeof source === 'object' && source !== null && !Array.isArray(source)
+/** A single {uri} object loaded over http(s), the only source that gets a default cache policy. */
+const isRemoteUriSource = (source: ImageSourcePropType): source is ImageURISource =>
+  typeof source === 'object' &&
+  source !== null &&
+  !Array.isArray(source) &&
+  /^https?:\/\//i.test(source.uri ?? '')
 
 export const Image: FC<ImageProps> = ({variant, size, style, source, name, ...props}) => {
   const imageSource = Object.entries(themeConfig.images ?? {}).find(
@@ -21,13 +24,13 @@ export const Image: FC<ImageProps> = ({variant, size, style, source, name, ...pr
   )
 
   const namedSource = (themeConfig.images ?? {})[imageSource?.[0] as never]
-  // Local require() ids and multi-density arrays pass through unchanged; only a remote
-  // {uri} object gets the reload cache policy it has always had.
+  // Local require() ids, multi-density arrays and file/data uris pass through unchanged. A
+  // remote {uri} object gets the reload cache policy it has always had, unless it sets its own.
   const resolvedSource =
     source === undefined || source === null
       ? namedSource
-      : isUriSource(source)
-        ? ({...source, cache: 'reload'} as ImageSourcePropType)
+      : isRemoteUriSource(source)
+        ? ({cache: 'reload', ...source} as ImageSourcePropType)
         : source
 
   return (

@@ -78,4 +78,20 @@ describe('Image -> Custom Component', () => {
       cache: 'reload',
     })
   })
+
+  it('keeps the cache policy a remote image sets', async () => {
+    const {imageTestId} = testId
+    const source = {uri: 'https://example.com/logo.png', cache: 'force-cache' as const}
+    const {getByTestId} = await render(<Image testID={imageTestId} source={source} />)
+
+    expect(getByTestId(imageTestId)).toHaveProp('source', source)
+  })
+
+  it('passes a local file uri through unchanged', async () => {
+    const {imageTestId} = testId
+    const source = {uri: 'file:///tmp/photo.jpg'}
+    const {getByTestId} = await render(<Image testID={imageTestId} source={source} />)
+
+    expect(getByTestId(imageTestId)).toHaveProp('source', source)
+  })
 })

@@ -36,7 +36,7 @@ import { Image } from '@tansuk/rott-ui';
 | Prop | Type | Description |
 |------|------|-------------|
 | `name` | `ImageTypes` | Theme image name |
-| `source` | `ImageSourcePropType` | A `require()` result, a `{ uri }` object or an array of sources; overrides `name`. Remote `{ uri }` sources load with `cache: 'reload'` |
+| `source` | `ImageSourcePropType` | A `require()` result, a `{ uri }` object or an array of sources; overrides `name`. An http(s) `{ uri }` source without its own `cache` loads with `cache: 'reload'` |
 | `width` | `number` | Image width |
 | `height` | `number` | Image height |
 | `resizeMode` | `'cover' \| 'contain' \| 'stretch'` | Resize mode |
