@@ -72,10 +72,41 @@ import { List } from '@tansuk/rott-ui';
       <Skeleton show width="100%" height={60} />
     </Item>
   }
-  itemsToShow={5}
+  skeletonCount={5}
   estimatedItemSize={76}
 />
 ```
+
+`skeletonCount` sets how many skeleton rows render while `isLoading`. Without it the
+count falls back to `estimatedItemSize` (76 rows here), then to 1, so set it whenever
+you pass `estimatedItemSize`.
+
+## With Header and Footer
+
+```tsx
+<List
+  data={items}
+  renderItem={renderItem}
+  ListHeaderComponent={<Label text="Today" />}
+  ListFooterComponent={<Button onPress={loadMore}>Load more</Button>}
+  headerSeparator
+  footerSeparator
+/>
+```
+
+`headerSeparator` and `footerSeparator` draw a separator between your header or footer
+and the items, so the order is header, separator, items, separator, footer. Without a
+header or footer, they draw the separator alone at the top or bottom of the list.
+
+## FlashList 1.x and 2.x
+
+`List` works with `@shopify/flash-list` 1.x (from 1.8.0) and 2.x. FlashList 2.x runs
+only on the New Architecture, so an app on the old architecture stays on 1.x.
+
+- `estimatedItemSize` is a `List` prop in both. FlashList 1.x uses it for layout;
+  2.x measures items itself and ignores it.
+- Other props that FlashList 2.x removed (`estimatedListSize`, `disableAutoLayout` and
+  the like) type-check only when your app has 1.x installed.
 
 ## Props
 
@@ -83,13 +114,18 @@ import { List } from '@tansuk/rott-ui';
 |------|------|-------------|
 | `data` | `T[]` | List data |
 | `renderItem` | `(info) => ReactElement` | Item renderer |
-| `estimatedItemSize` | `number` | **Required** - Estimated item height |
-| `renderSeparator` | `boolean` | Show separators |
+| `estimatedItemSize` | `number` | Estimated item height (width when horizontal). Used for layout by FlashList 1.x, ignored by 2.x; also sizes the list with `itemsToShow`. Defaults to `50` |
+| `renderSeparator` | `boolean` | Show separators between items |
 | `separatorVariant` | `Variant` | Separator color |
+| `headerSeparator` | `boolean` | Separator between the header and the items, or at the top without a header |
+| `footerSeparator` | `boolean` | Separator between the items and the footer, or at the bottom without a footer |
+| `ListHeaderComponent` | `ComponentType \| ReactElement` | Rendered above the items; keeps its state across renders |
+| `ListFooterComponent` | `ComponentType \| ReactElement` | Rendered below the items |
 | `emptyState` | `EmptyStateProps \| ReactNode` | Empty state |
 | `isLoading` | `boolean` | Loading state |
 | `listSkeletonItem` | `ReactNode` | Skeleton item |
-| `itemsToShow` | `number` | Skeleton items count |
+| `skeletonCount` | `number` | Skeleton rows while `isLoading`. Falls back to `estimatedItemSize`, then `1` |
+| `itemsToShow` | `number` | Fixes the list height to this many items (`itemsToShow × estimatedItemSize`) |
 
 Plus all FlashList props.
 
@@ -162,7 +198,7 @@ function ProductList() {
       <Skeleton show width="60%" height={16} />
     </Item>
   }
-  itemsToShow={5}
+  skeletonCount={5}
   estimatedItemSize={76}
 />
 ```

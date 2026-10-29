@@ -72,10 +72,41 @@ import { List } from '@tansuk/rott-ui';
       <Skeleton show width="100%" height={60} />
     </Item>
   }
-  itemsToShow={5}
+  skeletonCount={5}
   estimatedItemSize={76}
 />
 ```
+
+`skeletonCount`, `isLoading` iken kaç skeleton satırı render edileceğini belirler.
+Verilmezse sayı `estimatedItemSize`'a (burada 76 satır), o da yoksa 1'e düşer; bu yüzden
+`estimatedItemSize` verdiğiniz her yerde `skeletonCount`'u da verin.
+
+## Header ve Footer ile {#with-header-and-footer}
+
+```tsx
+<List
+  data={items}
+  renderItem={renderItem}
+  ListHeaderComponent={<Label text="Bugün" />}
+  ListFooterComponent={<Button onPress={loadMore}>Daha fazla yükle</Button>}
+  headerSeparator
+  footerSeparator
+/>
+```
+
+`headerSeparator` ve `footerSeparator`, header'ınız ya da footer'ınız ile öğeler arasına bir
+ayırıcı çizer; sıra header, ayırıcı, öğeler, ayırıcı, footer olur. Header ya da footer
+yoksa ayırıcıyı tek başına listenin en üstüne ya da en altına çizerler.
+
+## FlashList 1.x ve 2.x {#flashlist-1x-and-2x}
+
+`List`, `@shopify/flash-list` 1.x (1.8.0'dan itibaren) ve 2.x ile çalışır. FlashList 2.x
+yalnızca New Architecture'da çalışır; eski mimarideki bir uygulama 1.x'te kalır.
+
+- `estimatedItemSize` ikisinde de bir `List` prop'udur. FlashList 1.x onu layout için
+  kullanır; 2.x öğeleri kendisi ölçer ve onu yok sayar.
+- FlashList 2.x'in kaldırdığı diğer prop'lar (`estimatedListSize`, `disableAutoLayout` vb.)
+  yalnızca uygulamanızda 1.x kuruluysa tip kontrolünden geçer.
 
 ## Props {#props}
 
@@ -83,13 +114,18 @@ import { List } from '@tansuk/rott-ui';
 |------|------|-------------|
 | `data` | `T[]` | Liste verisi |
 | `renderItem` | `(info) => ReactElement` | Öğe renderer'ı |
-| `estimatedItemSize` | `number` | **Zorunlu** - Tahmini öğe yüksekliği |
-| `renderSeparator` | `boolean` | Ayırıcıları gösterir |
+| `estimatedItemSize` | `number` | Tahmini öğe yüksekliği (yatayda genişliği). FlashList 1.x layout için kullanır, 2.x yok sayar; `itemsToShow` ile listenin boyunu da belirler. Default `50` |
+| `renderSeparator` | `boolean` | Öğeler arasında ayırıcı gösterir |
 | `separatorVariant` | `Variant` | Ayırıcı rengi |
+| `headerSeparator` | `boolean` | Header ile öğeler arasında, header yoksa en üstte ayırıcı |
+| `footerSeparator` | `boolean` | Öğeler ile footer arasında, footer yoksa en altta ayırıcı |
+| `ListHeaderComponent` | `ComponentType \| ReactElement` | Öğelerin üstünde render edilir; render'lar arasında state'ini korur |
+| `ListFooterComponent` | `ComponentType \| ReactElement` | Öğelerin altında render edilir |
 | `emptyState` | `EmptyStateProps \| ReactNode` | Empty state |
 | `isLoading` | `boolean` | Yükleme state'i |
 | `listSkeletonItem` | `ReactNode` | Skeleton öğesi |
-| `itemsToShow` | `number` | Skeleton öğe sayısı |
+| `skeletonCount` | `number` | `isLoading` iken skeleton satır sayısı. `estimatedItemSize`'a, o da yoksa `1`'e düşer |
+| `itemsToShow` | `number` | Listenin boyunu bu kadar öğeye sabitler (`itemsToShow × estimatedItemSize`) |
 
 Bunlara ek olarak tüm FlashList prop'ları desteklenir.
 
@@ -162,7 +198,7 @@ function ProductList() {
       <Skeleton show width="60%" height={16} />
     </Item>
   }
-  itemsToShow={5}
+  skeletonCount={5}
   estimatedItemSize={76}
 />
 ```

@@ -3756,7 +3756,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@shopify/flash-list@npm:1.8.3, @shopify/flash-list@npm:^1.8.3":
+"@shopify/flash-list-v1@npm:@shopify/flash-list@1.8.3, @shopify/flash-list@npm:^1.8.3":
   version: 1.8.3
   resolution: "@shopify/flash-list@npm:1.8.3"
   dependencies:
@@ -3767,6 +3767,17 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: c055e2d2be3045aa3f862345159bc102696bdaf07f275217347ab77ece75cc8bb892d9fe338e2eb1cfe83212b2b719442503fffc6dcfb8c25da8e9044d5f1853
+  languageName: node
+  linkType: hard
+
+"@shopify/flash-list@npm:2.3.3":
+  version: 2.3.3
+  resolution: "@shopify/flash-list@npm:2.3.3"
+  peerDependencies:
+    "@babel/runtime": "*"
+    react: "*"
+    react-native: "*"
+  checksum: cd3f4c99324a1b6236b41055d7f5f828cfffe45f9c2901ce4eb0e6fc4148deaec6147718aa3aad1ac535ecd715b109a44f45ba7710cab88e0cb998ad7878ff50
   languageName: node
   linkType: hard
 
@@ -3988,7 +3999,8 @@ __metadata:
     "@react-native/babel-preset": 0.81.0
     "@react-native/eslint-config": 0.81.0
     "@release-it/conventional-changelog": ^9.0.2
-    "@shopify/flash-list": 1.8.3
+    "@shopify/flash-list": 2.3.3
+    "@shopify/flash-list-v1": "npm:@shopify/flash-list@1.8.3"
     "@testing-library/jest-native": ^5.4.3
     "@testing-library/react-native": ^13.3.3
     "@types/jest": ^29.5.5

@@ -26,403 +26,145 @@ exports[`List -> Custom Component list matches the snapshot on first render 1`] 
       }
     >
       <View
+        collapsable={false}
+        onLayout={[Function]}
         style={
-          {
-            "flex": 1,
-            "overflow": "hidden",
-          }
+          [
+            {
+              "flex": 1,
+              "overflow": "hidden",
+            },
+            undefined,
+            undefined,
+          ]
         }
       >
         <RCTScrollView
-          ItemSeparatorComponent={[Function]}
-          ListEmptyComponent={[Function]}
-          applyWindowCorrection={[Function]}
-          canChangeSize={true}
-          contentContainerStyle={
-            {
-              "backgroundColor": undefined,
-              "minHeight": 1,
-              "minWidth": 1,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-            }
-          }
-          contentHeight={300}
-          contentWidth={400}
-          data={
-            [
-              {
-                "id": 1,
-                "name": "Item 1",
-              },
-              {
-                "id": 2,
-                "name": "Item 2",
-              },
-              {
-                "id": 3,
-                "name": "Item 3",
-              },
-            ]
-          }
-          dataProvider={
-            DataProvider {
-              "_data": [
-                {
-                  "id": 1,
-                  "name": "Item 1",
-                },
-                {
-                  "id": 2,
-                  "name": "Item 2",
-                },
-                {
-                  "id": 3,
-                  "name": "Item 3",
-                },
-              ],
-              "_firstIndexToProcess": 0,
-              "_hasStableIds": false,
-              "_requiresDataChangeHandling": false,
-              "_size": 3,
-              "getStableId": [Function],
-              "rowHasChanged": [Function],
-            }
-          }
-          disableRecycling={false}
+          collapsable={false}
           estimatedItemSize={100}
-          externalScrollView={[Function]}
-          finalRenderAheadOffset={250}
-          forceNonDeterministicRendering={true}
           horizontal={false}
-          initialOffset={0}
-          initialRenderIndex={0}
-          isHorizontal={false}
-          layoutProvider={
-            GridLayoutProviderWithProps {
-              "_acceptableRelayoutDelta": 1,
-              "_getHeightOrWidth": [Function],
-              "_getLayoutTypeForIndex": [Function],
-              "_getSpan": [Function],
-              "_hasExpired": false,
-              "_isHorizontal": false,
-              "_lastLayoutManager": GridLayoutManager {
-                "_acceptableRelayoutDelta": 1,
-                "_getSpan": [Function],
-                "_isGridHorizontal": false,
-                "_isHorizontal": false,
-                "_layoutProvider": [Circular],
-                "_layouts": [
-                  {
-                    "height": 100,
-                    "type": 0,
-                    "width": 400,
-                    "x": 0,
-                    "y": 0,
-                  },
-                  {
-                    "height": 100,
-                    "type": 0,
-                    "width": 400,
-                    "x": 0,
-                    "y": 100,
-                  },
-                  {
-                    "height": 100,
-                    "type": 0,
-                    "width": 400,
-                    "x": 0,
-                    "y": 200,
-                  },
-                ],
-                "_maxSpan": 1,
-                "_renderWindowSize": {
-                  "height": 900,
-                  "width": 400,
-                },
-                "_totalHeight": 300,
-                "_totalWidth": 400,
-                "_window": {
-                  "height": 900,
-                  "width": 400,
-                },
-              },
-              "_maxSpan": 1,
-              "_renderWindowSize": {
-                "height": 900,
-                "width": 400,
-              },
-              "_setLayoutForType": [Function],
-              "_tempDim": {
-                "height": 0,
-                "width": 0,
-              },
-              "averageWindow": AverageWindow {
-                "currentAverage": 100,
-                "currentCount": 1,
-                "inputValues": [
-                  100,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                  ,
-                ],
-                "nextIndex": 1,
-              },
-              "defaultEstimatedItemSize": 100,
-              "layoutObject": {
-                "size": undefined,
-                "span": undefined,
-              },
-              "props": {
-                "ItemSeparatorComponent": [Function],
-                "ListEmptyComponent": [Function],
-                "ListFooterComponent": undefined,
-                "ListHeaderComponent": undefined,
-                "data": [
-                  {
-                    "id": 1,
-                    "name": "Item 1",
-                  },
-                  {
-                    "id": 2,
-                    "name": "Item 2",
-                  },
-                  {
-                    "id": 3,
-                    "name": "Item 3",
-                  },
-                ],
-                "estimatedItemSize": 100,
-                "horizontal": false,
-                "numColumns": 1,
-                "renderItem": undefined,
-                "scrollEnabled": undefined,
-                "separatorHeight": 20,
-                "separatorWidth": 2,
-              },
-              "renderWindowInsets": {
-                "height": 0,
-                "width": 0,
-              },
-              "shouldRefreshWithAnchoring": true,
-            }
-          }
-          maxRenderAhead={750}
-          numColumns={1}
-          onEndReached={[Function]}
-          onEndReachedThreshold={0}
-          onEndReachedThresholdRelative={0}
-          onItemLayout={[Function]}
-          onLayout={[Function]}
-          onScroll={[Function]}
-          onScrollBeginDrag={[Function]}
-          onSizeChanged={[Function]}
-          onVisibleIndicesChanged={[Function]}
-          removeClippedSubviews={false}
-          renderAheadOffset={0}
-          renderAheadStep={250}
-          renderContentContainer={[Function]}
-          renderItemContainer={[Function]}
-          rowRenderer={[Function]}
-          scrollEventThrottle={16}
-          scrollThrottle={16}
-          scrollViewProps={
+          maintainVisibleContentPosition={
             {
-              "contentContainerStyle": {
-                "backgroundColor": undefined,
-                "minHeight": 1,
-                "minWidth": 1,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-              },
-              "onLayout": [Function],
-              "onScrollBeginDrag": [Function],
-              "refreshControl": undefined,
-              "style": {
-                "minHeight": 1,
-                "minWidth": 1,
-              },
+              "minIndexForVisible": 0,
             }
           }
+          onScroll={[Function]}
+          removeClippedSubviews={false}
+          scrollEventThrottle={0.0001}
           separatorHeight={20}
           separatorWidth={2}
-          style={
-            {
-              "minHeight": 1,
-              "minWidth": 1,
-            }
-          }
-          suppressBoundedSizeException={true}
-          windowCorrectionConfig={
-            {
-              "applyToInitialOffset": true,
-              "applyToItemScroll": true,
-              "value": {
-                "endCorrection": 0,
-                "startCorrection": 0,
-                "windowShift": -0,
-              },
-            }
-          }
         >
           <View>
             <View
               style={
                 {
-                  "flexDirection": "column",
+                  "height": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 1000000,
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "height": 0,
+                  "marginTop": 0,
+                  "width": undefined,
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "height": 300,
+                  "marginLeft": undefined,
+                  "marginTop": 0,
+                  "opacity": 1,
+                  "width": undefined,
                 }
               }
             >
               <View
-                style={
-                  {
-                    "paddingLeft": 0,
-                    "paddingTop": 0,
-                  }
-                }
-              />
-              <View
-                style={
-                  [
-                    undefined,
-                    undefined,
-                  ]
-                }
-              />
-              <AutoLayoutView
-                enableInstrumentation={false}
-                horizontal={false}
-                onBlankAreaEvent={[Function]}
+                index={0}
                 onLayout={[Function]}
-                renderAheadOffset={0}
-                scrollOffset={0}
                 style={
                   {
-                    "height": 300,
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "opacity": 1,
+                    "position": "absolute",
+                    "top": 0,
                     "width": 400,
                   }
                 }
-                windowSize={900}
               >
-                <CellContainer
-                  index={0}
-                  onLayout={[Function]}
+                <View
                   style={
                     {
-                      "alignItems": "stretch",
-                      "flexDirection": "column",
-                      "left": 0,
-                      "position": "absolute",
-                      "top": 0,
-                      "width": 400,
+                      "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                      "height": 39,
+                      "maxHeight": 39,
+                      "opacity": 1,
+                      "width": "100%",
                     }
                   }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "column",
-                      }
-                    }
-                  />
-                  <View
-                    style={
-                      {
-                        "backgroundColor": "rgba(34, 63, 70, 0.15)",
-                        "height": 39,
-                        "maxHeight": 39,
-                        "opacity": 1,
-                        "width": "100%",
-                      }
-                    }
-                    variant="neutral-alpha-200"
-                  />
-                </CellContainer>
-                <CellContainer
-                  index={1}
-                  onLayout={[Function]}
-                  style={
-                    {
-                      "alignItems": "stretch",
-                      "flexDirection": "column",
-                      "left": 0,
-                      "position": "absolute",
-                      "top": 100,
-                      "width": 400,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "column",
-                      }
-                    }
-                  />
-                  <View
-                    style={
-                      {
-                        "backgroundColor": "rgba(34, 63, 70, 0.15)",
-                        "height": 39,
-                        "maxHeight": 39,
-                        "opacity": 1,
-                        "width": "100%",
-                      }
-                    }
-                    variant="neutral-alpha-200"
-                  />
-                </CellContainer>
-                <CellContainer
-                  index={2}
-                  onLayout={[Function]}
-                  style={
-                    {
-                      "alignItems": "stretch",
-                      "flexDirection": "column",
-                      "left": 0,
-                      "position": "absolute",
-                      "top": 200,
-                      "width": 400,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "column",
-                      }
-                    }
-                  />
-                </CellContainer>
-              </AutoLayoutView>
-              <CellContainer
-                index={-1}
-                style={
-                  [
-                    undefined,
-                    undefined,
-                  ]
-                }
-              />
+                  variant="neutral-alpha-200"
+                />
+              </View>
               <View
+                index={1}
+                onLayout={[Function]}
                 style={
                   {
-                    "paddingBottom": 0,
-                    "paddingRight": 0,
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "opacity": 1,
+                    "position": "absolute",
+                    "top": 100,
+                    "width": 400,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "backgroundColor": "rgba(34, 63, 70, 0.15)",
+                      "height": 39,
+                      "maxHeight": 39,
+                      "opacity": 1,
+                      "width": "100%",
+                    }
+                  }
+                  variant="neutral-alpha-200"
+                />
+              </View>
+              <View
+                index={2}
+                onLayout={[Function]}
+                style={
+                  {
+                    "flexDirection": "column",
+                    "height": undefined,
+                    "left": 0,
+                    "maxHeight": undefined,
+                    "maxWidth": undefined,
+                    "minHeight": undefined,
+                    "minWidth": undefined,
+                    "opacity": 1,
+                    "position": "absolute",
+                    "top": 200,
+                    "width": 400,
                   }
                 }
               />

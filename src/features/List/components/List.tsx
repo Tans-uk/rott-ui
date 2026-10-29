@@ -1,6 +1,15 @@
 /* eslint-disable react/no-unstable-nested-components */
 
-import React, {forwardRef, isValidElement, useState, type FC, type ReactNode, type Ref} from 'react'
+import React, {
+  forwardRef,
+  isValidElement,
+  useCallback,
+  useRef,
+  useState,
+  type FC,
+  type ReactNode,
+  type Ref,
+} from 'react'
 
 import {StyleSheet} from 'react-native'
 
@@ -31,6 +40,27 @@ interface ListProps<T> extends CommonUiProps, FlashListProps<T> {
   listSkeletonItem?: React.JSX.Element
 
   itemsToShow?: number
+
+  /**
+   * Estimated item height (width when horizontal). FlashList 1.x uses it for layout; 2.x
+   * measures items itself and ignores it. `itemsToShow` also uses it to size the list.
+   * Declared here because FlashList 2.x no longer has it in its props.
+   */
+  estimatedItemSize?: number
+  /**
+   * Number of skeleton rows rendered while `isLoading`. When unset, the count falls back to
+   * `estimatedItemSize` (the behavior before this prop existed), then to 1.
+   */
+  skeletonCount?: number
+}
+
+type ListSlot = FlashListProps<unknown>['ListHeaderComponent']
+
+const renderSlot = (slot: ListSlot) => {
+  if (!slot) return null
+  if (isValidElement(slot)) return slot
+
+  return React.createElement(slot as React.ComponentType)
 }
 
 export const List: FC<ListProps<any>> = forwardRef(
@@ -54,6 +84,9 @@ export const List: FC<ListProps<any>> = forwardRef(
       itemsToShow,
       scrollEnabled,
       flex,
+      skeletonCount,
+      ListHeaderComponent,
+      ListFooterComponent,
       ...props
     },
     ref
@@ -80,11 +113,48 @@ export const List: FC<ListProps<any>> = forwardRef(
       ? Math.round(estimatedItemSize)
       : defaultItemSize
 
-    // The skeleton row count still comes from estimatedItemSize, as before. Rounding keeps a
-    // fractional size (display.px() returns one on Android) from throwing a RangeError.
-    const skeletonCount =
-      estimatedItemSize === undefined ? 1 : Math.max(0, Math.round(estimatedItemSize))
-    const dataType = isLoading ? Array.from({length: skeletonCount}, (_, index) => index) : data
+    // Without skeletonCount the row count comes from estimatedItemSize, as before. Rounding
+    // keeps a fractional value (display.px() returns one on Android) from throwing a RangeError.
+    const skeletonRows = Math.max(0, Math.round(skeletonCount ?? estimatedItemSize ?? 1))
+    const dataType = isLoading ? Array.from({length: skeletonRows}, (_, index) => index) : data
+
+    // The separators sit between the consumer's header/footer and the items. The wrappers are
+    // stable component types that read the latest header, footer and separator from refs, so
+    // a consumer header keeps its state across renders. FlashList renders them on every List
+    // render. Components rather than elements: an element prop ends up in snapshots of the
+    // scroll view, and React 19 elements serialize with their whole owner tree.
+    const headerSlotRef = useRef(ListHeaderComponent)
+    const footerSlotRef = useRef(ListFooterComponent)
+    const separatorRef = useRef(customRenderSeparator)
+    headerSlotRef.current = ListHeaderComponent
+    footerSlotRef.current = ListFooterComponent
+    separatorRef.current = customRenderSeparator
+
+    const HeaderWithSeparator = useCallback(
+      () => (
+        <>
+          {renderSlot(headerSlotRef.current)}
+          {separatorRef.current()}
+        </>
+      ),
+      []
+    )
+    const FooterWithSeparator = useCallback(
+      () => (
+        <>
+          {separatorRef.current()}
+          {renderSlot(footerSlotRef.current)}
+        </>
+      ),
+      []
+    )
+
+    const listHeader = headerSeparator ? HeaderWithSeparator : ListHeaderComponent
+    const listFooter = footerSeparator ? FooterWithSeparator : ListFooterComponent
+
+    // FlashList 2.x has no estimatedItemSize prop and never reads it, so passing it is safe
+    // there; the spread keeps the call valid against both versions' types.
+    const flashListV1Props: object = {estimatedItemSize: calculatedEstimatedItemSize}
 
     return (
       <Item
@@ -148,10 +218,10 @@ export const List: FC<ListProps<any>> = forwardRef(
             </>
           )}
           scrollEnabled={!isLoading && dataType?.length === 0 ? false : scrollEnabled}
-          estimatedItemSize={calculatedEstimatedItemSize}
+          {...flashListV1Props}
           ItemSeparatorComponent={renderSeparator ? () => customRenderSeparator() : undefined}
-          ListHeaderComponent={headerSeparator ? () => customRenderSeparator() : undefined}
-          ListFooterComponent={footerSeparator ? () => customRenderSeparator() : undefined}
+          ListHeaderComponent={listHeader}
+          ListFooterComponent={listFooter}
           horizontal={horizontal}
           renderItem={
             isLoading

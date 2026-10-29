@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "node_modules/.cache/tsconfig.flashlist-v1.tsbuildinfo",
+    "paths": {
+      "@shopify/flash-list": ["./node_modules/@shopify/flash-list-v1"],
+      "@shopify/flash-list/*": ["./node_modules/@shopify/flash-list-v1/*"]
+    }
+  }
+}

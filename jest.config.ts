@@ -66,6 +66,7 @@ const jestConfiguration: JestConfigWithTsJest = {
     '\\.svg': '<rootDir>/__mocks__/svgMock.js',
   },
   silent: true,
+  snapshotResolver: '<rootDir>/scripts/snapshotResolver.js',
   cacheDirectory: '<rootDir>/.jest-cache',
   testPathIgnorePatterns: [
     'node_modules/',
