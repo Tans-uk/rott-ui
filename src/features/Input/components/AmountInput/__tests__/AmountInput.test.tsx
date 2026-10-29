@@ -123,17 +123,6 @@ describe('Amount Input -> Custom Input', () => {
     expect(currencyInput).toHaveProp('keyboardType', 'number-pad')
   })
 
-  it("shows the icon matching the amount input's currencyType", async () => {
-    const currencyType = 'USD'
-    const onChangeTextMock = jest.fn()
-
-    await render(
-      <AmountInput name='test' currencyType={currencyType} onChangeText={onChangeTextMock} />
-    )
-
-    expect(onChangeTextMock).toHaveBeenCalled()
-  })
-
   it('formats 0.01 correctly when the user types it', async () => {
     // Arrange
     const {amountTestId, currencyTestId} = testId

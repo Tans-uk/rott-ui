@@ -119,6 +119,9 @@ When no `size` is given the button defaults to `{ height: 'lg' }` — full width
 </Button>
 ```
 
+While `isLoading` is true the button shows a spinner instead of its label and ignores
+presses, so a slow request cannot be submitted twice.
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -127,8 +130,9 @@ When no `size` is given the button defaults to `{ height: 'lg' }` — full width
 | `size` | `Size \| { width, height }` | `{ height: 'lg' }` | Button size |
 | `borderWidth` | `number` | `2` for `*-outline`, none otherwise | Border width; honored on every variant |
 | `borderColor` | `string` | variant color for `*-outline`, none otherwise | Border color; honored on every variant |
-| `isLoading` | `boolean` | `false` | Loading state |
+| `isLoading` | `boolean` | `false` | Shows a spinner and ignores presses |
 | `loadingText` | `string` | - | Loading text |
+| `fontFamily` | `FontFamily` | `'Markpro-Bold'` unless `fontWeight` is set | Label font family |
 | `disabled` | `boolean` | `false` | Disabled state |
 | `circle` | `boolean` | `false` | Circular button |
 | `leftIcon` | `ButtonIconProps` | - | Left icon |

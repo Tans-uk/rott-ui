@@ -97,6 +97,19 @@ doğrudan JSX içinde yazılmış `config={{ ... }}`) theme'in her render'da yen
 hesaplanmasına yol açar.
 :::
 
+### Bildirimler {#notifications}
+
+`RottProvider` toast sistemini de kurar. Bir toast görünürken uygulama etkileşimli
+kalır. Son toast kapanana kadar touch'ların yok sayılmasını istiyorsanız opt-in yapın:
+
+```tsx
+<RottProvider blockTouchesWhileNotificationVisible>
+  <App />
+</RottProvider>
+```
+
+API için [Notification](/docs/components/notification) sayfasına bakın.
+
 ## Tam Config {#complete-configuration}
 
 ```tsx

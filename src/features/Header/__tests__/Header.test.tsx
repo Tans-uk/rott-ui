@@ -1,9 +1,15 @@
 import React from 'react'
 
 import {fireEvent, render, waitFor} from '../../../__tests__/utils/testUtils'
+import {themeConfig} from '../../../providers'
 import {Icon, type IconKeys} from '../../Icon'
 import type {ImageTypes} from '../../Image'
 import {Header} from '../components'
+
+// The global providers mock builds its static themeConfig twice when testUtils loads first, so
+// Header and this file would hold two different objects and a spy on goBack would never fire.
+// Unmocked, they share the live one.
+jest.unmock('../../../providers')
 
 describe('Header -> Custom Component', () => {
   const testId = {
@@ -22,6 +28,11 @@ describe('Header -> Custom Component', () => {
     rightIcon: 'remove-circle',
   }
   const headerText = 'Test Başlık'
+
+  afterEach(() => {
+    // Puts the themeConfig.goBack spies of the back control tests back.
+    jest.restoreAllMocks()
+  })
 
   it('works with a title alone and matches the snapshot', async () => {
     const {component} = testId
@@ -261,5 +272,53 @@ describe('Header -> Custom Component', () => {
     const childrenElement = queryByTestId('header-children-icon-test-id')
 
     expect(childrenElement).toBeOnTheScreen()
+  })
+
+  it('calls goBackFunction when the back control is pressed', async () => {
+    const {component, leftIconPressable} = testId
+    const goBackFunction = jest.fn()
+    const {getByTestId} = await render(
+      <Header testID={component} back goBackFunction={goBackFunction} />
+    )
+
+    fireEvent.press(getByTestId(leftIconPressable))
+
+    expect(goBackFunction).toHaveBeenCalledTimes(1)
+  })
+
+  it('falls back to the theme goBack when goBackFunction is not given', async () => {
+    const {component, leftIconPressable} = testId
+    const themeGoBack = jest.spyOn(themeConfig, 'goBack')
+    const {getByTestId} = await render(<Header testID={component} back />)
+
+    fireEvent.press(getByTestId(leftIconPressable))
+
+    expect(themeGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('calls goBackFunction instead of the theme goBack when it is given', async () => {
+    const {component, leftIconPressable} = testId
+    const themeGoBack = jest.spyOn(themeConfig, 'goBack')
+    const goBackFunction = jest.fn()
+    const {getByTestId} = await render(
+      <Header testID={component} back goBackFunction={goBackFunction} />
+    )
+
+    fireEvent.press(getByTestId(leftIconPressable))
+
+    expect(goBackFunction).toHaveBeenCalledTimes(1)
+    expect(themeGoBack).not.toHaveBeenCalled()
+  })
+
+  it('does not go back while preventGoBack is set', async () => {
+    const {component, leftIconPressable} = testId
+    const goBackFunction = jest.fn()
+    const {getByTestId} = await render(
+      <Header testID={component} back preventGoBack goBackFunction={goBackFunction} />
+    )
+
+    fireEvent.press(getByTestId(leftIconPressable))
+
+    expect(goBackFunction).not.toHaveBeenCalled()
   })
 })

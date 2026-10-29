@@ -36,8 +36,10 @@ export type TThemeImages = [UserImages] extends [never]
   : NoInfer<StringKeys<DefaultImages>> | NoInfer<SafeUserImages> | NoInfer<keyof ConsumerImageKeys>
 
 let userConfig: Partial<ThemeConfig> = {}
+let userConfigResolved = false
 try {
   userConfig = require('rott.config').config as Partial<ThemeConfig>
+  userConfigResolved = true
 } catch {
   if (typeof __DEV__ !== 'undefined' && __DEV__) {
     console.warn(
@@ -53,11 +55,24 @@ try {
 /** Base = defaults + user overrides (colors, goBack, etc.). */
 const baseConfig = {...defaultThemeConfig, ...userConfig}
 
-/** Empty config: use only consumer-scanned assets. Non-empty: use user's images/icons + consumer. */
+/**
+ * Asset bases, merged with the consumer-scanned assets below:
+ * - rott.config cannot be resolved: the library defaults, as if no custom config existed.
+ * - rott.config without images/icons (the documented empty config): none.
+ * - rott.config with images/icons: the user's.
+ */
 const userProvidedImages = userConfig && 'images' in userConfig && userConfig.images != null
 const userProvidedIcons = userConfig && 'icons' in userConfig && userConfig.icons != null
-const imagesBase = userProvidedImages ? baseConfig.images : undefined
-const iconsBase = userProvidedIcons ? baseConfig.icons : undefined
+const imagesBase = !userConfigResolved
+  ? defaultThemeConfig.images
+  : userProvidedImages
+    ? baseConfig.images
+    : undefined
+const iconsBase = !userConfigResolved
+  ? defaultThemeConfig.icons
+  : userProvidedIcons
+    ? baseConfig.icons
+    : undefined
 
 function mergeAssets<T extends Record<string, unknown>>(base: T | undefined, consumer: T): T {
   return {...(base || ({} as T)), ...consumer} as T

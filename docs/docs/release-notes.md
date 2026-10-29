@@ -13,6 +13,115 @@ in `0.x`, a **minor** bump may carry breaking changes; a **patch** bump never
 does. Breaking changes are always listed first, with the migration step next to
 them.
 
+## 0.10.0
+
+**Correctness fixes.** Crashes, money bugs and several silent failures found in a
+review of 0.9.0. Every fix comes with a regression test, and the test setup no longer
+mocks `React.useContext`, which had been hiding the crashes. Some fixes change behavior
+an app may rely on, so this is a minor release.
+
+### Breaking changes
+
+- **Notifications no longer block the app.** While a toast was visible, every touch in
+  the app was ignored. The app now stays interactive by default. To keep the old
+  behavior, pass `blockTouchesWhileNotificationVisible` to `RottProvider`. In the default
+  mode a toast now responds to touch: tapping it closes it and runs its `onPress`, and
+  swiping it sideways dismisses it. Before, it could not be touched.
+- **A loading `Button` ignores presses.** Pressing a button while `isLoading` no longer
+  calls `onPress`, so a slow request cannot be submitted twice. It looks the same. If a
+  loading button doubled as a cancel control, render a separate control for that.
+- **`EmailInput` follows its `value` prop.** When you pass `value`, the field shows it,
+  so form resets work. A `value` without `onChangeText` now makes the field read-only,
+  as with any controlled React input. An app that passed `value` only as an initial
+  value, while `onChangeText` updated other state, now gets a field that does not accept
+  typing. Feed the typed text back through `value`, or leave `value` unset. Setting
+  `value` back to `undefined` clears the field.
+- **A missing `rott.config` keeps the default assets.** When `rott.config` cannot be
+  resolved at runtime, the built-in icons and images are used instead of disappearing.
+  An explicitly empty config still means consumer-scanned assets only.
+- **`AmountInput` now shows its currency icon.** In 0.9.0 the icon was looked up under
+  the upper-case currency code (`'TL'`), which matches no built-in icon, so no glyph was
+  drawn. It is now looked up under the built-in keys `tl`, `usd` and `euro`, so an
+  `AmountInput` shows its glyph: `TL` by default, or `USD` or `EUR` through
+  `currencyType`. An icon your app registered under the currency code itself (`TL`)
+  still takes precedence. An app whose `rott.config` leaves out the built-in icons and
+  registers no such icon shows no glyph. To hide the glyph, pass `currencyType={null}`.
+- **`AmountInput` reports nothing when it mounts without a value.** It reported `"0.00"`
+  through `onChangeText` before the user typed anything. If your form relied on that
+  report, set its initial amount yourself.
+- **`Header` calls `goBackFunction` on back press.** Before, `goBackFunction` was
+  ignored and the theme's `goBack` always ran. Now, when `goBackFunction` is passed, it
+  runs instead of the theme's `goBack`. To keep the theme navigation, drop the prop, or
+  navigate from the function.
+- **`formatMessage` no longer re-renders its caller when the language changes.** It
+  reads the active language when it is called. The library's own components still follow
+  a runtime language change, but text you render with `formatMessage` in your components
+  keeps the old language until that component re-renders for another reason. Components
+  that must follow a runtime language change should use `useTranslator`.
+
+### Added
+
+- **`Footer` is exported from the package root.** It is a container for a screen's
+  bottom actions that renders a `Content`, so it takes every `Content` prop. Its
+  defaults, all overridable, are `minHeight` 128, `paddingTop` 24, `gap` 16 and
+  `useBottomInset` on, which reserves the device's bottom safe-area inset. It has no
+  background of its own. See the [Footer](./components/footer.md) page.
+
+### Fixed
+
+- The CVC info button and every `modal-*` mode of `DateInput` crashed with "Invalid hook
+  call". `formatMessage` is no longer a hook and works anywhere.
+- `AmountInput` multiplied its value by 100 when it mounted with a value it had emitted
+  (`"1234.50"` became `"123450.00"`). It now reads a dot decimal with any number of
+  decimals (`"1234.5000"` is 1234.50; decimals beyond the second are cut), the Turkish
+  format (`"1.234,50"`), comma-grouped thousands (`"1,234.50"`) and values with
+  surrounding spaces. A value it cannot read leaves the field empty instead of becoming
+  another amount.
+- Clearing an `AmountInput` reports `"0.00"` through the current `onChangeText`; it used
+  the handler from the first render.
+- Two `DateInput`s on one screen no longer overwrite each other's date.
+- A `DateInput` whose `value` changes after it mounts confirms the new value; confirming
+  without scrolling committed the date it had at mount.
+- A date-only `DateInput` value such as `"2026-01-10"` is that calendar day in every time
+  zone. Behind UTC it became the previous day, and the input reported that day on mount.
+- A disabled `DateInput` with `viewType="button"` no longer opens the picker.
+- An `EmailInput` whose `value` goes back to `undefined` clears; it showed stale text.
+- `Notification.hideAll()` hides the toasts; it did nothing before.
+- `Notification` calls work from a component's first-mount effect; they threw a
+  `TypeError`. With `blockTouchesWhileNotificationVisible`, blocking follows the toasts
+  on screen, so a toast that never appears or closes twice no longer leaves the app
+  blocked or releases it while another toast is visible.
+- The `onPress` passed to `Notification.success`, `warning`, `danger` and `info`, or to
+  `Notification.show` with one of those variants, runs when the toast is tapped.
+- `Button` applies its `fontFamily` prop.
+- `Image` renders local `require()` sources and source arrays. It keeps the `cache` policy
+  a remote source sets, and no longer adds `cache: 'reload'` to `file://` or `data:` uris.
+- `List` no longer throws a `RangeError` when `isLoading` is set with a fractional
+  `estimatedItemSize`.
+- `TabWidget` keeps tab content mounted across re-renders.
+- Colors added through `RottProvider config` resolve as variants. Changing or removing
+  `config` no longer leaves the previous config's values in effect.
+- The library's `Array` and `String` helpers are no longer enumerable, so `for...in` over
+  your arrays and strings stops listing them.
+
+### Documentation
+
+- The Notification page documented `Notification.error` and `Notification.custom`, which
+  do not exist; it now lists the real methods. The Notification README that ships in the
+  package listed `error` and `custom` too and is corrected.
+- The Container page listed `showStatusBar` as defaulting to `true`; the status bar is
+  hidden unless you set it.
+- The Internationalization guide showed `const { t } = useTranslator()`; the hook returns
+  `translator`.
+- The Button, Amount input, Email input, Image, Header, Configuration, Installation,
+  Notification and rott.config pages describe the behavior above.
+
+### Tooling
+
+- The `publish` script is now `release:npm`. npm runs a package's `publish` script after
+  every `npm publish`, even `--dry-run`, so the old name started a second, nested
+  publish.
+
 ## 0.9.0
 
 **Button prop contract.** Two props that the public surface declared but the

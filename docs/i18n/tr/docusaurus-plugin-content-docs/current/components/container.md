@@ -60,7 +60,7 @@ import { Container } from '@tansuk/rott-ui';
 | `isModalScreen` | `boolean` | `false` | Modal config'i |
 | `fullScreen` | `boolean` | `false` | Safe area'ları devre dışı bırakır |
 | `closeOnClick` | `boolean` | `false` | Backdrop'a basmayı etkinleştirir |
-| `showStatusBar` | `boolean` | `true` | Status bar'ı gösterir |
+| `showStatusBar` | `boolean` | `false` | Status bar'ı gösterir; set edilmediği sürece gizlidir |
 
 ## Örnek {#example}
 

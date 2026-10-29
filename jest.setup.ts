@@ -325,25 +325,3 @@ jest.mock('./src/providers', () => {
     },
   }
 })
-
-/** formatMessage() uses useContext but is called from plain Jest tests; supply RottUiContext outside the tree. */
-const ReactRuntime = require('react') as typeof import('react')
-const {RottUiContext} = require('./src/contexts/rottUiContext')
-const reactActualUseContext = jest.requireActual<typeof import('react')>('react').useContext
-
-jest.spyOn(ReactRuntime, 'useContext').mockImplementation((context) => {
-  if (context === RottUiContext) {
-    return {
-      language: {name: 'en-US'},
-      hasDynamicIsland: false,
-      hasNotch: false,
-      deviceInfo: {
-        operatingSystemVersion: '17.0',
-        apiLevel: 33,
-        totalMemory: 8000000000,
-      },
-    }
-  }
-
-  return reactActualUseContext(context)
-})

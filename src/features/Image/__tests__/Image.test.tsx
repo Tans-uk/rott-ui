@@ -51,4 +51,47 @@ describe('Image -> Custom Component', () => {
 
     expect(imageElement).toHaveProp('height', 50)
   })
+
+  it('passes a local require() source through unchanged', async () => {
+    const {imageTestId} = testId
+    const {getByTestId} = await render(<Image testID={imageTestId} source={42} />)
+
+    expect(getByTestId(imageTestId)).toHaveProp('source', 42)
+  })
+
+  it('passes an array of sources through unchanged', async () => {
+    const {imageTestId} = testId
+    const sources = [{uri: 'https://example.com/logo.png', width: 10, height: 10}]
+    const {getByTestId} = await render(<Image testID={imageTestId} source={sources} />)
+
+    expect(getByTestId(imageTestId)).toHaveProp('source', sources)
+  })
+
+  it('still asks a remote image to reload', async () => {
+    const {imageTestId} = testId
+    const {getByTestId} = await render(
+      <Image testID={imageTestId} source={{uri: 'https://example.com/logo.png'}} />
+    )
+
+    expect(getByTestId(imageTestId)).toHaveProp('source', {
+      uri: 'https://example.com/logo.png',
+      cache: 'reload',
+    })
+  })
+
+  it('keeps the cache policy a remote image sets', async () => {
+    const {imageTestId} = testId
+    const source = {uri: 'https://example.com/logo.png', cache: 'force-cache' as const}
+    const {getByTestId} = await render(<Image testID={imageTestId} source={source} />)
+
+    expect(getByTestId(imageTestId)).toHaveProp('source', source)
+  })
+
+  it('passes a local file uri through unchanged', async () => {
+    const {imageTestId} = testId
+    const source = {uri: 'file:///tmp/photo.jpg'}
+    const {getByTestId} = await render(<Image testID={imageTestId} source={source} />)
+
+    expect(getByTestId(imageTestId)).toHaveProp('source', source)
+  })
 })

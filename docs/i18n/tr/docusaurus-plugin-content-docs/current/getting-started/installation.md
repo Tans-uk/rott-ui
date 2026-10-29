@@ -193,7 +193,7 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
 ```
 
 :::warning
-Özel theme'iniz Expo altında uygulanmıyorsa (renkler rott-ui default'larıyla render ediliyorsa), bunun olağan nedeni bu eksik Metro `resolveRequest` ayarıdır. Development sırasında ayrıca `[rott-ui] 'rott.config' could not be resolved at runtime` uyarısını da görürsünüz.
+Özel theme'iniz Expo altında uygulanmıyorsa (renkler rott-ui default'larıyla render ediliyorsa), bunun olağan nedeni bu eksik Metro `resolveRequest` ayarıdır. Development sırasında ayrıca `[rott-ui] 'rott.config' could not be resolved at runtime` uyarısını da görürsünüz. Built-in ikonlar ve görseller bu durumda da render edilir; yalnızca `rott.config` değerleriniz eksik kalır.
 :::
 
 ## Kurulumu Doğrulayın {#verify-installation}

@@ -36,16 +36,20 @@ import { RottProvider } from '@tansuk/rott-ui';
 import { useTranslator } from '@tansuk/rott-ui';
 
 function MyComponent() {
-  const { t } = useTranslator();
+  const { translator } = useTranslator();
 
   return (
     <>
-      <Label text={t('welcome')} />
-      <Button>{t('submit')}</Button>
+      <Label text={translator('COMMON.OK')} />
+      <Button>{translator('COMMON.CLEAR')}</Button>
     </>
   );
 }
 ```
+
+`useTranslator` resolves keys through the nearest `IntlProvider`. If your app renders its
+own `IntlProvider` inside `RottProvider`, the library's keys resolve against your messages
+below it; include the library's messages in your provider, or call `formatMessage` there.
 
 ### Direct useIntl
 

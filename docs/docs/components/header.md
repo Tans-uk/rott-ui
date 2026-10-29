@@ -72,6 +72,9 @@ import { Header } from '@tansuk/rott-ui';
 |------|------|---------|-------------|
 | `title` | `string` | - | Header title |
 | `height` | `number` | `56` | Header height |
+| `back` | `boolean` | `false` | Show a back control on the left |
+| `goBackFunction` | `() => void` | `goBack` from the theme config | Called when the back control is pressed |
+| `preventGoBack` | `boolean` | `false` | Keep the back control from navigating |
 | `logo` | `string` | - | Logo name |
 | `leftElement` | `ReactNode` | - | Left element |
 | `rightElement` | `ReactNode` | - | Right element |

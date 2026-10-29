@@ -1,16 +1,32 @@
-import React, {useCallback, useEffect, useRef, useState, type FC} from 'react'
+import React, {useEffect, useRef, useState, type FC} from 'react'
 
 import {StyleSheet, TextInput} from 'react-native'
 
 import {themeConfig} from '../../../../../providers'
+import type {defaultThemeConfig} from '../../../../../providers/defaultThemeConfig'
 import {type IconKeys} from '../../../../Icon'
 import {Item} from '../../../../Item'
 import {Label} from '../../../../Label'
 import {InputStyles} from '../../../styles'
 import {InputStyleNormalizer} from '../../../utils'
 import {InputField} from '../../InputField'
-import type {AmountInputProps} from '../models'
+import type {AmountInputProps, CurrencyType} from '../models'
 import {AmountInputStyles} from '../styles'
+import {parseAmountValue} from '../utils'
+
+/**
+ * Built-in icon keys of the currency glyphs. An icon the app registers under the currency
+ * code itself ("TL") takes precedence, as it did when the code was the only key looked up.
+ */
+const CURRENCY_ICONS: Record<CurrencyType, keyof typeof defaultThemeConfig.icons> = {
+  TL: 'tl',
+  USD: 'usd',
+  EUR: 'euro',
+}
+
+/** An empty amount clears the field instead of being shown. */
+const isEmptyAmount = (amountValue?: string | null) =>
+  !amountValue || amountValue === '0' || amountValue === '0.00'
 
 export const AmountInput: FC<AmountInputProps> = ({
   fontSize,
@@ -34,11 +50,12 @@ export const AmountInput: FC<AmountInputProps> = ({
   const [amount, setAmount] = useState('')
   const [currency, setCurrency] = useState('')
 
-  const resetInternalStates = useCallback(() => {
+  // Not memoized: it must report through the current onChangeText, not the first render's.
+  const resetInternalStates = () => {
     setAmount('')
     setCurrency('')
     onChangeText?.('0.00')
-  }, [])
+  }
 
   const replaceTextWithNumberOrEmpty = (text: string) => {
     const numericOnly = text.replace(/[^0-9]/g, '')
@@ -88,15 +105,22 @@ export const AmountInput: FC<AmountInputProps> = ({
         : themeConfig.colors['grey-900']
 
   useEffect(() => {
-    const initialAmount = value?.split(',')[0]
-    const initialCurrency = value?.split(',')[1]
+    if (isEmptyAmount(value)) return
 
-    setAmount(initialAmount ?? '')
-    setCurrency(initialCurrency ?? '')
+    const initial = parseAmountValue(value)
+
+    setAmount(initial.amount)
+    setCurrency(initial.currency)
   }, [])
 
+  // Clearing the value later resets both fields. Mounting with an empty value is not a
+  // clear: the field starts blank and reports nothing.
+  const previousValue = useRef(value)
   useEffect(() => {
-    if (value === '' || !value || value === '0.00' || value === '0') resetInternalStates()
+    if (previousValue.current === value) return
+    previousValue.current = value
+
+    if (isEmptyAmount(value)) resetInternalStates()
   }, [value])
 
   useEffect(() => {
@@ -104,7 +128,9 @@ export const AmountInput: FC<AmountInputProps> = ({
   }, [amount, currency])
 
   const currencyIcon = {
-    name: currencyType as IconKeys,
+    name: (currencyType && !themeConfig.icons?.[currencyType]
+      ? CURRENCY_ICONS[currencyType]
+      : currencyType) as IconKeys,
     color: themeConfig.colors['grey-200'],
     ...rightIcon,
   }

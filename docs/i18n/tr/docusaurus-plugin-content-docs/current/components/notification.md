@@ -6,58 +6,74 @@ description: Toast bildirim sistemi
 
 # Notification
 
-Notification, geçici mesajları göstermek için bir toast bildirim sistemi sunar.
+Notification, ekranın üstünde kısa toast mesajları gösterir. Kurulumunu `RottProvider`
+yapar; render edildikten sonra static method'ları uygulamanın her yerinden çağırabilirsiniz,
+bir component'in ilk mount effect'i dahil.
 
 ## Özellikler {#features}
 
-- 🎨 Birden fazla tip (success, error, warning, info)
-- ⏱️ Otomatik kapanma
-- 🎯 Özel içerik
-- 📍 Konum kontrolü
-- 🔧 Özelleştirilebilir style
+- 🎨 Dört variant: success, warning, danger ve info
+- ⏱️ Üç saniye sonra otomatik kapanma
+- 👆 Dokunarak aksiyon: bir `onPress` callback'i verin
+- 🖐️ Toast görünürken opsiyonel touch engelleme
 
 ## Temel Kullanım {#basic-usage}
 
 ```tsx
 import { Notification } from '@tansuk/rott-ui';
 
-// Başarı bildirimi
-Notification.success('Changes saved successfully');
-
-// Hata bildirimi
-Notification.error('Something went wrong');
-
-// Uyarı bildirimi
+Notification.success('Changes saved');
 Notification.warning('Please verify your email');
-
-// Bilgi bildirimi
+Notification.danger('Something went wrong');
 Notification.info('New update available');
 ```
 
-## Özel Bildirim {#custom-notification}
+:::note
+`RottProvider` render edilmeden önce yapılan bir çağrı hiçbir şey yapmaz.
+:::
+
+## Açıklama ve Aksiyon ile {#with-a-description-and-an-action}
 
 ```tsx
-Notification.custom({
-  title: 'Custom Title',
-  message: 'Custom message content',
-  icon: { name: 'STAR', variant: 'warning' },
-  duration: 5000,
-});
+Notification.info('New message', 'You have a new message from John', () =>
+  navigation.navigate('Inbox')
+);
 ```
 
-## Props {#props}
+Kullanıcı toast'a dokunduğunda toast `onPress`'i çalıştırır, ardından kapanır.
 
-Notification component'i arka planda `react-native-toast-notifications` kullanır.
-
-### Static Method'lar {#static-methods}
+## Static Method'lar {#static-methods}
 
 | Method | Parametreler | Açıklama |
 |--------|------------|-------------|
-| `success` | `(message: string)` | Başarı toast'u gösterir |
-| `error` | `(message: string)` | Hata toast'u gösterir |
-| `warning` | `(message: string)` | Uyarı toast'u gösterir |
-| `info` | `(message: string)` | Bilgi toast'u gösterir |
-| `custom` | `(options)` | Özel toast gösterir |
+| `success` | `(title: string, description?: string, onPress?: () => void)` | Başarı toast'u gösterir |
+| `warning` | `(title: string, description?: string, onPress?: () => void)` | Uyarı toast'u gösterir |
+| `danger` | `(title: string, description?: string, onPress?: () => void)` | Hata toast'u gösterir |
+| `info` | `(title: string, description?: string, onPress?: () => void)` | Bilgi toast'u gösterir |
+| `show` | `({ title, description?, variant, onPress? })` | Toast gösterir; `variant` `'success'`, `'warning'`, `'danger'` ya da `'info'` olur |
+| `hide` | `(id: string)` | Tek bir toast'u gizler; yukarıdaki method'lar id'sini döndürür |
+| `hideAll` | `()` | Görünen tüm toast'ları gizler |
+
+`show`, `success`, `warning`, `danger` ve `info` variant'larını style'lar. Başka herhangi
+bir `variant`, kütüphanenin yalnızca title gösteren ve `description` ile `onPress`'i yok
+sayan sade toast'una düşer.
+
+Toast'lar `react-native-toast-notifications` ile render edilir.
+
+## Görünürken Touch'ları Engelleme {#blocking-touches-while-visible}
+
+Default olarak bir toast ekrandayken uygulama etkileşimli kalır. Son toast kapanana kadar
+tüm uygulamanın touch'ları yok saymasını istiyorsanız — 0.10.0 öncesindeki davranış —
+provider üzerinden opt-in yapın:
+
+```tsx
+<RottProvider blockTouchesWhileNotificationVisible>
+  <App />
+</RottProvider>
+```
+
+Engelleme açıkken toast'a dokunulamaz ya da kaydırılamaz ve `onPress` çalışmaz. Toast
+kendi timer'ı ile ya da `Notification.hide` veya `Notification.hideAll` ile kapanır.
 
 ## Örnekler {#examples}
 
@@ -70,7 +86,7 @@ const handleSubmit = async (values) => {
     Notification.success('Form submitted successfully');
     navigation.goBack();
   } catch (error) {
-    Notification.error('Failed to submit form');
+    Notification.danger('Failed to submit form');
   }
 };
 ```
@@ -83,7 +99,7 @@ const handleDelete = async (id) => {
     await deleteItem(id);
     Notification.success('Item deleted');
   } catch (error) {
-    Notification.error('Failed to delete item');
+    Notification.danger('Failed to delete item');
   }
 };
 ```
@@ -99,16 +115,5 @@ NetInfo.addEventListener(state => {
   } else {
     Notification.success('Connected to internet');
   }
-});
-```
-
-### İkon ile Özel Bildirim {#custom-with-icon}
-
-```tsx
-Notification.custom({
-  title: 'New Message',
-  message: 'You have a new message from John',
-  icon: { name: 'MAIL', variant: 'primary' },
-  duration: 4000,
 });
 ```

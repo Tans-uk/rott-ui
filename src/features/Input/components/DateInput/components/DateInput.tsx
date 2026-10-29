@@ -24,6 +24,17 @@ import {startOfDay} from 'date-fns'
 
 import DatePicker from '@react-native-community/datetimepicker'
 
+/** A date-only value ("2026-01-10") is a calendar date in the device's time zone, not UTC. */
+const DATE_ONLY = /^(\d{4})-(\d{2})-(\d{2})$/
+
+const toPickerDate = (dateValue?: string | null): Date => {
+  const dateOnly = dateValue ? DATE_ONLY.exec(dateValue) : null
+
+  if (dateOnly) return new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]))
+
+  return dateValue ? new Date(dateValue) : new Date()
+}
+
 /**
  *
  * DateInput is used a little differently from the other inputs.
@@ -56,7 +67,6 @@ import DatePicker from '@react-native-community/datetimepicker'
  * Writing it bare, as `dontAllowClearing`, is already treated as true — do not write
  * `={true}` unless you also pass `={false}` somewhere.
  */
-let externalDate = new Date()
 export const DateInput: FC<DateInputProps> = ({
   placeholder = 'Lütfen bir tarih seçiniz',
   onDateChange,
@@ -82,6 +92,8 @@ export const DateInput: FC<DateInputProps> = ({
 }) => {
   const {language} = useRottContext()
   const selectedItem = useRef<DataModel>(undefined)
+  // Date the native picker shows; one per instance, so two inputs never share it.
+  const pickerDate = useRef<Date>(toPickerDate(value))
 
   const handleConfirmPress = (date?: Date | DataModel) => {
     let validDate: Date
@@ -91,15 +103,17 @@ export const DateInput: FC<DateInputProps> = ({
 
     if (
       minimumDate &&
-      (selectedDate ? selectedDate.getTime() : externalDate.getTime()) < minimumDate?.getTime()
+      (selectedDate ? selectedDate.getTime() : pickerDate.current.getTime()) <
+        minimumDate?.getTime()
     ) {
       validDate = minimumDate
     } else if (
       maximumDate &&
-      (selectedDate ? selectedDate.getTime() : externalDate.getTime()) > maximumDate?.getTime()
+      (selectedDate ? selectedDate.getTime() : pickerDate.current.getTime()) >
+        maximumDate?.getTime()
     ) {
       validDate = maximumDate
-    } else validDate = selectedDate ?? externalDate
+    } else validDate = selectedDate ?? pickerDate.current
 
     validDate = mode.includes('time') ? validDate : startOfDay(validDate)
 
@@ -110,7 +124,7 @@ export const DateInput: FC<DateInputProps> = ({
 
   const handleClearPress = () => {
     Modal.hideModal()
-    externalDate = new Date()
+    pickerDate.current = new Date()
     onDateChange?.(null as any)
   }
 
@@ -121,7 +135,7 @@ export const DateInput: FC<DateInputProps> = ({
 
   const isSelected = (item: DataModel) => {
     if (!item.value || !value) return
-    const valueAsDate = new Date(value)
+    const valueAsDate = toPickerDate(value)
 
     if (!selectedItem.current) return isSameDay(item.value, valueAsDate)
 
@@ -137,8 +151,13 @@ export const DateInput: FC<DateInputProps> = ({
 
     return calculatedModalHeightPercentage >= 100 ? 100 : calculatedModalHeightPercentage
   }
-  const {showModal: showNativeDatePicker, hideModal} = useModal(
-    {
+  const {showModal, hideModal} = useModal()
+
+  // Built when it opens, from the current value, so confirming without scrolling commits the
+  // date the picker shows.
+  const showNativeDatePicker = () => {
+    pickerDate.current = toPickerDate(value)
+    showModal({
       id: ModalIdEnum.NativeDatePicker,
       testID: 'date-input-modal',
       visible: true,
@@ -180,21 +199,21 @@ export const DateInput: FC<DateInputProps> = ({
           <DatePicker
             testID={testID ?? 'date-input-test-id'}
             mode={mode?.replace('modal-', '') as any}
-            value={value ? new Date(value) : new Date()}
+            value={pickerDate.current}
             minimumDate={minimumDate}
             maximumDate={maximumDate}
             locale={language.name}
             themeVariant='light'
             {...props}
             display='spinner'
-            onChange={(_event, date) => !!date && (externalDate = date)}
+            onChange={(_event, date) => {
+              if (date) pickerDate.current = date
+            }}
           />
         </Item>
       ),
-    },
-    []
-  )
-  const {showModal} = useModal()
+    })
+  }
 
   const showModalDatePicker = () =>
     showModal({
@@ -258,7 +277,7 @@ export const DateInput: FC<DateInputProps> = ({
                     testID='date-input-modal-picker-item-test-id'
                     onPress={() => {
                       if (item.value) {
-                        externalDate = item.value
+                        pickerDate.current = item.value
                         handleConfirmPress(item)
                         Modal.hideModal()
                       } else item.action()
@@ -322,13 +341,9 @@ export const DateInput: FC<DateInputProps> = ({
     })
 
   useEffect(() => {
-    externalDate = new Date(value ? new Date(value) : new Date())
+    pickerDate.current = toPickerDate(value)
 
-    if (value) handleConfirmPress(externalDate)
-
-    return () => {
-      externalDate = new Date()
-    }
+    if (value) handleConfirmPress(pickerDate.current)
   }, [])
 
   const openPicker = () => {
@@ -393,9 +408,7 @@ export const DateInput: FC<DateInputProps> = ({
             height: 20,
             strokeWidth: 1.5,
           }}
-          onPress={() => {
-            !disabled && mode.includes('modal') ? showModalDatePicker() : showNativeDatePicker()
-          }}>
+          onPress={openPicker}>
           {data && value
             ? (data.find((item) => {
                 return isSelected(item)

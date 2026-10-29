@@ -1,5 +1,6 @@
 import React, {type FC} from 'react'
 
+import {useRottContext} from '../../../hooks'
 import {formatMessage} from '../../../libs'
 import {themeConfig} from '../../../providers'
 import {Icon} from '../../Icon'
@@ -17,27 +18,32 @@ export const FavoriteSwipeComponent: FC<FavoriteSwipeComponentProps> = ({
   index,
   favorite,
   handleFavoriteChange,
-}) => (
-  <Item row width={48}>
-    <Pressable
-      alignItemsCenter
-      justifyContentCenter
-      backgroundColor={favorite ? themeConfig.colors.danger : themeConfig.colors.secondary}
-      onPress={() => handleFavoriteChange && handleFavoriteChange!(index, !favorite)}>
-      <Icon
-        width={16}
-        height={16}
-        name={favorite ? 'star-fill' : 'star'}
-        variant={favorite ? 'secondary' : 'info'}
-      />
+}) => {
+  // Re-renders on a runtime language change; formatMessage below is not a hook.
+  useRottContext()
 
-      <Label
-        textCenter
-        color={favorite ? themeConfig.colors.white : themeConfig.colors.black}
-        fontSize={8}
-        marginTop={4}>
-        {formatMessage(favorite ? 'LIST.ITEM.FAVORITE.REMOVE' : 'LIST.ITEM.FAVORITE.ADD')}
-      </Label>
-    </Pressable>
-  </Item>
-)
+  return (
+    <Item row width={48}>
+      <Pressable
+        alignItemsCenter
+        justifyContentCenter
+        backgroundColor={favorite ? themeConfig.colors.danger : themeConfig.colors.secondary}
+        onPress={() => handleFavoriteChange && handleFavoriteChange!(index, !favorite)}>
+        <Icon
+          width={16}
+          height={16}
+          name={favorite ? 'star-fill' : 'star'}
+          variant={favorite ? 'secondary' : 'info'}
+        />
+
+        <Label
+          textCenter
+          color={favorite ? themeConfig.colors.white : themeConfig.colors.black}
+          fontSize={8}
+          marginTop={4}>
+          {formatMessage(favorite ? 'LIST.ITEM.FAVORITE.REMOVE' : 'LIST.ITEM.FAVORITE.ADD')}
+        </Label>
+      </Pressable>
+    </Item>
+  )
+}

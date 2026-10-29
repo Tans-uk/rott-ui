@@ -1,11 +1,11 @@
-import React, {useState, type FC} from 'react'
+import React, {useCallback, useState, type FC} from 'react'
 
 import {display} from '../../../utils'
 import {Item} from '../../Item'
 import {type TabWidgetProps} from '../models'
 import {TabWidgetItem} from './TabWidgetItem'
 
-import {SceneMap, TabView} from 'react-native-tab-view'
+import {TabView, type SceneRendererProps} from 'react-native-tab-view'
 
 export const TabWidget: FC<TabWidgetProps> = ({
   titles,
@@ -25,6 +25,13 @@ export const TabWidget: FC<TabWidgetProps> = ({
     title,
   }))
 
+  // Render each tab's element directly. SceneMap wraps every tab in a component created on
+  // each render, and React remounts a scene whose component type changes.
+  const renderScene = useCallback(
+    ({route}: SceneRendererProps & {route: {key: string}}) => tabs?.[Number(route.key)] ?? null,
+    [tabs]
+  )
+
   const tabBarOnChange = (key: string) => {
     const changedIndex = routes.findIndex((route) => route.key === key)
     !!onTabChange && onTabChange(changedIndex)
@@ -40,11 +47,7 @@ export const TabWidget: FC<TabWidgetProps> = ({
     <Item flex={flex} testID={testID} {...props}>
       <TabView
         navigationState={{index, routes}}
-        renderScene={SceneMap(
-          titles.reduce((acc, _cur, curIndex) => {
-            return {...acc, [curIndex.toString()]: () => tabs?.[curIndex] ?? <></>}
-          }, {})
-        )}
+        renderScene={renderScene}
         renderTabBar={(tabBarProps) => (
           <TabWidgetItem
             disabled={disabled}

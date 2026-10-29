@@ -40,10 +40,8 @@ describe('Button -> Custom Component', () => {
   it('renders the button with loading text and a loading icon', async () => {
     const {buttonTestId, buttonText, buttonLoadingTextTestId, buttonLoadingIndicatiorTestId} =
       testId
-    const renderedButton = await render(<Button testID={buttonTestId}>{buttonText}</Button>)
-
-    const {getByTestId, rerenderAsync} = renderedButton
-    await rerenderAsync(
+    // Render the loading state directly instead of re-rendering: flipping disabled on a mounted TouchableOpacity starts an opacity animation that loads React Native's legacy renderer, which rejects react 19.2.4 in this Jest setup.
+    const {getByTestId} = await render(
       <Button testID={buttonTestId} isLoading loadingText='Loading'>
         {buttonText}
       </Button>
@@ -269,6 +267,34 @@ describe('Button -> Custom Component', () => {
       width: '92.5%',
       height: display.px(72),
     })
+  })
+
+  it('uses the fontFamily it is given', async () => {
+    const {buttonText} = testId
+    const {getByText} = await render(<Button fontFamily='Markpro-Light'>{buttonText}</Button>)
+
+    expect(getByText(buttonText)).toHaveStyle({fontFamily: 'Markpro-Light'})
+  })
+
+  it('keeps Markpro-Bold when neither fontFamily nor fontWeight is given', async () => {
+    const {buttonText} = testId
+    const {getByText} = await render(<Button>{buttonText}</Button>)
+
+    expect(getByText(buttonText)).toHaveStyle({fontFamily: 'Markpro-Bold'})
+  })
+
+  it('ignores presses while loading', async () => {
+    const {buttonTestId, buttonText} = testId
+    const onPressMock = jest.fn()
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} isLoading onPress={onPressMock}>
+        {buttonText}
+      </Button>
+    )
+
+    fireEvent.press(getByTestId(buttonTestId))
+
+    expect(onPressMock).not.toHaveBeenCalled()
   })
 })
 

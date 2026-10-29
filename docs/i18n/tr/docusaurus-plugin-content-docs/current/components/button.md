@@ -117,6 +117,9 @@ padding'li bir kartın içindeki `size="full"` buton, kartın dışına taşmak 
 </Button>
 ```
 
+`isLoading` true olduğu sürece buton label'ı yerine bir spinner gösterir ve basmaları
+yok sayar; böylece yavaş bir request iki kez gönderilemez.
+
 ## Props {#props}
 
 | Prop | Tip | Default | Açıklama |
@@ -125,8 +128,9 @@ padding'li bir kartın içindeki `size="full"` buton, kartın dışına taşmak 
 | `size` | `Size \| { width, height }` | `{ height: 'lg' }` | Buton boyutu |
 | `borderWidth` | `number` | `*-outline` için `2`, diğerlerinde yok | Border genişliği; tüm variant'larda dikkate alınır |
 | `borderColor` | `string` | `*-outline` için variant rengi, diğerlerinde yok | Border rengi; tüm variant'larda dikkate alınır |
-| `isLoading` | `boolean` | `false` | Yükleme state'i |
+| `isLoading` | `boolean` | `false` | Spinner gösterir ve basmaları yok sayar |
 | `loadingText` | `string` | - | Yükleme metni |
+| `fontFamily` | `FontFamily` | `fontWeight` verilmediyse `'Markpro-Bold'` | Label font family'si |
 | `disabled` | `boolean` | `false` | Devre dışı state'i |
 | `circle` | `boolean` | `false` | Yuvarlak buton |
 | `leftIcon` | `ButtonIconProps` | - | Sol ikon |

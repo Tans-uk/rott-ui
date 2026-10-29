@@ -72,6 +72,9 @@ import { Header } from '@tansuk/rott-ui';
 |------|------|---------|-------------|
 | `title` | `string` | - | Header başlığı |
 | `height` | `number` | `56` | Header yüksekliği |
+| `back` | `boolean` | `false` | Solda bir geri kontrolü gösterir |
+| `goBackFunction` | `() => void` | theme config'indeki `goBack` | Geri kontrolüne basıldığında çağrılır |
+| `preventGoBack` | `boolean` | `false` | Geri kontrolünün navigate etmesini engeller |
 | `logo` | `string` | - | Logo adı |
 | `leftElement` | `ReactNode` | - | Sol element |
 | `rightElement` | `ReactNode` | - | Sağ element |

@@ -276,6 +276,8 @@ Boş config ile:
 - **Renkler, fontlar vb.**: Default theme değerleri kullanılmaya devam eder
 - **Autocomplete**: `Image` ve `Icon` için yalnızca kendi asset adlarınız görünür
 
+Boş config, config'in hiç olmamasıyla aynı şey değildir. `rott.config` runtime'da çözümlenemezse (opsiyonel Metro veya Babel adımı atlandıysa) kütüphane default'larına döner: default görseller ve ikonlar, taranan asset'lerinizle birlikte kullanılır.
+
 Kütüphane default'larına ek olarak kendi asset'lerinizi de istiyorsanız `...defaultThemeConfig` kullanın:
 
 ```typescript
