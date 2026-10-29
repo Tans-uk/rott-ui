@@ -181,6 +181,8 @@ exports[`Modal -> Custom Component matches the snapshot on the modal's first ren
                       {
                         "alignItems": "center",
                         "backgroundColor": "rgba(61, 88, 94, 1)",
+                        "borderTopEndRadius": 24,
+                        "borderTopStartRadius": 24,
                         "flex": undefined,
                         "flexDirection": "column",
                         "justifyContent": "center",
@@ -211,6 +213,8 @@ exports[`Modal -> Custom Component matches the snapshot on the modal's first ren
                         {
                           "alignItems": "center",
                           "backgroundColor": "rgba(61, 88, 94, 1)",
+                          "borderTopEndRadius": 24,
+                          "borderTopStartRadius": 24,
                           "flex": undefined,
                           "flexDirection": "column",
                           "justifyContent": "center",

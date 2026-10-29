@@ -68,6 +68,8 @@ exports[`Notification -> Custom Component notification matches the snapshot on f
         style={
           {
             "backgroundColor": "rgba(77, 175, 234, 1)",
+            "borderBottomStartRadius": 4,
+            "borderTopStartRadius": 4,
             "flex": undefined,
             "flexDirection": "column",
             "justifyContent": "center",
@@ -90,6 +92,7 @@ exports[`Notification -> Custom Component notification matches the snapshot on f
         style={
           {
             "backgroundColor": "rgba(34, 63, 70, 1)",
+            "borderRadius": 4,
             "flex": undefined,
             "flexDirection": "row",
             "paddingHorizontal": 31,

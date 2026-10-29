@@ -42,6 +42,8 @@ import { Button } from '@tansuk/rott-ui';
 
 `borderWidth` and `borderColor` are honored on every variant, not just `*-outline`.
 Explicit values always win; the `*-outline` border is the fallback when you pass neither.
+`borderColor` and `backgroundColor` take a color name from your theme (for example
+`borderColor="oauth-google-border"`) or a literal color.
 
 This matters for controls whose fill is fixed by a brand guideline — the border is then
 the only thing separating the control from the page, and WCAG 2.1 SC 1.4.11 asks for at
@@ -129,7 +131,8 @@ presses, so a slow request cannot be submitted twice.
 | `variant` | `Variant` | `'primary'` | Color variant |
 | `size` | `Size \| { width, height }` | `{ height: 'lg' }` | Button size |
 | `borderWidth` | `number` | `2` for `*-outline`, none otherwise | Border width; honored on every variant |
-| `borderColor` | `string` | variant color for `*-outline`, none otherwise | Border color; honored on every variant |
+| `borderColor` | `string` | variant color for `*-outline`, none otherwise | Border color: a theme color name or a literal color; honored on every variant |
+| `backgroundColor` | `string` | variant color | Fill color: a theme color name or a literal color |
 | `isLoading` | `boolean` | `false` | Shows a spinner and ignores presses |
 | `loadingText` | `string` | - | Loading text |
 | `fontFamily` | `FontFamily` | `'Markpro-Bold'` unless `fontWeight` is set | Label font family |

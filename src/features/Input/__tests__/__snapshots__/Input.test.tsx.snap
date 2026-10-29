@@ -68,6 +68,7 @@ exports[`Input -> Custom Input input matches the snapshot on first render 1`] = 
           style={
             {
               "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(0, 169, 206, 1)",
               "flex": undefined,
               "flexDirection": "column",
               "paddingHorizontal": 31,

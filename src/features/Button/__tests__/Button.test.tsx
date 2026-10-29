@@ -296,6 +296,36 @@ describe('Button -> Custom Component', () => {
 
     expect(onPressMock).not.toHaveBeenCalled()
   })
+
+  it('resolves theme color names in backgroundColor and borderColor', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button
+        testID={buttonTestId}
+        variant='primary'
+        backgroundColor='danger'
+        borderWidth={1}
+        borderColor='success'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({
+      backgroundColor: colorFromVariant('danger'),
+      borderColor: colorFromVariant('success'),
+    })
+  })
+
+  it('keeps a literal backgroundColor', async () => {
+    const {buttonTestId, buttonText} = testId
+    const {getByTestId} = await render(
+      <Button testID={buttonTestId} variant='primary' backgroundColor='#FFFFFF'>
+        {buttonText}
+      </Button>
+    )
+
+    expect(getByTestId(buttonTestId)).toHaveStyle({backgroundColor: '#FFFFFF'})
+  })
 })
 
 commonUiTestExtension(<Button testID={testId.buttonTestId} />, testId.buttonTestId)

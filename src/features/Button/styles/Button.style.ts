@@ -25,8 +25,11 @@ export const ButtonStyles = (props?: any) => {
       borderRadius: props.borderRadius ? display.px(props.borderRadius) : display.px(8),
       borderWidth: props?.borderWidth ?? (isOutline ? 2 : undefined),
       borderColor:
-        props?.borderColor ??
-        (isOutline ? colorFromVariant(props?.variant?.replace('-outline', '')) : undefined),
+        props?.borderColor !== undefined
+          ? colorFromVariant(props.borderColor)
+          : isOutline
+            ? colorFromVariant(props?.variant?.replace('-outline', ''))
+            : undefined,
 
       height:
         typeof props?.height === 'number' ||
@@ -71,9 +74,7 @@ export const ButtonStyles = (props?: any) => {
             : undefined,
 
       opacity: props?.disabled ? 0.6 : 1,
-      backgroundColor: props?.backgroundColor
-        ? props?.backgroundColor
-        : colorFromVariant(props?.variant),
+      backgroundColor: colorFromVariant(props?.backgroundColor || props?.variant),
     },
     buttonTextStyle: {
       color: props?.color ? colorFromVariant(props?.color) : textcolorFromVariant(props?.variant),

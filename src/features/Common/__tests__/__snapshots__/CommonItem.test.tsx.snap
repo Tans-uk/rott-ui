@@ -125,6 +125,7 @@ exports[`Common -> Common Item matches the snapshot on the common item's first r
                 style={
                   {
                     "backgroundColor": "rgba(234, 239, 240, 1)",
+                    "borderRadius": 4,
                     "flex": undefined,
                     "flexDirection": "column",
                     "height": 31,

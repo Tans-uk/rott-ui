@@ -42,6 +42,7 @@ export const Item: FC<ItemProps> = ({
           row,
           includeAlignItems: true,
           includeJustifyContent: true,
+          includeBorderRadius: true,
           size,
           gap,
           flexWrap,

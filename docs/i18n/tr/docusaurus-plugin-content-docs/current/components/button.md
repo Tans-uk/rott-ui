@@ -42,6 +42,8 @@ import { Button } from '@tansuk/rott-ui';
 
 `borderWidth` ve `borderColor` yalnızca `*-outline` variant'larında değil, tüm variant'larda dikkate alınır.
 Açıkça verilen değerler her zaman önceliklidir; ikisini de vermediğinizde fallback olarak `*-outline` border'ı kullanılır.
+`borderColor` ve `backgroundColor`, theme'inizdeki bir renk adını (örneğin
+`borderColor="oauth-google-border"`) ya da literal bir rengi kabul eder.
 
 Bu, dolgu rengi bir marka kılavuzuyla sabitlenmiş kontroller için önemlidir: bu durumda kontrolü sayfadan
 ayıran tek şey border'dır ve WCAG 2.1 SC 1.4.11 bu sınırda en az 3:1 kontrast ister.
@@ -127,7 +129,8 @@ yok sayar; böylece yavaş bir request iki kez gönderilemez.
 | `variant` | `Variant` | `'primary'` | Renk variant'ı |
 | `size` | `Size \| { width, height }` | `{ height: 'lg' }` | Buton boyutu |
 | `borderWidth` | `number` | `*-outline` için `2`, diğerlerinde yok | Border genişliği; tüm variant'larda dikkate alınır |
-| `borderColor` | `string` | `*-outline` için variant rengi, diğerlerinde yok | Border rengi; tüm variant'larda dikkate alınır |
+| `borderColor` | `string` | `*-outline` için variant rengi, diğerlerinde yok | Border rengi: theme renk adı ya da literal renk; tüm variant'larda dikkate alınır |
+| `backgroundColor` | `string` | variant rengi | Dolgu rengi: theme renk adı ya da literal renk |
 | `isLoading` | `boolean` | `false` | Spinner gösterir ve basmaları yok sayar |
 | `loadingText` | `string` | - | Yükleme metni |
 | `fontFamily` | `FontFamily` | `fontWeight` verilmediyse `'Markpro-Bold'` | Label font family'si |

@@ -81,6 +81,17 @@ Plus all `CommonUiProps`.
 </Item>
 ```
 
+### Bordered
+
+`borderWidth`, `borderColor` and the border radius props draw on `Item`. `borderColor`
+takes a theme color name or a literal color.
+
+```tsx
+<Item padding={16} borderWidth={1} borderColor="grey-200" borderRadius={12}>
+  <Label text="Bordered card" />
+</Item>
+```
+
 ### List Item
 
 ```tsx

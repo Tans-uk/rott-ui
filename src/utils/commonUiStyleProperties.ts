@@ -45,6 +45,11 @@ export const commonUiStyleProperties = (props?: any) => {
     styles.backgroundColor = colorFromVariant(props.backgroundColor)
   }
 
+  // Border width and color; the color accepts theme color names, like backgroundColor
+  if (props?.borderWidth !== undefined) styles.borderWidth = Number(props.borderWidth)
+
+  if (props?.borderColor !== undefined) styles.borderColor = colorFromVariant(props.borderColor)
+
   // Margins
   if (props?.marginTop !== undefined) {
     styles.marginTop = Number(props?.marginTop)

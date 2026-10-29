@@ -81,6 +81,17 @@ Bunlara ek olarak tüm `CommonUiProps` desteklenir.
 </Item>
 ```
 
+### Border'lı {#bordered}
+
+`borderWidth`, `borderColor` ve border radius prop'ları `Item`'da çizilir. `borderColor`,
+theme renk adını ya da literal bir rengi kabul eder.
+
+```tsx
+<Item padding={16} borderWidth={1} borderColor="grey-200" borderRadius={12}>
+  <Label text="Border'lı kart" />
+</Item>
+```
+
 ### Liste Öğesi {#list-item}
 
 ```tsx
