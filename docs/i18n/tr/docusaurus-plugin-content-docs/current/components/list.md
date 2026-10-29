@@ -79,7 +79,8 @@ import { List } from '@tansuk/rott-ui';
 
 `skeletonCount`, `isLoading` iken kaç skeleton satırı render edileceğini belirler.
 Verilmezse sayı `estimatedItemSize`'a (burada 76 satır), o da yoksa 1'e düşer; bu yüzden
-`estimatedItemSize` verdiğiniz her yerde `skeletonCount`'u da verin.
+`estimatedItemSize` verdiğiniz her yerde `skeletonCount`'u da verin. Yüklenen bir liste
+her zaman en az bir satır çizer; bu yüzden yüklenirken asla empty state göstermez.
 
 ## Header ve Footer ile {#with-header-and-footer}
 
@@ -124,7 +125,7 @@ yalnızca New Architecture'da çalışır; eski mimarideki bir uygulama 1.x'te k
 | `emptyState` | `EmptyStateProps \| ReactNode` | Empty state |
 | `isLoading` | `boolean` | Yükleme state'i |
 | `listSkeletonItem` | `ReactNode` | Skeleton öğesi |
-| `skeletonCount` | `number` | `isLoading` iken skeleton satır sayısı. `estimatedItemSize`'a, o da yoksa `1`'e düşer |
+| `skeletonCount` | `number` | `isLoading` iken skeleton satır sayısı, en az `1`. `estimatedItemSize`'a, o da yoksa `1`'e düşer |
 | `itemsToShow` | `number` | Listenin boyunu bu kadar öğeye sabitler (`itemsToShow × estimatedItemSize`) |
 
 Bunlara ek olarak tüm FlashList prop'ları desteklenir.
