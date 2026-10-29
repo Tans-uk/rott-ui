@@ -2,6 +2,7 @@ import React, {type FC} from 'react'
 
 import {StyleSheet} from 'react-native'
 
+import {useRottContext} from '../../../hooks'
 import {formatMessage} from '../../../libs'
 import type {ExpireDateInputProps} from '../models'
 import {InputStyles} from '../styles'
@@ -24,6 +25,9 @@ export const ExpireDateInput: FC<ExpireDateInputProps> = ({
   renderSeparator: _renderSeparator,
   ...props
 }) => {
+  // Re-renders on a runtime language change; formatMessage below is not a hook.
+  useRottContext()
+
   const MASK = [/\d/, /\d/, '/', /\d/, /\d/]
 
   //TODO: formatMMYY refactor edilebilir mi?

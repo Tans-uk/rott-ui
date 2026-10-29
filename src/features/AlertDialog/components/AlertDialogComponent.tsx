@@ -3,6 +3,7 @@ import React, {useEffect, type FC} from 'react'
 import {ActivityIndicator} from 'react-native'
 
 import {AlertDialog} from '..'
+import {useRottContext} from '../../../hooks'
 import {formatMessage} from '../../../libs'
 import {themeConfig} from '../../../providers'
 import {display} from '../../../utils'
@@ -31,6 +32,9 @@ export const AlertDialogComponent: FC<AlertDialogModel> = ({
   showActivityIndicator,
   autoClose,
 }) => {
+  // Re-renders on a runtime language change; formatMessage below is not a hook.
+  useRottContext()
+
   const hasMoreThanTwoButtons = Array.isArray(buttons)
 
   let autoCloseTimer: ReturnType<typeof setTimeout> | null = null

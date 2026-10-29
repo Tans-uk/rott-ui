@@ -4,6 +4,7 @@ import React, {forwardRef, isValidElement, useState, type FC, type ReactNode, ty
 
 import {StyleSheet} from 'react-native'
 
+import {useRottContext} from '../../../hooks'
 import {formatMessage} from '../../../libs'
 import type {CommonUiProps, Variant} from '../../../models'
 import {display} from '../../../utils'
@@ -57,6 +58,9 @@ export const List: FC<ListProps<any>> = forwardRef(
     },
     ref
   ) => {
+    // Re-renders on a runtime language change; formatMessage below is not a hook.
+    useRottContext()
+
     const minContainerHeight = 283
     const [containerHeight, setContainerHeight] = useState(0)
 

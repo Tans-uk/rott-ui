@@ -2,6 +2,7 @@ import React, {useState, type FC} from 'react'
 
 import {ActivityIndicator} from 'react-native'
 
+import {useRottContext} from '../../../../../hooks'
 import {formatMessage} from '../../../../../libs'
 import {themeConfig} from '../../../../../providers'
 import {display, searchTextNormalizer} from '../../../../../utils'
@@ -35,6 +36,9 @@ export const SelectInputModalComponent: FC<SelectInputModalComponentProps> = ({
   onViewableItemsChanged,
   name,
 }) => {
+  // Re-renders on a runtime language change; formatMessage below is not a hook.
+  useRottContext()
+
   const [searchText, setSearchText] = useState<string>('')
   const normalizedSearchText = searchTextNormalizer(searchText)
   const multiSelection = selectedItemValue && typeof selectedItemValue !== 'string'
