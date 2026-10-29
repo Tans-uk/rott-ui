@@ -13,6 +13,44 @@ in `0.x`, a **minor** bump may carry breaking changes; a **patch** bump never
 does. Breaking changes are always listed first, with the migration step next to
 them.
 
+## 0.12.0
+
+**Borders that were never drawn, and Input label options.** Border props passed to `Item`
+and the components built on the same styles were silently dropped; they now render, and
+their colors accept theme color names. `Button` resolves theme color names in its border
+and fill. `Input` labels can keep their case and set their own spacing.
+
+### Breaking changes
+
+- **Border props now render.** `borderWidth` and `borderColor` never reached the style of
+  `Item` and the other components that take the common UI props, and `Item` also dropped
+  `borderRadius` and the corner radius props. These borders now appear, including ones the
+  library's own components asked for: the `CheckBoxInput` box, the radio rings in
+  `CommonItem` and `DateInput`, the `border` prop of `Input`, and the corner radii in
+  `ActionMenu`, `Alert`, `AlertDialog`, `Modal`, `Notification` and `Skeleton`. If a screen
+  passed these props without wanting a border, remove them.
+
+### Added
+
+- `Input` label options, on an object `label`: `uppercase` (default `true`; `false` keeps the
+  text and `description` as written), `gap` (default `0`, the space between the label and
+  its field) and `marginTop` (default `16`, the space above the label). The defaults keep
+  today's look.
+
+### Fixed
+
+- `Button` resolves theme color names in `borderColor` and `backgroundColor`. It passed
+  them on unchanged, so a name such as `"surface"` reached React Native as an invalid
+  color; literal colors still pass through.
+- `borderColor` accepts theme color names wherever the common UI props are accepted, the
+  same way `backgroundColor` does.
+
+### Documentation
+
+- The Button page lists `backgroundColor` and says both colors take theme color names;
+  the Item page has a bordered example; the Colors page shows `borderColor` with a theme
+  color; the Input page lists the label options.
+
 ## 0.11.0
 
 **FlashList 2.x support.** `List` works with `@shopify/flash-list` 1.x (from 1.8.0) and

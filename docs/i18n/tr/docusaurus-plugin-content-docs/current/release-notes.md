@@ -13,6 +13,45 @@ Sürümler [semantic versioning](https://semver.org) kurallarına uyar. Kütüph
 artışı ise asla içermez. Breaking change'ler her zaman en başta, yanlarında
 migration adımıyla birlikte listelenir.
 
+## 0.12.0 {#0120}
+
+**Hiç çizilmeyen border'lar ve Input label seçenekleri.** `Item`'a ve aynı style'ları
+kullanan bileşenlere verilen border prop'ları sessizce düşüyordu; artık render ediliyorlar
+ve renkleri theme renk adlarını kabul ediyor. `Button`, border ve dolgu renginde theme renk
+adlarını çözüyor. `Input` label'ları büyük/küçük harfini koruyabiliyor ve kendi boşluklarını
+ayarlayabiliyor.
+
+### Breaking change'ler {#breaking-changes}
+
+- **Border prop'ları artık render ediliyor.** `borderWidth` ve `borderColor`, `Item`'ın ve
+  ortak UI prop'larını alan diğer bileşenlerin style'ına hiç ulaşmıyordu; `Item` ayrıca
+  `borderRadius`'u ve köşe radius prop'larını da düşürüyordu. Bu border'lar artık görünüyor;
+  kütüphanenin kendi bileşenlerinin istedikleri de dahil: `CheckBoxInput` kutusu,
+  `CommonItem` ve `DateInput`'taki radio halkaları, `Input`'un `border` prop'u ve
+  `ActionMenu`, `Alert`, `AlertDialog`, `Modal`, `Notification` ve `Skeleton`'daki köşe
+  radius'ları. Bir ekran bu prop'ları border istemeden veriyorsa onları kaldırın.
+
+### Eklenenler {#added}
+
+- Nesne biçimindeki `label` için `Input` label seçenekleri: `uppercase` (default `true`;
+  `false` metni ve `description`'ı yazıldığı gibi bırakır), `gap` (default `0`, label ile
+  alanı arasındaki boşluk) ve `marginTop` (default `16`, label'ın üstündeki boşluk).
+  Default'lar bugünkü görünümü korur.
+
+### Düzeltmeler {#fixed}
+
+- `Button`, `borderColor` ve `backgroundColor`'da theme renk adlarını çözer. Bunları
+  olduğu gibi iletiyordu; bu yüzden `"surface"` gibi bir ad React Native'e geçersiz bir renk
+  olarak ulaşıyordu. Literal renkler yine olduğu gibi geçer.
+- `borderColor`, ortak UI prop'larının kabul edildiği her yerde, `backgroundColor` gibi
+  theme renk adlarını kabul eder.
+
+### Dokümantasyon {#documentation}
+
+- Button sayfası `backgroundColor`'ı listeliyor ve iki rengin de theme renk adı aldığını
+  söylüyor; Item sayfasında border'lı bir örnek var; Colors sayfası theme rengiyle
+  `borderColor` gösteriyor; Input sayfası label seçeneklerini listeliyor.
+
 ## 0.11.0 {#0110}
 
 **FlashList 2.x desteği.** `List`, `@shopify/flash-list` 1.x (1.8.0'dan itibaren) ve 2.x ile
@@ -20,7 +59,7 @@ migration adımıyla birlikte listelenir.
 yalnızca New Architecture'da çalışır; eski mimarideki uygulamalar 1.x'te kalır. Peer
 aralığı değişmedi (`>=1.8.0`).
 
-### Breaking change'ler {#breaking-changes}
+### Breaking change'ler {#breaking-changes-1}
 
 - **`headerSeparator` ve `footerSeparator` kendi header ve footer'ınızın yanında çizilir.**
   `ListHeaderComponent`'i `headerSeparator` ile birlikte verdiğinizde header'ınız
@@ -29,7 +68,7 @@ aralığı değişmedi (`>=1.8.0`).
   Header'ınız render'lar arasında state'ini korur. Yalnızca header'ınızı istiyorsanız
   `headerSeparator`'ı kaldırın.
 
-### Eklenenler {#added}
+### Eklenenler {#added-1}
 
 - `List`'te 1.x'in yanında FlashList 2.x desteği.
 - `List`'teki `skeletonCount`, `isLoading` iken kaç skeleton satırı render edileceğini
@@ -37,13 +76,13 @@ aralığı değişmedi (`>=1.8.0`).
   ekranlar aynı görünür. `estimatedItemSize` verdiğiniz her yerde bunu da verin. Yüklenen
   bir liste her zaman en az bir satır çizer; bu yüzden 0 değeri artık empty state göstermez.
 
-### Düzeltmeler {#fixed}
+### Düzeltmeler {#fixed-1}
 
 - `List`'teki `estimatedItemSize` FlashList 2.x ile tip kontrolünden geçer. FlashList 2.x
   onu prop'larından kaldırdığı için TS2322 veriyordu. FlashList 1.x onu layout için
   kullanır; 2.x öğeleri kendisi ölçer ve onu yok sayar.
 
-### Dokümantasyon {#documentation}
+### Dokümantasyon {#documentation-1}
 
 - List sayfası `estimatedItemSize`'ı artık zorunlu olarak göstermiyor ve `itemsToShow`'u
   skeleton sayısı olarak değil, belirlediği liste yüksekliği olarak anlatıyor. Yükleme
@@ -64,7 +103,7 @@ bug'lar ve birkaç sessiz hata. Her fix bir regression test ile gelir ve test se
 artık crash'leri gizleyen `React.useContext` mock'unu yapmıyor. Bazı fix'ler bir
 uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release'tir.
 
-### Breaking change'ler {#breaking-changes-1}
+### Breaking change'ler {#breaking-changes-2}
 
 - **Bildirimler artık uygulamayı bloklamıyor.** Bir toast görünürken uygulamadaki her
   touch yok sayılıyordu. Uygulama artık default olarak etkileşimli kalıyor. Eski
@@ -106,7 +145,7 @@ uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release
   o component başka bir nedenle yeniden render edilene kadar eski dilde kalır. Runtime
   dil değişikliğini takip etmesi gereken component'ler `useTranslator` kullanmalı.
 
-### Eklenenler {#added-1}
+### Eklenenler {#added-2}
 
 - **`Footer` paket root'undan export ediliyor.** Bir ekranın alt aksiyonları için, bir
   `Content` render eden container'dır; bu yüzden her `Content` prop'unu alır.
@@ -114,7 +153,7 @@ uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release
   cihazın alt safe-area inset'ini ayıran `useBottomInset` açık. Kendi arka planı yoktur.
   Bkz. [Footer](./components/footer.md) sayfası.
 
-### Düzeltmeler {#fixed-1}
+### Düzeltmeler {#fixed-2}
 
 - CVC bilgi butonu ve `DateInput`'un her `modal-*` modu "Invalid hook call" ile
   crash oluyordu. `formatMessage` artık bir hook değil ve her yerde çalışır.
@@ -154,7 +193,7 @@ uygulamanın güvendiği davranışı değiştirdiği için bu bir minor release
 - Kütüphanenin `Array` ve `String` helper'ları artık enumerable değil; böylece
   array'leriniz ve string'leriniz üzerindeki `for...in` onları listelemeyi bırakır.
 
-### Dokümantasyon {#documentation-1}
+### Dokümantasyon {#documentation-2}
 
 - Notification sayfası var olmayan `Notification.error` ve `Notification.custom`'ı
   belgeliyordu; artık gerçek method'ları listeliyor. Pakette gelen Notification
@@ -179,7 +218,7 @@ saydığı iki prop ve iddia ettiği boyutta olmayan bir boyut token'ı. Her iki
 da sessizdi: kod type-check'ten geçiyor, render ediliyor ve hiçbir uyarı
 vermiyordu, ama yanlış style üretiyordu.
 
-### Breaking change'ler {#breaking-changes-2}
+### Breaking change'ler {#breaking-changes-3}
 
 **`size="full"` artık sabit bir genişlik değil, container'ına göre belirleniyor.**
 
@@ -240,7 +279,7 @@ Default değer `{height: 'lg'}` olup daha önce aynı sabit `342px` değerine
 düşüyordu. Artık parent genişliğinin `100%` değerine çözümleniyor; yükseklik ise
 değişmeden `56` olarak kalıyor.
 
-### Düzeltmeler {#fixed-2}
+### Düzeltmeler {#fixed-3}
 
 - **`borderWidth` ve `borderColor` her variant'ta dikkate alınır.**
   ([#8](https://github.com/Tans-uk/rott-ui/issues/8))
@@ -275,7 +314,7 @@ değişmeden `56` olarak kalıyor.
   ([#9](https://github.com/Tans-uk/rott-ui/issues/9))
   Yukarıdaki breaking change notuna bakın.
 
-### Dokümantasyon {#documentation-2}
+### Dokümantasyon {#documentation-3}
 
 - Button sayfası border prop'larını, eksiksiz boyut tablosunu ve hangi
   genişliklerin sabit, hangilerinin parent'a göreli olduğunu belgeliyor.
