@@ -1,7 +1,7 @@
 # Notification
 
-Toast notifications. `RottProvider` sets them up; call the static methods once the app has
-mounted. The toasts are rendered with
+Toast notifications. `RottProvider` sets them up; call the static methods anywhere once it
+has rendered. The toasts are rendered with
 [react-native-toast-notifications](https://github.com/arnnis/react-native-toast-notifications),
 a peer dependency that your app installs.
 

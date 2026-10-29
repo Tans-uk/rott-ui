@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState, type FC, type PropsWithChildren} from 'react'
+import React, {useCallback, useMemo, useRef, useState, type FC, type PropsWithChildren} from 'react'
 
 import {
   NotificationContext,
@@ -9,7 +9,7 @@ import {
 import {Item} from '../../Item'
 import {useNotification} from '../hooks'
 
-import {Toast} from 'react-native-toast-notifications'
+import type ToastContainer from 'react-native-toast-notifications'
 
 const InitializeNotificationRef = () => {
   const notificationHook = useNotification()
@@ -21,7 +21,7 @@ const InitializeNotificationRef = () => {
 export interface NotificationProviderProps extends PropsWithChildren {
   /**
    * When true, the whole tree ignores touches while a notification is visible — the
-   * behavior before 0.9.1. Off by default, so the app and the toast stay pressable.
+   * behavior before 0.10.0. Off by default, so the app and the toast stay pressable.
    */
   blockTouchesWhileVisible?: boolean
 }
@@ -30,29 +30,23 @@ export const NotificationProvider: FC<NotificationProviderProps> = ({
   children,
   blockTouchesWhileVisible = false,
 }) => {
-  // Toasts on screen. The toast library calls onClose once per toast — hidden by id, by
-  // hideAll or by its timer — so onClose is the only place that counts down.
+  // This provider's own toast container. Its ref is attached before any effect runs, so calls
+  // from first-mount effects work, and a remounted provider never reaches an old container.
+  const toastRef = useRef<ToastContainer>(null)
+  // Toasts on screen, open or closing, as the container reports them.
   const [visibleNotifications, setVisibleNotifications] = useState(0)
 
-  const handleClose = useCallback(() => {
-    setVisibleNotifications((count) => Math.max(0, count - 1))
-  }, [])
-
   const show = useCallback(
-    ({title, description, variant, onPress}: NotificationModel) => {
-      setVisibleNotifications((count) => count + 1)
-
-      return Toast.show(title, {
+    ({title, description, variant, onPress}: NotificationModel) =>
+      toastRef.current?.show(title, {
         type: variant,
         data: {title, description, variant, onPress},
-        onClose: handleClose,
-      })
-    },
-    [handleClose]
+      }) ?? '',
+    []
   )
 
-  const hide = useCallback((id: string) => Toast.hide(id), [])
-  const hideAll = useCallback(() => Toast.hideAll(), [])
+  const hide = useCallback((id: string) => toastRef.current?.hide(id), [])
+  const hideAll = useCallback(() => toastRef.current?.hideAll(), [])
 
   const success = useCallback(
     (title: string, description?: string, onPress?: () => void) =>
@@ -95,7 +89,11 @@ export const NotificationProvider: FC<NotificationProviderProps> = ({
     <NotificationContext.Provider value={contextValues}>
       <InitializeNotificationRef />
       <Item flex={1} pointerEvents={blockTouches ? 'box-only' : 'box-none'}>
-        <ToasterNotificationProvider>{children}</ToasterNotificationProvider>
+        <ToasterNotificationProvider
+          toastRef={toastRef}
+          onToastCountChange={setVisibleNotifications}>
+          {children}
+        </ToasterNotificationProvider>
       </Item>
     </NotificationContext.Provider>
   )

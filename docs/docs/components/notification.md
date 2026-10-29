@@ -7,7 +7,8 @@ description: Toast notification system
 # Notification
 
 Notification shows short toast messages at the top of the screen. `RottProvider` sets
-it up; once the app has mounted, call the static methods from anywhere in your app.
+it up; once it has rendered, call the static methods from anywhere in your app, including
+a component's first-mount effect.
 
 ## Features
 
@@ -27,12 +28,8 @@ Notification.danger('Something went wrong');
 Notification.info('New update available');
 ```
 
-:::warning
-Call the static methods after the app has mounted. From a `useEffect` that runs when the
-app first mounts, in a component rendered under `RottProvider`, the call throws a
-`TypeError`, because the toast system is ready only once that first mount has finished.
-Before `RottProvider` has rendered, a call does nothing. A component that mounts later,
-such as a screen you navigate to, can call them from its own mount effect.
+:::note
+A call made before `RottProvider` has rendered does nothing.
 :::
 
 ## With a Description and an Action
@@ -66,7 +63,7 @@ The toasts are rendered with `react-native-toast-notifications`.
 ## Blocking Touches While Visible
 
 By default the app stays interactive while a toast is on screen. To make the whole app
-ignore touches until the last toast closes — the behavior before 0.9.1 — opt in on the
+ignore touches until the last toast closes — the behavior before 0.10.0 — opt in on the
 provider:
 
 ```tsx
